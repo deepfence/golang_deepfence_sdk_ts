@@ -683,6 +683,92 @@ paths:
       summary: Fetch Kubernetes Cluster Actions
       tags:
       - Controls
+  /deepfence/count/file-alerts:
+    post:
+      description: Count across all data associated with file alerts
+      operationId: countFileAlerts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchSearchCountResp'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Count file alerts
+      tags:
+      - Search
+  /deepfence/count/network-alerts:
+    post:
+      description: Count across all data associated with network alerts
+      operationId: countNetworkAlerts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchSearchCountResp'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Count network alerts
+      tags:
+      - Search
   /deepfence/database/vulnerability:
     put:
       description: Upload Vulnerability Database for use in vulnerability scans
@@ -1356,6 +1442,49 @@ paths:
       security:
       - bearer_token: []
       summary: Get Pods Topology Graph
+      tags:
+      - Topology
+  /deepfence/ingest/alerts:
+    post:
+      description: Ingest alerts data reported by one Agent
+      operationId: ingestAgentAlerts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                additionalProperties: {}
+                type: object
+              nullable: true
+              type: array
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Ingest Agent Alerts
       tags:
       - Topology
   /deepfence/ingest/cloud-compliance:
@@ -2194,6 +2323,51 @@ paths:
       summary: Retrieve Containers data
       tags:
       - Lookup
+  /deepfence/lookup/file-alerts:
+    post:
+      description: Retrieve file alerts resources
+      operationId: getFileAlerts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LookupLookupFilter'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelFileAlert'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get File Alerts
+      tags:
+      - Lookup
   /deepfence/lookup/hosts:
     post:
       description: Retrieve all the data associated with hosts
@@ -2282,6 +2456,51 @@ paths:
       security:
       - bearer_token: []
       summary: Retrieve K8s data
+      tags:
+      - Lookup
+  /deepfence/lookup/network-alerts:
+    post:
+      description: Retrieve network alerts resources
+      operationId: getNetworkAlerts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LookupLookupFilter'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelNetworkAlert'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Network Alerts
       tags:
       - Lookup
   /deepfence/lookup/pods:
@@ -2419,6 +2638,80 @@ paths:
       summary: Get Images in Registry
       tags:
       - Lookup
+  /deepfence/network/tracer/disable:
+    post:
+      description: Disable network tracer on given agents
+      operationId: disableNetworkTracer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelDisableNetworkTracerReq'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      summary: Disable network tracer
+      tags:
+      - AgentNetwork
+  /deepfence/network/tracer/enable:
+    post:
+      description: Enable network tracer on given agents
+      operationId: enableNetworkTracer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelEnableNetworkTracerReq'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      summary: Enable network tracer
+      tags:
+      - AgentNetwork
   /deepfence/registryaccount:
     get:
       description: List all the added Registries
@@ -6319,6 +6612,51 @@ paths:
       summary: Count Vulnerability Scan results
       tags:
       - Search
+  /deepfence/search/file-alerts:
+    post:
+      description: Search across all data associated with file alerts
+      operationId: searchFileAlerts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelFileAlert'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Search file alerts
+      tags:
+      - Search
   /deepfence/search/hosts:
     post:
       description: Search across all data associated with hosts
@@ -6587,6 +6925,51 @@ paths:
       security:
       - bearer_token: []
       summary: Search Malwares
+      tags:
+      - Search
+  /deepfence/search/network-alerts:
+    post:
+      description: Search across all data associated with network alerts
+      operationId: searchNetworkAlerts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelNetworkAlert'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Search network alerts
       tags:
       - Search
   /deepfence/search/pods:
@@ -7907,6 +8290,29 @@ components:
       required:
       - beatrate
       - commands
+      type: object
+    ControlsNetworkRules:
+      example:
+        inbound:
+        - inbound
+        - inbound
+        outbound:
+        - outbound
+        - outbound
+      properties:
+        inbound:
+          items:
+            type: string
+          nullable: true
+          type: array
+        outbound:
+          items:
+            type: string
+          nullable: true
+          type: array
+      required:
+      - inbound
+      - outbound
       type: object
     DetailedConnectionSummary:
       example:
@@ -10769,6 +11175,22 @@ components:
       - vulnerability_latest_scan_id
       - vulnerability_scan_status
       type: object
+    ModelDisableNetworkTracerReq:
+      example:
+        agent_ids:
+        - available_workload: 0
+          node_id: node_id
+        - available_workload: 0
+          node_id: node_id
+      properties:
+        agent_ids:
+          items:
+            $ref: '#/components/schemas/ModelAgentId'
+          nullable: true
+          type: array
+      required:
+      - agent_ids
+      type: object
     ModelDownloadReportResponse:
       example:
         url_link: url_link
@@ -10856,6 +11278,52 @@ components:
         smtp:
           type: string
       type: object
+    ModelEnableNetworkTracerReq:
+      example:
+        tcp_rules:
+          inbound:
+          - inbound
+          - inbound
+          outbound:
+          - outbound
+          - outbound
+        http_rules:
+          inbound:
+          - inbound
+          - inbound
+          outbound:
+          - outbound
+          - outbound
+        agent_ids:
+        - available_workload: 0
+          node_id: node_id
+        - available_workload: 0
+          node_id: node_id
+        https_rules:
+          inbound:
+          - inbound
+          - inbound
+          outbound:
+          - outbound
+          - outbound
+      properties:
+        agent_ids:
+          items:
+            $ref: '#/components/schemas/ModelAgentId'
+          nullable: true
+          type: array
+        http_rules:
+          $ref: '#/components/schemas/ControlsNetworkRules'
+        https_rules:
+          $ref: '#/components/schemas/ControlsNetworkRules'
+        tcp_rules:
+          $ref: '#/components/schemas/ControlsNetworkRules'
+      required:
+      - agent_ids
+      - http_rules
+      - https_rules
+      - tcp_rules
+      type: object
     ModelExportReport:
       example:
         duration: 6
@@ -10899,6 +11367,163 @@ components:
       required:
       - offset
       - size
+      type: object
+    ModelFileAlert:
+      example:
+        container_ip: container_ip
+        anomaly: anomaly
+        masked: true
+        classtype: classtype
+        created_at: created_at
+        pid: 6
+        hostname: hostname
+        signature_id: 5
+        event_type: event_type
+        node_type: node_type
+        filepath: filepath
+        top:
+        - top
+        - top
+        updated_at: updated_at
+        process_name: process_name
+        direction: direction
+        severity: severity
+        summary: summary
+        count: 0
+        resource_type: resource_type
+        fstat:
+        - fstat
+        - fstat
+        intent:
+        - intent
+        - intent
+        container_image: container_image
+        netstat:
+        - netstat
+        - netstat
+        users:
+        - users
+        - users
+        container_name: container_name
+        w: 5
+        proc_status:
+        - proc_status
+        - proc_status
+        category: category
+        container_id: container_id
+        node_id: node_id
+        severity_score: 1.4658129805029452
+      properties:
+        anomaly:
+          type: string
+        category:
+          type: string
+        classtype:
+          type: string
+        container_id:
+          type: string
+        container_image:
+          type: string
+        container_ip:
+          type: string
+        container_name:
+          type: string
+        count:
+          type: integer
+        created_at:
+          type: string
+        direction:
+          type: string
+        event_type:
+          type: string
+        filepath:
+          type: string
+        fstat:
+          items:
+            type: string
+          nullable: true
+          type: array
+        hostname:
+          type: string
+        intent:
+          items:
+            type: string
+          nullable: true
+          type: array
+        masked:
+          type: boolean
+        netstat:
+          items:
+            type: string
+          nullable: true
+          type: array
+        node_id:
+          type: string
+        node_type:
+          type: string
+        pid:
+          type: integer
+        proc_status:
+          items:
+            type: string
+          nullable: true
+          type: array
+        process_name:
+          type: string
+        resource_type:
+          type: string
+        severity:
+          type: string
+        severity_score:
+          type: number
+        signature_id:
+          type: integer
+        summary:
+          type: string
+        top:
+          items:
+            type: string
+          nullable: true
+          type: array
+        updated_at:
+          type: string
+        users:
+          items:
+            type: string
+          nullable: true
+          type: array
+        w:
+          type: integer
+      required:
+      - anomaly
+      - category
+      - classtype
+      - container_id
+      - container_image
+      - container_ip
+      - container_name
+      - count
+      - direction
+      - event_type
+      - filepath
+      - fstat
+      - hostname
+      - intent
+      - masked
+      - netstat
+      - node_id
+      - node_type
+      - pid
+      - proc_status
+      - process_name
+      - resource_type
+      - severity
+      - severity_score
+      - signature_id
+      - summary
+      - top
+      - users
+      - w
       type: object
     ModelFiltersReq:
       example:
@@ -13971,6 +14596,185 @@ components:
     ModelMetadata:
       additionalProperties: {}
       type: object
+    ModelNetworkAlert:
+      example:
+        date: 6.027456183070403
+        internal: internal
+        destination_port: 1
+        kubernetes_cluster_name: kubernetes_cluster_name
+        masked: true
+        classtype: classtype
+        created_at: created_at
+        description: description
+        source_ip: source_ip
+        hostname: hostname
+        signature_id: 9
+        destination_ip: destination_ip
+        event_type: event_type
+        node_type: node_type
+        updated_at: updated_at
+        ip_reputation: ip_reputation
+        scope_id: scope_id
+        source_port: 3
+        direction: direction
+        severity: severity
+        summary: summary
+        geoip:
+          ip: ip
+        count: 0
+        resource_type: resource_type
+        http_type: http_type
+        app_proto: app_proto
+        intent:
+        - intent
+        - intent
+        severity_anomaly_container_name: severity_anomaly_container_name
+        pod_name: pod_name
+        tags:
+        - tags
+        - tags
+        rule_id: 2
+        container_name: container_name
+        encrypted: encrypted
+        http:
+          headers: headers
+          local_port: 5
+          length: ""
+          request_method: request_method
+          response_printable_payload: ""
+          url: url
+          http_user_agent: http_user_agent
+          hostname: hostname
+          protocol: 5
+          http_content_type: ""
+          request_path: request_path
+          request_payload: request_payload
+          response_payload: ""
+          request_printable_payload: request_printable_payload
+          status: ""
+        matched: matched
+        category: category
+        node_id: node_id
+        severity_score: 7.061401241503109
+      properties:
+        app_proto:
+          type: string
+        category:
+          type: string
+        classtype:
+          type: string
+        container_name:
+          type: string
+        count:
+          type: integer
+        created_at:
+          type: string
+        date:
+          type: number
+        description:
+          type: string
+        destination_ip:
+          type: string
+        destination_port:
+          type: integer
+        direction:
+          type: string
+        encrypted:
+          type: string
+        event_type:
+          type: string
+        geoip:
+          $ref: '#/components/schemas/ModelNetworkAlert_geoip'
+        hostname:
+          type: string
+        http:
+          $ref: '#/components/schemas/ModelNetworkAlert_http'
+        http_type:
+          type: string
+        intent:
+          items:
+            type: string
+          nullable: true
+          type: array
+        internal:
+          type: string
+        ip_reputation:
+          type: string
+        kubernetes_cluster_name:
+          type: string
+        masked:
+          type: boolean
+        matched:
+          type: string
+        node_id:
+          type: string
+        node_type:
+          type: string
+        pod_name:
+          type: string
+        resource_type:
+          type: string
+        rule_id:
+          type: integer
+        scope_id:
+          type: string
+        severity:
+          type: string
+        severity_anomaly_container_name:
+          type: string
+        severity_score:
+          type: number
+        signature_id:
+          type: integer
+        source_ip:
+          type: string
+        source_port:
+          type: integer
+        summary:
+          type: string
+        tags:
+          items:
+            type: string
+          nullable: true
+          type: array
+        updated_at:
+          type: string
+      required:
+      - app_proto
+      - category
+      - classtype
+      - container_name
+      - count
+      - date
+      - description
+      - destination_ip
+      - destination_port
+      - direction
+      - encrypted
+      - event_type
+      - hostname
+      - http_type
+      - intent
+      - internal
+      - ip_reputation
+      - kubernetes_cluster_name
+      - masked
+      - matched
+      - node_id
+      - node_type
+      - pod_name
+      - resource_type
+      - rule_id
+      - scope_id
+      - severity
+      - severity_anomaly_container_name
+      - severity_score
+      - signature_id
+      - source_ip
+      - source_port
+      - summary
+      - tags
+      type: object
     ModelNodeIdentifier:
       example:
         node_type: image
@@ -16952,6 +17756,75 @@ components:
           type: string
         score:
           type: number
+      type: object
+    ModelNetworkAlert_geoip:
+      example:
+        ip: ip
+      properties:
+        ip:
+          type: string
+      required:
+      - ip
+      type: object
+    ModelNetworkAlert_http:
+      example:
+        headers: headers
+        local_port: 5
+        length: ""
+        request_method: request_method
+        response_printable_payload: ""
+        url: url
+        http_user_agent: http_user_agent
+        hostname: hostname
+        protocol: 5
+        http_content_type: ""
+        request_path: request_path
+        request_payload: request_payload
+        response_payload: ""
+        request_printable_payload: request_printable_payload
+        status: ""
+      properties:
+        headers:
+          type: string
+        hostname:
+          type: string
+        http_content_type: {}
+        http_user_agent:
+          type: string
+        length: {}
+        local_port:
+          type: integer
+        protocol:
+          type: integer
+        request_method:
+          type: string
+        request_path:
+          type: string
+        request_payload:
+          type: string
+        request_printable_payload:
+          type: string
+        response_payload: {}
+        response_printable_payload: {}
+        status: {}
+        url:
+          type: string
+      required:
+      - headers
+      - hostname
+      - http_content_type
+      - http_user_agent
+      - length
+      - local_port
+      - protocol
+      - request_method
+      - request_path
+      - request_payload
+      - request_printable_payload
+      - response_payload
+      - response_printable_payload
+      - status
+      - url
       type: object
   securitySchemes:
     bearer_token:

@@ -4,13 +4,14 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetContainersTopologyGraph**](TopologyAPI.md#GetContainersTopologyGraph) | **Post** /deepfence/graph/topology/containers | Get Containers Topology Graph
-[**GetHostsTopologyGraph**](TopologyAPI.md#GetHostsTopologyGraph) | **Post** /deepfence/graph/topology/hosts | Get Hosts Topology Graph
-[**GetKubernetesTopologyGraph**](TopologyAPI.md#GetKubernetesTopologyGraph) | **Post** /deepfence/graph/topology/kubernetes | Get Kubernetes Topology Graph
-[**GetPodsTopologyGraph**](TopologyAPI.md#GetPodsTopologyGraph) | **Post** /deepfence/graph/topology/pods | Get Pods Topology Graph
-[**GetTopologyGraph**](TopologyAPI.md#GetTopologyGraph) | **Post** /deepfence/graph/topology/ | Get Topology Graph
-[**IngestAgentReport**](TopologyAPI.md#IngestAgentReport) | **Post** /deepfence/ingest/report | Ingest Topology Data
-[**IngestSyncAgentReport**](TopologyAPI.md#IngestSyncAgentReport) | **Post** /deepfence/ingest/sync-report | Ingest Topology Data
+[**GetContainersTopologyGraph**](TopologyApi.md#GetContainersTopologyGraph) | **Post** /deepfence/graph/topology/containers | Get Containers Topology Graph
+[**GetHostsTopologyGraph**](TopologyApi.md#GetHostsTopologyGraph) | **Post** /deepfence/graph/topology/hosts | Get Hosts Topology Graph
+[**GetKubernetesTopologyGraph**](TopologyApi.md#GetKubernetesTopologyGraph) | **Post** /deepfence/graph/topology/kubernetes | Get Kubernetes Topology Graph
+[**GetPodsTopologyGraph**](TopologyApi.md#GetPodsTopologyGraph) | **Post** /deepfence/graph/topology/pods | Get Pods Topology Graph
+[**GetTopologyGraph**](TopologyApi.md#GetTopologyGraph) | **Post** /deepfence/graph/topology/ | Get Topology Graph
+[**IngestAgentAlerts**](TopologyApi.md#IngestAgentAlerts) | **Post** /deepfence/ingest/alerts | Ingest Agent Alerts
+[**IngestAgentReport**](TopologyApi.md#IngestAgentReport) | **Post** /deepfence/ingest/report | Ingest Topology Data
+[**IngestSyncAgentReport**](TopologyApi.md#IngestSyncAgentReport) | **Post** /deepfence/ingest/sync-report | Ingest Topology Data
 
 
 
@@ -329,6 +330,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiDocsGraphResult**](ApiDocsGraphResult.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## IngestAgentAlerts
+
+> IngestAgentAlerts(ctx).RequestBody(requestBody).Execute()
+
+Ingest Agent Alerts
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    requestBody := []map[string]interface{}{map[string]interface{}{"key": interface{}(123)}} // []map[string]interface{} |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.TopologyApi.IngestAgentAlerts(context.Background()).RequestBody(requestBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TopologyApi.IngestAgentAlerts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiIngestAgentAlertsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requestBody** | **[]map[string]interface{}** |  | 
+
+### Return type
+
+ (empty response body)
 
 ### Authorization
 

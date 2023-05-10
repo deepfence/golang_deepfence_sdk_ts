@@ -2,6 +2,7 @@
 .travis.yml
 README.md
 api/openapi.yaml
+api_agent_network.go
 api_authentication.go
 api_cloud_nodes.go
 api_cloud_resources.go
@@ -26,6 +27,7 @@ api_user.go
 api_vulnerability.go
 client.go
 configuration.go
+docs/AgentNetworkApi.md
 docs/ApiDocsBadRequestResponse.md
 docs/ApiDocsFailureResponse.md
 docs/ApiDocsGraphResult.md
@@ -39,6 +41,8 @@ docs/ControlsAPI.md
 docs/ControlsAction.md
 docs/ControlsAgentBeat.md
 docs/ControlsAgentControls.md
+docs/ControlsApi.md
+docs/ControlsNetworkRules.md
 docs/DetailedConnectionSummary.md
 docs/DetailedNodeSummary.md
 docs/DiagnosisAPI.md
@@ -112,12 +116,15 @@ docs/ModelComplianceScanTriggerReq.md
 docs/ModelConnection.md
 docs/ModelContainer.md
 docs/ModelContainerImage.md
+docs/ModelDisableNetworkTracerReq.md
 docs/ModelDownloadReportResponse.md
 docs/ModelDownloadScanResultsResponse.md
 docs/ModelEmailConfigurationAdd.md
 docs/ModelEmailConfigurationResp.md
+docs/ModelEnableNetworkTracerReq.md
 docs/ModelExportReport.md
 docs/ModelFetchWindow.md
+docs/ModelFileAlert.md
 docs/ModelFiltersReq.md
 docs/ModelFiltersResult.md
 docs/ModelGenerateReportReq.md
@@ -140,6 +147,9 @@ docs/ModelMalwareScanResultClass.md
 docs/ModelMalwareScanResultRules.md
 docs/ModelMalwareScanTriggerReq.md
 docs/ModelMessageResponse.md
+docs/ModelNetworkAlert.md
+docs/ModelNetworkAlertGeoip.md
+docs/ModelNetworkAlertHttp.md
 docs/ModelNodeIdentifier.md
 docs/ModelNodesInScanResultRequest.md
 docs/ModelPasswordResetRequest.md
@@ -227,6 +237,7 @@ model_api_docs_graph_result.go
 model_controls_action.go
 model_controls_agent_beat.go
 model_controls_agent_controls.go
+model_controls_network_rules.go
 model_detailed_connection_summary.go
 model_detailed_node_summary.go
 model_diagnosis_diagnostic_logs_link.go
@@ -295,12 +306,15 @@ model_model_compliance_scan_trigger_req.go
 model_model_connection.go
 model_model_container.go
 model_model_container_image.go
+model_model_disable_network_tracer_req.go
 model_model_download_report_response.go
 model_model_download_scan_results_response.go
 model_model_email_configuration_add.go
 model_model_email_configuration_resp.go
+model_model_enable_network_tracer_req.go
 model_model_export_report.go
 model_model_fetch_window.go
+model_model_file_alert.go
 model_model_filters_req.go
 model_model_filters_result.go
 model_model_generate_report_req.go
@@ -323,6 +337,9 @@ model_model_malware_scan_result_class.go
 model_model_malware_scan_result_rules.go
 model_model_malware_scan_trigger_req.go
 model_model_message_response.go
+model_model_network_alert.go
+model_model_network_alert_geoip.go
+model_model_network_alert_http.go
 model_model_node_identifier.go
 model_model_nodes_in_scan_result_request.go
 model_model_password_reset_request.go
@@ -392,6 +409,7 @@ model_utils_advanced_report_filters.go
 model_utils_report_filters.go
 model_utils_scan_sbom_request.go
 response.go
+test/api_agent_network_test.go
 test/api_authentication_test.go
 test/api_cloud_nodes_test.go
 test/api_cloud_resources_test.go
