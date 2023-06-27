@@ -20,12 +20,12 @@ import (
 )
 
 
-// AgentNetworkApiService AgentNetworkApi service
-type AgentNetworkApiService service
+// AgentNetworkAPIService AgentNetworkAPI service
+type AgentNetworkAPIService service
 
 type ApiDisableNetworkTracerRequest struct {
 	ctx context.Context
-	ApiService *AgentNetworkApiService
+	ApiService *AgentNetworkAPIService
 	modelDisableNetworkTracerReq *ModelDisableNetworkTracerReq
 }
 
@@ -46,7 +46,7 @@ Disable network tracer on given agents
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDisableNetworkTracerRequest
 */
-func (a *AgentNetworkApiService) DisableNetworkTracer(ctx context.Context) ApiDisableNetworkTracerRequest {
+func (a *AgentNetworkAPIService) DisableNetworkTracer(ctx context.Context) ApiDisableNetworkTracerRequest {
 	return ApiDisableNetworkTracerRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -54,14 +54,14 @@ func (a *AgentNetworkApiService) DisableNetworkTracer(ctx context.Context) ApiDi
 }
 
 // Execute executes the request
-func (a *AgentNetworkApiService) DisableNetworkTracerExecute(r ApiDisableNetworkTracerRequest) (*http.Response, error) {
+func (a *AgentNetworkAPIService) DisableNetworkTracerExecute(r ApiDisableNetworkTracerRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentNetworkApiService.DisableNetworkTracer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentNetworkAPIService.DisableNetworkTracer")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -153,7 +153,7 @@ func (a *AgentNetworkApiService) DisableNetworkTracerExecute(r ApiDisableNetwork
 
 type ApiEnableNetworkTracerRequest struct {
 	ctx context.Context
-	ApiService *AgentNetworkApiService
+	ApiService *AgentNetworkAPIService
 	modelEnableNetworkTracerReq *ModelEnableNetworkTracerReq
 }
 
@@ -174,7 +174,7 @@ Enable network tracer on given agents
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiEnableNetworkTracerRequest
 */
-func (a *AgentNetworkApiService) EnableNetworkTracer(ctx context.Context) ApiEnableNetworkTracerRequest {
+func (a *AgentNetworkAPIService) EnableNetworkTracer(ctx context.Context) ApiEnableNetworkTracerRequest {
 	return ApiEnableNetworkTracerRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -182,14 +182,14 @@ func (a *AgentNetworkApiService) EnableNetworkTracer(ctx context.Context) ApiEna
 }
 
 // Execute executes the request
-func (a *AgentNetworkApiService) EnableNetworkTracerExecute(r ApiEnableNetworkTracerRequest) (*http.Response, error) {
+func (a *AgentNetworkAPIService) EnableNetworkTracerExecute(r ApiEnableNetworkTracerRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentNetworkApiService.EnableNetworkTracer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentNetworkAPIService.EnableNetworkTracer")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

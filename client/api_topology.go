@@ -720,7 +720,7 @@ func (a *TopologyAPIService) GetTopologyGraphExecute(r ApiGetTopologyGraphReques
 
 type ApiIngestAgentAlertsRequest struct {
 	ctx context.Context
-	ApiService *TopologyApiService
+	ApiService *TopologyAPIService
 	requestBody *[]map[string]interface{}
 }
 
@@ -741,7 +741,7 @@ Ingest alerts data reported by one Agent
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiIngestAgentAlertsRequest
 */
-func (a *TopologyApiService) IngestAgentAlerts(ctx context.Context) ApiIngestAgentAlertsRequest {
+func (a *TopologyAPIService) IngestAgentAlerts(ctx context.Context) ApiIngestAgentAlertsRequest {
 	return ApiIngestAgentAlertsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -749,14 +749,14 @@ func (a *TopologyApiService) IngestAgentAlerts(ctx context.Context) ApiIngestAge
 }
 
 // Execute executes the request
-func (a *TopologyApiService) IngestAgentAlertsExecute(r ApiIngestAgentAlertsRequest) (*http.Response, error) {
+func (a *TopologyAPIService) IngestAgentAlertsExecute(r ApiIngestAgentAlertsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TopologyApiService.IngestAgentAlerts")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TopologyAPIService.IngestAgentAlerts")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

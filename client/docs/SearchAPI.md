@@ -4,45 +4,55 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CountCloudComplianceScans**](SearchApi.md#CountCloudComplianceScans) | **Post** /deepfence/search/count/cloud-compliance/scans | Count Cloud Compliance Scan results
-[**CountCloudCompliances**](SearchApi.md#CountCloudCompliances) | **Post** /deepfence/search/count/cloud-compliances | Count Cloud compliances
-[**CountCloudResources**](SearchApi.md#CountCloudResources) | **Post** /deepfence/search/count/cloud-resources | Count Cloud resources
-[**CountComplianceScans**](SearchApi.md#CountComplianceScans) | **Post** /deepfence/search/count/compliance/scans | Count Compliance Scan results
-[**CountCompliances**](SearchApi.md#CountCompliances) | **Post** /deepfence/search/count/compliances | Count Compliances
-[**CountContainerImages**](SearchApi.md#CountContainerImages) | **Post** /deepfence/search/count/images | Count Container images
-[**CountContainers**](SearchApi.md#CountContainers) | **Post** /deepfence/search/count/containers | Count Containers data
-[**CountFileAlerts**](SearchApi.md#CountFileAlerts) | **Post** /deepfence/count/file-alerts | Count file alerts
-[**CountHosts**](SearchApi.md#CountHosts) | **Post** /deepfence/search/count/hosts | Count hosts
-[**CountKubernetesClusters**](SearchApi.md#CountKubernetesClusters) | **Post** /deepfence/search/count/kubernetes-clusters | Count Kubernetes clusters
-[**CountMalwareScans**](SearchApi.md#CountMalwareScans) | **Post** /deepfence/search/count/malware/scans | Count Malware Scan results
-[**CountMalwares**](SearchApi.md#CountMalwares) | **Post** /deepfence/search/count/malwares | Count Malwares
-[**CountNetworkAlerts**](SearchApi.md#CountNetworkAlerts) | **Post** /deepfence/count/network-alerts | Count network alerts
-[**CountNodes**](SearchApi.md#CountNodes) | **Get** /deepfence/search/count/nodes | Count nodes
-[**CountPods**](SearchApi.md#CountPods) | **Post** /deepfence/search/count/pods | Count Pods
-[**CountSecrets**](SearchApi.md#CountSecrets) | **Post** /deepfence/search/count/secrets | Count Secrets
-[**CountSecretsScans**](SearchApi.md#CountSecretsScans) | **Post** /deepfence/search/count/secret/scans | Count Secret Scan results
-[**CountVulnerabilities**](SearchApi.md#CountVulnerabilities) | **Post** /deepfence/search/count/vulnerabilities | Count Vulnerabilities
-[**CountVulnerabilityScans**](SearchApi.md#CountVulnerabilityScans) | **Post** /deepfence/search/count/vulnerability/scans | Count Vulnerability Scan results
-[**GetCloudComplianceFilters**](SearchApi.md#GetCloudComplianceFilters) | **Post** /deepfence/filters/cloud-compliance | Get Cloud Compliance Filters
-[**GetComplianceFilters**](SearchApi.md#GetComplianceFilters) | **Post** /deepfence/filters/compliance | Get Compliance Filters
-[**SearchCloudComplianceScans**](SearchApi.md#SearchCloudComplianceScans) | **Post** /deepfence/search/cloud-compliance/scans | Search Cloud Compliance Scan results
-[**SearchCloudCompliances**](SearchApi.md#SearchCloudCompliances) | **Post** /deepfence/search/cloud-compliances | Search Cloud compliances
-[**SearchCloudResources**](SearchApi.md#SearchCloudResources) | **Post** /deepfence/search/cloud-resources | Search Cloud Resources
-[**SearchComplianceScans**](SearchApi.md#SearchComplianceScans) | **Post** /deepfence/search/compliance/scans | Search Compliance Scan results
-[**SearchCompliances**](SearchApi.md#SearchCompliances) | **Post** /deepfence/search/compliances | Search Compliances
-[**SearchContainerImages**](SearchApi.md#SearchContainerImages) | **Post** /deepfence/search/images | Search Container images
-[**SearchContainers**](SearchApi.md#SearchContainers) | **Post** /deepfence/search/containers | Search Containers data
-[**SearchFileAlerts**](SearchApi.md#SearchFileAlerts) | **Post** /deepfence/search/file-alerts | Search file alerts
-[**SearchHosts**](SearchApi.md#SearchHosts) | **Post** /deepfence/search/hosts | Search hosts
-[**SearchKubernetesClusters**](SearchApi.md#SearchKubernetesClusters) | **Post** /deepfence/search/kubernetes-clusters | Search Kuberenetes Clusters
-[**SearchMalwareScans**](SearchApi.md#SearchMalwareScans) | **Post** /deepfence/search/malware/scans | Search Malware Scan results
-[**SearchMalwares**](SearchApi.md#SearchMalwares) | **Post** /deepfence/search/malwares | Search Malwares
-[**SearchNetworkAlerts**](SearchApi.md#SearchNetworkAlerts) | **Post** /deepfence/search/network-alerts | Search network alerts
-[**SearchPods**](SearchApi.md#SearchPods) | **Post** /deepfence/search/pods | Search Pods
-[**SearchSecrets**](SearchApi.md#SearchSecrets) | **Post** /deepfence/search/secrets | Search Secrets
-[**SearchSecretsScans**](SearchApi.md#SearchSecretsScans) | **Post** /deepfence/search/secret/scans | Search Secrets Scan results
-[**SearchVulnerabilities**](SearchApi.md#SearchVulnerabilities) | **Post** /deepfence/search/vulnerabilities | Search Vulnerabilities
-[**SearchVulnerabilityScans**](SearchApi.md#SearchVulnerabilityScans) | **Post** /deepfence/search/vulnerability/scans | Search Vulnerability Scan results
+[**CountCloudAccounts**](SearchAPI.md#CountCloudAccounts) | **Post** /deepfence/search/count/cloud-accounts | Count Cloud Nodes
+[**CountCloudComplianceScans**](SearchAPI.md#CountCloudComplianceScans) | **Post** /deepfence/search/count/cloud-compliance/scans | Count Cloud Compliance Scan results
+[**CountCloudCompliances**](SearchAPI.md#CountCloudCompliances) | **Post** /deepfence/search/count/cloud-compliances | Count Cloud compliances
+[**CountCloudResources**](SearchAPI.md#CountCloudResources) | **Post** /deepfence/search/count/cloud-resources | Count Cloud resources
+[**CountComplianceRules**](SearchAPI.md#CountComplianceRules) | **Post** /deepfence/search/count/compliance-rules | Count Compliance Rules
+[**CountComplianceScans**](SearchAPI.md#CountComplianceScans) | **Post** /deepfence/search/count/compliance/scans | Count Compliance Scan results
+[**CountCompliances**](SearchAPI.md#CountCompliances) | **Post** /deepfence/search/count/compliances | Count Compliances
+[**CountContainerImages**](SearchAPI.md#CountContainerImages) | **Post** /deepfence/search/count/images | Count Container images
+[**CountContainers**](SearchAPI.md#CountContainers) | **Post** /deepfence/search/count/containers | Count Containers data
+[**CountFileAlerts**](SearchAPI.md#CountFileAlerts) | **Post** /deepfence/count/file-alerts | Count file alerts
+[**CountHosts**](SearchAPI.md#CountHosts) | **Post** /deepfence/search/count/hosts | Count hosts
+[**CountKubernetesClusters**](SearchAPI.md#CountKubernetesClusters) | **Post** /deepfence/search/count/kubernetes-clusters | Count Kubernetes clusters
+[**CountMalwareRules**](SearchAPI.md#CountMalwareRules) | **Post** /deepfence/search/count/malware-rules | Count Malware Rules
+[**CountMalwareScans**](SearchAPI.md#CountMalwareScans) | **Post** /deepfence/search/count/malware/scans | Count Malware Scan results
+[**CountMalwares**](SearchAPI.md#CountMalwares) | **Post** /deepfence/search/count/malwares | Count Malwares
+[**CountNetworkAlerts**](SearchAPI.md#CountNetworkAlerts) | **Post** /deepfence/count/network-alerts | Count network alerts
+[**CountNodes**](SearchAPI.md#CountNodes) | **Get** /deepfence/search/count/nodes | Count nodes
+[**CountPods**](SearchAPI.md#CountPods) | **Post** /deepfence/search/count/pods | Count Pods
+[**CountSecretRules**](SearchAPI.md#CountSecretRules) | **Post** /deepfence/search/count/secret-rules | Count Secret Rules
+[**CountSecrets**](SearchAPI.md#CountSecrets) | **Post** /deepfence/search/count/secrets | Count Secrets
+[**CountSecretsScans**](SearchAPI.md#CountSecretsScans) | **Post** /deepfence/search/count/secret/scans | Count Secret Scan results
+[**CountVulnerabilities**](SearchAPI.md#CountVulnerabilities) | **Post** /deepfence/search/count/vulnerabilities | Count Vulnerabilities
+[**CountVulnerabilityRules**](SearchAPI.md#CountVulnerabilityRules) | **Post** /deepfence/search/count/vulnerability-rules | Count Vulnerability Rules
+[**CountVulnerabilityScans**](SearchAPI.md#CountVulnerabilityScans) | **Post** /deepfence/search/count/vulnerability/scans | Count Vulnerability Scan results
+[**GetCloudComplianceFilters**](SearchAPI.md#GetCloudComplianceFilters) | **Post** /deepfence/filters/cloud-compliance | Get Cloud Compliance Filters
+[**GetComplianceFilters**](SearchAPI.md#GetComplianceFilters) | **Post** /deepfence/filters/compliance | Get Compliance Filters
+[**SearchCloudAccounts**](SearchAPI.md#SearchCloudAccounts) | **Post** /deepfence/search/cloud-accounts | Search Cloud Nodes
+[**SearchCloudComplianceScans**](SearchAPI.md#SearchCloudComplianceScans) | **Post** /deepfence/search/cloud-compliance/scans | Search Cloud Compliance Scan results
+[**SearchCloudCompliances**](SearchAPI.md#SearchCloudCompliances) | **Post** /deepfence/search/cloud-compliances | Search Cloud compliances
+[**SearchCloudResources**](SearchAPI.md#SearchCloudResources) | **Post** /deepfence/search/cloud-resources | Search Cloud Resources
+[**SearchComplianceRules**](SearchAPI.md#SearchComplianceRules) | **Post** /deepfence/search/compliance-rules | Search Compliance Rules
+[**SearchComplianceScans**](SearchAPI.md#SearchComplianceScans) | **Post** /deepfence/search/compliance/scans | Search Compliance Scan results
+[**SearchCompliances**](SearchAPI.md#SearchCompliances) | **Post** /deepfence/search/compliances | Search Compliances
+[**SearchContainerImages**](SearchAPI.md#SearchContainerImages) | **Post** /deepfence/search/images | Search Container images
+[**SearchContainers**](SearchAPI.md#SearchContainers) | **Post** /deepfence/search/containers | Search Containers data
+[**SearchFileAlerts**](SearchAPI.md#SearchFileAlerts) | **Post** /deepfence/search/file-alerts | Search file alerts
+[**SearchHosts**](SearchAPI.md#SearchHosts) | **Post** /deepfence/search/hosts | Search hosts
+[**SearchKubernetesClusters**](SearchAPI.md#SearchKubernetesClusters) | **Post** /deepfence/search/kubernetes-clusters | Search Kuberenetes Clusters
+[**SearchMalwareRules**](SearchAPI.md#SearchMalwareRules) | **Post** /deepfence/search/malware-rules | Search Malware Rules
+[**SearchMalwareScans**](SearchAPI.md#SearchMalwareScans) | **Post** /deepfence/search/malware/scans | Search Malware Scan results
+[**SearchMalwares**](SearchAPI.md#SearchMalwares) | **Post** /deepfence/search/malwares | Search Malwares
+[**SearchNetworkAlerts**](SearchAPI.md#SearchNetworkAlerts) | **Post** /deepfence/search/network-alerts | Search network alerts
+[**SearchPods**](SearchAPI.md#SearchPods) | **Post** /deepfence/search/pods | Search Pods
+[**SearchSecretRules**](SearchAPI.md#SearchSecretRules) | **Post** /deepfence/search/secret-rules | Search Secret Rules
+[**SearchSecrets**](SearchAPI.md#SearchSecrets) | **Post** /deepfence/search/secrets | Search Secrets
+[**SearchSecretsScans**](SearchAPI.md#SearchSecretsScans) | **Post** /deepfence/search/secret/scans | Search Secrets Scan results
+[**SearchVulerabilityRules**](SearchAPI.md#SearchVulerabilityRules) | **Post** /deepfence/search/vulnerability-rules | Search Vulnerability Rules
+[**SearchVulnerabilities**](SearchAPI.md#SearchVulnerabilities) | **Post** /deepfence/search/vulnerabilities | Search Vulnerabilities
+[**SearchVulnerabilityScans**](SearchAPI.md#SearchVulnerabilityScans) | **Post** /deepfence/search/vulnerability/scans | Search Vulnerability Scan results
 
 
 
@@ -665,13 +675,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchApi.CountFileAlerts(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+    resp, r, err := apiClient.SearchAPI.CountFileAlerts(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchApi.CountFileAlerts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.CountFileAlerts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CountFileAlerts`: SearchSearchCountResp
-    fmt.Fprintf(os.Stdout, "Response from `SearchApi.CountFileAlerts`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.CountFileAlerts`: %v\n", resp)
 }
 ```
 
@@ -1061,13 +1071,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchApi.CountNetworkAlerts(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+    resp, r, err := apiClient.SearchAPI.CountNetworkAlerts(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchApi.CountNetworkAlerts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.CountNetworkAlerts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CountNetworkAlerts`: SearchSearchCountResp
-    fmt.Fprintf(os.Stdout, "Response from `SearchApi.CountNetworkAlerts`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.CountNetworkAlerts`: %v\n", resp)
 }
 ```
 
@@ -1469,6 +1479,72 @@ func main() {
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCountVulnerabilitiesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchSearchNodeReq** | [**SearchSearchNodeReq**](SearchSearchNodeReq.md) |  | 
+
+### Return type
+
+[**SearchSearchCountResp**](SearchSearchCountResp.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CountVulnerabilityRules
+
+> SearchSearchCountResp CountVulnerabilityRules(ctx).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+
+Count Vulnerability Rules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    searchSearchNodeReq := *openapiclient.NewSearchSearchNodeReq(*openapiclient.NewSearchSearchFilter(*openapiclient.NewReportersFieldsFilters([]openapiclient.ReportersCompareFilter{*openapiclient.NewReportersCompareFilter("FieldName_example", interface{}(123), false)}, *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersMatchFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersOrderFilter([]openapiclient.ReportersOrderSpec{*openapiclient.NewReportersOrderSpec(false, "FieldName_example")})), []string{"InFieldFilter_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))), *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // SearchSearchNodeReq |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SearchAPI.CountVulnerabilityRules(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.CountVulnerabilityRules``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CountVulnerabilityRules`: SearchSearchCountResp
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.CountVulnerabilityRules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCountVulnerabilityRulesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -2310,13 +2386,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchApi.SearchFileAlerts(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+    resp, r, err := apiClient.SearchAPI.SearchFileAlerts(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchApi.SearchFileAlerts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchFileAlerts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SearchFileAlerts`: []ModelFileAlert
-    fmt.Fprintf(os.Stdout, "Response from `SearchApi.SearchFileAlerts`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchFileAlerts`: %v\n", resp)
 }
 ```
 
@@ -2706,13 +2782,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchApi.SearchNetworkAlerts(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+    resp, r, err := apiClient.SearchAPI.SearchNetworkAlerts(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchApi.SearchNetworkAlerts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchNetworkAlerts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SearchNetworkAlerts`: []ModelNetworkAlert
-    fmt.Fprintf(os.Stdout, "Response from `SearchApi.SearchNetworkAlerts`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchNetworkAlerts`: %v\n", resp)
 }
 ```
 
@@ -2996,6 +3072,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]ModelScanInfo**](ModelScanInfo.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchVulerabilityRules
+
+> []ModelVulnerabilityRule SearchVulerabilityRules(ctx).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+
+Search Vulnerability Rules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    searchSearchNodeReq := *openapiclient.NewSearchSearchNodeReq(*openapiclient.NewSearchSearchFilter(*openapiclient.NewReportersFieldsFilters([]openapiclient.ReportersCompareFilter{*openapiclient.NewReportersCompareFilter("FieldName_example", interface{}(123), false)}, *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersMatchFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersOrderFilter([]openapiclient.ReportersOrderSpec{*openapiclient.NewReportersOrderSpec(false, "FieldName_example")})), []string{"InFieldFilter_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))), *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // SearchSearchNodeReq |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SearchAPI.SearchVulerabilityRules(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchVulerabilityRules``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SearchVulerabilityRules`: []ModelVulnerabilityRule
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchVulerabilityRules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchVulerabilityRulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchSearchNodeReq** | [**SearchSearchNodeReq**](SearchSearchNodeReq.md) |  | 
+
+### Return type
+
+[**[]ModelVulnerabilityRule**](ModelVulnerabilityRule.md)
 
 ### Authorization
 

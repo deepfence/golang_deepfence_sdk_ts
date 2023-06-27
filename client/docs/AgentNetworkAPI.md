@@ -1,11 +1,11 @@
-# \AgentNetworkApi
+# \AgentNetworkAPI
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DisableNetworkTracer**](AgentNetworkApi.md#DisableNetworkTracer) | **Post** /deepfence/network/tracer/disable | Disable network tracer
-[**EnableNetworkTracer**](AgentNetworkApi.md#EnableNetworkTracer) | **Post** /deepfence/network/tracer/enable | Enable network tracer
+[**DisableNetworkTracer**](AgentNetworkAPI.md#DisableNetworkTracer) | **Post** /deepfence/network/tracer/disable | Disable network tracer
+[**EnableNetworkTracer**](AgentNetworkAPI.md#EnableNetworkTracer) | **Post** /deepfence/network/tracer/enable | Enable network tracer
 
 
 
@@ -34,9 +34,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentNetworkApi.DisableNetworkTracer(context.Background()).ModelDisableNetworkTracerReq(modelDisableNetworkTracerReq).Execute()
+    r, err := apiClient.AgentNetworkAPI.DisableNetworkTracer(context.Background()).ModelDisableNetworkTracerReq(modelDisableNetworkTracerReq).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentNetworkApi.DisableNetworkTracer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AgentNetworkAPI.DisableNetworkTracer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -98,9 +98,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentNetworkApi.EnableNetworkTracer(context.Background()).ModelEnableNetworkTracerReq(modelEnableNetworkTracerReq).Execute()
+    r, err := apiClient.AgentNetworkAPI.EnableNetworkTracer(context.Background()).ModelEnableNetworkTracerReq(modelEnableNetworkTracerReq).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentNetworkApi.EnableNetworkTracer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AgentNetworkAPI.EnableNetworkTracer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }

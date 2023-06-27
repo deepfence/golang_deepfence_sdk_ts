@@ -27,7 +27,7 @@ api_user.go
 api_vulnerability.go
 client.go
 configuration.go
-docs/AgentNetworkApi.md
+docs/AgentNetworkAPI.md
 docs/ApiDocsBadRequestResponse.md
 docs/ApiDocsFailureResponse.md
 docs/ApiDocsGraphResult.md
@@ -41,7 +41,6 @@ docs/ControlsAPI.md
 docs/ControlsAction.md
 docs/ControlsAgentBeat.md
 docs/ControlsAgentControls.md
-docs/ControlsApi.md
 docs/ControlsNetworkRules.md
 docs/DetailedConnectionSummary.md
 docs/DetailedNodeSummary.md
@@ -195,6 +194,7 @@ docs/ModelUpdateUserRequest.md
 docs/ModelUser.md
 docs/ModelUserRegisterRequest.md
 docs/ModelVulnerability.md
+docs/ModelVulnerabilityRule.md
 docs/ModelVulnerabilityScanConfigLanguage.md
 docs/ModelVulnerabilityScanResult.md
 docs/ModelVulnerabilityScanTriggerReq.md
@@ -385,6 +385,7 @@ model_model_update_user_request.go
 model_model_user.go
 model_model_user_register_request.go
 model_model_vulnerability.go
+model_model_vulnerability_rule.go
 model_model_vulnerability_scan_config_language.go
 model_model_vulnerability_scan_result.go
 model_model_vulnerability_scan_trigger_req.go
