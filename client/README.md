@@ -159,6 +159,7 @@ Class | Method | HTTP request | Description
 *RegistryAPI* | [**ListImageStubs**](docs/RegistryAPI.md#listimagestubs) | **Post** /deepfence/registryaccount/stubs | List Image Stubs
 *RegistryAPI* | [**ListImages**](docs/RegistryAPI.md#listimages) | **Post** /deepfence/registryaccount/images | List Registry Images
 *RegistryAPI* | [**ListRegistry**](docs/RegistryAPI.md#listregistry) | **Get** /deepfence/registryaccount | List Registries
+*RegistryAPI* | [**SyncRegistry**](docs/RegistryAPI.md#syncregistry) | **Post** /deepfence/registryaccount/{registry_id}/sync | Sync Registry
 *RegistryAPI* | [**UpdateRegistry**](docs/RegistryAPI.md#updateregistry) | **Put** /deepfence/registryaccount/{registry_id} | Update Registry
 *ReportsAPI* | [**DeleteReport**](docs/ReportsAPI.md#deletereport) | **Delete** /deepfence/reports/{report_id} | Delete Report
 *ReportsAPI* | [**GenerateReport**](docs/ReportsAPI.md#generatereport) | **Post** /deepfence/reports | Generate Report
@@ -240,8 +241,8 @@ Class | Method | HTTP request | Description
 *SettingsAPI* | [**UpdateScheduledTask**](docs/SettingsAPI.md#updatescheduledtask) | **Patch** /deepfence/scheduled-task/{id} | Update scheduled task
 *SettingsAPI* | [**UpdateSetting**](docs/SettingsAPI.md#updatesetting) | **Patch** /deepfence/settings/global-settings/{id} | Update setting
 *SettingsAPI* | [**UploadVulnerabilityDatabase**](docs/SettingsAPI.md#uploadvulnerabilitydatabase) | **Put** /deepfence/database/vulnerability | Upload Vulnerability Database
+*ThreatAPI* | [**GetIndividualThreatGraph**](docs/ThreatAPI.md#getindividualthreatgraph) | **Post** /deepfence/graph/threat/individual | Get Vulnerability Threat Graph
 *ThreatAPI* | [**GetThreatGraph**](docs/ThreatAPI.md#getthreatgraph) | **Post** /deepfence/graph/threat | Get Threat Graph
-*ThreatAPI* | [**GetVulnerabilityThreatGraph**](docs/ThreatAPI.md#getvulnerabilitythreatgraph) | **Post** /deepfence/graph/threat/vulnerability | Get Vulnerability Threat Graph
 *TopologyAPI* | [**GetContainersTopologyGraph**](docs/TopologyAPI.md#getcontainerstopologygraph) | **Post** /deepfence/graph/topology/containers | Get Containers Topology Graph
 *TopologyAPI* | [**GetHostsTopologyGraph**](docs/TopologyAPI.md#gethoststopologygraph) | **Post** /deepfence/graph/topology/hosts | Get Hosts Topology Graph
 *TopologyAPI* | [**GetKubernetesTopologyGraph**](docs/TopologyAPI.md#getkubernetestopologygraph) | **Post** /deepfence/graph/topology/kubernetes | Get Kubernetes Topology Graph
@@ -297,13 +298,13 @@ Class | Method | HTTP request | Description
  - [DiagnosisGetDiagnosticLogsResponse](docs/DiagnosisGetDiagnosticLogsResponse.md)
  - [DiagnosisNodeIdentifier](docs/DiagnosisNodeIdentifier.md)
  - [GraphCloudProviderFilter](docs/GraphCloudProviderFilter.md)
+ - [GraphIndividualThreatGraph](docs/GraphIndividualThreatGraph.md)
+ - [GraphIndividualThreatGraphRequest](docs/GraphIndividualThreatGraphRequest.md)
  - [GraphNodeInfo](docs/GraphNodeInfo.md)
  - [GraphProviderThreatGraph](docs/GraphProviderThreatGraph.md)
  - [GraphThreatFilters](docs/GraphThreatFilters.md)
  - [GraphThreatNodeInfo](docs/GraphThreatNodeInfo.md)
  - [GraphTopologyFilters](docs/GraphTopologyFilters.md)
- - [GraphVulnerabilityThreatGraph](docs/GraphVulnerabilityThreatGraph.md)
- - [GraphVulnerabilityThreatGraphRequest](docs/GraphVulnerabilityThreatGraphRequest.md)
  - [IngestersCloudCompliance](docs/IngestersCloudCompliance.md)
  - [IngestersCloudComplianceScanStatus](docs/IngestersCloudComplianceScanStatus.md)
  - [IngestersCloudResource](docs/IngestersCloudResource.md)

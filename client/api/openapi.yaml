@@ -777,7 +777,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/FormDataModelDBUploadRequest'
+              $ref: '#/components/schemas/FormDataVulnerabilityDbDBUploadRequest'
       responses:
         "200":
           content:
@@ -1180,22 +1180,22 @@ paths:
       summary: Get Threat Graph
       tags:
       - Threat
-  /deepfence/graph/threat/vulnerability:
+  /deepfence/graph/threat/individual:
     post:
       description: Retrieve threat graph associated with vulnerabilities
-      operationId: getVulnerabilityThreatGraph
+      operationId: getIndividualThreatGraph
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GraphVulnerabilityThreatGraphRequest'
+              $ref: '#/components/schemas/GraphIndividualThreatGraphRequest'
       responses:
         "200":
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/GraphVulnerabilityThreatGraph'
+                  $ref: '#/components/schemas/GraphIndividualThreatGraph'
                 type: array
           description: OK
         "400":
@@ -3147,6 +3147,52 @@ paths:
       security:
       - bearer_token: []
       summary: Get Registry Summary
+      tags:
+      - Registry
+  /deepfence/registryaccount/{registry_id}/sync:
+    post:
+      description: synchronize registry images
+      operationId: syncRegistry
+      parameters:
+      - explode: false
+        in: path
+        name: registry_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelMessageResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Sync Registry
       tags:
       - Registry
   /deepfence/registryaccount/{registry_type}/summary-by-type:
@@ -8892,13 +8938,6 @@ components:
       - node_id
       - node_type
       type: object
-    FormDataModelDBUploadRequest:
-      properties:
-        database:
-          $ref: '#/components/schemas/FormDataMultipartFile'
-      required:
-      - database
-      type: object
     FormDataModelRegistryGCRAddReq:
       properties:
         name:
@@ -8916,6 +8955,13 @@ components:
       format: binary
       nullable: true
       type: string
+    FormDataVulnerabilityDbDBUploadRequest:
+      properties:
+        database:
+          $ref: '#/components/schemas/FormDataMultipartFile'
+      required:
+      - database
+      type: object
     GraphCloudProviderFilter:
       example:
         account_ids:
@@ -8929,6 +8975,71 @@ components:
           type: array
       required:
       - account_ids
+      type: object
+    GraphIndividualThreatGraph:
+      example:
+        cve_id:
+        - cve_id
+        - cve_id
+        ports:
+        - ""
+        - ""
+        attack_path:
+        - - attack_path
+          - attack_path
+        - - attack_path
+          - attack_path
+        cve_attack_vector: cve_attack_vector
+      properties:
+        attack_path:
+          items:
+            items:
+              type: string
+            type: array
+          nullable: true
+          type: array
+        cve_attack_vector:
+          type: string
+        cve_id:
+          items:
+            type: string
+          nullable: true
+          type: array
+        ports:
+          items: {}
+          nullable: true
+          type: array
+      type: object
+    GraphIndividualThreatGraphRequest:
+      example:
+        graph_type: most_vulnerable_attack_paths
+        issue_type: vulnerability
+        node_ids:
+        - node_ids
+        - node_ids
+      properties:
+        graph_type:
+          enum:
+          - most_vulnerable_attack_paths
+          - direct_internet_exposure
+          - indirect_internet_exposure
+          type: string
+        issue_type:
+          enum:
+          - vulnerability
+          - secret
+          - malware
+          - compliance
+          - cloud_compliance
+          type: string
+        node_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
+      required:
+      - graph_type
+      - issue_type
       type: object
     GraphNodeInfo:
       properties:
@@ -9158,53 +9269,6 @@ components:
       - pod_filter
       - region_filter
       - skip_connections
-      type: object
-    GraphVulnerabilityThreatGraph:
-      example:
-        cve_id:
-        - cve_id
-        - cve_id
-        ports:
-        - ""
-        - ""
-        attack_path:
-        - - attack_path
-          - attack_path
-        - - attack_path
-          - attack_path
-        cve_attack_vector: cve_attack_vector
-      properties:
-        attack_path:
-          items:
-            items:
-              type: string
-            type: array
-          nullable: true
-          type: array
-        cve_attack_vector:
-          type: string
-        cve_id:
-          items:
-            type: string
-          nullable: true
-          type: array
-        ports:
-          items: {}
-          nullable: true
-          type: array
-      type: object
-    GraphVulnerabilityThreatGraphRequest:
-      example:
-        graph_type: most_vulnerable_attack_paths
-      properties:
-        graph_type:
-          enum:
-          - most_vulnerable_attack_paths
-          - direct_internet_exposure
-          - indirect_internet_exposure
-          type: string
-      required:
-      - graph_type
       type: object
     IngestersCloudCompliance:
       example:
@@ -9911,9 +9975,12 @@ components:
         cve_caused_by_package_path: cve_caused_by_package_path
         cve_id: cve_id
         exploit_poc: exploit_poc
+        has_live_connection: true
         cve_fixed_in: cve_fixed_in
+        init_exploitability_score: 5
         scan_id: scan_id
         cve_link: cve_link
+        exploitability_score: 1
       properties:
         cve_attack_vector:
           type: string
@@ -9939,6 +10006,12 @@ components:
           type: string
         exploit_poc:
           type: string
+        exploitability_score:
+          type: integer
+        has_live_connection:
+          type: boolean
+        init_exploitability_score:
+          type: integer
         parsed_attack_vector:
           type: string
         scan_id:
@@ -15137,13 +15210,17 @@ components:
       example:
         password: password
         code: code
+        namespace: namespace
       properties:
         code:
+          type: string
+        namespace:
           type: string
         password:
           type: string
       required:
       - code
+      - namespace
       - password
       type: object
     ModelPod:
@@ -15424,6 +15501,7 @@ components:
       example:
         password: password
         code: code
+        namespace: namespace
         last_name: last_name
         first_name: first_name
         is_temporary_password: true
@@ -15436,12 +15514,15 @@ components:
           type: boolean
         last_name:
           type: string
+        namespace:
+          type: string
         password:
           type: string
       required:
       - code
       - first_name
       - last_name
+      - namespace
       - password
       type: object
     ModelRegistryAccount:
