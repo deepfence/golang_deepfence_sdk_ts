@@ -5389,10 +5389,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ModelMalwareScanTriggerReq'
+              $ref: '#/components/schemas/ModelStopScanRequest'
       responses:
-        "202":
-          description: Accepted
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -5428,10 +5428,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ModelSecretScanTriggerReq'
+              $ref: '#/components/schemas/ModelStopScanRequest'
       responses:
-        "202":
-          description: Accepted
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -10490,6 +10490,7 @@ components:
         node_name: node_name
         active: true
         cloud_provider: cloud_provider
+        version: version
         node_id: node_id
       properties:
         active:
@@ -10506,6 +10507,8 @@ components:
           type: string
         node_name:
           type: string
+        version:
+          type: string
       type: object
     ModelCloudNodeAccountRegisterReq:
       example:
@@ -10514,6 +10517,7 @@ components:
           key: monitored_account_ids
         org_acc_id: org_acc_id
         cloud_provider: aws
+        version: version
         node_id: node_id
       properties:
         cloud_account:
@@ -10532,6 +10536,8 @@ components:
         node_id:
           type: string
         org_acc_id:
+          type: string
+        version:
           type: string
       required:
       - cloud_account
@@ -10633,6 +10639,7 @@ components:
           node_name: node_name
           active: true
           cloud_provider: cloud_provider
+          version: version
           node_id: node_id
         - last_scan_status: last_scan_status
           compliance_percentage: 0.8008281904610115
@@ -10640,6 +10647,7 @@ components:
           node_name: node_name
           active: true
           cloud_provider: cloud_provider
+          version: version
           node_id: node_id
       properties:
         cloud_node_accounts_info:
@@ -14608,8 +14616,11 @@ components:
           - ""
           node_id: node_id
         node_name: node_name
+        agent_running: true
         node_id: node_id
       properties:
+        agent_running:
+          type: boolean
         hosts:
           items:
             $ref: '#/components/schemas/ModelHost'
@@ -14620,6 +14631,7 @@ components:
         node_name:
           type: string
       required:
+      - agent_running
       - hosts
       - node_id
       - node_name
@@ -15842,17 +15854,43 @@ components:
     ModelRegistryImageStubsReq:
       example:
         image_filter:
-          filter_in:
-            key:
-            - ""
-            - ""
+          compare_filter:
+          - greater_than: true
+            field_value: ""
+            field_name: field_name
+          - greater_than: true
+            field_value: ""
+            field_name: field_name
+          not_contains_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          order_filter:
+            order_fields:
+            - size: 0
+              descending: true
+              field_name: field_name
+            - size: 0
+              descending: true
+              field_name: field_name
+          contains_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          match_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
         window:
           offset: 0
           size: 6
         registry_id: registry_id
       properties:
         image_filter:
-          $ref: '#/components/schemas/ReportersContainsFilter'
+          $ref: '#/components/schemas/ReportersFieldsFilters'
         registry_id:
           type: string
         window:
@@ -15865,17 +15903,43 @@ components:
     ModelRegistryImagesReq:
       example:
         image_filter:
-          filter_in:
-            key:
-            - ""
-            - ""
+          compare_filter:
+          - greater_than: true
+            field_value: ""
+            field_name: field_name
+          - greater_than: true
+            field_value: ""
+            field_name: field_name
+          not_contains_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          order_filter:
+            order_fields:
+            - size: 0
+              descending: true
+              field_name: field_name
+            - size: 0
+              descending: true
+              field_name: field_name
+          contains_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          match_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
         window:
           offset: 0
           size: 6
         registry_id: registry_id
       properties:
         image_filter:
-          $ref: '#/components/schemas/ReportersContainsFilter'
+          $ref: '#/components/schemas/ReportersFieldsFilters'
         registry_id:
           type: string
         window:
@@ -16707,6 +16771,25 @@ components:
       - key
       - label
       - value
+      type: object
+    ModelStopScanRequest:
+      example:
+        scan_type: SecretScan
+        scan_id: scan_id
+      properties:
+        scan_id:
+          type: string
+        scan_type:
+          enum:
+          - SecretScan
+          - VulnerabilityScan
+          - MalwareScan
+          - ComplianceScan
+          - CloudComplianceScan
+          type: string
+      required:
+      - scan_id
+      - scan_type
       type: object
     ModelSummary:
       example:
@@ -18163,6 +18246,7 @@ components:
       type: object
     UtilsScanSbomRequest:
       example:
+        skip_scan: true
         kubernetes_cluster_name: kubernetes_cluster_name
         scan_type: scan_type
         sbom_file_path: sbom_file_path
@@ -18203,6 +18287,8 @@ components:
           type: string
         scan_type:
           type: string
+        skip_scan:
+          type: boolean
       required:
       - sbom
       - scan_id
