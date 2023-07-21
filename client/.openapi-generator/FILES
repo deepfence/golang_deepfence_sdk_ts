@@ -120,6 +120,7 @@ docs/ModelDownloadReportResponse.md
 docs/ModelDownloadScanResultsResponse.md
 docs/ModelEmailConfigurationAdd.md
 docs/ModelEmailConfigurationResp.md
+docs/ModelEnableFilesystemTracerReq.md
 docs/ModelEnableNetworkTracerReq.md
 docs/ModelExportReport.md
 docs/ModelFetchWindow.md
@@ -312,6 +313,7 @@ model_model_download_report_response.go
 model_model_download_scan_results_response.go
 model_model_email_configuration_add.go
 model_model_email_configuration_resp.go
+model_model_enable_filesystem_tracer_req.go
 model_model_enable_network_tracer_req.go
 model_model_export_report.go
 model_model_fetch_window.go

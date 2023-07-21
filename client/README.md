@@ -361,6 +361,7 @@ Class | Method | HTTP request | Description
  - [ModelDownloadScanResultsResponse](docs/ModelDownloadScanResultsResponse.md)
  - [ModelEmailConfigurationAdd](docs/ModelEmailConfigurationAdd.md)
  - [ModelEmailConfigurationResp](docs/ModelEmailConfigurationResp.md)
+ - [ModelEnableFilesystemTracerReq](docs/ModelEnableFilesystemTracerReq.md)
  - [ModelEnableNetworkTracerReq](docs/ModelEnableNetworkTracerReq.md)
  - [ModelExportReport](docs/ModelExportReport.md)
  - [ModelFetchWindow](docs/ModelFetchWindow.md)

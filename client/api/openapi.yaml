@@ -11664,6 +11664,19 @@ components:
         smtp:
           type: string
       type: object
+    ModelEnableFilesystemTracerReq:
+      properties:
+        agent_ids:
+          items:
+            $ref: '#/components/schemas/ModelAgentId'
+          nullable: true
+          type: array
+        path:
+          type: string
+      required:
+      - agent_ids
+      - path
+      type: object
     ModelEnableNetworkTracerReq:
       example:
         tcp_rules:
