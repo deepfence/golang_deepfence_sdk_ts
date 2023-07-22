@@ -1051,6 +1051,43 @@ paths:
       summary: Get End User License Agreement
       tags:
       - Common
+  /deepfence/filesystem/tracer/enable:
+    post:
+      description: Enable filesystem tracer on given agents
+      operationId: enableFilesystemTracer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelEnableFilesystemTracerReq'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      summary: Enable filesystem tracer
+      tags:
+      - AgentFilesystem
   /deepfence/filters/cloud-compliance:
     post:
       description: Get all applicable filter values for cloud compliance
@@ -2188,6 +2225,121 @@ paths:
       summary: Get api-token for console agent
       tags:
       - Internal
+  /deepfence/license:
+    get:
+      description: Get license status and expiry
+      operationId: getLicense
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelLicense'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get License Details
+      tags:
+      - Settings
+    post:
+      description: Register new license key to the console and activate
+      operationId: registerLicense
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelRegisterLicenseRequest'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Register License
+      tags:
+      - Settings
+  /deepfence/license/notification-threshold:
+    post:
+      description: Update notification threshold percentage
+      operationId: updateNotificationThreshold
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelNotificationThresholdUpdateRequest'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Update Notification Threshold
+      tags:
+      - Settings
   /deepfence/lookup/cloud-compliances:
     post:
       description: Retrieve all the data associated with cloud-compliances
@@ -11665,6 +11817,13 @@ components:
           type: string
       type: object
     ModelEnableFilesystemTracerReq:
+      example:
+        path: path
+        agent_ids:
+        - available_workload: 0
+          node_id: node_id
+        - available_workload: 0
+          node_id: node_id
       properties:
         agent_ids:
           items:
@@ -14649,6 +14808,52 @@ components:
       - node_id
       - node_name
       type: object
+    ModelLicense:
+      example:
+        end_date: end_date
+        notification_threshold_percentage: 1
+        current_hosts: 0
+        is_active: true
+        license_type: license_type
+        notification_threshold_updated_at: 5
+        registry_credentials:
+          registry_url: registry_url
+          password: password
+          username: username
+        description: description
+        no_of_hosts: 6
+        message: message
+        deepfence_support_email: deepfence_support_email
+        key: key
+        start_date: start_date
+      properties:
+        current_hosts:
+          type: integer
+        deepfence_support_email:
+          type: string
+        description:
+          type: string
+        end_date:
+          type: string
+        is_active:
+          type: boolean
+        key:
+          type: string
+        license_type:
+          type: string
+        message:
+          type: string
+        no_of_hosts:
+          type: integer
+        notification_threshold_percentage:
+          type: integer
+        notification_threshold_updated_at:
+          type: integer
+        registry_credentials:
+          $ref: '#/components/schemas/ModelRegistryCredentials'
+        start_date:
+          type: string
+      type: object
     ModelLoginRequest:
       example:
         password: password
@@ -14666,11 +14871,14 @@ components:
       example:
         access_token: access_token
         refresh_token: refresh_token
+        license_registered: true
         onboarding_required: true
         password_invalidated: true
       properties:
         access_token:
           type: string
+        license_registered:
+          type: boolean
         onboarding_required:
           type: boolean
         password_invalidated:
@@ -14679,6 +14887,7 @@ components:
           type: string
       required:
       - access_token
+      - license_registered
       - onboarding_required
       - password_invalidated
       - refresh_token
@@ -15222,6 +15431,15 @@ components:
       - result_ids
       - scan_type
       type: object
+    ModelNotificationThresholdUpdateRequest:
+      example:
+        notification_threshold_percentage: 0
+      properties:
+        notification_threshold_percentage:
+          type: integer
+      required:
+      - notification_threshold_percentage
+      type: object
     ModelPasswordResetRequest:
       example:
         email: email
@@ -15550,6 +15768,15 @@ components:
       - namespace
       - password
       type: object
+    ModelRegisterLicenseRequest:
+      example:
+        license_key: license_key
+      properties:
+        license_key:
+          type: string
+      required:
+      - license_key
+      type: object
     ModelRegistryAccount:
       example:
         container_images:
@@ -15863,6 +16090,19 @@ components:
       properties:
         count:
           type: integer
+      type: object
+    ModelRegistryCredentials:
+      example:
+        registry_url: registry_url
+        password: password
+        username: username
+      properties:
+        password:
+          type: string
+        registry_url:
+          type: string
+        username:
+          type: string
       type: object
     ModelRegistryImageStubsReq:
       example:

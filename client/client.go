@@ -50,6 +50,8 @@ type APIClient struct {
 
 	// API Services
 
+	AgentFilesystemAPI *AgentFilesystemAPIService
+
 	AgentNetworkAPI *AgentNetworkAPIService
 
 	AuthenticationAPI *AuthenticationAPIService
@@ -113,6 +115,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.AgentFilesystemAPI = (*AgentFilesystemAPIService)(&c.common)
 	c.AgentNetworkAPI = (*AgentNetworkAPIService)(&c.common)
 	c.AuthenticationAPI = (*AuthenticationAPIService)(&c.common)
 	c.CloudNodesAPI = (*CloudNodesAPIService)(&c.common)

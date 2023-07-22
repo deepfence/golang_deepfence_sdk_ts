@@ -21,6 +21,7 @@ var _ MappedNullable = &ModelLoginResponse{}
 // ModelLoginResponse struct for ModelLoginResponse
 type ModelLoginResponse struct {
 	AccessToken string `json:"access_token"`
+	LicenseRegistered bool `json:"license_registered"`
 	OnboardingRequired bool `json:"onboarding_required"`
 	PasswordInvalidated bool `json:"password_invalidated"`
 	RefreshToken string `json:"refresh_token"`
@@ -30,9 +31,10 @@ type ModelLoginResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelLoginResponse(accessToken string, onboardingRequired bool, passwordInvalidated bool, refreshToken string) *ModelLoginResponse {
+func NewModelLoginResponse(accessToken string, licenseRegistered bool, onboardingRequired bool, passwordInvalidated bool, refreshToken string) *ModelLoginResponse {
 	this := ModelLoginResponse{}
 	this.AccessToken = accessToken
+	this.LicenseRegistered = licenseRegistered
 	this.OnboardingRequired = onboardingRequired
 	this.PasswordInvalidated = passwordInvalidated
 	this.RefreshToken = refreshToken
@@ -69,6 +71,30 @@ func (o *ModelLoginResponse) GetAccessTokenOk() (*string, bool) {
 // SetAccessToken sets field value
 func (o *ModelLoginResponse) SetAccessToken(v string) {
 	o.AccessToken = v
+}
+
+// GetLicenseRegistered returns the LicenseRegistered field value
+func (o *ModelLoginResponse) GetLicenseRegistered() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.LicenseRegistered
+}
+
+// GetLicenseRegisteredOk returns a tuple with the LicenseRegistered field value
+// and a boolean to check if the value has been set.
+func (o *ModelLoginResponse) GetLicenseRegisteredOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LicenseRegistered, true
+}
+
+// SetLicenseRegistered sets field value
+func (o *ModelLoginResponse) SetLicenseRegistered(v bool) {
+	o.LicenseRegistered = v
 }
 
 // GetOnboardingRequired returns the OnboardingRequired field value
@@ -154,6 +180,7 @@ func (o ModelLoginResponse) MarshalJSON() ([]byte, error) {
 func (o ModelLoginResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["access_token"] = o.AccessToken
+	toSerialize["license_registered"] = o.LicenseRegistered
 	toSerialize["onboarding_required"] = o.OnboardingRequired
 	toSerialize["password_invalidated"] = o.PasswordInvalidated
 	toSerialize["refresh_token"] = o.RefreshToken

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessToken** | **string** |  | 
+**LicenseRegistered** | **bool** |  | 
 **OnboardingRequired** | **bool** |  | 
 **PasswordInvalidated** | **bool** |  | 
 **RefreshToken** | **string** |  | 
@@ -13,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewModelLoginResponse
 
-`func NewModelLoginResponse(accessToken string, onboardingRequired bool, passwordInvalidated bool, refreshToken string, ) *ModelLoginResponse`
+`func NewModelLoginResponse(accessToken string, licenseRegistered bool, onboardingRequired bool, passwordInvalidated bool, refreshToken string, ) *ModelLoginResponse`
 
 NewModelLoginResponse instantiates a new ModelLoginResponse object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +47,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelLoginResponse) SetAccessToken(v string)`
 
 SetAccessToken sets AccessToken field to given value.
+
+
+### GetLicenseRegistered
+
+`func (o *ModelLoginResponse) GetLicenseRegistered() bool`
+
+GetLicenseRegistered returns the LicenseRegistered field if non-nil, zero value otherwise.
+
+### GetLicenseRegisteredOk
+
+`func (o *ModelLoginResponse) GetLicenseRegisteredOk() (*bool, bool)`
+
+GetLicenseRegisteredOk returns a tuple with the LicenseRegistered field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLicenseRegistered
+
+`func (o *ModelLoginResponse) SetLicenseRegistered(v bool)`
+
+SetLicenseRegistered sets LicenseRegistered field to given value.
 
 
 ### GetOnboardingRequired

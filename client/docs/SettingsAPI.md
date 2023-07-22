@@ -7,9 +7,12 @@ Method | HTTP request | Description
 [**AddEmailConfiguration**](SettingsAPI.md#AddEmailConfiguration) | **Post** /deepfence/settings/email | Add Email Configuration
 [**DeleteEmailConfiguration**](SettingsAPI.md#DeleteEmailConfiguration) | **Delete** /deepfence/settings/email/{config_id} | Delete Email Configurations
 [**GetEmailConfiguration**](SettingsAPI.md#GetEmailConfiguration) | **Get** /deepfence/settings/email | Get Email Configurations
+[**GetLicense**](SettingsAPI.md#GetLicense) | **Get** /deepfence/license | Get License Details
 [**GetScheduledTasks**](SettingsAPI.md#GetScheduledTasks) | **Get** /deepfence/scheduled-task | Get scheduled tasks
 [**GetSettings**](SettingsAPI.md#GetSettings) | **Get** /deepfence/settings/global-settings | Get settings
 [**GetUserActivityLogs**](SettingsAPI.md#GetUserActivityLogs) | **Get** /deepfence/settings/user-activity-log | Get activity logs
+[**RegisterLicense**](SettingsAPI.md#RegisterLicense) | **Post** /deepfence/license | Register License
+[**UpdateNotificationThreshold**](SettingsAPI.md#UpdateNotificationThreshold) | **Post** /deepfence/license/notification-threshold | Update Notification Threshold
 [**UpdateScheduledTask**](SettingsAPI.md#UpdateScheduledTask) | **Patch** /deepfence/scheduled-task/{id} | Update scheduled task
 [**UpdateSetting**](SettingsAPI.md#UpdateSetting) | **Patch** /deepfence/settings/global-settings/{id} | Update setting
 [**UploadVulnerabilityDatabase**](SettingsAPI.md#UploadVulnerabilityDatabase) | **Put** /deepfence/database/vulnerability | Upload Vulnerability Database
@@ -211,6 +214,67 @@ Other parameters are passed through a pointer to a apiGetEmailConfigurationReque
 [[Back to README]](../README.md)
 
 
+## GetLicense
+
+> ModelLicense GetLicense(ctx).Execute()
+
+Get License Details
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SettingsAPI.GetLicense(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.GetLicense``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetLicense`: ModelLicense
+    fmt.Fprintf(os.Stdout, "Response from `SettingsAPI.GetLicense`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetLicenseRequest struct via the builder pattern
+
+
+### Return type
+
+[**ModelLicense**](ModelLicense.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetScheduledTasks
 
 > []PostgresqlDbScheduler GetScheduledTasks(ctx).Execute()
@@ -387,6 +451,134 @@ Other parameters are passed through a pointer to a apiGetUserActivityLogsRequest
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RegisterLicense
+
+> RegisterLicense(ctx).ModelRegisterLicenseRequest(modelRegisterLicenseRequest).Execute()
+
+Register License
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    modelRegisterLicenseRequest := *openapiclient.NewModelRegisterLicenseRequest("LicenseKey_example") // ModelRegisterLicenseRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.SettingsAPI.RegisterLicense(context.Background()).ModelRegisterLicenseRequest(modelRegisterLicenseRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.RegisterLicense``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRegisterLicenseRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **modelRegisterLicenseRequest** | [**ModelRegisterLicenseRequest**](ModelRegisterLicenseRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateNotificationThreshold
+
+> UpdateNotificationThreshold(ctx).ModelNotificationThresholdUpdateRequest(modelNotificationThresholdUpdateRequest).Execute()
+
+Update Notification Threshold
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    modelNotificationThresholdUpdateRequest := *openapiclient.NewModelNotificationThresholdUpdateRequest(int32(123)) // ModelNotificationThresholdUpdateRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.SettingsAPI.UpdateNotificationThreshold(context.Background()).ModelNotificationThresholdUpdateRequest(modelNotificationThresholdUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.UpdateNotificationThreshold``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateNotificationThresholdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **modelNotificationThresholdUpdateRequest** | [**ModelNotificationThresholdUpdateRequest**](ModelNotificationThresholdUpdateRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

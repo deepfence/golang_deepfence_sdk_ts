@@ -79,6 +79,7 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AgentFilesystemAPI* | [**EnableFilesystemTracer**](docs/AgentFilesystemAPI.md#enablefilesystemtracer) | **Post** /deepfence/filesystem/tracer/enable | Enable filesystem tracer
 *AgentNetworkAPI* | [**DisableNetworkTracer**](docs/AgentNetworkAPI.md#disablenetworktracer) | **Post** /deepfence/network/tracer/disable | Disable network tracer
 *AgentNetworkAPI* | [**EnableNetworkTracer**](docs/AgentNetworkAPI.md#enablenetworktracer) | **Post** /deepfence/network/tracer/enable | Enable network tracer
 *AuthenticationAPI* | [**AuthToken**](docs/AuthenticationAPI.md#authtoken) | **Post** /deepfence/auth/token | Get Access Token for API Token
@@ -235,9 +236,12 @@ Class | Method | HTTP request | Description
 *SettingsAPI* | [**AddEmailConfiguration**](docs/SettingsAPI.md#addemailconfiguration) | **Post** /deepfence/settings/email | Add Email Configuration
 *SettingsAPI* | [**DeleteEmailConfiguration**](docs/SettingsAPI.md#deleteemailconfiguration) | **Delete** /deepfence/settings/email/{config_id} | Delete Email Configurations
 *SettingsAPI* | [**GetEmailConfiguration**](docs/SettingsAPI.md#getemailconfiguration) | **Get** /deepfence/settings/email | Get Email Configurations
+*SettingsAPI* | [**GetLicense**](docs/SettingsAPI.md#getlicense) | **Get** /deepfence/license | Get License Details
 *SettingsAPI* | [**GetScheduledTasks**](docs/SettingsAPI.md#getscheduledtasks) | **Get** /deepfence/scheduled-task | Get scheduled tasks
 *SettingsAPI* | [**GetSettings**](docs/SettingsAPI.md#getsettings) | **Get** /deepfence/settings/global-settings | Get settings
 *SettingsAPI* | [**GetUserActivityLogs**](docs/SettingsAPI.md#getuseractivitylogs) | **Get** /deepfence/settings/user-activity-log | Get activity logs
+*SettingsAPI* | [**RegisterLicense**](docs/SettingsAPI.md#registerlicense) | **Post** /deepfence/license | Register License
+*SettingsAPI* | [**UpdateNotificationThreshold**](docs/SettingsAPI.md#updatenotificationthreshold) | **Post** /deepfence/license/notification-threshold | Update Notification Threshold
 *SettingsAPI* | [**UpdateScheduledTask**](docs/SettingsAPI.md#updatescheduledtask) | **Patch** /deepfence/scheduled-task/{id} | Update scheduled task
 *SettingsAPI* | [**UpdateSetting**](docs/SettingsAPI.md#updatesetting) | **Patch** /deepfence/settings/global-settings/{id} | Update setting
 *SettingsAPI* | [**UploadVulnerabilityDatabase**](docs/SettingsAPI.md#uploadvulnerabilitydatabase) | **Put** /deepfence/database/vulnerability | Upload Vulnerability Database
@@ -379,6 +383,7 @@ Class | Method | HTTP request | Description
  - [ModelInviteUserRequest](docs/ModelInviteUserRequest.md)
  - [ModelInviteUserResponse](docs/ModelInviteUserResponse.md)
  - [ModelKubernetesCluster](docs/ModelKubernetesCluster.md)
+ - [ModelLicense](docs/ModelLicense.md)
  - [ModelLoginRequest](docs/ModelLoginRequest.md)
  - [ModelLoginResponse](docs/ModelLoginResponse.md)
  - [ModelMalware](docs/ModelMalware.md)
@@ -393,15 +398,18 @@ Class | Method | HTTP request | Description
  - [ModelNetworkAlertHttp](docs/ModelNetworkAlertHttp.md)
  - [ModelNodeIdentifier](docs/ModelNodeIdentifier.md)
  - [ModelNodesInScanResultRequest](docs/ModelNodesInScanResultRequest.md)
+ - [ModelNotificationThresholdUpdateRequest](docs/ModelNotificationThresholdUpdateRequest.md)
  - [ModelPasswordResetRequest](docs/ModelPasswordResetRequest.md)
  - [ModelPasswordResetVerifyRequest](docs/ModelPasswordResetVerifyRequest.md)
  - [ModelPod](docs/ModelPod.md)
  - [ModelPostureProvider](docs/ModelPostureProvider.md)
  - [ModelProcess](docs/ModelProcess.md)
  - [ModelRegisterInvitedUserRequest](docs/ModelRegisterInvitedUserRequest.md)
+ - [ModelRegisterLicenseRequest](docs/ModelRegisterLicenseRequest.md)
  - [ModelRegistryAccount](docs/ModelRegistryAccount.md)
  - [ModelRegistryAddReq](docs/ModelRegistryAddReq.md)
  - [ModelRegistryCountResp](docs/ModelRegistryCountResp.md)
+ - [ModelRegistryCredentials](docs/ModelRegistryCredentials.md)
  - [ModelRegistryImageStubsReq](docs/ModelRegistryImageStubsReq.md)
  - [ModelRegistryImagesReq](docs/ModelRegistryImagesReq.md)
  - [ModelRegistryListResp](docs/ModelRegistryListResp.md)
