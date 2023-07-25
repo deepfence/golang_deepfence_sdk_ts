@@ -10219,12 +10219,24 @@ components:
     ModelAgentId:
       example:
         available_workload: 0
+        plugins_status:
+          network_tracer_status:
+            description: description
+            status: status
+          network_filter_status:
+            description: description
+            status: status
+          filesystem_tracer_status:
+            description: description
+            status: status
         node_id: node_id
       properties:
         available_workload:
           type: integer
         node_id:
           type: string
+        plugins_status:
+          $ref: '#/components/schemas/ModelAgentPluginsStatus'
       required:
       - available_workload
       - node_id
@@ -10258,6 +10270,29 @@ components:
       - node_id
       - plugin_name
       - version
+      type: object
+    ModelAgentPluginsStatus:
+      example:
+        network_tracer_status:
+          description: description
+          status: status
+        network_filter_status:
+          description: description
+          status: status
+        filesystem_tracer_status:
+          description: description
+          status: status
+      properties:
+        filesystem_tracer_status:
+          $ref: '#/components/schemas/ModelPluginStatus'
+        network_filter_status:
+          $ref: '#/components/schemas/ModelPluginStatus'
+        network_tracer_status:
+          $ref: '#/components/schemas/ModelPluginStatus'
+      required:
+      - filesystem_tracer_status
+      - network_filter_status
+      - network_tracer_status
       type: object
     ModelAgentUpgrade:
       example:
@@ -11717,8 +11752,28 @@ components:
       example:
         agent_ids:
         - available_workload: 0
+          plugins_status:
+            network_tracer_status:
+              description: description
+              status: status
+            network_filter_status:
+              description: description
+              status: status
+            filesystem_tracer_status:
+              description: description
+              status: status
           node_id: node_id
         - available_workload: 0
+          plugins_status:
+            network_tracer_status:
+              description: description
+              status: status
+            network_filter_status:
+              description: description
+              status: status
+            filesystem_tracer_status:
+              description: description
+              status: status
           node_id: node_id
       properties:
         agent_ids:
@@ -11821,8 +11876,28 @@ components:
         path: path
         agent_ids:
         - available_workload: 0
+          plugins_status:
+            network_tracer_status:
+              description: description
+              status: status
+            network_filter_status:
+              description: description
+              status: status
+            filesystem_tracer_status:
+              description: description
+              status: status
           node_id: node_id
         - available_workload: 0
+          plugins_status:
+            network_tracer_status:
+              description: description
+              status: status
+            network_filter_status:
+              description: description
+              status: status
+            filesystem_tracer_status:
+              description: description
+              status: status
           node_id: node_id
       properties:
         agent_ids:
@@ -11854,8 +11929,28 @@ components:
           - outbound
         agent_ids:
         - available_workload: 0
+          plugins_status:
+            network_tracer_status:
+              description: description
+              status: status
+            network_filter_status:
+              description: description
+              status: status
+            filesystem_tracer_status:
+              description: description
+              status: status
           node_id: node_id
         - available_workload: 0
+          plugins_status:
+            network_tracer_status:
+              description: description
+              status: status
+            network_filter_status:
+              description: description
+              status: status
+            filesystem_tracer_status:
+              description: description
+              status: status
           node_id: node_id
         https_rules:
           inbound:
@@ -13102,12 +13197,24 @@ components:
       example:
         available_workload: 0
         version: version
+        plugins_status:
+          network_tracer_status:
+            description: description
+            status: status
+          network_filter_status:
+            description: description
+            status: status
+          filesystem_tracer_status:
+            description: description
+            status: status
         node_id: node_id
       properties:
         available_workload:
           type: integer
         node_id:
           type: string
+        plugins_status:
+          $ref: '#/components/schemas/ModelAgentPluginsStatus'
         version:
           type: string
       required:
@@ -15465,6 +15572,19 @@ components:
       - code
       - namespace
       - password
+      type: object
+    ModelPluginStatus:
+      example:
+        description: description
+        status: status
+      properties:
+        description:
+          type: string
+        status:
+          type: string
+      required:
+      - description
+      - status
       type: object
     ModelPod:
       example:
