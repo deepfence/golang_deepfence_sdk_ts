@@ -24,8 +24,10 @@ type ModelContainerImage struct {
 	DockerImageCreatedAt string `json:"docker_image_created_at"`
 	DockerImageId string `json:"docker_image_id"`
 	DockerImageName string `json:"docker_image_name"`
+	DockerImageNameList []string `json:"docker_image_name_list"`
 	DockerImageSize string `json:"docker_image_size"`
 	DockerImageTag string `json:"docker_image_tag"`
+	DockerImageTagList []string `json:"docker_image_tag_list"`
 	DockerImageVirtualSize string `json:"docker_image_virtual_size"`
 	MalwareLatestScanId string `json:"malware_latest_scan_id"`
 	MalwareScanStatus string `json:"malware_scan_status"`
@@ -45,14 +47,16 @@ type ModelContainerImage struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelContainerImage(containers []ModelContainer, dockerImageCreatedAt string, dockerImageId string, dockerImageName string, dockerImageSize string, dockerImageTag string, dockerImageVirtualSize string, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, metadata map[string]interface{}, nodeId string, nodeName string, secretLatestScanId string, secretScanStatus string, secretsCount int32, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string) *ModelContainerImage {
+func NewModelContainerImage(containers []ModelContainer, dockerImageCreatedAt string, dockerImageId string, dockerImageName string, dockerImageNameList []string, dockerImageSize string, dockerImageTag string, dockerImageTagList []string, dockerImageVirtualSize string, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, metadata map[string]interface{}, nodeId string, nodeName string, secretLatestScanId string, secretScanStatus string, secretsCount int32, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string) *ModelContainerImage {
 	this := ModelContainerImage{}
 	this.Containers = containers
 	this.DockerImageCreatedAt = dockerImageCreatedAt
 	this.DockerImageId = dockerImageId
 	this.DockerImageName = dockerImageName
+	this.DockerImageNameList = dockerImageNameList
 	this.DockerImageSize = dockerImageSize
 	this.DockerImageTag = dockerImageTag
+	this.DockerImageTagList = dockerImageTagList
 	this.DockerImageVirtualSize = dockerImageVirtualSize
 	this.MalwareLatestScanId = malwareLatestScanId
 	this.MalwareScanStatus = malwareScanStatus
@@ -175,6 +179,32 @@ func (o *ModelContainerImage) SetDockerImageName(v string) {
 	o.DockerImageName = v
 }
 
+// GetDockerImageNameList returns the DockerImageNameList field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ModelContainerImage) GetDockerImageNameList() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.DockerImageNameList
+}
+
+// GetDockerImageNameListOk returns a tuple with the DockerImageNameList field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelContainerImage) GetDockerImageNameListOk() ([]string, bool) {
+	if o == nil || IsNil(o.DockerImageNameList) {
+		return nil, false
+	}
+	return o.DockerImageNameList, true
+}
+
+// SetDockerImageNameList sets field value
+func (o *ModelContainerImage) SetDockerImageNameList(v []string) {
+	o.DockerImageNameList = v
+}
+
 // GetDockerImageSize returns the DockerImageSize field value
 func (o *ModelContainerImage) GetDockerImageSize() string {
 	if o == nil {
@@ -221,6 +251,32 @@ func (o *ModelContainerImage) GetDockerImageTagOk() (*string, bool) {
 // SetDockerImageTag sets field value
 func (o *ModelContainerImage) SetDockerImageTag(v string) {
 	o.DockerImageTag = v
+}
+
+// GetDockerImageTagList returns the DockerImageTagList field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ModelContainerImage) GetDockerImageTagList() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.DockerImageTagList
+}
+
+// GetDockerImageTagListOk returns a tuple with the DockerImageTagList field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelContainerImage) GetDockerImageTagListOk() ([]string, bool) {
+	if o == nil || IsNil(o.DockerImageTagList) {
+		return nil, false
+	}
+	return o.DockerImageTagList, true
+}
+
+// SetDockerImageTagList sets field value
+func (o *ModelContainerImage) SetDockerImageTagList(v []string) {
+	o.DockerImageTagList = v
 }
 
 // GetDockerImageVirtualSize returns the DockerImageVirtualSize field value
@@ -551,8 +607,14 @@ func (o ModelContainerImage) ToMap() (map[string]interface{}, error) {
 	toSerialize["docker_image_created_at"] = o.DockerImageCreatedAt
 	toSerialize["docker_image_id"] = o.DockerImageId
 	toSerialize["docker_image_name"] = o.DockerImageName
+	if o.DockerImageNameList != nil {
+		toSerialize["docker_image_name_list"] = o.DockerImageNameList
+	}
 	toSerialize["docker_image_size"] = o.DockerImageSize
 	toSerialize["docker_image_tag"] = o.DockerImageTag
+	if o.DockerImageTagList != nil {
+		toSerialize["docker_image_tag_list"] = o.DockerImageTagList
+	}
 	toSerialize["docker_image_virtual_size"] = o.DockerImageVirtualSize
 	toSerialize["malware_latest_scan_id"] = o.MalwareLatestScanId
 	toSerialize["malware_scan_status"] = o.MalwareScanStatus

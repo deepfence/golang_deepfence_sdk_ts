@@ -30,6 +30,7 @@ Method | HTTP request | Description
 [**CountVulnerabilityScans**](SearchAPI.md#CountVulnerabilityScans) | **Post** /deepfence/search/count/vulnerability/scans | Count Vulnerability Scan results
 [**GetCloudComplianceFilters**](SearchAPI.md#GetCloudComplianceFilters) | **Post** /deepfence/filters/cloud-compliance | Get Cloud Compliance Filters
 [**GetComplianceFilters**](SearchAPI.md#GetComplianceFilters) | **Post** /deepfence/filters/compliance | Get Compliance Filters
+[**SearchAlerts**](SearchAPI.md#SearchAlerts) | **Post** /deepfence/search/alerts | Search Alerts
 [**SearchCloudAccounts**](SearchAPI.md#SearchCloudAccounts) | **Post** /deepfence/search/cloud-accounts | Search Cloud Nodes
 [**SearchCloudComplianceScans**](SearchAPI.md#SearchCloudComplianceScans) | **Post** /deepfence/search/cloud-compliance/scans | Search Cloud Compliance Scan results
 [**SearchCloudCompliances**](SearchAPI.md#SearchCloudCompliances) | **Post** /deepfence/search/cloud-compliances | Search Cloud compliances
@@ -1752,6 +1753,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelFiltersResult**](ModelFiltersResult.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchAlerts
+
+> []ModelCommonAlert SearchAlerts(ctx).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+
+Search Alerts
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    searchSearchNodeReq := *openapiclient.NewSearchSearchNodeReq(*openapiclient.NewSearchSearchFilter(*openapiclient.NewReportersFieldsFilters([]openapiclient.ReportersCompareFilter{*openapiclient.NewReportersCompareFilter("FieldName_example", interface{}(123), false)}, *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersMatchFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersOrderFilter([]openapiclient.ReportersOrderSpec{*openapiclient.NewReportersOrderSpec(false, "FieldName_example")})), []string{"InFieldFilter_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))), *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // SearchSearchNodeReq |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SearchAPI.SearchAlerts(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchAlerts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SearchAlerts`: []ModelCommonAlert
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchAlerts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchAlertsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchSearchNodeReq** | [**SearchSearchNodeReq**](SearchSearchNodeReq.md) |  | 
+
+### Return type
+
+[**[]ModelCommonAlert**](ModelCommonAlert.md)
 
 ### Authorization
 

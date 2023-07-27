@@ -79,13 +79,21 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AgentConfigAPI* | [**AttachAgentConfig**](docs/AgentConfigAPI.md#attachagentconfig) | **Post** /configs/agent/attach | Register Agent config
+*AgentConfigAPI* | [**GetAgentConfig**](docs/AgentConfigAPI.md#getagentconfig) | **Get** /configs/agent/ | Register Agent config
+*AgentConfigAPI* | [**RegisterAgentConfig**](docs/AgentConfigAPI.md#registeragentconfig) | **Post** /configs/agent/ | Register Agent config
 *AgentFilesystemAPI* | [**EnableFilesystemTracer**](docs/AgentFilesystemAPI.md#enablefilesystemtracer) | **Post** /deepfence/filesystem/tracer/enable | Enable filesystem tracer
 *AgentNetworkAPI* | [**DisableNetworkTracer**](docs/AgentNetworkAPI.md#disablenetworktracer) | **Post** /deepfence/network/tracer/disable | Disable network tracer
 *AgentNetworkAPI* | [**EnableNetworkTracer**](docs/AgentNetworkAPI.md#enablenetworktracer) | **Post** /deepfence/network/tracer/enable | Enable network tracer
 *AuthenticationAPI* | [**AuthToken**](docs/AuthenticationAPI.md#authtoken) | **Post** /deepfence/auth/token | Get Access Token for API Token
 *AuthenticationAPI* | [**AuthTokenRefresh**](docs/AuthenticationAPI.md#authtokenrefresh) | **Post** /deepfence/auth/token/refresh | Refresh access token
+*AuthenticationAPI* | [**CreateSSOProvider**](docs/AuthenticationAPI.md#createssoprovider) | **Post** /deepfence/single-sign-on | Configure Single sign-on
+*AuthenticationAPI* | [**DeleteSSOProvider**](docs/AuthenticationAPI.md#deletessoprovider) | **Delete** /deepfence/single-sign-on/{id} | Delete Single sign-on configuration
+*AuthenticationAPI* | [**GetSSOProviders**](docs/AuthenticationAPI.md#getssoproviders) | **Get** /deepfence/single-sign-on | Get Single sign-on configurations
 *AuthenticationAPI* | [**Login**](docs/AuthenticationAPI.md#login) | **Post** /deepfence/user/login | Login API
 *AuthenticationAPI* | [**Logout**](docs/AuthenticationAPI.md#logout) | **Post** /deepfence/user/logout | Logout API
+*AuthenticationAPI* | [**SsoLogin**](docs/AuthenticationAPI.md#ssologin) | **Get** /deepfence/sso/login | SSO Login
+*AuthenticationAPI* | [**VerifySSOAuth**](docs/AuthenticationAPI.md#verifyssoauth) | **Post** /deepfence/sso/verify | Verify SSO auth code
 *CloudNodesAPI* | [**ListCloudNodeAccount**](docs/CloudNodesAPI.md#listcloudnodeaccount) | **Post** /deepfence/cloud-node/list/accounts | List Cloud Node Accounts
 *CloudNodesAPI* | [**ListCloudProviders**](docs/CloudNodesAPI.md#listcloudproviders) | **Get** /deepfence/cloud-node/list/providers | List Cloud Node Providers
 *CloudNodesAPI* | [**RegisterCloudNodeAccount**](docs/CloudNodesAPI.md#registercloudnodeaccount) | **Post** /deepfence/cloud-node/account | Register Cloud Node Account
@@ -200,6 +208,7 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**CountVulnerabilityScans**](docs/SearchAPI.md#countvulnerabilityscans) | **Post** /deepfence/search/count/vulnerability/scans | Count Vulnerability Scan results
 *SearchAPI* | [**GetCloudComplianceFilters**](docs/SearchAPI.md#getcloudcompliancefilters) | **Post** /deepfence/filters/cloud-compliance | Get Cloud Compliance Filters
 *SearchAPI* | [**GetComplianceFilters**](docs/SearchAPI.md#getcompliancefilters) | **Post** /deepfence/filters/compliance | Get Compliance Filters
+*SearchAPI* | [**SearchAlerts**](docs/SearchAPI.md#searchalerts) | **Post** /deepfence/search/alerts | Search Alerts
 *SearchAPI* | [**SearchCloudAccounts**](docs/SearchAPI.md#searchcloudaccounts) | **Post** /deepfence/search/cloud-accounts | Search Cloud Nodes
 *SearchAPI* | [**SearchCloudComplianceScans**](docs/SearchAPI.md#searchcloudcompliancescans) | **Post** /deepfence/search/cloud-compliance/scans | Search Cloud Compliance Scan results
 *SearchAPI* | [**SearchCloudCompliances**](docs/SearchAPI.md#searchcloudcompliances) | **Post** /deepfence/search/cloud-compliances | Search Cloud compliances
@@ -290,8 +299,14 @@ Class | Method | HTTP request | Description
  - [ApiDocsGraphResult](docs/ApiDocsGraphResult.md)
  - [ControlsAction](docs/ControlsAction.md)
  - [ControlsAgentBeat](docs/ControlsAgentBeat.md)
+ - [ControlsAgentConfig](docs/ControlsAgentConfig.md)
  - [ControlsAgentControls](docs/ControlsAgentControls.md)
+ - [ControlsFilesystemTracerConfig](docs/ControlsFilesystemTracerConfig.md)
+ - [ControlsMonitoredFilesConfig](docs/ControlsMonitoredFilesConfig.md)
  - [ControlsNetworkRules](docs/ControlsNetworkRules.md)
+ - [ControlsNetworkTracerConfig](docs/ControlsNetworkTracerConfig.md)
+ - [ControlsPolicyFilterConfig](docs/ControlsPolicyFilterConfig.md)
+ - [ControlsProcessEventConfig](docs/ControlsProcessEventConfig.md)
  - [DetailedConnectionSummary](docs/DetailedConnectionSummary.md)
  - [DetailedNodeSummary](docs/DetailedNodeSummary.md)
  - [DiagnosisDiagnosticLogsLink](docs/DiagnosisDiagnosticLogsLink.md)
@@ -333,6 +348,7 @@ Class | Method | HTTP request | Description
  - [ModelAgentUpgrade](docs/ModelAgentUpgrade.md)
  - [ModelApiAuthRequest](docs/ModelApiAuthRequest.md)
  - [ModelApiTokenResponse](docs/ModelApiTokenResponse.md)
+ - [ModelAttachAgentConfigReq](docs/ModelAttachAgentConfigReq.md)
  - [ModelBasicNode](docs/ModelBasicNode.md)
  - [ModelBulkDeleteScansRequest](docs/ModelBulkDeleteScansRequest.md)
  - [ModelCloudCompliance](docs/ModelCloudCompliance.md)
@@ -352,6 +368,7 @@ Class | Method | HTTP request | Description
  - [ModelCloudNodeEnableDisableReq](docs/ModelCloudNodeEnableDisableReq.md)
  - [ModelCloudNodeProvidersListResp](docs/ModelCloudNodeProvidersListResp.md)
  - [ModelCloudResource](docs/ModelCloudResource.md)
+ - [ModelCommonAlert](docs/ModelCommonAlert.md)
  - [ModelCompliance](docs/ModelCompliance.md)
  - [ModelComplianceRule](docs/ModelComplianceRule.md)
  - [ModelComplianceScanInfo](docs/ModelComplianceScanInfo.md)
@@ -468,6 +485,10 @@ Class | Method | HTTP request | Description
  - [SearchSearchFilter](docs/SearchSearchFilter.md)
  - [SearchSearchNodeReq](docs/SearchSearchNodeReq.md)
  - [SearchSearchScanReq](docs/SearchSearchScanReq.md)
+ - [SinglesignonGetSingleSignOnResponse](docs/SinglesignonGetSingleSignOnResponse.md)
+ - [SinglesignonSSOConfigurationInstructions](docs/SinglesignonSSOConfigurationInstructions.md)
+ - [SinglesignonSSOProviderConfig](docs/SinglesignonSSOProviderConfig.md)
+ - [SinglesignonVerifySSOAuthRequest](docs/SinglesignonVerifySSOAuthRequest.md)
  - [UtilsAdvancedReportFilters](docs/UtilsAdvancedReportFilters.md)
  - [UtilsReportFilters](docs/UtilsReportFilters.md)
  - [UtilsScanSbomRequest](docs/UtilsScanSbomRequest.md)

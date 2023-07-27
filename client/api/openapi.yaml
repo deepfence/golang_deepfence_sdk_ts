@@ -31,6 +31,123 @@ tags:
 - name: Malware Scan
 - name: Vulnerability
 paths:
+  /configs/agent/:
+    get:
+      description: Register Agent config
+      operationId: getAgentConfig
+      responses:
+        "204":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ControlsAgentConfig'
+                type: array
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Register Agent config
+      tags:
+      - AgentConfig
+    post:
+      description: Register Agent config
+      operationId: registerAgentConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ControlsAgentConfig'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Register Agent config
+      tags:
+      - AgentConfig
+  /configs/agent/attach:
+    post:
+      description: Register Agent config
+      operationId: attachAgentConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelAttachAgentConfigReq'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Register Agent config
+      tags:
+      - AgentConfig
   /deepfence/api-token:
     get:
       description: Get logged in user's API Tokens
@@ -5777,6 +5894,51 @@ paths:
       summary: Update scheduled task
       tags:
       - Settings
+  /deepfence/search/alerts:
+    post:
+      description: Search alerts resources
+      operationId: searchAlerts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelCommonAlert'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Search Alerts
+      tags:
+      - Search
   /deepfence/search/cloud-accounts:
     post:
       description: Search across all the data associated with cloud nodes
@@ -8004,6 +8166,205 @@ paths:
       summary: Get activity logs
       tags:
       - Settings
+  /deepfence/single-sign-on:
+    get:
+      description: Get all single sign-on configurations
+      operationId: getSSOProviders
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SinglesignonGetSingleSignOnResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Single sign-on configurations
+      tags:
+      - Authentication
+    post:
+      description: "Configure Single sign-on (OIDC, Google, Microsoft, Github)"
+      operationId: createSSOProvider
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SinglesignonSSOProviderConfig'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Configure Single sign-on
+      tags:
+      - Authentication
+  /deepfence/single-sign-on/{id}:
+    delete:
+      description: Delete single sign-on configuration
+      operationId: deleteSSOProvider
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Delete Single sign-on configuration
+      tags:
+      - Authentication
+  /deepfence/sso/login:
+    get:
+      description: Initiate SSO login request
+      operationId: ssoLogin
+      parameters:
+      - explode: true
+        in: query
+        name: email
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "302":
+          description: Found
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      summary: SSO Login
+      tags:
+      - Authentication
+  /deepfence/sso/verify:
+    post:
+      description: Verify code and get access token
+      operationId: verifySSOAuth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SinglesignonVerifySSOAuthRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelLoginResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      summary: Verify SSO auth code
+      tags:
+      - Authentication
   /deepfence/user:
     delete:
       description: Delete logged in user
@@ -8782,6 +9143,69 @@ components:
       required:
       - beatrate
       type: object
+    ControlsAgentConfig:
+      example:
+        network_tracer_config:
+          tcp_rules:
+            inbound:
+            - inbound
+            - inbound
+            outbound:
+            - outbound
+            - outbound
+          http_rules:
+            inbound:
+            - inbound
+            - inbound
+            outbound:
+            - outbound
+            - outbound
+          hash: hash
+          https_rules:
+            inbound:
+            - inbound
+            - inbound
+            outbound:
+            - outbound
+            - outbound
+        name: name
+        policy_tracer_config:
+          event_type: event_type
+          matcher: "{}"
+          hash: hash
+        filesystem_tracer_config:
+          monitored_files:
+          - path: path
+            access_types:
+            - access_types
+            - access_types
+            wight: wight
+          - path: path
+            access_types:
+            - access_types
+            - access_types
+            wight: wight
+          process_events:
+          - event_name: event_name
+            wight: wight
+          - event_name: event_name
+            wight: wight
+          hash: hash
+      properties:
+        filesystem_tracer_config:
+          $ref: '#/components/schemas/ControlsFilesystemTracerConfig'
+        name:
+          type: string
+        network_tracer_config:
+          $ref: '#/components/schemas/ControlsNetworkTracerConfig'
+        policy_tracer_config:
+          $ref: '#/components/schemas/ControlsPolicyFilterConfig'
+      required:
+      - filesystem_tracer_config
+      - name
+      - network_tracer_config
+      - policy_tracer_config
+      type: object
     ControlsAgentControls:
       example:
         beatrate: 0
@@ -8801,6 +9225,67 @@ components:
       required:
       - beatrate
       - commands
+      type: object
+    ControlsEventType:
+      type: string
+    ControlsFilesystemTracerConfig:
+      example:
+        monitored_files:
+        - path: path
+          access_types:
+          - access_types
+          - access_types
+          wight: wight
+        - path: path
+          access_types:
+          - access_types
+          - access_types
+          wight: wight
+        process_events:
+        - event_name: event_name
+          wight: wight
+        - event_name: event_name
+          wight: wight
+        hash: hash
+      properties:
+        hash:
+          type: string
+        monitored_files:
+          items:
+            $ref: '#/components/schemas/ControlsMonitoredFilesConfig'
+          nullable: true
+          type: array
+        process_events:
+          items:
+            $ref: '#/components/schemas/ControlsProcessEventConfig'
+          nullable: true
+          type: array
+      required:
+      - hash
+      - monitored_files
+      - process_events
+      type: object
+    ControlsMonitoredFilesConfig:
+      example:
+        path: path
+        access_types:
+        - access_types
+        - access_types
+        wight: wight
+      properties:
+        access_types:
+          items:
+            type: string
+          nullable: true
+          type: array
+        path:
+          type: string
+        wight:
+          type: string
+      required:
+      - access_types
+      - path
+      - wight
       type: object
     ControlsNetworkRules:
       example:
@@ -8824,6 +9309,77 @@ components:
       required:
       - inbound
       - outbound
+      type: object
+    ControlsNetworkTracerConfig:
+      example:
+        tcp_rules:
+          inbound:
+          - inbound
+          - inbound
+          outbound:
+          - outbound
+          - outbound
+        http_rules:
+          inbound:
+          - inbound
+          - inbound
+          outbound:
+          - outbound
+          - outbound
+        hash: hash
+        https_rules:
+          inbound:
+          - inbound
+          - inbound
+          outbound:
+          - outbound
+          - outbound
+      properties:
+        hash:
+          type: string
+        http_rules:
+          $ref: '#/components/schemas/ControlsNetworkRules'
+        https_rules:
+          $ref: '#/components/schemas/ControlsNetworkRules'
+        tcp_rules:
+          $ref: '#/components/schemas/ControlsNetworkRules'
+      required:
+      - hash
+      - http_rules
+      - https_rules
+      - tcp_rules
+      type: object
+    ControlsPolicyAlertMatcher:
+      type: object
+    ControlsPolicyFilterConfig:
+      example:
+        event_type: event_type
+        matcher: "{}"
+        hash: hash
+      properties:
+        event_type:
+          type: string
+        hash:
+          type: string
+        matcher:
+          type: object
+      required:
+      - event_type
+      - hash
+      - matcher
+      type: object
+    ControlsProcessEventConfig:
+      example:
+        event_name: event_name
+        wight: wight
+      properties:
+        event_name:
+          type: string
+        wight:
+          type: string
+      required:
+      - event_name
+      - wight
       type: object
     DetailedConnectionSummary:
       example:
@@ -10339,6 +10895,46 @@ components:
         name:
           type: string
       type: object
+    ModelAttachAgentConfigReq:
+      example:
+        name: name
+        agent_ids:
+        - available_workload: 0
+          plugins_status:
+            network_tracer_status:
+              description: description
+              status: status
+            network_filter_status:
+              description: description
+              status: status
+            filesystem_tracer_status:
+              description: description
+              status: status
+          node_id: node_id
+        - available_workload: 0
+          plugins_status:
+            network_tracer_status:
+              description: description
+              status: status
+            network_filter_status:
+              description: description
+              status: status
+            filesystem_tracer_status:
+              description: description
+              status: status
+          node_id: node_id
+      properties:
+        agent_ids:
+          items:
+            $ref: '#/components/schemas/ModelAgentId'
+          nullable: true
+          type: array
+        name:
+          type: string
+      required:
+      - agent_ids
+      - name
+      type: object
     ModelBasicNode:
       example:
         node_type: node_type
@@ -11013,6 +11609,51 @@ components:
       - node_type
       - type_label
       type: object
+    ModelCommonAlert:
+      example:
+        summary: summary
+        anomaly: anomaly
+        event_type: event_type
+        updated_at: updated_at
+        masked: true
+        classtype: classtype
+        count: 0
+        created_at: created_at
+        category: category
+        node_id: node_id
+      properties:
+        anomaly:
+          type: string
+        category:
+          type: string
+        classtype:
+          type: string
+        count:
+          type: integer
+        created_at:
+          type: string
+        event_type:
+          type: string
+        masked:
+          type: boolean
+        node_id:
+          type: string
+        summary:
+          type: string
+        updated_at:
+          type: string
+      required:
+      - anomaly
+      - category
+      - classtype
+      - count
+      - created_at
+      - event_type
+      - masked
+      - node_id
+      - summary
+      - updated_at
+      type: object
     ModelCompliance:
       example:
         resource: resource
@@ -11565,6 +12206,9 @@ components:
         malwares_count: 7
         node_name: node_name
         secret_latest_scan_id: secret_latest_scan_id
+        docker_image_name_list:
+        - docker_image_name_list
+        - docker_image_name_list
         vulnerability_latest_scan_id: vulnerability_latest_scan_id
         docker_image_created_at: docker_image_created_at
         docker_image_tag: docker_image_tag
@@ -11683,6 +12327,9 @@ components:
         docker_image_id: docker_image_id
         vulnerability_scan_status: vulnerability_scan_status
         docker_image_name: docker_image_name
+        docker_image_tag_list:
+        - docker_image_tag_list
+        - docker_image_tag_list
         node_id: node_id
       properties:
         containers:
@@ -11696,10 +12343,20 @@ components:
           type: string
         docker_image_name:
           type: string
+        docker_image_name_list:
+          items:
+            type: string
+          nullable: true
+          type: array
         docker_image_size:
           type: string
         docker_image_tag:
           type: string
+        docker_image_tag_list:
+          items:
+            type: string
+          nullable: true
+          type: array
         docker_image_virtual_size:
           type: string
         malware_latest_scan_id:
@@ -11732,8 +12389,10 @@ components:
       - docker_image_created_at
       - docker_image_id
       - docker_image_name
+      - docker_image_name_list
       - docker_image_size
       - docker_image_tag
+      - docker_image_tag_list
       - docker_image_virtual_size
       - malware_latest_scan_id
       - malware_scan_status
@@ -12298,6 +12957,9 @@ components:
           malwares_count: 7
           node_name: node_name
           secret_latest_scan_id: secret_latest_scan_id
+          docker_image_name_list:
+          - docker_image_name_list
+          - docker_image_name_list
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
           docker_image_created_at: docker_image_created_at
           docker_image_tag: docker_image_tag
@@ -12416,6 +13078,9 @@ components:
           docker_image_id: docker_image_id
           vulnerability_scan_status: vulnerability_scan_status
           docker_image_name: docker_image_name
+          docker_image_tag_list:
+          - docker_image_tag_list
+          - docker_image_tag_list
           node_id: node_id
         - metadata:
             key: ""
@@ -12426,6 +13091,9 @@ components:
           malwares_count: 7
           node_name: node_name
           secret_latest_scan_id: secret_latest_scan_id
+          docker_image_name_list:
+          - docker_image_name_list
+          - docker_image_name_list
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
           docker_image_created_at: docker_image_created_at
           docker_image_tag: docker_image_tag
@@ -12544,6 +13212,9 @@ components:
           docker_image_id: docker_image_id
           vulnerability_scan_status: vulnerability_scan_status
           docker_image_name: docker_image_name
+          docker_image_tag_list:
+          - docker_image_tag_list
+          - docker_image_tag_list
           node_id: node_id
         cpu_max: 6.027456183070403
         memory_usage: 7
@@ -13434,6 +14105,9 @@ components:
             malwares_count: 7
             node_name: node_name
             secret_latest_scan_id: secret_latest_scan_id
+            docker_image_name_list:
+            - docker_image_name_list
+            - docker_image_name_list
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
             docker_image_created_at: docker_image_created_at
             docker_image_tag: docker_image_tag
@@ -13552,6 +14226,9 @@ components:
             docker_image_id: docker_image_id
             vulnerability_scan_status: vulnerability_scan_status
             docker_image_name: docker_image_name
+            docker_image_tag_list:
+            - docker_image_tag_list
+            - docker_image_tag_list
             node_id: node_id
           - metadata:
               key: ""
@@ -13562,6 +14239,9 @@ components:
             malwares_count: 7
             node_name: node_name
             secret_latest_scan_id: secret_latest_scan_id
+            docker_image_name_list:
+            - docker_image_name_list
+            - docker_image_name_list
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
             docker_image_created_at: docker_image_created_at
             docker_image_tag: docker_image_tag
@@ -13680,6 +14360,9 @@ components:
             docker_image_id: docker_image_id
             vulnerability_scan_status: vulnerability_scan_status
             docker_image_name: docker_image_name
+            docker_image_tag_list:
+            - docker_image_tag_list
+            - docker_image_tag_list
             node_id: node_id
           cpu_max: 6.027456183070403
           memory_usage: 7
@@ -14172,6 +14855,9 @@ components:
             malwares_count: 7
             node_name: node_name
             secret_latest_scan_id: secret_latest_scan_id
+            docker_image_name_list:
+            - docker_image_name_list
+            - docker_image_name_list
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
             docker_image_created_at: docker_image_created_at
             docker_image_tag: docker_image_tag
@@ -14290,6 +14976,9 @@ components:
             docker_image_id: docker_image_id
             vulnerability_scan_status: vulnerability_scan_status
             docker_image_name: docker_image_name
+            docker_image_tag_list:
+            - docker_image_tag_list
+            - docker_image_tag_list
             node_id: node_id
           - metadata:
               key: ""
@@ -14300,6 +14989,9 @@ components:
             malwares_count: 7
             node_name: node_name
             secret_latest_scan_id: secret_latest_scan_id
+            docker_image_name_list:
+            - docker_image_name_list
+            - docker_image_name_list
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
             docker_image_created_at: docker_image_created_at
             docker_image_tag: docker_image_tag
@@ -14418,6 +15110,9 @@ components:
             docker_image_id: docker_image_id
             vulnerability_scan_status: vulnerability_scan_status
             docker_image_name: docker_image_name
+            docker_image_tag_list:
+            - docker_image_tag_list
+            - docker_image_tag_list
             node_id: node_id
           cpu_max: 6.027456183070403
           memory_usage: 7
@@ -15909,6 +16604,9 @@ components:
           malwares_count: 7
           node_name: node_name
           secret_latest_scan_id: secret_latest_scan_id
+          docker_image_name_list:
+          - docker_image_name_list
+          - docker_image_name_list
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
           docker_image_created_at: docker_image_created_at
           docker_image_tag: docker_image_tag
@@ -16027,6 +16725,9 @@ components:
           docker_image_id: docker_image_id
           vulnerability_scan_status: vulnerability_scan_status
           docker_image_name: docker_image_name
+          docker_image_tag_list:
+          - docker_image_tag_list
+          - docker_image_tag_list
           node_id: node_id
         - metadata:
             key: ""
@@ -16037,6 +16738,9 @@ components:
           malwares_count: 7
           node_name: node_name
           secret_latest_scan_id: secret_latest_scan_id
+          docker_image_name_list:
+          - docker_image_name_list
+          - docker_image_name_list
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
           docker_image_created_at: docker_image_created_at
           docker_image_tag: docker_image_tag
@@ -16155,6 +16859,9 @@ components:
           docker_image_id: docker_image_id
           vulnerability_scan_status: vulnerability_scan_status
           docker_image_name: docker_image_name
+          docker_image_tag_list:
+          - docker_image_tag_list
+          - docker_image_tag_list
           node_id: node_id
         host_name: host_name
         node_id: node_id
@@ -18474,6 +19181,107 @@ components:
       - node_filters
       - scan_filters
       - window
+      type: object
+    SinglesignonGetSingleSignOnResponse:
+      example:
+        instructions:
+        - value: value
+          key: key
+        - value: value
+          key: key
+        issuer_url: issuer_url
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        sso_provider_type: sso_provider_type
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: 0
+        label: label
+        client_id: client_id
+      properties:
+        client_id:
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        id:
+          type: integer
+        instructions:
+          items:
+            $ref: '#/components/schemas/SinglesignonSSOConfigurationInstructions'
+          nullable: true
+          type: array
+        issuer_url:
+          type: string
+        label:
+          type: string
+        sso_provider_type:
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+      required:
+      - client_id
+      - created_at
+      - id
+      - instructions
+      - issuer_url
+      - label
+      - sso_provider_type
+      - updated_at
+      type: object
+    SinglesignonSSOConfigurationInstructions:
+      example:
+        value: value
+        key: key
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      required:
+      - key
+      - value
+      type: object
+    SinglesignonSSOProviderConfig:
+      example:
+        issuer_url: issuer_url
+        sso_provider_type: oidc
+        client_secret: client_secret
+        client_id: client_id
+      properties:
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        issuer_url:
+          type: string
+        sso_provider_type:
+          enum:
+          - oidc
+          - google
+          - microsoft
+          - github
+          type: string
+      required:
+      - client_id
+      - client_secret
+      - sso_provider_type
+      type: object
+    SinglesignonVerifySSOAuthRequest:
+      example:
+        code: code
+        user_id: 0
+        namespace: namespace
+      properties:
+        code:
+          type: string
+        namespace:
+          type: string
+        user_id:
+          type: integer
+      required:
+      - code
+      - namespace
+      - user_id
       type: object
     SqlNullTime:
       type: object

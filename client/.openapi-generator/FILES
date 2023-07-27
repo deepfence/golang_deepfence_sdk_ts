@@ -2,6 +2,7 @@
 .travis.yml
 README.md
 api/openapi.yaml
+api_agent_config.go
 api_agent_filesystem.go
 api_agent_network.go
 api_authentication.go
@@ -28,6 +29,7 @@ api_user.go
 api_vulnerability.go
 client.go
 configuration.go
+docs/AgentConfigAPI.md
 docs/AgentFilesystemAPI.md
 docs/AgentNetworkAPI.md
 docs/ApiDocsBadRequestResponse.md
@@ -42,8 +44,14 @@ docs/ComplianceAPI.md
 docs/ControlsAPI.md
 docs/ControlsAction.md
 docs/ControlsAgentBeat.md
+docs/ControlsAgentConfig.md
 docs/ControlsAgentControls.md
+docs/ControlsFilesystemTracerConfig.md
+docs/ControlsMonitoredFilesConfig.md
 docs/ControlsNetworkRules.md
+docs/ControlsNetworkTracerConfig.md
+docs/ControlsPolicyFilterConfig.md
+docs/ControlsProcessEventConfig.md
 docs/DetailedConnectionSummary.md
 docs/DetailedNodeSummary.md
 docs/DiagnosisAPI.md
@@ -90,6 +98,7 @@ docs/ModelAgentPluginsStatus.md
 docs/ModelAgentUpgrade.md
 docs/ModelApiAuthRequest.md
 docs/ModelApiTokenResponse.md
+docs/ModelAttachAgentConfigReq.md
 docs/ModelBasicNode.md
 docs/ModelBulkDeleteScansRequest.md
 docs/ModelCloudCompliance.md
@@ -109,6 +118,7 @@ docs/ModelCloudNodeControlResp.md
 docs/ModelCloudNodeEnableDisableReq.md
 docs/ModelCloudNodeProvidersListResp.md
 docs/ModelCloudResource.md
+docs/ModelCommonAlert.md
 docs/ModelCompliance.md
 docs/ModelComplianceRule.md
 docs/ModelComplianceScanInfo.md
@@ -231,6 +241,10 @@ docs/SearchSearchNodeReq.md
 docs/SearchSearchScanReq.md
 docs/SecretScanAPI.md
 docs/SettingsAPI.md
+docs/SinglesignonGetSingleSignOnResponse.md
+docs/SinglesignonSSOConfigurationInstructions.md
+docs/SinglesignonSSOProviderConfig.md
+docs/SinglesignonVerifySSOAuthRequest.md
 docs/ThreatAPI.md
 docs/TopologyAPI.md
 docs/UserAPI.md
@@ -246,8 +260,14 @@ model_api_docs_failure_response.go
 model_api_docs_graph_result.go
 model_controls_action.go
 model_controls_agent_beat.go
+model_controls_agent_config.go
 model_controls_agent_controls.go
+model_controls_filesystem_tracer_config.go
+model_controls_monitored_files_config.go
 model_controls_network_rules.go
+model_controls_network_tracer_config.go
+model_controls_policy_filter_config.go
+model_controls_process_event_config.go
 model_detailed_connection_summary.go
 model_detailed_node_summary.go
 model_diagnosis_diagnostic_logs_link.go
@@ -289,6 +309,7 @@ model_model_agent_plugins_status.go
 model_model_agent_upgrade.go
 model_model_api_auth_request.go
 model_model_api_token_response.go
+model_model_attach_agent_config_req.go
 model_model_basic_node.go
 model_model_bulk_delete_scans_request.go
 model_model_cloud_compliance.go
@@ -308,6 +329,7 @@ model_model_cloud_node_control_resp.go
 model_model_cloud_node_enable_disable_req.go
 model_model_cloud_node_providers_list_resp.go
 model_model_cloud_resource.go
+model_model_common_alert.go
 model_model_compliance.go
 model_model_compliance_rule.go
 model_model_compliance_scan_info.go
@@ -424,10 +446,15 @@ model_search_search_count_resp.go
 model_search_search_filter.go
 model_search_search_node_req.go
 model_search_search_scan_req.go
+model_singlesignon_get_single_sign_on_response.go
+model_singlesignon_sso_configuration_instructions.go
+model_singlesignon_sso_provider_config.go
+model_singlesignon_verify_sso_auth_request.go
 model_utils_advanced_report_filters.go
 model_utils_report_filters.go
 model_utils_scan_sbom_request.go
 response.go
+test/api_agent_config_test.go
 test/api_agent_filesystem_test.go
 test/api_agent_network_test.go
 test/api_authentication_test.go

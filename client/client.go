@@ -50,6 +50,8 @@ type APIClient struct {
 
 	// API Services
 
+	AgentConfigAPI *AgentConfigAPIService
+
 	AgentFilesystemAPI *AgentFilesystemAPIService
 
 	AgentNetworkAPI *AgentNetworkAPIService
@@ -115,6 +117,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.AgentConfigAPI = (*AgentConfigAPIService)(&c.common)
 	c.AgentFilesystemAPI = (*AgentFilesystemAPIService)(&c.common)
 	c.AgentNetworkAPI = (*AgentNetworkAPIService)(&c.common)
 	c.AuthenticationAPI = (*AuthenticationAPIService)(&c.common)
@@ -599,7 +602,11 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 	} else if jsonCheck.MatchString(contentType) {
 		err = json.NewEncoder(bodyBuf).Encode(body)
 	} else if xmlCheck.MatchString(contentType) {
-		err = xml.NewEncoder(bodyBuf).Encode(body)
+		var bs []byte
+		bs, err = xml.Marshal(body)
+		if err == nil {
+			bodyBuf.Write(bs)
+		}
 	}
 
 	if err != nil {

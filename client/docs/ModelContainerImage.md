@@ -8,8 +8,10 @@ Name | Type | Description | Notes
 **DockerImageCreatedAt** | **string** |  | 
 **DockerImageId** | **string** |  | 
 **DockerImageName** | **string** |  | 
+**DockerImageNameList** | **[]string** |  | 
 **DockerImageSize** | **string** |  | 
 **DockerImageTag** | **string** |  | 
+**DockerImageTagList** | **[]string** |  | 
 **DockerImageVirtualSize** | **string** |  | 
 **MalwareLatestScanId** | **string** |  | 
 **MalwareScanStatus** | **string** |  | 
@@ -28,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewModelContainerImage
 
-`func NewModelContainerImage(containers []ModelContainer, dockerImageCreatedAt string, dockerImageId string, dockerImageName string, dockerImageSize string, dockerImageTag string, dockerImageVirtualSize string, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, metadata map[string]interface{}, nodeId string, nodeName string, secretLatestScanId string, secretScanStatus string, secretsCount int32, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string, ) *ModelContainerImage`
+`func NewModelContainerImage(containers []ModelContainer, dockerImageCreatedAt string, dockerImageId string, dockerImageName string, dockerImageNameList []string, dockerImageSize string, dockerImageTag string, dockerImageTagList []string, dockerImageVirtualSize string, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, metadata map[string]interface{}, nodeId string, nodeName string, secretLatestScanId string, secretScanStatus string, secretsCount int32, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string, ) *ModelContainerImage`
 
 NewModelContainerImage instantiates a new ModelContainerImage object
 This constructor will assign default values to properties that have it defined,
@@ -133,6 +135,36 @@ and a boolean to check if the value has been set.
 SetDockerImageName sets DockerImageName field to given value.
 
 
+### GetDockerImageNameList
+
+`func (o *ModelContainerImage) GetDockerImageNameList() []string`
+
+GetDockerImageNameList returns the DockerImageNameList field if non-nil, zero value otherwise.
+
+### GetDockerImageNameListOk
+
+`func (o *ModelContainerImage) GetDockerImageNameListOk() (*[]string, bool)`
+
+GetDockerImageNameListOk returns a tuple with the DockerImageNameList field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDockerImageNameList
+
+`func (o *ModelContainerImage) SetDockerImageNameList(v []string)`
+
+SetDockerImageNameList sets DockerImageNameList field to given value.
+
+
+### SetDockerImageNameListNil
+
+`func (o *ModelContainerImage) SetDockerImageNameListNil(b bool)`
+
+ SetDockerImageNameListNil sets the value for DockerImageNameList to be an explicit nil
+
+### UnsetDockerImageNameList
+`func (o *ModelContainerImage) UnsetDockerImageNameList()`
+
+UnsetDockerImageNameList ensures that no value is present for DockerImageNameList, not even an explicit nil
 ### GetDockerImageSize
 
 `func (o *ModelContainerImage) GetDockerImageSize() string`
@@ -173,6 +205,36 @@ and a boolean to check if the value has been set.
 SetDockerImageTag sets DockerImageTag field to given value.
 
 
+### GetDockerImageTagList
+
+`func (o *ModelContainerImage) GetDockerImageTagList() []string`
+
+GetDockerImageTagList returns the DockerImageTagList field if non-nil, zero value otherwise.
+
+### GetDockerImageTagListOk
+
+`func (o *ModelContainerImage) GetDockerImageTagListOk() (*[]string, bool)`
+
+GetDockerImageTagListOk returns a tuple with the DockerImageTagList field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDockerImageTagList
+
+`func (o *ModelContainerImage) SetDockerImageTagList(v []string)`
+
+SetDockerImageTagList sets DockerImageTagList field to given value.
+
+
+### SetDockerImageTagListNil
+
+`func (o *ModelContainerImage) SetDockerImageTagListNil(b bool)`
+
+ SetDockerImageTagListNil sets the value for DockerImageTagList to be an explicit nil
+
+### UnsetDockerImageTagList
+`func (o *ModelContainerImage) UnsetDockerImageTagList()`
+
+UnsetDockerImageTagList ensures that no value is present for DockerImageTagList, not even an explicit nil
 ### GetDockerImageVirtualSize
 
 `func (o *ModelContainerImage) GetDockerImageVirtualSize() string`
