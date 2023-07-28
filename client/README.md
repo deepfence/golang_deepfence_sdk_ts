@@ -182,6 +182,7 @@ Class | Method | HTTP request | Description
 *ScanResultsAPI* | [**MaskScanResult**](docs/ScanResultsAPI.md#maskscanresult) | **Post** /deepfence/scan/results/action/mask | Mask Scans Results
 *ScanResultsAPI* | [**NotifyScanResult**](docs/ScanResultsAPI.md#notifyscanresult) | **Post** /deepfence/scan/results/action/notify | Notify Scans Results
 *ScanResultsAPI* | [**UnmaskScanResult**](docs/ScanResultsAPI.md#unmaskscanresult) | **Post** /deepfence/scan/results/action/unmask | Unmask Scans Results
+*SearchAPI* | [**CountAlerts**](docs/SearchAPI.md#countalerts) | **Post** /deepfence/search/count/alerts | Count Alerts
 *SearchAPI* | [**CountCloudAccounts**](docs/SearchAPI.md#countcloudaccounts) | **Post** /deepfence/search/count/cloud-accounts | Count Cloud Nodes
 *SearchAPI* | [**CountCloudComplianceScans**](docs/SearchAPI.md#countcloudcompliancescans) | **Post** /deepfence/search/count/cloud-compliance/scans | Count Cloud Compliance Scan results
 *SearchAPI* | [**CountCloudCompliances**](docs/SearchAPI.md#countcloudcompliances) | **Post** /deepfence/search/count/cloud-compliances | Count Cloud compliances
@@ -191,13 +192,13 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**CountCompliances**](docs/SearchAPI.md#countcompliances) | **Post** /deepfence/search/count/compliances | Count Compliances
 *SearchAPI* | [**CountContainerImages**](docs/SearchAPI.md#countcontainerimages) | **Post** /deepfence/search/count/images | Count Container images
 *SearchAPI* | [**CountContainers**](docs/SearchAPI.md#countcontainers) | **Post** /deepfence/search/count/containers | Count Containers data
-*SearchAPI* | [**CountFileAlerts**](docs/SearchAPI.md#countfilealerts) | **Post** /deepfence/count/file-alerts | Count file alerts
+*SearchAPI* | [**CountFileAlerts**](docs/SearchAPI.md#countfilealerts) | **Post** /deepfence/search/count/file-alerts | Count file alerts
 *SearchAPI* | [**CountHosts**](docs/SearchAPI.md#counthosts) | **Post** /deepfence/search/count/hosts | Count hosts
 *SearchAPI* | [**CountKubernetesClusters**](docs/SearchAPI.md#countkubernetesclusters) | **Post** /deepfence/search/count/kubernetes-clusters | Count Kubernetes clusters
 *SearchAPI* | [**CountMalwareRules**](docs/SearchAPI.md#countmalwarerules) | **Post** /deepfence/search/count/malware-rules | Count Malware Rules
 *SearchAPI* | [**CountMalwareScans**](docs/SearchAPI.md#countmalwarescans) | **Post** /deepfence/search/count/malware/scans | Count Malware Scan results
 *SearchAPI* | [**CountMalwares**](docs/SearchAPI.md#countmalwares) | **Post** /deepfence/search/count/malwares | Count Malwares
-*SearchAPI* | [**CountNetworkAlerts**](docs/SearchAPI.md#countnetworkalerts) | **Post** /deepfence/count/network-alerts | Count network alerts
+*SearchAPI* | [**CountNetworkAlerts**](docs/SearchAPI.md#countnetworkalerts) | **Post** /deepfence/search/count/network-alerts | Count network alerts
 *SearchAPI* | [**CountNodes**](docs/SearchAPI.md#countnodes) | **Get** /deepfence/search/count/nodes | Count nodes
 *SearchAPI* | [**CountPods**](docs/SearchAPI.md#countpods) | **Post** /deepfence/search/count/pods | Count Pods
 *SearchAPI* | [**CountSecretRules**](docs/SearchAPI.md#countsecretrules) | **Post** /deepfence/search/count/secret-rules | Count Secret Rules
@@ -305,6 +306,7 @@ Class | Method | HTTP request | Description
  - [ControlsMonitoredFilesConfig](docs/ControlsMonitoredFilesConfig.md)
  - [ControlsNetworkRules](docs/ControlsNetworkRules.md)
  - [ControlsNetworkTracerConfig](docs/ControlsNetworkTracerConfig.md)
+ - [ControlsPolicy](docs/ControlsPolicy.md)
  - [ControlsPolicyFilterConfig](docs/ControlsPolicyFilterConfig.md)
  - [ControlsProcessEventConfig](docs/ControlsProcessEventConfig.md)
  - [DetailedConnectionSummary](docs/DetailedConnectionSummary.md)

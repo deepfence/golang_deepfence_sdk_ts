@@ -9,8 +9,7 @@ Name | Type | Description | Notes
 **Classtype** | **string** |  | 
 **ContainerName** | **string** |  | 
 **Count** | **int32** |  | 
-**CreatedAt** | Pointer to **string** |  | [optional] 
-**Date** | **float32** |  | 
+**CreatedAt** | **int32** |  | 
 **Description** | **string** |  | 
 **DestinationIp** | **string** |  | 
 **DestinationPort** | **int32** |  | 
@@ -21,7 +20,7 @@ Name | Type | Description | Notes
 **Hostname** | **string** |  | 
 **Http** | Pointer to [**ModelNetworkAlertHttp**](ModelNetworkAlertHttp.md) |  | [optional] 
 **HttpType** | **string** |  | 
-**Intent** | **[]string** |  | 
+**Intent** | **string** |  | 
 **Internal** | **string** |  | 
 **IpReputation** | **string** |  | 
 **KubernetesClusterName** | **string** |  | 
@@ -40,14 +39,14 @@ Name | Type | Description | Notes
 **SourceIp** | **string** |  | 
 **SourcePort** | **int32** |  | 
 **Summary** | **string** |  | 
-**Tags** | **[]string** |  | 
-**UpdatedAt** | Pointer to **string** |  | [optional] 
+**Tags** | **string** |  | 
+**UpdatedAt** | **int32** |  | 
 
 ## Methods
 
 ### NewModelNetworkAlert
 
-`func NewModelNetworkAlert(appProto string, category string, classtype string, containerName string, count int32, date float32, description string, destinationIp string, destinationPort int32, direction string, encrypted string, eventType string, hostname string, httpType string, intent []string, internal string, ipReputation string, kubernetesClusterName string, masked bool, matched string, nodeId string, nodeType string, podName string, resourceType string, ruleId int32, scopeId string, severity string, severityAnomalyContainerName string, severityScore float32, signatureId int32, sourceIp string, sourcePort int32, summary string, tags []string, ) *ModelNetworkAlert`
+`func NewModelNetworkAlert(appProto string, category string, classtype string, containerName string, count int32, createdAt int32, description string, destinationIp string, destinationPort int32, direction string, encrypted string, eventType string, hostname string, httpType string, intent string, internal string, ipReputation string, kubernetesClusterName string, masked bool, matched string, nodeId string, nodeType string, podName string, resourceType string, ruleId int32, scopeId string, severity string, severityAnomalyContainerName string, severityScore float32, signatureId int32, sourceIp string, sourcePort int32, summary string, tags string, updatedAt int32, ) *ModelNetworkAlert`
 
 NewModelNetworkAlert instantiates a new ModelNetworkAlert object
 This constructor will assign default values to properties that have it defined,
@@ -164,47 +163,22 @@ SetCount sets Count field to given value.
 
 ### GetCreatedAt
 
-`func (o *ModelNetworkAlert) GetCreatedAt() string`
+`func (o *ModelNetworkAlert) GetCreatedAt() int32`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *ModelNetworkAlert) GetCreatedAtOk() (*string, bool)`
+`func (o *ModelNetworkAlert) GetCreatedAtOk() (*int32, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *ModelNetworkAlert) SetCreatedAt(v string)`
+`func (o *ModelNetworkAlert) SetCreatedAt(v int32)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
-### HasCreatedAt
-
-`func (o *ModelNetworkAlert) HasCreatedAt() bool`
-
-HasCreatedAt returns a boolean if a field has been set.
-
-### GetDate
-
-`func (o *ModelNetworkAlert) GetDate() float32`
-
-GetDate returns the Date field if non-nil, zero value otherwise.
-
-### GetDateOk
-
-`func (o *ModelNetworkAlert) GetDateOk() (*float32, bool)`
-
-GetDateOk returns a tuple with the Date field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDate
-
-`func (o *ModelNetworkAlert) SetDate(v float32)`
-
-SetDate sets Date field to given value.
 
 
 ### GetDescription
@@ -419,34 +393,24 @@ SetHttpType sets HttpType field to given value.
 
 ### GetIntent
 
-`func (o *ModelNetworkAlert) GetIntent() []string`
+`func (o *ModelNetworkAlert) GetIntent() string`
 
 GetIntent returns the Intent field if non-nil, zero value otherwise.
 
 ### GetIntentOk
 
-`func (o *ModelNetworkAlert) GetIntentOk() (*[]string, bool)`
+`func (o *ModelNetworkAlert) GetIntentOk() (*string, bool)`
 
 GetIntentOk returns a tuple with the Intent field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIntent
 
-`func (o *ModelNetworkAlert) SetIntent(v []string)`
+`func (o *ModelNetworkAlert) SetIntent(v string)`
 
 SetIntent sets Intent field to given value.
 
 
-### SetIntentNil
-
-`func (o *ModelNetworkAlert) SetIntentNil(b bool)`
-
- SetIntentNil sets the value for Intent to be an explicit nil
-
-### UnsetIntent
-`func (o *ModelNetworkAlert) UnsetIntent()`
-
-UnsetIntent ensures that no value is present for Intent, not even an explicit nil
 ### GetInternal
 
 `func (o *ModelNetworkAlert) GetInternal() string`
@@ -809,58 +773,43 @@ SetSummary sets Summary field to given value.
 
 ### GetTags
 
-`func (o *ModelNetworkAlert) GetTags() []string`
+`func (o *ModelNetworkAlert) GetTags() string`
 
 GetTags returns the Tags field if non-nil, zero value otherwise.
 
 ### GetTagsOk
 
-`func (o *ModelNetworkAlert) GetTagsOk() (*[]string, bool)`
+`func (o *ModelNetworkAlert) GetTagsOk() (*string, bool)`
 
 GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTags
 
-`func (o *ModelNetworkAlert) SetTags(v []string)`
+`func (o *ModelNetworkAlert) SetTags(v string)`
 
 SetTags sets Tags field to given value.
 
 
-### SetTagsNil
-
-`func (o *ModelNetworkAlert) SetTagsNil(b bool)`
-
- SetTagsNil sets the value for Tags to be an explicit nil
-
-### UnsetTags
-`func (o *ModelNetworkAlert) UnsetTags()`
-
-UnsetTags ensures that no value is present for Tags, not even an explicit nil
 ### GetUpdatedAt
 
-`func (o *ModelNetworkAlert) GetUpdatedAt() string`
+`func (o *ModelNetworkAlert) GetUpdatedAt() int32`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *ModelNetworkAlert) GetUpdatedAtOk() (*string, bool)`
+`func (o *ModelNetworkAlert) GetUpdatedAtOk() (*int32, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *ModelNetworkAlert) SetUpdatedAt(v string)`
+`func (o *ModelNetworkAlert) SetUpdatedAt(v int32)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-### HasUpdatedAt
-
-`func (o *ModelNetworkAlert) HasUpdatedAt() bool`
-
-HasUpdatedAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

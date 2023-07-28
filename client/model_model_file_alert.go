@@ -28,28 +28,28 @@ type ModelFileAlert struct {
 	ContainerIp string `json:"container_ip"`
 	ContainerName string `json:"container_name"`
 	Count int32 `json:"count"`
-	CreatedAt *string `json:"created_at,omitempty"`
+	CreatedAt int32 `json:"created_at"`
 	Direction string `json:"direction"`
 	EventType string `json:"event_type"`
 	Filepath string `json:"filepath"`
-	Fstat []string `json:"fstat"`
+	Fstat string `json:"fstat"`
 	Hostname string `json:"hostname"`
-	Intent []string `json:"intent"`
+	Intent string `json:"intent"`
 	Masked bool `json:"masked"`
-	Netstat []string `json:"netstat"`
+	Netstat string `json:"netstat"`
 	NodeId string `json:"node_id"`
 	NodeType string `json:"node_type"`
 	Pid int32 `json:"pid"`
-	ProcStatus []string `json:"proc_status"`
+	ProcStatus string `json:"proc_status"`
 	ProcessName string `json:"process_name"`
 	ResourceType string `json:"resource_type"`
 	Severity string `json:"severity"`
 	SeverityScore float32 `json:"severity_score"`
 	SignatureId int32 `json:"signature_id"`
 	Summary string `json:"summary"`
-	Top []string `json:"top"`
-	UpdatedAt *string `json:"updated_at,omitempty"`
-	Users []string `json:"users"`
+	Top string `json:"top"`
+	UpdatedAt int32 `json:"updated_at"`
+	Users string `json:"users"`
 	W int32 `json:"w"`
 }
 
@@ -57,7 +57,7 @@ type ModelFileAlert struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelFileAlert(anomaly string, category string, classtype string, containerId string, containerImage string, containerIp string, containerName string, count int32, direction string, eventType string, filepath string, fstat []string, hostname string, intent []string, masked bool, netstat []string, nodeId string, nodeType string, pid int32, procStatus []string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, top []string, users []string, w int32) *ModelFileAlert {
+func NewModelFileAlert(anomaly string, category string, classtype string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostname string, intent string, masked bool, netstat string, nodeId string, nodeType string, pid int32, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, top string, updatedAt int32, users string, w int32) *ModelFileAlert {
 	this := ModelFileAlert{}
 	this.Anomaly = anomaly
 	this.Category = category
@@ -67,6 +67,7 @@ func NewModelFileAlert(anomaly string, category string, classtype string, contai
 	this.ContainerIp = containerIp
 	this.ContainerName = containerName
 	this.Count = count
+	this.CreatedAt = createdAt
 	this.Direction = direction
 	this.EventType = eventType
 	this.Filepath = filepath
@@ -86,6 +87,7 @@ func NewModelFileAlert(anomaly string, category string, classtype string, contai
 	this.SignatureId = signatureId
 	this.Summary = summary
 	this.Top = top
+	this.UpdatedAt = updatedAt
 	this.Users = users
 	this.W = w
 	return &this
@@ -291,36 +293,28 @@ func (o *ModelFileAlert) SetCount(v int32) {
 	o.Count = v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *ModelFileAlert) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt) {
-		var ret string
+// GetCreatedAt returns the CreatedAt field value
+func (o *ModelFileAlert) GetCreatedAt() int32 {
+	if o == nil {
+		var ret int32
 		return ret
 	}
-	return *o.CreatedAt
+
+	return o.CreatedAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetCreatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+func (o *ModelFileAlert) GetCreatedAtOk() (*int32, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return &o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *ModelFileAlert) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *ModelFileAlert) SetCreatedAt(v string) {
-	o.CreatedAt = &v
+// SetCreatedAt sets field value
+func (o *ModelFileAlert) SetCreatedAt(v int32) {
+	o.CreatedAt = v
 }
 
 // GetDirection returns the Direction field value
@@ -396,10 +390,9 @@ func (o *ModelFileAlert) SetFilepath(v string) {
 }
 
 // GetFstat returns the Fstat field value
-// If the value is explicit nil, the zero value for []string will be returned
-func (o *ModelFileAlert) GetFstat() []string {
+func (o *ModelFileAlert) GetFstat() string {
 	if o == nil {
-		var ret []string
+		var ret string
 		return ret
 	}
 
@@ -408,16 +401,15 @@ func (o *ModelFileAlert) GetFstat() []string {
 
 // GetFstatOk returns a tuple with the Fstat field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelFileAlert) GetFstatOk() ([]string, bool) {
-	if o == nil || IsNil(o.Fstat) {
+func (o *ModelFileAlert) GetFstatOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Fstat, true
+	return &o.Fstat, true
 }
 
 // SetFstat sets field value
-func (o *ModelFileAlert) SetFstat(v []string) {
+func (o *ModelFileAlert) SetFstat(v string) {
 	o.Fstat = v
 }
 
@@ -446,10 +438,9 @@ func (o *ModelFileAlert) SetHostname(v string) {
 }
 
 // GetIntent returns the Intent field value
-// If the value is explicit nil, the zero value for []string will be returned
-func (o *ModelFileAlert) GetIntent() []string {
+func (o *ModelFileAlert) GetIntent() string {
 	if o == nil {
-		var ret []string
+		var ret string
 		return ret
 	}
 
@@ -458,16 +449,15 @@ func (o *ModelFileAlert) GetIntent() []string {
 
 // GetIntentOk returns a tuple with the Intent field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelFileAlert) GetIntentOk() ([]string, bool) {
-	if o == nil || IsNil(o.Intent) {
+func (o *ModelFileAlert) GetIntentOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Intent, true
+	return &o.Intent, true
 }
 
 // SetIntent sets field value
-func (o *ModelFileAlert) SetIntent(v []string) {
+func (o *ModelFileAlert) SetIntent(v string) {
 	o.Intent = v
 }
 
@@ -496,10 +486,9 @@ func (o *ModelFileAlert) SetMasked(v bool) {
 }
 
 // GetNetstat returns the Netstat field value
-// If the value is explicit nil, the zero value for []string will be returned
-func (o *ModelFileAlert) GetNetstat() []string {
+func (o *ModelFileAlert) GetNetstat() string {
 	if o == nil {
-		var ret []string
+		var ret string
 		return ret
 	}
 
@@ -508,16 +497,15 @@ func (o *ModelFileAlert) GetNetstat() []string {
 
 // GetNetstatOk returns a tuple with the Netstat field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelFileAlert) GetNetstatOk() ([]string, bool) {
-	if o == nil || IsNil(o.Netstat) {
+func (o *ModelFileAlert) GetNetstatOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Netstat, true
+	return &o.Netstat, true
 }
 
 // SetNetstat sets field value
-func (o *ModelFileAlert) SetNetstat(v []string) {
+func (o *ModelFileAlert) SetNetstat(v string) {
 	o.Netstat = v
 }
 
@@ -594,10 +582,9 @@ func (o *ModelFileAlert) SetPid(v int32) {
 }
 
 // GetProcStatus returns the ProcStatus field value
-// If the value is explicit nil, the zero value for []string will be returned
-func (o *ModelFileAlert) GetProcStatus() []string {
+func (o *ModelFileAlert) GetProcStatus() string {
 	if o == nil {
-		var ret []string
+		var ret string
 		return ret
 	}
 
@@ -606,16 +593,15 @@ func (o *ModelFileAlert) GetProcStatus() []string {
 
 // GetProcStatusOk returns a tuple with the ProcStatus field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelFileAlert) GetProcStatusOk() ([]string, bool) {
-	if o == nil || IsNil(o.ProcStatus) {
+func (o *ModelFileAlert) GetProcStatusOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProcStatus, true
+	return &o.ProcStatus, true
 }
 
 // SetProcStatus sets field value
-func (o *ModelFileAlert) SetProcStatus(v []string) {
+func (o *ModelFileAlert) SetProcStatus(v string) {
 	o.ProcStatus = v
 }
 
@@ -764,10 +750,9 @@ func (o *ModelFileAlert) SetSummary(v string) {
 }
 
 // GetTop returns the Top field value
-// If the value is explicit nil, the zero value for []string will be returned
-func (o *ModelFileAlert) GetTop() []string {
+func (o *ModelFileAlert) GetTop() string {
 	if o == nil {
-		var ret []string
+		var ret string
 		return ret
 	}
 
@@ -776,56 +761,46 @@ func (o *ModelFileAlert) GetTop() []string {
 
 // GetTopOk returns a tuple with the Top field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelFileAlert) GetTopOk() ([]string, bool) {
-	if o == nil || IsNil(o.Top) {
+func (o *ModelFileAlert) GetTopOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Top, true
+	return &o.Top, true
 }
 
 // SetTop sets field value
-func (o *ModelFileAlert) SetTop(v []string) {
+func (o *ModelFileAlert) SetTop(v string) {
 	o.Top = v
 }
 
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *ModelFileAlert) GetUpdatedAt() string {
-	if o == nil || IsNil(o.UpdatedAt) {
-		var ret string
+// GetUpdatedAt returns the UpdatedAt field value
+func (o *ModelFileAlert) GetUpdatedAt() int32 {
+	if o == nil {
+		var ret int32
 		return ret
 	}
-	return *o.UpdatedAt
+
+	return o.UpdatedAt
 }
 
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+func (o *ModelFileAlert) GetUpdatedAtOk() (*int32, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UpdatedAt, true
+	return &o.UpdatedAt, true
 }
 
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *ModelFileAlert) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *ModelFileAlert) SetUpdatedAt(v string) {
-	o.UpdatedAt = &v
+// SetUpdatedAt sets field value
+func (o *ModelFileAlert) SetUpdatedAt(v int32) {
+	o.UpdatedAt = v
 }
 
 // GetUsers returns the Users field value
-// If the value is explicit nil, the zero value for []string will be returned
-func (o *ModelFileAlert) GetUsers() []string {
+func (o *ModelFileAlert) GetUsers() string {
 	if o == nil {
-		var ret []string
+		var ret string
 		return ret
 	}
 
@@ -834,16 +809,15 @@ func (o *ModelFileAlert) GetUsers() []string {
 
 // GetUsersOk returns a tuple with the Users field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelFileAlert) GetUsersOk() ([]string, bool) {
-	if o == nil || IsNil(o.Users) {
+func (o *ModelFileAlert) GetUsersOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Users, true
+	return &o.Users, true
 }
 
 // SetUsers sets field value
-func (o *ModelFileAlert) SetUsers(v []string) {
+func (o *ModelFileAlert) SetUsers(v string) {
 	o.Users = v
 }
 
@@ -889,44 +863,28 @@ func (o ModelFileAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["container_ip"] = o.ContainerIp
 	toSerialize["container_name"] = o.ContainerName
 	toSerialize["count"] = o.Count
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
-	}
+	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["direction"] = o.Direction
 	toSerialize["event_type"] = o.EventType
 	toSerialize["filepath"] = o.Filepath
-	if o.Fstat != nil {
-		toSerialize["fstat"] = o.Fstat
-	}
+	toSerialize["fstat"] = o.Fstat
 	toSerialize["hostname"] = o.Hostname
-	if o.Intent != nil {
-		toSerialize["intent"] = o.Intent
-	}
+	toSerialize["intent"] = o.Intent
 	toSerialize["masked"] = o.Masked
-	if o.Netstat != nil {
-		toSerialize["netstat"] = o.Netstat
-	}
+	toSerialize["netstat"] = o.Netstat
 	toSerialize["node_id"] = o.NodeId
 	toSerialize["node_type"] = o.NodeType
 	toSerialize["pid"] = o.Pid
-	if o.ProcStatus != nil {
-		toSerialize["proc_status"] = o.ProcStatus
-	}
+	toSerialize["proc_status"] = o.ProcStatus
 	toSerialize["process_name"] = o.ProcessName
 	toSerialize["resource_type"] = o.ResourceType
 	toSerialize["severity"] = o.Severity
 	toSerialize["severity_score"] = o.SeverityScore
 	toSerialize["signature_id"] = o.SignatureId
 	toSerialize["summary"] = o.Summary
-	if o.Top != nil {
-		toSerialize["top"] = o.Top
-	}
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if o.Users != nil {
-		toSerialize["users"] = o.Users
-	}
+	toSerialize["top"] = o.Top
+	toSerialize["updated_at"] = o.UpdatedAt
+	toSerialize["users"] = o.Users
 	toSerialize["w"] = o.W
 	return toSerialize, nil
 }

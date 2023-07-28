@@ -20,20 +20,16 @@ var _ MappedNullable = &ControlsPolicyFilterConfig{}
 
 // ControlsPolicyFilterConfig struct for ControlsPolicyFilterConfig
 type ControlsPolicyFilterConfig struct {
-	EventType string `json:"event_type"`
-	Hash string `json:"hash"`
-	Matcher map[string]interface{} `json:"matcher"`
+	Policies []ControlsPolicy `json:"policies"`
 }
 
 // NewControlsPolicyFilterConfig instantiates a new ControlsPolicyFilterConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsPolicyFilterConfig(eventType string, hash string, matcher map[string]interface{}) *ControlsPolicyFilterConfig {
+func NewControlsPolicyFilterConfig(policies []ControlsPolicy) *ControlsPolicyFilterConfig {
 	this := ControlsPolicyFilterConfig{}
-	this.EventType = eventType
-	this.Hash = hash
-	this.Matcher = matcher
+	this.Policies = policies
 	return &this
 }
 
@@ -45,76 +41,30 @@ func NewControlsPolicyFilterConfigWithDefaults() *ControlsPolicyFilterConfig {
 	return &this
 }
 
-// GetEventType returns the EventType field value
-func (o *ControlsPolicyFilterConfig) GetEventType() string {
+// GetPolicies returns the Policies field value
+// If the value is explicit nil, the zero value for []ControlsPolicy will be returned
+func (o *ControlsPolicyFilterConfig) GetPolicies() []ControlsPolicy {
 	if o == nil {
-		var ret string
+		var ret []ControlsPolicy
 		return ret
 	}
 
-	return o.EventType
+	return o.Policies
 }
 
-// GetEventTypeOk returns a tuple with the EventType field value
+// GetPoliciesOk returns a tuple with the Policies field value
 // and a boolean to check if the value has been set.
-func (o *ControlsPolicyFilterConfig) GetEventTypeOk() (*string, bool) {
-	if o == nil {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ControlsPolicyFilterConfig) GetPoliciesOk() ([]ControlsPolicy, bool) {
+	if o == nil || IsNil(o.Policies) {
 		return nil, false
 	}
-	return &o.EventType, true
+	return o.Policies, true
 }
 
-// SetEventType sets field value
-func (o *ControlsPolicyFilterConfig) SetEventType(v string) {
-	o.EventType = v
-}
-
-// GetHash returns the Hash field value
-func (o *ControlsPolicyFilterConfig) GetHash() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Hash
-}
-
-// GetHashOk returns a tuple with the Hash field value
-// and a boolean to check if the value has been set.
-func (o *ControlsPolicyFilterConfig) GetHashOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Hash, true
-}
-
-// SetHash sets field value
-func (o *ControlsPolicyFilterConfig) SetHash(v string) {
-	o.Hash = v
-}
-
-// GetMatcher returns the Matcher field value
-func (o *ControlsPolicyFilterConfig) GetMatcher() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-
-	return o.Matcher
-}
-
-// GetMatcherOk returns a tuple with the Matcher field value
-// and a boolean to check if the value has been set.
-func (o *ControlsPolicyFilterConfig) GetMatcherOk() (map[string]interface{}, bool) {
-	if o == nil {
-		return map[string]interface{}{}, false
-	}
-	return o.Matcher, true
-}
-
-// SetMatcher sets field value
-func (o *ControlsPolicyFilterConfig) SetMatcher(v map[string]interface{}) {
-	o.Matcher = v
+// SetPolicies sets field value
+func (o *ControlsPolicyFilterConfig) SetPolicies(v []ControlsPolicy) {
+	o.Policies = v
 }
 
 func (o ControlsPolicyFilterConfig) MarshalJSON() ([]byte, error) {
@@ -127,9 +77,9 @@ func (o ControlsPolicyFilterConfig) MarshalJSON() ([]byte, error) {
 
 func (o ControlsPolicyFilterConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["event_type"] = o.EventType
-	toSerialize["hash"] = o.Hash
-	toSerialize["matcher"] = o.Matcher
+	if o.Policies != nil {
+		toSerialize["policies"] = o.Policies
+	}
 	return toSerialize, nil
 }
 

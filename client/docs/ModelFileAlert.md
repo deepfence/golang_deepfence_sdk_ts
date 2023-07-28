@@ -12,35 +12,35 @@ Name | Type | Description | Notes
 **ContainerIp** | **string** |  | 
 **ContainerName** | **string** |  | 
 **Count** | **int32** |  | 
-**CreatedAt** | Pointer to **string** |  | [optional] 
+**CreatedAt** | **int32** |  | 
 **Direction** | **string** |  | 
 **EventType** | **string** |  | 
 **Filepath** | **string** |  | 
-**Fstat** | **[]string** |  | 
+**Fstat** | **string** |  | 
 **Hostname** | **string** |  | 
-**Intent** | **[]string** |  | 
+**Intent** | **string** |  | 
 **Masked** | **bool** |  | 
-**Netstat** | **[]string** |  | 
+**Netstat** | **string** |  | 
 **NodeId** | **string** |  | 
 **NodeType** | **string** |  | 
 **Pid** | **int32** |  | 
-**ProcStatus** | **[]string** |  | 
+**ProcStatus** | **string** |  | 
 **ProcessName** | **string** |  | 
 **ResourceType** | **string** |  | 
 **Severity** | **string** |  | 
 **SeverityScore** | **float32** |  | 
 **SignatureId** | **int32** |  | 
 **Summary** | **string** |  | 
-**Top** | **[]string** |  | 
-**UpdatedAt** | Pointer to **string** |  | [optional] 
-**Users** | **[]string** |  | 
+**Top** | **string** |  | 
+**UpdatedAt** | **int32** |  | 
+**Users** | **string** |  | 
 **W** | **int32** |  | 
 
 ## Methods
 
 ### NewModelFileAlert
 
-`func NewModelFileAlert(anomaly string, category string, classtype string, containerId string, containerImage string, containerIp string, containerName string, count int32, direction string, eventType string, filepath string, fstat []string, hostname string, intent []string, masked bool, netstat []string, nodeId string, nodeType string, pid int32, procStatus []string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, top []string, users []string, w int32, ) *ModelFileAlert`
+`func NewModelFileAlert(anomaly string, category string, classtype string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostname string, intent string, masked bool, netstat string, nodeId string, nodeType string, pid int32, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, top string, updatedAt int32, users string, w int32, ) *ModelFileAlert`
 
 NewModelFileAlert instantiates a new ModelFileAlert object
 This constructor will assign default values to properties that have it defined,
@@ -217,28 +217,23 @@ SetCount sets Count field to given value.
 
 ### GetCreatedAt
 
-`func (o *ModelFileAlert) GetCreatedAt() string`
+`func (o *ModelFileAlert) GetCreatedAt() int32`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *ModelFileAlert) GetCreatedAtOk() (*string, bool)`
+`func (o *ModelFileAlert) GetCreatedAtOk() (*int32, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *ModelFileAlert) SetCreatedAt(v string)`
+`func (o *ModelFileAlert) SetCreatedAt(v int32)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
-### HasCreatedAt
-
-`func (o *ModelFileAlert) HasCreatedAt() bool`
-
-HasCreatedAt returns a boolean if a field has been set.
 
 ### GetDirection
 
@@ -302,34 +297,24 @@ SetFilepath sets Filepath field to given value.
 
 ### GetFstat
 
-`func (o *ModelFileAlert) GetFstat() []string`
+`func (o *ModelFileAlert) GetFstat() string`
 
 GetFstat returns the Fstat field if non-nil, zero value otherwise.
 
 ### GetFstatOk
 
-`func (o *ModelFileAlert) GetFstatOk() (*[]string, bool)`
+`func (o *ModelFileAlert) GetFstatOk() (*string, bool)`
 
 GetFstatOk returns a tuple with the Fstat field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFstat
 
-`func (o *ModelFileAlert) SetFstat(v []string)`
+`func (o *ModelFileAlert) SetFstat(v string)`
 
 SetFstat sets Fstat field to given value.
 
 
-### SetFstatNil
-
-`func (o *ModelFileAlert) SetFstatNil(b bool)`
-
- SetFstatNil sets the value for Fstat to be an explicit nil
-
-### UnsetFstat
-`func (o *ModelFileAlert) UnsetFstat()`
-
-UnsetFstat ensures that no value is present for Fstat, not even an explicit nil
 ### GetHostname
 
 `func (o *ModelFileAlert) GetHostname() string`
@@ -352,34 +337,24 @@ SetHostname sets Hostname field to given value.
 
 ### GetIntent
 
-`func (o *ModelFileAlert) GetIntent() []string`
+`func (o *ModelFileAlert) GetIntent() string`
 
 GetIntent returns the Intent field if non-nil, zero value otherwise.
 
 ### GetIntentOk
 
-`func (o *ModelFileAlert) GetIntentOk() (*[]string, bool)`
+`func (o *ModelFileAlert) GetIntentOk() (*string, bool)`
 
 GetIntentOk returns a tuple with the Intent field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIntent
 
-`func (o *ModelFileAlert) SetIntent(v []string)`
+`func (o *ModelFileAlert) SetIntent(v string)`
 
 SetIntent sets Intent field to given value.
 
 
-### SetIntentNil
-
-`func (o *ModelFileAlert) SetIntentNil(b bool)`
-
- SetIntentNil sets the value for Intent to be an explicit nil
-
-### UnsetIntent
-`func (o *ModelFileAlert) UnsetIntent()`
-
-UnsetIntent ensures that no value is present for Intent, not even an explicit nil
 ### GetMasked
 
 `func (o *ModelFileAlert) GetMasked() bool`
@@ -402,34 +377,24 @@ SetMasked sets Masked field to given value.
 
 ### GetNetstat
 
-`func (o *ModelFileAlert) GetNetstat() []string`
+`func (o *ModelFileAlert) GetNetstat() string`
 
 GetNetstat returns the Netstat field if non-nil, zero value otherwise.
 
 ### GetNetstatOk
 
-`func (o *ModelFileAlert) GetNetstatOk() (*[]string, bool)`
+`func (o *ModelFileAlert) GetNetstatOk() (*string, bool)`
 
 GetNetstatOk returns a tuple with the Netstat field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetstat
 
-`func (o *ModelFileAlert) SetNetstat(v []string)`
+`func (o *ModelFileAlert) SetNetstat(v string)`
 
 SetNetstat sets Netstat field to given value.
 
 
-### SetNetstatNil
-
-`func (o *ModelFileAlert) SetNetstatNil(b bool)`
-
- SetNetstatNil sets the value for Netstat to be an explicit nil
-
-### UnsetNetstat
-`func (o *ModelFileAlert) UnsetNetstat()`
-
-UnsetNetstat ensures that no value is present for Netstat, not even an explicit nil
 ### GetNodeId
 
 `func (o *ModelFileAlert) GetNodeId() string`
@@ -492,34 +457,24 @@ SetPid sets Pid field to given value.
 
 ### GetProcStatus
 
-`func (o *ModelFileAlert) GetProcStatus() []string`
+`func (o *ModelFileAlert) GetProcStatus() string`
 
 GetProcStatus returns the ProcStatus field if non-nil, zero value otherwise.
 
 ### GetProcStatusOk
 
-`func (o *ModelFileAlert) GetProcStatusOk() (*[]string, bool)`
+`func (o *ModelFileAlert) GetProcStatusOk() (*string, bool)`
 
 GetProcStatusOk returns a tuple with the ProcStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProcStatus
 
-`func (o *ModelFileAlert) SetProcStatus(v []string)`
+`func (o *ModelFileAlert) SetProcStatus(v string)`
 
 SetProcStatus sets ProcStatus field to given value.
 
 
-### SetProcStatusNil
-
-`func (o *ModelFileAlert) SetProcStatusNil(b bool)`
-
- SetProcStatusNil sets the value for ProcStatus to be an explicit nil
-
-### UnsetProcStatus
-`func (o *ModelFileAlert) UnsetProcStatus()`
-
-UnsetProcStatus ensures that no value is present for ProcStatus, not even an explicit nil
 ### GetProcessName
 
 `func (o *ModelFileAlert) GetProcessName() string`
@@ -642,89 +597,64 @@ SetSummary sets Summary field to given value.
 
 ### GetTop
 
-`func (o *ModelFileAlert) GetTop() []string`
+`func (o *ModelFileAlert) GetTop() string`
 
 GetTop returns the Top field if non-nil, zero value otherwise.
 
 ### GetTopOk
 
-`func (o *ModelFileAlert) GetTopOk() (*[]string, bool)`
+`func (o *ModelFileAlert) GetTopOk() (*string, bool)`
 
 GetTopOk returns a tuple with the Top field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTop
 
-`func (o *ModelFileAlert) SetTop(v []string)`
+`func (o *ModelFileAlert) SetTop(v string)`
 
 SetTop sets Top field to given value.
 
 
-### SetTopNil
-
-`func (o *ModelFileAlert) SetTopNil(b bool)`
-
- SetTopNil sets the value for Top to be an explicit nil
-
-### UnsetTop
-`func (o *ModelFileAlert) UnsetTop()`
-
-UnsetTop ensures that no value is present for Top, not even an explicit nil
 ### GetUpdatedAt
 
-`func (o *ModelFileAlert) GetUpdatedAt() string`
+`func (o *ModelFileAlert) GetUpdatedAt() int32`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *ModelFileAlert) GetUpdatedAtOk() (*string, bool)`
+`func (o *ModelFileAlert) GetUpdatedAtOk() (*int32, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *ModelFileAlert) SetUpdatedAt(v string)`
+`func (o *ModelFileAlert) SetUpdatedAt(v int32)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-### HasUpdatedAt
-
-`func (o *ModelFileAlert) HasUpdatedAt() bool`
-
-HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetUsers
 
-`func (o *ModelFileAlert) GetUsers() []string`
+`func (o *ModelFileAlert) GetUsers() string`
 
 GetUsers returns the Users field if non-nil, zero value otherwise.
 
 ### GetUsersOk
 
-`func (o *ModelFileAlert) GetUsersOk() (*[]string, bool)`
+`func (o *ModelFileAlert) GetUsersOk() (*string, bool)`
 
 GetUsersOk returns a tuple with the Users field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsers
 
-`func (o *ModelFileAlert) SetUsers(v []string)`
+`func (o *ModelFileAlert) SetUsers(v string)`
 
 SetUsers sets Users field to given value.
 
 
-### SetUsersNil
-
-`func (o *ModelFileAlert) SetUsersNil(b bool)`
-
- SetUsersNil sets the value for Users to be an explicit nil
-
-### UnsetUsers
-`func (o *ModelFileAlert) UnsetUsers()`
-
-UnsetUsers ensures that no value is present for Users, not even an explicit nil
 ### GetW
 
 `func (o *ModelFileAlert) GetW() int32`

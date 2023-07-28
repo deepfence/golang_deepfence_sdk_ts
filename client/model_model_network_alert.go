@@ -25,8 +25,7 @@ type ModelNetworkAlert struct {
 	Classtype string `json:"classtype"`
 	ContainerName string `json:"container_name"`
 	Count int32 `json:"count"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	Date float32 `json:"date"`
+	CreatedAt int32 `json:"created_at"`
 	Description string `json:"description"`
 	DestinationIp string `json:"destination_ip"`
 	DestinationPort int32 `json:"destination_port"`
@@ -37,7 +36,7 @@ type ModelNetworkAlert struct {
 	Hostname string `json:"hostname"`
 	Http *ModelNetworkAlertHttp `json:"http,omitempty"`
 	HttpType string `json:"http_type"`
-	Intent []string `json:"intent"`
+	Intent string `json:"intent"`
 	Internal string `json:"internal"`
 	IpReputation string `json:"ip_reputation"`
 	KubernetesClusterName string `json:"kubernetes_cluster_name"`
@@ -56,22 +55,22 @@ type ModelNetworkAlert struct {
 	SourceIp string `json:"source_ip"`
 	SourcePort int32 `json:"source_port"`
 	Summary string `json:"summary"`
-	Tags []string `json:"tags"`
-	UpdatedAt *string `json:"updated_at,omitempty"`
+	Tags string `json:"tags"`
+	UpdatedAt int32 `json:"updated_at"`
 }
 
 // NewModelNetworkAlert instantiates a new ModelNetworkAlert object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelNetworkAlert(appProto string, category string, classtype string, containerName string, count int32, date float32, description string, destinationIp string, destinationPort int32, direction string, encrypted string, eventType string, hostname string, httpType string, intent []string, internal string, ipReputation string, kubernetesClusterName string, masked bool, matched string, nodeId string, nodeType string, podName string, resourceType string, ruleId int32, scopeId string, severity string, severityAnomalyContainerName string, severityScore float32, signatureId int32, sourceIp string, sourcePort int32, summary string, tags []string) *ModelNetworkAlert {
+func NewModelNetworkAlert(appProto string, category string, classtype string, containerName string, count int32, createdAt int32, description string, destinationIp string, destinationPort int32, direction string, encrypted string, eventType string, hostname string, httpType string, intent string, internal string, ipReputation string, kubernetesClusterName string, masked bool, matched string, nodeId string, nodeType string, podName string, resourceType string, ruleId int32, scopeId string, severity string, severityAnomalyContainerName string, severityScore float32, signatureId int32, sourceIp string, sourcePort int32, summary string, tags string, updatedAt int32) *ModelNetworkAlert {
 	this := ModelNetworkAlert{}
 	this.AppProto = appProto
 	this.Category = category
 	this.Classtype = classtype
 	this.ContainerName = containerName
 	this.Count = count
-	this.Date = date
+	this.CreatedAt = createdAt
 	this.Description = description
 	this.DestinationIp = destinationIp
 	this.DestinationPort = destinationPort
@@ -100,6 +99,7 @@ func NewModelNetworkAlert(appProto string, category string, classtype string, co
 	this.SourcePort = sourcePort
 	this.Summary = summary
 	this.Tags = tags
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -231,60 +231,28 @@ func (o *ModelNetworkAlert) SetCount(v int32) {
 	o.Count = v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *ModelNetworkAlert) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt) {
-		var ret string
-		return ret
-	}
-	return *o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ModelNetworkAlert) GetCreatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
-		return nil, false
-	}
-	return o.CreatedAt, true
-}
-
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *ModelNetworkAlert) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *ModelNetworkAlert) SetCreatedAt(v string) {
-	o.CreatedAt = &v
-}
-
-// GetDate returns the Date field value
-func (o *ModelNetworkAlert) GetDate() float32 {
+// GetCreatedAt returns the CreatedAt field value
+func (o *ModelNetworkAlert) GetCreatedAt() int32 {
 	if o == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 
-	return o.Date
+	return o.CreatedAt
 }
 
-// GetDateOk returns a tuple with the Date field value
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *ModelNetworkAlert) GetDateOk() (*float32, bool) {
+func (o *ModelNetworkAlert) GetCreatedAtOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Date, true
+	return &o.CreatedAt, true
 }
 
-// SetDate sets field value
-func (o *ModelNetworkAlert) SetDate(v float32) {
-	o.Date = v
+// SetCreatedAt sets field value
+func (o *ModelNetworkAlert) SetCreatedAt(v int32) {
+	o.CreatedAt = v
 }
 
 // GetDescription returns the Description field value
@@ -544,10 +512,9 @@ func (o *ModelNetworkAlert) SetHttpType(v string) {
 }
 
 // GetIntent returns the Intent field value
-// If the value is explicit nil, the zero value for []string will be returned
-func (o *ModelNetworkAlert) GetIntent() []string {
+func (o *ModelNetworkAlert) GetIntent() string {
 	if o == nil {
-		var ret []string
+		var ret string
 		return ret
 	}
 
@@ -556,16 +523,15 @@ func (o *ModelNetworkAlert) GetIntent() []string {
 
 // GetIntentOk returns a tuple with the Intent field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelNetworkAlert) GetIntentOk() ([]string, bool) {
-	if o == nil || IsNil(o.Intent) {
+func (o *ModelNetworkAlert) GetIntentOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Intent, true
+	return &o.Intent, true
 }
 
 // SetIntent sets field value
-func (o *ModelNetworkAlert) SetIntent(v []string) {
+func (o *ModelNetworkAlert) SetIntent(v string) {
 	o.Intent = v
 }
 
@@ -1002,10 +968,9 @@ func (o *ModelNetworkAlert) SetSummary(v string) {
 }
 
 // GetTags returns the Tags field value
-// If the value is explicit nil, the zero value for []string will be returned
-func (o *ModelNetworkAlert) GetTags() []string {
+func (o *ModelNetworkAlert) GetTags() string {
 	if o == nil {
-		var ret []string
+		var ret string
 		return ret
 	}
 
@@ -1014,49 +979,40 @@ func (o *ModelNetworkAlert) GetTags() []string {
 
 // GetTagsOk returns a tuple with the Tags field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelNetworkAlert) GetTagsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Tags) {
+func (o *ModelNetworkAlert) GetTagsOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Tags, true
+	return &o.Tags, true
 }
 
 // SetTags sets field value
-func (o *ModelNetworkAlert) SetTags(v []string) {
+func (o *ModelNetworkAlert) SetTags(v string) {
 	o.Tags = v
 }
 
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *ModelNetworkAlert) GetUpdatedAt() string {
-	if o == nil || IsNil(o.UpdatedAt) {
-		var ret string
+// GetUpdatedAt returns the UpdatedAt field value
+func (o *ModelNetworkAlert) GetUpdatedAt() int32 {
+	if o == nil {
+		var ret int32
 		return ret
 	}
-	return *o.UpdatedAt
+
+	return o.UpdatedAt
 }
 
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
 // and a boolean to check if the value has been set.
-func (o *ModelNetworkAlert) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+func (o *ModelNetworkAlert) GetUpdatedAtOk() (*int32, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UpdatedAt, true
+	return &o.UpdatedAt, true
 }
 
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *ModelNetworkAlert) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *ModelNetworkAlert) SetUpdatedAt(v string) {
-	o.UpdatedAt = &v
+// SetUpdatedAt sets field value
+func (o *ModelNetworkAlert) SetUpdatedAt(v int32) {
+	o.UpdatedAt = v
 }
 
 func (o ModelNetworkAlert) MarshalJSON() ([]byte, error) {
@@ -1074,10 +1030,7 @@ func (o ModelNetworkAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["classtype"] = o.Classtype
 	toSerialize["container_name"] = o.ContainerName
 	toSerialize["count"] = o.Count
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	toSerialize["date"] = o.Date
+	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["description"] = o.Description
 	toSerialize["destination_ip"] = o.DestinationIp
 	toSerialize["destination_port"] = o.DestinationPort
@@ -1092,9 +1045,7 @@ func (o ModelNetworkAlert) ToMap() (map[string]interface{}, error) {
 		toSerialize["http"] = o.Http
 	}
 	toSerialize["http_type"] = o.HttpType
-	if o.Intent != nil {
-		toSerialize["intent"] = o.Intent
-	}
+	toSerialize["intent"] = o.Intent
 	toSerialize["internal"] = o.Internal
 	toSerialize["ip_reputation"] = o.IpReputation
 	toSerialize["kubernetes_cluster_name"] = o.KubernetesClusterName
@@ -1113,12 +1064,8 @@ func (o ModelNetworkAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["source_ip"] = o.SourceIp
 	toSerialize["source_port"] = o.SourcePort
 	toSerialize["summary"] = o.Summary
-	if o.Tags != nil {
-		toSerialize["tags"] = o.Tags
-	}
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
+	toSerialize["tags"] = o.Tags
+	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil
 }
 

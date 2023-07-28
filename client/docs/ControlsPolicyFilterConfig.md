@@ -4,15 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EventType** | **string** |  | 
-**Hash** | **string** |  | 
-**Matcher** | **map[string]interface{}** |  | 
+**Policies** | [**[]ControlsPolicy**](ControlsPolicy.md) |  | 
 
 ## Methods
 
 ### NewControlsPolicyFilterConfig
 
-`func NewControlsPolicyFilterConfig(eventType string, hash string, matcher map[string]interface{}, ) *ControlsPolicyFilterConfig`
+`func NewControlsPolicyFilterConfig(policies []ControlsPolicy, ) *ControlsPolicyFilterConfig`
 
 NewControlsPolicyFilterConfig instantiates a new ControlsPolicyFilterConfig object
 This constructor will assign default values to properties that have it defined,
@@ -27,66 +25,36 @@ NewControlsPolicyFilterConfigWithDefaults instantiates a new ControlsPolicyFilte
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetEventType
+### GetPolicies
 
-`func (o *ControlsPolicyFilterConfig) GetEventType() string`
+`func (o *ControlsPolicyFilterConfig) GetPolicies() []ControlsPolicy`
 
-GetEventType returns the EventType field if non-nil, zero value otherwise.
+GetPolicies returns the Policies field if non-nil, zero value otherwise.
 
-### GetEventTypeOk
+### GetPoliciesOk
 
-`func (o *ControlsPolicyFilterConfig) GetEventTypeOk() (*string, bool)`
+`func (o *ControlsPolicyFilterConfig) GetPoliciesOk() (*[]ControlsPolicy, bool)`
 
-GetEventTypeOk returns a tuple with the EventType field if it's non-nil, zero value otherwise
+GetPoliciesOk returns a tuple with the Policies field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEventType
+### SetPolicies
 
-`func (o *ControlsPolicyFilterConfig) SetEventType(v string)`
+`func (o *ControlsPolicyFilterConfig) SetPolicies(v []ControlsPolicy)`
 
-SetEventType sets EventType field to given value.
-
-
-### GetHash
-
-`func (o *ControlsPolicyFilterConfig) GetHash() string`
-
-GetHash returns the Hash field if non-nil, zero value otherwise.
-
-### GetHashOk
-
-`func (o *ControlsPolicyFilterConfig) GetHashOk() (*string, bool)`
-
-GetHashOk returns a tuple with the Hash field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHash
-
-`func (o *ControlsPolicyFilterConfig) SetHash(v string)`
-
-SetHash sets Hash field to given value.
+SetPolicies sets Policies field to given value.
 
 
-### GetMatcher
+### SetPoliciesNil
 
-`func (o *ControlsPolicyFilterConfig) GetMatcher() map[string]interface{}`
+`func (o *ControlsPolicyFilterConfig) SetPoliciesNil(b bool)`
 
-GetMatcher returns the Matcher field if non-nil, zero value otherwise.
+ SetPoliciesNil sets the value for Policies to be an explicit nil
 
-### GetMatcherOk
+### UnsetPolicies
+`func (o *ControlsPolicyFilterConfig) UnsetPolicies()`
 
-`func (o *ControlsPolicyFilterConfig) GetMatcherOk() (*map[string]interface{}, bool)`
-
-GetMatcherOk returns a tuple with the Matcher field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMatcher
-
-`func (o *ControlsPolicyFilterConfig) SetMatcher(v map[string]interface{})`
-
-SetMatcher sets Matcher field to given value.
-
-
+UnsetPolicies ensures that no value is present for Policies, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

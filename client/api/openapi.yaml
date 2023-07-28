@@ -800,92 +800,6 @@ paths:
       summary: Fetch Kubernetes Cluster Actions
       tags:
       - Controls
-  /deepfence/count/file-alerts:
-    post:
-      description: Count across all data associated with file alerts
-      operationId: countFileAlerts
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SearchSearchNodeReq'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SearchSearchCountResp'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
-          description: Bad Request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Internal Server Error
-      security:
-      - bearer_token: []
-      summary: Count file alerts
-      tags:
-      - Search
-  /deepfence/count/network-alerts:
-    post:
-      description: Count across all data associated with network alerts
-      operationId: countNetworkAlerts
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SearchSearchNodeReq'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SearchSearchCountResp'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
-          description: Bad Request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Internal Server Error
-      security:
-      - bearer_token: []
-      summary: Count network alerts
-      tags:
-      - Search
   /deepfence/database/vulnerability:
     put:
       description: Upload Vulnerability Database for use in vulnerability scans
@@ -6299,6 +6213,49 @@ paths:
       summary: Search Containers data
       tags:
       - Search
+  /deepfence/search/count/alerts:
+    post:
+      description: Search alerts resources
+      operationId: countAlerts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchSearchCountResp'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Count Alerts
+      tags:
+      - Search
   /deepfence/search/count/cloud-accounts:
     post:
       description: Search across all the data associated with cloud nodes
@@ -6643,6 +6600,49 @@ paths:
       summary: Count Containers data
       tags:
       - Search
+  /deepfence/search/count/file-alerts:
+    post:
+      description: Count across all data associated with file alerts
+      operationId: countFileAlerts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchSearchCountResp'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Count file alerts
+      tags:
+      - Search
   /deepfence/search/count/hosts:
     post:
       description: Count across all the data associated with hosts
@@ -6899,6 +6899,49 @@ paths:
       security:
       - bearer_token: []
       summary: Count Malwares
+      tags:
+      - Search
+  /deepfence/search/count/network-alerts:
+    post:
+      description: Count across all data associated with network alerts
+      operationId: countNetworkAlerts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchSearchCountResp'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Count network alerts
       tags:
       - Search
   /deepfence/search/count/nodes:
@@ -9170,9 +9213,15 @@ components:
             - outbound
         name: name
         policy_tracer_config:
-          event_type: event_type
-          matcher: "{}"
-          hash: hash
+          policies:
+          - event_type: event_type
+            matcher: "{}"
+            duration_sec: 0
+            hash: hash
+          - event_type: event_type
+            matcher: "{}"
+            duration_sec: 0
+            hash: hash
         filesystem_tracer_config:
           monitored_files:
           - path: path
@@ -9349,14 +9398,15 @@ components:
       - https_rules
       - tcp_rules
       type: object
-    ControlsPolicyAlertMatcher:
-      type: object
-    ControlsPolicyFilterConfig:
+    ControlsPolicy:
       example:
         event_type: event_type
         matcher: "{}"
+        duration_sec: 0
         hash: hash
       properties:
+        duration_sec:
+          type: integer
         event_type:
           type: string
         hash:
@@ -9364,9 +9414,32 @@ components:
         matcher:
           type: object
       required:
+      - duration_sec
       - event_type
       - hash
       - matcher
+      type: object
+    ControlsPolicyAlertMatcher:
+      type: object
+    ControlsPolicyFilterConfig:
+      example:
+        policies:
+        - event_type: event_type
+          matcher: "{}"
+          duration_sec: 0
+          hash: hash
+        - event_type: event_type
+          matcher: "{}"
+          duration_sec: 0
+          hash: hash
+      properties:
+        policies:
+          items:
+            $ref: '#/components/schemas/ControlsPolicy'
+          nullable: true
+          type: array
+      required:
+      - policies
       type: object
     ControlsProcessEventConfig:
       example:
@@ -11612,18 +11685,16 @@ components:
     ModelCommonAlert:
       example:
         summary: summary
-        anomaly: anomaly
         event_type: event_type
-        updated_at: updated_at
+        updated_at: 1
         masked: true
         classtype: classtype
         count: 0
-        created_at: created_at
+        created_at: 6
         category: category
+        intent: intent
         node_id: node_id
       properties:
-        anomaly:
-          type: string
         category:
           type: string
         classtype:
@@ -11631,8 +11702,10 @@ components:
         count:
           type: integer
         created_at:
-          type: string
+          type: integer
         event_type:
+          type: string
+        intent:
           type: string
         masked:
           type: boolean
@@ -11641,14 +11714,14 @@ components:
         summary:
           type: string
         updated_at:
-          type: string
+          type: integer
       required:
-      - anomaly
       - category
       - classtype
       - count
       - created_at
       - event_type
+      - intent
       - masked
       - node_id
       - summary
@@ -12686,45 +12759,33 @@ components:
         anomaly: anomaly
         masked: true
         classtype: classtype
-        created_at: created_at
-        pid: 6
+        created_at: 6
+        pid: 1
         hostname: hostname
         signature_id: 5
         event_type: event_type
         node_type: node_type
         filepath: filepath
-        top:
-        - top
-        - top
-        updated_at: updated_at
+        top: top
+        updated_at: 2
         process_name: process_name
         direction: direction
         severity: severity
         summary: summary
         count: 0
         resource_type: resource_type
-        fstat:
-        - fstat
-        - fstat
-        intent:
-        - intent
-        - intent
+        fstat: fstat
+        intent: intent
         container_image: container_image
-        netstat:
-        - netstat
-        - netstat
-        users:
-        - users
-        - users
+        netstat: netstat
+        users: users
         container_name: container_name
-        w: 5
-        proc_status:
-        - proc_status
-        - proc_status
+        w: 7
+        proc_status: proc_status
         category: category
         container_id: container_id
         node_id: node_id
-        severity_score: 1.4658129805029452
+        severity_score: 5.962133916683182
       properties:
         anomaly:
           type: string
@@ -12743,7 +12804,7 @@ components:
         count:
           type: integer
         created_at:
-          type: string
+          type: integer
         direction:
           type: string
         event_type:
@@ -12751,24 +12812,15 @@ components:
         filepath:
           type: string
         fstat:
-          items:
-            type: string
-          nullable: true
-          type: array
+          type: string
         hostname:
           type: string
         intent:
-          items:
-            type: string
-          nullable: true
-          type: array
+          type: string
         masked:
           type: boolean
         netstat:
-          items:
-            type: string
-          nullable: true
-          type: array
+          type: string
         node_id:
           type: string
         node_type:
@@ -12776,10 +12828,7 @@ components:
         pid:
           type: integer
         proc_status:
-          items:
-            type: string
-          nullable: true
-          type: array
+          type: string
         process_name:
           type: string
         resource_type:
@@ -12793,17 +12842,11 @@ components:
         summary:
           type: string
         top:
-          items:
-            type: string
-          nullable: true
-          type: array
-        updated_at:
           type: string
+        updated_at:
+          type: integer
         users:
-          items:
-            type: string
-          nullable: true
-          type: array
+          type: string
         w:
           type: integer
       required:
@@ -12815,6 +12858,7 @@ components:
       - container_ip
       - container_name
       - count
+      - created_at
       - direction
       - event_type
       - filepath
@@ -12834,6 +12878,7 @@ components:
       - signature_id
       - summary
       - top
+      - updated_at
       - users
       - w
       type: object
@@ -16012,13 +16057,12 @@ components:
       type: object
     ModelNetworkAlert:
       example:
-        date: 6.027456183070403
         internal: internal
         destination_port: 1
         kubernetes_cluster_name: kubernetes_cluster_name
         masked: true
         classtype: classtype
-        created_at: created_at
+        created_at: 6
         description: description
         source_ip: source_ip
         hostname: hostname
@@ -16026,7 +16070,7 @@ components:
         destination_ip: destination_ip
         event_type: event_type
         node_type: node_type
-        updated_at: updated_at
+        updated_at: 2
         ip_reputation: ip_reputation
         scope_id: scope_id
         source_port: 3
@@ -16039,14 +16083,10 @@ components:
         resource_type: resource_type
         http_type: http_type
         app_proto: app_proto
-        intent:
-        - intent
-        - intent
+        intent: intent
         severity_anomaly_container_name: severity_anomaly_container_name
         pod_name: pod_name
-        tags:
-        - tags
-        - tags
+        tags: tags
         rule_id: 2
         container_name: container_name
         encrypted: encrypted
@@ -16082,9 +16122,7 @@ components:
         count:
           type: integer
         created_at:
-          type: string
-        date:
-          type: number
+          type: integer
         description:
           type: string
         destination_ip:
@@ -16106,10 +16144,7 @@ components:
         http_type:
           type: string
         intent:
-          items:
-            type: string
-          nullable: true
-          type: array
+          type: string
         internal:
           type: string
         ip_reputation:
@@ -16147,19 +16182,16 @@ components:
         summary:
           type: string
         tags:
-          items:
-            type: string
-          nullable: true
-          type: array
-        updated_at:
           type: string
+        updated_at:
+          type: integer
       required:
       - app_proto
       - category
       - classtype
       - container_name
       - count
-      - date
+      - created_at
       - description
       - destination_ip
       - destination_port
@@ -16188,6 +16220,7 @@ components:
       - source_port
       - summary
       - tags
+      - updated_at
       type: object
     ModelNodeIdentifier:
       example:

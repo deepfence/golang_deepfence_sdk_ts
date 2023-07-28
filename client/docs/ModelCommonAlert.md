@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Anomaly** | **string** |  | 
 **Category** | **string** |  | 
 **Classtype** | **string** |  | 
 **Count** | **int32** |  | 
-**CreatedAt** | **string** |  | 
+**CreatedAt** | **int32** |  | 
 **EventType** | **string** |  | 
+**Intent** | **string** |  | 
 **Masked** | **bool** |  | 
 **NodeId** | **string** |  | 
 **Summary** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+**UpdatedAt** | **int32** |  | 
 
 ## Methods
 
 ### NewModelCommonAlert
 
-`func NewModelCommonAlert(anomaly string, category string, classtype string, count int32, createdAt string, eventType string, masked bool, nodeId string, summary string, updatedAt string, ) *ModelCommonAlert`
+`func NewModelCommonAlert(category string, classtype string, count int32, createdAt int32, eventType string, intent string, masked bool, nodeId string, summary string, updatedAt int32, ) *ModelCommonAlert`
 
 NewModelCommonAlert instantiates a new ModelCommonAlert object
 This constructor will assign default values to properties that have it defined,
@@ -33,26 +33,6 @@ will change when the set of required properties is changed
 NewModelCommonAlertWithDefaults instantiates a new ModelCommonAlert object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAnomaly
-
-`func (o *ModelCommonAlert) GetAnomaly() string`
-
-GetAnomaly returns the Anomaly field if non-nil, zero value otherwise.
-
-### GetAnomalyOk
-
-`func (o *ModelCommonAlert) GetAnomalyOk() (*string, bool)`
-
-GetAnomalyOk returns a tuple with the Anomaly field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAnomaly
-
-`func (o *ModelCommonAlert) SetAnomaly(v string)`
-
-SetAnomaly sets Anomaly field to given value.
-
 
 ### GetCategory
 
@@ -116,20 +96,20 @@ SetCount sets Count field to given value.
 
 ### GetCreatedAt
 
-`func (o *ModelCommonAlert) GetCreatedAt() string`
+`func (o *ModelCommonAlert) GetCreatedAt() int32`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *ModelCommonAlert) GetCreatedAtOk() (*string, bool)`
+`func (o *ModelCommonAlert) GetCreatedAtOk() (*int32, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *ModelCommonAlert) SetCreatedAt(v string)`
+`func (o *ModelCommonAlert) SetCreatedAt(v int32)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -152,6 +132,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelCommonAlert) SetEventType(v string)`
 
 SetEventType sets EventType field to given value.
+
+
+### GetIntent
+
+`func (o *ModelCommonAlert) GetIntent() string`
+
+GetIntent returns the Intent field if non-nil, zero value otherwise.
+
+### GetIntentOk
+
+`func (o *ModelCommonAlert) GetIntentOk() (*string, bool)`
+
+GetIntentOk returns a tuple with the Intent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntent
+
+`func (o *ModelCommonAlert) SetIntent(v string)`
+
+SetIntent sets Intent field to given value.
 
 
 ### GetMasked
@@ -216,20 +216,20 @@ SetSummary sets Summary field to given value.
 
 ### GetUpdatedAt
 
-`func (o *ModelCommonAlert) GetUpdatedAt() string`
+`func (o *ModelCommonAlert) GetUpdatedAt() int32`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *ModelCommonAlert) GetUpdatedAtOk() (*string, bool)`
+`func (o *ModelCommonAlert) GetUpdatedAtOk() (*int32, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *ModelCommonAlert) SetUpdatedAt(v string)`
+`func (o *ModelCommonAlert) SetUpdatedAt(v int32)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

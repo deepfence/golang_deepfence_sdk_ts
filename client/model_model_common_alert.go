@@ -20,30 +20,30 @@ var _ MappedNullable = &ModelCommonAlert{}
 
 // ModelCommonAlert struct for ModelCommonAlert
 type ModelCommonAlert struct {
-	Anomaly string `json:"anomaly"`
 	Category string `json:"category"`
 	Classtype string `json:"classtype"`
 	Count int32 `json:"count"`
-	CreatedAt string `json:"created_at"`
+	CreatedAt int32 `json:"created_at"`
 	EventType string `json:"event_type"`
+	Intent string `json:"intent"`
 	Masked bool `json:"masked"`
 	NodeId string `json:"node_id"`
 	Summary string `json:"summary"`
-	UpdatedAt string `json:"updated_at"`
+	UpdatedAt int32 `json:"updated_at"`
 }
 
 // NewModelCommonAlert instantiates a new ModelCommonAlert object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelCommonAlert(anomaly string, category string, classtype string, count int32, createdAt string, eventType string, masked bool, nodeId string, summary string, updatedAt string) *ModelCommonAlert {
+func NewModelCommonAlert(category string, classtype string, count int32, createdAt int32, eventType string, intent string, masked bool, nodeId string, summary string, updatedAt int32) *ModelCommonAlert {
 	this := ModelCommonAlert{}
-	this.Anomaly = anomaly
 	this.Category = category
 	this.Classtype = classtype
 	this.Count = count
 	this.CreatedAt = createdAt
 	this.EventType = eventType
+	this.Intent = intent
 	this.Masked = masked
 	this.NodeId = nodeId
 	this.Summary = summary
@@ -57,30 +57,6 @@ func NewModelCommonAlert(anomaly string, category string, classtype string, coun
 func NewModelCommonAlertWithDefaults() *ModelCommonAlert {
 	this := ModelCommonAlert{}
 	return &this
-}
-
-// GetAnomaly returns the Anomaly field value
-func (o *ModelCommonAlert) GetAnomaly() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Anomaly
-}
-
-// GetAnomalyOk returns a tuple with the Anomaly field value
-// and a boolean to check if the value has been set.
-func (o *ModelCommonAlert) GetAnomalyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Anomaly, true
-}
-
-// SetAnomaly sets field value
-func (o *ModelCommonAlert) SetAnomaly(v string) {
-	o.Anomaly = v
 }
 
 // GetCategory returns the Category field value
@@ -156,9 +132,9 @@ func (o *ModelCommonAlert) SetCount(v int32) {
 }
 
 // GetCreatedAt returns the CreatedAt field value
-func (o *ModelCommonAlert) GetCreatedAt() string {
+func (o *ModelCommonAlert) GetCreatedAt() int32 {
 	if o == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 
@@ -167,7 +143,7 @@ func (o *ModelCommonAlert) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *ModelCommonAlert) GetCreatedAtOk() (*string, bool) {
+func (o *ModelCommonAlert) GetCreatedAtOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -175,7 +151,7 @@ func (o *ModelCommonAlert) GetCreatedAtOk() (*string, bool) {
 }
 
 // SetCreatedAt sets field value
-func (o *ModelCommonAlert) SetCreatedAt(v string) {
+func (o *ModelCommonAlert) SetCreatedAt(v int32) {
 	o.CreatedAt = v
 }
 
@@ -201,6 +177,30 @@ func (o *ModelCommonAlert) GetEventTypeOk() (*string, bool) {
 // SetEventType sets field value
 func (o *ModelCommonAlert) SetEventType(v string) {
 	o.EventType = v
+}
+
+// GetIntent returns the Intent field value
+func (o *ModelCommonAlert) GetIntent() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Intent
+}
+
+// GetIntentOk returns a tuple with the Intent field value
+// and a boolean to check if the value has been set.
+func (o *ModelCommonAlert) GetIntentOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Intent, true
+}
+
+// SetIntent sets field value
+func (o *ModelCommonAlert) SetIntent(v string) {
+	o.Intent = v
 }
 
 // GetMasked returns the Masked field value
@@ -276,9 +276,9 @@ func (o *ModelCommonAlert) SetSummary(v string) {
 }
 
 // GetUpdatedAt returns the UpdatedAt field value
-func (o *ModelCommonAlert) GetUpdatedAt() string {
+func (o *ModelCommonAlert) GetUpdatedAt() int32 {
 	if o == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 
@@ -287,7 +287,7 @@ func (o *ModelCommonAlert) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value
 // and a boolean to check if the value has been set.
-func (o *ModelCommonAlert) GetUpdatedAtOk() (*string, bool) {
+func (o *ModelCommonAlert) GetUpdatedAtOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -295,7 +295,7 @@ func (o *ModelCommonAlert) GetUpdatedAtOk() (*string, bool) {
 }
 
 // SetUpdatedAt sets field value
-func (o *ModelCommonAlert) SetUpdatedAt(v string) {
+func (o *ModelCommonAlert) SetUpdatedAt(v int32) {
 	o.UpdatedAt = v
 }
 
@@ -309,12 +309,12 @@ func (o ModelCommonAlert) MarshalJSON() ([]byte, error) {
 
 func (o ModelCommonAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["anomaly"] = o.Anomaly
 	toSerialize["category"] = o.Category
 	toSerialize["classtype"] = o.Classtype
 	toSerialize["count"] = o.Count
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["event_type"] = o.EventType
+	toSerialize["intent"] = o.Intent
 	toSerialize["masked"] = o.Masked
 	toSerialize["node_id"] = o.NodeId
 	toSerialize["summary"] = o.Summary
