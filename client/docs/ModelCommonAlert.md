@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Intent** | **string** |  | 
 **Masked** | **bool** |  | 
 **NodeId** | **string** |  | 
+**Severity** | **string** |  | 
 **Summary** | **string** |  | 
 **UpdatedAt** | **int32** |  | 
 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewModelCommonAlert
 
-`func NewModelCommonAlert(category string, classtype string, count int32, createdAt int32, eventType string, intent string, masked bool, nodeId string, summary string, updatedAt int32, ) *ModelCommonAlert`
+`func NewModelCommonAlert(category string, classtype string, count int32, createdAt int32, eventType string, intent string, masked bool, nodeId string, severity string, summary string, updatedAt int32, ) *ModelCommonAlert`
 
 NewModelCommonAlert instantiates a new ModelCommonAlert object
 This constructor will assign default values to properties that have it defined,
@@ -192,6 +193,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelCommonAlert) SetNodeId(v string)`
 
 SetNodeId sets NodeId field to given value.
+
+
+### GetSeverity
+
+`func (o *ModelCommonAlert) GetSeverity() string`
+
+GetSeverity returns the Severity field if non-nil, zero value otherwise.
+
+### GetSeverityOk
+
+`func (o *ModelCommonAlert) GetSeverityOk() (*string, bool)`
+
+GetSeverityOk returns a tuple with the Severity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSeverity
+
+`func (o *ModelCommonAlert) SetSeverity(v string)`
+
+SetSeverity sets Severity field to given value.
 
 
 ### GetSummary

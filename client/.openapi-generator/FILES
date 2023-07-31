@@ -5,6 +5,7 @@ api/openapi.yaml
 api_agent_config.go
 api_agent_filesystem.go
 api_agent_network.go
+api_alert.go
 api_authentication.go
 api_cloud_nodes.go
 api_cloud_resources.go
@@ -32,6 +33,7 @@ configuration.go
 docs/AgentConfigAPI.md
 docs/AgentFilesystemAPI.md
 docs/AgentNetworkAPI.md
+docs/AlertAPI.md
 docs/ApiDocsBadRequestResponse.md
 docs/ApiDocsFailureResponse.md
 docs/ApiDocsGraphResult.md
@@ -44,7 +46,6 @@ docs/ComplianceAPI.md
 docs/ControlsAPI.md
 docs/ControlsAction.md
 docs/ControlsAgentBeat.md
-docs/ControlsAgentConfig.md
 docs/ControlsAgentControls.md
 docs/ControlsFilesystemTracerConfig.md
 docs/ControlsMonitoredFilesConfig.md
@@ -97,6 +98,7 @@ docs/ModelAgentPluginDisable.md
 docs/ModelAgentPluginEnable.md
 docs/ModelAgentPluginsStatus.md
 docs/ModelAgentUpgrade.md
+docs/ModelAlertsActionRequest.md
 docs/ModelApiAuthRequest.md
 docs/ModelApiTokenResponse.md
 docs/ModelAttachAgentConfigReq.md
@@ -261,7 +263,6 @@ model_api_docs_failure_response.go
 model_api_docs_graph_result.go
 model_controls_action.go
 model_controls_agent_beat.go
-model_controls_agent_config.go
 model_controls_agent_controls.go
 model_controls_filesystem_tracer_config.go
 model_controls_monitored_files_config.go
@@ -309,6 +310,7 @@ model_model_agent_plugin_disable.go
 model_model_agent_plugin_enable.go
 model_model_agent_plugins_status.go
 model_model_agent_upgrade.go
+model_model_alerts_action_request.go
 model_model_api_auth_request.go
 model_model_api_token_response.go
 model_model_attach_agent_config_req.go
@@ -459,6 +461,7 @@ response.go
 test/api_agent_config_test.go
 test/api_agent_filesystem_test.go
 test/api_agent_network_test.go
+test/api_alert_test.go
 test/api_authentication_test.go
 test/api_cloud_nodes_test.go
 test/api_cloud_resources_test.go

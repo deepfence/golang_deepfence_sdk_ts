@@ -23,50 +23,50 @@ import (
 // AgentConfigAPIService AgentConfigAPI service
 type AgentConfigAPIService service
 
-type ApiAttachAgentConfigRequest struct {
+type ApiAttachAgentFilesystemConfigRequest struct {
 	ctx context.Context
 	ApiService *AgentConfigAPIService
 	modelAttachAgentConfigReq *ModelAttachAgentConfigReq
 }
 
-func (r ApiAttachAgentConfigRequest) ModelAttachAgentConfigReq(modelAttachAgentConfigReq ModelAttachAgentConfigReq) ApiAttachAgentConfigRequest {
+func (r ApiAttachAgentFilesystemConfigRequest) ModelAttachAgentConfigReq(modelAttachAgentConfigReq ModelAttachAgentConfigReq) ApiAttachAgentFilesystemConfigRequest {
 	r.modelAttachAgentConfigReq = &modelAttachAgentConfigReq
 	return r
 }
 
-func (r ApiAttachAgentConfigRequest) Execute() (*http.Response, error) {
-	return r.ApiService.AttachAgentConfigExecute(r)
+func (r ApiAttachAgentFilesystemConfigRequest) Execute() (*http.Response, error) {
+	return r.ApiService.AttachAgentFilesystemConfigExecute(r)
 }
 
 /*
-AttachAgentConfig Register Agent config
+AttachAgentFilesystemConfig Register Agent Filesystem config
 
 Register Agent config
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAttachAgentConfigRequest
+ @return ApiAttachAgentFilesystemConfigRequest
 */
-func (a *AgentConfigAPIService) AttachAgentConfig(ctx context.Context) ApiAttachAgentConfigRequest {
-	return ApiAttachAgentConfigRequest{
+func (a *AgentConfigAPIService) AttachAgentFilesystemConfig(ctx context.Context) ApiAttachAgentFilesystemConfigRequest {
+	return ApiAttachAgentFilesystemConfigRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *AgentConfigAPIService) AttachAgentConfigExecute(r ApiAttachAgentConfigRequest) (*http.Response, error) {
+func (a *AgentConfigAPIService) AttachAgentFilesystemConfigExecute(r ApiAttachAgentFilesystemConfigRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentConfigAPIService.AttachAgentConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentConfigAPIService.AttachAgentFilesystemConfig")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/configs/agent/attach"
+	localVarPath := localBasePath + "/configs/agent/filemon/attach"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -151,46 +151,302 @@ func (a *AgentConfigAPIService) AttachAgentConfigExecute(r ApiAttachAgentConfigR
 	return localVarHTTPResponse, nil
 }
 
-type ApiGetAgentConfigRequest struct {
+type ApiAttachAgentNetworkConfigRequest struct {
 	ctx context.Context
 	ApiService *AgentConfigAPIService
+	modelAttachAgentConfigReq *ModelAttachAgentConfigReq
 }
 
-func (r ApiGetAgentConfigRequest) Execute() ([]ControlsAgentConfig, *http.Response, error) {
-	return r.ApiService.GetAgentConfigExecute(r)
+func (r ApiAttachAgentNetworkConfigRequest) ModelAttachAgentConfigReq(modelAttachAgentConfigReq ModelAttachAgentConfigReq) ApiAttachAgentNetworkConfigRequest {
+	r.modelAttachAgentConfigReq = &modelAttachAgentConfigReq
+	return r
+}
+
+func (r ApiAttachAgentNetworkConfigRequest) Execute() (*http.Response, error) {
+	return r.ApiService.AttachAgentNetworkConfigExecute(r)
 }
 
 /*
-GetAgentConfig Register Agent config
+AttachAgentNetworkConfig Register Agent Network config
 
 Register Agent config
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetAgentConfigRequest
+ @return ApiAttachAgentNetworkConfigRequest
 */
-func (a *AgentConfigAPIService) GetAgentConfig(ctx context.Context) ApiGetAgentConfigRequest {
-	return ApiGetAgentConfigRequest{
+func (a *AgentConfigAPIService) AttachAgentNetworkConfig(ctx context.Context) ApiAttachAgentNetworkConfigRequest {
+	return ApiAttachAgentNetworkConfigRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []ControlsAgentConfig
-func (a *AgentConfigAPIService) GetAgentConfigExecute(r ApiGetAgentConfigRequest) ([]ControlsAgentConfig, *http.Response, error) {
+func (a *AgentConfigAPIService) AttachAgentNetworkConfigExecute(r ApiAttachAgentNetworkConfigRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentConfigAPIService.AttachAgentNetworkConfig")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/configs/agent/network/attach"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.modelAttachAgentConfigReq
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiDocsBadRequestResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiAttachAgentPolicyConfigRequest struct {
+	ctx context.Context
+	ApiService *AgentConfigAPIService
+	modelAttachAgentConfigReq *ModelAttachAgentConfigReq
+}
+
+func (r ApiAttachAgentPolicyConfigRequest) ModelAttachAgentConfigReq(modelAttachAgentConfigReq ModelAttachAgentConfigReq) ApiAttachAgentPolicyConfigRequest {
+	r.modelAttachAgentConfigReq = &modelAttachAgentConfigReq
+	return r
+}
+
+func (r ApiAttachAgentPolicyConfigRequest) Execute() (*http.Response, error) {
+	return r.ApiService.AttachAgentPolicyConfigExecute(r)
+}
+
+/*
+AttachAgentPolicyConfig Register Agent Policy config
+
+Register Agent config
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAttachAgentPolicyConfigRequest
+*/
+func (a *AgentConfigAPIService) AttachAgentPolicyConfig(ctx context.Context) ApiAttachAgentPolicyConfigRequest {
+	return ApiAttachAgentPolicyConfigRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *AgentConfigAPIService) AttachAgentPolicyConfigExecute(r ApiAttachAgentPolicyConfigRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentConfigAPIService.AttachAgentPolicyConfig")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/configs/agent/policy/attach"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.modelAttachAgentConfigReq
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiDocsBadRequestResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiGetAgentFilesystemConfigRequest struct {
+	ctx context.Context
+	ApiService *AgentConfigAPIService
+}
+
+func (r ApiGetAgentFilesystemConfigRequest) Execute() ([]ControlsFilesystemTracerConfig, *http.Response, error) {
+	return r.ApiService.GetAgentFilesystemConfigExecute(r)
+}
+
+/*
+GetAgentFilesystemConfig Register Agent Filesystem config
+
+Register Agent config
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetAgentFilesystemConfigRequest
+*/
+func (a *AgentConfigAPIService) GetAgentFilesystemConfig(ctx context.Context) ApiGetAgentFilesystemConfigRequest {
+	return ApiGetAgentFilesystemConfigRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return []ControlsFilesystemTracerConfig
+func (a *AgentConfigAPIService) GetAgentFilesystemConfigExecute(r ApiGetAgentFilesystemConfigRequest) ([]ControlsFilesystemTracerConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []ControlsAgentConfig
+		localVarReturnValue  []ControlsFilesystemTracerConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentConfigAPIService.GetAgentConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentConfigAPIService.GetAgentFilesystemConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/configs/agent/"
+	localVarPath := localBasePath + "/configs/agent/filemon/"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -282,50 +538,312 @@ func (a *AgentConfigAPIService) GetAgentConfigExecute(r ApiGetAgentConfigRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRegisterAgentConfigRequest struct {
+type ApiGetAgentNetworkConfigRequest struct {
 	ctx context.Context
 	ApiService *AgentConfigAPIService
-	controlsAgentConfig *ControlsAgentConfig
 }
 
-func (r ApiRegisterAgentConfigRequest) ControlsAgentConfig(controlsAgentConfig ControlsAgentConfig) ApiRegisterAgentConfigRequest {
-	r.controlsAgentConfig = &controlsAgentConfig
-	return r
-}
-
-func (r ApiRegisterAgentConfigRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RegisterAgentConfigExecute(r)
+func (r ApiGetAgentNetworkConfigRequest) Execute() ([]ControlsNetworkTracerConfig, *http.Response, error) {
+	return r.ApiService.GetAgentNetworkConfigExecute(r)
 }
 
 /*
-RegisterAgentConfig Register Agent config
+GetAgentNetworkConfig Register Agent Network config
 
 Register Agent config
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRegisterAgentConfigRequest
+ @return ApiGetAgentNetworkConfigRequest
 */
-func (a *AgentConfigAPIService) RegisterAgentConfig(ctx context.Context) ApiRegisterAgentConfigRequest {
-	return ApiRegisterAgentConfigRequest{
+func (a *AgentConfigAPIService) GetAgentNetworkConfig(ctx context.Context) ApiGetAgentNetworkConfigRequest {
+	return ApiGetAgentNetworkConfigRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *AgentConfigAPIService) RegisterAgentConfigExecute(r ApiRegisterAgentConfigRequest) (*http.Response, error) {
+//  @return []ControlsNetworkTracerConfig
+func (a *AgentConfigAPIService) GetAgentNetworkConfigExecute(r ApiGetAgentNetworkConfigRequest) ([]ControlsNetworkTracerConfig, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []ControlsNetworkTracerConfig
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentConfigAPIService.GetAgentNetworkConfig")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/configs/agent/network/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiDocsBadRequestResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetAgentPolicyConfigRequest struct {
+	ctx context.Context
+	ApiService *AgentConfigAPIService
+}
+
+func (r ApiGetAgentPolicyConfigRequest) Execute() ([]ControlsPolicyFilterConfig, *http.Response, error) {
+	return r.ApiService.GetAgentPolicyConfigExecute(r)
+}
+
+/*
+GetAgentPolicyConfig Register Agent Policy config
+
+Register Agent config
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetAgentPolicyConfigRequest
+*/
+func (a *AgentConfigAPIService) GetAgentPolicyConfig(ctx context.Context) ApiGetAgentPolicyConfigRequest {
+	return ApiGetAgentPolicyConfigRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return []ControlsPolicyFilterConfig
+func (a *AgentConfigAPIService) GetAgentPolicyConfigExecute(r ApiGetAgentPolicyConfigRequest) ([]ControlsPolicyFilterConfig, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []ControlsPolicyFilterConfig
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentConfigAPIService.GetAgentPolicyConfig")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/configs/agent/policy/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiDocsBadRequestResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiRegisterAgentFilesystemConfigRequest struct {
+	ctx context.Context
+	ApiService *AgentConfigAPIService
+	controlsFilesystemTracerConfig *ControlsFilesystemTracerConfig
+}
+
+func (r ApiRegisterAgentFilesystemConfigRequest) ControlsFilesystemTracerConfig(controlsFilesystemTracerConfig ControlsFilesystemTracerConfig) ApiRegisterAgentFilesystemConfigRequest {
+	r.controlsFilesystemTracerConfig = &controlsFilesystemTracerConfig
+	return r
+}
+
+func (r ApiRegisterAgentFilesystemConfigRequest) Execute() (*http.Response, error) {
+	return r.ApiService.RegisterAgentFilesystemConfigExecute(r)
+}
+
+/*
+RegisterAgentFilesystemConfig Register Agent Filesystem config
+
+Register Agent Filesystem config
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRegisterAgentFilesystemConfigRequest
+*/
+func (a *AgentConfigAPIService) RegisterAgentFilesystemConfig(ctx context.Context) ApiRegisterAgentFilesystemConfigRequest {
+	return ApiRegisterAgentFilesystemConfigRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *AgentConfigAPIService) RegisterAgentFilesystemConfigExecute(r ApiRegisterAgentFilesystemConfigRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentConfigAPIService.RegisterAgentConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentConfigAPIService.RegisterAgentFilesystemConfig")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/configs/agent/"
+	localVarPath := localBasePath + "/configs/agent/filemon/"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -349,7 +867,263 @@ func (a *AgentConfigAPIService) RegisterAgentConfigExecute(r ApiRegisterAgentCon
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.controlsAgentConfig
+	localVarPostBody = r.controlsFilesystemTracerConfig
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiDocsBadRequestResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRegisterAgentNetworkConfigRequest struct {
+	ctx context.Context
+	ApiService *AgentConfigAPIService
+	controlsNetworkTracerConfig *ControlsNetworkTracerConfig
+}
+
+func (r ApiRegisterAgentNetworkConfigRequest) ControlsNetworkTracerConfig(controlsNetworkTracerConfig ControlsNetworkTracerConfig) ApiRegisterAgentNetworkConfigRequest {
+	r.controlsNetworkTracerConfig = &controlsNetworkTracerConfig
+	return r
+}
+
+func (r ApiRegisterAgentNetworkConfigRequest) Execute() (*http.Response, error) {
+	return r.ApiService.RegisterAgentNetworkConfigExecute(r)
+}
+
+/*
+RegisterAgentNetworkConfig Register Agent Network config
+
+Register Agent Network config
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRegisterAgentNetworkConfigRequest
+*/
+func (a *AgentConfigAPIService) RegisterAgentNetworkConfig(ctx context.Context) ApiRegisterAgentNetworkConfigRequest {
+	return ApiRegisterAgentNetworkConfigRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *AgentConfigAPIService) RegisterAgentNetworkConfigExecute(r ApiRegisterAgentNetworkConfigRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentConfigAPIService.RegisterAgentNetworkConfig")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/configs/agent/network/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.controlsNetworkTracerConfig
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiDocsBadRequestResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRegisterAgentPolicyConfigRequest struct {
+	ctx context.Context
+	ApiService *AgentConfigAPIService
+	controlsPolicyFilterConfig *ControlsPolicyFilterConfig
+}
+
+func (r ApiRegisterAgentPolicyConfigRequest) ControlsPolicyFilterConfig(controlsPolicyFilterConfig ControlsPolicyFilterConfig) ApiRegisterAgentPolicyConfigRequest {
+	r.controlsPolicyFilterConfig = &controlsPolicyFilterConfig
+	return r
+}
+
+func (r ApiRegisterAgentPolicyConfigRequest) Execute() (*http.Response, error) {
+	return r.ApiService.RegisterAgentPolicyConfigExecute(r)
+}
+
+/*
+RegisterAgentPolicyConfig Register Agent Policy config
+
+Register Agent Policy config
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRegisterAgentPolicyConfigRequest
+*/
+func (a *AgentConfigAPIService) RegisterAgentPolicyConfig(ctx context.Context) ApiRegisterAgentPolicyConfigRequest {
+	return ApiRegisterAgentPolicyConfigRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *AgentConfigAPIService) RegisterAgentPolicyConfigExecute(r ApiRegisterAgentPolicyConfigRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentConfigAPIService.RegisterAgentPolicyConfig")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/configs/agent/policy/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.controlsPolicyFilterConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

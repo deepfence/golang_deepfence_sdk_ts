@@ -28,6 +28,7 @@ type ModelCommonAlert struct {
 	Intent string `json:"intent"`
 	Masked bool `json:"masked"`
 	NodeId string `json:"node_id"`
+	Severity string `json:"severity"`
 	Summary string `json:"summary"`
 	UpdatedAt int32 `json:"updated_at"`
 }
@@ -36,7 +37,7 @@ type ModelCommonAlert struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelCommonAlert(category string, classtype string, count int32, createdAt int32, eventType string, intent string, masked bool, nodeId string, summary string, updatedAt int32) *ModelCommonAlert {
+func NewModelCommonAlert(category string, classtype string, count int32, createdAt int32, eventType string, intent string, masked bool, nodeId string, severity string, summary string, updatedAt int32) *ModelCommonAlert {
 	this := ModelCommonAlert{}
 	this.Category = category
 	this.Classtype = classtype
@@ -46,6 +47,7 @@ func NewModelCommonAlert(category string, classtype string, count int32, created
 	this.Intent = intent
 	this.Masked = masked
 	this.NodeId = nodeId
+	this.Severity = severity
 	this.Summary = summary
 	this.UpdatedAt = updatedAt
 	return &this
@@ -251,6 +253,30 @@ func (o *ModelCommonAlert) SetNodeId(v string) {
 	o.NodeId = v
 }
 
+// GetSeverity returns the Severity field value
+func (o *ModelCommonAlert) GetSeverity() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Severity
+}
+
+// GetSeverityOk returns a tuple with the Severity field value
+// and a boolean to check if the value has been set.
+func (o *ModelCommonAlert) GetSeverityOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Severity, true
+}
+
+// SetSeverity sets field value
+func (o *ModelCommonAlert) SetSeverity(v string) {
+	o.Severity = v
+}
+
 // GetSummary returns the Summary field value
 func (o *ModelCommonAlert) GetSummary() string {
 	if o == nil {
@@ -317,6 +343,7 @@ func (o ModelCommonAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["intent"] = o.Intent
 	toSerialize["masked"] = o.Masked
 	toSerialize["node_id"] = o.NodeId
+	toSerialize["severity"] = o.Severity
 	toSerialize["summary"] = o.Summary
 	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil

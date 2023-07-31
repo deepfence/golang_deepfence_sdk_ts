@@ -79,12 +79,22 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AgentConfigAPI* | [**AttachAgentConfig**](docs/AgentConfigAPI.md#attachagentconfig) | **Post** /configs/agent/attach | Register Agent config
-*AgentConfigAPI* | [**GetAgentConfig**](docs/AgentConfigAPI.md#getagentconfig) | **Get** /configs/agent/ | Register Agent config
-*AgentConfigAPI* | [**RegisterAgentConfig**](docs/AgentConfigAPI.md#registeragentconfig) | **Post** /configs/agent/ | Register Agent config
+*AgentConfigAPI* | [**AttachAgentFilesystemConfig**](docs/AgentConfigAPI.md#attachagentfilesystemconfig) | **Post** /configs/agent/filemon/attach | Register Agent Filesystem config
+*AgentConfigAPI* | [**AttachAgentNetworkConfig**](docs/AgentConfigAPI.md#attachagentnetworkconfig) | **Post** /configs/agent/network/attach | Register Agent Network config
+*AgentConfigAPI* | [**AttachAgentPolicyConfig**](docs/AgentConfigAPI.md#attachagentpolicyconfig) | **Post** /configs/agent/policy/attach | Register Agent Policy config
+*AgentConfigAPI* | [**GetAgentFilesystemConfig**](docs/AgentConfigAPI.md#getagentfilesystemconfig) | **Get** /configs/agent/filemon/ | Register Agent Filesystem config
+*AgentConfigAPI* | [**GetAgentNetworkConfig**](docs/AgentConfigAPI.md#getagentnetworkconfig) | **Get** /configs/agent/network/ | Register Agent Network config
+*AgentConfigAPI* | [**GetAgentPolicyConfig**](docs/AgentConfigAPI.md#getagentpolicyconfig) | **Get** /configs/agent/policy/ | Register Agent Policy config
+*AgentConfigAPI* | [**RegisterAgentFilesystemConfig**](docs/AgentConfigAPI.md#registeragentfilesystemconfig) | **Post** /configs/agent/filemon/ | Register Agent Filesystem config
+*AgentConfigAPI* | [**RegisterAgentNetworkConfig**](docs/AgentConfigAPI.md#registeragentnetworkconfig) | **Post** /configs/agent/network/ | Register Agent Network config
+*AgentConfigAPI* | [**RegisterAgentPolicyConfig**](docs/AgentConfigAPI.md#registeragentpolicyconfig) | **Post** /configs/agent/policy/ | Register Agent Policy config
 *AgentFilesystemAPI* | [**EnableFilesystemTracer**](docs/AgentFilesystemAPI.md#enablefilesystemtracer) | **Post** /deepfence/filesystem/tracer/enable | Enable filesystem tracer
 *AgentNetworkAPI* | [**DisableNetworkTracer**](docs/AgentNetworkAPI.md#disablenetworktracer) | **Post** /deepfence/network/tracer/disable | Disable network tracer
 *AgentNetworkAPI* | [**EnableNetworkTracer**](docs/AgentNetworkAPI.md#enablenetworktracer) | **Post** /deepfence/network/tracer/enable | Enable network tracer
+*AlertAPI* | [**DeleteAlert**](docs/AlertAPI.md#deletealert) | **Patch** /deepfence/alerts/action/delete | Delete Alerts
+*AlertAPI* | [**MaskAlert**](docs/AlertAPI.md#maskalert) | **Post** /deepfence/alerts/action/mask | Mask Alerts
+*AlertAPI* | [**NotifyAlert**](docs/AlertAPI.md#notifyalert) | **Post** /deepfence/alerts/action/notify | Notify Alerts
+*AlertAPI* | [**UnmaskAlert**](docs/AlertAPI.md#unmaskalert) | **Post** /deepfence/alerts/action/unmask | Unmask Alerts
 *AuthenticationAPI* | [**AuthToken**](docs/AuthenticationAPI.md#authtoken) | **Post** /deepfence/auth/token | Get Access Token for API Token
 *AuthenticationAPI* | [**AuthTokenRefresh**](docs/AuthenticationAPI.md#authtokenrefresh) | **Post** /deepfence/auth/token/refresh | Refresh access token
 *AuthenticationAPI* | [**CreateSSOProvider**](docs/AuthenticationAPI.md#createssoprovider) | **Post** /deepfence/single-sign-on | Configure Single sign-on
@@ -300,7 +310,6 @@ Class | Method | HTTP request | Description
  - [ApiDocsGraphResult](docs/ApiDocsGraphResult.md)
  - [ControlsAction](docs/ControlsAction.md)
  - [ControlsAgentBeat](docs/ControlsAgentBeat.md)
- - [ControlsAgentConfig](docs/ControlsAgentConfig.md)
  - [ControlsAgentControls](docs/ControlsAgentControls.md)
  - [ControlsFilesystemTracerConfig](docs/ControlsFilesystemTracerConfig.md)
  - [ControlsMonitoredFilesConfig](docs/ControlsMonitoredFilesConfig.md)
@@ -348,6 +357,7 @@ Class | Method | HTTP request | Description
  - [ModelAgentPluginEnable](docs/ModelAgentPluginEnable.md)
  - [ModelAgentPluginsStatus](docs/ModelAgentPluginsStatus.md)
  - [ModelAgentUpgrade](docs/ModelAgentUpgrade.md)
+ - [ModelAlertsActionRequest](docs/ModelAlertsActionRequest.md)
  - [ModelApiAuthRequest](docs/ModelApiAuthRequest.md)
  - [ModelApiTokenResponse](docs/ModelApiTokenResponse.md)
  - [ModelAttachAgentConfigReq](docs/ModelAttachAgentConfigReq.md)
