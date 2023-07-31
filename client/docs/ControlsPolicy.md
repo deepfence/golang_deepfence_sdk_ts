@@ -4,16 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CountLimit** | **int32** |  | 
+**DurationCountLimitSec** | **int32** |  | 
 **DurationSec** | **int32** |  | 
 **EventType** | **string** |  | 
-**Hash** | **string** |  | 
 **Matcher** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewControlsPolicy
 
-`func NewControlsPolicy(durationSec int32, eventType string, hash string, matcher map[string]interface{}, ) *ControlsPolicy`
+`func NewControlsPolicy(countLimit int32, durationCountLimitSec int32, durationSec int32, eventType string, matcher map[string]interface{}, ) *ControlsPolicy`
 
 NewControlsPolicy instantiates a new ControlsPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -27,6 +28,46 @@ will change when the set of required properties is changed
 NewControlsPolicyWithDefaults instantiates a new ControlsPolicy object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCountLimit
+
+`func (o *ControlsPolicy) GetCountLimit() int32`
+
+GetCountLimit returns the CountLimit field if non-nil, zero value otherwise.
+
+### GetCountLimitOk
+
+`func (o *ControlsPolicy) GetCountLimitOk() (*int32, bool)`
+
+GetCountLimitOk returns a tuple with the CountLimit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCountLimit
+
+`func (o *ControlsPolicy) SetCountLimit(v int32)`
+
+SetCountLimit sets CountLimit field to given value.
+
+
+### GetDurationCountLimitSec
+
+`func (o *ControlsPolicy) GetDurationCountLimitSec() int32`
+
+GetDurationCountLimitSec returns the DurationCountLimitSec field if non-nil, zero value otherwise.
+
+### GetDurationCountLimitSecOk
+
+`func (o *ControlsPolicy) GetDurationCountLimitSecOk() (*int32, bool)`
+
+GetDurationCountLimitSecOk returns a tuple with the DurationCountLimitSec field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDurationCountLimitSec
+
+`func (o *ControlsPolicy) SetDurationCountLimitSec(v int32)`
+
+SetDurationCountLimitSec sets DurationCountLimitSec field to given value.
+
 
 ### GetDurationSec
 
@@ -66,26 +107,6 @@ and a boolean to check if the value has been set.
 `func (o *ControlsPolicy) SetEventType(v string)`
 
 SetEventType sets EventType field to given value.
-
-
-### GetHash
-
-`func (o *ControlsPolicy) GetHash() string`
-
-GetHash returns the Hash field if non-nil, zero value otherwise.
-
-### GetHashOk
-
-`func (o *ControlsPolicy) GetHashOk() (*string, bool)`
-
-GetHashOk returns a tuple with the Hash field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHash
-
-`func (o *ControlsPolicy) SetHash(v string)`
-
-SetHash sets Hash field to given value.
 
 
 ### GetMatcher

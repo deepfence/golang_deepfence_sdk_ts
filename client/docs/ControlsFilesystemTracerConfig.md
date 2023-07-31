@@ -6,13 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Hash** | **string** |  | 
 **MonitoredFiles** | [**[]ControlsMonitoredFilesConfig**](ControlsMonitoredFilesConfig.md) |  | 
+**Name** | **string** |  | 
 **ProcessEvents** | [**[]ControlsProcessEventConfig**](ControlsProcessEventConfig.md) |  | 
 
 ## Methods
 
 ### NewControlsFilesystemTracerConfig
 
-`func NewControlsFilesystemTracerConfig(hash string, monitoredFiles []ControlsMonitoredFilesConfig, processEvents []ControlsProcessEventConfig, ) *ControlsFilesystemTracerConfig`
+`func NewControlsFilesystemTracerConfig(hash string, monitoredFiles []ControlsMonitoredFilesConfig, name string, processEvents []ControlsProcessEventConfig, ) *ControlsFilesystemTracerConfig`
 
 NewControlsFilesystemTracerConfig instantiates a new ControlsFilesystemTracerConfig object
 This constructor will assign default values to properties that have it defined,
@@ -77,6 +78,26 @@ SetMonitoredFiles sets MonitoredFiles field to given value.
 `func (o *ControlsFilesystemTracerConfig) UnsetMonitoredFiles()`
 
 UnsetMonitoredFiles ensures that no value is present for MonitoredFiles, not even an explicit nil
+### GetName
+
+`func (o *ControlsFilesystemTracerConfig) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *ControlsFilesystemTracerConfig) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *ControlsFilesystemTracerConfig) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
 ### GetProcessEvents
 
 `func (o *ControlsFilesystemTracerConfig) GetProcessEvents() []ControlsProcessEventConfig`

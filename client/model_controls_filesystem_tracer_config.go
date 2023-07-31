@@ -22,6 +22,7 @@ var _ MappedNullable = &ControlsFilesystemTracerConfig{}
 type ControlsFilesystemTracerConfig struct {
 	Hash string `json:"hash"`
 	MonitoredFiles []ControlsMonitoredFilesConfig `json:"monitored_files"`
+	Name string `json:"name"`
 	ProcessEvents []ControlsProcessEventConfig `json:"process_events"`
 }
 
@@ -29,10 +30,11 @@ type ControlsFilesystemTracerConfig struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsFilesystemTracerConfig(hash string, monitoredFiles []ControlsMonitoredFilesConfig, processEvents []ControlsProcessEventConfig) *ControlsFilesystemTracerConfig {
+func NewControlsFilesystemTracerConfig(hash string, monitoredFiles []ControlsMonitoredFilesConfig, name string, processEvents []ControlsProcessEventConfig) *ControlsFilesystemTracerConfig {
 	this := ControlsFilesystemTracerConfig{}
 	this.Hash = hash
 	this.MonitoredFiles = monitoredFiles
+	this.Name = name
 	this.ProcessEvents = processEvents
 	return &this
 }
@@ -95,6 +97,30 @@ func (o *ControlsFilesystemTracerConfig) SetMonitoredFiles(v []ControlsMonitored
 	o.MonitoredFiles = v
 }
 
+// GetName returns the Name field value
+func (o *ControlsFilesystemTracerConfig) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *ControlsFilesystemTracerConfig) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *ControlsFilesystemTracerConfig) SetName(v string) {
+	o.Name = v
+}
+
 // GetProcessEvents returns the ProcessEvents field value
 // If the value is explicit nil, the zero value for []ControlsProcessEventConfig will be returned
 func (o *ControlsFilesystemTracerConfig) GetProcessEvents() []ControlsProcessEventConfig {
@@ -135,6 +161,7 @@ func (o ControlsFilesystemTracerConfig) ToMap() (map[string]interface{}, error) 
 	if o.MonitoredFiles != nil {
 		toSerialize["monitored_files"] = o.MonitoredFiles
 	}
+	toSerialize["name"] = o.Name
 	if o.ProcessEvents != nil {
 		toSerialize["process_events"] = o.ProcessEvents
 	}

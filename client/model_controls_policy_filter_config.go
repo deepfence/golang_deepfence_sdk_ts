@@ -20,6 +20,8 @@ var _ MappedNullable = &ControlsPolicyFilterConfig{}
 
 // ControlsPolicyFilterConfig struct for ControlsPolicyFilterConfig
 type ControlsPolicyFilterConfig struct {
+	Hash string `json:"hash"`
+	Name string `json:"name"`
 	Policies []ControlsPolicy `json:"policies"`
 }
 
@@ -27,8 +29,10 @@ type ControlsPolicyFilterConfig struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsPolicyFilterConfig(policies []ControlsPolicy) *ControlsPolicyFilterConfig {
+func NewControlsPolicyFilterConfig(hash string, name string, policies []ControlsPolicy) *ControlsPolicyFilterConfig {
 	this := ControlsPolicyFilterConfig{}
+	this.Hash = hash
+	this.Name = name
 	this.Policies = policies
 	return &this
 }
@@ -39,6 +43,54 @@ func NewControlsPolicyFilterConfig(policies []ControlsPolicy) *ControlsPolicyFil
 func NewControlsPolicyFilterConfigWithDefaults() *ControlsPolicyFilterConfig {
 	this := ControlsPolicyFilterConfig{}
 	return &this
+}
+
+// GetHash returns the Hash field value
+func (o *ControlsPolicyFilterConfig) GetHash() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Hash
+}
+
+// GetHashOk returns a tuple with the Hash field value
+// and a boolean to check if the value has been set.
+func (o *ControlsPolicyFilterConfig) GetHashOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Hash, true
+}
+
+// SetHash sets field value
+func (o *ControlsPolicyFilterConfig) SetHash(v string) {
+	o.Hash = v
+}
+
+// GetName returns the Name field value
+func (o *ControlsPolicyFilterConfig) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *ControlsPolicyFilterConfig) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *ControlsPolicyFilterConfig) SetName(v string) {
+	o.Name = v
 }
 
 // GetPolicies returns the Policies field value
@@ -77,6 +129,8 @@ func (o ControlsPolicyFilterConfig) MarshalJSON() ([]byte, error) {
 
 func (o ControlsPolicyFilterConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["hash"] = o.Hash
+	toSerialize["name"] = o.Name
 	if o.Policies != nil {
 		toSerialize["policies"] = o.Policies
 	}

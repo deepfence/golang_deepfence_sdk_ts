@@ -20,9 +20,10 @@ var _ MappedNullable = &ControlsPolicy{}
 
 // ControlsPolicy struct for ControlsPolicy
 type ControlsPolicy struct {
+	CountLimit int32 `json:"count_limit"`
+	DurationCountLimitSec int32 `json:"duration_count_limit_sec"`
 	DurationSec int32 `json:"duration_sec"`
 	EventType string `json:"event_type"`
-	Hash string `json:"hash"`
 	Matcher map[string]interface{} `json:"matcher"`
 }
 
@@ -30,11 +31,12 @@ type ControlsPolicy struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsPolicy(durationSec int32, eventType string, hash string, matcher map[string]interface{}) *ControlsPolicy {
+func NewControlsPolicy(countLimit int32, durationCountLimitSec int32, durationSec int32, eventType string, matcher map[string]interface{}) *ControlsPolicy {
 	this := ControlsPolicy{}
+	this.CountLimit = countLimit
+	this.DurationCountLimitSec = durationCountLimitSec
 	this.DurationSec = durationSec
 	this.EventType = eventType
-	this.Hash = hash
 	this.Matcher = matcher
 	return &this
 }
@@ -45,6 +47,54 @@ func NewControlsPolicy(durationSec int32, eventType string, hash string, matcher
 func NewControlsPolicyWithDefaults() *ControlsPolicy {
 	this := ControlsPolicy{}
 	return &this
+}
+
+// GetCountLimit returns the CountLimit field value
+func (o *ControlsPolicy) GetCountLimit() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.CountLimit
+}
+
+// GetCountLimitOk returns a tuple with the CountLimit field value
+// and a boolean to check if the value has been set.
+func (o *ControlsPolicy) GetCountLimitOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CountLimit, true
+}
+
+// SetCountLimit sets field value
+func (o *ControlsPolicy) SetCountLimit(v int32) {
+	o.CountLimit = v
+}
+
+// GetDurationCountLimitSec returns the DurationCountLimitSec field value
+func (o *ControlsPolicy) GetDurationCountLimitSec() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.DurationCountLimitSec
+}
+
+// GetDurationCountLimitSecOk returns a tuple with the DurationCountLimitSec field value
+// and a boolean to check if the value has been set.
+func (o *ControlsPolicy) GetDurationCountLimitSecOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DurationCountLimitSec, true
+}
+
+// SetDurationCountLimitSec sets field value
+func (o *ControlsPolicy) SetDurationCountLimitSec(v int32) {
+	o.DurationCountLimitSec = v
 }
 
 // GetDurationSec returns the DurationSec field value
@@ -95,30 +145,6 @@ func (o *ControlsPolicy) SetEventType(v string) {
 	o.EventType = v
 }
 
-// GetHash returns the Hash field value
-func (o *ControlsPolicy) GetHash() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Hash
-}
-
-// GetHashOk returns a tuple with the Hash field value
-// and a boolean to check if the value has been set.
-func (o *ControlsPolicy) GetHashOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Hash, true
-}
-
-// SetHash sets field value
-func (o *ControlsPolicy) SetHash(v string) {
-	o.Hash = v
-}
-
 // GetMatcher returns the Matcher field value
 func (o *ControlsPolicy) GetMatcher() map[string]interface{} {
 	if o == nil {
@@ -153,9 +179,10 @@ func (o ControlsPolicy) MarshalJSON() ([]byte, error) {
 
 func (o ControlsPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["count_limit"] = o.CountLimit
+	toSerialize["duration_count_limit_sec"] = o.DurationCountLimitSec
 	toSerialize["duration_sec"] = o.DurationSec
 	toSerialize["event_type"] = o.EventType
-	toSerialize["hash"] = o.Hash
 	toSerialize["matcher"] = o.Matcher
 	return toSerialize, nil
 }

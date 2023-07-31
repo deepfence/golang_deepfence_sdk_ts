@@ -7,13 +7,14 @@ Name | Type | Description | Notes
 **Hash** | **string** |  | 
 **HttpRules** | [**ControlsNetworkRules**](ControlsNetworkRules.md) |  | 
 **HttpsRules** | [**ControlsNetworkRules**](ControlsNetworkRules.md) |  | 
+**Name** | **string** |  | 
 **TcpRules** | [**ControlsNetworkRules**](ControlsNetworkRules.md) |  | 
 
 ## Methods
 
 ### NewControlsNetworkTracerConfig
 
-`func NewControlsNetworkTracerConfig(hash string, httpRules ControlsNetworkRules, httpsRules ControlsNetworkRules, tcpRules ControlsNetworkRules, ) *ControlsNetworkTracerConfig`
+`func NewControlsNetworkTracerConfig(hash string, httpRules ControlsNetworkRules, httpsRules ControlsNetworkRules, name string, tcpRules ControlsNetworkRules, ) *ControlsNetworkTracerConfig`
 
 NewControlsNetworkTracerConfig instantiates a new ControlsNetworkTracerConfig object
 This constructor will assign default values to properties that have it defined,
@@ -86,6 +87,26 @@ and a boolean to check if the value has been set.
 `func (o *ControlsNetworkTracerConfig) SetHttpsRules(v ControlsNetworkRules)`
 
 SetHttpsRules sets HttpsRules field to given value.
+
+
+### GetName
+
+`func (o *ControlsNetworkTracerConfig) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *ControlsNetworkTracerConfig) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *ControlsNetworkTracerConfig) SetName(v string)`
+
+SetName sets Name field to given value.
 
 
 ### GetTcpRules

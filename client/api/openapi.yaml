@@ -9616,6 +9616,7 @@ components:
           wight: wight
         - event_name: event_name
           wight: wight
+        name: name
         hash: hash
       properties:
         hash:
@@ -9625,6 +9626,8 @@ components:
             $ref: '#/components/schemas/ControlsMonitoredFilesConfig'
           nullable: true
           type: array
+        name:
+          type: string
         process_events:
           items:
             $ref: '#/components/schemas/ControlsProcessEventConfig'
@@ -9633,6 +9636,7 @@ components:
       required:
       - hash
       - monitored_files
+      - name
       - process_events
       type: object
     ControlsMonitoredFilesConfig:
@@ -9696,6 +9700,7 @@ components:
           outbound:
           - outbound
           - outbound
+        name: name
         hash: hash
         https_rules:
           inbound:
@@ -9711,55 +9716,72 @@ components:
           $ref: '#/components/schemas/ControlsNetworkRules'
         https_rules:
           $ref: '#/components/schemas/ControlsNetworkRules'
+        name:
+          type: string
         tcp_rules:
           $ref: '#/components/schemas/ControlsNetworkRules'
       required:
       - hash
       - http_rules
       - https_rules
+      - name
       - tcp_rules
       type: object
     ControlsPolicy:
       example:
         event_type: event_type
+        count_limit: 0
+        duration_count_limit_sec: 6
         matcher: "{}"
-        duration_sec: 0
-        hash: hash
+        duration_sec: 1
       properties:
+        count_limit:
+          type: integer
+        duration_count_limit_sec:
+          type: integer
         duration_sec:
           type: integer
         event_type:
           type: string
-        hash:
-          type: string
         matcher:
           type: object
       required:
+      - count_limit
+      - duration_count_limit_sec
       - duration_sec
       - event_type
-      - hash
       - matcher
       type: object
     ControlsPolicyAlertMatcher:
       type: object
     ControlsPolicyFilterConfig:
       example:
+        name: name
         policies:
         - event_type: event_type
+          count_limit: 0
+          duration_count_limit_sec: 6
           matcher: "{}"
-          duration_sec: 0
-          hash: hash
+          duration_sec: 1
         - event_type: event_type
+          count_limit: 0
+          duration_count_limit_sec: 6
           matcher: "{}"
-          duration_sec: 0
-          hash: hash
+          duration_sec: 1
+        hash: hash
       properties:
+        hash:
+          type: string
+        name:
+          type: string
         policies:
           items:
             $ref: '#/components/schemas/ControlsPolicy'
           nullable: true
           type: array
       required:
+      - hash
+      - name
       - policies
       type: object
     ControlsProcessEventConfig:

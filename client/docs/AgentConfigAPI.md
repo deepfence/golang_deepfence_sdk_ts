@@ -412,7 +412,7 @@ import (
 )
 
 func main() {
-    controlsFilesystemTracerConfig := *openapiclient.NewControlsFilesystemTracerConfig("Hash_example", []openapiclient.ControlsMonitoredFilesConfig{*openapiclient.NewControlsMonitoredFilesConfig([]string{"AccessTypes_example"}, "Path_example", "Wight_example")}, []openapiclient.ControlsProcessEventConfig{*openapiclient.NewControlsProcessEventConfig("EventName_example", "Wight_example")}) // ControlsFilesystemTracerConfig |  (optional)
+    controlsFilesystemTracerConfig := *openapiclient.NewControlsFilesystemTracerConfig("Hash_example", []openapiclient.ControlsMonitoredFilesConfig{*openapiclient.NewControlsMonitoredFilesConfig([]string{"AccessTypes_example"}, "Path_example", "Wight_example")}, "Name_example", []openapiclient.ControlsProcessEventConfig{*openapiclient.NewControlsProcessEventConfig("EventName_example", "Wight_example")}) // ControlsFilesystemTracerConfig |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -476,7 +476,7 @@ import (
 )
 
 func main() {
-    controlsNetworkTracerConfig := *openapiclient.NewControlsNetworkTracerConfig("Hash_example", *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"})) // ControlsNetworkTracerConfig |  (optional)
+    controlsNetworkTracerConfig := *openapiclient.NewControlsNetworkTracerConfig("Hash_example", *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), "Name_example", *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"})) // ControlsNetworkTracerConfig |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -540,7 +540,7 @@ import (
 )
 
 func main() {
-    controlsPolicyFilterConfig := *openapiclient.NewControlsPolicyFilterConfig([]openapiclient.ControlsPolicy{*openapiclient.NewControlsPolicy(int32(123), "EventType_example", "Hash_example", map[string]interface{}(123))}) // ControlsPolicyFilterConfig |  (optional)
+    controlsPolicyFilterConfig := *openapiclient.NewControlsPolicyFilterConfig("Hash_example", "Name_example", []openapiclient.ControlsPolicy{*openapiclient.NewControlsPolicy(int32(123), int32(123), int32(123), "EventType_example", map[string]interface{}(123))}) // ControlsPolicyFilterConfig |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

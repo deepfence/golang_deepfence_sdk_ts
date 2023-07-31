@@ -4,13 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Hash** | **string** |  | 
+**Name** | **string** |  | 
 **Policies** | [**[]ControlsPolicy**](ControlsPolicy.md) |  | 
 
 ## Methods
 
 ### NewControlsPolicyFilterConfig
 
-`func NewControlsPolicyFilterConfig(policies []ControlsPolicy, ) *ControlsPolicyFilterConfig`
+`func NewControlsPolicyFilterConfig(hash string, name string, policies []ControlsPolicy, ) *ControlsPolicyFilterConfig`
 
 NewControlsPolicyFilterConfig instantiates a new ControlsPolicyFilterConfig object
 This constructor will assign default values to properties that have it defined,
@@ -24,6 +26,46 @@ will change when the set of required properties is changed
 NewControlsPolicyFilterConfigWithDefaults instantiates a new ControlsPolicyFilterConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetHash
+
+`func (o *ControlsPolicyFilterConfig) GetHash() string`
+
+GetHash returns the Hash field if non-nil, zero value otherwise.
+
+### GetHashOk
+
+`func (o *ControlsPolicyFilterConfig) GetHashOk() (*string, bool)`
+
+GetHashOk returns a tuple with the Hash field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHash
+
+`func (o *ControlsPolicyFilterConfig) SetHash(v string)`
+
+SetHash sets Hash field to given value.
+
+
+### GetName
+
+`func (o *ControlsPolicyFilterConfig) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *ControlsPolicyFilterConfig) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *ControlsPolicyFilterConfig) SetName(v string)`
+
+SetName sets Name field to given value.
+
 
 ### GetPolicies
 
