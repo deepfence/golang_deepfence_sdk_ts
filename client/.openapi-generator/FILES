@@ -94,6 +94,7 @@ docs/LookupAPI.md
 docs/LookupLookupFilter.md
 docs/MalwareScanAPI.md
 docs/ModelAgentId.md
+docs/ModelAgentPluginConfigNames.md
 docs/ModelAgentPluginDisable.md
 docs/ModelAgentPluginEnable.md
 docs/ModelAgentPluginsStatus.md
@@ -245,8 +246,10 @@ docs/SearchSearchScanReq.md
 docs/SecretScanAPI.md
 docs/SettingsAPI.md
 docs/SinglesignonGetSingleSignOnResponse.md
+docs/SinglesignonSSOConfigurationInstruction.md
 docs/SinglesignonSSOConfigurationInstructions.md
 docs/SinglesignonSSOProviderConfig.md
+docs/SinglesignonSSOResponse.md
 docs/SinglesignonVerifySSOAuthRequest.md
 docs/ThreatAPI.md
 docs/TopologyAPI.md
@@ -306,6 +309,7 @@ model_ingesters_vulnerability.go
 model_ingesters_vulnerability_scan_status.go
 model_lookup_lookup_filter.go
 model_model_agent_id.go
+model_model_agent_plugin_config_names.go
 model_model_agent_plugin_disable.go
 model_model_agent_plugin_enable.go
 model_model_agent_plugins_status.go
@@ -451,8 +455,10 @@ model_search_search_filter.go
 model_search_search_node_req.go
 model_search_search_scan_req.go
 model_singlesignon_get_single_sign_on_response.go
+model_singlesignon_sso_configuration_instruction.go
 model_singlesignon_sso_configuration_instructions.go
 model_singlesignon_sso_provider_config.go
+model_singlesignon_sso_response.go
 model_singlesignon_verify_sso_auth_request.go
 model_utils_advanced_report_filters.go
 model_utils_report_filters.go

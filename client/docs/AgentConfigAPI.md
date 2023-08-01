@@ -476,7 +476,7 @@ import (
 )
 
 func main() {
-    controlsNetworkTracerConfig := *openapiclient.NewControlsNetworkTracerConfig("Hash_example", *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), "Name_example", *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"})) // ControlsNetworkTracerConfig |  (optional)
+    controlsNetworkTracerConfig := *openapiclient.NewControlsNetworkTracerConfig("Hash_example", *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), "Mode_example", "Name_example", []string{"ProcessNames_example"}, *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"})) // ControlsNetworkTracerConfig |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

@@ -23,7 +23,9 @@ type ControlsNetworkTracerConfig struct {
 	Hash string `json:"hash"`
 	HttpRules ControlsNetworkRules `json:"http_rules"`
 	HttpsRules ControlsNetworkRules `json:"https_rules"`
+	Mode string `json:"mode"`
 	Name string `json:"name"`
+	ProcessNames []string `json:"process_names"`
 	TcpRules ControlsNetworkRules `json:"tcp_rules"`
 }
 
@@ -31,12 +33,14 @@ type ControlsNetworkTracerConfig struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsNetworkTracerConfig(hash string, httpRules ControlsNetworkRules, httpsRules ControlsNetworkRules, name string, tcpRules ControlsNetworkRules) *ControlsNetworkTracerConfig {
+func NewControlsNetworkTracerConfig(hash string, httpRules ControlsNetworkRules, httpsRules ControlsNetworkRules, mode string, name string, processNames []string, tcpRules ControlsNetworkRules) *ControlsNetworkTracerConfig {
 	this := ControlsNetworkTracerConfig{}
 	this.Hash = hash
 	this.HttpRules = httpRules
 	this.HttpsRules = httpsRules
+	this.Mode = mode
 	this.Name = name
+	this.ProcessNames = processNames
 	this.TcpRules = tcpRules
 	return &this
 }
@@ -121,6 +125,30 @@ func (o *ControlsNetworkTracerConfig) SetHttpsRules(v ControlsNetworkRules) {
 	o.HttpsRules = v
 }
 
+// GetMode returns the Mode field value
+func (o *ControlsNetworkTracerConfig) GetMode() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Mode
+}
+
+// GetModeOk returns a tuple with the Mode field value
+// and a boolean to check if the value has been set.
+func (o *ControlsNetworkTracerConfig) GetModeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Mode, true
+}
+
+// SetMode sets field value
+func (o *ControlsNetworkTracerConfig) SetMode(v string) {
+	o.Mode = v
+}
+
 // GetName returns the Name field value
 func (o *ControlsNetworkTracerConfig) GetName() string {
 	if o == nil {
@@ -143,6 +171,32 @@ func (o *ControlsNetworkTracerConfig) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *ControlsNetworkTracerConfig) SetName(v string) {
 	o.Name = v
+}
+
+// GetProcessNames returns the ProcessNames field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ControlsNetworkTracerConfig) GetProcessNames() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.ProcessNames
+}
+
+// GetProcessNamesOk returns a tuple with the ProcessNames field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ControlsNetworkTracerConfig) GetProcessNamesOk() ([]string, bool) {
+	if o == nil || IsNil(o.ProcessNames) {
+		return nil, false
+	}
+	return o.ProcessNames, true
+}
+
+// SetProcessNames sets field value
+func (o *ControlsNetworkTracerConfig) SetProcessNames(v []string) {
+	o.ProcessNames = v
 }
 
 // GetTcpRules returns the TcpRules field value
@@ -182,7 +236,11 @@ func (o ControlsNetworkTracerConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize["hash"] = o.Hash
 	toSerialize["http_rules"] = o.HttpRules
 	toSerialize["https_rules"] = o.HttpsRules
+	toSerialize["mode"] = o.Mode
 	toSerialize["name"] = o.Name
+	if o.ProcessNames != nil {
+		toSerialize["process_names"] = o.ProcessNames
+	}
 	toSerialize["tcp_rules"] = o.TcpRules
 	return toSerialize, nil
 }

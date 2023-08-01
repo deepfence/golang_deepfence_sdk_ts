@@ -9686,6 +9686,10 @@ components:
       type: object
     ControlsNetworkTracerConfig:
       example:
+        mode: all
+        process_names:
+        - process_names
+        - process_names
         tcp_rules:
           inbound:
           - inbound
@@ -9716,15 +9720,28 @@ components:
           $ref: '#/components/schemas/ControlsNetworkRules'
         https_rules:
           $ref: '#/components/schemas/ControlsNetworkRules'
+        mode:
+          enum:
+          - all
+          - deny
+          - allow
+          type: string
         name:
           type: string
+        process_names:
+          items:
+            type: string
+          nullable: true
+          type: array
         tcp_rules:
           $ref: '#/components/schemas/ControlsNetworkRules'
       required:
       - hash
       - http_rules
       - https_rules
+      - mode
       - name
+      - process_names
       - tcp_rules
       type: object
     ControlsPolicy:
@@ -11191,27 +11208,32 @@ components:
     ModelAgentId:
       example:
         available_workload: 0
-        plugins_status:
-          network_tracer_status:
-            description: description
-            status: status
-          network_filter_status:
-            description: description
-            status: status
-          filesystem_tracer_status:
-            description: description
-            status: status
         node_id: node_id
       properties:
         available_workload:
           type: integer
         node_id:
           type: string
-        plugins_status:
-          $ref: '#/components/schemas/ModelAgentPluginsStatus'
       required:
       - available_workload
       - node_id
+      type: object
+    ModelAgentPluginConfigNames:
+      example:
+        policy_config_name: policy_config_name
+        filesystem_config_name: filesystem_config_name
+        network_config_name: network_config_name
+      properties:
+        filesystem_config_name:
+          type: string
+        network_config_name:
+          type: string
+        policy_config_name:
+          type: string
+      required:
+      - filesystem_config_name
+      - network_config_name
+      - policy_config_name
       type: object
     ModelAgentPluginDisable:
       example:
@@ -11330,28 +11352,8 @@ components:
         name: name
         agent_ids:
         - available_workload: 0
-          plugins_status:
-            network_tracer_status:
-              description: description
-              status: status
-            network_filter_status:
-              description: description
-              status: status
-            filesystem_tracer_status:
-              description: description
-              status: status
           node_id: node_id
         - available_workload: 0
-          plugins_status:
-            network_tracer_status:
-              description: description
-              status: status
-            network_filter_status:
-              description: description
-              status: status
-            filesystem_tracer_status:
-              description: description
-              status: status
           node_id: node_id
       properties:
         agent_ids:
@@ -12845,28 +12847,8 @@ components:
       example:
         agent_ids:
         - available_workload: 0
-          plugins_status:
-            network_tracer_status:
-              description: description
-              status: status
-            network_filter_status:
-              description: description
-              status: status
-            filesystem_tracer_status:
-              description: description
-              status: status
           node_id: node_id
         - available_workload: 0
-          plugins_status:
-            network_tracer_status:
-              description: description
-              status: status
-            network_filter_status:
-              description: description
-              status: status
-            filesystem_tracer_status:
-              description: description
-              status: status
           node_id: node_id
       properties:
         agent_ids:
@@ -12969,28 +12951,8 @@ components:
         path: path
         agent_ids:
         - available_workload: 0
-          plugins_status:
-            network_tracer_status:
-              description: description
-              status: status
-            network_filter_status:
-              description: description
-              status: status
-            filesystem_tracer_status:
-              description: description
-              status: status
           node_id: node_id
         - available_workload: 0
-          plugins_status:
-            network_tracer_status:
-              description: description
-              status: status
-            network_filter_status:
-              description: description
-              status: status
-            filesystem_tracer_status:
-              description: description
-              status: status
           node_id: node_id
       properties:
         agent_ids:
@@ -13022,28 +12984,8 @@ components:
           - outbound
         agent_ids:
         - available_workload: 0
-          plugins_status:
-            network_tracer_status:
-              description: description
-              status: status
-            network_filter_status:
-              description: description
-              status: status
-            filesystem_tracer_status:
-              description: description
-              status: status
           node_id: node_id
         - available_workload: 0
-          plugins_status:
-            network_tracer_status:
-              description: description
-              status: status
-            network_filter_status:
-              description: description
-              status: status
-            filesystem_tracer_status:
-              description: description
-              status: status
           node_id: node_id
         https_rules:
           inbound:
@@ -13628,9 +13570,23 @@ components:
         - ""
         - ""
         secret_latest_scan_id: secret_latest_scan_id
+        config_names:
+          policy_config_name: policy_config_name
+          filesystem_config_name: filesystem_config_name
+          network_config_name: network_config_name
         vulnerability_latest_scan_id: vulnerability_latest_scan_id
         resource_group: resource_group
         malware_scan_status: malware_scan_status
+        plugin_status:
+          network_tracer_status:
+            description: description
+            status: status
+          network_filter_status:
+            description: description
+            status: status
+          filesystem_tracer_status:
+            description: description
+            status: status
         inbound_connections:
         - count: 5
           node_name: node_name
@@ -14112,6 +14068,8 @@ components:
           type: string
         compliances_count:
           type: integer
+        config_names:
+          $ref: '#/components/schemas/ModelAgentPluginConfigNames'
         container_images:
           items:
             $ref: '#/components/schemas/ModelContainerImage'
@@ -14172,6 +14130,8 @@ components:
             $ref: '#/components/schemas/ModelConnection'
           nullable: true
           type: array
+        plugin_status:
+          $ref: '#/components/schemas/ModelAgentPluginsStatus'
         pods:
           items:
             $ref: '#/components/schemas/ModelPod'
@@ -14216,6 +14176,7 @@ components:
       - compliance_latest_scan_id
       - compliance_scan_status
       - compliances_count
+      - config_names
       - container_images
       - containers
       - cpu_max
@@ -14238,6 +14199,7 @@ components:
       - node_name
       - os
       - outbound_connections
+      - plugin_status
       - pods
       - private_ip
       - processes
@@ -14274,24 +14236,12 @@ components:
       example:
         available_workload: 0
         version: version
-        plugins_status:
-          network_tracer_status:
-            description: description
-            status: status
-          network_filter_status:
-            description: description
-            status: status
-          filesystem_tracer_status:
-            description: description
-            status: status
         node_id: node_id
       properties:
         available_workload:
           type: integer
         node_id:
           type: string
-        plugins_status:
-          $ref: '#/components/schemas/ModelAgentPluginsStatus'
         version:
           type: string
       required:
@@ -14776,9 +14726,23 @@ components:
           - ""
           - ""
           secret_latest_scan_id: secret_latest_scan_id
+          config_names:
+            policy_config_name: policy_config_name
+            filesystem_config_name: filesystem_config_name
+            network_config_name: network_config_name
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
           resource_group: resource_group
           malware_scan_status: malware_scan_status
+          plugin_status:
+            network_tracer_status:
+              description: description
+              status: status
+            network_filter_status:
+              description: description
+              status: status
+            filesystem_tracer_status:
+              description: description
+              status: status
           inbound_connections:
           - count: 5
             node_name: node_name
@@ -15526,9 +15490,23 @@ components:
           - ""
           - ""
           secret_latest_scan_id: secret_latest_scan_id
+          config_names:
+            policy_config_name: policy_config_name
+            filesystem_config_name: filesystem_config_name
+            network_config_name: network_config_name
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
           resource_group: resource_group
           malware_scan_status: malware_scan_status
+          plugin_status:
+            network_tracer_status:
+              description: description
+              status: status
+            network_filter_status:
+              description: description
+              status: status
+            filesystem_tracer_status:
+              description: description
+              status: status
           inbound_connections:
           - count: 5
             node_name: node_name
@@ -19579,50 +19557,54 @@ components:
     SinglesignonGetSingleSignOnResponse:
       example:
         instructions:
-        - value: value
-          key: key
-        - value: value
-          key: key
-        issuer_url: issuer_url
-        updated_at: 2000-01-23T04:56:07.000+00:00
-        sso_provider_type: sso_provider_type
-        created_at: 2000-01-23T04:56:07.000+00:00
-        id: 0
-        label: label
-        client_id: client_id
+          github:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          google:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          microsoft:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          oidc:
+          - value: value
+            key: key
+          - value: value
+            key: key
+        config:
+        - issuer_url: issuer_url
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          sso_provider_type: sso_provider_type
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 0
+          label: label
+          client_id: client_id
+        - issuer_url: issuer_url
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          sso_provider_type: sso_provider_type
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 0
+          label: label
+          client_id: client_id
       properties:
-        client_id:
-          type: string
-        created_at:
-          format: date-time
-          type: string
-        id:
-          type: integer
-        instructions:
+        config:
           items:
-            $ref: '#/components/schemas/SinglesignonSSOConfigurationInstructions'
+            $ref: '#/components/schemas/SinglesignonSSOResponse'
           nullable: true
           type: array
-        issuer_url:
-          type: string
-        label:
-          type: string
-        sso_provider_type:
-          type: string
-        updated_at:
-          format: date-time
-          type: string
+        instructions:
+          $ref: '#/components/schemas/SinglesignonSSOConfigurationInstructions'
       required:
-      - client_id
-      - created_at
-      - id
+      - config
       - instructions
-      - issuer_url
-      - label
-      - sso_provider_type
-      - updated_at
       type: object
-    SinglesignonSSOConfigurationInstructions:
+    SinglesignonSSOConfigurationInstruction:
       example:
         value: value
         key: key
@@ -19634,6 +19616,50 @@ components:
       required:
       - key
       - value
+      type: object
+    SinglesignonSSOConfigurationInstructions:
+      example:
+        github:
+        - value: value
+          key: key
+        - value: value
+          key: key
+        google:
+        - value: value
+          key: key
+        - value: value
+          key: key
+        microsoft:
+        - value: value
+          key: key
+        - value: value
+          key: key
+        oidc:
+        - value: value
+          key: key
+        - value: value
+          key: key
+      properties:
+        github:
+          items:
+            $ref: '#/components/schemas/SinglesignonSSOConfigurationInstruction'
+          nullable: true
+          type: array
+        google:
+          items:
+            $ref: '#/components/schemas/SinglesignonSSOConfigurationInstruction'
+          nullable: true
+          type: array
+        microsoft:
+          items:
+            $ref: '#/components/schemas/SinglesignonSSOConfigurationInstruction'
+          nullable: true
+          type: array
+        oidc:
+          items:
+            $ref: '#/components/schemas/SinglesignonSSOConfigurationInstruction'
+          nullable: true
+          type: array
       type: object
     SinglesignonSSOProviderConfig:
       example:
@@ -19659,6 +19685,41 @@ components:
       - client_id
       - client_secret
       - sso_provider_type
+      type: object
+    SinglesignonSSOResponse:
+      example:
+        issuer_url: issuer_url
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        sso_provider_type: sso_provider_type
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: 0
+        label: label
+        client_id: client_id
+      properties:
+        client_id:
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        id:
+          type: integer
+        issuer_url:
+          type: string
+        label:
+          type: string
+        sso_provider_type:
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+      required:
+      - client_id
+      - created_at
+      - id
+      - issuer_url
+      - label
+      - sso_provider_type
+      - updated_at
       type: object
     SinglesignonVerifySSOAuthRequest:
       example:

@@ -13,7 +13,6 @@ package client
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // checks if the SinglesignonGetSingleSignOnResponse type satisfies the MappedNullable interface at compile time
@@ -21,30 +20,18 @@ var _ MappedNullable = &SinglesignonGetSingleSignOnResponse{}
 
 // SinglesignonGetSingleSignOnResponse struct for SinglesignonGetSingleSignOnResponse
 type SinglesignonGetSingleSignOnResponse struct {
-	ClientId string `json:"client_id"`
-	CreatedAt time.Time `json:"created_at"`
-	Id int32 `json:"id"`
-	Instructions []SinglesignonSSOConfigurationInstructions `json:"instructions"`
-	IssuerUrl string `json:"issuer_url"`
-	Label string `json:"label"`
-	SsoProviderType string `json:"sso_provider_type"`
-	UpdatedAt time.Time `json:"updated_at"`
+	Config []SinglesignonSSOResponse `json:"config"`
+	Instructions SinglesignonSSOConfigurationInstructions `json:"instructions"`
 }
 
 // NewSinglesignonGetSingleSignOnResponse instantiates a new SinglesignonGetSingleSignOnResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSinglesignonGetSingleSignOnResponse(clientId string, createdAt time.Time, id int32, instructions []SinglesignonSSOConfigurationInstructions, issuerUrl string, label string, ssoProviderType string, updatedAt time.Time) *SinglesignonGetSingleSignOnResponse {
+func NewSinglesignonGetSingleSignOnResponse(config []SinglesignonSSOResponse, instructions SinglesignonSSOConfigurationInstructions) *SinglesignonGetSingleSignOnResponse {
 	this := SinglesignonGetSingleSignOnResponse{}
-	this.ClientId = clientId
-	this.CreatedAt = createdAt
-	this.Id = id
+	this.Config = config
 	this.Instructions = instructions
-	this.IssuerUrl = issuerUrl
-	this.Label = label
-	this.SsoProviderType = ssoProviderType
-	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -56,83 +43,36 @@ func NewSinglesignonGetSingleSignOnResponseWithDefaults() *SinglesignonGetSingle
 	return &this
 }
 
-// GetClientId returns the ClientId field value
-func (o *SinglesignonGetSingleSignOnResponse) GetClientId() string {
+// GetConfig returns the Config field value
+// If the value is explicit nil, the zero value for []SinglesignonSSOResponse will be returned
+func (o *SinglesignonGetSingleSignOnResponse) GetConfig() []SinglesignonSSOResponse {
 	if o == nil {
-		var ret string
+		var ret []SinglesignonSSOResponse
 		return ret
 	}
 
-	return o.ClientId
+	return o.Config
 }
 
-// GetClientIdOk returns a tuple with the ClientId field value
+// GetConfigOk returns a tuple with the Config field value
 // and a boolean to check if the value has been set.
-func (o *SinglesignonGetSingleSignOnResponse) GetClientIdOk() (*string, bool) {
-	if o == nil {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SinglesignonGetSingleSignOnResponse) GetConfigOk() ([]SinglesignonSSOResponse, bool) {
+	if o == nil || IsNil(o.Config) {
 		return nil, false
 	}
-	return &o.ClientId, true
+	return o.Config, true
 }
 
-// SetClientId sets field value
-func (o *SinglesignonGetSingleSignOnResponse) SetClientId(v string) {
-	o.ClientId = v
-}
-
-// GetCreatedAt returns the CreatedAt field value
-func (o *SinglesignonGetSingleSignOnResponse) GetCreatedAt() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
-// and a boolean to check if the value has been set.
-func (o *SinglesignonGetSingleSignOnResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreatedAt, true
-}
-
-// SetCreatedAt sets field value
-func (o *SinglesignonGetSingleSignOnResponse) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
-}
-
-// GetId returns the Id field value
-func (o *SinglesignonGetSingleSignOnResponse) GetId() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *SinglesignonGetSingleSignOnResponse) GetIdOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *SinglesignonGetSingleSignOnResponse) SetId(v int32) {
-	o.Id = v
+// SetConfig sets field value
+func (o *SinglesignonGetSingleSignOnResponse) SetConfig(v []SinglesignonSSOResponse) {
+	o.Config = v
 }
 
 // GetInstructions returns the Instructions field value
-// If the value is explicit nil, the zero value for []SinglesignonSSOConfigurationInstructions will be returned
-func (o *SinglesignonGetSingleSignOnResponse) GetInstructions() []SinglesignonSSOConfigurationInstructions {
+func (o *SinglesignonGetSingleSignOnResponse) GetInstructions() SinglesignonSSOConfigurationInstructions {
 	if o == nil {
-		var ret []SinglesignonSSOConfigurationInstructions
+		var ret SinglesignonSSOConfigurationInstructions
 		return ret
 	}
 
@@ -141,113 +81,16 @@ func (o *SinglesignonGetSingleSignOnResponse) GetInstructions() []SinglesignonSS
 
 // GetInstructionsOk returns a tuple with the Instructions field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SinglesignonGetSingleSignOnResponse) GetInstructionsOk() ([]SinglesignonSSOConfigurationInstructions, bool) {
-	if o == nil || IsNil(o.Instructions) {
+func (o *SinglesignonGetSingleSignOnResponse) GetInstructionsOk() (*SinglesignonSSOConfigurationInstructions, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Instructions, true
+	return &o.Instructions, true
 }
 
 // SetInstructions sets field value
-func (o *SinglesignonGetSingleSignOnResponse) SetInstructions(v []SinglesignonSSOConfigurationInstructions) {
+func (o *SinglesignonGetSingleSignOnResponse) SetInstructions(v SinglesignonSSOConfigurationInstructions) {
 	o.Instructions = v
-}
-
-// GetIssuerUrl returns the IssuerUrl field value
-func (o *SinglesignonGetSingleSignOnResponse) GetIssuerUrl() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.IssuerUrl
-}
-
-// GetIssuerUrlOk returns a tuple with the IssuerUrl field value
-// and a boolean to check if the value has been set.
-func (o *SinglesignonGetSingleSignOnResponse) GetIssuerUrlOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IssuerUrl, true
-}
-
-// SetIssuerUrl sets field value
-func (o *SinglesignonGetSingleSignOnResponse) SetIssuerUrl(v string) {
-	o.IssuerUrl = v
-}
-
-// GetLabel returns the Label field value
-func (o *SinglesignonGetSingleSignOnResponse) GetLabel() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Label
-}
-
-// GetLabelOk returns a tuple with the Label field value
-// and a boolean to check if the value has been set.
-func (o *SinglesignonGetSingleSignOnResponse) GetLabelOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Label, true
-}
-
-// SetLabel sets field value
-func (o *SinglesignonGetSingleSignOnResponse) SetLabel(v string) {
-	o.Label = v
-}
-
-// GetSsoProviderType returns the SsoProviderType field value
-func (o *SinglesignonGetSingleSignOnResponse) GetSsoProviderType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.SsoProviderType
-}
-
-// GetSsoProviderTypeOk returns a tuple with the SsoProviderType field value
-// and a boolean to check if the value has been set.
-func (o *SinglesignonGetSingleSignOnResponse) GetSsoProviderTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SsoProviderType, true
-}
-
-// SetSsoProviderType sets field value
-func (o *SinglesignonGetSingleSignOnResponse) SetSsoProviderType(v string) {
-	o.SsoProviderType = v
-}
-
-// GetUpdatedAt returns the UpdatedAt field value
-func (o *SinglesignonGetSingleSignOnResponse) GetUpdatedAt() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
-// and a boolean to check if the value has been set.
-func (o *SinglesignonGetSingleSignOnResponse) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.UpdatedAt, true
-}
-
-// SetUpdatedAt sets field value
-func (o *SinglesignonGetSingleSignOnResponse) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = v
 }
 
 func (o SinglesignonGetSingleSignOnResponse) MarshalJSON() ([]byte, error) {
@@ -260,16 +103,10 @@ func (o SinglesignonGetSingleSignOnResponse) MarshalJSON() ([]byte, error) {
 
 func (o SinglesignonGetSingleSignOnResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["client_id"] = o.ClientId
-	toSerialize["created_at"] = o.CreatedAt
-	toSerialize["id"] = o.Id
-	if o.Instructions != nil {
-		toSerialize["instructions"] = o.Instructions
+	if o.Config != nil {
+		toSerialize["config"] = o.Config
 	}
-	toSerialize["issuer_url"] = o.IssuerUrl
-	toSerialize["label"] = o.Label
-	toSerialize["sso_provider_type"] = o.SsoProviderType
-	toSerialize["updated_at"] = o.UpdatedAt
+	toSerialize["instructions"] = o.Instructions
 	return toSerialize, nil
 }
 

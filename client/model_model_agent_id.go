@@ -22,7 +22,6 @@ var _ MappedNullable = &ModelAgentId{}
 type ModelAgentId struct {
 	AvailableWorkload int32 `json:"available_workload"`
 	NodeId string `json:"node_id"`
-	PluginsStatus *ModelAgentPluginsStatus `json:"plugins_status,omitempty"`
 }
 
 // NewModelAgentId instantiates a new ModelAgentId object
@@ -92,38 +91,6 @@ func (o *ModelAgentId) SetNodeId(v string) {
 	o.NodeId = v
 }
 
-// GetPluginsStatus returns the PluginsStatus field value if set, zero value otherwise.
-func (o *ModelAgentId) GetPluginsStatus() ModelAgentPluginsStatus {
-	if o == nil || IsNil(o.PluginsStatus) {
-		var ret ModelAgentPluginsStatus
-		return ret
-	}
-	return *o.PluginsStatus
-}
-
-// GetPluginsStatusOk returns a tuple with the PluginsStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ModelAgentId) GetPluginsStatusOk() (*ModelAgentPluginsStatus, bool) {
-	if o == nil || IsNil(o.PluginsStatus) {
-		return nil, false
-	}
-	return o.PluginsStatus, true
-}
-
-// HasPluginsStatus returns a boolean if a field has been set.
-func (o *ModelAgentId) HasPluginsStatus() bool {
-	if o != nil && !IsNil(o.PluginsStatus) {
-		return true
-	}
-
-	return false
-}
-
-// SetPluginsStatus gets a reference to the given ModelAgentPluginsStatus and assigns it to the PluginsStatus field.
-func (o *ModelAgentId) SetPluginsStatus(v ModelAgentPluginsStatus) {
-	o.PluginsStatus = &v
-}
-
 func (o ModelAgentId) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -136,9 +103,6 @@ func (o ModelAgentId) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["available_workload"] = o.AvailableWorkload
 	toSerialize["node_id"] = o.NodeId
-	if !IsNil(o.PluginsStatus) {
-		toSerialize["plugins_status"] = o.PluginsStatus
-	}
 	return toSerialize, nil
 }
 

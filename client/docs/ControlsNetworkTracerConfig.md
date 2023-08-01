@@ -7,14 +7,16 @@ Name | Type | Description | Notes
 **Hash** | **string** |  | 
 **HttpRules** | [**ControlsNetworkRules**](ControlsNetworkRules.md) |  | 
 **HttpsRules** | [**ControlsNetworkRules**](ControlsNetworkRules.md) |  | 
+**Mode** | **string** |  | 
 **Name** | **string** |  | 
+**ProcessNames** | **[]string** |  | 
 **TcpRules** | [**ControlsNetworkRules**](ControlsNetworkRules.md) |  | 
 
 ## Methods
 
 ### NewControlsNetworkTracerConfig
 
-`func NewControlsNetworkTracerConfig(hash string, httpRules ControlsNetworkRules, httpsRules ControlsNetworkRules, name string, tcpRules ControlsNetworkRules, ) *ControlsNetworkTracerConfig`
+`func NewControlsNetworkTracerConfig(hash string, httpRules ControlsNetworkRules, httpsRules ControlsNetworkRules, mode string, name string, processNames []string, tcpRules ControlsNetworkRules, ) *ControlsNetworkTracerConfig`
 
 NewControlsNetworkTracerConfig instantiates a new ControlsNetworkTracerConfig object
 This constructor will assign default values to properties that have it defined,
@@ -89,6 +91,26 @@ and a boolean to check if the value has been set.
 SetHttpsRules sets HttpsRules field to given value.
 
 
+### GetMode
+
+`func (o *ControlsNetworkTracerConfig) GetMode() string`
+
+GetMode returns the Mode field if non-nil, zero value otherwise.
+
+### GetModeOk
+
+`func (o *ControlsNetworkTracerConfig) GetModeOk() (*string, bool)`
+
+GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMode
+
+`func (o *ControlsNetworkTracerConfig) SetMode(v string)`
+
+SetMode sets Mode field to given value.
+
+
 ### GetName
 
 `func (o *ControlsNetworkTracerConfig) GetName() string`
@@ -109,6 +131,36 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### GetProcessNames
+
+`func (o *ControlsNetworkTracerConfig) GetProcessNames() []string`
+
+GetProcessNames returns the ProcessNames field if non-nil, zero value otherwise.
+
+### GetProcessNamesOk
+
+`func (o *ControlsNetworkTracerConfig) GetProcessNamesOk() (*[]string, bool)`
+
+GetProcessNamesOk returns a tuple with the ProcessNames field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProcessNames
+
+`func (o *ControlsNetworkTracerConfig) SetProcessNames(v []string)`
+
+SetProcessNames sets ProcessNames field to given value.
+
+
+### SetProcessNamesNil
+
+`func (o *ControlsNetworkTracerConfig) SetProcessNamesNil(b bool)`
+
+ SetProcessNamesNil sets the value for ProcessNames to be an explicit nil
+
+### UnsetProcessNames
+`func (o *ControlsNetworkTracerConfig) UnsetProcessNames()`
+
+UnsetProcessNames ensures that no value is present for ProcessNames, not even an explicit nil
 ### GetTcpRules
 
 `func (o *ControlsNetworkTracerConfig) GetTcpRules() ControlsNetworkRules`

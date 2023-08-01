@@ -20,18 +20,18 @@ var _ MappedNullable = &SinglesignonSSOConfigurationInstructions{}
 
 // SinglesignonSSOConfigurationInstructions struct for SinglesignonSSOConfigurationInstructions
 type SinglesignonSSOConfigurationInstructions struct {
-	Key string `json:"key"`
-	Value string `json:"value"`
+	Github []SinglesignonSSOConfigurationInstruction `json:"github,omitempty"`
+	Google []SinglesignonSSOConfigurationInstruction `json:"google,omitempty"`
+	Microsoft []SinglesignonSSOConfigurationInstruction `json:"microsoft,omitempty"`
+	Oidc []SinglesignonSSOConfigurationInstruction `json:"oidc,omitempty"`
 }
 
 // NewSinglesignonSSOConfigurationInstructions instantiates a new SinglesignonSSOConfigurationInstructions object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSinglesignonSSOConfigurationInstructions(key string, value string) *SinglesignonSSOConfigurationInstructions {
+func NewSinglesignonSSOConfigurationInstructions() *SinglesignonSSOConfigurationInstructions {
 	this := SinglesignonSSOConfigurationInstructions{}
-	this.Key = key
-	this.Value = value
 	return &this
 }
 
@@ -43,52 +43,136 @@ func NewSinglesignonSSOConfigurationInstructionsWithDefaults() *SinglesignonSSOC
 	return &this
 }
 
-// GetKey returns the Key field value
-func (o *SinglesignonSSOConfigurationInstructions) GetKey() string {
+// GetGithub returns the Github field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SinglesignonSSOConfigurationInstructions) GetGithub() []SinglesignonSSOConfigurationInstruction {
 	if o == nil {
-		var ret string
+		var ret []SinglesignonSSOConfigurationInstruction
 		return ret
 	}
-
-	return o.Key
+	return o.Github
 }
 
-// GetKeyOk returns a tuple with the Key field value
+// GetGithubOk returns a tuple with the Github field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SinglesignonSSOConfigurationInstructions) GetKeyOk() (*string, bool) {
-	if o == nil {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SinglesignonSSOConfigurationInstructions) GetGithubOk() ([]SinglesignonSSOConfigurationInstruction, bool) {
+	if o == nil || IsNil(o.Github) {
 		return nil, false
 	}
-	return &o.Key, true
+	return o.Github, true
 }
 
-// SetKey sets field value
-func (o *SinglesignonSSOConfigurationInstructions) SetKey(v string) {
-	o.Key = v
+// HasGithub returns a boolean if a field has been set.
+func (o *SinglesignonSSOConfigurationInstructions) HasGithub() bool {
+	if o != nil && IsNil(o.Github) {
+		return true
+	}
+
+	return false
 }
 
-// GetValue returns the Value field value
-func (o *SinglesignonSSOConfigurationInstructions) GetValue() string {
+// SetGithub gets a reference to the given []SinglesignonSSOConfigurationInstruction and assigns it to the Github field.
+func (o *SinglesignonSSOConfigurationInstructions) SetGithub(v []SinglesignonSSOConfigurationInstruction) {
+	o.Github = v
+}
+
+// GetGoogle returns the Google field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SinglesignonSSOConfigurationInstructions) GetGoogle() []SinglesignonSSOConfigurationInstruction {
 	if o == nil {
-		var ret string
+		var ret []SinglesignonSSOConfigurationInstruction
 		return ret
 	}
-
-	return o.Value
+	return o.Google
 }
 
-// GetValueOk returns a tuple with the Value field value
+// GetGoogleOk returns a tuple with the Google field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SinglesignonSSOConfigurationInstructions) GetValueOk() (*string, bool) {
-	if o == nil {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SinglesignonSSOConfigurationInstructions) GetGoogleOk() ([]SinglesignonSSOConfigurationInstruction, bool) {
+	if o == nil || IsNil(o.Google) {
 		return nil, false
 	}
-	return &o.Value, true
+	return o.Google, true
 }
 
-// SetValue sets field value
-func (o *SinglesignonSSOConfigurationInstructions) SetValue(v string) {
-	o.Value = v
+// HasGoogle returns a boolean if a field has been set.
+func (o *SinglesignonSSOConfigurationInstructions) HasGoogle() bool {
+	if o != nil && IsNil(o.Google) {
+		return true
+	}
+
+	return false
+}
+
+// SetGoogle gets a reference to the given []SinglesignonSSOConfigurationInstruction and assigns it to the Google field.
+func (o *SinglesignonSSOConfigurationInstructions) SetGoogle(v []SinglesignonSSOConfigurationInstruction) {
+	o.Google = v
+}
+
+// GetMicrosoft returns the Microsoft field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SinglesignonSSOConfigurationInstructions) GetMicrosoft() []SinglesignonSSOConfigurationInstruction {
+	if o == nil {
+		var ret []SinglesignonSSOConfigurationInstruction
+		return ret
+	}
+	return o.Microsoft
+}
+
+// GetMicrosoftOk returns a tuple with the Microsoft field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SinglesignonSSOConfigurationInstructions) GetMicrosoftOk() ([]SinglesignonSSOConfigurationInstruction, bool) {
+	if o == nil || IsNil(o.Microsoft) {
+		return nil, false
+	}
+	return o.Microsoft, true
+}
+
+// HasMicrosoft returns a boolean if a field has been set.
+func (o *SinglesignonSSOConfigurationInstructions) HasMicrosoft() bool {
+	if o != nil && IsNil(o.Microsoft) {
+		return true
+	}
+
+	return false
+}
+
+// SetMicrosoft gets a reference to the given []SinglesignonSSOConfigurationInstruction and assigns it to the Microsoft field.
+func (o *SinglesignonSSOConfigurationInstructions) SetMicrosoft(v []SinglesignonSSOConfigurationInstruction) {
+	o.Microsoft = v
+}
+
+// GetOidc returns the Oidc field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SinglesignonSSOConfigurationInstructions) GetOidc() []SinglesignonSSOConfigurationInstruction {
+	if o == nil {
+		var ret []SinglesignonSSOConfigurationInstruction
+		return ret
+	}
+	return o.Oidc
+}
+
+// GetOidcOk returns a tuple with the Oidc field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SinglesignonSSOConfigurationInstructions) GetOidcOk() ([]SinglesignonSSOConfigurationInstruction, bool) {
+	if o == nil || IsNil(o.Oidc) {
+		return nil, false
+	}
+	return o.Oidc, true
+}
+
+// HasOidc returns a boolean if a field has been set.
+func (o *SinglesignonSSOConfigurationInstructions) HasOidc() bool {
+	if o != nil && IsNil(o.Oidc) {
+		return true
+	}
+
+	return false
+}
+
+// SetOidc gets a reference to the given []SinglesignonSSOConfigurationInstruction and assigns it to the Oidc field.
+func (o *SinglesignonSSOConfigurationInstructions) SetOidc(v []SinglesignonSSOConfigurationInstruction) {
+	o.Oidc = v
 }
 
 func (o SinglesignonSSOConfigurationInstructions) MarshalJSON() ([]byte, error) {
@@ -101,8 +185,18 @@ func (o SinglesignonSSOConfigurationInstructions) MarshalJSON() ([]byte, error) 
 
 func (o SinglesignonSSOConfigurationInstructions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["key"] = o.Key
-	toSerialize["value"] = o.Value
+	if o.Github != nil {
+		toSerialize["github"] = o.Github
+	}
+	if o.Google != nil {
+		toSerialize["google"] = o.Google
+	}
+	if o.Microsoft != nil {
+		toSerialize["microsoft"] = o.Microsoft
+	}
+	if o.Oidc != nil {
+		toSerialize["oidc"] = o.Oidc
+	}
 	return toSerialize, nil
 }
 

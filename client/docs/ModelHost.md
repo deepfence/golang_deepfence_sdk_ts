@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **ComplianceLatestScanId** | **string** |  | 
 **ComplianceScanStatus** | **string** |  | 
 **CompliancesCount** | **int32** |  | 
+**ConfigNames** | [**ModelAgentPluginConfigNames**](ModelAgentPluginConfigNames.md) |  | 
 **ContainerImages** | [**[]ModelContainerImage**](ModelContainerImage.md) |  | 
 **Containers** | [**[]ModelContainer**](ModelContainer.md) |  | 
 **CpuMax** | **float32** |  | 
@@ -33,6 +34,7 @@ Name | Type | Description | Notes
 **NodeName** | **string** |  | 
 **Os** | **string** |  | 
 **OutboundConnections** | [**[]ModelConnection**](ModelConnection.md) |  | 
+**PluginStatus** | [**ModelAgentPluginsStatus**](ModelAgentPluginsStatus.md) |  | 
 **Pods** | [**[]ModelPod**](ModelPod.md) |  | 
 **PrivateIp** | **[]interface{}** |  | 
 **Processes** | [**[]ModelProcess**](ModelProcess.md) |  | 
@@ -51,7 +53,7 @@ Name | Type | Description | Notes
 
 ### NewModelHost
 
-`func NewModelHost(agentRunning bool, availabilityZone string, cloudProvider string, cloudRegion string, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pods []ModelPod, privateIp []interface{}, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string, ) *ModelHost`
+`func NewModelHost(agentRunning bool, availabilityZone string, cloudProvider string, cloudRegion string, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string, ) *ModelHost`
 
 NewModelHost instantiates a new ModelHost object
 This constructor will assign default values to properties that have it defined,
@@ -204,6 +206,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelHost) SetCompliancesCount(v int32)`
 
 SetCompliancesCount sets CompliancesCount field to given value.
+
+
+### GetConfigNames
+
+`func (o *ModelHost) GetConfigNames() ModelAgentPluginConfigNames`
+
+GetConfigNames returns the ConfigNames field if non-nil, zero value otherwise.
+
+### GetConfigNamesOk
+
+`func (o *ModelHost) GetConfigNamesOk() (*ModelAgentPluginConfigNames, bool)`
+
+GetConfigNamesOk returns a tuple with the ConfigNames field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigNames
+
+`func (o *ModelHost) SetConfigNames(v ModelAgentPluginConfigNames)`
+
+SetConfigNames sets ConfigNames field to given value.
 
 
 ### GetContainerImages
@@ -706,6 +728,26 @@ SetOutboundConnections sets OutboundConnections field to given value.
 `func (o *ModelHost) UnsetOutboundConnections()`
 
 UnsetOutboundConnections ensures that no value is present for OutboundConnections, not even an explicit nil
+### GetPluginStatus
+
+`func (o *ModelHost) GetPluginStatus() ModelAgentPluginsStatus`
+
+GetPluginStatus returns the PluginStatus field if non-nil, zero value otherwise.
+
+### GetPluginStatusOk
+
+`func (o *ModelHost) GetPluginStatusOk() (*ModelAgentPluginsStatus, bool)`
+
+GetPluginStatusOk returns a tuple with the PluginStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPluginStatus
+
+`func (o *ModelHost) SetPluginStatus(v ModelAgentPluginsStatus)`
+
+SetPluginStatus sets PluginStatus field to given value.
+
+
 ### GetPods
 
 `func (o *ModelHost) GetPods() []ModelPod`

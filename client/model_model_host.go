@@ -27,6 +27,7 @@ type ModelHost struct {
 	ComplianceLatestScanId string `json:"compliance_latest_scan_id"`
 	ComplianceScanStatus string `json:"compliance_scan_status"`
 	CompliancesCount int32 `json:"compliances_count"`
+	ConfigNames ModelAgentPluginConfigNames `json:"config_names"`
 	ContainerImages []ModelContainerImage `json:"container_images"`
 	Containers []ModelContainer `json:"containers"`
 	CpuMax float32 `json:"cpu_max"`
@@ -49,6 +50,7 @@ type ModelHost struct {
 	NodeName string `json:"node_name"`
 	Os string `json:"os"`
 	OutboundConnections []ModelConnection `json:"outbound_connections"`
+	PluginStatus ModelAgentPluginsStatus `json:"plugin_status"`
 	Pods []ModelPod `json:"pods"`
 	PrivateIp []interface{} `json:"private_ip"`
 	Processes []ModelProcess `json:"processes"`
@@ -68,7 +70,7 @@ type ModelHost struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelHost(agentRunning bool, availabilityZone string, cloudProvider string, cloudRegion string, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pods []ModelPod, privateIp []interface{}, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string) *ModelHost {
+func NewModelHost(agentRunning bool, availabilityZone string, cloudProvider string, cloudRegion string, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string) *ModelHost {
 	this := ModelHost{}
 	this.AgentRunning = agentRunning
 	this.AvailabilityZone = availabilityZone
@@ -77,6 +79,7 @@ func NewModelHost(agentRunning bool, availabilityZone string, cloudProvider stri
 	this.ComplianceLatestScanId = complianceLatestScanId
 	this.ComplianceScanStatus = complianceScanStatus
 	this.CompliancesCount = compliancesCount
+	this.ConfigNames = configNames
 	this.ContainerImages = containerImages
 	this.Containers = containers
 	this.CpuMax = cpuMax
@@ -99,6 +102,7 @@ func NewModelHost(agentRunning bool, availabilityZone string, cloudProvider stri
 	this.NodeName = nodeName
 	this.Os = os
 	this.OutboundConnections = outboundConnections
+	this.PluginStatus = pluginStatus
 	this.Pods = pods
 	this.PrivateIp = privateIp
 	this.Processes = processes
@@ -289,6 +293,30 @@ func (o *ModelHost) GetCompliancesCountOk() (*int32, bool) {
 // SetCompliancesCount sets field value
 func (o *ModelHost) SetCompliancesCount(v int32) {
 	o.CompliancesCount = v
+}
+
+// GetConfigNames returns the ConfigNames field value
+func (o *ModelHost) GetConfigNames() ModelAgentPluginConfigNames {
+	if o == nil {
+		var ret ModelAgentPluginConfigNames
+		return ret
+	}
+
+	return o.ConfigNames
+}
+
+// GetConfigNamesOk returns a tuple with the ConfigNames field value
+// and a boolean to check if the value has been set.
+func (o *ModelHost) GetConfigNamesOk() (*ModelAgentPluginConfigNames, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ConfigNames, true
+}
+
+// SetConfigNames sets field value
+func (o *ModelHost) SetConfigNames(v ModelAgentPluginConfigNames) {
+	o.ConfigNames = v
 }
 
 // GetContainerImages returns the ContainerImages field value
@@ -831,6 +859,30 @@ func (o *ModelHost) SetOutboundConnections(v []ModelConnection) {
 	o.OutboundConnections = v
 }
 
+// GetPluginStatus returns the PluginStatus field value
+func (o *ModelHost) GetPluginStatus() ModelAgentPluginsStatus {
+	if o == nil {
+		var ret ModelAgentPluginsStatus
+		return ret
+	}
+
+	return o.PluginStatus
+}
+
+// GetPluginStatusOk returns a tuple with the PluginStatus field value
+// and a boolean to check if the value has been set.
+func (o *ModelHost) GetPluginStatusOk() (*ModelAgentPluginsStatus, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PluginStatus, true
+}
+
+// SetPluginStatus sets field value
+func (o *ModelHost) SetPluginStatus(v ModelAgentPluginsStatus) {
+	o.PluginStatus = v
+}
+
 // GetPods returns the Pods field value
 // If the value is explicit nil, the zero value for []ModelPod will be returned
 func (o *ModelHost) GetPods() []ModelPod {
@@ -1168,6 +1220,7 @@ func (o ModelHost) ToMap() (map[string]interface{}, error) {
 	toSerialize["compliance_latest_scan_id"] = o.ComplianceLatestScanId
 	toSerialize["compliance_scan_status"] = o.ComplianceScanStatus
 	toSerialize["compliances_count"] = o.CompliancesCount
+	toSerialize["config_names"] = o.ConfigNames
 	if o.ContainerImages != nil {
 		toSerialize["container_images"] = o.ContainerImages
 	}
@@ -1202,6 +1255,7 @@ func (o ModelHost) ToMap() (map[string]interface{}, error) {
 	if o.OutboundConnections != nil {
 		toSerialize["outbound_connections"] = o.OutboundConnections
 	}
+	toSerialize["plugin_status"] = o.PluginStatus
 	if o.Pods != nil {
 		toSerialize["pods"] = o.Pods
 	}
