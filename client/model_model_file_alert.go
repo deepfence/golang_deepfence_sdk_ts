@@ -22,7 +22,6 @@ var _ MappedNullable = &ModelFileAlert{}
 type ModelFileAlert struct {
 	Anomaly string `json:"anomaly"`
 	Category string `json:"category"`
-	Classtype string `json:"classtype"`
 	ContainerId string `json:"container_id"`
 	ContainerImage string `json:"container_image"`
 	ContainerIp string `json:"container_ip"`
@@ -34,7 +33,6 @@ type ModelFileAlert struct {
 	Filepath string `json:"filepath"`
 	Fstat string `json:"fstat"`
 	Hostname string `json:"hostname"`
-	Intent string `json:"intent"`
 	Masked bool `json:"masked"`
 	Netstat string `json:"netstat"`
 	NodeId string `json:"node_id"`
@@ -47,6 +45,8 @@ type ModelFileAlert struct {
 	SeverityScore float32 `json:"severity_score"`
 	SignatureId int32 `json:"signature_id"`
 	Summary string `json:"summary"`
+	Tactic []string `json:"tactic"`
+	Technique []string `json:"technique"`
 	Top string `json:"top"`
 	UpdatedAt int32 `json:"updated_at"`
 	Users string `json:"users"`
@@ -57,11 +57,10 @@ type ModelFileAlert struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelFileAlert(anomaly string, category string, classtype string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostname string, intent string, masked bool, netstat string, nodeId string, nodeType string, pid int32, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, top string, updatedAt int32, users string, w int32) *ModelFileAlert {
+func NewModelFileAlert(anomaly string, category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostname string, masked bool, netstat string, nodeId string, nodeType string, pid int32, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactic []string, technique []string, top string, updatedAt int32, users string, w int32) *ModelFileAlert {
 	this := ModelFileAlert{}
 	this.Anomaly = anomaly
 	this.Category = category
-	this.Classtype = classtype
 	this.ContainerId = containerId
 	this.ContainerImage = containerImage
 	this.ContainerIp = containerIp
@@ -73,7 +72,6 @@ func NewModelFileAlert(anomaly string, category string, classtype string, contai
 	this.Filepath = filepath
 	this.Fstat = fstat
 	this.Hostname = hostname
-	this.Intent = intent
 	this.Masked = masked
 	this.Netstat = netstat
 	this.NodeId = nodeId
@@ -86,6 +84,8 @@ func NewModelFileAlert(anomaly string, category string, classtype string, contai
 	this.SeverityScore = severityScore
 	this.SignatureId = signatureId
 	this.Summary = summary
+	this.Tactic = tactic
+	this.Technique = technique
 	this.Top = top
 	this.UpdatedAt = updatedAt
 	this.Users = users
@@ -147,30 +147,6 @@ func (o *ModelFileAlert) GetCategoryOk() (*string, bool) {
 // SetCategory sets field value
 func (o *ModelFileAlert) SetCategory(v string) {
 	o.Category = v
-}
-
-// GetClasstype returns the Classtype field value
-func (o *ModelFileAlert) GetClasstype() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Classtype
-}
-
-// GetClasstypeOk returns a tuple with the Classtype field value
-// and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetClasstypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Classtype, true
-}
-
-// SetClasstype sets field value
-func (o *ModelFileAlert) SetClasstype(v string) {
-	o.Classtype = v
 }
 
 // GetContainerId returns the ContainerId field value
@@ -435,30 +411,6 @@ func (o *ModelFileAlert) GetHostnameOk() (*string, bool) {
 // SetHostname sets field value
 func (o *ModelFileAlert) SetHostname(v string) {
 	o.Hostname = v
-}
-
-// GetIntent returns the Intent field value
-func (o *ModelFileAlert) GetIntent() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Intent
-}
-
-// GetIntentOk returns a tuple with the Intent field value
-// and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetIntentOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Intent, true
-}
-
-// SetIntent sets field value
-func (o *ModelFileAlert) SetIntent(v string) {
-	o.Intent = v
 }
 
 // GetMasked returns the Masked field value
@@ -749,6 +701,58 @@ func (o *ModelFileAlert) SetSummary(v string) {
 	o.Summary = v
 }
 
+// GetTactic returns the Tactic field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ModelFileAlert) GetTactic() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.Tactic
+}
+
+// GetTacticOk returns a tuple with the Tactic field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelFileAlert) GetTacticOk() ([]string, bool) {
+	if o == nil || IsNil(o.Tactic) {
+		return nil, false
+	}
+	return o.Tactic, true
+}
+
+// SetTactic sets field value
+func (o *ModelFileAlert) SetTactic(v []string) {
+	o.Tactic = v
+}
+
+// GetTechnique returns the Technique field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ModelFileAlert) GetTechnique() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.Technique
+}
+
+// GetTechniqueOk returns a tuple with the Technique field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelFileAlert) GetTechniqueOk() ([]string, bool) {
+	if o == nil || IsNil(o.Technique) {
+		return nil, false
+	}
+	return o.Technique, true
+}
+
+// SetTechnique sets field value
+func (o *ModelFileAlert) SetTechnique(v []string) {
+	o.Technique = v
+}
+
 // GetTop returns the Top field value
 func (o *ModelFileAlert) GetTop() string {
 	if o == nil {
@@ -857,7 +861,6 @@ func (o ModelFileAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["anomaly"] = o.Anomaly
 	toSerialize["category"] = o.Category
-	toSerialize["classtype"] = o.Classtype
 	toSerialize["container_id"] = o.ContainerId
 	toSerialize["container_image"] = o.ContainerImage
 	toSerialize["container_ip"] = o.ContainerIp
@@ -869,7 +872,6 @@ func (o ModelFileAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["filepath"] = o.Filepath
 	toSerialize["fstat"] = o.Fstat
 	toSerialize["hostname"] = o.Hostname
-	toSerialize["intent"] = o.Intent
 	toSerialize["masked"] = o.Masked
 	toSerialize["netstat"] = o.Netstat
 	toSerialize["node_id"] = o.NodeId
@@ -882,6 +884,12 @@ func (o ModelFileAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["severity_score"] = o.SeverityScore
 	toSerialize["signature_id"] = o.SignatureId
 	toSerialize["summary"] = o.Summary
+	if o.Tactic != nil {
+		toSerialize["tactic"] = o.Tactic
+	}
+	if o.Technique != nil {
+		toSerialize["technique"] = o.Technique
+	}
 	toSerialize["top"] = o.Top
 	toSerialize["updated_at"] = o.UpdatedAt
 	toSerialize["users"] = o.Users

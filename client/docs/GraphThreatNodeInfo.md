@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AlertsCount** | **int32** |  | 
 **AttackPath** | **[][]string** |  | 
 **CloudComplianceCount** | **int32** |  | 
 **ComplianceCount** | **int32** |  | 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewGraphThreatNodeInfo
 
-`func NewGraphThreatNodeInfo(attackPath [][]string, cloudComplianceCount int32, complianceCount int32, count int32, id string, label string, nodeType string, nodes map[string]GraphNodeInfo, secretsCount int32, vulnerabilityCount int32, ) *GraphThreatNodeInfo`
+`func NewGraphThreatNodeInfo(alertsCount int32, attackPath [][]string, cloudComplianceCount int32, complianceCount int32, count int32, id string, label string, nodeType string, nodes map[string]GraphNodeInfo, secretsCount int32, vulnerabilityCount int32, ) *GraphThreatNodeInfo`
 
 NewGraphThreatNodeInfo instantiates a new GraphThreatNodeInfo object
 This constructor will assign default values to properties that have it defined,
@@ -33,6 +34,26 @@ will change when the set of required properties is changed
 NewGraphThreatNodeInfoWithDefaults instantiates a new GraphThreatNodeInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAlertsCount
+
+`func (o *GraphThreatNodeInfo) GetAlertsCount() int32`
+
+GetAlertsCount returns the AlertsCount field if non-nil, zero value otherwise.
+
+### GetAlertsCountOk
+
+`func (o *GraphThreatNodeInfo) GetAlertsCountOk() (*int32, bool)`
+
+GetAlertsCountOk returns a tuple with the AlertsCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlertsCount
+
+`func (o *GraphThreatNodeInfo) SetAlertsCount(v int32)`
+
+SetAlertsCount sets AlertsCount field to given value.
+
 
 ### GetAttackPath
 

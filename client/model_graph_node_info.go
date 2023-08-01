@@ -20,6 +20,7 @@ var _ MappedNullable = &GraphNodeInfo{}
 
 // GraphNodeInfo struct for GraphNodeInfo
 type GraphNodeInfo struct {
+	AlertsCount int32 `json:"alerts_count"`
 	CloudComplianceCount int32 `json:"cloud_compliance_count"`
 	ComplianceCount int32 `json:"compliance_count"`
 	Name string `json:"name"`
@@ -32,8 +33,9 @@ type GraphNodeInfo struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGraphNodeInfo(cloudComplianceCount int32, complianceCount int32, name string, nodeId string, secretsCount int32, vulnerabilityCount int32) *GraphNodeInfo {
+func NewGraphNodeInfo(alertsCount int32, cloudComplianceCount int32, complianceCount int32, name string, nodeId string, secretsCount int32, vulnerabilityCount int32) *GraphNodeInfo {
 	this := GraphNodeInfo{}
+	this.AlertsCount = alertsCount
 	this.CloudComplianceCount = cloudComplianceCount
 	this.ComplianceCount = complianceCount
 	this.Name = name
@@ -49,6 +51,30 @@ func NewGraphNodeInfo(cloudComplianceCount int32, complianceCount int32, name st
 func NewGraphNodeInfoWithDefaults() *GraphNodeInfo {
 	this := GraphNodeInfo{}
 	return &this
+}
+
+// GetAlertsCount returns the AlertsCount field value
+func (o *GraphNodeInfo) GetAlertsCount() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.AlertsCount
+}
+
+// GetAlertsCountOk returns a tuple with the AlertsCount field value
+// and a boolean to check if the value has been set.
+func (o *GraphNodeInfo) GetAlertsCountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AlertsCount, true
+}
+
+// SetAlertsCount sets field value
+func (o *GraphNodeInfo) SetAlertsCount(v int32) {
+	o.AlertsCount = v
 }
 
 // GetCloudComplianceCount returns the CloudComplianceCount field value
@@ -205,6 +231,7 @@ func (o GraphNodeInfo) MarshalJSON() ([]byte, error) {
 
 func (o GraphNodeInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["alerts_count"] = o.AlertsCount
 	toSerialize["cloud_compliance_count"] = o.CloudComplianceCount
 	toSerialize["compliance_count"] = o.ComplianceCount
 	toSerialize["name"] = o.Name

@@ -166,8 +166,6 @@ docs/ModelMalwareScanResultRules.md
 docs/ModelMalwareScanTriggerReq.md
 docs/ModelMessageResponse.md
 docs/ModelNetworkAlert.md
-docs/ModelNetworkAlertGeoip.md
-docs/ModelNetworkAlertHttp.md
 docs/ModelNodeIdentifier.md
 docs/ModelNodesInScanResultRequest.md
 docs/ModelNotificationThresholdUpdateRequest.md
@@ -229,10 +227,12 @@ docs/ReportMetadata.md
 docs/ReportRawReport.md
 docs/ReportersCompareFilter.md
 docs/ReportersContainsFilter.md
+docs/ReportersDailySevCounts.md
 docs/ReportersFieldsFilters.md
 docs/ReportersMatchFilter.md
 docs/ReportersOrderFilter.md
 docs/ReportersOrderSpec.md
+docs/ReportersSevCounts.md
 docs/ReportsAPI.md
 docs/ScanResultsAPI.md
 docs/SearchAPI.md
@@ -381,8 +381,6 @@ model_model_malware_scan_result_rules.go
 model_model_malware_scan_trigger_req.go
 model_model_message_response.go
 model_model_network_alert.go
-model_model_network_alert_geoip.go
-model_model_network_alert_http.go
 model_model_node_identifier.go
 model_model_nodes_in_scan_result_request.go
 model_model_notification_threshold_update_request.go
@@ -443,10 +441,12 @@ model_report_metadata.go
 model_report_raw_report.go
 model_reporters_compare_filter.go
 model_reporters_contains_filter.go
+model_reporters_daily_sev_counts.go
 model_reporters_fields_filters.go
 model_reporters_match_filter.go
 model_reporters_order_filter.go
 model_reporters_order_spec.go
+model_reporters_sev_counts.go
 model_search_node_count_resp.go
 model_search_result_group.go
 model_search_result_group_resp.go

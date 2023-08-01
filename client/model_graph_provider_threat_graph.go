@@ -20,6 +20,7 @@ var _ MappedNullable = &GraphProviderThreatGraph{}
 
 // GraphProviderThreatGraph struct for GraphProviderThreatGraph
 type GraphProviderThreatGraph struct {
+	AlertsCount int32 `json:"alerts_count"`
 	CloudComplianceCount int32 `json:"cloud_compliance_count"`
 	ComplianceCount int32 `json:"compliance_count"`
 	Resources []GraphThreatNodeInfo `json:"resources"`
@@ -31,8 +32,9 @@ type GraphProviderThreatGraph struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGraphProviderThreatGraph(cloudComplianceCount int32, complianceCount int32, resources []GraphThreatNodeInfo, secretsCount int32, vulnerabilityCount int32) *GraphProviderThreatGraph {
+func NewGraphProviderThreatGraph(alertsCount int32, cloudComplianceCount int32, complianceCount int32, resources []GraphThreatNodeInfo, secretsCount int32, vulnerabilityCount int32) *GraphProviderThreatGraph {
 	this := GraphProviderThreatGraph{}
+	this.AlertsCount = alertsCount
 	this.CloudComplianceCount = cloudComplianceCount
 	this.ComplianceCount = complianceCount
 	this.Resources = resources
@@ -47,6 +49,30 @@ func NewGraphProviderThreatGraph(cloudComplianceCount int32, complianceCount int
 func NewGraphProviderThreatGraphWithDefaults() *GraphProviderThreatGraph {
 	this := GraphProviderThreatGraph{}
 	return &this
+}
+
+// GetAlertsCount returns the AlertsCount field value
+func (o *GraphProviderThreatGraph) GetAlertsCount() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.AlertsCount
+}
+
+// GetAlertsCountOk returns a tuple with the AlertsCount field value
+// and a boolean to check if the value has been set.
+func (o *GraphProviderThreatGraph) GetAlertsCountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AlertsCount, true
+}
+
+// SetAlertsCount sets field value
+func (o *GraphProviderThreatGraph) SetAlertsCount(v int32) {
+	o.AlertsCount = v
 }
 
 // GetCloudComplianceCount returns the CloudComplianceCount field value
@@ -181,6 +207,7 @@ func (o GraphProviderThreatGraph) MarshalJSON() ([]byte, error) {
 
 func (o GraphProviderThreatGraph) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["alerts_count"] = o.AlertsCount
 	toSerialize["cloud_compliance_count"] = o.CloudComplianceCount
 	toSerialize["compliance_count"] = o.ComplianceCount
 	if o.Resources != nil {

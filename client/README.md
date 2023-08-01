@@ -91,6 +91,7 @@ Class | Method | HTTP request | Description
 *AgentFilesystemAPI* | [**EnableFilesystemTracer**](docs/AgentFilesystemAPI.md#enablefilesystemtracer) | **Post** /deepfence/filesystem/tracer/enable | Enable filesystem tracer
 *AgentNetworkAPI* | [**DisableNetworkTracer**](docs/AgentNetworkAPI.md#disablenetworktracer) | **Post** /deepfence/network/tracer/disable | Disable network tracer
 *AgentNetworkAPI* | [**EnableNetworkTracer**](docs/AgentNetworkAPI.md#enablenetworktracer) | **Post** /deepfence/network/tracer/enable | Enable network tracer
+*AlertAPI* | [**DailyAlertCounts**](docs/AlertAPI.md#dailyalertcounts) | **Get** /deepfence/statistics/alerts-daily-counts | Get Alerts daily counts
 *AlertAPI* | [**DeleteAlert**](docs/AlertAPI.md#deletealert) | **Patch** /deepfence/alerts/action/delete | Delete Alerts
 *AlertAPI* | [**MaskAlert**](docs/AlertAPI.md#maskalert) | **Post** /deepfence/alerts/action/mask | Mask Alerts
 *AlertAPI* | [**NotifyAlert**](docs/AlertAPI.md#notifyalert) | **Post** /deepfence/alerts/action/notify | Notify Alerts
@@ -425,8 +426,6 @@ Class | Method | HTTP request | Description
  - [ModelMalwareScanTriggerReq](docs/ModelMalwareScanTriggerReq.md)
  - [ModelMessageResponse](docs/ModelMessageResponse.md)
  - [ModelNetworkAlert](docs/ModelNetworkAlert.md)
- - [ModelNetworkAlertGeoip](docs/ModelNetworkAlertGeoip.md)
- - [ModelNetworkAlertHttp](docs/ModelNetworkAlertHttp.md)
  - [ModelNodeIdentifier](docs/ModelNodeIdentifier.md)
  - [ModelNodesInScanResultRequest](docs/ModelNodesInScanResultRequest.md)
  - [ModelNotificationThresholdUpdateRequest](docs/ModelNotificationThresholdUpdateRequest.md)
@@ -487,10 +486,12 @@ Class | Method | HTTP request | Description
  - [ReportRawReport](docs/ReportRawReport.md)
  - [ReportersCompareFilter](docs/ReportersCompareFilter.md)
  - [ReportersContainsFilter](docs/ReportersContainsFilter.md)
+ - [ReportersDailySevCounts](docs/ReportersDailySevCounts.md)
  - [ReportersFieldsFilters](docs/ReportersFieldsFilters.md)
  - [ReportersMatchFilter](docs/ReportersMatchFilter.md)
  - [ReportersOrderFilter](docs/ReportersOrderFilter.md)
  - [ReportersOrderSpec](docs/ReportersOrderSpec.md)
+ - [ReportersSevCounts](docs/ReportersSevCounts.md)
  - [SearchNodeCountResp](docs/SearchNodeCountResp.md)
  - [SearchResultGroup](docs/SearchResultGroup.md)
  - [SearchResultGroupResp](docs/SearchResultGroupResp.md)

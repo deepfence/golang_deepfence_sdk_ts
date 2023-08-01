@@ -20,6 +20,7 @@ var _ MappedNullable = &GraphThreatNodeInfo{}
 
 // GraphThreatNodeInfo struct for GraphThreatNodeInfo
 type GraphThreatNodeInfo struct {
+	AlertsCount int32 `json:"alerts_count"`
 	AttackPath [][]string `json:"attack_path"`
 	CloudComplianceCount int32 `json:"cloud_compliance_count"`
 	ComplianceCount int32 `json:"compliance_count"`
@@ -36,8 +37,9 @@ type GraphThreatNodeInfo struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGraphThreatNodeInfo(attackPath [][]string, cloudComplianceCount int32, complianceCount int32, count int32, id string, label string, nodeType string, nodes map[string]GraphNodeInfo, secretsCount int32, vulnerabilityCount int32) *GraphThreatNodeInfo {
+func NewGraphThreatNodeInfo(alertsCount int32, attackPath [][]string, cloudComplianceCount int32, complianceCount int32, count int32, id string, label string, nodeType string, nodes map[string]GraphNodeInfo, secretsCount int32, vulnerabilityCount int32) *GraphThreatNodeInfo {
 	this := GraphThreatNodeInfo{}
+	this.AlertsCount = alertsCount
 	this.AttackPath = attackPath
 	this.CloudComplianceCount = cloudComplianceCount
 	this.ComplianceCount = complianceCount
@@ -57,6 +59,30 @@ func NewGraphThreatNodeInfo(attackPath [][]string, cloudComplianceCount int32, c
 func NewGraphThreatNodeInfoWithDefaults() *GraphThreatNodeInfo {
 	this := GraphThreatNodeInfo{}
 	return &this
+}
+
+// GetAlertsCount returns the AlertsCount field value
+func (o *GraphThreatNodeInfo) GetAlertsCount() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.AlertsCount
+}
+
+// GetAlertsCountOk returns a tuple with the AlertsCount field value
+// and a boolean to check if the value has been set.
+func (o *GraphThreatNodeInfo) GetAlertsCountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AlertsCount, true
+}
+
+// SetAlertsCount sets field value
+func (o *GraphThreatNodeInfo) SetAlertsCount(v int32) {
+	o.AlertsCount = v
 }
 
 // GetAttackPath returns the AttackPath field value
@@ -313,6 +339,7 @@ func (o GraphThreatNodeInfo) MarshalJSON() ([]byte, error) {
 
 func (o GraphThreatNodeInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["alerts_count"] = o.AlertsCount
 	if o.AttackPath != nil {
 		toSerialize["attack_path"] = o.AttackPath
 	}

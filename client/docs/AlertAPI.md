@@ -4,11 +4,73 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**DailyAlertCounts**](AlertAPI.md#DailyAlertCounts) | **Get** /deepfence/statistics/alerts-daily-counts | Get Alerts daily counts
 [**DeleteAlert**](AlertAPI.md#DeleteAlert) | **Patch** /deepfence/alerts/action/delete | Delete Alerts
 [**MaskAlert**](AlertAPI.md#MaskAlert) | **Post** /deepfence/alerts/action/mask | Mask Alerts
 [**NotifyAlert**](AlertAPI.md#NotifyAlert) | **Post** /deepfence/alerts/action/notify | Notify Alerts
 [**UnmaskAlert**](AlertAPI.md#UnmaskAlert) | **Post** /deepfence/alerts/action/unmask | Unmask Alerts
 
+
+
+## DailyAlertCounts
+
+> ReportersDailySevCounts DailyAlertCounts(ctx).Execute()
+
+Get Alerts daily counts
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AlertAPI.DailyAlertCounts(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AlertAPI.DailyAlertCounts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DailyAlertCounts`: ReportersDailySevCounts
+    fmt.Fprintf(os.Stdout, "Response from `AlertAPI.DailyAlertCounts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDailyAlertCountsRequest struct via the builder pattern
+
+
+### Return type
+
+[**ReportersDailySevCounts**](ReportersDailySevCounts.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## DeleteAlert

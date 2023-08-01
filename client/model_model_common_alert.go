@@ -21,15 +21,15 @@ var _ MappedNullable = &ModelCommonAlert{}
 // ModelCommonAlert struct for ModelCommonAlert
 type ModelCommonAlert struct {
 	Category string `json:"category"`
-	Classtype string `json:"classtype"`
 	Count int32 `json:"count"`
 	CreatedAt int32 `json:"created_at"`
 	EventType string `json:"event_type"`
-	Intent string `json:"intent"`
 	Masked bool `json:"masked"`
 	NodeId string `json:"node_id"`
 	Severity string `json:"severity"`
 	Summary string `json:"summary"`
+	Tactic []string `json:"tactic"`
+	Technique []string `json:"technique"`
 	UpdatedAt int32 `json:"updated_at"`
 }
 
@@ -37,18 +37,18 @@ type ModelCommonAlert struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelCommonAlert(category string, classtype string, count int32, createdAt int32, eventType string, intent string, masked bool, nodeId string, severity string, summary string, updatedAt int32) *ModelCommonAlert {
+func NewModelCommonAlert(category string, count int32, createdAt int32, eventType string, masked bool, nodeId string, severity string, summary string, tactic []string, technique []string, updatedAt int32) *ModelCommonAlert {
 	this := ModelCommonAlert{}
 	this.Category = category
-	this.Classtype = classtype
 	this.Count = count
 	this.CreatedAt = createdAt
 	this.EventType = eventType
-	this.Intent = intent
 	this.Masked = masked
 	this.NodeId = nodeId
 	this.Severity = severity
 	this.Summary = summary
+	this.Tactic = tactic
+	this.Technique = technique
 	this.UpdatedAt = updatedAt
 	return &this
 }
@@ -83,30 +83,6 @@ func (o *ModelCommonAlert) GetCategoryOk() (*string, bool) {
 // SetCategory sets field value
 func (o *ModelCommonAlert) SetCategory(v string) {
 	o.Category = v
-}
-
-// GetClasstype returns the Classtype field value
-func (o *ModelCommonAlert) GetClasstype() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Classtype
-}
-
-// GetClasstypeOk returns a tuple with the Classtype field value
-// and a boolean to check if the value has been set.
-func (o *ModelCommonAlert) GetClasstypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Classtype, true
-}
-
-// SetClasstype sets field value
-func (o *ModelCommonAlert) SetClasstype(v string) {
-	o.Classtype = v
 }
 
 // GetCount returns the Count field value
@@ -179,30 +155,6 @@ func (o *ModelCommonAlert) GetEventTypeOk() (*string, bool) {
 // SetEventType sets field value
 func (o *ModelCommonAlert) SetEventType(v string) {
 	o.EventType = v
-}
-
-// GetIntent returns the Intent field value
-func (o *ModelCommonAlert) GetIntent() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Intent
-}
-
-// GetIntentOk returns a tuple with the Intent field value
-// and a boolean to check if the value has been set.
-func (o *ModelCommonAlert) GetIntentOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Intent, true
-}
-
-// SetIntent sets field value
-func (o *ModelCommonAlert) SetIntent(v string) {
-	o.Intent = v
 }
 
 // GetMasked returns the Masked field value
@@ -301,6 +253,58 @@ func (o *ModelCommonAlert) SetSummary(v string) {
 	o.Summary = v
 }
 
+// GetTactic returns the Tactic field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ModelCommonAlert) GetTactic() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.Tactic
+}
+
+// GetTacticOk returns a tuple with the Tactic field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelCommonAlert) GetTacticOk() ([]string, bool) {
+	if o == nil || IsNil(o.Tactic) {
+		return nil, false
+	}
+	return o.Tactic, true
+}
+
+// SetTactic sets field value
+func (o *ModelCommonAlert) SetTactic(v []string) {
+	o.Tactic = v
+}
+
+// GetTechnique returns the Technique field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ModelCommonAlert) GetTechnique() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.Technique
+}
+
+// GetTechniqueOk returns a tuple with the Technique field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelCommonAlert) GetTechniqueOk() ([]string, bool) {
+	if o == nil || IsNil(o.Technique) {
+		return nil, false
+	}
+	return o.Technique, true
+}
+
+// SetTechnique sets field value
+func (o *ModelCommonAlert) SetTechnique(v []string) {
+	o.Technique = v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value
 func (o *ModelCommonAlert) GetUpdatedAt() int32 {
 	if o == nil {
@@ -336,15 +340,19 @@ func (o ModelCommonAlert) MarshalJSON() ([]byte, error) {
 func (o ModelCommonAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["category"] = o.Category
-	toSerialize["classtype"] = o.Classtype
 	toSerialize["count"] = o.Count
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["event_type"] = o.EventType
-	toSerialize["intent"] = o.Intent
 	toSerialize["masked"] = o.Masked
 	toSerialize["node_id"] = o.NodeId
 	toSerialize["severity"] = o.Severity
 	toSerialize["summary"] = o.Summary
+	if o.Tactic != nil {
+		toSerialize["tactic"] = o.Tactic
+	}
+	if o.Technique != nil {
+		toSerialize["technique"] = o.Technique
+	}
 	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil
 }

@@ -32,38 +32,51 @@ type ModelNetworkAlert struct {
 	Direction string `json:"direction"`
 	Encrypted string `json:"encrypted"`
 	EventType string `json:"event_type"`
-	Geoip *ModelNetworkAlertGeoip `json:"geoip,omitempty"`
+	Geoip string `json:"geoip"`
+	Headers string `json:"headers"`
 	Hostname string `json:"hostname"`
-	Http *ModelNetworkAlertHttp `json:"http,omitempty"`
+	HttpContentType interface{} `json:"http_content_type"`
 	HttpType string `json:"http_type"`
-	Intent string `json:"intent"`
+	HttpUserAgent string `json:"http_user_agent"`
 	Internal string `json:"internal"`
 	IpReputation string `json:"ip_reputation"`
 	KubernetesClusterName string `json:"kubernetes_cluster_name"`
+	Length interface{} `json:"length"`
+	LocalPort int32 `json:"local_port"`
 	Masked bool `json:"masked"`
 	Matched string `json:"matched"`
 	NodeId string `json:"node_id"`
 	NodeType string `json:"node_type"`
 	PodName string `json:"pod_name"`
+	Protocol int32 `json:"protocol"`
+	RequestMethod string `json:"request_method"`
+	RequestPath string `json:"request_path"`
+	RequestPayload string `json:"request_payload"`
+	RequestPrintablePayload string `json:"request_printable_payload"`
 	ResourceType string `json:"resource_type"`
-	RuleId int32 `json:"rule_id"`
-	ScopeId string `json:"scope_id"`
+	ResponsePayload interface{} `json:"response_payload"`
+	ResponsePrintablePayload interface{} `json:"response_printable_payload"`
+	RuleId string `json:"rule_id"`
 	Severity string `json:"severity"`
 	SeverityAnomalyContainerName string `json:"severity_anomaly_container_name"`
 	SeverityScore float32 `json:"severity_score"`
 	SignatureId int32 `json:"signature_id"`
 	SourceIp string `json:"source_ip"`
 	SourcePort int32 `json:"source_port"`
+	Status interface{} `json:"status"`
 	Summary string `json:"summary"`
+	Tactic []string `json:"tactic"`
 	Tags string `json:"tags"`
+	Technique []string `json:"technique"`
 	UpdatedAt int32 `json:"updated_at"`
+	Url string `json:"url"`
 }
 
 // NewModelNetworkAlert instantiates a new ModelNetworkAlert object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelNetworkAlert(appProto string, category string, classtype string, containerName string, count int32, createdAt int32, description string, destinationIp string, destinationPort int32, direction string, encrypted string, eventType string, hostname string, httpType string, intent string, internal string, ipReputation string, kubernetesClusterName string, masked bool, matched string, nodeId string, nodeType string, podName string, resourceType string, ruleId int32, scopeId string, severity string, severityAnomalyContainerName string, severityScore float32, signatureId int32, sourceIp string, sourcePort int32, summary string, tags string, updatedAt int32) *ModelNetworkAlert {
+func NewModelNetworkAlert(appProto string, category string, classtype string, containerName string, count int32, createdAt int32, description string, destinationIp string, destinationPort int32, direction string, encrypted string, eventType string, geoip string, headers string, hostname string, httpContentType interface{}, httpType string, httpUserAgent string, internal string, ipReputation string, kubernetesClusterName string, length interface{}, localPort int32, masked bool, matched string, nodeId string, nodeType string, podName string, protocol int32, requestMethod string, requestPath string, requestPayload string, requestPrintablePayload string, resourceType string, responsePayload interface{}, responsePrintablePayload interface{}, ruleId string, severity string, severityAnomalyContainerName string, severityScore float32, signatureId int32, sourceIp string, sourcePort int32, status interface{}, summary string, tactic []string, tags string, technique []string, updatedAt int32, url string) *ModelNetworkAlert {
 	this := ModelNetworkAlert{}
 	this.AppProto = appProto
 	this.Category = category
@@ -77,29 +90,44 @@ func NewModelNetworkAlert(appProto string, category string, classtype string, co
 	this.Direction = direction
 	this.Encrypted = encrypted
 	this.EventType = eventType
+	this.Geoip = geoip
+	this.Headers = headers
 	this.Hostname = hostname
+	this.HttpContentType = httpContentType
 	this.HttpType = httpType
-	this.Intent = intent
+	this.HttpUserAgent = httpUserAgent
 	this.Internal = internal
 	this.IpReputation = ipReputation
 	this.KubernetesClusterName = kubernetesClusterName
+	this.Length = length
+	this.LocalPort = localPort
 	this.Masked = masked
 	this.Matched = matched
 	this.NodeId = nodeId
 	this.NodeType = nodeType
 	this.PodName = podName
+	this.Protocol = protocol
+	this.RequestMethod = requestMethod
+	this.RequestPath = requestPath
+	this.RequestPayload = requestPayload
+	this.RequestPrintablePayload = requestPrintablePayload
 	this.ResourceType = resourceType
+	this.ResponsePayload = responsePayload
+	this.ResponsePrintablePayload = responsePrintablePayload
 	this.RuleId = ruleId
-	this.ScopeId = scopeId
 	this.Severity = severity
 	this.SeverityAnomalyContainerName = severityAnomalyContainerName
 	this.SeverityScore = severityScore
 	this.SignatureId = signatureId
 	this.SourceIp = sourceIp
 	this.SourcePort = sourcePort
+	this.Status = status
 	this.Summary = summary
+	this.Tactic = tactic
 	this.Tags = tags
+	this.Technique = technique
 	this.UpdatedAt = updatedAt
+	this.Url = url
 	return &this
 }
 
@@ -399,36 +427,52 @@ func (o *ModelNetworkAlert) SetEventType(v string) {
 	o.EventType = v
 }
 
-// GetGeoip returns the Geoip field value if set, zero value otherwise.
-func (o *ModelNetworkAlert) GetGeoip() ModelNetworkAlertGeoip {
-	if o == nil || IsNil(o.Geoip) {
-		var ret ModelNetworkAlertGeoip
+// GetGeoip returns the Geoip field value
+func (o *ModelNetworkAlert) GetGeoip() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return *o.Geoip
+
+	return o.Geoip
 }
 
-// GetGeoipOk returns a tuple with the Geoip field value if set, nil otherwise
+// GetGeoipOk returns a tuple with the Geoip field value
 // and a boolean to check if the value has been set.
-func (o *ModelNetworkAlert) GetGeoipOk() (*ModelNetworkAlertGeoip, bool) {
-	if o == nil || IsNil(o.Geoip) {
+func (o *ModelNetworkAlert) GetGeoipOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Geoip, true
+	return &o.Geoip, true
 }
 
-// HasGeoip returns a boolean if a field has been set.
-func (o *ModelNetworkAlert) HasGeoip() bool {
-	if o != nil && !IsNil(o.Geoip) {
-		return true
+// SetGeoip sets field value
+func (o *ModelNetworkAlert) SetGeoip(v string) {
+	o.Geoip = v
+}
+
+// GetHeaders returns the Headers field value
+func (o *ModelNetworkAlert) GetHeaders() string {
+	if o == nil {
+		var ret string
+		return ret
 	}
 
-	return false
+	return o.Headers
 }
 
-// SetGeoip gets a reference to the given ModelNetworkAlertGeoip and assigns it to the Geoip field.
-func (o *ModelNetworkAlert) SetGeoip(v ModelNetworkAlertGeoip) {
-	o.Geoip = &v
+// GetHeadersOk returns a tuple with the Headers field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkAlert) GetHeadersOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Headers, true
+}
+
+// SetHeaders sets field value
+func (o *ModelNetworkAlert) SetHeaders(v string) {
+	o.Headers = v
 }
 
 // GetHostname returns the Hostname field value
@@ -455,36 +499,30 @@ func (o *ModelNetworkAlert) SetHostname(v string) {
 	o.Hostname = v
 }
 
-// GetHttp returns the Http field value if set, zero value otherwise.
-func (o *ModelNetworkAlert) GetHttp() ModelNetworkAlertHttp {
-	if o == nil || IsNil(o.Http) {
-		var ret ModelNetworkAlertHttp
+// GetHttpContentType returns the HttpContentType field value
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ModelNetworkAlert) GetHttpContentType() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
-	return *o.Http
+
+	return o.HttpContentType
 }
 
-// GetHttpOk returns a tuple with the Http field value if set, nil otherwise
+// GetHttpContentTypeOk returns a tuple with the HttpContentType field value
 // and a boolean to check if the value has been set.
-func (o *ModelNetworkAlert) GetHttpOk() (*ModelNetworkAlertHttp, bool) {
-	if o == nil || IsNil(o.Http) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelNetworkAlert) GetHttpContentTypeOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.HttpContentType) {
 		return nil, false
 	}
-	return o.Http, true
+	return &o.HttpContentType, true
 }
 
-// HasHttp returns a boolean if a field has been set.
-func (o *ModelNetworkAlert) HasHttp() bool {
-	if o != nil && !IsNil(o.Http) {
-		return true
-	}
-
-	return false
-}
-
-// SetHttp gets a reference to the given ModelNetworkAlertHttp and assigns it to the Http field.
-func (o *ModelNetworkAlert) SetHttp(v ModelNetworkAlertHttp) {
-	o.Http = &v
+// SetHttpContentType sets field value
+func (o *ModelNetworkAlert) SetHttpContentType(v interface{}) {
+	o.HttpContentType = v
 }
 
 // GetHttpType returns the HttpType field value
@@ -511,28 +549,28 @@ func (o *ModelNetworkAlert) SetHttpType(v string) {
 	o.HttpType = v
 }
 
-// GetIntent returns the Intent field value
-func (o *ModelNetworkAlert) GetIntent() string {
+// GetHttpUserAgent returns the HttpUserAgent field value
+func (o *ModelNetworkAlert) GetHttpUserAgent() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Intent
+	return o.HttpUserAgent
 }
 
-// GetIntentOk returns a tuple with the Intent field value
+// GetHttpUserAgentOk returns a tuple with the HttpUserAgent field value
 // and a boolean to check if the value has been set.
-func (o *ModelNetworkAlert) GetIntentOk() (*string, bool) {
+func (o *ModelNetworkAlert) GetHttpUserAgentOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Intent, true
+	return &o.HttpUserAgent, true
 }
 
-// SetIntent sets field value
-func (o *ModelNetworkAlert) SetIntent(v string) {
-	o.Intent = v
+// SetHttpUserAgent sets field value
+func (o *ModelNetworkAlert) SetHttpUserAgent(v string) {
+	o.HttpUserAgent = v
 }
 
 // GetInternal returns the Internal field value
@@ -605,6 +643,56 @@ func (o *ModelNetworkAlert) GetKubernetesClusterNameOk() (*string, bool) {
 // SetKubernetesClusterName sets field value
 func (o *ModelNetworkAlert) SetKubernetesClusterName(v string) {
 	o.KubernetesClusterName = v
+}
+
+// GetLength returns the Length field value
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ModelNetworkAlert) GetLength() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+
+	return o.Length
+}
+
+// GetLengthOk returns a tuple with the Length field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelNetworkAlert) GetLengthOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Length) {
+		return nil, false
+	}
+	return &o.Length, true
+}
+
+// SetLength sets field value
+func (o *ModelNetworkAlert) SetLength(v interface{}) {
+	o.Length = v
+}
+
+// GetLocalPort returns the LocalPort field value
+func (o *ModelNetworkAlert) GetLocalPort() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.LocalPort
+}
+
+// GetLocalPortOk returns a tuple with the LocalPort field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkAlert) GetLocalPortOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LocalPort, true
+}
+
+// SetLocalPort sets field value
+func (o *ModelNetworkAlert) SetLocalPort(v int32) {
+	o.LocalPort = v
 }
 
 // GetMasked returns the Masked field value
@@ -727,6 +815,126 @@ func (o *ModelNetworkAlert) SetPodName(v string) {
 	o.PodName = v
 }
 
+// GetProtocol returns the Protocol field value
+func (o *ModelNetworkAlert) GetProtocol() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Protocol
+}
+
+// GetProtocolOk returns a tuple with the Protocol field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkAlert) GetProtocolOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Protocol, true
+}
+
+// SetProtocol sets field value
+func (o *ModelNetworkAlert) SetProtocol(v int32) {
+	o.Protocol = v
+}
+
+// GetRequestMethod returns the RequestMethod field value
+func (o *ModelNetworkAlert) GetRequestMethod() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.RequestMethod
+}
+
+// GetRequestMethodOk returns a tuple with the RequestMethod field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkAlert) GetRequestMethodOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RequestMethod, true
+}
+
+// SetRequestMethod sets field value
+func (o *ModelNetworkAlert) SetRequestMethod(v string) {
+	o.RequestMethod = v
+}
+
+// GetRequestPath returns the RequestPath field value
+func (o *ModelNetworkAlert) GetRequestPath() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.RequestPath
+}
+
+// GetRequestPathOk returns a tuple with the RequestPath field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkAlert) GetRequestPathOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RequestPath, true
+}
+
+// SetRequestPath sets field value
+func (o *ModelNetworkAlert) SetRequestPath(v string) {
+	o.RequestPath = v
+}
+
+// GetRequestPayload returns the RequestPayload field value
+func (o *ModelNetworkAlert) GetRequestPayload() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.RequestPayload
+}
+
+// GetRequestPayloadOk returns a tuple with the RequestPayload field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkAlert) GetRequestPayloadOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RequestPayload, true
+}
+
+// SetRequestPayload sets field value
+func (o *ModelNetworkAlert) SetRequestPayload(v string) {
+	o.RequestPayload = v
+}
+
+// GetRequestPrintablePayload returns the RequestPrintablePayload field value
+func (o *ModelNetworkAlert) GetRequestPrintablePayload() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.RequestPrintablePayload
+}
+
+// GetRequestPrintablePayloadOk returns a tuple with the RequestPrintablePayload field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkAlert) GetRequestPrintablePayloadOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RequestPrintablePayload, true
+}
+
+// SetRequestPrintablePayload sets field value
+func (o *ModelNetworkAlert) SetRequestPrintablePayload(v string) {
+	o.RequestPrintablePayload = v
+}
+
 // GetResourceType returns the ResourceType field value
 func (o *ModelNetworkAlert) GetResourceType() string {
 	if o == nil {
@@ -751,10 +959,62 @@ func (o *ModelNetworkAlert) SetResourceType(v string) {
 	o.ResourceType = v
 }
 
-// GetRuleId returns the RuleId field value
-func (o *ModelNetworkAlert) GetRuleId() int32 {
+// GetResponsePayload returns the ResponsePayload field value
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ModelNetworkAlert) GetResponsePayload() interface{} {
 	if o == nil {
-		var ret int32
+		var ret interface{}
+		return ret
+	}
+
+	return o.ResponsePayload
+}
+
+// GetResponsePayloadOk returns a tuple with the ResponsePayload field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelNetworkAlert) GetResponsePayloadOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.ResponsePayload) {
+		return nil, false
+	}
+	return &o.ResponsePayload, true
+}
+
+// SetResponsePayload sets field value
+func (o *ModelNetworkAlert) SetResponsePayload(v interface{}) {
+	o.ResponsePayload = v
+}
+
+// GetResponsePrintablePayload returns the ResponsePrintablePayload field value
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ModelNetworkAlert) GetResponsePrintablePayload() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+
+	return o.ResponsePrintablePayload
+}
+
+// GetResponsePrintablePayloadOk returns a tuple with the ResponsePrintablePayload field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelNetworkAlert) GetResponsePrintablePayloadOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.ResponsePrintablePayload) {
+		return nil, false
+	}
+	return &o.ResponsePrintablePayload, true
+}
+
+// SetResponsePrintablePayload sets field value
+func (o *ModelNetworkAlert) SetResponsePrintablePayload(v interface{}) {
+	o.ResponsePrintablePayload = v
+}
+
+// GetRuleId returns the RuleId field value
+func (o *ModelNetworkAlert) GetRuleId() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
 
@@ -763,7 +1023,7 @@ func (o *ModelNetworkAlert) GetRuleId() int32 {
 
 // GetRuleIdOk returns a tuple with the RuleId field value
 // and a boolean to check if the value has been set.
-func (o *ModelNetworkAlert) GetRuleIdOk() (*int32, bool) {
+func (o *ModelNetworkAlert) GetRuleIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -771,32 +1031,8 @@ func (o *ModelNetworkAlert) GetRuleIdOk() (*int32, bool) {
 }
 
 // SetRuleId sets field value
-func (o *ModelNetworkAlert) SetRuleId(v int32) {
+func (o *ModelNetworkAlert) SetRuleId(v string) {
 	o.RuleId = v
-}
-
-// GetScopeId returns the ScopeId field value
-func (o *ModelNetworkAlert) GetScopeId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ScopeId
-}
-
-// GetScopeIdOk returns a tuple with the ScopeId field value
-// and a boolean to check if the value has been set.
-func (o *ModelNetworkAlert) GetScopeIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ScopeId, true
-}
-
-// SetScopeId sets field value
-func (o *ModelNetworkAlert) SetScopeId(v string) {
-	o.ScopeId = v
 }
 
 // GetSeverity returns the Severity field value
@@ -943,6 +1179,32 @@ func (o *ModelNetworkAlert) SetSourcePort(v int32) {
 	o.SourcePort = v
 }
 
+// GetStatus returns the Status field value
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ModelNetworkAlert) GetStatus() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+
+	return o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelNetworkAlert) GetStatusOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return &o.Status, true
+}
+
+// SetStatus sets field value
+func (o *ModelNetworkAlert) SetStatus(v interface{}) {
+	o.Status = v
+}
+
 // GetSummary returns the Summary field value
 func (o *ModelNetworkAlert) GetSummary() string {
 	if o == nil {
@@ -965,6 +1227,32 @@ func (o *ModelNetworkAlert) GetSummaryOk() (*string, bool) {
 // SetSummary sets field value
 func (o *ModelNetworkAlert) SetSummary(v string) {
 	o.Summary = v
+}
+
+// GetTactic returns the Tactic field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ModelNetworkAlert) GetTactic() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.Tactic
+}
+
+// GetTacticOk returns a tuple with the Tactic field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelNetworkAlert) GetTacticOk() ([]string, bool) {
+	if o == nil || IsNil(o.Tactic) {
+		return nil, false
+	}
+	return o.Tactic, true
+}
+
+// SetTactic sets field value
+func (o *ModelNetworkAlert) SetTactic(v []string) {
+	o.Tactic = v
 }
 
 // GetTags returns the Tags field value
@@ -991,6 +1279,32 @@ func (o *ModelNetworkAlert) SetTags(v string) {
 	o.Tags = v
 }
 
+// GetTechnique returns the Technique field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ModelNetworkAlert) GetTechnique() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.Technique
+}
+
+// GetTechniqueOk returns a tuple with the Technique field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelNetworkAlert) GetTechniqueOk() ([]string, bool) {
+	if o == nil || IsNil(o.Technique) {
+		return nil, false
+	}
+	return o.Technique, true
+}
+
+// SetTechnique sets field value
+func (o *ModelNetworkAlert) SetTechnique(v []string) {
+	o.Technique = v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value
 func (o *ModelNetworkAlert) GetUpdatedAt() int32 {
 	if o == nil {
@@ -1015,6 +1329,30 @@ func (o *ModelNetworkAlert) SetUpdatedAt(v int32) {
 	o.UpdatedAt = v
 }
 
+// GetUrl returns the Url field value
+func (o *ModelNetworkAlert) GetUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Url
+}
+
+// GetUrlOk returns a tuple with the Url field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkAlert) GetUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Url, true
+}
+
+// SetUrl sets field value
+func (o *ModelNetworkAlert) SetUrl(v string) {
+	o.Url = v
+}
+
 func (o ModelNetworkAlert) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1037,35 +1375,58 @@ func (o ModelNetworkAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["direction"] = o.Direction
 	toSerialize["encrypted"] = o.Encrypted
 	toSerialize["event_type"] = o.EventType
-	if !IsNil(o.Geoip) {
-		toSerialize["geoip"] = o.Geoip
-	}
+	toSerialize["geoip"] = o.Geoip
+	toSerialize["headers"] = o.Headers
 	toSerialize["hostname"] = o.Hostname
-	if !IsNil(o.Http) {
-		toSerialize["http"] = o.Http
+	if o.HttpContentType != nil {
+		toSerialize["http_content_type"] = o.HttpContentType
 	}
 	toSerialize["http_type"] = o.HttpType
-	toSerialize["intent"] = o.Intent
+	toSerialize["http_user_agent"] = o.HttpUserAgent
 	toSerialize["internal"] = o.Internal
 	toSerialize["ip_reputation"] = o.IpReputation
 	toSerialize["kubernetes_cluster_name"] = o.KubernetesClusterName
+	if o.Length != nil {
+		toSerialize["length"] = o.Length
+	}
+	toSerialize["local_port"] = o.LocalPort
 	toSerialize["masked"] = o.Masked
 	toSerialize["matched"] = o.Matched
 	toSerialize["node_id"] = o.NodeId
 	toSerialize["node_type"] = o.NodeType
 	toSerialize["pod_name"] = o.PodName
+	toSerialize["protocol"] = o.Protocol
+	toSerialize["request_method"] = o.RequestMethod
+	toSerialize["request_path"] = o.RequestPath
+	toSerialize["request_payload"] = o.RequestPayload
+	toSerialize["request_printable_payload"] = o.RequestPrintablePayload
 	toSerialize["resource_type"] = o.ResourceType
+	if o.ResponsePayload != nil {
+		toSerialize["response_payload"] = o.ResponsePayload
+	}
+	if o.ResponsePrintablePayload != nil {
+		toSerialize["response_printable_payload"] = o.ResponsePrintablePayload
+	}
 	toSerialize["rule_id"] = o.RuleId
-	toSerialize["scope_id"] = o.ScopeId
 	toSerialize["severity"] = o.Severity
 	toSerialize["severity_anomaly_container_name"] = o.SeverityAnomalyContainerName
 	toSerialize["severity_score"] = o.SeverityScore
 	toSerialize["signature_id"] = o.SignatureId
 	toSerialize["source_ip"] = o.SourceIp
 	toSerialize["source_port"] = o.SourcePort
+	if o.Status != nil {
+		toSerialize["status"] = o.Status
+	}
 	toSerialize["summary"] = o.Summary
+	if o.Tactic != nil {
+		toSerialize["tactic"] = o.Tactic
+	}
 	toSerialize["tags"] = o.Tags
+	if o.Technique != nil {
+		toSerialize["technique"] = o.Technique
+	}
 	toSerialize["updated_at"] = o.UpdatedAt
+	toSerialize["url"] = o.Url
 	return toSerialize, nil
 }
 

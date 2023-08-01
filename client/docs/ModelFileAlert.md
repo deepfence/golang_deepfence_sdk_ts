@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Anomaly** | **string** |  | 
 **Category** | **string** |  | 
-**Classtype** | **string** |  | 
 **ContainerId** | **string** |  | 
 **ContainerImage** | **string** |  | 
 **ContainerIp** | **string** |  | 
@@ -18,7 +17,6 @@ Name | Type | Description | Notes
 **Filepath** | **string** |  | 
 **Fstat** | **string** |  | 
 **Hostname** | **string** |  | 
-**Intent** | **string** |  | 
 **Masked** | **bool** |  | 
 **Netstat** | **string** |  | 
 **NodeId** | **string** |  | 
@@ -31,6 +29,8 @@ Name | Type | Description | Notes
 **SeverityScore** | **float32** |  | 
 **SignatureId** | **int32** |  | 
 **Summary** | **string** |  | 
+**Tactic** | **[]string** |  | 
+**Technique** | **[]string** |  | 
 **Top** | **string** |  | 
 **UpdatedAt** | **int32** |  | 
 **Users** | **string** |  | 
@@ -40,7 +40,7 @@ Name | Type | Description | Notes
 
 ### NewModelFileAlert
 
-`func NewModelFileAlert(anomaly string, category string, classtype string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostname string, intent string, masked bool, netstat string, nodeId string, nodeType string, pid int32, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, top string, updatedAt int32, users string, w int32, ) *ModelFileAlert`
+`func NewModelFileAlert(anomaly string, category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostname string, masked bool, netstat string, nodeId string, nodeType string, pid int32, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactic []string, technique []string, top string, updatedAt int32, users string, w int32, ) *ModelFileAlert`
 
 NewModelFileAlert instantiates a new ModelFileAlert object
 This constructor will assign default values to properties that have it defined,
@@ -93,26 +93,6 @@ and a boolean to check if the value has been set.
 `func (o *ModelFileAlert) SetCategory(v string)`
 
 SetCategory sets Category field to given value.
-
-
-### GetClasstype
-
-`func (o *ModelFileAlert) GetClasstype() string`
-
-GetClasstype returns the Classtype field if non-nil, zero value otherwise.
-
-### GetClasstypeOk
-
-`func (o *ModelFileAlert) GetClasstypeOk() (*string, bool)`
-
-GetClasstypeOk returns a tuple with the Classtype field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClasstype
-
-`func (o *ModelFileAlert) SetClasstype(v string)`
-
-SetClasstype sets Classtype field to given value.
 
 
 ### GetContainerId
@@ -333,26 +313,6 @@ and a boolean to check if the value has been set.
 `func (o *ModelFileAlert) SetHostname(v string)`
 
 SetHostname sets Hostname field to given value.
-
-
-### GetIntent
-
-`func (o *ModelFileAlert) GetIntent() string`
-
-GetIntent returns the Intent field if non-nil, zero value otherwise.
-
-### GetIntentOk
-
-`func (o *ModelFileAlert) GetIntentOk() (*string, bool)`
-
-GetIntentOk returns a tuple with the Intent field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIntent
-
-`func (o *ModelFileAlert) SetIntent(v string)`
-
-SetIntent sets Intent field to given value.
 
 
 ### GetMasked
@@ -595,6 +555,66 @@ and a boolean to check if the value has been set.
 SetSummary sets Summary field to given value.
 
 
+### GetTactic
+
+`func (o *ModelFileAlert) GetTactic() []string`
+
+GetTactic returns the Tactic field if non-nil, zero value otherwise.
+
+### GetTacticOk
+
+`func (o *ModelFileAlert) GetTacticOk() (*[]string, bool)`
+
+GetTacticOk returns a tuple with the Tactic field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTactic
+
+`func (o *ModelFileAlert) SetTactic(v []string)`
+
+SetTactic sets Tactic field to given value.
+
+
+### SetTacticNil
+
+`func (o *ModelFileAlert) SetTacticNil(b bool)`
+
+ SetTacticNil sets the value for Tactic to be an explicit nil
+
+### UnsetTactic
+`func (o *ModelFileAlert) UnsetTactic()`
+
+UnsetTactic ensures that no value is present for Tactic, not even an explicit nil
+### GetTechnique
+
+`func (o *ModelFileAlert) GetTechnique() []string`
+
+GetTechnique returns the Technique field if non-nil, zero value otherwise.
+
+### GetTechniqueOk
+
+`func (o *ModelFileAlert) GetTechniqueOk() (*[]string, bool)`
+
+GetTechniqueOk returns a tuple with the Technique field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTechnique
+
+`func (o *ModelFileAlert) SetTechnique(v []string)`
+
+SetTechnique sets Technique field to given value.
+
+
+### SetTechniqueNil
+
+`func (o *ModelFileAlert) SetTechniqueNil(b bool)`
+
+ SetTechniqueNil sets the value for Technique to be an explicit nil
+
+### UnsetTechnique
+`func (o *ModelFileAlert) UnsetTechnique()`
+
+UnsetTechnique ensures that no value is present for Technique, not even an explicit nil
 ### GetTop
 
 `func (o *ModelFileAlert) GetTop() string`

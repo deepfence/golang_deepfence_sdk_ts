@@ -8798,6 +8798,44 @@ paths:
       summary: Verify SSO auth code
       tags:
       - Authentication
+  /deepfence/statistics/alerts-daily-counts:
+    get:
+      description: Get Alerts daily counts
+      operationId: dailyAlertCounts
+      responses:
+        "204":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportersDailySevCounts'
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Alerts daily counts
+      tags:
+      - Alert
   /deepfence/user:
     delete:
       description: Delete logged in user
@@ -10172,6 +10210,7 @@ components:
           - malware
           - compliance
           - cloud_compliance
+          - alert
           type: string
         node_ids:
           items:
@@ -10184,6 +10223,8 @@ components:
       type: object
     GraphNodeInfo:
       properties:
+        alerts_count:
+          type: integer
         cloud_compliance_count:
           type: integer
         compliance_count:
@@ -10197,6 +10238,7 @@ components:
         vulnerability_count:
           type: integer
       required:
+      - alerts_count
       - cloud_compliance_count
       - compliance_count
       - name
@@ -10206,6 +10248,8 @@ components:
       type: object
     GraphProviderThreatGraph:
       properties:
+        alerts_count:
+          type: integer
         cloud_compliance_count:
           type: integer
         compliance_count:
@@ -10220,6 +10264,7 @@ components:
         vulnerability_count:
           type: integer
       required:
+      - alerts_count
       - cloud_compliance_count
       - compliance_count
       - resources
@@ -10274,6 +10319,8 @@ components:
       type: object
     GraphThreatNodeInfo:
       properties:
+        alerts_count:
+          type: integer
         attack_path:
           items:
             items:
@@ -10303,6 +10350,7 @@ components:
         vulnerability_count:
           type: integer
       required:
+      - alerts_count
       - attack_path
       - cloud_compliance_count
       - compliance_count
@@ -12048,24 +12096,24 @@ components:
         event_type: event_type
         updated_at: 1
         masked: true
-        classtype: classtype
         count: 0
         created_at: 6
+        technique:
+        - technique
+        - technique
         category: category
-        intent: intent
         node_id: node_id
+        tactic:
+        - tactic
+        - tactic
       properties:
         category:
-          type: string
-        classtype:
           type: string
         count:
           type: integer
         created_at:
           type: integer
         event_type:
-          type: string
-        intent:
           type: string
         masked:
           type: boolean
@@ -12075,19 +12123,29 @@ components:
           type: string
         summary:
           type: string
+        tactic:
+          items:
+            type: string
+          nullable: true
+          type: array
+        technique:
+          items:
+            type: string
+          nullable: true
+          type: array
         updated_at:
           type: integer
       required:
       - category
-      - classtype
       - count
       - created_at
       - event_type
-      - intent
       - masked
       - node_id
       - severity
       - summary
+      - tactic
+      - technique
       - updated_at
       type: object
     ModelCompliance:
@@ -13061,9 +13119,14 @@ components:
         container_ip: container_ip
         anomaly: anomaly
         masked: true
-        classtype: classtype
         created_at: 6
+        technique:
+        - technique
+        - technique
         pid: 1
+        tactic:
+        - tactic
+        - tactic
         hostname: hostname
         signature_id: 5
         event_type: event_type
@@ -13078,7 +13141,6 @@ components:
         count: 0
         resource_type: resource_type
         fstat: fstat
-        intent: intent
         container_image: container_image
         netstat: netstat
         users: users
@@ -13093,8 +13155,6 @@ components:
         anomaly:
           type: string
         category:
-          type: string
-        classtype:
           type: string
         container_id:
           type: string
@@ -13117,8 +13177,6 @@ components:
         fstat:
           type: string
         hostname:
-          type: string
-        intent:
           type: string
         masked:
           type: boolean
@@ -13144,6 +13202,16 @@ components:
           type: integer
         summary:
           type: string
+        tactic:
+          items:
+            type: string
+          nullable: true
+          type: array
+        technique:
+          items:
+            type: string
+          nullable: true
+          type: array
         top:
           type: string
         updated_at:
@@ -13155,7 +13223,6 @@ components:
       required:
       - anomaly
       - category
-      - classtype
       - container_id
       - container_image
       - container_ip
@@ -13167,7 +13234,6 @@ components:
       - filepath
       - fstat
       - hostname
-      - intent
       - masked
       - netstat
       - node_id
@@ -13180,6 +13246,8 @@ components:
       - severity_score
       - signature_id
       - summary
+      - tactic
+      - technique
       - top
       - updated_at
       - users
@@ -13289,11 +13357,11 @@ components:
       type: object
     ModelHost:
       example:
-        vulnerabilities_count: 2
+        vulnerabilities_count: 4
         public_ip:
         - ""
         - ""
-        secrets_count: 9
+        secrets_count: 3
         cloud_region: cloud_region
         container_images:
         - metadata:
@@ -13564,8 +13632,10 @@ components:
           - docker_image_tag_list
           - docker_image_tag_list
           node_id: node_id
-        cpu_max: 6.027456183070403
-        memory_usage: 7
+        cpu_max: 1.4658129805029452
+        memory_usage: 9
+        alerts_counts:
+          key: 0
         private_ip:
         - ""
         - ""
@@ -13633,16 +13703,16 @@ components:
         - ""
         - ""
         malware_latest_scan_id: malware_latest_scan_id
-        malwares_count: 5
+        malwares_count: 2
         node_name: node_name
         cloud_provider: cloud_provider
         agent_running: true
         version: version
-        uptime: 3
-        memory_max: 2
+        uptime: 2
+        memory_max: 7
         instance_id: instance_id
         kernel_id: kernel_id
-        compliances_count: 0
+        compliances_count: 6
         kernel_version: kernel_version
         compliance_latest_scan_id: compliance_latest_scan_id
         containers:
@@ -14045,7 +14115,7 @@ components:
             node_id: node_id
           host_name: host_name
           node_id: node_id
-        cpu_usage: 1.4658129805029452
+        cpu_usage: 5.962133916683182
         instance_type: instance_type
         vulnerability_scan_status: vulnerability_scan_status
         host_name: host_name
@@ -14056,6 +14126,11 @@ components:
       properties:
         agent_running:
           type: boolean
+        alerts_counts:
+          additionalProperties:
+            type: integer
+          nullable: true
+          type: object
         availability_zone:
           type: string
         cloud_provider:
@@ -14170,6 +14245,7 @@ components:
           type: string
       required:
       - agent_running
+      - alerts_counts
       - availability_zone
       - cloud_provider
       - cloud_region
@@ -14445,11 +14521,11 @@ components:
     ModelKubernetesCluster:
       example:
         hosts:
-        - vulnerabilities_count: 2
+        - vulnerabilities_count: 4
           public_ip:
           - ""
           - ""
-          secrets_count: 9
+          secrets_count: 3
           cloud_region: cloud_region
           container_images:
           - metadata:
@@ -14720,8 +14796,10 @@ components:
             - docker_image_tag_list
             - docker_image_tag_list
             node_id: node_id
-          cpu_max: 6.027456183070403
-          memory_usage: 7
+          cpu_max: 1.4658129805029452
+          memory_usage: 9
+          alerts_counts:
+            key: 0
           private_ip:
           - ""
           - ""
@@ -14789,16 +14867,16 @@ components:
           - ""
           - ""
           malware_latest_scan_id: malware_latest_scan_id
-          malwares_count: 5
+          malwares_count: 2
           node_name: node_name
           cloud_provider: cloud_provider
           agent_running: true
           version: version
-          uptime: 3
-          memory_max: 2
+          uptime: 2
+          memory_max: 7
           instance_id: instance_id
           kernel_id: kernel_id
-          compliances_count: 0
+          compliances_count: 6
           kernel_version: kernel_version
           compliance_latest_scan_id: compliance_latest_scan_id
           containers:
@@ -15201,7 +15279,7 @@ components:
               node_id: node_id
             host_name: host_name
             node_id: node_id
-          cpu_usage: 1.4658129805029452
+          cpu_usage: 5.962133916683182
           instance_type: instance_type
           vulnerability_scan_status: vulnerability_scan_status
           host_name: host_name
@@ -15209,11 +15287,11 @@ components:
           - ""
           - ""
           node_id: node_id
-        - vulnerabilities_count: 2
+        - vulnerabilities_count: 4
           public_ip:
           - ""
           - ""
-          secrets_count: 9
+          secrets_count: 3
           cloud_region: cloud_region
           container_images:
           - metadata:
@@ -15484,8 +15562,10 @@ components:
             - docker_image_tag_list
             - docker_image_tag_list
             node_id: node_id
-          cpu_max: 6.027456183070403
-          memory_usage: 7
+          cpu_max: 1.4658129805029452
+          memory_usage: 9
+          alerts_counts:
+            key: 0
           private_ip:
           - ""
           - ""
@@ -15553,16 +15633,16 @@ components:
           - ""
           - ""
           malware_latest_scan_id: malware_latest_scan_id
-          malwares_count: 5
+          malwares_count: 2
           node_name: node_name
           cloud_provider: cloud_provider
           agent_running: true
           version: version
-          uptime: 3
-          memory_max: 2
+          uptime: 2
+          memory_max: 7
           instance_id: instance_id
           kernel_id: kernel_id
-          compliances_count: 0
+          compliances_count: 6
           kernel_version: kernel_version
           compliance_latest_scan_id: compliance_latest_scan_id
           containers:
@@ -15965,7 +16045,7 @@ components:
               node_id: node_id
             host_name: host_name
             node_id: node_id
-          cpu_usage: 1.4658129805029452
+          cpu_usage: 5.962133916683182
           instance_type: instance_type
           vulnerability_scan_status: vulnerability_scan_status
           host_name: host_name
@@ -16396,59 +16476,60 @@ components:
       type: object
     ModelNetworkAlert:
       example:
-        internal: internal
-        destination_port: 1
         kubernetes_cluster_name: kubernetes_cluster_name
         masked: true
-        classtype: classtype
-        created_at: 6
-        description: description
         source_ip: source_ip
         hostname: hostname
-        signature_id: 9
+        protocol: 5
         destination_ip: destination_ip
         event_type: event_type
         node_type: node_type
-        updated_at: 2
-        ip_reputation: ip_reputation
-        scope_id: scope_id
-        source_port: 3
-        direction: direction
-        severity: severity
-        summary: summary
-        geoip:
-          ip: ip
         count: 0
         resource_type: resource_type
         http_type: http_type
-        app_proto: app_proto
-        intent: intent
-        severity_anomaly_container_name: severity_anomaly_container_name
+        response_printable_payload: ""
         pod_name: pod_name
         tags: tags
-        rule_id: 2
+        matched: matched
+        status: ""
+        internal: internal
+        destination_port: 1
+        classtype: classtype
+        created_at: 6
+        description: description
+        technique:
+        - technique
+        - technique
+        request_method: request_method
+        http_user_agent: http_user_agent
+        tactic:
+        - tactic
+        - tactic
+        signature_id: 7
+        http_content_type: ""
+        updated_at: 3
+        ip_reputation: ip_reputation
+        source_port: 9
+        direction: direction
+        request_printable_payload: request_printable_payload
+        severity: severity
+        summary: summary
+        headers: headers
+        geoip: geoip
+        local_port: 5
+        length: ""
+        app_proto: app_proto
+        severity_anomaly_container_name: severity_anomaly_container_name
+        url: url
+        rule_id: rule_id
         container_name: container_name
         encrypted: encrypted
-        http:
-          headers: headers
-          local_port: 5
-          length: ""
-          request_method: request_method
-          response_printable_payload: ""
-          url: url
-          http_user_agent: http_user_agent
-          hostname: hostname
-          protocol: 5
-          http_content_type: ""
-          request_path: request_path
-          request_payload: request_payload
-          response_payload: ""
-          request_printable_payload: request_printable_payload
-          status: ""
-        matched: matched
+        request_path: request_path
         category: category
+        request_payload: request_payload
+        response_payload: ""
         node_id: node_id
-        severity_score: 7.061401241503109
+        severity_score: 2.3021358869347655
       properties:
         app_proto:
           type: string
@@ -16475,14 +16556,15 @@ components:
         event_type:
           type: string
         geoip:
-          $ref: '#/components/schemas/ModelNetworkAlert_geoip'
+          type: string
+        headers:
+          type: string
         hostname:
           type: string
-        http:
-          $ref: '#/components/schemas/ModelNetworkAlert_http'
+        http_content_type: {}
         http_type:
           type: string
-        intent:
+        http_user_agent:
           type: string
         internal:
           type: string
@@ -16490,6 +16572,9 @@ components:
           type: string
         kubernetes_cluster_name:
           type: string
+        length: {}
+        local_port:
+          type: integer
         masked:
           type: boolean
         matched:
@@ -16500,11 +16585,21 @@ components:
           type: string
         pod_name:
           type: string
+        protocol:
+          type: integer
+        request_method:
+          type: string
+        request_path:
+          type: string
+        request_payload:
+          type: string
+        request_printable_payload:
+          type: string
         resource_type:
           type: string
+        response_payload: {}
+        response_printable_payload: {}
         rule_id:
-          type: integer
-        scope_id:
           type: string
         severity:
           type: string
@@ -16518,12 +16613,25 @@ components:
           type: string
         source_port:
           type: integer
+        status: {}
         summary:
           type: string
+        tactic:
+          items:
+            type: string
+          nullable: true
+          type: array
         tags:
           type: string
+        technique:
+          items:
+            type: string
+          nullable: true
+          type: array
         updated_at:
           type: integer
+        url:
+          type: string
       required:
       - app_proto
       - category
@@ -16537,29 +16645,44 @@ components:
       - direction
       - encrypted
       - event_type
+      - geoip
+      - headers
       - hostname
+      - http_content_type
       - http_type
-      - intent
+      - http_user_agent
       - internal
       - ip_reputation
       - kubernetes_cluster_name
+      - length
+      - local_port
       - masked
       - matched
       - node_id
       - node_type
       - pod_name
+      - protocol
+      - request_method
+      - request_path
+      - request_payload
+      - request_printable_payload
       - resource_type
+      - response_payload
+      - response_printable_payload
       - rule_id
-      - scope_id
       - severity
       - severity_anomaly_container_name
       - severity_score
       - signature_id
       - source_ip
       - source_port
+      - status
       - summary
+      - tactic
       - tags
+      - technique
       - updated_at
+      - url
       type: object
     ModelNodeIdentifier:
       example:
@@ -19134,6 +19257,21 @@ components:
       required:
       - filter_in
       type: object
+    ReportersDailySevCounts:
+      example:
+        days_to_sev_counts:
+          key:
+            counts:
+              key: 0
+      properties:
+        days_to_sev_counts:
+          additionalProperties:
+            $ref: '#/components/schemas/ReportersSevCounts'
+          nullable: true
+          type: object
+      required:
+      - days_to_sev_counts
+      type: object
     ReportersFieldsFilters:
       example:
         compare_filter:
@@ -19235,6 +19373,19 @@ components:
       required:
       - descending
       - field_name
+      type: object
+    ReportersSevCounts:
+      example:
+        counts:
+          key: 0
+      properties:
+        counts:
+          additionalProperties:
+            type: integer
+          nullable: true
+          type: object
+      required:
+      - counts
       type: object
     SearchNodeCountResp:
       example:
@@ -19973,75 +20124,6 @@ components:
           type: string
         score:
           type: number
-      type: object
-    ModelNetworkAlert_geoip:
-      example:
-        ip: ip
-      properties:
-        ip:
-          type: string
-      required:
-      - ip
-      type: object
-    ModelNetworkAlert_http:
-      example:
-        headers: headers
-        local_port: 5
-        length: ""
-        request_method: request_method
-        response_printable_payload: ""
-        url: url
-        http_user_agent: http_user_agent
-        hostname: hostname
-        protocol: 5
-        http_content_type: ""
-        request_path: request_path
-        request_payload: request_payload
-        response_payload: ""
-        request_printable_payload: request_printable_payload
-        status: ""
-      properties:
-        headers:
-          type: string
-        hostname:
-          type: string
-        http_content_type: {}
-        http_user_agent:
-          type: string
-        length: {}
-        local_port:
-          type: integer
-        protocol:
-          type: integer
-        request_method:
-          type: string
-        request_path:
-          type: string
-        request_payload:
-          type: string
-        request_printable_payload:
-          type: string
-        response_payload: {}
-        response_printable_payload: {}
-        status: {}
-        url:
-          type: string
-      required:
-      - headers
-      - hostname
-      - http_content_type
-      - http_user_agent
-      - length
-      - local_port
-      - protocol
-      - request_method
-      - request_path
-      - request_payload
-      - request_printable_payload
-      - response_payload
-      - response_printable_payload
-      - status
-      - url
       type: object
   securitySchemes:
     bearer_token:

@@ -21,6 +21,7 @@ var _ MappedNullable = &ModelHost{}
 // ModelHost struct for ModelHost
 type ModelHost struct {
 	AgentRunning bool `json:"agent_running"`
+	AlertsCounts map[string]int32 `json:"alerts_counts"`
 	AvailabilityZone string `json:"availability_zone"`
 	CloudProvider string `json:"cloud_provider"`
 	CloudRegion string `json:"cloud_region"`
@@ -70,9 +71,10 @@ type ModelHost struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelHost(agentRunning bool, availabilityZone string, cloudProvider string, cloudRegion string, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string) *ModelHost {
+func NewModelHost(agentRunning bool, alertsCounts map[string]int32, availabilityZone string, cloudProvider string, cloudRegion string, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string) *ModelHost {
 	this := ModelHost{}
 	this.AgentRunning = agentRunning
+	this.AlertsCounts = alertsCounts
 	this.AvailabilityZone = availabilityZone
 	this.CloudProvider = cloudProvider
 	this.CloudRegion = cloudRegion
@@ -149,6 +151,32 @@ func (o *ModelHost) GetAgentRunningOk() (*bool, bool) {
 // SetAgentRunning sets field value
 func (o *ModelHost) SetAgentRunning(v bool) {
 	o.AgentRunning = v
+}
+
+// GetAlertsCounts returns the AlertsCounts field value
+// If the value is explicit nil, the zero value for map[string]int32 will be returned
+func (o *ModelHost) GetAlertsCounts() map[string]int32 {
+	if o == nil {
+		var ret map[string]int32
+		return ret
+	}
+
+	return o.AlertsCounts
+}
+
+// GetAlertsCountsOk returns a tuple with the AlertsCounts field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelHost) GetAlertsCountsOk() (*map[string]int32, bool) {
+	if o == nil || IsNil(o.AlertsCounts) {
+		return nil, false
+	}
+	return &o.AlertsCounts, true
+}
+
+// SetAlertsCounts sets field value
+func (o *ModelHost) SetAlertsCounts(v map[string]int32) {
+	o.AlertsCounts = v
 }
 
 // GetAvailabilityZone returns the AvailabilityZone field value
@@ -1214,6 +1242,9 @@ func (o ModelHost) MarshalJSON() ([]byte, error) {
 func (o ModelHost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["agent_running"] = o.AgentRunning
+	if o.AlertsCounts != nil {
+		toSerialize["alerts_counts"] = o.AlertsCounts
+	}
 	toSerialize["availability_zone"] = o.AvailabilityZone
 	toSerialize["cloud_provider"] = o.CloudProvider
 	toSerialize["cloud_region"] = o.CloudRegion
