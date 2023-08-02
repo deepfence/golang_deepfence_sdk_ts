@@ -538,6 +538,49 @@ paths:
       summary: Unmask Alerts
       tags:
       - Alert
+  /deepfence/alerts/mitre-attack-matrix:
+    post:
+      description: Get Mitre Attack Matrix
+      operationId: getMitreAttackMatrix
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelMitreAttackMatrixRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelMitreAttackMatrix'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Mitre Attack Matrix
+      tags:
+      - Alert
   /deepfence/api-token:
     get:
       description: Get logged in user's API Tokens
@@ -12700,9 +12743,6 @@ components:
         malwares_count: 7
         node_name: node_name
         secret_latest_scan_id: secret_latest_scan_id
-        docker_image_name_list:
-        - docker_image_name_list
-        - docker_image_name_list
         vulnerability_latest_scan_id: vulnerability_latest_scan_id
         docker_image_created_at: docker_image_created_at
         docker_image_tag: docker_image_tag
@@ -12837,11 +12877,6 @@ components:
           type: string
         docker_image_name:
           type: string
-        docker_image_name_list:
-          items:
-            type: string
-          nullable: true
-          type: array
         docker_image_size:
           type: string
         docker_image_tag:
@@ -12883,7 +12918,6 @@ components:
       - docker_image_created_at
       - docker_image_id
       - docker_image_name
-      - docker_image_name_list
       - docker_image_size
       - docker_image_tag
       - docker_image_tag_list
@@ -13373,9 +13407,6 @@ components:
           malwares_count: 7
           node_name: node_name
           secret_latest_scan_id: secret_latest_scan_id
-          docker_image_name_list:
-          - docker_image_name_list
-          - docker_image_name_list
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
           docker_image_created_at: docker_image_created_at
           docker_image_tag: docker_image_tag
@@ -13507,9 +13538,6 @@ components:
           malwares_count: 7
           node_name: node_name
           secret_latest_scan_id: secret_latest_scan_id
-          docker_image_name_list:
-          - docker_image_name_list
-          - docker_image_name_list
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
           docker_image_created_at: docker_image_created_at
           docker_image_tag: docker_image_tag
@@ -14537,9 +14565,6 @@ components:
             malwares_count: 7
             node_name: node_name
             secret_latest_scan_id: secret_latest_scan_id
-            docker_image_name_list:
-            - docker_image_name_list
-            - docker_image_name_list
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
             docker_image_created_at: docker_image_created_at
             docker_image_tag: docker_image_tag
@@ -14671,9 +14696,6 @@ components:
             malwares_count: 7
             node_name: node_name
             secret_latest_scan_id: secret_latest_scan_id
-            docker_image_name_list:
-            - docker_image_name_list
-            - docker_image_name_list
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
             docker_image_created_at: docker_image_created_at
             docker_image_tag: docker_image_tag
@@ -15303,9 +15325,6 @@ components:
             malwares_count: 7
             node_name: node_name
             secret_latest_scan_id: secret_latest_scan_id
-            docker_image_name_list:
-            - docker_image_name_list
-            - docker_image_name_list
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
             docker_image_created_at: docker_image_created_at
             docker_image_tag: docker_image_tag
@@ -15437,9 +15456,6 @@ components:
             malwares_count: 7
             node_name: node_name
             secret_latest_scan_id: secret_latest_scan_id
-            docker_image_name_list:
-            - docker_image_name_list
-            - docker_image_name_list
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
             docker_image_created_at: docker_image_created_at
             docker_image_tag: docker_image_tag
@@ -16474,6 +16490,68 @@ components:
     ModelMetadata:
       additionalProperties: {}
       type: object
+    ModelMitreAttackMatrix:
+      example:
+        tactic_summary:
+          key:
+            count: 0
+            technique_summary:
+              key:
+                severity: severity
+                count: 6
+      properties:
+        tactic_summary:
+          additionalProperties:
+            $ref: '#/components/schemas/ModelMitreTacticSummary'
+          nullable: true
+          type: object
+      required:
+      - tactic_summary
+      type: object
+    ModelMitreAttackMatrixRequest:
+      example:
+        node_ids:
+        - node_ids
+        - node_ids
+      properties:
+        node_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
+    ModelMitreTacticSummary:
+      example:
+        count: 0
+        technique_summary:
+          key:
+            severity: severity
+            count: 6
+      properties:
+        count:
+          type: integer
+        technique_summary:
+          additionalProperties:
+            $ref: '#/components/schemas/ModelMitreTechniqueSummary'
+          nullable: true
+          type: object
+      required:
+      - count
+      - technique_summary
+      type: object
+    ModelMitreTechniqueSummary:
+      example:
+        severity: severity
+        count: 6
+      properties:
+        count:
+          type: integer
+        severity:
+          type: string
+      required:
+      - count
+      - severity
+      type: object
     ModelNetworkAlert:
       example:
         kubernetes_cluster_name: kubernetes_cluster_name
@@ -17099,9 +17177,6 @@ components:
           malwares_count: 7
           node_name: node_name
           secret_latest_scan_id: secret_latest_scan_id
-          docker_image_name_list:
-          - docker_image_name_list
-          - docker_image_name_list
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
           docker_image_created_at: docker_image_created_at
           docker_image_tag: docker_image_tag
@@ -17233,9 +17308,6 @@ components:
           malwares_count: 7
           node_name: node_name
           secret_latest_scan_id: secret_latest_scan_id
-          docker_image_name_list:
-          - docker_image_name_list
-          - docker_image_name_list
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
           docker_image_created_at: docker_image_created_at
           docker_image_tag: docker_image_tag

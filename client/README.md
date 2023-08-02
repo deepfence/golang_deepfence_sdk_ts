@@ -93,6 +93,7 @@ Class | Method | HTTP request | Description
 *AgentNetworkAPI* | [**EnableNetworkTracer**](docs/AgentNetworkAPI.md#enablenetworktracer) | **Post** /deepfence/network/tracer/enable | Enable network tracer
 *AlertAPI* | [**DailyAlertCounts**](docs/AlertAPI.md#dailyalertcounts) | **Get** /deepfence/statistics/alerts-daily-counts | Get Alerts daily counts
 *AlertAPI* | [**DeleteAlert**](docs/AlertAPI.md#deletealert) | **Patch** /deepfence/alerts/action/delete | Delete Alerts
+*AlertAPI* | [**GetMitreAttackMatrix**](docs/AlertAPI.md#getmitreattackmatrix) | **Post** /deepfence/alerts/mitre-attack-matrix | Get Mitre Attack Matrix
 *AlertAPI* | [**MaskAlert**](docs/AlertAPI.md#maskalert) | **Post** /deepfence/alerts/action/mask | Mask Alerts
 *AlertAPI* | [**NotifyAlert**](docs/AlertAPI.md#notifyalert) | **Post** /deepfence/alerts/action/notify | Notify Alerts
 *AlertAPI* | [**UnmaskAlert**](docs/AlertAPI.md#unmaskalert) | **Post** /deepfence/alerts/action/unmask | Unmask Alerts
@@ -425,6 +426,10 @@ Class | Method | HTTP request | Description
  - [ModelMalwareScanResultRules](docs/ModelMalwareScanResultRules.md)
  - [ModelMalwareScanTriggerReq](docs/ModelMalwareScanTriggerReq.md)
  - [ModelMessageResponse](docs/ModelMessageResponse.md)
+ - [ModelMitreAttackMatrix](docs/ModelMitreAttackMatrix.md)
+ - [ModelMitreAttackMatrixRequest](docs/ModelMitreAttackMatrixRequest.md)
+ - [ModelMitreTacticSummary](docs/ModelMitreTacticSummary.md)
+ - [ModelMitreTechniqueSummary](docs/ModelMitreTechniqueSummary.md)
  - [ModelNetworkAlert](docs/ModelNetworkAlert.md)
  - [ModelNodeIdentifier](docs/ModelNodeIdentifier.md)
  - [ModelNodesInScanResultRequest](docs/ModelNodesInScanResultRequest.md)

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DailyAlertCounts**](AlertAPI.md#DailyAlertCounts) | **Get** /deepfence/statistics/alerts-daily-counts | Get Alerts daily counts
 [**DeleteAlert**](AlertAPI.md#DeleteAlert) | **Patch** /deepfence/alerts/action/delete | Delete Alerts
+[**GetMitreAttackMatrix**](AlertAPI.md#GetMitreAttackMatrix) | **Post** /deepfence/alerts/mitre-attack-matrix | Get Mitre Attack Matrix
 [**MaskAlert**](AlertAPI.md#MaskAlert) | **Post** /deepfence/alerts/action/mask | Mask Alerts
 [**NotifyAlert**](AlertAPI.md#NotifyAlert) | **Post** /deepfence/alerts/action/notify | Notify Alerts
 [**UnmaskAlert**](AlertAPI.md#UnmaskAlert) | **Post** /deepfence/alerts/action/unmask | Unmask Alerts
@@ -122,6 +123,72 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetMitreAttackMatrix
+
+> ModelMitreAttackMatrix GetMitreAttackMatrix(ctx).ModelMitreAttackMatrixRequest(modelMitreAttackMatrixRequest).Execute()
+
+Get Mitre Attack Matrix
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    modelMitreAttackMatrixRequest := *openapiclient.NewModelMitreAttackMatrixRequest() // ModelMitreAttackMatrixRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AlertAPI.GetMitreAttackMatrix(context.Background()).ModelMitreAttackMatrixRequest(modelMitreAttackMatrixRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AlertAPI.GetMitreAttackMatrix``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetMitreAttackMatrix`: ModelMitreAttackMatrix
+    fmt.Fprintf(os.Stdout, "Response from `AlertAPI.GetMitreAttackMatrix`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetMitreAttackMatrixRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **modelMitreAttackMatrixRequest** | [**ModelMitreAttackMatrixRequest**](ModelMitreAttackMatrixRequest.md) |  | 
+
+### Return type
+
+[**ModelMitreAttackMatrix**](ModelMitreAttackMatrix.md)
 
 ### Authorization
 
