@@ -4,11 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Hash** | **string** |  | 
 **HttpRules** | [**ControlsNetworkRules**](ControlsNetworkRules.md) |  | 
 **HttpsRules** | [**ControlsNetworkRules**](ControlsNetworkRules.md) |  | 
 **Mode** | **string** |  | 
-**Name** | **string** |  | 
+**NodeId** | **string** |  | 
 **ProcessNames** | **[]string** |  | 
 **TcpRules** | [**ControlsNetworkRules**](ControlsNetworkRules.md) |  | 
 
@@ -16,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewControlsNetworkTracerConfig
 
-`func NewControlsNetworkTracerConfig(hash string, httpRules ControlsNetworkRules, httpsRules ControlsNetworkRules, mode string, name string, processNames []string, tcpRules ControlsNetworkRules, ) *ControlsNetworkTracerConfig`
+`func NewControlsNetworkTracerConfig(httpRules ControlsNetworkRules, httpsRules ControlsNetworkRules, mode string, nodeId string, processNames []string, tcpRules ControlsNetworkRules, ) *ControlsNetworkTracerConfig`
 
 NewControlsNetworkTracerConfig instantiates a new ControlsNetworkTracerConfig object
 This constructor will assign default values to properties that have it defined,
@@ -30,26 +29,6 @@ will change when the set of required properties is changed
 NewControlsNetworkTracerConfigWithDefaults instantiates a new ControlsNetworkTracerConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetHash
-
-`func (o *ControlsNetworkTracerConfig) GetHash() string`
-
-GetHash returns the Hash field if non-nil, zero value otherwise.
-
-### GetHashOk
-
-`func (o *ControlsNetworkTracerConfig) GetHashOk() (*string, bool)`
-
-GetHashOk returns a tuple with the Hash field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHash
-
-`func (o *ControlsNetworkTracerConfig) SetHash(v string)`
-
-SetHash sets Hash field to given value.
-
 
 ### GetHttpRules
 
@@ -111,24 +90,24 @@ and a boolean to check if the value has been set.
 SetMode sets Mode field to given value.
 
 
-### GetName
+### GetNodeId
 
-`func (o *ControlsNetworkTracerConfig) GetName() string`
+`func (o *ControlsNetworkTracerConfig) GetNodeId() string`
 
-GetName returns the Name field if non-nil, zero value otherwise.
+GetNodeId returns the NodeId field if non-nil, zero value otherwise.
 
-### GetNameOk
+### GetNodeIdOk
 
-`func (o *ControlsNetworkTracerConfig) GetNameOk() (*string, bool)`
+`func (o *ControlsNetworkTracerConfig) GetNodeIdOk() (*string, bool)`
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetNodeIdOk returns a tuple with the NodeId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetNodeId
 
-`func (o *ControlsNetworkTracerConfig) SetName(v string)`
+`func (o *ControlsNetworkTracerConfig) SetNodeId(v string)`
 
-SetName sets Name field to given value.
+SetNodeId sets NodeId field to given value.
 
 
 ### GetProcessNames

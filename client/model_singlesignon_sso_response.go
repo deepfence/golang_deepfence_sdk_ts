@@ -23,6 +23,7 @@ var _ MappedNullable = &SinglesignonSSOResponse{}
 type SinglesignonSSOResponse struct {
 	ClientId string `json:"client_id"`
 	CreatedAt time.Time `json:"created_at"`
+	DisablePasswordLogin bool `json:"disable_password_login"`
 	Id int32 `json:"id"`
 	IssuerUrl string `json:"issuer_url"`
 	Label string `json:"label"`
@@ -34,10 +35,11 @@ type SinglesignonSSOResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSinglesignonSSOResponse(clientId string, createdAt time.Time, id int32, issuerUrl string, label string, ssoProviderType string, updatedAt time.Time) *SinglesignonSSOResponse {
+func NewSinglesignonSSOResponse(clientId string, createdAt time.Time, disablePasswordLogin bool, id int32, issuerUrl string, label string, ssoProviderType string, updatedAt time.Time) *SinglesignonSSOResponse {
 	this := SinglesignonSSOResponse{}
 	this.ClientId = clientId
 	this.CreatedAt = createdAt
+	this.DisablePasswordLogin = disablePasswordLogin
 	this.Id = id
 	this.IssuerUrl = issuerUrl
 	this.Label = label
@@ -100,6 +102,30 @@ func (o *SinglesignonSSOResponse) GetCreatedAtOk() (*time.Time, bool) {
 // SetCreatedAt sets field value
 func (o *SinglesignonSSOResponse) SetCreatedAt(v time.Time) {
 	o.CreatedAt = v
+}
+
+// GetDisablePasswordLogin returns the DisablePasswordLogin field value
+func (o *SinglesignonSSOResponse) GetDisablePasswordLogin() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.DisablePasswordLogin
+}
+
+// GetDisablePasswordLoginOk returns a tuple with the DisablePasswordLogin field value
+// and a boolean to check if the value has been set.
+func (o *SinglesignonSSOResponse) GetDisablePasswordLoginOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DisablePasswordLogin, true
+}
+
+// SetDisablePasswordLogin sets field value
+func (o *SinglesignonSSOResponse) SetDisablePasswordLogin(v bool) {
+	o.DisablePasswordLogin = v
 }
 
 // GetId returns the Id field value
@@ -234,6 +260,7 @@ func (o SinglesignonSSOResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["client_id"] = o.ClientId
 	toSerialize["created_at"] = o.CreatedAt
+	toSerialize["disable_password_login"] = o.DisablePasswordLogin
 	toSerialize["id"] = o.Id
 	toSerialize["issuer_url"] = o.IssuerUrl
 	toSerialize["label"] = o.Label

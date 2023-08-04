@@ -8,13 +8,14 @@ Name | Type | Description | Notes
 **DurationCountLimitSec** | **int32** |  | 
 **DurationSec** | **int32** |  | 
 **EventType** | **string** |  | 
-**Matcher** | **map[string]interface{}** |  | 
+**Matcher** | [**ControlsPolicyAlertMatcher**](ControlsPolicyAlertMatcher.md) |  | 
+**PolicyId** | **string** |  | 
 
 ## Methods
 
 ### NewControlsPolicy
 
-`func NewControlsPolicy(countLimit int32, durationCountLimitSec int32, durationSec int32, eventType string, matcher map[string]interface{}, ) *ControlsPolicy`
+`func NewControlsPolicy(countLimit int32, durationCountLimitSec int32, durationSec int32, eventType string, matcher ControlsPolicyAlertMatcher, policyId string, ) *ControlsPolicy`
 
 NewControlsPolicy instantiates a new ControlsPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -111,22 +112,42 @@ SetEventType sets EventType field to given value.
 
 ### GetMatcher
 
-`func (o *ControlsPolicy) GetMatcher() map[string]interface{}`
+`func (o *ControlsPolicy) GetMatcher() ControlsPolicyAlertMatcher`
 
 GetMatcher returns the Matcher field if non-nil, zero value otherwise.
 
 ### GetMatcherOk
 
-`func (o *ControlsPolicy) GetMatcherOk() (*map[string]interface{}, bool)`
+`func (o *ControlsPolicy) GetMatcherOk() (*ControlsPolicyAlertMatcher, bool)`
 
 GetMatcherOk returns a tuple with the Matcher field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMatcher
 
-`func (o *ControlsPolicy) SetMatcher(v map[string]interface{})`
+`func (o *ControlsPolicy) SetMatcher(v ControlsPolicyAlertMatcher)`
 
 SetMatcher sets Matcher field to given value.
+
+
+### GetPolicyId
+
+`func (o *ControlsPolicy) GetPolicyId() string`
+
+GetPolicyId returns the PolicyId field if non-nil, zero value otherwise.
+
+### GetPolicyIdOk
+
+`func (o *ControlsPolicy) GetPolicyIdOk() (*string, bool)`
+
+GetPolicyIdOk returns a tuple with the PolicyId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPolicyId
+
+`func (o *ControlsPolicy) SetPolicyId(v string)`
+
+SetPolicyId sets PolicyId field to given value.
 
 
 

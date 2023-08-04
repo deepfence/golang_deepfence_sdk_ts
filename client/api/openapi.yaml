@@ -31,357 +31,6 @@ tags:
 - name: Malware Scan
 - name: Vulnerability
 paths:
-  /configs/agent/filemon/:
-    get:
-      description: Register Agent config
-      operationId: getAgentFilesystemConfig
-      responses:
-        "204":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/ControlsFilesystemTracerConfig'
-                type: array
-          description: No Content
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
-          description: Bad Request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Internal Server Error
-      security:
-      - bearer_token: []
-      summary: Register Agent Filesystem config
-      tags:
-      - AgentConfig
-    post:
-      description: Register Agent Filesystem config
-      operationId: registerAgentFilesystemConfig
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ControlsFilesystemTracerConfig'
-      responses:
-        "204":
-          description: No Content
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
-          description: Bad Request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Internal Server Error
-      security:
-      - bearer_token: []
-      summary: Register Agent Filesystem config
-      tags:
-      - AgentConfig
-  /configs/agent/filemon/attach:
-    post:
-      description: Register Agent config
-      operationId: attachAgentFilesystemConfig
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ModelAttachAgentConfigReq'
-      responses:
-        "204":
-          description: No Content
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
-          description: Bad Request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Internal Server Error
-      security:
-      - bearer_token: []
-      summary: Register Agent Filesystem config
-      tags:
-      - AgentConfig
-  /configs/agent/network/:
-    get:
-      description: Register Agent config
-      operationId: getAgentNetworkConfig
-      responses:
-        "204":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/ControlsNetworkTracerConfig'
-                type: array
-          description: No Content
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
-          description: Bad Request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Internal Server Error
-      security:
-      - bearer_token: []
-      summary: Register Agent Network config
-      tags:
-      - AgentConfig
-    post:
-      description: Register Agent Network config
-      operationId: registerAgentNetworkConfig
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ControlsNetworkTracerConfig'
-      responses:
-        "204":
-          description: No Content
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
-          description: Bad Request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Internal Server Error
-      security:
-      - bearer_token: []
-      summary: Register Agent Network config
-      tags:
-      - AgentConfig
-  /configs/agent/network/attach:
-    post:
-      description: Register Agent config
-      operationId: attachAgentNetworkConfig
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ModelAttachAgentConfigReq'
-      responses:
-        "204":
-          description: No Content
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
-          description: Bad Request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Internal Server Error
-      security:
-      - bearer_token: []
-      summary: Register Agent Network config
-      tags:
-      - AgentConfig
-  /configs/agent/policy/:
-    get:
-      description: Register Agent config
-      operationId: getAgentPolicyConfig
-      responses:
-        "204":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/ControlsPolicyFilterConfig'
-                type: array
-          description: No Content
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
-          description: Bad Request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Internal Server Error
-      security:
-      - bearer_token: []
-      summary: Register Agent Policy config
-      tags:
-      - AgentConfig
-    post:
-      description: Register Agent Policy config
-      operationId: registerAgentPolicyConfig
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ControlsPolicyFilterConfig'
-      responses:
-        "204":
-          description: No Content
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
-          description: Bad Request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Internal Server Error
-      security:
-      - bearer_token: []
-      summary: Register Agent Policy config
-      tags:
-      - AgentConfig
-  /configs/agent/policy/attach:
-    post:
-      description: Register Agent config
-      operationId: attachAgentPolicyConfig
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ModelAttachAgentConfigReq'
-      responses:
-        "204":
-          description: No Content
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
-          description: Bad Request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiDocsFailureResponse'
-          description: Internal Server Error
-      security:
-      - bearer_token: []
-      summary: Register Agent Policy config
-      tags:
-      - AgentConfig
   /deepfence/alerts/action/delete:
     patch:
       description: Delete selected alerts
@@ -866,6 +515,538 @@ paths:
       summary: List Cloud Node Providers
       tags:
       - Cloud Nodes
+  /deepfence/configs/agent/filemon/:
+    post:
+      description: Register Agent Filesystem config
+      operationId: registerAgentFilesystemConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ControlsFilesystemTracerConfig'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Register Agent Filesystem config
+      tags:
+      - AgentConfig
+  /deepfence/configs/agent/filemon/attach:
+    post:
+      description: Register Agent config
+      operationId: attachAgentFilesystemConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelAttachAgentConfigReq'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Register Agent Filesystem config
+      tags:
+      - AgentConfig
+  /deepfence/configs/agent/filemon/list:
+    post:
+      description: Register Agent config
+      operationId: getAgentFilesystemConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelGetAgentConfigReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ControlsFilesystemTracerConfig'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Register Agent Filesystem config
+      tags:
+      - AgentConfig
+  /deepfence/configs/agent/network/:
+    post:
+      description: Register Agent Network config
+      operationId: registerAgentNetworkConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ControlsNetworkTracerConfig'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Register Agent Network config
+      tags:
+      - AgentConfig
+  /deepfence/configs/agent/network/attach:
+    post:
+      description: Register Agent config
+      operationId: attachAgentNetworkConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelAttachAgentConfigReq'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Register Agent Network config
+      tags:
+      - AgentConfig
+  /deepfence/configs/agent/network/list:
+    post:
+      description: Register Agent config
+      operationId: getAgentNetworkConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelGetAgentConfigReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ControlsNetworkTracerConfig'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Register Agent Network config
+      tags:
+      - AgentConfig
+  /deepfence/configs/agent/network/rules:
+    get:
+      description: Get Network Rules
+      operationId: getNetworkRules
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  type: string
+                type: object
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Network Rules
+      tags:
+      - AgentConfig
+  /deepfence/configs/agent/policy/:
+    post:
+      description: Register Agent Policy config
+      operationId: registerAgentPolicyConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ControlsPolicyFilterConfig'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Register Agent Policy config
+      tags:
+      - AgentConfig
+  /deepfence/configs/agent/policy/attach:
+    post:
+      description: Register Agent config
+      operationId: attachAgentPolicyConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelAttachAgentConfigReq'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Register Agent Policy config
+      tags:
+      - AgentConfig
+  /deepfence/configs/agent/policy/list:
+    post:
+      description: Register Agent config
+      operationId: getAgentPolicyConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelGetAgentConfigReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ControlsPolicyFilterConfig'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Register Agent Policy config
+      tags:
+      - AgentConfig
+  /deepfence/configs/agent/quarantine/:
+    post:
+      description: Register Agent Policy config
+      operationId: registerAgentQuarantineConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ControlsQuarantineConfig'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Register Agent Policy config
+      tags:
+      - AgentConfig
+  /deepfence/configs/agent/quarantine/attach:
+    post:
+      description: Register Agent config
+      operationId: attachAgentQuarantineConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelAttachAgentConfigReq'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Register Agent Policy config
+      tags:
+      - AgentConfig
+  /deepfence/configs/agent/quarantine/list:
+    post:
+      description: Register Agent config
+      operationId: getAgentQuarantineConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelGetAgentConfigReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ControlsQuarantineConfig'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Register Agent Policy config
+      tags:
+      - AgentConfig
   /deepfence/controls/agent:
     post:
       description: Fetch actions for a given agent
@@ -2445,6 +2626,48 @@ paths:
       summary: Ingest Topology Data
       tags:
       - Topology
+  /deepfence/ingest/violations:
+    post:
+      description: Ingest violations
+      operationId: ingestViolations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/IngestersNetworkViolation'
+              nullable: true
+              type: array
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Ingest Violations
+      tags:
+      - Cloud Resources
   /deepfence/ingest/vulnerabilities:
     post:
       description: Ingest vulnerabilities found while scanning the agent host or containers
@@ -2529,6 +2752,48 @@ paths:
       summary: Ingest Vulnerabilities Scan Status
       tags:
       - Vulnerability
+  /deepfence/ingest/waf-rules:
+    post:
+      description: Ingest WAF rules to be applied from console
+      operationId: ingestWAFRules
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/IngestersWAFRule'
+              nullable: true
+              type: array
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Ingest WAF Rules
+      tags:
+      - Cloud Resources
   /deepfence/integration:
     get:
       description: List all the added Integrations
@@ -3252,6 +3517,51 @@ paths:
       security:
       - bearer_token: []
       summary: Get Network Alerts
+      tags:
+      - Lookup
+  /deepfence/lookup/network-violations:
+    post:
+      description: Retrieve network violations resources
+      operationId: getNetworkViolations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LookupLookupFilter'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelNetworkViolation'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Network Violations
       tags:
       - Lookup
   /deepfence/lookup/pods:
@@ -7377,6 +7687,49 @@ paths:
       summary: Count network alerts
       tags:
       - Search
+  /deepfence/search/count/network-violations:
+    post:
+      description: Count across all data associated with network violations
+      operationId: countNetworkViolations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchSearchCountResp'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Count network violations
+      tags:
+      - Search
   /deepfence/search/count/nodes:
     get:
       description: "Count hosts, containers, pods, k8s clusters, images"
@@ -8076,6 +8429,51 @@ paths:
       summary: Search network alerts
       tags:
       - Search
+  /deepfence/search/network-violations:
+    post:
+      description: Search across all data associated with network violations
+      operationId: searchNetworkViolations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelNetworkViolation'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Search network violations
+      tags:
+      - Search
   /deepfence/search/pods:
     post:
       description: Search across all the data associated with pods
@@ -8758,6 +9156,56 @@ paths:
       security:
       - bearer_token: []
       summary: Delete Single sign-on configuration
+      tags:
+      - Authentication
+    put:
+      description: "Update Single sign-on (OIDC, Google, Microsoft, Github)"
+      operationId: updateSSOProvider
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SinglesignonUpdateSSOProviderConfig'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SinglesignonSSOResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Update Single sign-on
       tags:
       - Authentication
   /deepfence/sso/login:
@@ -9697,17 +10145,14 @@ components:
           wight: wight
         - event_name: event_name
           wight: wight
-        name: name
-        hash: hash
+        node_id: node_id
       properties:
-        hash:
-          type: string
         monitored_files:
           items:
             $ref: '#/components/schemas/ControlsMonitoredFilesConfig'
           nullable: true
           type: array
-        name:
+        node_id:
           type: string
         process_events:
           items:
@@ -9715,9 +10160,8 @@ components:
           nullable: true
           type: array
       required:
-      - hash
       - monitored_files
-      - name
+      - node_id
       - process_events
       type: object
     ControlsMonitoredFilesConfig:
@@ -9785,8 +10229,6 @@ components:
           outbound:
           - outbound
           - outbound
-        name: name
-        hash: hash
         https_rules:
           inbound:
           - inbound
@@ -9794,9 +10236,8 @@ components:
           outbound:
           - outbound
           - outbound
+        node_id: node_id
       properties:
-        hash:
-          type: string
         http_rules:
           $ref: '#/components/schemas/ControlsNetworkRules'
         https_rules:
@@ -9807,7 +10248,7 @@ components:
           - deny
           - allow
           type: string
-        name:
+        node_id:
           type: string
         process_names:
           items:
@@ -9817,20 +10258,24 @@ components:
         tcp_rules:
           $ref: '#/components/schemas/ControlsNetworkRules'
       required:
-      - hash
       - http_rules
       - https_rules
       - mode
-      - name
+      - node_id
       - process_names
       - tcp_rules
       type: object
     ControlsPolicy:
       example:
         event_type: event_type
+        policy_id: policy_id
         count_limit: 0
         duration_count_limit_sec: 6
-        matcher: "{}"
+        matcher:
+          fields_matcher:
+            key:
+            - fields_matcher
+            - fields_matcher
         duration_sec: 1
       properties:
         count_limit:
@@ -9842,45 +10287,73 @@ components:
         event_type:
           type: string
         matcher:
-          type: object
+          $ref: '#/components/schemas/ControlsPolicyAlertMatcher'
+        policy_id:
+          type: string
       required:
       - count_limit
       - duration_count_limit_sec
       - duration_sec
       - event_type
       - matcher
+      - policy_id
       type: object
     ControlsPolicyAlertMatcher:
+      example:
+        fields_matcher:
+          key:
+          - fields_matcher
+          - fields_matcher
+      properties:
+        fields_matcher:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          nullable: true
+          type: object
+      required:
+      - fields_matcher
       type: object
     ControlsPolicyFilterConfig:
       example:
-        name: name
+        use_waf: true
         policies:
         - event_type: event_type
+          policy_id: policy_id
           count_limit: 0
           duration_count_limit_sec: 6
-          matcher: "{}"
+          matcher:
+            fields_matcher:
+              key:
+              - fields_matcher
+              - fields_matcher
           duration_sec: 1
         - event_type: event_type
+          policy_id: policy_id
           count_limit: 0
           duration_count_limit_sec: 6
-          matcher: "{}"
+          matcher:
+            fields_matcher:
+              key:
+              - fields_matcher
+              - fields_matcher
           duration_sec: 1
-        hash: hash
+        node_id: node_id
       properties:
-        hash:
-          type: string
-        name:
+        node_id:
           type: string
         policies:
           items:
             $ref: '#/components/schemas/ControlsPolicy'
           nullable: true
           type: array
+        use_waf:
+          type: boolean
       required:
-      - hash
-      - name
+      - node_id
       - policies
+      - use_waf
       type: object
     ControlsProcessEventConfig:
       example:
@@ -9894,6 +10367,42 @@ components:
       required:
       - event_name
       - wight
+      type: object
+    ControlsQuarantineConfig:
+      example:
+        policies:
+        - event_type: event_type
+          policy_id: policy_id
+          count_limit: 0
+          duration_count_limit_sec: 6
+          matcher:
+            fields_matcher:
+              key:
+              - fields_matcher
+              - fields_matcher
+          duration_sec: 1
+        - event_type: event_type
+          policy_id: policy_id
+          count_limit: 0
+          duration_count_limit_sec: 6
+          matcher:
+            fields_matcher:
+              key:
+              - fields_matcher
+              - fields_matcher
+          duration_sec: 1
+        node_id: node_id
+      properties:
+        node_id:
+          type: string
+        policies:
+          items:
+            $ref: '#/components/schemas/ControlsPolicy'
+          nullable: true
+          type: array
+      required:
+      - node_id
+      - policies
       type: object
     DetailedConnectionSummary:
       example:
@@ -10432,6 +10941,11 @@ components:
               descending: true
               field_name: field_name
           contains_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          contains_in_array_filter:
             filter_in:
               key:
               - ""
@@ -10986,6 +11500,43 @@ components:
         version:
           type: string
       type: object
+    IngestersNetworkViolation:
+      example:
+        remote_ip: remote_ip
+        policy_id: policy_id
+        executed_at: executed_at
+        source_port: 6
+        remote_port: 0
+        action: action
+        pod_id: pod_id
+        container_id: container_id
+        host_name: host_name
+        direction: direction
+        source_ip: source_ip
+      properties:
+        action:
+          type: string
+        container_id:
+          type: string
+        direction:
+          type: string
+        executed_at:
+          type: string
+        host_name:
+          type: string
+        pod_id:
+          type: string
+        policy_id:
+          type: string
+        remote_ip:
+          type: string
+        remote_port:
+          type: integer
+        source_ip:
+          type: string
+        source_port:
+          type: integer
+      type: object
     IngestersReportIngestionData:
       example:
         hosts:
@@ -11267,6 +11818,22 @@ components:
         scan_status:
           type: string
       type: object
+    IngestersWAFRule:
+      example:
+        remote_ip: remote_ip
+        executed_at: 0
+        remote_port: 6
+        host_name: host_name
+      properties:
+        executed_at:
+          type: integer
+        host_name:
+          type: string
+        remote_ip:
+          type: string
+        remote_port:
+          type: integer
+      type: object
     LookupLookupFilter:
       example:
         in_field_filter:
@@ -11440,7 +12007,7 @@ components:
       type: object
     ModelAttachAgentConfigReq:
       example:
-        name: name
+        config_id: config_id
         agent_ids:
         - available_workload: 0
           node_id: node_id
@@ -11452,11 +12019,11 @@ components:
             $ref: '#/components/schemas/ModelAgentId'
           nullable: true
           type: array
-        name:
+        config_id:
           type: string
       required:
       - agent_ids
-      - name
+      - config_id
       type: object
     ModelBasicNode:
       example:
@@ -11504,6 +12071,11 @@ components:
               descending: true
               field_name: field_name
           contains_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          contains_in_array_filter:
             filter_in:
               key:
               - ""
@@ -12139,16 +12711,17 @@ components:
         event_type: event_type
         updated_at: 1
         masked: true
+        techniques:
+        - techniques
+        - techniques
         count: 0
         created_at: 6
-        technique:
-        - technique
-        - technique
+        tactics:
+        - tactics
+        - tactics
         category: category
+        host_name: host_name
         node_id: node_id
-        tactic:
-        - tactic
-        - tactic
       properties:
         category:
           type: string
@@ -12158,6 +12731,8 @@ components:
           type: integer
         event_type:
           type: string
+        host_name:
+          type: string
         masked:
           type: boolean
         node_id:
@@ -12166,12 +12741,12 @@ components:
           type: string
         summary:
           type: string
-        tactic:
+        tactics:
           items:
             type: string
           nullable: true
           type: array
-        technique:
+        techniques:
           items:
             type: string
           nullable: true
@@ -12183,12 +12758,13 @@ components:
       - count
       - created_at
       - event_type
+      - host_name
       - masked
       - node_id
       - severity
       - summary
-      - tactic
-      - technique
+      - tactics
+      - techniques
       - updated_at
       type: object
     ModelCompliance:
@@ -13154,14 +13730,7 @@ components:
         anomaly: anomaly
         masked: true
         created_at: 6
-        technique:
-        - technique
-        - technique
         pid: 1
-        tactic:
-        - tactic
-        - tactic
-        hostname: hostname
         signature_id: 5
         event_type: event_type
         node_type: node_type
@@ -13179,10 +13748,17 @@ components:
         netstat: netstat
         users: users
         container_name: container_name
+        techniques:
+        - techniques
+        - techniques
         w: 7
+        tactics:
+        - tactics
+        - tactics
         proc_status: proc_status
         category: category
         container_id: container_id
+        host_name: host_name
         node_id: node_id
         severity_score: 5.962133916683182
       properties:
@@ -13210,7 +13786,7 @@ components:
           type: string
         fstat:
           type: string
-        hostname:
+        host_name:
           type: string
         masked:
           type: boolean
@@ -13236,12 +13812,12 @@ components:
           type: integer
         summary:
           type: string
-        tactic:
+        tactics:
           items:
             type: string
           nullable: true
           type: array
-        technique:
+        techniques:
           items:
             type: string
           nullable: true
@@ -13267,7 +13843,7 @@ components:
       - event_type
       - filepath
       - fstat
-      - hostname
+      - host_name
       - masked
       - netstat
       - node_id
@@ -13280,8 +13856,8 @@ components:
       - severity_score
       - signature_id
       - summary
-      - tactic
-      - technique
+      - tactics
+      - techniques
       - top
       - updated_at
       - users
@@ -13388,6 +13964,20 @@ components:
       properties:
         report_id:
           type: string
+      type: object
+    ModelGetAgentConfigReq:
+      example:
+        config_ids:
+        - config_ids
+        - config_ids
+      properties:
+        config_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
+      required:
+      - config_ids
       type: object
     ModelHost:
       example:
@@ -14383,6 +14973,11 @@ components:
                 key:
                 - ""
                 - ""
+            contains_in_array_filter:
+              filter_in:
+                key:
+                - ""
+                - ""
             match_filter:
               filter_in:
                 key:
@@ -14436,6 +15031,11 @@ components:
               key:
               - ""
               - ""
+          contains_in_array_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
           match_filter:
             filter_in:
               key:
@@ -14482,6 +15082,11 @@ components:
               descending: true
               field_name: field_name
           contains_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          contains_in_array_filter:
             filter_in:
               key:
               - ""
@@ -16554,36 +17159,20 @@ components:
       type: object
     ModelNetworkAlert:
       example:
+        internal: internal
+        destination_port: 1
         kubernetes_cluster_name: kubernetes_cluster_name
         masked: true
+        created_at: 6
+        description: description
+        request_method: request_method
+        http_user_agent: http_user_agent
         source_ip: source_ip
-        hostname: hostname
         protocol: 5
+        signature_id: 7
         destination_ip: destination_ip
         event_type: event_type
         node_type: node_type
-        count: 0
-        resource_type: resource_type
-        http_type: http_type
-        response_printable_payload: ""
-        pod_name: pod_name
-        tags: tags
-        matched: matched
-        status: ""
-        internal: internal
-        destination_port: 1
-        classtype: classtype
-        created_at: 6
-        description: description
-        technique:
-        - technique
-        - technique
-        request_method: request_method
-        http_user_agent: http_user_agent
-        tactic:
-        - tactic
-        - tactic
-        signature_id: 7
         http_content_type: ""
         updated_at: 3
         ip_reputation: ip_reputation
@@ -16595,25 +17184,37 @@ components:
         headers: headers
         geoip: geoip
         local_port: 5
+        count: 0
         length: ""
+        resource_type: resource_type
+        http_type: http_type
+        response_printable_payload: ""
         app_proto: app_proto
-        severity_anomaly_container_name: severity_anomaly_container_name
         url: url
+        pod_name: pod_name
+        tags: tags
         rule_id: rule_id
         container_name: container_name
         encrypted: encrypted
+        techniques:
+        - techniques
+        - techniques
         request_path: request_path
+        tactics:
+        - tactics
+        - tactics
+        matched: matched
         category: category
         request_payload: request_payload
+        host_name: host_name
         response_payload: ""
         node_id: node_id
         severity_score: 2.3021358869347655
+        status: ""
       properties:
         app_proto:
           type: string
         category:
-          type: string
-        classtype:
           type: string
         container_name:
           type: string
@@ -16637,7 +17238,7 @@ components:
           type: string
         headers:
           type: string
-        hostname:
+        host_name:
           type: string
         http_content_type: {}
         http_type:
@@ -16681,8 +17282,6 @@ components:
           type: string
         severity:
           type: string
-        severity_anomaly_container_name:
-          type: string
         severity_score:
           type: number
         signature_id:
@@ -16694,14 +17293,14 @@ components:
         status: {}
         summary:
           type: string
-        tactic:
+        tactics:
           items:
             type: string
           nullable: true
           type: array
         tags:
           type: string
-        technique:
+        techniques:
           items:
             type: string
           nullable: true
@@ -16713,7 +17312,6 @@ components:
       required:
       - app_proto
       - category
-      - classtype
       - container_name
       - count
       - created_at
@@ -16725,7 +17323,7 @@ components:
       - event_type
       - geoip
       - headers
-      - hostname
+      - host_name
       - http_content_type
       - http_type
       - http_user_agent
@@ -16749,18 +17347,78 @@ components:
       - response_printable_payload
       - rule_id
       - severity
-      - severity_anomaly_container_name
       - severity_score
       - signature_id
       - source_ip
       - source_port
       - status
       - summary
-      - tactic
+      - tactics
       - tags
-      - technique
+      - techniques
       - updated_at
       - url
+      type: object
+    ModelNetworkViolation:
+      example:
+        severity: severity
+        policy_id: policy_id
+        executed_at: executed_at
+        remote_port: 6
+        created_at: 0
+        source_ip: source_ip
+        remote_ip: remote_ip
+        source_port: 1
+        action: action
+        pod_id: pod_id
+        container_id: container_id
+        host_name: host_name
+        direction: direction
+        node_id: node_id
+      properties:
+        action:
+          type: string
+        container_id:
+          type: string
+        created_at:
+          type: integer
+        direction:
+          type: string
+        executed_at:
+          type: string
+        host_name:
+          type: string
+        node_id:
+          type: string
+        pod_id:
+          type: string
+        policy_id:
+          type: string
+        remote_ip:
+          type: string
+        remote_port:
+          type: integer
+        severity:
+          type: string
+        source_ip:
+          type: string
+        source_port:
+          type: integer
+      required:
+      - action
+      - container_id
+      - created_at
+      - direction
+      - executed_at
+      - host_name
+      - node_id
+      - pod_id
+      - policy_id
+      - remote_ip
+      - remote_port
+      - severity
+      - source_ip
+      - source_port
       type: object
     ModelNodeIdentifier:
       example:
@@ -17526,6 +18184,11 @@ components:
               key:
               - ""
               - ""
+          contains_in_array_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
           match_filter:
             filter_in:
               key:
@@ -17571,6 +18234,11 @@ components:
               descending: true
               field_name: field_name
           contains_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          contains_in_array_filter:
             filter_in:
               key:
               - ""
@@ -17831,6 +18499,11 @@ components:
               key:
               - ""
               - ""
+          contains_in_array_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
           match_filter:
             filter_in:
               key:
@@ -18046,6 +18719,11 @@ components:
               descending: true
               field_name: field_name
           contains_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          contains_in_array_filter:
             filter_in:
               key:
               - ""
@@ -19371,6 +20049,11 @@ components:
             key:
             - ""
             - ""
+        contains_in_array_filter:
+          filter_in:
+            key:
+            - ""
+            - ""
         match_filter:
           filter_in:
             key:
@@ -19383,6 +20066,8 @@ components:
           nullable: true
           type: array
         contains_filter:
+          $ref: '#/components/schemas/ReportersContainsFilter'
+        contains_in_array_filter:
           $ref: '#/components/schemas/ReportersContainsFilter'
         match_filter:
           $ref: '#/components/schemas/ReportersMatchFilter'
@@ -19569,6 +20254,11 @@ components:
               key:
               - ""
               - ""
+          contains_in_array_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
           match_filter:
             filter_in:
               key:
@@ -19624,6 +20314,11 @@ components:
                 key:
                 - ""
                 - ""
+            contains_in_array_filter:
+              filter_in:
+                key:
+                - ""
+                - ""
             match_filter:
               filter_in:
                 key:
@@ -19658,6 +20353,11 @@ components:
                 descending: true
                 field_name: field_name
             contains_filter:
+              filter_in:
+                key:
+                - ""
+                - ""
+            contains_in_array_filter:
               filter_in:
                 key:
                 - ""
@@ -19716,6 +20416,11 @@ components:
                 key:
                 - ""
                 - ""
+            contains_in_array_filter:
+              filter_in:
+                key:
+                - ""
+                - ""
             match_filter:
               filter_in:
                 key:
@@ -19750,6 +20455,11 @@ components:
                 descending: true
                 field_name: field_name
             contains_filter:
+              filter_in:
+                key:
+                - ""
+                - ""
+            contains_in_array_filter:
               filter_in:
                 key:
                 - ""
@@ -19805,6 +20515,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           sso_provider_type: sso_provider_type
           created_at: 2000-01-23T04:56:07.000+00:00
+          disable_password_login: true
           id: 0
           label: label
           client_id: client_id
@@ -19812,6 +20523,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           sso_provider_type: sso_provider_type
           created_at: 2000-01-23T04:56:07.000+00:00
+          disable_password_login: true
           id: 0
           label: label
           client_id: client_id
@@ -19888,6 +20600,7 @@ components:
       example:
         issuer_url: issuer_url
         sso_provider_type: oidc
+        disable_password_login: true
         client_secret: client_secret
         client_id: client_id
       properties:
@@ -19895,6 +20608,8 @@ components:
           type: string
         client_secret:
           type: string
+        disable_password_login:
+          type: boolean
         issuer_url:
           type: string
         sso_provider_type:
@@ -19907,6 +20622,7 @@ components:
       required:
       - client_id
       - client_secret
+      - disable_password_login
       - sso_provider_type
       type: object
     SinglesignonSSOResponse:
@@ -19915,6 +20631,7 @@ components:
         updated_at: 2000-01-23T04:56:07.000+00:00
         sso_provider_type: sso_provider_type
         created_at: 2000-01-23T04:56:07.000+00:00
+        disable_password_login: true
         id: 0
         label: label
         client_id: client_id
@@ -19924,6 +20641,8 @@ components:
         created_at:
           format: date-time
           type: string
+        disable_password_login:
+          type: boolean
         id:
           type: integer
         issuer_url:
@@ -19938,11 +20657,31 @@ components:
       required:
       - client_id
       - created_at
+      - disable_password_login
       - id
       - issuer_url
       - label
       - sso_provider_type
       - updated_at
+      type: object
+    SinglesignonUpdateSSOProviderConfig:
+      example:
+        issuer_url: issuer_url
+        disable_password_login: true
+        client_secret: client_secret
+        client_id: client_id
+      properties:
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        disable_password_login:
+          type: boolean
+        issuer_url:
+          type: string
+      required:
+      - client_id
+      - disable_password_login
       type: object
     SinglesignonVerifySSOAuthRequest:
       example:

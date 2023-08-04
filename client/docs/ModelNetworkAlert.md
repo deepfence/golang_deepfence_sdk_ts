@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AppProto** | **string** |  | 
 **Category** | **string** |  | 
-**Classtype** | **string** |  | 
 **ContainerName** | **string** |  | 
 **Count** | **int32** |  | 
 **CreatedAt** | **int32** |  | 
@@ -18,7 +17,7 @@ Name | Type | Description | Notes
 **EventType** | **string** |  | 
 **Geoip** | **string** |  | 
 **Headers** | **string** |  | 
-**Hostname** | **string** |  | 
+**HostName** | **string** |  | 
 **HttpContentType** | **interface{}** |  | 
 **HttpType** | **string** |  | 
 **HttpUserAgent** | **string** |  | 
@@ -42,16 +41,15 @@ Name | Type | Description | Notes
 **ResponsePrintablePayload** | **interface{}** |  | 
 **RuleId** | **string** |  | 
 **Severity** | **string** |  | 
-**SeverityAnomalyContainerName** | **string** |  | 
 **SeverityScore** | **float32** |  | 
 **SignatureId** | **int32** |  | 
 **SourceIp** | **string** |  | 
 **SourcePort** | **int32** |  | 
 **Status** | **interface{}** |  | 
 **Summary** | **string** |  | 
-**Tactic** | **[]string** |  | 
+**Tactics** | **[]string** |  | 
 **Tags** | **string** |  | 
-**Technique** | **[]string** |  | 
+**Techniques** | **[]string** |  | 
 **UpdatedAt** | **int32** |  | 
 **Url** | **string** |  | 
 
@@ -59,7 +57,7 @@ Name | Type | Description | Notes
 
 ### NewModelNetworkAlert
 
-`func NewModelNetworkAlert(appProto string, category string, classtype string, containerName string, count int32, createdAt int32, description string, destinationIp string, destinationPort int32, direction string, encrypted string, eventType string, geoip string, headers string, hostname string, httpContentType interface{}, httpType string, httpUserAgent string, internal string, ipReputation string, kubernetesClusterName string, length interface{}, localPort int32, masked bool, matched string, nodeId string, nodeType string, podName string, protocol int32, requestMethod string, requestPath string, requestPayload string, requestPrintablePayload string, resourceType string, responsePayload interface{}, responsePrintablePayload interface{}, ruleId string, severity string, severityAnomalyContainerName string, severityScore float32, signatureId int32, sourceIp string, sourcePort int32, status interface{}, summary string, tactic []string, tags string, technique []string, updatedAt int32, url string, ) *ModelNetworkAlert`
+`func NewModelNetworkAlert(appProto string, category string, containerName string, count int32, createdAt int32, description string, destinationIp string, destinationPort int32, direction string, encrypted string, eventType string, geoip string, headers string, hostName string, httpContentType interface{}, httpType string, httpUserAgent string, internal string, ipReputation string, kubernetesClusterName string, length interface{}, localPort int32, masked bool, matched string, nodeId string, nodeType string, podName string, protocol int32, requestMethod string, requestPath string, requestPayload string, requestPrintablePayload string, resourceType string, responsePayload interface{}, responsePrintablePayload interface{}, ruleId string, severity string, severityScore float32, signatureId int32, sourceIp string, sourcePort int32, status interface{}, summary string, tactics []string, tags string, techniques []string, updatedAt int32, url string, ) *ModelNetworkAlert`
 
 NewModelNetworkAlert instantiates a new ModelNetworkAlert object
 This constructor will assign default values to properties that have it defined,
@@ -112,26 +110,6 @@ and a boolean to check if the value has been set.
 `func (o *ModelNetworkAlert) SetCategory(v string)`
 
 SetCategory sets Category field to given value.
-
-
-### GetClasstype
-
-`func (o *ModelNetworkAlert) GetClasstype() string`
-
-GetClasstype returns the Classtype field if non-nil, zero value otherwise.
-
-### GetClasstypeOk
-
-`func (o *ModelNetworkAlert) GetClasstypeOk() (*string, bool)`
-
-GetClasstypeOk returns a tuple with the Classtype field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClasstype
-
-`func (o *ModelNetworkAlert) SetClasstype(v string)`
-
-SetClasstype sets Classtype field to given value.
 
 
 ### GetContainerName
@@ -354,24 +332,24 @@ and a boolean to check if the value has been set.
 SetHeaders sets Headers field to given value.
 
 
-### GetHostname
+### GetHostName
 
-`func (o *ModelNetworkAlert) GetHostname() string`
+`func (o *ModelNetworkAlert) GetHostName() string`
 
-GetHostname returns the Hostname field if non-nil, zero value otherwise.
+GetHostName returns the HostName field if non-nil, zero value otherwise.
 
-### GetHostnameOk
+### GetHostNameOk
 
-`func (o *ModelNetworkAlert) GetHostnameOk() (*string, bool)`
+`func (o *ModelNetworkAlert) GetHostNameOk() (*string, bool)`
 
-GetHostnameOk returns a tuple with the Hostname field if it's non-nil, zero value otherwise
+GetHostNameOk returns a tuple with the HostName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetHostname
+### SetHostName
 
-`func (o *ModelNetworkAlert) SetHostname(v string)`
+`func (o *ModelNetworkAlert) SetHostName(v string)`
 
-SetHostname sets Hostname field to given value.
+SetHostName sets HostName field to given value.
 
 
 ### GetHttpContentType
@@ -874,26 +852,6 @@ and a boolean to check if the value has been set.
 SetSeverity sets Severity field to given value.
 
 
-### GetSeverityAnomalyContainerName
-
-`func (o *ModelNetworkAlert) GetSeverityAnomalyContainerName() string`
-
-GetSeverityAnomalyContainerName returns the SeverityAnomalyContainerName field if non-nil, zero value otherwise.
-
-### GetSeverityAnomalyContainerNameOk
-
-`func (o *ModelNetworkAlert) GetSeverityAnomalyContainerNameOk() (*string, bool)`
-
-GetSeverityAnomalyContainerNameOk returns a tuple with the SeverityAnomalyContainerName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSeverityAnomalyContainerName
-
-`func (o *ModelNetworkAlert) SetSeverityAnomalyContainerName(v string)`
-
-SetSeverityAnomalyContainerName sets SeverityAnomalyContainerName field to given value.
-
-
 ### GetSeverityScore
 
 `func (o *ModelNetworkAlert) GetSeverityScore() float32`
@@ -1024,36 +982,36 @@ and a boolean to check if the value has been set.
 SetSummary sets Summary field to given value.
 
 
-### GetTactic
+### GetTactics
 
-`func (o *ModelNetworkAlert) GetTactic() []string`
+`func (o *ModelNetworkAlert) GetTactics() []string`
 
-GetTactic returns the Tactic field if non-nil, zero value otherwise.
+GetTactics returns the Tactics field if non-nil, zero value otherwise.
 
-### GetTacticOk
+### GetTacticsOk
 
-`func (o *ModelNetworkAlert) GetTacticOk() (*[]string, bool)`
+`func (o *ModelNetworkAlert) GetTacticsOk() (*[]string, bool)`
 
-GetTacticOk returns a tuple with the Tactic field if it's non-nil, zero value otherwise
+GetTacticsOk returns a tuple with the Tactics field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTactic
+### SetTactics
 
-`func (o *ModelNetworkAlert) SetTactic(v []string)`
+`func (o *ModelNetworkAlert) SetTactics(v []string)`
 
-SetTactic sets Tactic field to given value.
+SetTactics sets Tactics field to given value.
 
 
-### SetTacticNil
+### SetTacticsNil
 
-`func (o *ModelNetworkAlert) SetTacticNil(b bool)`
+`func (o *ModelNetworkAlert) SetTacticsNil(b bool)`
 
- SetTacticNil sets the value for Tactic to be an explicit nil
+ SetTacticsNil sets the value for Tactics to be an explicit nil
 
-### UnsetTactic
-`func (o *ModelNetworkAlert) UnsetTactic()`
+### UnsetTactics
+`func (o *ModelNetworkAlert) UnsetTactics()`
 
-UnsetTactic ensures that no value is present for Tactic, not even an explicit nil
+UnsetTactics ensures that no value is present for Tactics, not even an explicit nil
 ### GetTags
 
 `func (o *ModelNetworkAlert) GetTags() string`
@@ -1074,36 +1032,36 @@ and a boolean to check if the value has been set.
 SetTags sets Tags field to given value.
 
 
-### GetTechnique
+### GetTechniques
 
-`func (o *ModelNetworkAlert) GetTechnique() []string`
+`func (o *ModelNetworkAlert) GetTechniques() []string`
 
-GetTechnique returns the Technique field if non-nil, zero value otherwise.
+GetTechniques returns the Techniques field if non-nil, zero value otherwise.
 
-### GetTechniqueOk
+### GetTechniquesOk
 
-`func (o *ModelNetworkAlert) GetTechniqueOk() (*[]string, bool)`
+`func (o *ModelNetworkAlert) GetTechniquesOk() (*[]string, bool)`
 
-GetTechniqueOk returns a tuple with the Technique field if it's non-nil, zero value otherwise
+GetTechniquesOk returns a tuple with the Techniques field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTechnique
+### SetTechniques
 
-`func (o *ModelNetworkAlert) SetTechnique(v []string)`
+`func (o *ModelNetworkAlert) SetTechniques(v []string)`
 
-SetTechnique sets Technique field to given value.
+SetTechniques sets Techniques field to given value.
 
 
-### SetTechniqueNil
+### SetTechniquesNil
 
-`func (o *ModelNetworkAlert) SetTechniqueNil(b bool)`
+`func (o *ModelNetworkAlert) SetTechniquesNil(b bool)`
 
- SetTechniqueNil sets the value for Technique to be an explicit nil
+ SetTechniquesNil sets the value for Techniques to be an explicit nil
 
-### UnsetTechnique
-`func (o *ModelNetworkAlert) UnsetTechnique()`
+### UnsetTechniques
+`func (o *ModelNetworkAlert) UnsetTechniques()`
 
-UnsetTechnique ensures that no value is present for Technique, not even an explicit nil
+UnsetTechniques ensures that no value is present for Techniques, not even an explicit nil
 ### GetUpdatedAt
 
 `func (o *ModelNetworkAlert) GetUpdatedAt() int32`

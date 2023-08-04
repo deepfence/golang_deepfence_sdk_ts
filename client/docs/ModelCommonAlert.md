@@ -8,19 +8,20 @@ Name | Type | Description | Notes
 **Count** | **int32** |  | 
 **CreatedAt** | **int32** |  | 
 **EventType** | **string** |  | 
+**HostName** | **string** |  | 
 **Masked** | **bool** |  | 
 **NodeId** | **string** |  | 
 **Severity** | **string** |  | 
 **Summary** | **string** |  | 
-**Tactic** | **[]string** |  | 
-**Technique** | **[]string** |  | 
+**Tactics** | **[]string** |  | 
+**Techniques** | **[]string** |  | 
 **UpdatedAt** | **int32** |  | 
 
 ## Methods
 
 ### NewModelCommonAlert
 
-`func NewModelCommonAlert(category string, count int32, createdAt int32, eventType string, masked bool, nodeId string, severity string, summary string, tactic []string, technique []string, updatedAt int32, ) *ModelCommonAlert`
+`func NewModelCommonAlert(category string, count int32, createdAt int32, eventType string, hostName string, masked bool, nodeId string, severity string, summary string, tactics []string, techniques []string, updatedAt int32, ) *ModelCommonAlert`
 
 NewModelCommonAlert instantiates a new ModelCommonAlert object
 This constructor will assign default values to properties that have it defined,
@@ -115,6 +116,26 @@ and a boolean to check if the value has been set.
 SetEventType sets EventType field to given value.
 
 
+### GetHostName
+
+`func (o *ModelCommonAlert) GetHostName() string`
+
+GetHostName returns the HostName field if non-nil, zero value otherwise.
+
+### GetHostNameOk
+
+`func (o *ModelCommonAlert) GetHostNameOk() (*string, bool)`
+
+GetHostNameOk returns a tuple with the HostName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostName
+
+`func (o *ModelCommonAlert) SetHostName(v string)`
+
+SetHostName sets HostName field to given value.
+
+
 ### GetMasked
 
 `func (o *ModelCommonAlert) GetMasked() bool`
@@ -195,66 +216,66 @@ and a boolean to check if the value has been set.
 SetSummary sets Summary field to given value.
 
 
-### GetTactic
+### GetTactics
 
-`func (o *ModelCommonAlert) GetTactic() []string`
+`func (o *ModelCommonAlert) GetTactics() []string`
 
-GetTactic returns the Tactic field if non-nil, zero value otherwise.
+GetTactics returns the Tactics field if non-nil, zero value otherwise.
 
-### GetTacticOk
+### GetTacticsOk
 
-`func (o *ModelCommonAlert) GetTacticOk() (*[]string, bool)`
+`func (o *ModelCommonAlert) GetTacticsOk() (*[]string, bool)`
 
-GetTacticOk returns a tuple with the Tactic field if it's non-nil, zero value otherwise
+GetTacticsOk returns a tuple with the Tactics field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTactic
+### SetTactics
 
-`func (o *ModelCommonAlert) SetTactic(v []string)`
+`func (o *ModelCommonAlert) SetTactics(v []string)`
 
-SetTactic sets Tactic field to given value.
+SetTactics sets Tactics field to given value.
 
 
-### SetTacticNil
+### SetTacticsNil
 
-`func (o *ModelCommonAlert) SetTacticNil(b bool)`
+`func (o *ModelCommonAlert) SetTacticsNil(b bool)`
 
- SetTacticNil sets the value for Tactic to be an explicit nil
+ SetTacticsNil sets the value for Tactics to be an explicit nil
 
-### UnsetTactic
-`func (o *ModelCommonAlert) UnsetTactic()`
+### UnsetTactics
+`func (o *ModelCommonAlert) UnsetTactics()`
 
-UnsetTactic ensures that no value is present for Tactic, not even an explicit nil
-### GetTechnique
+UnsetTactics ensures that no value is present for Tactics, not even an explicit nil
+### GetTechniques
 
-`func (o *ModelCommonAlert) GetTechnique() []string`
+`func (o *ModelCommonAlert) GetTechniques() []string`
 
-GetTechnique returns the Technique field if non-nil, zero value otherwise.
+GetTechniques returns the Techniques field if non-nil, zero value otherwise.
 
-### GetTechniqueOk
+### GetTechniquesOk
 
-`func (o *ModelCommonAlert) GetTechniqueOk() (*[]string, bool)`
+`func (o *ModelCommonAlert) GetTechniquesOk() (*[]string, bool)`
 
-GetTechniqueOk returns a tuple with the Technique field if it's non-nil, zero value otherwise
+GetTechniquesOk returns a tuple with the Techniques field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTechnique
+### SetTechniques
 
-`func (o *ModelCommonAlert) SetTechnique(v []string)`
+`func (o *ModelCommonAlert) SetTechniques(v []string)`
 
-SetTechnique sets Technique field to given value.
+SetTechniques sets Techniques field to given value.
 
 
-### SetTechniqueNil
+### SetTechniquesNil
 
-`func (o *ModelCommonAlert) SetTechniqueNil(b bool)`
+`func (o *ModelCommonAlert) SetTechniquesNil(b bool)`
 
- SetTechniqueNil sets the value for Technique to be an explicit nil
+ SetTechniquesNil sets the value for Techniques to be an explicit nil
 
-### UnsetTechnique
-`func (o *ModelCommonAlert) UnsetTechnique()`
+### UnsetTechniques
+`func (o *ModelCommonAlert) UnsetTechniques()`
 
-UnsetTechnique ensures that no value is present for Technique, not even an explicit nil
+UnsetTechniques ensures that no value is present for Techniques, not even an explicit nil
 ### GetUpdatedAt
 
 `func (o *ModelCommonAlert) GetUpdatedAt() int32`

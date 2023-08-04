@@ -15,38 +15,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the ControlsPolicyFilterConfig type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ControlsPolicyFilterConfig{}
+// checks if the ControlsQuarantineConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControlsQuarantineConfig{}
 
-// ControlsPolicyFilterConfig struct for ControlsPolicyFilterConfig
-type ControlsPolicyFilterConfig struct {
+// ControlsQuarantineConfig struct for ControlsQuarantineConfig
+type ControlsQuarantineConfig struct {
 	NodeId string `json:"node_id"`
 	Policies []ControlsPolicy `json:"policies"`
-	UseWaf bool `json:"use_waf"`
 }
 
-// NewControlsPolicyFilterConfig instantiates a new ControlsPolicyFilterConfig object
+// NewControlsQuarantineConfig instantiates a new ControlsQuarantineConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsPolicyFilterConfig(nodeId string, policies []ControlsPolicy, useWaf bool) *ControlsPolicyFilterConfig {
-	this := ControlsPolicyFilterConfig{}
+func NewControlsQuarantineConfig(nodeId string, policies []ControlsPolicy) *ControlsQuarantineConfig {
+	this := ControlsQuarantineConfig{}
 	this.NodeId = nodeId
 	this.Policies = policies
-	this.UseWaf = useWaf
 	return &this
 }
 
-// NewControlsPolicyFilterConfigWithDefaults instantiates a new ControlsPolicyFilterConfig object
+// NewControlsQuarantineConfigWithDefaults instantiates a new ControlsQuarantineConfig object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewControlsPolicyFilterConfigWithDefaults() *ControlsPolicyFilterConfig {
-	this := ControlsPolicyFilterConfig{}
+func NewControlsQuarantineConfigWithDefaults() *ControlsQuarantineConfig {
+	this := ControlsQuarantineConfig{}
 	return &this
 }
 
 // GetNodeId returns the NodeId field value
-func (o *ControlsPolicyFilterConfig) GetNodeId() string {
+func (o *ControlsQuarantineConfig) GetNodeId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -57,7 +55,7 @@ func (o *ControlsPolicyFilterConfig) GetNodeId() string {
 
 // GetNodeIdOk returns a tuple with the NodeId field value
 // and a boolean to check if the value has been set.
-func (o *ControlsPolicyFilterConfig) GetNodeIdOk() (*string, bool) {
+func (o *ControlsQuarantineConfig) GetNodeIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,13 +63,13 @@ func (o *ControlsPolicyFilterConfig) GetNodeIdOk() (*string, bool) {
 }
 
 // SetNodeId sets field value
-func (o *ControlsPolicyFilterConfig) SetNodeId(v string) {
+func (o *ControlsQuarantineConfig) SetNodeId(v string) {
 	o.NodeId = v
 }
 
 // GetPolicies returns the Policies field value
 // If the value is explicit nil, the zero value for []ControlsPolicy will be returned
-func (o *ControlsPolicyFilterConfig) GetPolicies() []ControlsPolicy {
+func (o *ControlsQuarantineConfig) GetPolicies() []ControlsPolicy {
 	if o == nil {
 		var ret []ControlsPolicy
 		return ret
@@ -83,7 +81,7 @@ func (o *ControlsPolicyFilterConfig) GetPolicies() []ControlsPolicy {
 // GetPoliciesOk returns a tuple with the Policies field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ControlsPolicyFilterConfig) GetPoliciesOk() ([]ControlsPolicy, bool) {
+func (o *ControlsQuarantineConfig) GetPoliciesOk() ([]ControlsPolicy, bool) {
 	if o == nil || IsNil(o.Policies) {
 		return nil, false
 	}
@@ -91,35 +89,11 @@ func (o *ControlsPolicyFilterConfig) GetPoliciesOk() ([]ControlsPolicy, bool) {
 }
 
 // SetPolicies sets field value
-func (o *ControlsPolicyFilterConfig) SetPolicies(v []ControlsPolicy) {
+func (o *ControlsQuarantineConfig) SetPolicies(v []ControlsPolicy) {
 	o.Policies = v
 }
 
-// GetUseWaf returns the UseWaf field value
-func (o *ControlsPolicyFilterConfig) GetUseWaf() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.UseWaf
-}
-
-// GetUseWafOk returns a tuple with the UseWaf field value
-// and a boolean to check if the value has been set.
-func (o *ControlsPolicyFilterConfig) GetUseWafOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.UseWaf, true
-}
-
-// SetUseWaf sets field value
-func (o *ControlsPolicyFilterConfig) SetUseWaf(v bool) {
-	o.UseWaf = v
-}
-
-func (o ControlsPolicyFilterConfig) MarshalJSON() ([]byte, error) {
+func (o ControlsQuarantineConfig) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -127,48 +101,47 @@ func (o ControlsPolicyFilterConfig) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ControlsPolicyFilterConfig) ToMap() (map[string]interface{}, error) {
+func (o ControlsQuarantineConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["node_id"] = o.NodeId
 	if o.Policies != nil {
 		toSerialize["policies"] = o.Policies
 	}
-	toSerialize["use_waf"] = o.UseWaf
 	return toSerialize, nil
 }
 
-type NullableControlsPolicyFilterConfig struct {
-	value *ControlsPolicyFilterConfig
+type NullableControlsQuarantineConfig struct {
+	value *ControlsQuarantineConfig
 	isSet bool
 }
 
-func (v NullableControlsPolicyFilterConfig) Get() *ControlsPolicyFilterConfig {
+func (v NullableControlsQuarantineConfig) Get() *ControlsQuarantineConfig {
 	return v.value
 }
 
-func (v *NullableControlsPolicyFilterConfig) Set(val *ControlsPolicyFilterConfig) {
+func (v *NullableControlsQuarantineConfig) Set(val *ControlsQuarantineConfig) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableControlsPolicyFilterConfig) IsSet() bool {
+func (v NullableControlsQuarantineConfig) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableControlsPolicyFilterConfig) Unset() {
+func (v *NullableControlsQuarantineConfig) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableControlsPolicyFilterConfig(val *ControlsPolicyFilterConfig) *NullableControlsPolicyFilterConfig {
-	return &NullableControlsPolicyFilterConfig{value: val, isSet: true}
+func NewNullableControlsQuarantineConfig(val *ControlsQuarantineConfig) *NullableControlsQuarantineConfig {
+	return &NullableControlsQuarantineConfig{value: val, isSet: true}
 }
 
-func (v NullableControlsPolicyFilterConfig) MarshalJSON() ([]byte, error) {
+func (v NullableControlsQuarantineConfig) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableControlsPolicyFilterConfig) UnmarshalJSON(src []byte) error {
+func (v *NullableControlsQuarantineConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

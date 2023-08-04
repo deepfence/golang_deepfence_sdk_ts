@@ -20,9 +20,8 @@ var _ MappedNullable = &ControlsFilesystemTracerConfig{}
 
 // ControlsFilesystemTracerConfig struct for ControlsFilesystemTracerConfig
 type ControlsFilesystemTracerConfig struct {
-	Hash string `json:"hash"`
 	MonitoredFiles []ControlsMonitoredFilesConfig `json:"monitored_files"`
-	Name string `json:"name"`
+	NodeId string `json:"node_id"`
 	ProcessEvents []ControlsProcessEventConfig `json:"process_events"`
 }
 
@@ -30,11 +29,10 @@ type ControlsFilesystemTracerConfig struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsFilesystemTracerConfig(hash string, monitoredFiles []ControlsMonitoredFilesConfig, name string, processEvents []ControlsProcessEventConfig) *ControlsFilesystemTracerConfig {
+func NewControlsFilesystemTracerConfig(monitoredFiles []ControlsMonitoredFilesConfig, nodeId string, processEvents []ControlsProcessEventConfig) *ControlsFilesystemTracerConfig {
 	this := ControlsFilesystemTracerConfig{}
-	this.Hash = hash
 	this.MonitoredFiles = monitoredFiles
-	this.Name = name
+	this.NodeId = nodeId
 	this.ProcessEvents = processEvents
 	return &this
 }
@@ -45,30 +43,6 @@ func NewControlsFilesystemTracerConfig(hash string, monitoredFiles []ControlsMon
 func NewControlsFilesystemTracerConfigWithDefaults() *ControlsFilesystemTracerConfig {
 	this := ControlsFilesystemTracerConfig{}
 	return &this
-}
-
-// GetHash returns the Hash field value
-func (o *ControlsFilesystemTracerConfig) GetHash() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Hash
-}
-
-// GetHashOk returns a tuple with the Hash field value
-// and a boolean to check if the value has been set.
-func (o *ControlsFilesystemTracerConfig) GetHashOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Hash, true
-}
-
-// SetHash sets field value
-func (o *ControlsFilesystemTracerConfig) SetHash(v string) {
-	o.Hash = v
 }
 
 // GetMonitoredFiles returns the MonitoredFiles field value
@@ -97,28 +71,28 @@ func (o *ControlsFilesystemTracerConfig) SetMonitoredFiles(v []ControlsMonitored
 	o.MonitoredFiles = v
 }
 
-// GetName returns the Name field value
-func (o *ControlsFilesystemTracerConfig) GetName() string {
+// GetNodeId returns the NodeId field value
+func (o *ControlsFilesystemTracerConfig) GetNodeId() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Name
+	return o.NodeId
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNodeIdOk returns a tuple with the NodeId field value
 // and a boolean to check if the value has been set.
-func (o *ControlsFilesystemTracerConfig) GetNameOk() (*string, bool) {
+func (o *ControlsFilesystemTracerConfig) GetNodeIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Name, true
+	return &o.NodeId, true
 }
 
-// SetName sets field value
-func (o *ControlsFilesystemTracerConfig) SetName(v string) {
-	o.Name = v
+// SetNodeId sets field value
+func (o *ControlsFilesystemTracerConfig) SetNodeId(v string) {
+	o.NodeId = v
 }
 
 // GetProcessEvents returns the ProcessEvents field value
@@ -157,11 +131,10 @@ func (o ControlsFilesystemTracerConfig) MarshalJSON() ([]byte, error) {
 
 func (o ControlsFilesystemTracerConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["hash"] = o.Hash
 	if o.MonitoredFiles != nil {
 		toSerialize["monitored_files"] = o.MonitoredFiles
 	}
-	toSerialize["name"] = o.Name
+	toSerialize["node_id"] = o.NodeId
 	if o.ProcessEvents != nil {
 		toSerialize["process_events"] = o.ProcessEvents
 	}

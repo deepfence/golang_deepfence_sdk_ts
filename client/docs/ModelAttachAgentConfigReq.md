@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AgentIds** | [**[]ModelAgentId**](ModelAgentId.md) |  | 
-**Name** | **string** |  | 
+**ConfigId** | **string** |  | 
 
 ## Methods
 
 ### NewModelAttachAgentConfigReq
 
-`func NewModelAttachAgentConfigReq(agentIds []ModelAgentId, name string, ) *ModelAttachAgentConfigReq`
+`func NewModelAttachAgentConfigReq(agentIds []ModelAgentId, configId string, ) *ModelAttachAgentConfigReq`
 
 NewModelAttachAgentConfigReq instantiates a new ModelAttachAgentConfigReq object
 This constructor will assign default values to properties that have it defined,
@@ -56,24 +56,24 @@ SetAgentIds sets AgentIds field to given value.
 `func (o *ModelAttachAgentConfigReq) UnsetAgentIds()`
 
 UnsetAgentIds ensures that no value is present for AgentIds, not even an explicit nil
-### GetName
+### GetConfigId
 
-`func (o *ModelAttachAgentConfigReq) GetName() string`
+`func (o *ModelAttachAgentConfigReq) GetConfigId() string`
 
-GetName returns the Name field if non-nil, zero value otherwise.
+GetConfigId returns the ConfigId field if non-nil, zero value otherwise.
 
-### GetNameOk
+### GetConfigIdOk
 
-`func (o *ModelAttachAgentConfigReq) GetNameOk() (*string, bool)`
+`func (o *ModelAttachAgentConfigReq) GetConfigIdOk() (*string, bool)`
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetConfigIdOk returns a tuple with the ConfigId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetConfigId
 
-`func (o *ModelAttachAgentConfigReq) SetName(v string)`
+`func (o *ModelAttachAgentConfigReq) SetConfigId(v string)`
 
-SetName sets Name field to given value.
+SetConfigId sets ConfigId field to given value.
 
 
 

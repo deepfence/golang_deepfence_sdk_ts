@@ -1,138 +1,122 @@
-# SinglesignonSSOProviderConfig
+# SinglesignonUpdateSSOProviderConfig
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClientId** | **string** |  | 
-**ClientSecret** | **string** |  | 
+**ClientSecret** | Pointer to **string** |  | [optional] 
 **DisablePasswordLogin** | **bool** |  | 
 **IssuerUrl** | Pointer to **string** |  | [optional] 
-**SsoProviderType** | **string** |  | 
 
 ## Methods
 
-### NewSinglesignonSSOProviderConfig
+### NewSinglesignonUpdateSSOProviderConfig
 
-`func NewSinglesignonSSOProviderConfig(clientId string, clientSecret string, disablePasswordLogin bool, ssoProviderType string, ) *SinglesignonSSOProviderConfig`
+`func NewSinglesignonUpdateSSOProviderConfig(clientId string, disablePasswordLogin bool, ) *SinglesignonUpdateSSOProviderConfig`
 
-NewSinglesignonSSOProviderConfig instantiates a new SinglesignonSSOProviderConfig object
+NewSinglesignonUpdateSSOProviderConfig instantiates a new SinglesignonUpdateSSOProviderConfig object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewSinglesignonSSOProviderConfigWithDefaults
+### NewSinglesignonUpdateSSOProviderConfigWithDefaults
 
-`func NewSinglesignonSSOProviderConfigWithDefaults() *SinglesignonSSOProviderConfig`
+`func NewSinglesignonUpdateSSOProviderConfigWithDefaults() *SinglesignonUpdateSSOProviderConfig`
 
-NewSinglesignonSSOProviderConfigWithDefaults instantiates a new SinglesignonSSOProviderConfig object
+NewSinglesignonUpdateSSOProviderConfigWithDefaults instantiates a new SinglesignonUpdateSSOProviderConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetClientId
 
-`func (o *SinglesignonSSOProviderConfig) GetClientId() string`
+`func (o *SinglesignonUpdateSSOProviderConfig) GetClientId() string`
 
 GetClientId returns the ClientId field if non-nil, zero value otherwise.
 
 ### GetClientIdOk
 
-`func (o *SinglesignonSSOProviderConfig) GetClientIdOk() (*string, bool)`
+`func (o *SinglesignonUpdateSSOProviderConfig) GetClientIdOk() (*string, bool)`
 
 GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClientId
 
-`func (o *SinglesignonSSOProviderConfig) SetClientId(v string)`
+`func (o *SinglesignonUpdateSSOProviderConfig) SetClientId(v string)`
 
 SetClientId sets ClientId field to given value.
 
 
 ### GetClientSecret
 
-`func (o *SinglesignonSSOProviderConfig) GetClientSecret() string`
+`func (o *SinglesignonUpdateSSOProviderConfig) GetClientSecret() string`
 
 GetClientSecret returns the ClientSecret field if non-nil, zero value otherwise.
 
 ### GetClientSecretOk
 
-`func (o *SinglesignonSSOProviderConfig) GetClientSecretOk() (*string, bool)`
+`func (o *SinglesignonUpdateSSOProviderConfig) GetClientSecretOk() (*string, bool)`
 
 GetClientSecretOk returns a tuple with the ClientSecret field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClientSecret
 
-`func (o *SinglesignonSSOProviderConfig) SetClientSecret(v string)`
+`func (o *SinglesignonUpdateSSOProviderConfig) SetClientSecret(v string)`
 
 SetClientSecret sets ClientSecret field to given value.
 
+### HasClientSecret
+
+`func (o *SinglesignonUpdateSSOProviderConfig) HasClientSecret() bool`
+
+HasClientSecret returns a boolean if a field has been set.
 
 ### GetDisablePasswordLogin
 
-`func (o *SinglesignonSSOProviderConfig) GetDisablePasswordLogin() bool`
+`func (o *SinglesignonUpdateSSOProviderConfig) GetDisablePasswordLogin() bool`
 
 GetDisablePasswordLogin returns the DisablePasswordLogin field if non-nil, zero value otherwise.
 
 ### GetDisablePasswordLoginOk
 
-`func (o *SinglesignonSSOProviderConfig) GetDisablePasswordLoginOk() (*bool, bool)`
+`func (o *SinglesignonUpdateSSOProviderConfig) GetDisablePasswordLoginOk() (*bool, bool)`
 
 GetDisablePasswordLoginOk returns a tuple with the DisablePasswordLogin field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDisablePasswordLogin
 
-`func (o *SinglesignonSSOProviderConfig) SetDisablePasswordLogin(v bool)`
+`func (o *SinglesignonUpdateSSOProviderConfig) SetDisablePasswordLogin(v bool)`
 
 SetDisablePasswordLogin sets DisablePasswordLogin field to given value.
 
 
 ### GetIssuerUrl
 
-`func (o *SinglesignonSSOProviderConfig) GetIssuerUrl() string`
+`func (o *SinglesignonUpdateSSOProviderConfig) GetIssuerUrl() string`
 
 GetIssuerUrl returns the IssuerUrl field if non-nil, zero value otherwise.
 
 ### GetIssuerUrlOk
 
-`func (o *SinglesignonSSOProviderConfig) GetIssuerUrlOk() (*string, bool)`
+`func (o *SinglesignonUpdateSSOProviderConfig) GetIssuerUrlOk() (*string, bool)`
 
 GetIssuerUrlOk returns a tuple with the IssuerUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIssuerUrl
 
-`func (o *SinglesignonSSOProviderConfig) SetIssuerUrl(v string)`
+`func (o *SinglesignonUpdateSSOProviderConfig) SetIssuerUrl(v string)`
 
 SetIssuerUrl sets IssuerUrl field to given value.
 
 ### HasIssuerUrl
 
-`func (o *SinglesignonSSOProviderConfig) HasIssuerUrl() bool`
+`func (o *SinglesignonUpdateSSOProviderConfig) HasIssuerUrl() bool`
 
 HasIssuerUrl returns a boolean if a field has been set.
-
-### GetSsoProviderType
-
-`func (o *SinglesignonSSOProviderConfig) GetSsoProviderType() string`
-
-GetSsoProviderType returns the SsoProviderType field if non-nil, zero value otherwise.
-
-### GetSsoProviderTypeOk
-
-`func (o *SinglesignonSSOProviderConfig) GetSsoProviderTypeOk() (*string, bool)`
-
-GetSsoProviderTypeOk returns a tuple with the SsoProviderType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSsoProviderType
-
-`func (o *SinglesignonSSOProviderConfig) SetSsoProviderType(v string)`
-
-SetSsoProviderType sets SsoProviderType field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

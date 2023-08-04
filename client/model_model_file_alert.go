@@ -32,7 +32,7 @@ type ModelFileAlert struct {
 	EventType string `json:"event_type"`
 	Filepath string `json:"filepath"`
 	Fstat string `json:"fstat"`
-	Hostname string `json:"hostname"`
+	HostName string `json:"host_name"`
 	Masked bool `json:"masked"`
 	Netstat string `json:"netstat"`
 	NodeId string `json:"node_id"`
@@ -45,8 +45,8 @@ type ModelFileAlert struct {
 	SeverityScore float32 `json:"severity_score"`
 	SignatureId int32 `json:"signature_id"`
 	Summary string `json:"summary"`
-	Tactic []string `json:"tactic"`
-	Technique []string `json:"technique"`
+	Tactics []string `json:"tactics"`
+	Techniques []string `json:"techniques"`
 	Top string `json:"top"`
 	UpdatedAt int32 `json:"updated_at"`
 	Users string `json:"users"`
@@ -57,7 +57,7 @@ type ModelFileAlert struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelFileAlert(anomaly string, category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostname string, masked bool, netstat string, nodeId string, nodeType string, pid int32, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactic []string, technique []string, top string, updatedAt int32, users string, w int32) *ModelFileAlert {
+func NewModelFileAlert(anomaly string, category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32) *ModelFileAlert {
 	this := ModelFileAlert{}
 	this.Anomaly = anomaly
 	this.Category = category
@@ -71,7 +71,7 @@ func NewModelFileAlert(anomaly string, category string, containerId string, cont
 	this.EventType = eventType
 	this.Filepath = filepath
 	this.Fstat = fstat
-	this.Hostname = hostname
+	this.HostName = hostName
 	this.Masked = masked
 	this.Netstat = netstat
 	this.NodeId = nodeId
@@ -84,8 +84,8 @@ func NewModelFileAlert(anomaly string, category string, containerId string, cont
 	this.SeverityScore = severityScore
 	this.SignatureId = signatureId
 	this.Summary = summary
-	this.Tactic = tactic
-	this.Technique = technique
+	this.Tactics = tactics
+	this.Techniques = techniques
 	this.Top = top
 	this.UpdatedAt = updatedAt
 	this.Users = users
@@ -389,28 +389,28 @@ func (o *ModelFileAlert) SetFstat(v string) {
 	o.Fstat = v
 }
 
-// GetHostname returns the Hostname field value
-func (o *ModelFileAlert) GetHostname() string {
+// GetHostName returns the HostName field value
+func (o *ModelFileAlert) GetHostName() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Hostname
+	return o.HostName
 }
 
-// GetHostnameOk returns a tuple with the Hostname field value
+// GetHostNameOk returns a tuple with the HostName field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetHostnameOk() (*string, bool) {
+func (o *ModelFileAlert) GetHostNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Hostname, true
+	return &o.HostName, true
 }
 
-// SetHostname sets field value
-func (o *ModelFileAlert) SetHostname(v string) {
-	o.Hostname = v
+// SetHostName sets field value
+func (o *ModelFileAlert) SetHostName(v string) {
+	o.HostName = v
 }
 
 // GetMasked returns the Masked field value
@@ -701,56 +701,56 @@ func (o *ModelFileAlert) SetSummary(v string) {
 	o.Summary = v
 }
 
-// GetTactic returns the Tactic field value
+// GetTactics returns the Tactics field value
 // If the value is explicit nil, the zero value for []string will be returned
-func (o *ModelFileAlert) GetTactic() []string {
+func (o *ModelFileAlert) GetTactics() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
 
-	return o.Tactic
+	return o.Tactics
 }
 
-// GetTacticOk returns a tuple with the Tactic field value
+// GetTacticsOk returns a tuple with the Tactics field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelFileAlert) GetTacticOk() ([]string, bool) {
-	if o == nil || IsNil(o.Tactic) {
+func (o *ModelFileAlert) GetTacticsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Tactics) {
 		return nil, false
 	}
-	return o.Tactic, true
+	return o.Tactics, true
 }
 
-// SetTactic sets field value
-func (o *ModelFileAlert) SetTactic(v []string) {
-	o.Tactic = v
+// SetTactics sets field value
+func (o *ModelFileAlert) SetTactics(v []string) {
+	o.Tactics = v
 }
 
-// GetTechnique returns the Technique field value
+// GetTechniques returns the Techniques field value
 // If the value is explicit nil, the zero value for []string will be returned
-func (o *ModelFileAlert) GetTechnique() []string {
+func (o *ModelFileAlert) GetTechniques() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
 
-	return o.Technique
+	return o.Techniques
 }
 
-// GetTechniqueOk returns a tuple with the Technique field value
+// GetTechniquesOk returns a tuple with the Techniques field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelFileAlert) GetTechniqueOk() ([]string, bool) {
-	if o == nil || IsNil(o.Technique) {
+func (o *ModelFileAlert) GetTechniquesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Techniques) {
 		return nil, false
 	}
-	return o.Technique, true
+	return o.Techniques, true
 }
 
-// SetTechnique sets field value
-func (o *ModelFileAlert) SetTechnique(v []string) {
-	o.Technique = v
+// SetTechniques sets field value
+func (o *ModelFileAlert) SetTechniques(v []string) {
+	o.Techniques = v
 }
 
 // GetTop returns the Top field value
@@ -871,7 +871,7 @@ func (o ModelFileAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["event_type"] = o.EventType
 	toSerialize["filepath"] = o.Filepath
 	toSerialize["fstat"] = o.Fstat
-	toSerialize["hostname"] = o.Hostname
+	toSerialize["host_name"] = o.HostName
 	toSerialize["masked"] = o.Masked
 	toSerialize["netstat"] = o.Netstat
 	toSerialize["node_id"] = o.NodeId
@@ -884,11 +884,11 @@ func (o ModelFileAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["severity_score"] = o.SeverityScore
 	toSerialize["signature_id"] = o.SignatureId
 	toSerialize["summary"] = o.Summary
-	if o.Tactic != nil {
-		toSerialize["tactic"] = o.Tactic
+	if o.Tactics != nil {
+		toSerialize["tactics"] = o.Tactics
 	}
-	if o.Technique != nil {
-		toSerialize["technique"] = o.Technique
+	if o.Techniques != nil {
+		toSerialize["techniques"] = o.Techniques
 	}
 	toSerialize["top"] = o.Top
 	toSerialize["updated_at"] = o.UpdatedAt

@@ -24,12 +24,13 @@ type ModelCommonAlert struct {
 	Count int32 `json:"count"`
 	CreatedAt int32 `json:"created_at"`
 	EventType string `json:"event_type"`
+	HostName string `json:"host_name"`
 	Masked bool `json:"masked"`
 	NodeId string `json:"node_id"`
 	Severity string `json:"severity"`
 	Summary string `json:"summary"`
-	Tactic []string `json:"tactic"`
-	Technique []string `json:"technique"`
+	Tactics []string `json:"tactics"`
+	Techniques []string `json:"techniques"`
 	UpdatedAt int32 `json:"updated_at"`
 }
 
@@ -37,18 +38,19 @@ type ModelCommonAlert struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelCommonAlert(category string, count int32, createdAt int32, eventType string, masked bool, nodeId string, severity string, summary string, tactic []string, technique []string, updatedAt int32) *ModelCommonAlert {
+func NewModelCommonAlert(category string, count int32, createdAt int32, eventType string, hostName string, masked bool, nodeId string, severity string, summary string, tactics []string, techniques []string, updatedAt int32) *ModelCommonAlert {
 	this := ModelCommonAlert{}
 	this.Category = category
 	this.Count = count
 	this.CreatedAt = createdAt
 	this.EventType = eventType
+	this.HostName = hostName
 	this.Masked = masked
 	this.NodeId = nodeId
 	this.Severity = severity
 	this.Summary = summary
-	this.Tactic = tactic
-	this.Technique = technique
+	this.Tactics = tactics
+	this.Techniques = techniques
 	this.UpdatedAt = updatedAt
 	return &this
 }
@@ -157,6 +159,30 @@ func (o *ModelCommonAlert) SetEventType(v string) {
 	o.EventType = v
 }
 
+// GetHostName returns the HostName field value
+func (o *ModelCommonAlert) GetHostName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.HostName
+}
+
+// GetHostNameOk returns a tuple with the HostName field value
+// and a boolean to check if the value has been set.
+func (o *ModelCommonAlert) GetHostNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.HostName, true
+}
+
+// SetHostName sets field value
+func (o *ModelCommonAlert) SetHostName(v string) {
+	o.HostName = v
+}
+
 // GetMasked returns the Masked field value
 func (o *ModelCommonAlert) GetMasked() bool {
 	if o == nil {
@@ -253,56 +279,56 @@ func (o *ModelCommonAlert) SetSummary(v string) {
 	o.Summary = v
 }
 
-// GetTactic returns the Tactic field value
+// GetTactics returns the Tactics field value
 // If the value is explicit nil, the zero value for []string will be returned
-func (o *ModelCommonAlert) GetTactic() []string {
+func (o *ModelCommonAlert) GetTactics() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
 
-	return o.Tactic
+	return o.Tactics
 }
 
-// GetTacticOk returns a tuple with the Tactic field value
+// GetTacticsOk returns a tuple with the Tactics field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelCommonAlert) GetTacticOk() ([]string, bool) {
-	if o == nil || IsNil(o.Tactic) {
+func (o *ModelCommonAlert) GetTacticsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Tactics) {
 		return nil, false
 	}
-	return o.Tactic, true
+	return o.Tactics, true
 }
 
-// SetTactic sets field value
-func (o *ModelCommonAlert) SetTactic(v []string) {
-	o.Tactic = v
+// SetTactics sets field value
+func (o *ModelCommonAlert) SetTactics(v []string) {
+	o.Tactics = v
 }
 
-// GetTechnique returns the Technique field value
+// GetTechniques returns the Techniques field value
 // If the value is explicit nil, the zero value for []string will be returned
-func (o *ModelCommonAlert) GetTechnique() []string {
+func (o *ModelCommonAlert) GetTechniques() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
 
-	return o.Technique
+	return o.Techniques
 }
 
-// GetTechniqueOk returns a tuple with the Technique field value
+// GetTechniquesOk returns a tuple with the Techniques field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelCommonAlert) GetTechniqueOk() ([]string, bool) {
-	if o == nil || IsNil(o.Technique) {
+func (o *ModelCommonAlert) GetTechniquesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Techniques) {
 		return nil, false
 	}
-	return o.Technique, true
+	return o.Techniques, true
 }
 
-// SetTechnique sets field value
-func (o *ModelCommonAlert) SetTechnique(v []string) {
-	o.Technique = v
+// SetTechniques sets field value
+func (o *ModelCommonAlert) SetTechniques(v []string) {
+	o.Techniques = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value
@@ -343,15 +369,16 @@ func (o ModelCommonAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["count"] = o.Count
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["event_type"] = o.EventType
+	toSerialize["host_name"] = o.HostName
 	toSerialize["masked"] = o.Masked
 	toSerialize["node_id"] = o.NodeId
 	toSerialize["severity"] = o.Severity
 	toSerialize["summary"] = o.Summary
-	if o.Tactic != nil {
-		toSerialize["tactic"] = o.Tactic
+	if o.Tactics != nil {
+		toSerialize["tactics"] = o.Tactics
 	}
-	if o.Technique != nil {
-		toSerialize["technique"] = o.Technique
+	if o.Techniques != nil {
+		toSerialize["techniques"] = o.Techniques
 	}
 	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil

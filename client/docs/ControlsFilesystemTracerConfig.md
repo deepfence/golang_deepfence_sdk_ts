@@ -4,16 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Hash** | **string** |  | 
 **MonitoredFiles** | [**[]ControlsMonitoredFilesConfig**](ControlsMonitoredFilesConfig.md) |  | 
-**Name** | **string** |  | 
+**NodeId** | **string** |  | 
 **ProcessEvents** | [**[]ControlsProcessEventConfig**](ControlsProcessEventConfig.md) |  | 
 
 ## Methods
 
 ### NewControlsFilesystemTracerConfig
 
-`func NewControlsFilesystemTracerConfig(hash string, monitoredFiles []ControlsMonitoredFilesConfig, name string, processEvents []ControlsProcessEventConfig, ) *ControlsFilesystemTracerConfig`
+`func NewControlsFilesystemTracerConfig(monitoredFiles []ControlsMonitoredFilesConfig, nodeId string, processEvents []ControlsProcessEventConfig, ) *ControlsFilesystemTracerConfig`
 
 NewControlsFilesystemTracerConfig instantiates a new ControlsFilesystemTracerConfig object
 This constructor will assign default values to properties that have it defined,
@@ -27,26 +26,6 @@ will change when the set of required properties is changed
 NewControlsFilesystemTracerConfigWithDefaults instantiates a new ControlsFilesystemTracerConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetHash
-
-`func (o *ControlsFilesystemTracerConfig) GetHash() string`
-
-GetHash returns the Hash field if non-nil, zero value otherwise.
-
-### GetHashOk
-
-`func (o *ControlsFilesystemTracerConfig) GetHashOk() (*string, bool)`
-
-GetHashOk returns a tuple with the Hash field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHash
-
-`func (o *ControlsFilesystemTracerConfig) SetHash(v string)`
-
-SetHash sets Hash field to given value.
-
 
 ### GetMonitoredFiles
 
@@ -78,24 +57,24 @@ SetMonitoredFiles sets MonitoredFiles field to given value.
 `func (o *ControlsFilesystemTracerConfig) UnsetMonitoredFiles()`
 
 UnsetMonitoredFiles ensures that no value is present for MonitoredFiles, not even an explicit nil
-### GetName
+### GetNodeId
 
-`func (o *ControlsFilesystemTracerConfig) GetName() string`
+`func (o *ControlsFilesystemTracerConfig) GetNodeId() string`
 
-GetName returns the Name field if non-nil, zero value otherwise.
+GetNodeId returns the NodeId field if non-nil, zero value otherwise.
 
-### GetNameOk
+### GetNodeIdOk
 
-`func (o *ControlsFilesystemTracerConfig) GetNameOk() (*string, bool)`
+`func (o *ControlsFilesystemTracerConfig) GetNodeIdOk() (*string, bool)`
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetNodeIdOk returns a tuple with the NodeId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetNodeId
 
-`func (o *ControlsFilesystemTracerConfig) SetName(v string)`
+`func (o *ControlsFilesystemTracerConfig) SetNodeId(v string)`
 
-SetName sets Name field to given value.
+SetNodeId sets NodeId field to given value.
 
 
 ### GetProcessEvents

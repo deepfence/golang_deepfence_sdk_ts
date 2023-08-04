@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClientId** | **string** |  | 
 **CreatedAt** | **time.Time** |  | 
+**DisablePasswordLogin** | **bool** |  | 
 **Id** | **int32** |  | 
 **IssuerUrl** | **string** |  | 
 **Label** | **string** |  | 
@@ -16,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewSinglesignonSSOResponse
 
-`func NewSinglesignonSSOResponse(clientId string, createdAt time.Time, id int32, issuerUrl string, label string, ssoProviderType string, updatedAt time.Time, ) *SinglesignonSSOResponse`
+`func NewSinglesignonSSOResponse(clientId string, createdAt time.Time, disablePasswordLogin bool, id int32, issuerUrl string, label string, ssoProviderType string, updatedAt time.Time, ) *SinglesignonSSOResponse`
 
 NewSinglesignonSSOResponse instantiates a new SinglesignonSSOResponse object
 This constructor will assign default values to properties that have it defined,
@@ -69,6 +70,26 @@ and a boolean to check if the value has been set.
 `func (o *SinglesignonSSOResponse) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
+
+
+### GetDisablePasswordLogin
+
+`func (o *SinglesignonSSOResponse) GetDisablePasswordLogin() bool`
+
+GetDisablePasswordLogin returns the DisablePasswordLogin field if non-nil, zero value otherwise.
+
+### GetDisablePasswordLoginOk
+
+`func (o *SinglesignonSSOResponse) GetDisablePasswordLoginOk() (*bool, bool)`
+
+GetDisablePasswordLoginOk returns a tuple with the DisablePasswordLogin field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisablePasswordLogin
+
+`func (o *SinglesignonSSOResponse) SetDisablePasswordLogin(v bool)`
+
+SetDisablePasswordLogin sets DisablePasswordLogin field to given value.
 
 
 ### GetId

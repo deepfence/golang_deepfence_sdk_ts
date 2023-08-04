@@ -24,20 +24,22 @@ type ControlsPolicy struct {
 	DurationCountLimitSec int32 `json:"duration_count_limit_sec"`
 	DurationSec int32 `json:"duration_sec"`
 	EventType string `json:"event_type"`
-	Matcher map[string]interface{} `json:"matcher"`
+	Matcher ControlsPolicyAlertMatcher `json:"matcher"`
+	PolicyId string `json:"policy_id"`
 }
 
 // NewControlsPolicy instantiates a new ControlsPolicy object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsPolicy(countLimit int32, durationCountLimitSec int32, durationSec int32, eventType string, matcher map[string]interface{}) *ControlsPolicy {
+func NewControlsPolicy(countLimit int32, durationCountLimitSec int32, durationSec int32, eventType string, matcher ControlsPolicyAlertMatcher, policyId string) *ControlsPolicy {
 	this := ControlsPolicy{}
 	this.CountLimit = countLimit
 	this.DurationCountLimitSec = durationCountLimitSec
 	this.DurationSec = durationSec
 	this.EventType = eventType
 	this.Matcher = matcher
+	this.PolicyId = policyId
 	return &this
 }
 
@@ -146,9 +148,9 @@ func (o *ControlsPolicy) SetEventType(v string) {
 }
 
 // GetMatcher returns the Matcher field value
-func (o *ControlsPolicy) GetMatcher() map[string]interface{} {
+func (o *ControlsPolicy) GetMatcher() ControlsPolicyAlertMatcher {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret ControlsPolicyAlertMatcher
 		return ret
 	}
 
@@ -157,16 +159,40 @@ func (o *ControlsPolicy) GetMatcher() map[string]interface{} {
 
 // GetMatcherOk returns a tuple with the Matcher field value
 // and a boolean to check if the value has been set.
-func (o *ControlsPolicy) GetMatcherOk() (map[string]interface{}, bool) {
+func (o *ControlsPolicy) GetMatcherOk() (*ControlsPolicyAlertMatcher, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Matcher, true
+	return &o.Matcher, true
 }
 
 // SetMatcher sets field value
-func (o *ControlsPolicy) SetMatcher(v map[string]interface{}) {
+func (o *ControlsPolicy) SetMatcher(v ControlsPolicyAlertMatcher) {
 	o.Matcher = v
+}
+
+// GetPolicyId returns the PolicyId field value
+func (o *ControlsPolicy) GetPolicyId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PolicyId
+}
+
+// GetPolicyIdOk returns a tuple with the PolicyId field value
+// and a boolean to check if the value has been set.
+func (o *ControlsPolicy) GetPolicyIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PolicyId, true
+}
+
+// SetPolicyId sets field value
+func (o *ControlsPolicy) SetPolicyId(v string) {
+	o.PolicyId = v
 }
 
 func (o ControlsPolicy) MarshalJSON() ([]byte, error) {
@@ -184,6 +210,7 @@ func (o ControlsPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize["duration_sec"] = o.DurationSec
 	toSerialize["event_type"] = o.EventType
 	toSerialize["matcher"] = o.Matcher
+	toSerialize["policy_id"] = o.PolicyId
 	return toSerialize, nil
 }
 

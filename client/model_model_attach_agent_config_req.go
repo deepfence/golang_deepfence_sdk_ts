@@ -21,17 +21,17 @@ var _ MappedNullable = &ModelAttachAgentConfigReq{}
 // ModelAttachAgentConfigReq struct for ModelAttachAgentConfigReq
 type ModelAttachAgentConfigReq struct {
 	AgentIds []ModelAgentId `json:"agent_ids"`
-	Name string `json:"name"`
+	ConfigId string `json:"config_id"`
 }
 
 // NewModelAttachAgentConfigReq instantiates a new ModelAttachAgentConfigReq object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelAttachAgentConfigReq(agentIds []ModelAgentId, name string) *ModelAttachAgentConfigReq {
+func NewModelAttachAgentConfigReq(agentIds []ModelAgentId, configId string) *ModelAttachAgentConfigReq {
 	this := ModelAttachAgentConfigReq{}
 	this.AgentIds = agentIds
-	this.Name = name
+	this.ConfigId = configId
 	return &this
 }
 
@@ -69,28 +69,28 @@ func (o *ModelAttachAgentConfigReq) SetAgentIds(v []ModelAgentId) {
 	o.AgentIds = v
 }
 
-// GetName returns the Name field value
-func (o *ModelAttachAgentConfigReq) GetName() string {
+// GetConfigId returns the ConfigId field value
+func (o *ModelAttachAgentConfigReq) GetConfigId() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Name
+	return o.ConfigId
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetConfigIdOk returns a tuple with the ConfigId field value
 // and a boolean to check if the value has been set.
-func (o *ModelAttachAgentConfigReq) GetNameOk() (*string, bool) {
+func (o *ModelAttachAgentConfigReq) GetConfigIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Name, true
+	return &o.ConfigId, true
 }
 
-// SetName sets field value
-func (o *ModelAttachAgentConfigReq) SetName(v string) {
-	o.Name = v
+// SetConfigId sets field value
+func (o *ModelAttachAgentConfigReq) SetConfigId(v string) {
+	o.ConfigId = v
 }
 
 func (o ModelAttachAgentConfigReq) MarshalJSON() ([]byte, error) {
@@ -106,7 +106,7 @@ func (o ModelAttachAgentConfigReq) ToMap() (map[string]interface{}, error) {
 	if o.AgentIds != nil {
 		toSerialize["agent_ids"] = o.AgentIds
 	}
-	toSerialize["name"] = o.Name
+	toSerialize["config_id"] = o.ConfigId
 	return toSerialize, nil
 }
 

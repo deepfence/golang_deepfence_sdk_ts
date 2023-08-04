@@ -22,7 +22,6 @@ var _ MappedNullable = &ModelNetworkAlert{}
 type ModelNetworkAlert struct {
 	AppProto string `json:"app_proto"`
 	Category string `json:"category"`
-	Classtype string `json:"classtype"`
 	ContainerName string `json:"container_name"`
 	Count int32 `json:"count"`
 	CreatedAt int32 `json:"created_at"`
@@ -34,7 +33,7 @@ type ModelNetworkAlert struct {
 	EventType string `json:"event_type"`
 	Geoip string `json:"geoip"`
 	Headers string `json:"headers"`
-	Hostname string `json:"hostname"`
+	HostName string `json:"host_name"`
 	HttpContentType interface{} `json:"http_content_type"`
 	HttpType string `json:"http_type"`
 	HttpUserAgent string `json:"http_user_agent"`
@@ -58,16 +57,15 @@ type ModelNetworkAlert struct {
 	ResponsePrintablePayload interface{} `json:"response_printable_payload"`
 	RuleId string `json:"rule_id"`
 	Severity string `json:"severity"`
-	SeverityAnomalyContainerName string `json:"severity_anomaly_container_name"`
 	SeverityScore float32 `json:"severity_score"`
 	SignatureId int32 `json:"signature_id"`
 	SourceIp string `json:"source_ip"`
 	SourcePort int32 `json:"source_port"`
 	Status interface{} `json:"status"`
 	Summary string `json:"summary"`
-	Tactic []string `json:"tactic"`
+	Tactics []string `json:"tactics"`
 	Tags string `json:"tags"`
-	Technique []string `json:"technique"`
+	Techniques []string `json:"techniques"`
 	UpdatedAt int32 `json:"updated_at"`
 	Url string `json:"url"`
 }
@@ -76,11 +74,10 @@ type ModelNetworkAlert struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelNetworkAlert(appProto string, category string, classtype string, containerName string, count int32, createdAt int32, description string, destinationIp string, destinationPort int32, direction string, encrypted string, eventType string, geoip string, headers string, hostname string, httpContentType interface{}, httpType string, httpUserAgent string, internal string, ipReputation string, kubernetesClusterName string, length interface{}, localPort int32, masked bool, matched string, nodeId string, nodeType string, podName string, protocol int32, requestMethod string, requestPath string, requestPayload string, requestPrintablePayload string, resourceType string, responsePayload interface{}, responsePrintablePayload interface{}, ruleId string, severity string, severityAnomalyContainerName string, severityScore float32, signatureId int32, sourceIp string, sourcePort int32, status interface{}, summary string, tactic []string, tags string, technique []string, updatedAt int32, url string) *ModelNetworkAlert {
+func NewModelNetworkAlert(appProto string, category string, containerName string, count int32, createdAt int32, description string, destinationIp string, destinationPort int32, direction string, encrypted string, eventType string, geoip string, headers string, hostName string, httpContentType interface{}, httpType string, httpUserAgent string, internal string, ipReputation string, kubernetesClusterName string, length interface{}, localPort int32, masked bool, matched string, nodeId string, nodeType string, podName string, protocol int32, requestMethod string, requestPath string, requestPayload string, requestPrintablePayload string, resourceType string, responsePayload interface{}, responsePrintablePayload interface{}, ruleId string, severity string, severityScore float32, signatureId int32, sourceIp string, sourcePort int32, status interface{}, summary string, tactics []string, tags string, techniques []string, updatedAt int32, url string) *ModelNetworkAlert {
 	this := ModelNetworkAlert{}
 	this.AppProto = appProto
 	this.Category = category
-	this.Classtype = classtype
 	this.ContainerName = containerName
 	this.Count = count
 	this.CreatedAt = createdAt
@@ -92,7 +89,7 @@ func NewModelNetworkAlert(appProto string, category string, classtype string, co
 	this.EventType = eventType
 	this.Geoip = geoip
 	this.Headers = headers
-	this.Hostname = hostname
+	this.HostName = hostName
 	this.HttpContentType = httpContentType
 	this.HttpType = httpType
 	this.HttpUserAgent = httpUserAgent
@@ -116,16 +113,15 @@ func NewModelNetworkAlert(appProto string, category string, classtype string, co
 	this.ResponsePrintablePayload = responsePrintablePayload
 	this.RuleId = ruleId
 	this.Severity = severity
-	this.SeverityAnomalyContainerName = severityAnomalyContainerName
 	this.SeverityScore = severityScore
 	this.SignatureId = signatureId
 	this.SourceIp = sourceIp
 	this.SourcePort = sourcePort
 	this.Status = status
 	this.Summary = summary
-	this.Tactic = tactic
+	this.Tactics = tactics
 	this.Tags = tags
-	this.Technique = technique
+	this.Techniques = techniques
 	this.UpdatedAt = updatedAt
 	this.Url = url
 	return &this
@@ -185,30 +181,6 @@ func (o *ModelNetworkAlert) GetCategoryOk() (*string, bool) {
 // SetCategory sets field value
 func (o *ModelNetworkAlert) SetCategory(v string) {
 	o.Category = v
-}
-
-// GetClasstype returns the Classtype field value
-func (o *ModelNetworkAlert) GetClasstype() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Classtype
-}
-
-// GetClasstypeOk returns a tuple with the Classtype field value
-// and a boolean to check if the value has been set.
-func (o *ModelNetworkAlert) GetClasstypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Classtype, true
-}
-
-// SetClasstype sets field value
-func (o *ModelNetworkAlert) SetClasstype(v string) {
-	o.Classtype = v
 }
 
 // GetContainerName returns the ContainerName field value
@@ -475,28 +447,28 @@ func (o *ModelNetworkAlert) SetHeaders(v string) {
 	o.Headers = v
 }
 
-// GetHostname returns the Hostname field value
-func (o *ModelNetworkAlert) GetHostname() string {
+// GetHostName returns the HostName field value
+func (o *ModelNetworkAlert) GetHostName() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Hostname
+	return o.HostName
 }
 
-// GetHostnameOk returns a tuple with the Hostname field value
+// GetHostNameOk returns a tuple with the HostName field value
 // and a boolean to check if the value has been set.
-func (o *ModelNetworkAlert) GetHostnameOk() (*string, bool) {
+func (o *ModelNetworkAlert) GetHostNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Hostname, true
+	return &o.HostName, true
 }
 
-// SetHostname sets field value
-func (o *ModelNetworkAlert) SetHostname(v string) {
-	o.Hostname = v
+// SetHostName sets field value
+func (o *ModelNetworkAlert) SetHostName(v string) {
+	o.HostName = v
 }
 
 // GetHttpContentType returns the HttpContentType field value
@@ -1059,30 +1031,6 @@ func (o *ModelNetworkAlert) SetSeverity(v string) {
 	o.Severity = v
 }
 
-// GetSeverityAnomalyContainerName returns the SeverityAnomalyContainerName field value
-func (o *ModelNetworkAlert) GetSeverityAnomalyContainerName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.SeverityAnomalyContainerName
-}
-
-// GetSeverityAnomalyContainerNameOk returns a tuple with the SeverityAnomalyContainerName field value
-// and a boolean to check if the value has been set.
-func (o *ModelNetworkAlert) GetSeverityAnomalyContainerNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SeverityAnomalyContainerName, true
-}
-
-// SetSeverityAnomalyContainerName sets field value
-func (o *ModelNetworkAlert) SetSeverityAnomalyContainerName(v string) {
-	o.SeverityAnomalyContainerName = v
-}
-
 // GetSeverityScore returns the SeverityScore field value
 func (o *ModelNetworkAlert) GetSeverityScore() float32 {
 	if o == nil {
@@ -1229,30 +1177,30 @@ func (o *ModelNetworkAlert) SetSummary(v string) {
 	o.Summary = v
 }
 
-// GetTactic returns the Tactic field value
+// GetTactics returns the Tactics field value
 // If the value is explicit nil, the zero value for []string will be returned
-func (o *ModelNetworkAlert) GetTactic() []string {
+func (o *ModelNetworkAlert) GetTactics() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
 
-	return o.Tactic
+	return o.Tactics
 }
 
-// GetTacticOk returns a tuple with the Tactic field value
+// GetTacticsOk returns a tuple with the Tactics field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelNetworkAlert) GetTacticOk() ([]string, bool) {
-	if o == nil || IsNil(o.Tactic) {
+func (o *ModelNetworkAlert) GetTacticsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Tactics) {
 		return nil, false
 	}
-	return o.Tactic, true
+	return o.Tactics, true
 }
 
-// SetTactic sets field value
-func (o *ModelNetworkAlert) SetTactic(v []string) {
-	o.Tactic = v
+// SetTactics sets field value
+func (o *ModelNetworkAlert) SetTactics(v []string) {
+	o.Tactics = v
 }
 
 // GetTags returns the Tags field value
@@ -1279,30 +1227,30 @@ func (o *ModelNetworkAlert) SetTags(v string) {
 	o.Tags = v
 }
 
-// GetTechnique returns the Technique field value
+// GetTechniques returns the Techniques field value
 // If the value is explicit nil, the zero value for []string will be returned
-func (o *ModelNetworkAlert) GetTechnique() []string {
+func (o *ModelNetworkAlert) GetTechniques() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
 
-	return o.Technique
+	return o.Techniques
 }
 
-// GetTechniqueOk returns a tuple with the Technique field value
+// GetTechniquesOk returns a tuple with the Techniques field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelNetworkAlert) GetTechniqueOk() ([]string, bool) {
-	if o == nil || IsNil(o.Technique) {
+func (o *ModelNetworkAlert) GetTechniquesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Techniques) {
 		return nil, false
 	}
-	return o.Technique, true
+	return o.Techniques, true
 }
 
-// SetTechnique sets field value
-func (o *ModelNetworkAlert) SetTechnique(v []string) {
-	o.Technique = v
+// SetTechniques sets field value
+func (o *ModelNetworkAlert) SetTechniques(v []string) {
+	o.Techniques = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value
@@ -1365,7 +1313,6 @@ func (o ModelNetworkAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["app_proto"] = o.AppProto
 	toSerialize["category"] = o.Category
-	toSerialize["classtype"] = o.Classtype
 	toSerialize["container_name"] = o.ContainerName
 	toSerialize["count"] = o.Count
 	toSerialize["created_at"] = o.CreatedAt
@@ -1377,7 +1324,7 @@ func (o ModelNetworkAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["event_type"] = o.EventType
 	toSerialize["geoip"] = o.Geoip
 	toSerialize["headers"] = o.Headers
-	toSerialize["hostname"] = o.Hostname
+	toSerialize["host_name"] = o.HostName
 	if o.HttpContentType != nil {
 		toSerialize["http_content_type"] = o.HttpContentType
 	}
@@ -1409,7 +1356,6 @@ func (o ModelNetworkAlert) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["rule_id"] = o.RuleId
 	toSerialize["severity"] = o.Severity
-	toSerialize["severity_anomaly_container_name"] = o.SeverityAnomalyContainerName
 	toSerialize["severity_score"] = o.SeverityScore
 	toSerialize["signature_id"] = o.SignatureId
 	toSerialize["source_ip"] = o.SourceIp
@@ -1418,12 +1364,12 @@ func (o ModelNetworkAlert) ToMap() (map[string]interface{}, error) {
 		toSerialize["status"] = o.Status
 	}
 	toSerialize["summary"] = o.Summary
-	if o.Tactic != nil {
-		toSerialize["tactic"] = o.Tactic
+	if o.Tactics != nil {
+		toSerialize["tactics"] = o.Tactics
 	}
 	toSerialize["tags"] = o.Tags
-	if o.Technique != nil {
-		toSerialize["technique"] = o.Technique
+	if o.Techniques != nil {
+		toSerialize["techniques"] = o.Techniques
 	}
 	toSerialize["updated_at"] = o.UpdatedAt
 	toSerialize["url"] = o.Url

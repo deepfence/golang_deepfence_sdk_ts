@@ -22,6 +22,7 @@ var _ MappedNullable = &SinglesignonSSOProviderConfig{}
 type SinglesignonSSOProviderConfig struct {
 	ClientId string `json:"client_id"`
 	ClientSecret string `json:"client_secret"`
+	DisablePasswordLogin bool `json:"disable_password_login"`
 	IssuerUrl *string `json:"issuer_url,omitempty"`
 	SsoProviderType string `json:"sso_provider_type"`
 }
@@ -30,10 +31,11 @@ type SinglesignonSSOProviderConfig struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSinglesignonSSOProviderConfig(clientId string, clientSecret string, ssoProviderType string) *SinglesignonSSOProviderConfig {
+func NewSinglesignonSSOProviderConfig(clientId string, clientSecret string, disablePasswordLogin bool, ssoProviderType string) *SinglesignonSSOProviderConfig {
 	this := SinglesignonSSOProviderConfig{}
 	this.ClientId = clientId
 	this.ClientSecret = clientSecret
+	this.DisablePasswordLogin = disablePasswordLogin
 	this.SsoProviderType = ssoProviderType
 	return &this
 }
@@ -92,6 +94,30 @@ func (o *SinglesignonSSOProviderConfig) GetClientSecretOk() (*string, bool) {
 // SetClientSecret sets field value
 func (o *SinglesignonSSOProviderConfig) SetClientSecret(v string) {
 	o.ClientSecret = v
+}
+
+// GetDisablePasswordLogin returns the DisablePasswordLogin field value
+func (o *SinglesignonSSOProviderConfig) GetDisablePasswordLogin() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.DisablePasswordLogin
+}
+
+// GetDisablePasswordLoginOk returns a tuple with the DisablePasswordLogin field value
+// and a boolean to check if the value has been set.
+func (o *SinglesignonSSOProviderConfig) GetDisablePasswordLoginOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DisablePasswordLogin, true
+}
+
+// SetDisablePasswordLogin sets field value
+func (o *SinglesignonSSOProviderConfig) SetDisablePasswordLogin(v bool) {
+	o.DisablePasswordLogin = v
 }
 
 // GetIssuerUrl returns the IssuerUrl field value if set, zero value otherwise.
@@ -162,6 +188,7 @@ func (o SinglesignonSSOProviderConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["client_id"] = o.ClientId
 	toSerialize["client_secret"] = o.ClientSecret
+	toSerialize["disable_password_login"] = o.DisablePasswordLogin
 	if !IsNil(o.IssuerUrl) {
 		toSerialize["issuer_url"] = o.IssuerUrl
 	}

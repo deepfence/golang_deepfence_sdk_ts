@@ -1,4 +1,4 @@
-# ControlsPolicyFilterConfig
+# ControlsQuarantineConfig
 
 ## Properties
 
@@ -6,97 +6,76 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **NodeId** | **string** |  | 
 **Policies** | [**[]ControlsPolicy**](ControlsPolicy.md) |  | 
-**UseWaf** | **bool** |  | 
 
 ## Methods
 
-### NewControlsPolicyFilterConfig
+### NewControlsQuarantineConfig
 
-`func NewControlsPolicyFilterConfig(nodeId string, policies []ControlsPolicy, useWaf bool, ) *ControlsPolicyFilterConfig`
+`func NewControlsQuarantineConfig(nodeId string, policies []ControlsPolicy, ) *ControlsQuarantineConfig`
 
-NewControlsPolicyFilterConfig instantiates a new ControlsPolicyFilterConfig object
+NewControlsQuarantineConfig instantiates a new ControlsQuarantineConfig object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewControlsPolicyFilterConfigWithDefaults
+### NewControlsQuarantineConfigWithDefaults
 
-`func NewControlsPolicyFilterConfigWithDefaults() *ControlsPolicyFilterConfig`
+`func NewControlsQuarantineConfigWithDefaults() *ControlsQuarantineConfig`
 
-NewControlsPolicyFilterConfigWithDefaults instantiates a new ControlsPolicyFilterConfig object
+NewControlsQuarantineConfigWithDefaults instantiates a new ControlsQuarantineConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetNodeId
 
-`func (o *ControlsPolicyFilterConfig) GetNodeId() string`
+`func (o *ControlsQuarantineConfig) GetNodeId() string`
 
 GetNodeId returns the NodeId field if non-nil, zero value otherwise.
 
 ### GetNodeIdOk
 
-`func (o *ControlsPolicyFilterConfig) GetNodeIdOk() (*string, bool)`
+`func (o *ControlsQuarantineConfig) GetNodeIdOk() (*string, bool)`
 
 GetNodeIdOk returns a tuple with the NodeId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNodeId
 
-`func (o *ControlsPolicyFilterConfig) SetNodeId(v string)`
+`func (o *ControlsQuarantineConfig) SetNodeId(v string)`
 
 SetNodeId sets NodeId field to given value.
 
 
 ### GetPolicies
 
-`func (o *ControlsPolicyFilterConfig) GetPolicies() []ControlsPolicy`
+`func (o *ControlsQuarantineConfig) GetPolicies() []ControlsPolicy`
 
 GetPolicies returns the Policies field if non-nil, zero value otherwise.
 
 ### GetPoliciesOk
 
-`func (o *ControlsPolicyFilterConfig) GetPoliciesOk() (*[]ControlsPolicy, bool)`
+`func (o *ControlsQuarantineConfig) GetPoliciesOk() (*[]ControlsPolicy, bool)`
 
 GetPoliciesOk returns a tuple with the Policies field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPolicies
 
-`func (o *ControlsPolicyFilterConfig) SetPolicies(v []ControlsPolicy)`
+`func (o *ControlsQuarantineConfig) SetPolicies(v []ControlsPolicy)`
 
 SetPolicies sets Policies field to given value.
 
 
 ### SetPoliciesNil
 
-`func (o *ControlsPolicyFilterConfig) SetPoliciesNil(b bool)`
+`func (o *ControlsQuarantineConfig) SetPoliciesNil(b bool)`
 
  SetPoliciesNil sets the value for Policies to be an explicit nil
 
 ### UnsetPolicies
-`func (o *ControlsPolicyFilterConfig) UnsetPolicies()`
+`func (o *ControlsQuarantineConfig) UnsetPolicies()`
 
 UnsetPolicies ensures that no value is present for Policies, not even an explicit nil
-### GetUseWaf
-
-`func (o *ControlsPolicyFilterConfig) GetUseWaf() bool`
-
-GetUseWaf returns the UseWaf field if non-nil, zero value otherwise.
-
-### GetUseWafOk
-
-`func (o *ControlsPolicyFilterConfig) GetUseWafOk() (*bool, bool)`
-
-GetUseWafOk returns a tuple with the UseWaf field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUseWaf
-
-`func (o *ControlsPolicyFilterConfig) SetUseWaf(v bool)`
-
-SetUseWaf sets UseWaf field to given value.
-
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

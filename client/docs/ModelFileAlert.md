@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **EventType** | **string** |  | 
 **Filepath** | **string** |  | 
 **Fstat** | **string** |  | 
-**Hostname** | **string** |  | 
+**HostName** | **string** |  | 
 **Masked** | **bool** |  | 
 **Netstat** | **string** |  | 
 **NodeId** | **string** |  | 
@@ -29,8 +29,8 @@ Name | Type | Description | Notes
 **SeverityScore** | **float32** |  | 
 **SignatureId** | **int32** |  | 
 **Summary** | **string** |  | 
-**Tactic** | **[]string** |  | 
-**Technique** | **[]string** |  | 
+**Tactics** | **[]string** |  | 
+**Techniques** | **[]string** |  | 
 **Top** | **string** |  | 
 **UpdatedAt** | **int32** |  | 
 **Users** | **string** |  | 
@@ -40,7 +40,7 @@ Name | Type | Description | Notes
 
 ### NewModelFileAlert
 
-`func NewModelFileAlert(anomaly string, category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostname string, masked bool, netstat string, nodeId string, nodeType string, pid int32, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactic []string, technique []string, top string, updatedAt int32, users string, w int32, ) *ModelFileAlert`
+`func NewModelFileAlert(anomaly string, category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32, ) *ModelFileAlert`
 
 NewModelFileAlert instantiates a new ModelFileAlert object
 This constructor will assign default values to properties that have it defined,
@@ -295,24 +295,24 @@ and a boolean to check if the value has been set.
 SetFstat sets Fstat field to given value.
 
 
-### GetHostname
+### GetHostName
 
-`func (o *ModelFileAlert) GetHostname() string`
+`func (o *ModelFileAlert) GetHostName() string`
 
-GetHostname returns the Hostname field if non-nil, zero value otherwise.
+GetHostName returns the HostName field if non-nil, zero value otherwise.
 
-### GetHostnameOk
+### GetHostNameOk
 
-`func (o *ModelFileAlert) GetHostnameOk() (*string, bool)`
+`func (o *ModelFileAlert) GetHostNameOk() (*string, bool)`
 
-GetHostnameOk returns a tuple with the Hostname field if it's non-nil, zero value otherwise
+GetHostNameOk returns a tuple with the HostName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetHostname
+### SetHostName
 
-`func (o *ModelFileAlert) SetHostname(v string)`
+`func (o *ModelFileAlert) SetHostName(v string)`
 
-SetHostname sets Hostname field to given value.
+SetHostName sets HostName field to given value.
 
 
 ### GetMasked
@@ -555,66 +555,66 @@ and a boolean to check if the value has been set.
 SetSummary sets Summary field to given value.
 
 
-### GetTactic
+### GetTactics
 
-`func (o *ModelFileAlert) GetTactic() []string`
+`func (o *ModelFileAlert) GetTactics() []string`
 
-GetTactic returns the Tactic field if non-nil, zero value otherwise.
+GetTactics returns the Tactics field if non-nil, zero value otherwise.
 
-### GetTacticOk
+### GetTacticsOk
 
-`func (o *ModelFileAlert) GetTacticOk() (*[]string, bool)`
+`func (o *ModelFileAlert) GetTacticsOk() (*[]string, bool)`
 
-GetTacticOk returns a tuple with the Tactic field if it's non-nil, zero value otherwise
+GetTacticsOk returns a tuple with the Tactics field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTactic
+### SetTactics
 
-`func (o *ModelFileAlert) SetTactic(v []string)`
+`func (o *ModelFileAlert) SetTactics(v []string)`
 
-SetTactic sets Tactic field to given value.
+SetTactics sets Tactics field to given value.
 
 
-### SetTacticNil
+### SetTacticsNil
 
-`func (o *ModelFileAlert) SetTacticNil(b bool)`
+`func (o *ModelFileAlert) SetTacticsNil(b bool)`
 
- SetTacticNil sets the value for Tactic to be an explicit nil
+ SetTacticsNil sets the value for Tactics to be an explicit nil
 
-### UnsetTactic
-`func (o *ModelFileAlert) UnsetTactic()`
+### UnsetTactics
+`func (o *ModelFileAlert) UnsetTactics()`
 
-UnsetTactic ensures that no value is present for Tactic, not even an explicit nil
-### GetTechnique
+UnsetTactics ensures that no value is present for Tactics, not even an explicit nil
+### GetTechniques
 
-`func (o *ModelFileAlert) GetTechnique() []string`
+`func (o *ModelFileAlert) GetTechniques() []string`
 
-GetTechnique returns the Technique field if non-nil, zero value otherwise.
+GetTechniques returns the Techniques field if non-nil, zero value otherwise.
 
-### GetTechniqueOk
+### GetTechniquesOk
 
-`func (o *ModelFileAlert) GetTechniqueOk() (*[]string, bool)`
+`func (o *ModelFileAlert) GetTechniquesOk() (*[]string, bool)`
 
-GetTechniqueOk returns a tuple with the Technique field if it's non-nil, zero value otherwise
+GetTechniquesOk returns a tuple with the Techniques field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTechnique
+### SetTechniques
 
-`func (o *ModelFileAlert) SetTechnique(v []string)`
+`func (o *ModelFileAlert) SetTechniques(v []string)`
 
-SetTechnique sets Technique field to given value.
+SetTechniques sets Techniques field to given value.
 
 
-### SetTechniqueNil
+### SetTechniquesNil
 
-`func (o *ModelFileAlert) SetTechniqueNil(b bool)`
+`func (o *ModelFileAlert) SetTechniquesNil(b bool)`
 
- SetTechniqueNil sets the value for Technique to be an explicit nil
+ SetTechniquesNil sets the value for Techniques to be an explicit nil
 
-### UnsetTechnique
-`func (o *ModelFileAlert) UnsetTechnique()`
+### UnsetTechniques
+`func (o *ModelFileAlert) UnsetTechniques()`
 
-UnsetTechnique ensures that no value is present for Technique, not even an explicit nil
+UnsetTechniques ensures that no value is present for Techniques, not even an explicit nil
 ### GetTop
 
 `func (o *ModelFileAlert) GetTop() string`

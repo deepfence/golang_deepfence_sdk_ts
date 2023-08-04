@@ -79,15 +79,19 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AgentConfigAPI* | [**AttachAgentFilesystemConfig**](docs/AgentConfigAPI.md#attachagentfilesystemconfig) | **Post** /configs/agent/filemon/attach | Register Agent Filesystem config
-*AgentConfigAPI* | [**AttachAgentNetworkConfig**](docs/AgentConfigAPI.md#attachagentnetworkconfig) | **Post** /configs/agent/network/attach | Register Agent Network config
-*AgentConfigAPI* | [**AttachAgentPolicyConfig**](docs/AgentConfigAPI.md#attachagentpolicyconfig) | **Post** /configs/agent/policy/attach | Register Agent Policy config
-*AgentConfigAPI* | [**GetAgentFilesystemConfig**](docs/AgentConfigAPI.md#getagentfilesystemconfig) | **Get** /configs/agent/filemon/ | Register Agent Filesystem config
-*AgentConfigAPI* | [**GetAgentNetworkConfig**](docs/AgentConfigAPI.md#getagentnetworkconfig) | **Get** /configs/agent/network/ | Register Agent Network config
-*AgentConfigAPI* | [**GetAgentPolicyConfig**](docs/AgentConfigAPI.md#getagentpolicyconfig) | **Get** /configs/agent/policy/ | Register Agent Policy config
-*AgentConfigAPI* | [**RegisterAgentFilesystemConfig**](docs/AgentConfigAPI.md#registeragentfilesystemconfig) | **Post** /configs/agent/filemon/ | Register Agent Filesystem config
-*AgentConfigAPI* | [**RegisterAgentNetworkConfig**](docs/AgentConfigAPI.md#registeragentnetworkconfig) | **Post** /configs/agent/network/ | Register Agent Network config
-*AgentConfigAPI* | [**RegisterAgentPolicyConfig**](docs/AgentConfigAPI.md#registeragentpolicyconfig) | **Post** /configs/agent/policy/ | Register Agent Policy config
+*AgentConfigAPI* | [**AttachAgentFilesystemConfig**](docs/AgentConfigAPI.md#attachagentfilesystemconfig) | **Post** /deepfence/configs/agent/filemon/attach | Register Agent Filesystem config
+*AgentConfigAPI* | [**AttachAgentNetworkConfig**](docs/AgentConfigAPI.md#attachagentnetworkconfig) | **Post** /deepfence/configs/agent/network/attach | Register Agent Network config
+*AgentConfigAPI* | [**AttachAgentPolicyConfig**](docs/AgentConfigAPI.md#attachagentpolicyconfig) | **Post** /deepfence/configs/agent/policy/attach | Register Agent Policy config
+*AgentConfigAPI* | [**AttachAgentQuarantineConfig**](docs/AgentConfigAPI.md#attachagentquarantineconfig) | **Post** /deepfence/configs/agent/quarantine/attach | Register Agent Policy config
+*AgentConfigAPI* | [**GetAgentFilesystemConfig**](docs/AgentConfigAPI.md#getagentfilesystemconfig) | **Post** /deepfence/configs/agent/filemon/list | Register Agent Filesystem config
+*AgentConfigAPI* | [**GetAgentNetworkConfig**](docs/AgentConfigAPI.md#getagentnetworkconfig) | **Post** /deepfence/configs/agent/network/list | Register Agent Network config
+*AgentConfigAPI* | [**GetAgentPolicyConfig**](docs/AgentConfigAPI.md#getagentpolicyconfig) | **Post** /deepfence/configs/agent/policy/list | Register Agent Policy config
+*AgentConfigAPI* | [**GetAgentQuarantineConfig**](docs/AgentConfigAPI.md#getagentquarantineconfig) | **Post** /deepfence/configs/agent/quarantine/list | Register Agent Policy config
+*AgentConfigAPI* | [**GetNetworkRules**](docs/AgentConfigAPI.md#getnetworkrules) | **Get** /deepfence/configs/agent/network/rules | Get Network Rules
+*AgentConfigAPI* | [**RegisterAgentFilesystemConfig**](docs/AgentConfigAPI.md#registeragentfilesystemconfig) | **Post** /deepfence/configs/agent/filemon/ | Register Agent Filesystem config
+*AgentConfigAPI* | [**RegisterAgentNetworkConfig**](docs/AgentConfigAPI.md#registeragentnetworkconfig) | **Post** /deepfence/configs/agent/network/ | Register Agent Network config
+*AgentConfigAPI* | [**RegisterAgentPolicyConfig**](docs/AgentConfigAPI.md#registeragentpolicyconfig) | **Post** /deepfence/configs/agent/policy/ | Register Agent Policy config
+*AgentConfigAPI* | [**RegisterAgentQuarantineConfig**](docs/AgentConfigAPI.md#registeragentquarantineconfig) | **Post** /deepfence/configs/agent/quarantine/ | Register Agent Policy config
 *AgentFilesystemAPI* | [**EnableFilesystemTracer**](docs/AgentFilesystemAPI.md#enablefilesystemtracer) | **Post** /deepfence/filesystem/tracer/enable | Enable filesystem tracer
 *AgentNetworkAPI* | [**DisableNetworkTracer**](docs/AgentNetworkAPI.md#disablenetworktracer) | **Post** /deepfence/network/tracer/disable | Disable network tracer
 *AgentNetworkAPI* | [**EnableNetworkTracer**](docs/AgentNetworkAPI.md#enablenetworktracer) | **Post** /deepfence/network/tracer/enable | Enable network tracer
@@ -105,11 +109,14 @@ Class | Method | HTTP request | Description
 *AuthenticationAPI* | [**Login**](docs/AuthenticationAPI.md#login) | **Post** /deepfence/user/login | Login API
 *AuthenticationAPI* | [**Logout**](docs/AuthenticationAPI.md#logout) | **Post** /deepfence/user/logout | Logout API
 *AuthenticationAPI* | [**SsoLogin**](docs/AuthenticationAPI.md#ssologin) | **Get** /deepfence/sso/login | SSO Login
+*AuthenticationAPI* | [**UpdateSSOProvider**](docs/AuthenticationAPI.md#updatessoprovider) | **Put** /deepfence/single-sign-on/{id} | Update Single sign-on
 *AuthenticationAPI* | [**VerifySSOAuth**](docs/AuthenticationAPI.md#verifyssoauth) | **Post** /deepfence/sso/verify | Verify SSO auth code
 *CloudNodesAPI* | [**ListCloudNodeAccount**](docs/CloudNodesAPI.md#listcloudnodeaccount) | **Post** /deepfence/cloud-node/list/accounts | List Cloud Node Accounts
 *CloudNodesAPI* | [**ListCloudProviders**](docs/CloudNodesAPI.md#listcloudproviders) | **Get** /deepfence/cloud-node/list/providers | List Cloud Node Providers
 *CloudNodesAPI* | [**RegisterCloudNodeAccount**](docs/CloudNodesAPI.md#registercloudnodeaccount) | **Post** /deepfence/cloud-node/account | Register Cloud Node Account
 *CloudResourcesAPI* | [**IngestCloudResources**](docs/CloudResourcesAPI.md#ingestcloudresources) | **Post** /deepfence/ingest/cloud-resources | Ingest Cloud resources
+*CloudResourcesAPI* | [**IngestViolations**](docs/CloudResourcesAPI.md#ingestviolations) | **Post** /deepfence/ingest/violations | Ingest Violations
+*CloudResourcesAPI* | [**IngestWAFRules**](docs/CloudResourcesAPI.md#ingestwafrules) | **Post** /deepfence/ingest/waf-rules | Ingest WAF Rules
 *CloudScannerAPI* | [**CountResultsCloudComplianceScan**](docs/CloudScannerAPI.md#countresultscloudcompliancescan) | **Post** /deepfence/scan/results/count/cloud-compliance | Get Cloud Compliance Scan Results
 *CloudScannerAPI* | [**IngestCloudComplianceScanStatus**](docs/CloudScannerAPI.md#ingestcloudcompliancescanstatus) | **Post** /deepfence/ingest/cloud-compliance-status | Ingest Cloud Compliances scan status
 *CloudScannerAPI* | [**IngestCloudCompliances**](docs/CloudScannerAPI.md#ingestcloudcompliances) | **Post** /deepfence/ingest/cloud-compliance | Ingest Cloud Compliances
@@ -152,6 +159,7 @@ Class | Method | HTTP request | Description
 *LookupAPI* | [**GetKubernetesClusters**](docs/LookupAPI.md#getkubernetesclusters) | **Post** /deepfence/lookup/kubernetesclusters | Retrieve K8s data
 *LookupAPI* | [**GetMalwares**](docs/LookupAPI.md#getmalwares) | **Post** /deepfence/lookup/malwares | Retrieve Malwares data
 *LookupAPI* | [**GetNetworkAlerts**](docs/LookupAPI.md#getnetworkalerts) | **Post** /deepfence/lookup/network-alerts | Get Network Alerts
+*LookupAPI* | [**GetNetworkViolations**](docs/LookupAPI.md#getnetworkviolations) | **Post** /deepfence/lookup/network-violations | Get Network Violations
 *LookupAPI* | [**GetPods**](docs/LookupAPI.md#getpods) | **Post** /deepfence/lookup/pods | Retrieve Pods data
 *LookupAPI* | [**GetProcesses**](docs/LookupAPI.md#getprocesses) | **Post** /deepfence/lookup/processes | Retrieve Processes data
 *LookupAPI* | [**GetRegistryAccount**](docs/LookupAPI.md#getregistryaccount) | **Post** /deepfence/lookup/registryaccount | Get Images in Registry
@@ -211,6 +219,7 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**CountMalwareScans**](docs/SearchAPI.md#countmalwarescans) | **Post** /deepfence/search/count/malware/scans | Count Malware Scan results
 *SearchAPI* | [**CountMalwares**](docs/SearchAPI.md#countmalwares) | **Post** /deepfence/search/count/malwares | Count Malwares
 *SearchAPI* | [**CountNetworkAlerts**](docs/SearchAPI.md#countnetworkalerts) | **Post** /deepfence/search/count/network-alerts | Count network alerts
+*SearchAPI* | [**CountNetworkViolations**](docs/SearchAPI.md#countnetworkviolations) | **Post** /deepfence/search/count/network-violations | Count network violations
 *SearchAPI* | [**CountNodes**](docs/SearchAPI.md#countnodes) | **Get** /deepfence/search/count/nodes | Count nodes
 *SearchAPI* | [**CountPods**](docs/SearchAPI.md#countpods) | **Post** /deepfence/search/count/pods | Count Pods
 *SearchAPI* | [**CountSecretRules**](docs/SearchAPI.md#countsecretrules) | **Post** /deepfence/search/count/secret-rules | Count Secret Rules
@@ -238,6 +247,7 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**SearchMalwareScans**](docs/SearchAPI.md#searchmalwarescans) | **Post** /deepfence/search/malware/scans | Search Malware Scan results
 *SearchAPI* | [**SearchMalwares**](docs/SearchAPI.md#searchmalwares) | **Post** /deepfence/search/malwares | Search Malwares
 *SearchAPI* | [**SearchNetworkAlerts**](docs/SearchAPI.md#searchnetworkalerts) | **Post** /deepfence/search/network-alerts | Search network alerts
+*SearchAPI* | [**SearchNetworkViolations**](docs/SearchAPI.md#searchnetworkviolations) | **Post** /deepfence/search/network-violations | Search network violations
 *SearchAPI* | [**SearchPods**](docs/SearchAPI.md#searchpods) | **Post** /deepfence/search/pods | Search Pods
 *SearchAPI* | [**SearchSecretRules**](docs/SearchAPI.md#searchsecretrules) | **Post** /deepfence/search/secret-rules | Search Secret Rules
 *SearchAPI* | [**SearchSecrets**](docs/SearchAPI.md#searchsecrets) | **Post** /deepfence/search/secrets | Search Secrets
@@ -318,8 +328,10 @@ Class | Method | HTTP request | Description
  - [ControlsNetworkRules](docs/ControlsNetworkRules.md)
  - [ControlsNetworkTracerConfig](docs/ControlsNetworkTracerConfig.md)
  - [ControlsPolicy](docs/ControlsPolicy.md)
+ - [ControlsPolicyAlertMatcher](docs/ControlsPolicyAlertMatcher.md)
  - [ControlsPolicyFilterConfig](docs/ControlsPolicyFilterConfig.md)
  - [ControlsProcessEventConfig](docs/ControlsProcessEventConfig.md)
+ - [ControlsQuarantineConfig](docs/ControlsQuarantineConfig.md)
  - [DetailedConnectionSummary](docs/DetailedConnectionSummary.md)
  - [DetailedNodeSummary](docs/DetailedNodeSummary.md)
  - [DiagnosisDiagnosticLogsLink](docs/DiagnosisDiagnosticLogsLink.md)
@@ -345,6 +357,7 @@ Class | Method | HTTP request | Description
  - [IngestersMalware](docs/IngestersMalware.md)
  - [IngestersMalwareScanStatus](docs/IngestersMalwareScanStatus.md)
  - [IngestersMetaRules](docs/IngestersMetaRules.md)
+ - [IngestersNetworkViolation](docs/IngestersNetworkViolation.md)
  - [IngestersReportIngestionData](docs/IngestersReportIngestionData.md)
  - [IngestersSecret](docs/IngestersSecret.md)
  - [IngestersSecretMatch](docs/IngestersSecretMatch.md)
@@ -353,6 +366,7 @@ Class | Method | HTTP request | Description
  - [IngestersSecretSeverity](docs/IngestersSecretSeverity.md)
  - [IngestersVulnerability](docs/IngestersVulnerability.md)
  - [IngestersVulnerabilityScanStatus](docs/IngestersVulnerabilityScanStatus.md)
+ - [IngestersWAFRule](docs/IngestersWAFRule.md)
  - [LookupLookupFilter](docs/LookupLookupFilter.md)
  - [ModelAgentId](docs/ModelAgentId.md)
  - [ModelAgentPluginConfigNames](docs/ModelAgentPluginConfigNames.md)
@@ -407,6 +421,7 @@ Class | Method | HTTP request | Description
  - [ModelFiltersResult](docs/ModelFiltersResult.md)
  - [ModelGenerateReportReq](docs/ModelGenerateReportReq.md)
  - [ModelGenerateReportResp](docs/ModelGenerateReportResp.md)
+ - [ModelGetAgentConfigReq](docs/ModelGetAgentConfigReq.md)
  - [ModelHost](docs/ModelHost.md)
  - [ModelImageStub](docs/ModelImageStub.md)
  - [ModelInitAgentReq](docs/ModelInitAgentReq.md)
@@ -431,6 +446,7 @@ Class | Method | HTTP request | Description
  - [ModelMitreTacticSummary](docs/ModelMitreTacticSummary.md)
  - [ModelMitreTechniqueSummary](docs/ModelMitreTechniqueSummary.md)
  - [ModelNetworkAlert](docs/ModelNetworkAlert.md)
+ - [ModelNetworkViolation](docs/ModelNetworkViolation.md)
  - [ModelNodeIdentifier](docs/ModelNodeIdentifier.md)
  - [ModelNodesInScanResultRequest](docs/ModelNodesInScanResultRequest.md)
  - [ModelNotificationThresholdUpdateRequest](docs/ModelNotificationThresholdUpdateRequest.md)
@@ -509,6 +525,7 @@ Class | Method | HTTP request | Description
  - [SinglesignonSSOConfigurationInstructions](docs/SinglesignonSSOConfigurationInstructions.md)
  - [SinglesignonSSOProviderConfig](docs/SinglesignonSSOProviderConfig.md)
  - [SinglesignonSSOResponse](docs/SinglesignonSSOResponse.md)
+ - [SinglesignonUpdateSSOProviderConfig](docs/SinglesignonUpdateSSOProviderConfig.md)
  - [SinglesignonVerifySSOAuthRequest](docs/SinglesignonVerifySSOAuthRequest.md)
  - [UtilsAdvancedReportFilters](docs/UtilsAdvancedReportFilters.md)
  - [UtilsReportFilters](docs/UtilsReportFilters.md)
