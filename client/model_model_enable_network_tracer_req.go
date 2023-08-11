@@ -21,21 +21,15 @@ var _ MappedNullable = &ModelEnableNetworkTracerReq{}
 // ModelEnableNetworkTracerReq struct for ModelEnableNetworkTracerReq
 type ModelEnableNetworkTracerReq struct {
 	AgentIds []ModelAgentId `json:"agent_ids"`
-	HttpRules ControlsNetworkRules `json:"http_rules"`
-	HttpsRules ControlsNetworkRules `json:"https_rules"`
-	TcpRules ControlsNetworkRules `json:"tcp_rules"`
 }
 
 // NewModelEnableNetworkTracerReq instantiates a new ModelEnableNetworkTracerReq object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelEnableNetworkTracerReq(agentIds []ModelAgentId, httpRules ControlsNetworkRules, httpsRules ControlsNetworkRules, tcpRules ControlsNetworkRules) *ModelEnableNetworkTracerReq {
+func NewModelEnableNetworkTracerReq(agentIds []ModelAgentId) *ModelEnableNetworkTracerReq {
 	this := ModelEnableNetworkTracerReq{}
 	this.AgentIds = agentIds
-	this.HttpRules = httpRules
-	this.HttpsRules = httpsRules
-	this.TcpRules = tcpRules
 	return &this
 }
 
@@ -73,78 +67,6 @@ func (o *ModelEnableNetworkTracerReq) SetAgentIds(v []ModelAgentId) {
 	o.AgentIds = v
 }
 
-// GetHttpRules returns the HttpRules field value
-func (o *ModelEnableNetworkTracerReq) GetHttpRules() ControlsNetworkRules {
-	if o == nil {
-		var ret ControlsNetworkRules
-		return ret
-	}
-
-	return o.HttpRules
-}
-
-// GetHttpRulesOk returns a tuple with the HttpRules field value
-// and a boolean to check if the value has been set.
-func (o *ModelEnableNetworkTracerReq) GetHttpRulesOk() (*ControlsNetworkRules, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.HttpRules, true
-}
-
-// SetHttpRules sets field value
-func (o *ModelEnableNetworkTracerReq) SetHttpRules(v ControlsNetworkRules) {
-	o.HttpRules = v
-}
-
-// GetHttpsRules returns the HttpsRules field value
-func (o *ModelEnableNetworkTracerReq) GetHttpsRules() ControlsNetworkRules {
-	if o == nil {
-		var ret ControlsNetworkRules
-		return ret
-	}
-
-	return o.HttpsRules
-}
-
-// GetHttpsRulesOk returns a tuple with the HttpsRules field value
-// and a boolean to check if the value has been set.
-func (o *ModelEnableNetworkTracerReq) GetHttpsRulesOk() (*ControlsNetworkRules, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.HttpsRules, true
-}
-
-// SetHttpsRules sets field value
-func (o *ModelEnableNetworkTracerReq) SetHttpsRules(v ControlsNetworkRules) {
-	o.HttpsRules = v
-}
-
-// GetTcpRules returns the TcpRules field value
-func (o *ModelEnableNetworkTracerReq) GetTcpRules() ControlsNetworkRules {
-	if o == nil {
-		var ret ControlsNetworkRules
-		return ret
-	}
-
-	return o.TcpRules
-}
-
-// GetTcpRulesOk returns a tuple with the TcpRules field value
-// and a boolean to check if the value has been set.
-func (o *ModelEnableNetworkTracerReq) GetTcpRulesOk() (*ControlsNetworkRules, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TcpRules, true
-}
-
-// SetTcpRules sets field value
-func (o *ModelEnableNetworkTracerReq) SetTcpRules(v ControlsNetworkRules) {
-	o.TcpRules = v
-}
-
 func (o ModelEnableNetworkTracerReq) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -158,9 +80,6 @@ func (o ModelEnableNetworkTracerReq) ToMap() (map[string]interface{}, error) {
 	if o.AgentIds != nil {
 		toSerialize["agent_ids"] = o.AgentIds
 	}
-	toSerialize["http_rules"] = o.HttpRules
-	toSerialize["https_rules"] = o.HttpsRules
-	toSerialize["tcp_rules"] = o.TcpRules
 	return toSerialize, nil
 }
 

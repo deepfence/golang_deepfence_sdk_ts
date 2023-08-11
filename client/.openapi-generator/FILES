@@ -27,6 +27,7 @@ api_settings.go
 api_threat.go
 api_topology.go
 api_user.go
+api_violations.go
 api_vulnerability.go
 client.go
 configuration.go
@@ -49,13 +50,14 @@ docs/ControlsAgentBeat.md
 docs/ControlsAgentControls.md
 docs/ControlsFilesystemTracerConfig.md
 docs/ControlsMonitoredFilesConfig.md
+docs/ControlsNetworkPolicy.md
 docs/ControlsNetworkRules.md
 docs/ControlsNetworkTracerConfig.md
-docs/ControlsPolicy.md
 docs/ControlsPolicyAlertMatcher.md
 docs/ControlsPolicyFilterConfig.md
 docs/ControlsProcessEventConfig.md
 docs/ControlsQuarantineConfig.md
+docs/ControlsRuncPolicy.md
 docs/DetailedConnectionSummary.md
 docs/DetailedNodeSummary.md
 docs/DiagnosisAPI.md
@@ -82,7 +84,6 @@ docs/IngestersComplianceStats.md
 docs/IngestersMalware.md
 docs/IngestersMalwareScanStatus.md
 docs/IngestersMetaRules.md
-docs/IngestersNetworkViolation.md
 docs/IngestersReportIngestionData.md
 docs/IngestersSecret.md
 docs/IngestersSecretMatch.md
@@ -97,6 +98,8 @@ docs/InternalAPI.md
 docs/LookupAPI.md
 docs/LookupLookupFilter.md
 docs/MalwareScanAPI.md
+docs/ModelAWSWafARN.md
+docs/ModelAddScheduledTaskRequest.md
 docs/ModelAgentId.md
 docs/ModelAgentPluginConfigNames.md
 docs/ModelAgentPluginDisable.md
@@ -126,6 +129,7 @@ docs/ModelCloudNodeControlResp.md
 docs/ModelCloudNodeEnableDisableReq.md
 docs/ModelCloudNodeProvidersListResp.md
 docs/ModelCloudResource.md
+docs/ModelCloudWafConfig.md
 docs/ModelCommonAlert.md
 docs/ModelCompliance.md
 docs/ModelComplianceRule.md
@@ -136,6 +140,7 @@ docs/ModelComplianceScanTriggerReq.md
 docs/ModelConnection.md
 docs/ModelContainer.md
 docs/ModelContainerImage.md
+docs/ModelDeleteFilter.md
 docs/ModelDisableNetworkTracerReq.md
 docs/ModelDownloadReportResponse.md
 docs/ModelDownloadScanResultsResponse.md
@@ -185,6 +190,7 @@ docs/ModelPluginStatus.md
 docs/ModelPod.md
 docs/ModelPostureProvider.md
 docs/ModelProcess.md
+docs/ModelQuarantineViolation.md
 docs/ModelRegisterInvitedUserRequest.md
 docs/ModelRegisterLicenseRequest.md
 docs/ModelRegistryAccount.md
@@ -268,6 +274,7 @@ docs/UserAPI.md
 docs/UtilsAdvancedReportFilters.md
 docs/UtilsReportFilters.md
 docs/UtilsScanSbomRequest.md
+docs/ViolationsAPI.md
 docs/VulnerabilityAPI.md
 git_push.sh
 go.mod
@@ -280,13 +287,14 @@ model_controls_agent_beat.go
 model_controls_agent_controls.go
 model_controls_filesystem_tracer_config.go
 model_controls_monitored_files_config.go
+model_controls_network_policy.go
 model_controls_network_rules.go
 model_controls_network_tracer_config.go
-model_controls_policy.go
 model_controls_policy_alert_matcher.go
 model_controls_policy_filter_config.go
 model_controls_process_event_config.go
 model_controls_quarantine_config.go
+model_controls_runc_policy.go
 model_detailed_connection_summary.go
 model_detailed_node_summary.go
 model_diagnosis_diagnostic_logs_link.go
@@ -312,7 +320,6 @@ model_ingesters_compliance_stats.go
 model_ingesters_malware.go
 model_ingesters_malware_scan_status.go
 model_ingesters_meta_rules.go
-model_ingesters_network_violation.go
 model_ingesters_report_ingestion_data.go
 model_ingesters_secret.go
 model_ingesters_secret_match.go
@@ -323,6 +330,7 @@ model_ingesters_vulnerability.go
 model_ingesters_vulnerability_scan_status.go
 model_ingesters_waf_rule.go
 model_lookup_lookup_filter.go
+model_model_add_scheduled_task_request.go
 model_model_agent_id.go
 model_model_agent_plugin_config_names.go
 model_model_agent_plugin_disable.go
@@ -333,6 +341,7 @@ model_model_alerts_action_request.go
 model_model_api_auth_request.go
 model_model_api_token_response.go
 model_model_attach_agent_config_req.go
+model_model_aws_waf_arn.go
 model_model_basic_node.go
 model_model_bulk_delete_scans_request.go
 model_model_cloud_compliance.go
@@ -352,6 +361,7 @@ model_model_cloud_node_control_resp.go
 model_model_cloud_node_enable_disable_req.go
 model_model_cloud_node_providers_list_resp.go
 model_model_cloud_resource.go
+model_model_cloud_waf_config.go
 model_model_common_alert.go
 model_model_compliance.go
 model_model_compliance_rule.go
@@ -362,6 +372,7 @@ model_model_compliance_scan_trigger_req.go
 model_model_connection.go
 model_model_container.go
 model_model_container_image.go
+model_model_delete_filter.go
 model_model_disable_network_tracer_req.go
 model_model_download_report_response.go
 model_model_download_scan_results_response.go
@@ -411,6 +422,7 @@ model_model_plugin_status.go
 model_model_pod.go
 model_model_posture_provider.go
 model_model_process.go
+model_model_quarantine_violation.go
 model_model_register_invited_user_request.go
 model_model_register_license_request.go
 model_model_registry_account.go
@@ -511,5 +523,6 @@ test/api_settings_test.go
 test/api_threat_test.go
 test/api_topology_test.go
 test/api_user_test.go
+test/api_violations_test.go
 test/api_vulnerability_test.go
 utils.go

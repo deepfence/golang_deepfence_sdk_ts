@@ -23,17 +23,19 @@ type ControlsFilesystemTracerConfig struct {
 	MonitoredFiles []ControlsMonitoredFilesConfig `json:"monitored_files"`
 	NodeId string `json:"node_id"`
 	ProcessEvents []ControlsProcessEventConfig `json:"process_events"`
+	UpdatedAt int32 `json:"updated_at"`
 }
 
 // NewControlsFilesystemTracerConfig instantiates a new ControlsFilesystemTracerConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsFilesystemTracerConfig(monitoredFiles []ControlsMonitoredFilesConfig, nodeId string, processEvents []ControlsProcessEventConfig) *ControlsFilesystemTracerConfig {
+func NewControlsFilesystemTracerConfig(monitoredFiles []ControlsMonitoredFilesConfig, nodeId string, processEvents []ControlsProcessEventConfig, updatedAt int32) *ControlsFilesystemTracerConfig {
 	this := ControlsFilesystemTracerConfig{}
 	this.MonitoredFiles = monitoredFiles
 	this.NodeId = nodeId
 	this.ProcessEvents = processEvents
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -121,6 +123,30 @@ func (o *ControlsFilesystemTracerConfig) SetProcessEvents(v []ControlsProcessEve
 	o.ProcessEvents = v
 }
 
+// GetUpdatedAt returns the UpdatedAt field value
+func (o *ControlsFilesystemTracerConfig) GetUpdatedAt() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
+// and a boolean to check if the value has been set.
+func (o *ControlsFilesystemTracerConfig) GetUpdatedAtOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UpdatedAt, true
+}
+
+// SetUpdatedAt sets field value
+func (o *ControlsFilesystemTracerConfig) SetUpdatedAt(v int32) {
+	o.UpdatedAt = v
+}
+
 func (o ControlsFilesystemTracerConfig) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -138,6 +164,7 @@ func (o ControlsFilesystemTracerConfig) ToMap() (map[string]interface{}, error) 
 	if o.ProcessEvents != nil {
 		toSerialize["process_events"] = o.ProcessEvents
 	}
+	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil
 }
 

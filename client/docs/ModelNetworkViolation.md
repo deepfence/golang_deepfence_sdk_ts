@@ -5,25 +5,35 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Action** | **string** |  | 
+**AlertId** | **string** |  | 
+**BlockIp** | **string** |  | 
+**ConfigId** | **string** |  | 
 **ContainerId** | **string** |  | 
 **CreatedAt** | **int32** |  | 
 **Direction** | **string** |  | 
-**ExecutedAt** | **string** |  | 
+**ExecutedAt** | **int32** |  | 
 **HostName** | **string** |  | 
+**LocalIp** | **string** |  | 
+**LocalPort** | **int32** |  | 
 **NodeId** | **string** |  | 
+**NodePolicyType** | **string** |  | 
+**PacketDirection** | **string** |  | 
 **PodId** | **string** |  | 
-**PolicyId** | **string** |  | 
+**PolicyIndex** | **int32** |  | 
+**Port** | **int32** |  | 
 **RemoteIp** | **string** |  | 
 **RemotePort** | **int32** |  | 
 **Severity** | **string** |  | 
 **SourceIp** | **string** |  | 
 **SourcePort** | **int32** |  | 
+**Ttl** | **int32** |  | 
+**Type** | **string** |  | 
 
 ## Methods
 
 ### NewModelNetworkViolation
 
-`func NewModelNetworkViolation(action string, containerId string, createdAt int32, direction string, executedAt string, hostName string, nodeId string, podId string, policyId string, remoteIp string, remotePort int32, severity string, sourceIp string, sourcePort int32, ) *ModelNetworkViolation`
+`func NewModelNetworkViolation(action string, alertId string, blockIp string, configId string, containerId string, createdAt int32, direction string, executedAt int32, hostName string, localIp string, localPort int32, nodeId string, nodePolicyType string, packetDirection string, podId string, policyIndex int32, port int32, remoteIp string, remotePort int32, severity string, sourceIp string, sourcePort int32, ttl int32, type_ string, ) *ModelNetworkViolation`
 
 NewModelNetworkViolation instantiates a new ModelNetworkViolation object
 This constructor will assign default values to properties that have it defined,
@@ -56,6 +66,66 @@ and a boolean to check if the value has been set.
 `func (o *ModelNetworkViolation) SetAction(v string)`
 
 SetAction sets Action field to given value.
+
+
+### GetAlertId
+
+`func (o *ModelNetworkViolation) GetAlertId() string`
+
+GetAlertId returns the AlertId field if non-nil, zero value otherwise.
+
+### GetAlertIdOk
+
+`func (o *ModelNetworkViolation) GetAlertIdOk() (*string, bool)`
+
+GetAlertIdOk returns a tuple with the AlertId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlertId
+
+`func (o *ModelNetworkViolation) SetAlertId(v string)`
+
+SetAlertId sets AlertId field to given value.
+
+
+### GetBlockIp
+
+`func (o *ModelNetworkViolation) GetBlockIp() string`
+
+GetBlockIp returns the BlockIp field if non-nil, zero value otherwise.
+
+### GetBlockIpOk
+
+`func (o *ModelNetworkViolation) GetBlockIpOk() (*string, bool)`
+
+GetBlockIpOk returns a tuple with the BlockIp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBlockIp
+
+`func (o *ModelNetworkViolation) SetBlockIp(v string)`
+
+SetBlockIp sets BlockIp field to given value.
+
+
+### GetConfigId
+
+`func (o *ModelNetworkViolation) GetConfigId() string`
+
+GetConfigId returns the ConfigId field if non-nil, zero value otherwise.
+
+### GetConfigIdOk
+
+`func (o *ModelNetworkViolation) GetConfigIdOk() (*string, bool)`
+
+GetConfigIdOk returns a tuple with the ConfigId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigId
+
+`func (o *ModelNetworkViolation) SetConfigId(v string)`
+
+SetConfigId sets ConfigId field to given value.
 
 
 ### GetContainerId
@@ -120,20 +190,20 @@ SetDirection sets Direction field to given value.
 
 ### GetExecutedAt
 
-`func (o *ModelNetworkViolation) GetExecutedAt() string`
+`func (o *ModelNetworkViolation) GetExecutedAt() int32`
 
 GetExecutedAt returns the ExecutedAt field if non-nil, zero value otherwise.
 
 ### GetExecutedAtOk
 
-`func (o *ModelNetworkViolation) GetExecutedAtOk() (*string, bool)`
+`func (o *ModelNetworkViolation) GetExecutedAtOk() (*int32, bool)`
 
 GetExecutedAtOk returns a tuple with the ExecutedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExecutedAt
 
-`func (o *ModelNetworkViolation) SetExecutedAt(v string)`
+`func (o *ModelNetworkViolation) SetExecutedAt(v int32)`
 
 SetExecutedAt sets ExecutedAt field to given value.
 
@@ -158,6 +228,46 @@ and a boolean to check if the value has been set.
 SetHostName sets HostName field to given value.
 
 
+### GetLocalIp
+
+`func (o *ModelNetworkViolation) GetLocalIp() string`
+
+GetLocalIp returns the LocalIp field if non-nil, zero value otherwise.
+
+### GetLocalIpOk
+
+`func (o *ModelNetworkViolation) GetLocalIpOk() (*string, bool)`
+
+GetLocalIpOk returns a tuple with the LocalIp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocalIp
+
+`func (o *ModelNetworkViolation) SetLocalIp(v string)`
+
+SetLocalIp sets LocalIp field to given value.
+
+
+### GetLocalPort
+
+`func (o *ModelNetworkViolation) GetLocalPort() int32`
+
+GetLocalPort returns the LocalPort field if non-nil, zero value otherwise.
+
+### GetLocalPortOk
+
+`func (o *ModelNetworkViolation) GetLocalPortOk() (*int32, bool)`
+
+GetLocalPortOk returns a tuple with the LocalPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocalPort
+
+`func (o *ModelNetworkViolation) SetLocalPort(v int32)`
+
+SetLocalPort sets LocalPort field to given value.
+
+
 ### GetNodeId
 
 `func (o *ModelNetworkViolation) GetNodeId() string`
@@ -176,6 +286,46 @@ and a boolean to check if the value has been set.
 `func (o *ModelNetworkViolation) SetNodeId(v string)`
 
 SetNodeId sets NodeId field to given value.
+
+
+### GetNodePolicyType
+
+`func (o *ModelNetworkViolation) GetNodePolicyType() string`
+
+GetNodePolicyType returns the NodePolicyType field if non-nil, zero value otherwise.
+
+### GetNodePolicyTypeOk
+
+`func (o *ModelNetworkViolation) GetNodePolicyTypeOk() (*string, bool)`
+
+GetNodePolicyTypeOk returns a tuple with the NodePolicyType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNodePolicyType
+
+`func (o *ModelNetworkViolation) SetNodePolicyType(v string)`
+
+SetNodePolicyType sets NodePolicyType field to given value.
+
+
+### GetPacketDirection
+
+`func (o *ModelNetworkViolation) GetPacketDirection() string`
+
+GetPacketDirection returns the PacketDirection field if non-nil, zero value otherwise.
+
+### GetPacketDirectionOk
+
+`func (o *ModelNetworkViolation) GetPacketDirectionOk() (*string, bool)`
+
+GetPacketDirectionOk returns a tuple with the PacketDirection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPacketDirection
+
+`func (o *ModelNetworkViolation) SetPacketDirection(v string)`
+
+SetPacketDirection sets PacketDirection field to given value.
 
 
 ### GetPodId
@@ -198,24 +348,44 @@ and a boolean to check if the value has been set.
 SetPodId sets PodId field to given value.
 
 
-### GetPolicyId
+### GetPolicyIndex
 
-`func (o *ModelNetworkViolation) GetPolicyId() string`
+`func (o *ModelNetworkViolation) GetPolicyIndex() int32`
 
-GetPolicyId returns the PolicyId field if non-nil, zero value otherwise.
+GetPolicyIndex returns the PolicyIndex field if non-nil, zero value otherwise.
 
-### GetPolicyIdOk
+### GetPolicyIndexOk
 
-`func (o *ModelNetworkViolation) GetPolicyIdOk() (*string, bool)`
+`func (o *ModelNetworkViolation) GetPolicyIndexOk() (*int32, bool)`
 
-GetPolicyIdOk returns a tuple with the PolicyId field if it's non-nil, zero value otherwise
+GetPolicyIndexOk returns a tuple with the PolicyIndex field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPolicyId
+### SetPolicyIndex
 
-`func (o *ModelNetworkViolation) SetPolicyId(v string)`
+`func (o *ModelNetworkViolation) SetPolicyIndex(v int32)`
 
-SetPolicyId sets PolicyId field to given value.
+SetPolicyIndex sets PolicyIndex field to given value.
+
+
+### GetPort
+
+`func (o *ModelNetworkViolation) GetPort() int32`
+
+GetPort returns the Port field if non-nil, zero value otherwise.
+
+### GetPortOk
+
+`func (o *ModelNetworkViolation) GetPortOk() (*int32, bool)`
+
+GetPortOk returns a tuple with the Port field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPort
+
+`func (o *ModelNetworkViolation) SetPort(v int32)`
+
+SetPort sets Port field to given value.
 
 
 ### GetRemoteIp
@@ -316,6 +486,46 @@ and a boolean to check if the value has been set.
 `func (o *ModelNetworkViolation) SetSourcePort(v int32)`
 
 SetSourcePort sets SourcePort field to given value.
+
+
+### GetTtl
+
+`func (o *ModelNetworkViolation) GetTtl() int32`
+
+GetTtl returns the Ttl field if non-nil, zero value otherwise.
+
+### GetTtlOk
+
+`func (o *ModelNetworkViolation) GetTtlOk() (*int32, bool)`
+
+GetTtlOk returns a tuple with the Ttl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTtl
+
+`func (o *ModelNetworkViolation) SetTtl(v int32)`
+
+SetTtl sets Ttl field to given value.
+
+
+### GetType
+
+`func (o *ModelNetworkViolation) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *ModelNetworkViolation) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *ModelNetworkViolation) SetType(v string)`
+
+SetType sets Type field to given value.
 
 
 

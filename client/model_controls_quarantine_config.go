@@ -21,17 +21,19 @@ var _ MappedNullable = &ControlsQuarantineConfig{}
 // ControlsQuarantineConfig struct for ControlsQuarantineConfig
 type ControlsQuarantineConfig struct {
 	NodeId string `json:"node_id"`
-	Policies []ControlsPolicy `json:"policies"`
+	Policies []ControlsRuncPolicy `json:"policies"`
+	UpdatedAt int32 `json:"updated_at"`
 }
 
 // NewControlsQuarantineConfig instantiates a new ControlsQuarantineConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsQuarantineConfig(nodeId string, policies []ControlsPolicy) *ControlsQuarantineConfig {
+func NewControlsQuarantineConfig(nodeId string, policies []ControlsRuncPolicy, updatedAt int32) *ControlsQuarantineConfig {
 	this := ControlsQuarantineConfig{}
 	this.NodeId = nodeId
 	this.Policies = policies
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -68,10 +70,10 @@ func (o *ControlsQuarantineConfig) SetNodeId(v string) {
 }
 
 // GetPolicies returns the Policies field value
-// If the value is explicit nil, the zero value for []ControlsPolicy will be returned
-func (o *ControlsQuarantineConfig) GetPolicies() []ControlsPolicy {
+// If the value is explicit nil, the zero value for []ControlsRuncPolicy will be returned
+func (o *ControlsQuarantineConfig) GetPolicies() []ControlsRuncPolicy {
 	if o == nil {
-		var ret []ControlsPolicy
+		var ret []ControlsRuncPolicy
 		return ret
 	}
 
@@ -81,7 +83,7 @@ func (o *ControlsQuarantineConfig) GetPolicies() []ControlsPolicy {
 // GetPoliciesOk returns a tuple with the Policies field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ControlsQuarantineConfig) GetPoliciesOk() ([]ControlsPolicy, bool) {
+func (o *ControlsQuarantineConfig) GetPoliciesOk() ([]ControlsRuncPolicy, bool) {
 	if o == nil || IsNil(o.Policies) {
 		return nil, false
 	}
@@ -89,8 +91,32 @@ func (o *ControlsQuarantineConfig) GetPoliciesOk() ([]ControlsPolicy, bool) {
 }
 
 // SetPolicies sets field value
-func (o *ControlsQuarantineConfig) SetPolicies(v []ControlsPolicy) {
+func (o *ControlsQuarantineConfig) SetPolicies(v []ControlsRuncPolicy) {
 	o.Policies = v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value
+func (o *ControlsQuarantineConfig) GetUpdatedAt() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
+// and a boolean to check if the value has been set.
+func (o *ControlsQuarantineConfig) GetUpdatedAtOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UpdatedAt, true
+}
+
+// SetUpdatedAt sets field value
+func (o *ControlsQuarantineConfig) SetUpdatedAt(v int32) {
+	o.UpdatedAt = v
 }
 
 func (o ControlsQuarantineConfig) MarshalJSON() ([]byte, error) {
@@ -107,6 +133,7 @@ func (o ControlsQuarantineConfig) ToMap() (map[string]interface{}, error) {
 	if o.Policies != nil {
 		toSerialize["policies"] = o.Policies
 	}
+	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil
 }
 

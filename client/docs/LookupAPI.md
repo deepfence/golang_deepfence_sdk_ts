@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**GetNetworkViolations**](LookupAPI.md#GetNetworkViolations) | **Post** /deepfence/lookup/network-violations | Get Network Violations
 [**GetPods**](LookupAPI.md#GetPods) | **Post** /deepfence/lookup/pods | Retrieve Pods data
 [**GetProcesses**](LookupAPI.md#GetProcesses) | **Post** /deepfence/lookup/processes | Retrieve Processes data
+[**GetQuarantineViolations**](LookupAPI.md#GetQuarantineViolations) | **Post** /deepfence/lookup/quarantine-violations | Get Quarantine Violations
 [**GetRegistryAccount**](LookupAPI.md#GetRegistryAccount) | **Post** /deepfence/lookup/registryaccount | Get Images in Registry
 [**GetSecrets**](LookupAPI.md#GetSecrets) | **Post** /deepfence/lookup/secrets | Retrieve Secrets data
 [**GetVulnerabilities**](LookupAPI.md#GetVulnerabilities) | **Post** /deepfence/lookup/vulnerabilities | Retrieve Vulnerabilities data
@@ -866,6 +867,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]ModelProcess**](ModelProcess.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetQuarantineViolations
+
+> []ModelQuarantineViolation GetQuarantineViolations(ctx).LookupLookupFilter(lookupLookupFilter).Execute()
+
+Get Quarantine Violations
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    lookupLookupFilter := *openapiclient.NewLookupLookupFilter([]string{"InFieldFilter_example"}, []string{"NodeIds_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // LookupLookupFilter |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LookupAPI.GetQuarantineViolations(context.Background()).LookupLookupFilter(lookupLookupFilter).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LookupAPI.GetQuarantineViolations``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetQuarantineViolations`: []ModelQuarantineViolation
+    fmt.Fprintf(os.Stdout, "Response from `LookupAPI.GetQuarantineViolations`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetQuarantineViolationsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **lookupLookupFilter** | [**LookupLookupFilter**](LookupLookupFilter.md) |  | 
+
+### Return type
+
+[**[]ModelQuarantineViolation**](ModelQuarantineViolation.md)
 
 ### Authorization
 

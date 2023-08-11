@@ -2628,14 +2628,15 @@ paths:
       - Topology
   /deepfence/ingest/violations:
     post:
-      description: Ingest violations
-      operationId: ingestViolations
+      description: Ingest violation data reported by one Agent
+      operationId: ingestAgentViolations
       requestBody:
         content:
           application/json:
             schema:
               items:
-                $ref: '#/components/schemas/IngestersNetworkViolation'
+                additionalProperties: {}
+                type: object
               nullable: true
               type: array
       responses:
@@ -2665,9 +2666,9 @@ paths:
           description: Internal Server Error
       security:
       - bearer_token: []
-      summary: Ingest Violations
+      summary: Ingest Agent Violations
       tags:
-      - Cloud Resources
+      - Topology
   /deepfence/ingest/vulnerabilities:
     post:
       description: Ingest vulnerabilities found while scanning the agent host or containers
@@ -3654,6 +3655,51 @@ paths:
       summary: Retrieve Processes data
       tags:
       - Lookup
+  /deepfence/lookup/quarantine-violations:
+    post:
+      description: Retrieve quarantine violations resources
+      operationId: getQuarantineViolations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LookupLookupFilter'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelQuarantineViolation'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Quarantine Violations
+      tags:
+      - Lookup
   /deepfence/lookup/registryaccount:
     post:
       description: List all the images present in the given registry
@@ -3823,6 +3869,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiDocsFailureResponse'
           description: Internal Server Error
+      security:
+      - bearer_token: []
       summary: Disable network tracer
       tags:
       - AgentNetwork
@@ -3860,6 +3908,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiDocsFailureResponse'
           description: Internal Server Error
+      security:
+      - bearer_token: []
       summary: Enable network tracer
       tags:
       - AgentNetwork
@@ -4421,6 +4471,84 @@ paths:
       summary: Get All Registries Summary By Type
       tags:
       - Registry
+  /deepfence/remove/network-violations:
+    post:
+      description: Remove network violations
+      operationId: deleteNetworkViolations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelDeleteFilter'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Remove network violations
+      tags:
+      - Violations
+  /deepfence/remove/quarantine-violations:
+    post:
+      description: Remove quarantine violations
+      operationId: deleteQuarantineViolations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelDeleteFilter'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Remove quarantine violations
+      tags:
+      - Violations
   /deepfence/reports:
     get:
       description: List all the available reports
@@ -6504,6 +6632,44 @@ paths:
       summary: Get scheduled tasks
       tags:
       - Settings
+    post:
+      description: Add scheduled task
+      operationId: addScheduledTask
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelAddScheduledTaskRequest'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Add scheduled task
+      tags:
+      - Settings
   /deepfence/scheduled-task/{id}:
     patch:
       description: Update scheduled task
@@ -7811,6 +7977,49 @@ paths:
       summary: Count Pods
       tags:
       - Search
+  /deepfence/search/count/quarantine-violations:
+    post:
+      description: Count across all data associated with quarantine violations
+      operationId: countQuarantineViolations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchSearchCountResp'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Count quarantine violations
+      tags:
+      - Search
   /deepfence/search/count/secret-rules:
     post:
       description: Count across all the data associated with secret rules
@@ -8519,6 +8728,51 @@ paths:
       summary: Search Pods
       tags:
       - Search
+  /deepfence/search/quarantine-violations:
+    post:
+      description: Search across all data associated with quarantine violations
+      operationId: searchQuarantineViolations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelQuarantineViolation'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Search quarantine violations
+      tags:
+      - Search
   /deepfence/search/secret-rules:
     post:
       description: Search across all the data associated with secret ruless
@@ -8789,6 +9043,115 @@ paths:
       summary: Search Vulnerability Scan results
       tags:
       - Search
+  /deepfence/settings/cloud-waf:
+    delete:
+      description: Delete Cloud WAF Configuration
+      operationId: deleteCloudWafConfiguration
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Delete Cloud WAF Configuration
+      tags:
+      - Settings
+    get:
+      description: Get Cloud WAF Configuration
+      operationId: getCloudWafConfiguration
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelCloudWafConfig'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Cloud WAF Configuration
+      tags:
+      - Settings
+    post:
+      description: Set Cloud WAF Configuration
+      operationId: setCloudWafConfiguration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelCloudWafConfig'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Set Cloud WAF Configuration
+      tags:
+      - Settings
   /deepfence/settings/email:
     get:
       description: Get Email Smtp / ses Configurations in system
@@ -9943,6 +10306,13 @@ components:
             type: string
           nullable: true
           type: object
+        error_index:
+          additionalProperties:
+            items:
+              type: integer
+            type: array
+          nullable: true
+          type: object
         message:
           type: string
         success:
@@ -9988,6 +10358,9 @@ components:
               version: version
               pod_name: pod_name
               ppid: 9
+              tags:
+              - tags
+              - tags
               docker_container_ports: docker_container_ports
               kubernetes_is_in_host_network: true
               instance_id: instance_id
@@ -10125,26 +10498,25 @@ components:
       - beatrate
       - commands
       type: object
-    ControlsEventType:
-      type: string
     ControlsFilesystemTracerConfig:
       example:
         monitored_files:
         - path: path
+          weight: weight
           access_types:
           - access_types
           - access_types
-          wight: wight
         - path: path
+          weight: weight
           access_types:
           - access_types
           - access_types
-          wight: wight
+        updated_at: 0
         process_events:
         - event_name: event_name
-          wight: wight
+          weight: weight
         - event_name: event_name
-          wight: wight
+          weight: weight
         node_id: node_id
       properties:
         monitored_files:
@@ -10159,18 +10531,21 @@ components:
             $ref: '#/components/schemas/ControlsProcessEventConfig'
           nullable: true
           type: array
+        updated_at:
+          type: integer
       required:
       - monitored_files
       - node_id
       - process_events
+      - updated_at
       type: object
     ControlsMonitoredFilesConfig:
       example:
         path: path
+        weight: weight
         access_types:
         - access_types
         - access_types
-        wight: wight
       properties:
         access_types:
           items:
@@ -10179,12 +10554,51 @@ components:
           type: array
         path:
           type: string
-        wight:
+        weight:
           type: string
       required:
       - access_types
       - path
-      - wight
+      - weight
+      type: object
+    ControlsNetworkPolicy:
+      example:
+        policy_id: policy_id
+        updated_at: 5
+        count_limit: 0
+        action: block
+        duration_count_limit_sec: 6
+        matcher:
+          fields_matcher:
+            key:
+            - fields_matcher
+            - fields_matcher
+        duration_sec: 1
+      properties:
+        action:
+          enum:
+          - block
+          type: string
+        count_limit:
+          type: integer
+        duration_count_limit_sec:
+          type: integer
+        duration_sec:
+          type: integer
+        matcher:
+          $ref: '#/components/schemas/ControlsPolicyAlertMatcher'
+        policy_id:
+          type: string
+        updated_at:
+          type: integer
+      required:
+      - action
+      - count_limit
+      - duration_count_limit_sec
+      - duration_sec
+      - matcher
+      - policy_id
+      - updated_at
       type: object
     ControlsNetworkRules:
       example:
@@ -10229,6 +10643,7 @@ components:
           outbound:
           - outbound
           - outbound
+        updated_at: 0
         https_rules:
           inbound:
           - inbound
@@ -10257,6 +10672,8 @@ components:
           type: array
         tcp_rules:
           $ref: '#/components/schemas/ControlsNetworkRules'
+        updated_at:
+          type: integer
       required:
       - http_rules
       - https_rules
@@ -10264,39 +10681,7 @@ components:
       - node_id
       - process_names
       - tcp_rules
-      type: object
-    ControlsPolicy:
-      example:
-        event_type: event_type
-        policy_id: policy_id
-        count_limit: 0
-        duration_count_limit_sec: 6
-        matcher:
-          fields_matcher:
-            key:
-            - fields_matcher
-            - fields_matcher
-        duration_sec: 1
-      properties:
-        count_limit:
-          type: integer
-        duration_count_limit_sec:
-          type: integer
-        duration_sec:
-          type: integer
-        event_type:
-          type: string
-        matcher:
-          $ref: '#/components/schemas/ControlsPolicyAlertMatcher'
-        policy_id:
-          type: string
-      required:
-      - count_limit
-      - duration_count_limit_sec
-      - duration_sec
-      - event_type
-      - matcher
-      - policy_id
+      - updated_at
       type: object
     ControlsPolicyAlertMatcher:
       example:
@@ -10317,11 +10702,13 @@ components:
       type: object
     ControlsPolicyFilterConfig:
       example:
+        updated_at: 5
         use_waf: true
         policies:
-        - event_type: event_type
-          policy_id: policy_id
+        - policy_id: policy_id
+          updated_at: 5
           count_limit: 0
+          action: block
           duration_count_limit_sec: 6
           matcher:
             fields_matcher:
@@ -10329,9 +10716,10 @@ components:
               - fields_matcher
               - fields_matcher
           duration_sec: 1
-        - event_type: event_type
-          policy_id: policy_id
+        - policy_id: policy_id
+          updated_at: 5
           count_limit: 0
+          action: block
           duration_count_limit_sec: 6
           matcher:
             fields_matcher:
@@ -10339,70 +10727,131 @@ components:
               - fields_matcher
               - fields_matcher
           duration_sec: 1
+        ignored_remote_ips:
+        - ignored_remote_ips
+        - ignored_remote_ips
         node_id: node_id
       properties:
+        ignored_remote_ips:
+          items:
+            type: string
+          nullable: true
+          type: array
         node_id:
           type: string
         policies:
           items:
-            $ref: '#/components/schemas/ControlsPolicy'
+            $ref: '#/components/schemas/ControlsNetworkPolicy'
           nullable: true
           type: array
+        updated_at:
+          type: integer
         use_waf:
           type: boolean
       required:
+      - ignored_remote_ips
       - node_id
       - policies
+      - updated_at
       - use_waf
       type: object
     ControlsProcessEventConfig:
       example:
         event_name: event_name
-        wight: wight
+        weight: weight
       properties:
         event_name:
           type: string
-        wight:
+        weight:
           type: string
       required:
       - event_name
-      - wight
+      - weight
       type: object
     ControlsQuarantineConfig:
       example:
+        updated_at: 5
         policies:
-        - event_type: event_type
+        - node_type: container
           policy_id: policy_id
+          updated_at: 1
           count_limit: 0
+          action: restart
           duration_count_limit_sec: 6
           matcher:
             fields_matcher:
               key:
               - fields_matcher
               - fields_matcher
-          duration_sec: 1
-        - event_type: event_type
+        - node_type: container
           policy_id: policy_id
+          updated_at: 1
           count_limit: 0
+          action: restart
           duration_count_limit_sec: 6
           matcher:
             fields_matcher:
               key:
               - fields_matcher
               - fields_matcher
-          duration_sec: 1
         node_id: node_id
       properties:
         node_id:
           type: string
         policies:
           items:
-            $ref: '#/components/schemas/ControlsPolicy'
+            $ref: '#/components/schemas/ControlsRuncPolicy'
           nullable: true
           type: array
+        updated_at:
+          type: integer
       required:
       - node_id
       - policies
+      - updated_at
+      type: object
+    ControlsRuncPolicy:
+      example:
+        node_type: container
+        policy_id: policy_id
+        updated_at: 1
+        count_limit: 0
+        action: restart
+        duration_count_limit_sec: 6
+        matcher:
+          fields_matcher:
+            key:
+            - fields_matcher
+            - fields_matcher
+      properties:
+        action:
+          enum:
+          - restart
+          - stop
+          type: string
+        count_limit:
+          type: integer
+        duration_count_limit_sec:
+          type: integer
+        matcher:
+          $ref: '#/components/schemas/ControlsPolicyAlertMatcher'
+        node_type:
+          enum:
+          - container
+          - pod
+          type: string
+        policy_id:
+          type: string
+        updated_at:
+          type: integer
+      required:
+      - action
+      - count_limit
+      - duration_count_limit_sec
+      - matcher
+      - node_type
+      - policy_id
+      - updated_at
       type: object
     DetailedConnectionSummary:
       example:
@@ -10447,6 +10896,9 @@ components:
           version: version
           pod_name: pod_name
           ppid: 9
+          tags:
+          - tags
+          - tags
           docker_container_ports: docker_container_ports
           kubernetes_is_in_host_network: true
           instance_id: instance_id
@@ -11500,43 +11952,6 @@ components:
         version:
           type: string
       type: object
-    IngestersNetworkViolation:
-      example:
-        remote_ip: remote_ip
-        policy_id: policy_id
-        executed_at: executed_at
-        source_port: 6
-        remote_port: 0
-        action: action
-        pod_id: pod_id
-        container_id: container_id
-        host_name: host_name
-        direction: direction
-        source_ip: source_ip
-      properties:
-        action:
-          type: string
-        container_id:
-          type: string
-        direction:
-          type: string
-        executed_at:
-          type: string
-        host_name:
-          type: string
-        pod_id:
-          type: string
-        policy_id:
-          type: string
-        remote_ip:
-          type: string
-        remote_port:
-          type: integer
-        source_ip:
-          type: string
-        source_port:
-          type: integer
-      type: object
     IngestersReportIngestionData:
       example:
         hosts:
@@ -11862,6 +12277,56 @@ components:
       - in_field_filter
       - node_ids
       - window
+      type: object
+    ModelAWSWafARN:
+      example:
+        arn: arn
+        region: CLOUDFRONT
+      properties:
+        arn:
+          type: string
+        region:
+          enum:
+          - CLOUDFRONT
+          - us-east-1
+          - us-east-2
+          - us-west-1
+          - us-west-2
+          - ap-south-1
+          - ap-northeast-1
+          - ap-northeast-2
+          - ap-northeast-3
+          - ap-southeast-1
+          - ap-southeast-2
+          - eu-central-1
+          - eu-west-1
+          - eu-west-2
+          - eu-west-3
+          - eu-south-1
+          - sa-east-1
+          type: string
+      required:
+      - arn
+      - region
+      type: object
+    ModelAddScheduledTaskRequest:
+      example:
+        node_type: node_type
+        cron_expr: cron_expr
+        action: action
+        description: description
+        filters: filters
+      properties:
+        action:
+          type: string
+        cron_expr:
+          type: string
+        description:
+          type: string
+        filters:
+          type: string
+        node_type:
+          type: string
       type: object
     ModelAgentId:
       example:
@@ -12704,6 +13169,28 @@ components:
       - node_type
       - type_label
       type: object
+    ModelCloudWafConfig:
+      example:
+        aws_waf_arn:
+        - arn: arn
+          region: CLOUDFRONT
+        - arn: arn
+          region: CLOUDFRONT
+        cloud_provider: aws
+      properties:
+        aws_waf_arn:
+          items:
+            $ref: '#/components/schemas/ModelAWSWafARN'
+          nullable: true
+          type: array
+        cloud_provider:
+          enum:
+          - aws
+          type: string
+      required:
+      - aws_waf_arn
+      - cloud_provider
+      type: object
     ModelCommonAlert:
       example:
         severity: severity
@@ -12778,6 +13265,7 @@ components:
         test_category: test_category
         remediation_ansible: remediation_ansible
         compliance_check_type: compliance_check_type
+        rule_id: rule_id
         test_rationale: test_rationale
         test_severity: test_severity
         node_type: node_type
@@ -12812,6 +13300,8 @@ components:
             type: string
           nullable: true
           type: array
+        rule_id:
+          type: string
         status:
           type: string
         test_category:
@@ -12836,6 +13326,7 @@ components:
       - remediation_puppet
       - remediation_script
       - resource
+      - rule_id
       - status
       - test_category
       - test_desc
@@ -12956,6 +13447,7 @@ components:
           test_category: test_category
           remediation_ansible: remediation_ansible
           compliance_check_type: compliance_check_type
+          rule_id: rule_id
           test_rationale: test_rationale
           test_severity: test_severity
           node_type: node_type
@@ -12975,6 +13467,7 @@ components:
           test_category: test_category
           remediation_ansible: remediation_ansible
           compliance_check_type: compliance_check_type
+          rule_id: rule_id
           test_rationale: test_rationale
           test_severity: test_severity
           node_type: node_type
@@ -13511,6 +14004,20 @@ components:
       - vulnerability_latest_scan_id
       - vulnerability_scan_status
       type: object
+    ModelDeleteFilter:
+      example:
+        node_ids:
+        - node_ids
+        - node_ids
+      properties:
+        node_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
+      required:
+      - node_ids
+      type: object
     ModelDisableNetworkTracerReq:
       example:
         agent_ids:
@@ -13636,49 +14143,19 @@ components:
       type: object
     ModelEnableNetworkTracerReq:
       example:
-        tcp_rules:
-          inbound:
-          - inbound
-          - inbound
-          outbound:
-          - outbound
-          - outbound
-        http_rules:
-          inbound:
-          - inbound
-          - inbound
-          outbound:
-          - outbound
-          - outbound
         agent_ids:
         - available_workload: 0
           node_id: node_id
         - available_workload: 0
           node_id: node_id
-        https_rules:
-          inbound:
-          - inbound
-          - inbound
-          outbound:
-          - outbound
-          - outbound
       properties:
         agent_ids:
           items:
             $ref: '#/components/schemas/ModelAgentId'
           nullable: true
           type: array
-        http_rules:
-          $ref: '#/components/schemas/ControlsNetworkRules'
-        https_rules:
-          $ref: '#/components/schemas/ControlsNetworkRules'
-        tcp_rules:
-          $ref: '#/components/schemas/ControlsNetworkRules'
       required:
       - agent_ids
-      - http_rules
-      - https_rules
-      - tcp_rules
       type: object
     ModelExportReport:
       example:
@@ -13981,12 +14458,9 @@ components:
       type: object
     ModelHost:
       example:
-        vulnerabilities_count: 4
         public_ip:
         - ""
         - ""
-        secrets_count: 3
-        cloud_region: cloud_region
         container_images:
         - metadata:
             key: ""
@@ -14251,20 +14725,15 @@ components:
           - docker_image_tag_list
           node_id: node_id
         cpu_max: 1.4658129805029452
-        memory_usage: 9
         alerts_counts:
           key: 0
-        private_ip:
-        - ""
-        - ""
         secret_latest_scan_id: secret_latest_scan_id
         config_names:
           policy_config_name: policy_config_name
           filesystem_config_name: filesystem_config_name
           network_config_name: network_config_name
+        network_tracer_status: network_tracer_status
         vulnerability_latest_scan_id: vulnerability_latest_scan_id
-        resource_group: resource_group
-        malware_scan_status: malware_scan_status
         plugin_status:
           network_tracer_status:
             description: description
@@ -14275,63 +14744,10 @@ components:
           filesystem_tracer_status:
             description: description
             status: status
-        inbound_connections:
-        - count: 5
-          node_name: node_name
-          node_id: node_id
-        - count: 5
-          node_name: node_name
-          node_id: node_id
-        availability_zone: availability_zone
-        is_console_vm: true
-        processes:
-        - memory_max: 9
-          cmdline: cmdline
-          cpu_max: 2.3021358869347655
-          node_name: node_name
-          memory_usage: 3
-          open_files_count: 2
-          threads: 1
-          pid: 4
-          cpu_usage: 7.061401241503109
-          node_id: node_id
-          ppid: 7
-        - memory_max: 9
-          cmdline: cmdline
-          cpu_max: 2.3021358869347655
-          node_name: node_name
-          memory_usage: 3
-          open_files_count: 2
-          threads: 1
-          pid: 4
-          cpu_usage: 7.061401241503109
-          node_id: node_id
-          ppid: 7
-        secret_scan_status: secret_scan_status
-        compliance_scan_status: compliance_scan_status
-        outbound_connections:
-        - count: 5
-          node_name: node_name
-          node_id: node_id
-        - count: 5
-          node_name: node_name
-          node_id: node_id
-        os: os
-        local_cidr:
-        - ""
-        - ""
         malware_latest_scan_id: malware_latest_scan_id
-        malwares_count: 2
-        node_name: node_name
-        cloud_provider: cloud_provider
-        agent_running: true
         version: version
-        uptime: 2
-        memory_max: 7
         instance_id: instance_id
         kernel_id: kernel_id
-        compliances_count: 6
-        kernel_version: kernel_version
         compliance_latest_scan_id: compliance_latest_scan_id
         containers:
         - vulnerabilities_count: 6
@@ -14442,6 +14858,76 @@ components:
           vulnerability_scan_status: vulnerability_scan_status
           host_name: host_name
           node_id: node_id
+        cpu_usage: 5.962133916683182
+        instance_type: instance_type
+        local_networks:
+        - ""
+        - ""
+        vulnerabilities_count: 7
+        secrets_count: 2
+        cloud_region: cloud_region
+        network_tracer_status_updated_at: 3
+        network_filter_status: network_filter_status
+        memory_usage: 9
+        private_ip:
+        - ""
+        - ""
+        resource_group: resource_group
+        malware_scan_status: malware_scan_status
+        filesystem_tracer_status: filesystem_tracer_status
+        inbound_connections:
+        - count: 5
+          node_name: node_name
+          node_id: node_id
+        - count: 5
+          node_name: node_name
+          node_id: node_id
+        availability_zone: availability_zone
+        is_console_vm: true
+        processes:
+        - memory_max: 9
+          cmdline: cmdline
+          cpu_max: 2.3021358869347655
+          node_name: node_name
+          memory_usage: 3
+          open_files_count: 2
+          threads: 1
+          pid: 4
+          cpu_usage: 7.061401241503109
+          node_id: node_id
+          ppid: 7
+        - memory_max: 9
+          cmdline: cmdline
+          cpu_max: 2.3021358869347655
+          node_name: node_name
+          memory_usage: 3
+          open_files_count: 2
+          threads: 1
+          pid: 4
+          cpu_usage: 7.061401241503109
+          node_id: node_id
+          ppid: 7
+        secret_scan_status: secret_scan_status
+        compliance_scan_status: compliance_scan_status
+        outbound_connections:
+        - count: 5
+          node_name: node_name
+          node_id: node_id
+        - count: 5
+          node_name: node_name
+          node_id: node_id
+        os: os
+        local_cidr:
+        - ""
+        - ""
+        malwares_count: 2
+        node_name: node_name
+        cloud_provider: cloud_provider
+        agent_running: true
+        uptime: 4
+        memory_max: 7
+        compliances_count: 6
+        kernel_version: kernel_version
         pods:
         - kubernetes_ip: kubernetes_ip
           processes:
@@ -14733,13 +15219,8 @@ components:
             node_id: node_id
           host_name: host_name
           node_id: node_id
-        cpu_usage: 5.962133916683182
-        instance_type: instance_type
         vulnerability_scan_status: vulnerability_scan_status
         host_name: host_name
-        local_networks:
-        - ""
-        - ""
         node_id: node_id
       properties:
         agent_running:
@@ -14777,6 +15258,8 @@ components:
           type: number
         cpu_usage:
           type: number
+        filesystem_tracer_status:
+          type: string
         host_name:
           type: string
         inbound_connections:
@@ -14811,6 +15294,12 @@ components:
         memory_max:
           type: integer
         memory_usage:
+          type: integer
+        network_filter_status:
+          type: string
+        network_tracer_status:
+          type: string
+        network_tracer_status_updated_at:
           type: integer
         node_id:
           type: string
@@ -14875,6 +15364,7 @@ components:
       - containers
       - cpu_max
       - cpu_usage
+      - filesystem_tracer_status
       - host_name
       - inbound_connections
       - instance_id
@@ -14889,6 +15379,9 @@ components:
       - malwares_count
       - memory_max
       - memory_usage
+      - network_filter_status
+      - network_tracer_status
+      - network_tracer_status_updated_at
       - node_id
       - node_name
       - os
@@ -15154,12 +15647,9 @@ components:
     ModelKubernetesCluster:
       example:
         hosts:
-        - vulnerabilities_count: 4
-          public_ip:
+        - public_ip:
           - ""
           - ""
-          secrets_count: 3
-          cloud_region: cloud_region
           container_images:
           - metadata:
               key: ""
@@ -15424,20 +15914,15 @@ components:
             - docker_image_tag_list
             node_id: node_id
           cpu_max: 1.4658129805029452
-          memory_usage: 9
           alerts_counts:
             key: 0
-          private_ip:
-          - ""
-          - ""
           secret_latest_scan_id: secret_latest_scan_id
           config_names:
             policy_config_name: policy_config_name
             filesystem_config_name: filesystem_config_name
             network_config_name: network_config_name
+          network_tracer_status: network_tracer_status
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
-          resource_group: resource_group
-          malware_scan_status: malware_scan_status
           plugin_status:
             network_tracer_status:
               description: description
@@ -15448,63 +15933,10 @@ components:
             filesystem_tracer_status:
               description: description
               status: status
-          inbound_connections:
-          - count: 5
-            node_name: node_name
-            node_id: node_id
-          - count: 5
-            node_name: node_name
-            node_id: node_id
-          availability_zone: availability_zone
-          is_console_vm: true
-          processes:
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
-            node_name: node_name
-            memory_usage: 3
-            open_files_count: 2
-            threads: 1
-            pid: 4
-            cpu_usage: 7.061401241503109
-            node_id: node_id
-            ppid: 7
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
-            node_name: node_name
-            memory_usage: 3
-            open_files_count: 2
-            threads: 1
-            pid: 4
-            cpu_usage: 7.061401241503109
-            node_id: node_id
-            ppid: 7
-          secret_scan_status: secret_scan_status
-          compliance_scan_status: compliance_scan_status
-          outbound_connections:
-          - count: 5
-            node_name: node_name
-            node_id: node_id
-          - count: 5
-            node_name: node_name
-            node_id: node_id
-          os: os
-          local_cidr:
-          - ""
-          - ""
           malware_latest_scan_id: malware_latest_scan_id
-          malwares_count: 2
-          node_name: node_name
-          cloud_provider: cloud_provider
-          agent_running: true
           version: version
-          uptime: 2
-          memory_max: 7
           instance_id: instance_id
           kernel_id: kernel_id
-          compliances_count: 6
-          kernel_version: kernel_version
           compliance_latest_scan_id: compliance_latest_scan_id
           containers:
           - vulnerabilities_count: 6
@@ -15615,6 +16047,76 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
+          cpu_usage: 5.962133916683182
+          instance_type: instance_type
+          local_networks:
+          - ""
+          - ""
+          vulnerabilities_count: 7
+          secrets_count: 2
+          cloud_region: cloud_region
+          network_tracer_status_updated_at: 3
+          network_filter_status: network_filter_status
+          memory_usage: 9
+          private_ip:
+          - ""
+          - ""
+          resource_group: resource_group
+          malware_scan_status: malware_scan_status
+          filesystem_tracer_status: filesystem_tracer_status
+          inbound_connections:
+          - count: 5
+            node_name: node_name
+            node_id: node_id
+          - count: 5
+            node_name: node_name
+            node_id: node_id
+          availability_zone: availability_zone
+          is_console_vm: true
+          processes:
+          - memory_max: 9
+            cmdline: cmdline
+            cpu_max: 2.3021358869347655
+            node_name: node_name
+            memory_usage: 3
+            open_files_count: 2
+            threads: 1
+            pid: 4
+            cpu_usage: 7.061401241503109
+            node_id: node_id
+            ppid: 7
+          - memory_max: 9
+            cmdline: cmdline
+            cpu_max: 2.3021358869347655
+            node_name: node_name
+            memory_usage: 3
+            open_files_count: 2
+            threads: 1
+            pid: 4
+            cpu_usage: 7.061401241503109
+            node_id: node_id
+            ppid: 7
+          secret_scan_status: secret_scan_status
+          compliance_scan_status: compliance_scan_status
+          outbound_connections:
+          - count: 5
+            node_name: node_name
+            node_id: node_id
+          - count: 5
+            node_name: node_name
+            node_id: node_id
+          os: os
+          local_cidr:
+          - ""
+          - ""
+          malwares_count: 2
+          node_name: node_name
+          cloud_provider: cloud_provider
+          agent_running: true
+          uptime: 4
+          memory_max: 7
+          compliances_count: 6
+          kernel_version: kernel_version
           pods:
           - kubernetes_ip: kubernetes_ip
             processes:
@@ -15906,20 +16408,12 @@ components:
               node_id: node_id
             host_name: host_name
             node_id: node_id
-          cpu_usage: 5.962133916683182
-          instance_type: instance_type
           vulnerability_scan_status: vulnerability_scan_status
           host_name: host_name
-          local_networks:
-          - ""
-          - ""
           node_id: node_id
-        - vulnerabilities_count: 4
-          public_ip:
+        - public_ip:
           - ""
           - ""
-          secrets_count: 3
-          cloud_region: cloud_region
           container_images:
           - metadata:
               key: ""
@@ -16184,20 +16678,15 @@ components:
             - docker_image_tag_list
             node_id: node_id
           cpu_max: 1.4658129805029452
-          memory_usage: 9
           alerts_counts:
             key: 0
-          private_ip:
-          - ""
-          - ""
           secret_latest_scan_id: secret_latest_scan_id
           config_names:
             policy_config_name: policy_config_name
             filesystem_config_name: filesystem_config_name
             network_config_name: network_config_name
+          network_tracer_status: network_tracer_status
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
-          resource_group: resource_group
-          malware_scan_status: malware_scan_status
           plugin_status:
             network_tracer_status:
               description: description
@@ -16208,63 +16697,10 @@ components:
             filesystem_tracer_status:
               description: description
               status: status
-          inbound_connections:
-          - count: 5
-            node_name: node_name
-            node_id: node_id
-          - count: 5
-            node_name: node_name
-            node_id: node_id
-          availability_zone: availability_zone
-          is_console_vm: true
-          processes:
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
-            node_name: node_name
-            memory_usage: 3
-            open_files_count: 2
-            threads: 1
-            pid: 4
-            cpu_usage: 7.061401241503109
-            node_id: node_id
-            ppid: 7
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
-            node_name: node_name
-            memory_usage: 3
-            open_files_count: 2
-            threads: 1
-            pid: 4
-            cpu_usage: 7.061401241503109
-            node_id: node_id
-            ppid: 7
-          secret_scan_status: secret_scan_status
-          compliance_scan_status: compliance_scan_status
-          outbound_connections:
-          - count: 5
-            node_name: node_name
-            node_id: node_id
-          - count: 5
-            node_name: node_name
-            node_id: node_id
-          os: os
-          local_cidr:
-          - ""
-          - ""
           malware_latest_scan_id: malware_latest_scan_id
-          malwares_count: 2
-          node_name: node_name
-          cloud_provider: cloud_provider
-          agent_running: true
           version: version
-          uptime: 2
-          memory_max: 7
           instance_id: instance_id
           kernel_id: kernel_id
-          compliances_count: 6
-          kernel_version: kernel_version
           compliance_latest_scan_id: compliance_latest_scan_id
           containers:
           - vulnerabilities_count: 6
@@ -16375,6 +16811,76 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
+          cpu_usage: 5.962133916683182
+          instance_type: instance_type
+          local_networks:
+          - ""
+          - ""
+          vulnerabilities_count: 7
+          secrets_count: 2
+          cloud_region: cloud_region
+          network_tracer_status_updated_at: 3
+          network_filter_status: network_filter_status
+          memory_usage: 9
+          private_ip:
+          - ""
+          - ""
+          resource_group: resource_group
+          malware_scan_status: malware_scan_status
+          filesystem_tracer_status: filesystem_tracer_status
+          inbound_connections:
+          - count: 5
+            node_name: node_name
+            node_id: node_id
+          - count: 5
+            node_name: node_name
+            node_id: node_id
+          availability_zone: availability_zone
+          is_console_vm: true
+          processes:
+          - memory_max: 9
+            cmdline: cmdline
+            cpu_max: 2.3021358869347655
+            node_name: node_name
+            memory_usage: 3
+            open_files_count: 2
+            threads: 1
+            pid: 4
+            cpu_usage: 7.061401241503109
+            node_id: node_id
+            ppid: 7
+          - memory_max: 9
+            cmdline: cmdline
+            cpu_max: 2.3021358869347655
+            node_name: node_name
+            memory_usage: 3
+            open_files_count: 2
+            threads: 1
+            pid: 4
+            cpu_usage: 7.061401241503109
+            node_id: node_id
+            ppid: 7
+          secret_scan_status: secret_scan_status
+          compliance_scan_status: compliance_scan_status
+          outbound_connections:
+          - count: 5
+            node_name: node_name
+            node_id: node_id
+          - count: 5
+            node_name: node_name
+            node_id: node_id
+          os: os
+          local_cidr:
+          - ""
+          - ""
+          malwares_count: 2
+          node_name: node_name
+          cloud_provider: cloud_provider
+          agent_running: true
+          uptime: 4
+          memory_max: 7
+          compliances_count: 6
+          kernel_version: kernel_version
           pods:
           - kubernetes_ip: kubernetes_ip
             processes:
@@ -16666,13 +17172,8 @@ components:
               node_id: node_id
             host_name: host_name
             node_id: node_id
-          cpu_usage: 5.962133916683182
-          instance_type: instance_type
           vulnerability_scan_status: vulnerability_scan_status
           host_name: host_name
-          local_networks:
-          - ""
-          - ""
           node_id: node_id
         node_name: node_name
         agent_running: true
@@ -17362,21 +17863,37 @@ components:
     ModelNetworkViolation:
       example:
         severity: severity
-        policy_id: policy_id
-        executed_at: executed_at
-        remote_port: 6
+        executed_at: 6
+        local_port: 1
+        policy_index: 5
+        remote_port: 2
         created_at: 0
+        node_policy_type: node_policy_type
+        type: type
+        ttl: 9
         source_ip: source_ip
+        local_ip: local_ip
         remote_ip: remote_ip
-        source_port: 1
+        config_id: config_id
+        port: 5
+        alert_id: alert_id
+        source_port: 7
         action: action
+        block_ip: block_ip
         pod_id: pod_id
+        packet_direction: packet_direction
         container_id: container_id
         host_name: host_name
         direction: direction
         node_id: node_id
       properties:
         action:
+          type: string
+        alert_id:
+          type: string
+        block_ip:
+          type: string
+        config_id:
           type: string
         container_id:
           type: string
@@ -17385,15 +17902,25 @@ components:
         direction:
           type: string
         executed_at:
-          type: string
+          type: integer
         host_name:
           type: string
+        local_ip:
+          type: string
+        local_port:
+          type: integer
         node_id:
+          type: string
+        node_policy_type:
+          type: string
+        packet_direction:
           type: string
         pod_id:
           type: string
-        policy_id:
-          type: string
+        policy_index:
+          type: integer
+        port:
+          type: integer
         remote_ip:
           type: string
         remote_port:
@@ -17404,21 +17931,35 @@ components:
           type: string
         source_port:
           type: integer
+        ttl:
+          type: integer
+        type:
+          type: string
       required:
       - action
+      - alert_id
+      - block_ip
+      - config_id
       - container_id
       - created_at
       - direction
       - executed_at
       - host_name
+      - local_ip
+      - local_port
       - node_id
+      - node_policy_type
+      - packet_direction
       - pod_id
-      - policy_id
+      - policy_index
+      - port
       - remote_ip
       - remote_port
       - severity
       - source_ip
       - source_port
+      - ttl
+      - type
       type: object
     ModelNodeIdentifier:
       example:
@@ -17785,6 +18326,63 @@ components:
       - pid
       - ppid
       - threads
+      type: object
+    ModelQuarantineViolation:
+      example:
+        severity: severity
+        executed_at: 6
+        policy_index: 1
+        created_at: 0
+        type: type
+        ttl: 5
+        config_id: config_id
+        alert_id: alert_id
+        action: action
+        pod_id: pod_id
+        container_id: container_id
+        host_name: host_name
+        node_id: node_id
+      properties:
+        action:
+          type: string
+        alert_id:
+          type: string
+        config_id:
+          type: string
+        container_id:
+          type: string
+        created_at:
+          type: integer
+        executed_at:
+          type: integer
+        host_name:
+          type: string
+        node_id:
+          type: string
+        pod_id:
+          type: string
+        policy_index:
+          type: integer
+        severity:
+          type: string
+        ttl:
+          type: integer
+        type:
+          type: string
+      required:
+      - action
+      - alert_id
+      - config_id
+      - container_id
+      - created_at
+      - executed_at
+      - host_name
+      - node_id
+      - pod_id
+      - policy_index
+      - severity
+      - ttl
+      - type
       type: object
     ModelRegisterInvitedUserRequest:
       example:
@@ -19299,6 +19897,7 @@ components:
         cve_caused_by_package: cve_caused_by_package
         cve_attack_vector: cve_attack_vector
         cve_cvss_score: 0.8008281904610115
+        rule_id: rule_id
         urls:
         - ""
         - ""
@@ -19352,6 +19951,8 @@ components:
             type: string
           nullable: true
           type: array
+        rule_id:
+          type: string
         updated_at:
           type: integer
         urls:
@@ -19376,6 +19977,7 @@ components:
       - masked
       - node_id
       - parsed_attack_vector
+      - rule_id
       - updated_at
       - urls
       type: object
@@ -19498,6 +20100,7 @@ components:
           cve_caused_by_package: cve_caused_by_package
           cve_attack_vector: cve_attack_vector
           cve_cvss_score: 0.8008281904610115
+          rule_id: rule_id
           urls:
           - ""
           - ""
@@ -19522,6 +20125,7 @@ components:
           cve_caused_by_package: cve_caused_by_package
           cve_attack_vector: cve_attack_vector
           cve_cvss_score: 0.8008281904610115
+          rule_id: rule_id
           urls:
           - ""
           - ""
@@ -19735,6 +20339,9 @@ components:
         version: version
         pod_name: pod_name
         ppid: 9
+        tags:
+        - tags
+        - tags
         docker_container_ports: docker_container_ports
         kubernetes_is_in_host_network: true
         instance_id: instance_id
@@ -19953,6 +20560,10 @@ components:
           type: array
         resource_group:
           type: string
+        tags:
+          items:
+            type: string
+          type: array
         threads:
           type: integer
         timestamp:
@@ -20603,6 +21214,7 @@ components:
         disable_password_login: true
         client_secret: client_secret
         client_id: client_id
+        host_name: host_name
       properties:
         client_id:
           type: string
@@ -20610,6 +21222,8 @@ components:
           type: string
         disable_password_login:
           type: boolean
+        host_name:
+          type: string
         issuer_url:
           type: string
         sso_provider_type:
@@ -20821,6 +21435,7 @@ components:
           - malware
           - compliance
           - cloud_compliance
+          - alert
           type: string
         severity_or_check_type:
           enum:

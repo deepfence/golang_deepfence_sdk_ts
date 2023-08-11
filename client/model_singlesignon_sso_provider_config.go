@@ -23,6 +23,7 @@ type SinglesignonSSOProviderConfig struct {
 	ClientId string `json:"client_id"`
 	ClientSecret string `json:"client_secret"`
 	DisablePasswordLogin bool `json:"disable_password_login"`
+	HostName *string `json:"host_name,omitempty"`
 	IssuerUrl *string `json:"issuer_url,omitempty"`
 	SsoProviderType string `json:"sso_provider_type"`
 }
@@ -120,6 +121,38 @@ func (o *SinglesignonSSOProviderConfig) SetDisablePasswordLogin(v bool) {
 	o.DisablePasswordLogin = v
 }
 
+// GetHostName returns the HostName field value if set, zero value otherwise.
+func (o *SinglesignonSSOProviderConfig) GetHostName() string {
+	if o == nil || IsNil(o.HostName) {
+		var ret string
+		return ret
+	}
+	return *o.HostName
+}
+
+// GetHostNameOk returns a tuple with the HostName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SinglesignonSSOProviderConfig) GetHostNameOk() (*string, bool) {
+	if o == nil || IsNil(o.HostName) {
+		return nil, false
+	}
+	return o.HostName, true
+}
+
+// HasHostName returns a boolean if a field has been set.
+func (o *SinglesignonSSOProviderConfig) HasHostName() bool {
+	if o != nil && !IsNil(o.HostName) {
+		return true
+	}
+
+	return false
+}
+
+// SetHostName gets a reference to the given string and assigns it to the HostName field.
+func (o *SinglesignonSSOProviderConfig) SetHostName(v string) {
+	o.HostName = &v
+}
+
 // GetIssuerUrl returns the IssuerUrl field value if set, zero value otherwise.
 func (o *SinglesignonSSOProviderConfig) GetIssuerUrl() string {
 	if o == nil || IsNil(o.IssuerUrl) {
@@ -189,6 +222,9 @@ func (o SinglesignonSSOProviderConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize["client_id"] = o.ClientId
 	toSerialize["client_secret"] = o.ClientSecret
 	toSerialize["disable_password_login"] = o.DisablePasswordLogin
+	if !IsNil(o.HostName) {
+		toSerialize["host_name"] = o.HostName
+	}
 	if !IsNil(o.IssuerUrl) {
 		toSerialize["issuer_url"] = o.IssuerUrl
 	}

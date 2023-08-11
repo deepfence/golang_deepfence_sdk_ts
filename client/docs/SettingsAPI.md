@@ -5,13 +5,17 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddEmailConfiguration**](SettingsAPI.md#AddEmailConfiguration) | **Post** /deepfence/settings/email | Add Email Configuration
+[**AddScheduledTask**](SettingsAPI.md#AddScheduledTask) | **Post** /deepfence/scheduled-task | Add scheduled task
+[**DeleteCloudWafConfiguration**](SettingsAPI.md#DeleteCloudWafConfiguration) | **Delete** /deepfence/settings/cloud-waf | Delete Cloud WAF Configuration
 [**DeleteEmailConfiguration**](SettingsAPI.md#DeleteEmailConfiguration) | **Delete** /deepfence/settings/email/{config_id} | Delete Email Configurations
+[**GetCloudWafConfiguration**](SettingsAPI.md#GetCloudWafConfiguration) | **Get** /deepfence/settings/cloud-waf | Get Cloud WAF Configuration
 [**GetEmailConfiguration**](SettingsAPI.md#GetEmailConfiguration) | **Get** /deepfence/settings/email | Get Email Configurations
 [**GetLicense**](SettingsAPI.md#GetLicense) | **Get** /deepfence/license | Get License Details
 [**GetScheduledTasks**](SettingsAPI.md#GetScheduledTasks) | **Get** /deepfence/scheduled-task | Get scheduled tasks
 [**GetSettings**](SettingsAPI.md#GetSettings) | **Get** /deepfence/settings/global-settings | Get settings
 [**GetUserActivityLogs**](SettingsAPI.md#GetUserActivityLogs) | **Get** /deepfence/settings/user-activity-log | Get activity logs
 [**RegisterLicense**](SettingsAPI.md#RegisterLicense) | **Post** /deepfence/license | Register License
+[**SetCloudWafConfiguration**](SettingsAPI.md#SetCloudWafConfiguration) | **Post** /deepfence/settings/cloud-waf | Set Cloud WAF Configuration
 [**UpdateNotificationThreshold**](SettingsAPI.md#UpdateNotificationThreshold) | **Post** /deepfence/license/notification-threshold | Update Notification Threshold
 [**UpdateScheduledTask**](SettingsAPI.md#UpdateScheduledTask) | **Patch** /deepfence/scheduled-task/{id} | Update scheduled task
 [**UpdateSetting**](SettingsAPI.md#UpdateSetting) | **Patch** /deepfence/settings/global-settings/{id} | Update setting
@@ -85,6 +89,129 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## AddScheduledTask
+
+> AddScheduledTask(ctx).ModelAddScheduledTaskRequest(modelAddScheduledTaskRequest).Execute()
+
+Add scheduled task
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    modelAddScheduledTaskRequest := *openapiclient.NewModelAddScheduledTaskRequest() // ModelAddScheduledTaskRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.SettingsAPI.AddScheduledTask(context.Background()).ModelAddScheduledTaskRequest(modelAddScheduledTaskRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.AddScheduledTask``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAddScheduledTaskRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **modelAddScheduledTaskRequest** | [**ModelAddScheduledTaskRequest**](ModelAddScheduledTaskRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteCloudWafConfiguration
+
+> DeleteCloudWafConfiguration(ctx).Execute()
+
+Delete Cloud WAF Configuration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.SettingsAPI.DeleteCloudWafConfiguration(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.DeleteCloudWafConfiguration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteCloudWafConfigurationRequest struct via the builder pattern
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeleteEmailConfiguration
 
 > DeleteEmailConfiguration(ctx, configId).Execute()
@@ -138,6 +265,67 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetCloudWafConfiguration
+
+> ModelCloudWafConfig GetCloudWafConfiguration(ctx).Execute()
+
+Get Cloud WAF Configuration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SettingsAPI.GetCloudWafConfiguration(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.GetCloudWafConfiguration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetCloudWafConfiguration`: ModelCloudWafConfig
+    fmt.Fprintf(os.Stdout, "Response from `SettingsAPI.GetCloudWafConfiguration`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetCloudWafConfigurationRequest struct via the builder pattern
+
+
+### Return type
+
+[**ModelCloudWafConfig**](ModelCloudWafConfig.md)
 
 ### Authorization
 
@@ -503,6 +691,70 @@ Other parameters are passed through a pointer to a apiRegisterLicenseRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **modelRegisterLicenseRequest** | [**ModelRegisterLicenseRequest**](ModelRegisterLicenseRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetCloudWafConfiguration
+
+> SetCloudWafConfiguration(ctx).ModelCloudWafConfig(modelCloudWafConfig).Execute()
+
+Set Cloud WAF Configuration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    modelCloudWafConfig := *openapiclient.NewModelCloudWafConfig([]openapiclient.ModelAWSWafARN{*openapiclient.NewModelAWSWafARN("Arn_example", "Region_example")}, "CloudProvider_example") // ModelCloudWafConfig |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.SettingsAPI.SetCloudWafConfiguration(context.Background()).ModelCloudWafConfig(modelCloudWafConfig).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.SetCloudWafConfiguration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetCloudWafConfigurationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **modelCloudWafConfig** | [**ModelCloudWafConfig**](ModelCloudWafConfig.md) |  | 
 
 ### Return type
 

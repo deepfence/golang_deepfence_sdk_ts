@@ -30,6 +30,7 @@ type ModelCompliance struct {
 	RemediationScript string `json:"remediation_script"`
 	Resource string `json:"resource"`
 	Resources []string `json:"resources,omitempty"`
+	RuleId string `json:"rule_id"`
 	Status string `json:"status"`
 	TestCategory string `json:"test_category"`
 	TestDesc string `json:"test_desc"`
@@ -43,7 +44,7 @@ type ModelCompliance struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelCompliance(complianceCheckType string, description string, masked bool, nodeId string, nodeType string, remediationAnsible string, remediationPuppet string, remediationScript string, resource string, status string, testCategory string, testDesc string, testNumber string, testRationale string, testSeverity string, updatedAt int32) *ModelCompliance {
+func NewModelCompliance(complianceCheckType string, description string, masked bool, nodeId string, nodeType string, remediationAnsible string, remediationPuppet string, remediationScript string, resource string, ruleId string, status string, testCategory string, testDesc string, testNumber string, testRationale string, testSeverity string, updatedAt int32) *ModelCompliance {
 	this := ModelCompliance{}
 	this.ComplianceCheckType = complianceCheckType
 	this.Description = description
@@ -54,6 +55,7 @@ func NewModelCompliance(complianceCheckType string, description string, masked b
 	this.RemediationPuppet = remediationPuppet
 	this.RemediationScript = remediationScript
 	this.Resource = resource
+	this.RuleId = ruleId
 	this.Status = status
 	this.TestCategory = testCategory
 	this.TestDesc = testDesc
@@ -321,6 +323,30 @@ func (o *ModelCompliance) SetResources(v []string) {
 	o.Resources = v
 }
 
+// GetRuleId returns the RuleId field value
+func (o *ModelCompliance) GetRuleId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.RuleId
+}
+
+// GetRuleIdOk returns a tuple with the RuleId field value
+// and a boolean to check if the value has been set.
+func (o *ModelCompliance) GetRuleIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RuleId, true
+}
+
+// SetRuleId sets field value
+func (o *ModelCompliance) SetRuleId(v string) {
+	o.RuleId = v
+}
+
 // GetStatus returns the Status field value
 func (o *ModelCompliance) GetStatus() string {
 	if o == nil {
@@ -511,6 +537,7 @@ func (o ModelCompliance) ToMap() (map[string]interface{}, error) {
 	if o.Resources != nil {
 		toSerialize["resources"] = o.Resources
 	}
+	toSerialize["rule_id"] = o.RuleId
 	toSerialize["status"] = o.Status
 	toSerialize["test_category"] = o.TestCategory
 	toSerialize["test_desc"] = o.TestDesc

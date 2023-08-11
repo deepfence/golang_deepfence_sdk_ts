@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearer_token](../README.md#bearer_token)
 
 ### HTTP request headers
 
@@ -94,7 +94,7 @@ import (
 )
 
 func main() {
-    modelEnableNetworkTracerReq := *openapiclient.NewModelEnableNetworkTracerReq([]openapiclient.ModelAgentId{*openapiclient.NewModelAgentId(int32(123), "NodeId_example")}, *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"})) // ModelEnableNetworkTracerReq |  (optional)
+    modelEnableNetworkTracerReq := *openapiclient.NewModelEnableNetworkTracerReq([]openapiclient.ModelAgentId{*openapiclient.NewModelAgentId(int32(123), "NodeId_example")}) // ModelEnableNetworkTracerReq |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearer_token](../README.md#bearer_token)
 
 ### HTTP request headers
 

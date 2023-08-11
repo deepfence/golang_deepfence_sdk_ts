@@ -20,53 +20,53 @@ import (
 )
 
 
-// CloudResourcesAPIService CloudResourcesAPI service
-type CloudResourcesAPIService service
+// ViolationsAPIService ViolationsAPI service
+type ViolationsAPIService service
 
-type ApiIngestCloudResourcesRequest struct {
+type ApiDeleteNetworkViolationsRequest struct {
 	ctx context.Context
-	ApiService *CloudResourcesAPIService
-	ingestersCloudResource *[]IngestersCloudResource
+	ApiService *ViolationsAPIService
+	modelDeleteFilter *ModelDeleteFilter
 }
 
-func (r ApiIngestCloudResourcesRequest) IngestersCloudResource(ingestersCloudResource []IngestersCloudResource) ApiIngestCloudResourcesRequest {
-	r.ingestersCloudResource = &ingestersCloudResource
+func (r ApiDeleteNetworkViolationsRequest) ModelDeleteFilter(modelDeleteFilter ModelDeleteFilter) ApiDeleteNetworkViolationsRequest {
+	r.modelDeleteFilter = &modelDeleteFilter
 	return r
 }
 
-func (r ApiIngestCloudResourcesRequest) Execute() (*http.Response, error) {
-	return r.ApiService.IngestCloudResourcesExecute(r)
+func (r ApiDeleteNetworkViolationsRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteNetworkViolationsExecute(r)
 }
 
 /*
-IngestCloudResources Ingest Cloud resources
+DeleteNetworkViolations Remove network violations
 
-Ingest Clouds Resources found while scanning cloud provider
+Remove network violations
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiIngestCloudResourcesRequest
+ @return ApiDeleteNetworkViolationsRequest
 */
-func (a *CloudResourcesAPIService) IngestCloudResources(ctx context.Context) ApiIngestCloudResourcesRequest {
-	return ApiIngestCloudResourcesRequest{
+func (a *ViolationsAPIService) DeleteNetworkViolations(ctx context.Context) ApiDeleteNetworkViolationsRequest {
+	return ApiDeleteNetworkViolationsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *CloudResourcesAPIService) IngestCloudResourcesExecute(r ApiIngestCloudResourcesRequest) (*http.Response, error) {
+func (a *ViolationsAPIService) DeleteNetworkViolationsExecute(r ApiDeleteNetworkViolationsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudResourcesAPIService.IngestCloudResources")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ViolationsAPIService.DeleteNetworkViolations")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/deepfence/ingest/cloud-resources"
+	localVarPath := localBasePath + "/deepfence/remove/network-violations"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -90,7 +90,7 @@ func (a *CloudResourcesAPIService) IngestCloudResourcesExecute(r ApiIngestCloudR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.ingestersCloudResource
+	localVarPostBody = r.modelDeleteFilter
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -151,50 +151,50 @@ func (a *CloudResourcesAPIService) IngestCloudResourcesExecute(r ApiIngestCloudR
 	return localVarHTTPResponse, nil
 }
 
-type ApiIngestWAFRulesRequest struct {
+type ApiDeleteQuarantineViolationsRequest struct {
 	ctx context.Context
-	ApiService *CloudResourcesAPIService
-	ingestersWAFRule *[]IngestersWAFRule
+	ApiService *ViolationsAPIService
+	modelDeleteFilter *ModelDeleteFilter
 }
 
-func (r ApiIngestWAFRulesRequest) IngestersWAFRule(ingestersWAFRule []IngestersWAFRule) ApiIngestWAFRulesRequest {
-	r.ingestersWAFRule = &ingestersWAFRule
+func (r ApiDeleteQuarantineViolationsRequest) ModelDeleteFilter(modelDeleteFilter ModelDeleteFilter) ApiDeleteQuarantineViolationsRequest {
+	r.modelDeleteFilter = &modelDeleteFilter
 	return r
 }
 
-func (r ApiIngestWAFRulesRequest) Execute() (*http.Response, error) {
-	return r.ApiService.IngestWAFRulesExecute(r)
+func (r ApiDeleteQuarantineViolationsRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteQuarantineViolationsExecute(r)
 }
 
 /*
-IngestWAFRules Ingest WAF Rules
+DeleteQuarantineViolations Remove quarantine violations
 
-Ingest WAF rules to be applied from console
+Remove quarantine violations
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiIngestWAFRulesRequest
+ @return ApiDeleteQuarantineViolationsRequest
 */
-func (a *CloudResourcesAPIService) IngestWAFRules(ctx context.Context) ApiIngestWAFRulesRequest {
-	return ApiIngestWAFRulesRequest{
+func (a *ViolationsAPIService) DeleteQuarantineViolations(ctx context.Context) ApiDeleteQuarantineViolationsRequest {
+	return ApiDeleteQuarantineViolationsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *CloudResourcesAPIService) IngestWAFRulesExecute(r ApiIngestWAFRulesRequest) (*http.Response, error) {
+func (a *ViolationsAPIService) DeleteQuarantineViolationsExecute(r ApiDeleteQuarantineViolationsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudResourcesAPIService.IngestWAFRules")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ViolationsAPIService.DeleteQuarantineViolations")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/deepfence/ingest/waf-rules"
+	localVarPath := localBasePath + "/deepfence/remove/quarantine-violations"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -218,7 +218,7 @@ func (a *CloudResourcesAPIService) IngestWAFRulesExecute(r ApiIngestWAFRulesRequ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.ingestersWAFRule
+	localVarPostBody = r.modelDeleteFilter
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

@@ -26,13 +26,14 @@ type ControlsNetworkTracerConfig struct {
 	NodeId string `json:"node_id"`
 	ProcessNames []string `json:"process_names"`
 	TcpRules ControlsNetworkRules `json:"tcp_rules"`
+	UpdatedAt int32 `json:"updated_at"`
 }
 
 // NewControlsNetworkTracerConfig instantiates a new ControlsNetworkTracerConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsNetworkTracerConfig(httpRules ControlsNetworkRules, httpsRules ControlsNetworkRules, mode string, nodeId string, processNames []string, tcpRules ControlsNetworkRules) *ControlsNetworkTracerConfig {
+func NewControlsNetworkTracerConfig(httpRules ControlsNetworkRules, httpsRules ControlsNetworkRules, mode string, nodeId string, processNames []string, tcpRules ControlsNetworkRules, updatedAt int32) *ControlsNetworkTracerConfig {
 	this := ControlsNetworkTracerConfig{}
 	this.HttpRules = httpRules
 	this.HttpsRules = httpsRules
@@ -40,6 +41,7 @@ func NewControlsNetworkTracerConfig(httpRules ControlsNetworkRules, httpsRules C
 	this.NodeId = nodeId
 	this.ProcessNames = processNames
 	this.TcpRules = tcpRules
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -197,6 +199,30 @@ func (o *ControlsNetworkTracerConfig) SetTcpRules(v ControlsNetworkRules) {
 	o.TcpRules = v
 }
 
+// GetUpdatedAt returns the UpdatedAt field value
+func (o *ControlsNetworkTracerConfig) GetUpdatedAt() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
+// and a boolean to check if the value has been set.
+func (o *ControlsNetworkTracerConfig) GetUpdatedAtOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UpdatedAt, true
+}
+
+// SetUpdatedAt sets field value
+func (o *ControlsNetworkTracerConfig) SetUpdatedAt(v int32) {
+	o.UpdatedAt = v
+}
+
 func (o ControlsNetworkTracerConfig) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -215,6 +241,7 @@ func (o ControlsNetworkTracerConfig) ToMap() (map[string]interface{}, error) {
 		toSerialize["process_names"] = o.ProcessNames
 	}
 	toSerialize["tcp_rules"] = o.TcpRules
+	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil
 }
 

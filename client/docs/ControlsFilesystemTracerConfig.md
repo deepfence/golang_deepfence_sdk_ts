@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 **MonitoredFiles** | [**[]ControlsMonitoredFilesConfig**](ControlsMonitoredFilesConfig.md) |  | 
 **NodeId** | **string** |  | 
 **ProcessEvents** | [**[]ControlsProcessEventConfig**](ControlsProcessEventConfig.md) |  | 
+**UpdatedAt** | **int32** |  | 
 
 ## Methods
 
 ### NewControlsFilesystemTracerConfig
 
-`func NewControlsFilesystemTracerConfig(monitoredFiles []ControlsMonitoredFilesConfig, nodeId string, processEvents []ControlsProcessEventConfig, ) *ControlsFilesystemTracerConfig`
+`func NewControlsFilesystemTracerConfig(monitoredFiles []ControlsMonitoredFilesConfig, nodeId string, processEvents []ControlsProcessEventConfig, updatedAt int32, ) *ControlsFilesystemTracerConfig`
 
 NewControlsFilesystemTracerConfig instantiates a new ControlsFilesystemTracerConfig object
 This constructor will assign default values to properties that have it defined,
@@ -107,6 +108,26 @@ SetProcessEvents sets ProcessEvents field to given value.
 `func (o *ControlsFilesystemTracerConfig) UnsetProcessEvents()`
 
 UnsetProcessEvents ensures that no value is present for ProcessEvents, not even an explicit nil
+### GetUpdatedAt
+
+`func (o *ControlsFilesystemTracerConfig) GetUpdatedAt() int32`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *ControlsFilesystemTracerConfig) GetUpdatedAtOk() (*int32, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *ControlsFilesystemTracerConfig) SetUpdatedAt(v int32)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

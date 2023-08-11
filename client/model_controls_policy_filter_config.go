@@ -20,8 +20,10 @@ var _ MappedNullable = &ControlsPolicyFilterConfig{}
 
 // ControlsPolicyFilterConfig struct for ControlsPolicyFilterConfig
 type ControlsPolicyFilterConfig struct {
+	IgnoredRemoteIps []string `json:"ignored_remote_ips"`
 	NodeId string `json:"node_id"`
-	Policies []ControlsPolicy `json:"policies"`
+	Policies []ControlsNetworkPolicy `json:"policies"`
+	UpdatedAt int32 `json:"updated_at"`
 	UseWaf bool `json:"use_waf"`
 }
 
@@ -29,10 +31,12 @@ type ControlsPolicyFilterConfig struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsPolicyFilterConfig(nodeId string, policies []ControlsPolicy, useWaf bool) *ControlsPolicyFilterConfig {
+func NewControlsPolicyFilterConfig(ignoredRemoteIps []string, nodeId string, policies []ControlsNetworkPolicy, updatedAt int32, useWaf bool) *ControlsPolicyFilterConfig {
 	this := ControlsPolicyFilterConfig{}
+	this.IgnoredRemoteIps = ignoredRemoteIps
 	this.NodeId = nodeId
 	this.Policies = policies
+	this.UpdatedAt = updatedAt
 	this.UseWaf = useWaf
 	return &this
 }
@@ -43,6 +47,32 @@ func NewControlsPolicyFilterConfig(nodeId string, policies []ControlsPolicy, use
 func NewControlsPolicyFilterConfigWithDefaults() *ControlsPolicyFilterConfig {
 	this := ControlsPolicyFilterConfig{}
 	return &this
+}
+
+// GetIgnoredRemoteIps returns the IgnoredRemoteIps field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ControlsPolicyFilterConfig) GetIgnoredRemoteIps() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.IgnoredRemoteIps
+}
+
+// GetIgnoredRemoteIpsOk returns a tuple with the IgnoredRemoteIps field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ControlsPolicyFilterConfig) GetIgnoredRemoteIpsOk() ([]string, bool) {
+	if o == nil || IsNil(o.IgnoredRemoteIps) {
+		return nil, false
+	}
+	return o.IgnoredRemoteIps, true
+}
+
+// SetIgnoredRemoteIps sets field value
+func (o *ControlsPolicyFilterConfig) SetIgnoredRemoteIps(v []string) {
+	o.IgnoredRemoteIps = v
 }
 
 // GetNodeId returns the NodeId field value
@@ -70,10 +100,10 @@ func (o *ControlsPolicyFilterConfig) SetNodeId(v string) {
 }
 
 // GetPolicies returns the Policies field value
-// If the value is explicit nil, the zero value for []ControlsPolicy will be returned
-func (o *ControlsPolicyFilterConfig) GetPolicies() []ControlsPolicy {
+// If the value is explicit nil, the zero value for []ControlsNetworkPolicy will be returned
+func (o *ControlsPolicyFilterConfig) GetPolicies() []ControlsNetworkPolicy {
 	if o == nil {
-		var ret []ControlsPolicy
+		var ret []ControlsNetworkPolicy
 		return ret
 	}
 
@@ -83,7 +113,7 @@ func (o *ControlsPolicyFilterConfig) GetPolicies() []ControlsPolicy {
 // GetPoliciesOk returns a tuple with the Policies field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ControlsPolicyFilterConfig) GetPoliciesOk() ([]ControlsPolicy, bool) {
+func (o *ControlsPolicyFilterConfig) GetPoliciesOk() ([]ControlsNetworkPolicy, bool) {
 	if o == nil || IsNil(o.Policies) {
 		return nil, false
 	}
@@ -91,8 +121,32 @@ func (o *ControlsPolicyFilterConfig) GetPoliciesOk() ([]ControlsPolicy, bool) {
 }
 
 // SetPolicies sets field value
-func (o *ControlsPolicyFilterConfig) SetPolicies(v []ControlsPolicy) {
+func (o *ControlsPolicyFilterConfig) SetPolicies(v []ControlsNetworkPolicy) {
 	o.Policies = v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value
+func (o *ControlsPolicyFilterConfig) GetUpdatedAt() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
+// and a boolean to check if the value has been set.
+func (o *ControlsPolicyFilterConfig) GetUpdatedAtOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UpdatedAt, true
+}
+
+// SetUpdatedAt sets field value
+func (o *ControlsPolicyFilterConfig) SetUpdatedAt(v int32) {
+	o.UpdatedAt = v
 }
 
 // GetUseWaf returns the UseWaf field value
@@ -129,10 +183,14 @@ func (o ControlsPolicyFilterConfig) MarshalJSON() ([]byte, error) {
 
 func (o ControlsPolicyFilterConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.IgnoredRemoteIps != nil {
+		toSerialize["ignored_remote_ips"] = o.IgnoredRemoteIps
+	}
 	toSerialize["node_id"] = o.NodeId
 	if o.Policies != nil {
 		toSerialize["policies"] = o.Policies
 	}
+	toSerialize["updated_at"] = o.UpdatedAt
 	toSerialize["use_waf"] = o.UseWaf
 	return toSerialize, nil
 }

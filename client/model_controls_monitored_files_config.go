@@ -22,18 +22,18 @@ var _ MappedNullable = &ControlsMonitoredFilesConfig{}
 type ControlsMonitoredFilesConfig struct {
 	AccessTypes []string `json:"access_types"`
 	Path string `json:"path"`
-	Wight string `json:"wight"`
+	Weight string `json:"weight"`
 }
 
 // NewControlsMonitoredFilesConfig instantiates a new ControlsMonitoredFilesConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsMonitoredFilesConfig(accessTypes []string, path string, wight string) *ControlsMonitoredFilesConfig {
+func NewControlsMonitoredFilesConfig(accessTypes []string, path string, weight string) *ControlsMonitoredFilesConfig {
 	this := ControlsMonitoredFilesConfig{}
 	this.AccessTypes = accessTypes
 	this.Path = path
-	this.Wight = wight
+	this.Weight = weight
 	return &this
 }
 
@@ -95,28 +95,28 @@ func (o *ControlsMonitoredFilesConfig) SetPath(v string) {
 	o.Path = v
 }
 
-// GetWight returns the Wight field value
-func (o *ControlsMonitoredFilesConfig) GetWight() string {
+// GetWeight returns the Weight field value
+func (o *ControlsMonitoredFilesConfig) GetWeight() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Wight
+	return o.Weight
 }
 
-// GetWightOk returns a tuple with the Wight field value
+// GetWeightOk returns a tuple with the Weight field value
 // and a boolean to check if the value has been set.
-func (o *ControlsMonitoredFilesConfig) GetWightOk() (*string, bool) {
+func (o *ControlsMonitoredFilesConfig) GetWeightOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Wight, true
+	return &o.Weight, true
 }
 
-// SetWight sets field value
-func (o *ControlsMonitoredFilesConfig) SetWight(v string) {
-	o.Wight = v
+// SetWeight sets field value
+func (o *ControlsMonitoredFilesConfig) SetWeight(v string) {
+	o.Weight = v
 }
 
 func (o ControlsMonitoredFilesConfig) MarshalJSON() ([]byte, error) {
@@ -133,7 +133,7 @@ func (o ControlsMonitoredFilesConfig) ToMap() (map[string]interface{}, error) {
 		toSerialize["access_types"] = o.AccessTypes
 	}
 	toSerialize["path"] = o.Path
-	toSerialize["wight"] = o.Wight
+	toSerialize["weight"] = o.Weight
 	return toSerialize, nil
 }
 

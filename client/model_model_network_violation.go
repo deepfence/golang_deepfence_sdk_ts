@@ -21,41 +21,61 @@ var _ MappedNullable = &ModelNetworkViolation{}
 // ModelNetworkViolation struct for ModelNetworkViolation
 type ModelNetworkViolation struct {
 	Action string `json:"action"`
+	AlertId string `json:"alert_id"`
+	BlockIp string `json:"block_ip"`
+	ConfigId string `json:"config_id"`
 	ContainerId string `json:"container_id"`
 	CreatedAt int32 `json:"created_at"`
 	Direction string `json:"direction"`
-	ExecutedAt string `json:"executed_at"`
+	ExecutedAt int32 `json:"executed_at"`
 	HostName string `json:"host_name"`
+	LocalIp string `json:"local_ip"`
+	LocalPort int32 `json:"local_port"`
 	NodeId string `json:"node_id"`
+	NodePolicyType string `json:"node_policy_type"`
+	PacketDirection string `json:"packet_direction"`
 	PodId string `json:"pod_id"`
-	PolicyId string `json:"policy_id"`
+	PolicyIndex int32 `json:"policy_index"`
+	Port int32 `json:"port"`
 	RemoteIp string `json:"remote_ip"`
 	RemotePort int32 `json:"remote_port"`
 	Severity string `json:"severity"`
 	SourceIp string `json:"source_ip"`
 	SourcePort int32 `json:"source_port"`
+	Ttl int32 `json:"ttl"`
+	Type string `json:"type"`
 }
 
 // NewModelNetworkViolation instantiates a new ModelNetworkViolation object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelNetworkViolation(action string, containerId string, createdAt int32, direction string, executedAt string, hostName string, nodeId string, podId string, policyId string, remoteIp string, remotePort int32, severity string, sourceIp string, sourcePort int32) *ModelNetworkViolation {
+func NewModelNetworkViolation(action string, alertId string, blockIp string, configId string, containerId string, createdAt int32, direction string, executedAt int32, hostName string, localIp string, localPort int32, nodeId string, nodePolicyType string, packetDirection string, podId string, policyIndex int32, port int32, remoteIp string, remotePort int32, severity string, sourceIp string, sourcePort int32, ttl int32, type_ string) *ModelNetworkViolation {
 	this := ModelNetworkViolation{}
 	this.Action = action
+	this.AlertId = alertId
+	this.BlockIp = blockIp
+	this.ConfigId = configId
 	this.ContainerId = containerId
 	this.CreatedAt = createdAt
 	this.Direction = direction
 	this.ExecutedAt = executedAt
 	this.HostName = hostName
+	this.LocalIp = localIp
+	this.LocalPort = localPort
 	this.NodeId = nodeId
+	this.NodePolicyType = nodePolicyType
+	this.PacketDirection = packetDirection
 	this.PodId = podId
-	this.PolicyId = policyId
+	this.PolicyIndex = policyIndex
+	this.Port = port
 	this.RemoteIp = remoteIp
 	this.RemotePort = remotePort
 	this.Severity = severity
 	this.SourceIp = sourceIp
 	this.SourcePort = sourcePort
+	this.Ttl = ttl
+	this.Type = type_
 	return &this
 }
 
@@ -89,6 +109,78 @@ func (o *ModelNetworkViolation) GetActionOk() (*string, bool) {
 // SetAction sets field value
 func (o *ModelNetworkViolation) SetAction(v string) {
 	o.Action = v
+}
+
+// GetAlertId returns the AlertId field value
+func (o *ModelNetworkViolation) GetAlertId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AlertId
+}
+
+// GetAlertIdOk returns a tuple with the AlertId field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkViolation) GetAlertIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AlertId, true
+}
+
+// SetAlertId sets field value
+func (o *ModelNetworkViolation) SetAlertId(v string) {
+	o.AlertId = v
+}
+
+// GetBlockIp returns the BlockIp field value
+func (o *ModelNetworkViolation) GetBlockIp() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BlockIp
+}
+
+// GetBlockIpOk returns a tuple with the BlockIp field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkViolation) GetBlockIpOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BlockIp, true
+}
+
+// SetBlockIp sets field value
+func (o *ModelNetworkViolation) SetBlockIp(v string) {
+	o.BlockIp = v
+}
+
+// GetConfigId returns the ConfigId field value
+func (o *ModelNetworkViolation) GetConfigId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ConfigId
+}
+
+// GetConfigIdOk returns a tuple with the ConfigId field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkViolation) GetConfigIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ConfigId, true
+}
+
+// SetConfigId sets field value
+func (o *ModelNetworkViolation) SetConfigId(v string) {
+	o.ConfigId = v
 }
 
 // GetContainerId returns the ContainerId field value
@@ -164,9 +256,9 @@ func (o *ModelNetworkViolation) SetDirection(v string) {
 }
 
 // GetExecutedAt returns the ExecutedAt field value
-func (o *ModelNetworkViolation) GetExecutedAt() string {
+func (o *ModelNetworkViolation) GetExecutedAt() int32 {
 	if o == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 
@@ -175,7 +267,7 @@ func (o *ModelNetworkViolation) GetExecutedAt() string {
 
 // GetExecutedAtOk returns a tuple with the ExecutedAt field value
 // and a boolean to check if the value has been set.
-func (o *ModelNetworkViolation) GetExecutedAtOk() (*string, bool) {
+func (o *ModelNetworkViolation) GetExecutedAtOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -183,7 +275,7 @@ func (o *ModelNetworkViolation) GetExecutedAtOk() (*string, bool) {
 }
 
 // SetExecutedAt sets field value
-func (o *ModelNetworkViolation) SetExecutedAt(v string) {
+func (o *ModelNetworkViolation) SetExecutedAt(v int32) {
 	o.ExecutedAt = v
 }
 
@@ -211,6 +303,54 @@ func (o *ModelNetworkViolation) SetHostName(v string) {
 	o.HostName = v
 }
 
+// GetLocalIp returns the LocalIp field value
+func (o *ModelNetworkViolation) GetLocalIp() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.LocalIp
+}
+
+// GetLocalIpOk returns a tuple with the LocalIp field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkViolation) GetLocalIpOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LocalIp, true
+}
+
+// SetLocalIp sets field value
+func (o *ModelNetworkViolation) SetLocalIp(v string) {
+	o.LocalIp = v
+}
+
+// GetLocalPort returns the LocalPort field value
+func (o *ModelNetworkViolation) GetLocalPort() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.LocalPort
+}
+
+// GetLocalPortOk returns a tuple with the LocalPort field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkViolation) GetLocalPortOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LocalPort, true
+}
+
+// SetLocalPort sets field value
+func (o *ModelNetworkViolation) SetLocalPort(v int32) {
+	o.LocalPort = v
+}
+
 // GetNodeId returns the NodeId field value
 func (o *ModelNetworkViolation) GetNodeId() string {
 	if o == nil {
@@ -233,6 +373,54 @@ func (o *ModelNetworkViolation) GetNodeIdOk() (*string, bool) {
 // SetNodeId sets field value
 func (o *ModelNetworkViolation) SetNodeId(v string) {
 	o.NodeId = v
+}
+
+// GetNodePolicyType returns the NodePolicyType field value
+func (o *ModelNetworkViolation) GetNodePolicyType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.NodePolicyType
+}
+
+// GetNodePolicyTypeOk returns a tuple with the NodePolicyType field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkViolation) GetNodePolicyTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.NodePolicyType, true
+}
+
+// SetNodePolicyType sets field value
+func (o *ModelNetworkViolation) SetNodePolicyType(v string) {
+	o.NodePolicyType = v
+}
+
+// GetPacketDirection returns the PacketDirection field value
+func (o *ModelNetworkViolation) GetPacketDirection() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PacketDirection
+}
+
+// GetPacketDirectionOk returns a tuple with the PacketDirection field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkViolation) GetPacketDirectionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PacketDirection, true
+}
+
+// SetPacketDirection sets field value
+func (o *ModelNetworkViolation) SetPacketDirection(v string) {
+	o.PacketDirection = v
 }
 
 // GetPodId returns the PodId field value
@@ -259,28 +447,52 @@ func (o *ModelNetworkViolation) SetPodId(v string) {
 	o.PodId = v
 }
 
-// GetPolicyId returns the PolicyId field value
-func (o *ModelNetworkViolation) GetPolicyId() string {
+// GetPolicyIndex returns the PolicyIndex field value
+func (o *ModelNetworkViolation) GetPolicyIndex() int32 {
 	if o == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 
-	return o.PolicyId
+	return o.PolicyIndex
 }
 
-// GetPolicyIdOk returns a tuple with the PolicyId field value
+// GetPolicyIndexOk returns a tuple with the PolicyIndex field value
 // and a boolean to check if the value has been set.
-func (o *ModelNetworkViolation) GetPolicyIdOk() (*string, bool) {
+func (o *ModelNetworkViolation) GetPolicyIndexOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.PolicyId, true
+	return &o.PolicyIndex, true
 }
 
-// SetPolicyId sets field value
-func (o *ModelNetworkViolation) SetPolicyId(v string) {
-	o.PolicyId = v
+// SetPolicyIndex sets field value
+func (o *ModelNetworkViolation) SetPolicyIndex(v int32) {
+	o.PolicyIndex = v
+}
+
+// GetPort returns the Port field value
+func (o *ModelNetworkViolation) GetPort() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Port
+}
+
+// GetPortOk returns a tuple with the Port field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkViolation) GetPortOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Port, true
+}
+
+// SetPort sets field value
+func (o *ModelNetworkViolation) SetPort(v int32) {
+	o.Port = v
 }
 
 // GetRemoteIp returns the RemoteIp field value
@@ -403,6 +615,54 @@ func (o *ModelNetworkViolation) SetSourcePort(v int32) {
 	o.SourcePort = v
 }
 
+// GetTtl returns the Ttl field value
+func (o *ModelNetworkViolation) GetTtl() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Ttl
+}
+
+// GetTtlOk returns a tuple with the Ttl field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkViolation) GetTtlOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Ttl, true
+}
+
+// SetTtl sets field value
+func (o *ModelNetworkViolation) SetTtl(v int32) {
+	o.Ttl = v
+}
+
+// GetType returns the Type field value
+func (o *ModelNetworkViolation) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkViolation) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *ModelNetworkViolation) SetType(v string) {
+	o.Type = v
+}
+
 func (o ModelNetworkViolation) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -414,19 +674,29 @@ func (o ModelNetworkViolation) MarshalJSON() ([]byte, error) {
 func (o ModelNetworkViolation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["action"] = o.Action
+	toSerialize["alert_id"] = o.AlertId
+	toSerialize["block_ip"] = o.BlockIp
+	toSerialize["config_id"] = o.ConfigId
 	toSerialize["container_id"] = o.ContainerId
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["direction"] = o.Direction
 	toSerialize["executed_at"] = o.ExecutedAt
 	toSerialize["host_name"] = o.HostName
+	toSerialize["local_ip"] = o.LocalIp
+	toSerialize["local_port"] = o.LocalPort
 	toSerialize["node_id"] = o.NodeId
+	toSerialize["node_policy_type"] = o.NodePolicyType
+	toSerialize["packet_direction"] = o.PacketDirection
 	toSerialize["pod_id"] = o.PodId
-	toSerialize["policy_id"] = o.PolicyId
+	toSerialize["policy_index"] = o.PolicyIndex
+	toSerialize["port"] = o.Port
 	toSerialize["remote_ip"] = o.RemoteIp
 	toSerialize["remote_port"] = o.RemotePort
 	toSerialize["severity"] = o.Severity
 	toSerialize["source_ip"] = o.SourceIp
 	toSerialize["source_port"] = o.SourcePort
+	toSerialize["ttl"] = o.Ttl
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
 }
 

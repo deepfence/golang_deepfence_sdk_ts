@@ -10,12 +10,13 @@ Name | Type | Description | Notes
 **NodeId** | **string** |  | 
 **ProcessNames** | **[]string** |  | 
 **TcpRules** | [**ControlsNetworkRules**](ControlsNetworkRules.md) |  | 
+**UpdatedAt** | **int32** |  | 
 
 ## Methods
 
 ### NewControlsNetworkTracerConfig
 
-`func NewControlsNetworkTracerConfig(httpRules ControlsNetworkRules, httpsRules ControlsNetworkRules, mode string, nodeId string, processNames []string, tcpRules ControlsNetworkRules, ) *ControlsNetworkTracerConfig`
+`func NewControlsNetworkTracerConfig(httpRules ControlsNetworkRules, httpsRules ControlsNetworkRules, mode string, nodeId string, processNames []string, tcpRules ControlsNetworkRules, updatedAt int32, ) *ControlsNetworkTracerConfig`
 
 NewControlsNetworkTracerConfig instantiates a new ControlsNetworkTracerConfig object
 This constructor will assign default values to properties that have it defined,
@@ -158,6 +159,26 @@ and a boolean to check if the value has been set.
 `func (o *ControlsNetworkTracerConfig) SetTcpRules(v ControlsNetworkRules)`
 
 SetTcpRules sets TcpRules field to given value.
+
+
+### GetUpdatedAt
+
+`func (o *ControlsNetworkTracerConfig) GetUpdatedAt() int32`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *ControlsNetworkTracerConfig) GetUpdatedAtOk() (*int32, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *ControlsNetworkTracerConfig) SetUpdatedAt(v int32)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
 
 
 

@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EventName** | **string** |  | 
-**Wight** | **string** |  | 
+**Weight** | **string** |  | 
 
 ## Methods
 
 ### NewControlsProcessEventConfig
 
-`func NewControlsProcessEventConfig(eventName string, wight string, ) *ControlsProcessEventConfig`
+`func NewControlsProcessEventConfig(eventName string, weight string, ) *ControlsProcessEventConfig`
 
 NewControlsProcessEventConfig instantiates a new ControlsProcessEventConfig object
 This constructor will assign default values to properties that have it defined,
@@ -46,24 +46,24 @@ and a boolean to check if the value has been set.
 SetEventName sets EventName field to given value.
 
 
-### GetWight
+### GetWeight
 
-`func (o *ControlsProcessEventConfig) GetWight() string`
+`func (o *ControlsProcessEventConfig) GetWeight() string`
 
-GetWight returns the Wight field if non-nil, zero value otherwise.
+GetWeight returns the Weight field if non-nil, zero value otherwise.
 
-### GetWightOk
+### GetWeightOk
 
-`func (o *ControlsProcessEventConfig) GetWightOk() (*string, bool)`
+`func (o *ControlsProcessEventConfig) GetWeightOk() (*string, bool)`
 
-GetWightOk returns a tuple with the Wight field if it's non-nil, zero value otherwise
+GetWeightOk returns a tuple with the Weight field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWight
+### SetWeight
 
-`func (o *ControlsProcessEventConfig) SetWight(v string)`
+`func (o *ControlsProcessEventConfig) SetWeight(v string)`
 
-SetWight sets Wight field to given value.
+SetWeight sets Weight field to given value.
 
 
 

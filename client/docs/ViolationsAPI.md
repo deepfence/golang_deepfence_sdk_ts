@@ -1,19 +1,19 @@
-# \CloudResourcesAPI
+# \ViolationsAPI
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**IngestCloudResources**](CloudResourcesAPI.md#IngestCloudResources) | **Post** /deepfence/ingest/cloud-resources | Ingest Cloud resources
-[**IngestWAFRules**](CloudResourcesAPI.md#IngestWAFRules) | **Post** /deepfence/ingest/waf-rules | Ingest WAF Rules
+[**DeleteNetworkViolations**](ViolationsAPI.md#DeleteNetworkViolations) | **Post** /deepfence/remove/network-violations | Remove network violations
+[**DeleteQuarantineViolations**](ViolationsAPI.md#DeleteQuarantineViolations) | **Post** /deepfence/remove/quarantine-violations | Remove quarantine violations
 
 
 
-## IngestCloudResources
+## DeleteNetworkViolations
 
-> IngestCloudResources(ctx).IngestersCloudResource(ingestersCloudResource).Execute()
+> DeleteNetworkViolations(ctx).ModelDeleteFilter(modelDeleteFilter).Execute()
 
-Ingest Cloud resources
+Remove network violations
 
 
 
@@ -30,13 +30,13 @@ import (
 )
 
 func main() {
-    ingestersCloudResource := []openapiclient.IngestersCloudResource{*openapiclient.NewIngestersCloudResource()} // []IngestersCloudResource |  (optional)
+    modelDeleteFilter := *openapiclient.NewModelDeleteFilter([]string{"NodeIds_example"}) // ModelDeleteFilter |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CloudResourcesAPI.IngestCloudResources(context.Background()).IngestersCloudResource(ingestersCloudResource).Execute()
+    r, err := apiClient.ViolationsAPI.DeleteNetworkViolations(context.Background()).ModelDeleteFilter(modelDeleteFilter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudResourcesAPI.IngestCloudResources``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ViolationsAPI.DeleteNetworkViolations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -48,12 +48,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiIngestCloudResourcesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteNetworkViolationsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ingestersCloudResource** | [**[]IngestersCloudResource**](IngestersCloudResource.md) |  | 
+ **modelDeleteFilter** | [**ModelDeleteFilter**](ModelDeleteFilter.md) |  | 
 
 ### Return type
 
@@ -73,11 +73,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## IngestWAFRules
+## DeleteQuarantineViolations
 
-> IngestWAFRules(ctx).IngestersWAFRule(ingestersWAFRule).Execute()
+> DeleteQuarantineViolations(ctx).ModelDeleteFilter(modelDeleteFilter).Execute()
 
-Ingest WAF Rules
+Remove quarantine violations
 
 
 
@@ -94,13 +94,13 @@ import (
 )
 
 func main() {
-    ingestersWAFRule := []openapiclient.IngestersWAFRule{*openapiclient.NewIngestersWAFRule()} // []IngestersWAFRule |  (optional)
+    modelDeleteFilter := *openapiclient.NewModelDeleteFilter([]string{"NodeIds_example"}) // ModelDeleteFilter |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CloudResourcesAPI.IngestWAFRules(context.Background()).IngestersWAFRule(ingestersWAFRule).Execute()
+    r, err := apiClient.ViolationsAPI.DeleteQuarantineViolations(context.Background()).ModelDeleteFilter(modelDeleteFilter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudResourcesAPI.IngestWAFRules``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ViolationsAPI.DeleteQuarantineViolations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -112,12 +112,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiIngestWAFRulesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteQuarantineViolationsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ingestersWAFRule** | [**[]IngestersWAFRule**](IngestersWAFRule.md) |  | 
+ **modelDeleteFilter** | [**ModelDeleteFilter**](ModelDeleteFilter.md) |  | 
 
 ### Return type
 

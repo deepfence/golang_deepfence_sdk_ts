@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessTypes** | **[]string** |  | 
 **Path** | **string** |  | 
-**Wight** | **string** |  | 
+**Weight** | **string** |  | 
 
 ## Methods
 
 ### NewControlsMonitoredFilesConfig
 
-`func NewControlsMonitoredFilesConfig(accessTypes []string, path string, wight string, ) *ControlsMonitoredFilesConfig`
+`func NewControlsMonitoredFilesConfig(accessTypes []string, path string, weight string, ) *ControlsMonitoredFilesConfig`
 
 NewControlsMonitoredFilesConfig instantiates a new ControlsMonitoredFilesConfig object
 This constructor will assign default values to properties that have it defined,
@@ -77,24 +77,24 @@ and a boolean to check if the value has been set.
 SetPath sets Path field to given value.
 
 
-### GetWight
+### GetWeight
 
-`func (o *ControlsMonitoredFilesConfig) GetWight() string`
+`func (o *ControlsMonitoredFilesConfig) GetWeight() string`
 
-GetWight returns the Wight field if non-nil, zero value otherwise.
+GetWeight returns the Weight field if non-nil, zero value otherwise.
 
-### GetWightOk
+### GetWeightOk
 
-`func (o *ControlsMonitoredFilesConfig) GetWightOk() (*string, bool)`
+`func (o *ControlsMonitoredFilesConfig) GetWeightOk() (*string, bool)`
 
-GetWightOk returns a tuple with the Wight field if it's non-nil, zero value otherwise
+GetWeightOk returns a tuple with the Weight field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWight
+### SetWeight
 
-`func (o *ControlsMonitoredFilesConfig) SetWight(v string)`
+`func (o *ControlsMonitoredFilesConfig) SetWeight(v string)`
 
-SetWight sets Wight field to given value.
+SetWeight sets Weight field to given value.
 
 
 

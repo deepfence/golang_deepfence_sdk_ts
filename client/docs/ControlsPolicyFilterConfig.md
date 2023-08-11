@@ -4,15 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**IgnoredRemoteIps** | **[]string** |  | 
 **NodeId** | **string** |  | 
-**Policies** | [**[]ControlsPolicy**](ControlsPolicy.md) |  | 
+**Policies** | [**[]ControlsNetworkPolicy**](ControlsNetworkPolicy.md) |  | 
+**UpdatedAt** | **int32** |  | 
 **UseWaf** | **bool** |  | 
 
 ## Methods
 
 ### NewControlsPolicyFilterConfig
 
-`func NewControlsPolicyFilterConfig(nodeId string, policies []ControlsPolicy, useWaf bool, ) *ControlsPolicyFilterConfig`
+`func NewControlsPolicyFilterConfig(ignoredRemoteIps []string, nodeId string, policies []ControlsNetworkPolicy, updatedAt int32, useWaf bool, ) *ControlsPolicyFilterConfig`
 
 NewControlsPolicyFilterConfig instantiates a new ControlsPolicyFilterConfig object
 This constructor will assign default values to properties that have it defined,
@@ -27,6 +29,36 @@ NewControlsPolicyFilterConfigWithDefaults instantiates a new ControlsPolicyFilte
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetIgnoredRemoteIps
+
+`func (o *ControlsPolicyFilterConfig) GetIgnoredRemoteIps() []string`
+
+GetIgnoredRemoteIps returns the IgnoredRemoteIps field if non-nil, zero value otherwise.
+
+### GetIgnoredRemoteIpsOk
+
+`func (o *ControlsPolicyFilterConfig) GetIgnoredRemoteIpsOk() (*[]string, bool)`
+
+GetIgnoredRemoteIpsOk returns a tuple with the IgnoredRemoteIps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIgnoredRemoteIps
+
+`func (o *ControlsPolicyFilterConfig) SetIgnoredRemoteIps(v []string)`
+
+SetIgnoredRemoteIps sets IgnoredRemoteIps field to given value.
+
+
+### SetIgnoredRemoteIpsNil
+
+`func (o *ControlsPolicyFilterConfig) SetIgnoredRemoteIpsNil(b bool)`
+
+ SetIgnoredRemoteIpsNil sets the value for IgnoredRemoteIps to be an explicit nil
+
+### UnsetIgnoredRemoteIps
+`func (o *ControlsPolicyFilterConfig) UnsetIgnoredRemoteIps()`
+
+UnsetIgnoredRemoteIps ensures that no value is present for IgnoredRemoteIps, not even an explicit nil
 ### GetNodeId
 
 `func (o *ControlsPolicyFilterConfig) GetNodeId() string`
@@ -49,20 +81,20 @@ SetNodeId sets NodeId field to given value.
 
 ### GetPolicies
 
-`func (o *ControlsPolicyFilterConfig) GetPolicies() []ControlsPolicy`
+`func (o *ControlsPolicyFilterConfig) GetPolicies() []ControlsNetworkPolicy`
 
 GetPolicies returns the Policies field if non-nil, zero value otherwise.
 
 ### GetPoliciesOk
 
-`func (o *ControlsPolicyFilterConfig) GetPoliciesOk() (*[]ControlsPolicy, bool)`
+`func (o *ControlsPolicyFilterConfig) GetPoliciesOk() (*[]ControlsNetworkPolicy, bool)`
 
 GetPoliciesOk returns a tuple with the Policies field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPolicies
 
-`func (o *ControlsPolicyFilterConfig) SetPolicies(v []ControlsPolicy)`
+`func (o *ControlsPolicyFilterConfig) SetPolicies(v []ControlsNetworkPolicy)`
 
 SetPolicies sets Policies field to given value.
 
@@ -77,6 +109,26 @@ SetPolicies sets Policies field to given value.
 `func (o *ControlsPolicyFilterConfig) UnsetPolicies()`
 
 UnsetPolicies ensures that no value is present for Policies, not even an explicit nil
+### GetUpdatedAt
+
+`func (o *ControlsPolicyFilterConfig) GetUpdatedAt() int32`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *ControlsPolicyFilterConfig) GetUpdatedAtOk() (*int32, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *ControlsPolicyFilterConfig) SetUpdatedAt(v int32)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+
 ### GetUseWaf
 
 `func (o *ControlsPolicyFilterConfig) GetUseWaf() bool`

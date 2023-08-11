@@ -21,17 +21,17 @@ var _ MappedNullable = &ControlsProcessEventConfig{}
 // ControlsProcessEventConfig struct for ControlsProcessEventConfig
 type ControlsProcessEventConfig struct {
 	EventName string `json:"event_name"`
-	Wight string `json:"wight"`
+	Weight string `json:"weight"`
 }
 
 // NewControlsProcessEventConfig instantiates a new ControlsProcessEventConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsProcessEventConfig(eventName string, wight string) *ControlsProcessEventConfig {
+func NewControlsProcessEventConfig(eventName string, weight string) *ControlsProcessEventConfig {
 	this := ControlsProcessEventConfig{}
 	this.EventName = eventName
-	this.Wight = wight
+	this.Weight = weight
 	return &this
 }
 
@@ -67,28 +67,28 @@ func (o *ControlsProcessEventConfig) SetEventName(v string) {
 	o.EventName = v
 }
 
-// GetWight returns the Wight field value
-func (o *ControlsProcessEventConfig) GetWight() string {
+// GetWeight returns the Weight field value
+func (o *ControlsProcessEventConfig) GetWeight() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Wight
+	return o.Weight
 }
 
-// GetWightOk returns a tuple with the Wight field value
+// GetWeightOk returns a tuple with the Weight field value
 // and a boolean to check if the value has been set.
-func (o *ControlsProcessEventConfig) GetWightOk() (*string, bool) {
+func (o *ControlsProcessEventConfig) GetWeightOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Wight, true
+	return &o.Weight, true
 }
 
-// SetWight sets field value
-func (o *ControlsProcessEventConfig) SetWight(v string) {
-	o.Wight = v
+// SetWeight sets field value
+func (o *ControlsProcessEventConfig) SetWeight(v string) {
+	o.Weight = v
 }
 
 func (o ControlsProcessEventConfig) MarshalJSON() ([]byte, error) {
@@ -102,7 +102,7 @@ func (o ControlsProcessEventConfig) MarshalJSON() ([]byte, error) {
 func (o ControlsProcessEventConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["event_name"] = o.EventName
-	toSerialize["wight"] = o.Wight
+	toSerialize["weight"] = o.Weight
 	return toSerialize, nil
 }
 

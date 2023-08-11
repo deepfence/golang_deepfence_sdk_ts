@@ -100,6 +100,8 @@ type APIClient struct {
 
 	UserAPI *UserAPIService
 
+	ViolationsAPI *ViolationsAPIService
+
 	VulnerabilityAPI *VulnerabilityAPIService
 }
 
@@ -144,6 +146,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ThreatAPI = (*ThreatAPIService)(&c.common)
 	c.TopologyAPI = (*TopologyAPIService)(&c.common)
 	c.UserAPI = (*UserAPIService)(&c.common)
+	c.ViolationsAPI = (*ViolationsAPIService)(&c.common)
 	c.VulnerabilityAPI = (*VulnerabilityAPIService)(&c.common)
 
 	return c
@@ -517,6 +520,7 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 			return
 		}
 		_, err = f.Seek(0, io.SeekStart)
+		err = os.Remove(f.Name())
 		return
 	}
 	if f, ok := v.(**os.File); ok {
@@ -529,6 +533,7 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 			return
 		}
 		_, err = (*f).Seek(0, io.SeekStart)
+		err = os.Remove((*f).Name())
 		return
 	}
 	if xmlCheck.MatchString(contentType) {

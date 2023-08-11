@@ -115,7 +115,6 @@ Class | Method | HTTP request | Description
 *CloudNodesAPI* | [**ListCloudProviders**](docs/CloudNodesAPI.md#listcloudproviders) | **Get** /deepfence/cloud-node/list/providers | List Cloud Node Providers
 *CloudNodesAPI* | [**RegisterCloudNodeAccount**](docs/CloudNodesAPI.md#registercloudnodeaccount) | **Post** /deepfence/cloud-node/account | Register Cloud Node Account
 *CloudResourcesAPI* | [**IngestCloudResources**](docs/CloudResourcesAPI.md#ingestcloudresources) | **Post** /deepfence/ingest/cloud-resources | Ingest Cloud resources
-*CloudResourcesAPI* | [**IngestViolations**](docs/CloudResourcesAPI.md#ingestviolations) | **Post** /deepfence/ingest/violations | Ingest Violations
 *CloudResourcesAPI* | [**IngestWAFRules**](docs/CloudResourcesAPI.md#ingestwafrules) | **Post** /deepfence/ingest/waf-rules | Ingest WAF Rules
 *CloudScannerAPI* | [**CountResultsCloudComplianceScan**](docs/CloudScannerAPI.md#countresultscloudcompliancescan) | **Post** /deepfence/scan/results/count/cloud-compliance | Get Cloud Compliance Scan Results
 *CloudScannerAPI* | [**IngestCloudComplianceScanStatus**](docs/CloudScannerAPI.md#ingestcloudcompliancescanstatus) | **Post** /deepfence/ingest/cloud-compliance-status | Ingest Cloud Compliances scan status
@@ -162,6 +161,7 @@ Class | Method | HTTP request | Description
 *LookupAPI* | [**GetNetworkViolations**](docs/LookupAPI.md#getnetworkviolations) | **Post** /deepfence/lookup/network-violations | Get Network Violations
 *LookupAPI* | [**GetPods**](docs/LookupAPI.md#getpods) | **Post** /deepfence/lookup/pods | Retrieve Pods data
 *LookupAPI* | [**GetProcesses**](docs/LookupAPI.md#getprocesses) | **Post** /deepfence/lookup/processes | Retrieve Processes data
+*LookupAPI* | [**GetQuarantineViolations**](docs/LookupAPI.md#getquarantineviolations) | **Post** /deepfence/lookup/quarantine-violations | Get Quarantine Violations
 *LookupAPI* | [**GetRegistryAccount**](docs/LookupAPI.md#getregistryaccount) | **Post** /deepfence/lookup/registryaccount | Get Images in Registry
 *LookupAPI* | [**GetSecrets**](docs/LookupAPI.md#getsecrets) | **Post** /deepfence/lookup/secrets | Retrieve Secrets data
 *LookupAPI* | [**GetVulnerabilities**](docs/LookupAPI.md#getvulnerabilities) | **Post** /deepfence/lookup/vulnerabilities | Retrieve Vulnerabilities data
@@ -222,6 +222,7 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**CountNetworkViolations**](docs/SearchAPI.md#countnetworkviolations) | **Post** /deepfence/search/count/network-violations | Count network violations
 *SearchAPI* | [**CountNodes**](docs/SearchAPI.md#countnodes) | **Get** /deepfence/search/count/nodes | Count nodes
 *SearchAPI* | [**CountPods**](docs/SearchAPI.md#countpods) | **Post** /deepfence/search/count/pods | Count Pods
+*SearchAPI* | [**CountQuarantineViolations**](docs/SearchAPI.md#countquarantineviolations) | **Post** /deepfence/search/count/quarantine-violations | Count quarantine violations
 *SearchAPI* | [**CountSecretRules**](docs/SearchAPI.md#countsecretrules) | **Post** /deepfence/search/count/secret-rules | Count Secret Rules
 *SearchAPI* | [**CountSecrets**](docs/SearchAPI.md#countsecrets) | **Post** /deepfence/search/count/secrets | Count Secrets
 *SearchAPI* | [**CountSecretsScans**](docs/SearchAPI.md#countsecretsscans) | **Post** /deepfence/search/count/secret/scans | Count Secret Scan results
@@ -249,6 +250,7 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**SearchNetworkAlerts**](docs/SearchAPI.md#searchnetworkalerts) | **Post** /deepfence/search/network-alerts | Search network alerts
 *SearchAPI* | [**SearchNetworkViolations**](docs/SearchAPI.md#searchnetworkviolations) | **Post** /deepfence/search/network-violations | Search network violations
 *SearchAPI* | [**SearchPods**](docs/SearchAPI.md#searchpods) | **Post** /deepfence/search/pods | Search Pods
+*SearchAPI* | [**SearchQuarantineViolations**](docs/SearchAPI.md#searchquarantineviolations) | **Post** /deepfence/search/quarantine-violations | Search quarantine violations
 *SearchAPI* | [**SearchSecretRules**](docs/SearchAPI.md#searchsecretrules) | **Post** /deepfence/search/secret-rules | Search Secret Rules
 *SearchAPI* | [**SearchSecrets**](docs/SearchAPI.md#searchsecrets) | **Post** /deepfence/search/secrets | Search Secrets
 *SearchAPI* | [**SearchSecretsScans**](docs/SearchAPI.md#searchsecretsscans) | **Post** /deepfence/search/secret/scans | Search Secrets Scan results
@@ -266,13 +268,17 @@ Class | Method | HTTP request | Description
 *SecretScanAPI* | [**StatusSecretScan**](docs/SecretScanAPI.md#statussecretscan) | **Post** /deepfence/scan/status/secret | Get Secret Scan Status
 *SecretScanAPI* | [**StopSecretScan**](docs/SecretScanAPI.md#stopsecretscan) | **Post** /deepfence/scan/stop/secret | Stop Secret Scan
 *SettingsAPI* | [**AddEmailConfiguration**](docs/SettingsAPI.md#addemailconfiguration) | **Post** /deepfence/settings/email | Add Email Configuration
+*SettingsAPI* | [**AddScheduledTask**](docs/SettingsAPI.md#addscheduledtask) | **Post** /deepfence/scheduled-task | Add scheduled task
+*SettingsAPI* | [**DeleteCloudWafConfiguration**](docs/SettingsAPI.md#deletecloudwafconfiguration) | **Delete** /deepfence/settings/cloud-waf | Delete Cloud WAF Configuration
 *SettingsAPI* | [**DeleteEmailConfiguration**](docs/SettingsAPI.md#deleteemailconfiguration) | **Delete** /deepfence/settings/email/{config_id} | Delete Email Configurations
+*SettingsAPI* | [**GetCloudWafConfiguration**](docs/SettingsAPI.md#getcloudwafconfiguration) | **Get** /deepfence/settings/cloud-waf | Get Cloud WAF Configuration
 *SettingsAPI* | [**GetEmailConfiguration**](docs/SettingsAPI.md#getemailconfiguration) | **Get** /deepfence/settings/email | Get Email Configurations
 *SettingsAPI* | [**GetLicense**](docs/SettingsAPI.md#getlicense) | **Get** /deepfence/license | Get License Details
 *SettingsAPI* | [**GetScheduledTasks**](docs/SettingsAPI.md#getscheduledtasks) | **Get** /deepfence/scheduled-task | Get scheduled tasks
 *SettingsAPI* | [**GetSettings**](docs/SettingsAPI.md#getsettings) | **Get** /deepfence/settings/global-settings | Get settings
 *SettingsAPI* | [**GetUserActivityLogs**](docs/SettingsAPI.md#getuseractivitylogs) | **Get** /deepfence/settings/user-activity-log | Get activity logs
 *SettingsAPI* | [**RegisterLicense**](docs/SettingsAPI.md#registerlicense) | **Post** /deepfence/license | Register License
+*SettingsAPI* | [**SetCloudWafConfiguration**](docs/SettingsAPI.md#setcloudwafconfiguration) | **Post** /deepfence/settings/cloud-waf | Set Cloud WAF Configuration
 *SettingsAPI* | [**UpdateNotificationThreshold**](docs/SettingsAPI.md#updatenotificationthreshold) | **Post** /deepfence/license/notification-threshold | Update Notification Threshold
 *SettingsAPI* | [**UpdateScheduledTask**](docs/SettingsAPI.md#updatescheduledtask) | **Patch** /deepfence/scheduled-task/{id} | Update scheduled task
 *SettingsAPI* | [**UpdateSetting**](docs/SettingsAPI.md#updatesetting) | **Patch** /deepfence/settings/global-settings/{id} | Update setting
@@ -286,6 +292,7 @@ Class | Method | HTTP request | Description
 *TopologyAPI* | [**GetTopologyGraph**](docs/TopologyAPI.md#gettopologygraph) | **Post** /deepfence/graph/topology/ | Get Topology Graph
 *TopologyAPI* | [**IngestAgentAlerts**](docs/TopologyAPI.md#ingestagentalerts) | **Post** /deepfence/ingest/alerts | Ingest Agent Alerts
 *TopologyAPI* | [**IngestAgentReport**](docs/TopologyAPI.md#ingestagentreport) | **Post** /deepfence/ingest/report | Ingest Topology Data
+*TopologyAPI* | [**IngestAgentViolations**](docs/TopologyAPI.md#ingestagentviolations) | **Post** /deepfence/ingest/violations | Ingest Agent Violations
 *TopologyAPI* | [**IngestSyncAgentReport**](docs/TopologyAPI.md#ingestsyncagentreport) | **Post** /deepfence/ingest/sync-report | Ingest Topology Data
 *UserAPI* | [**DeleteCurrentUser**](docs/UserAPI.md#deletecurrentuser) | **Delete** /deepfence/user | Delete Current User
 *UserAPI* | [**DeleteUser**](docs/UserAPI.md#deleteuser) | **Delete** /deepfence/users/{id} | Delete User by User ID
@@ -302,6 +309,8 @@ Class | Method | HTTP request | Description
 *UserAPI* | [**UpdatePassword**](docs/UserAPI.md#updatepassword) | **Put** /deepfence/user/password | Update Password
 *UserAPI* | [**UpdateUser**](docs/UserAPI.md#updateuser) | **Put** /deepfence/users/{id} | Update User by User ID
 *UserAPI* | [**VerifyResetPasswordRequest**](docs/UserAPI.md#verifyresetpasswordrequest) | **Post** /deepfence/user/reset-password/verify | Verify and Reset Password
+*ViolationsAPI* | [**DeleteNetworkViolations**](docs/ViolationsAPI.md#deletenetworkviolations) | **Post** /deepfence/remove/network-violations | Remove network violations
+*ViolationsAPI* | [**DeleteQuarantineViolations**](docs/ViolationsAPI.md#deletequarantineviolations) | **Post** /deepfence/remove/quarantine-violations | Remove quarantine violations
 *VulnerabilityAPI* | [**CountResultsVulnerabilityScans**](docs/VulnerabilityAPI.md#countresultsvulnerabilityscans) | **Post** /deepfence/scan/results/count/vulnerability | Get Vulnerability Scans Results
 *VulnerabilityAPI* | [**DownloadSBOM**](docs/VulnerabilityAPI.md#downloadsbom) | **Post** /deepfence/scan/sbom/download | Download SBOM for a node or scan id
 *VulnerabilityAPI* | [**GetSBOM**](docs/VulnerabilityAPI.md#getsbom) | **Post** /deepfence/scan/sbom | Get SBOM for a node or scan id
@@ -325,13 +334,14 @@ Class | Method | HTTP request | Description
  - [ControlsAgentControls](docs/ControlsAgentControls.md)
  - [ControlsFilesystemTracerConfig](docs/ControlsFilesystemTracerConfig.md)
  - [ControlsMonitoredFilesConfig](docs/ControlsMonitoredFilesConfig.md)
+ - [ControlsNetworkPolicy](docs/ControlsNetworkPolicy.md)
  - [ControlsNetworkRules](docs/ControlsNetworkRules.md)
  - [ControlsNetworkTracerConfig](docs/ControlsNetworkTracerConfig.md)
- - [ControlsPolicy](docs/ControlsPolicy.md)
  - [ControlsPolicyAlertMatcher](docs/ControlsPolicyAlertMatcher.md)
  - [ControlsPolicyFilterConfig](docs/ControlsPolicyFilterConfig.md)
  - [ControlsProcessEventConfig](docs/ControlsProcessEventConfig.md)
  - [ControlsQuarantineConfig](docs/ControlsQuarantineConfig.md)
+ - [ControlsRuncPolicy](docs/ControlsRuncPolicy.md)
  - [DetailedConnectionSummary](docs/DetailedConnectionSummary.md)
  - [DetailedNodeSummary](docs/DetailedNodeSummary.md)
  - [DiagnosisDiagnosticLogsLink](docs/DiagnosisDiagnosticLogsLink.md)
@@ -357,7 +367,6 @@ Class | Method | HTTP request | Description
  - [IngestersMalware](docs/IngestersMalware.md)
  - [IngestersMalwareScanStatus](docs/IngestersMalwareScanStatus.md)
  - [IngestersMetaRules](docs/IngestersMetaRules.md)
- - [IngestersNetworkViolation](docs/IngestersNetworkViolation.md)
  - [IngestersReportIngestionData](docs/IngestersReportIngestionData.md)
  - [IngestersSecret](docs/IngestersSecret.md)
  - [IngestersSecretMatch](docs/IngestersSecretMatch.md)
@@ -368,6 +377,8 @@ Class | Method | HTTP request | Description
  - [IngestersVulnerabilityScanStatus](docs/IngestersVulnerabilityScanStatus.md)
  - [IngestersWAFRule](docs/IngestersWAFRule.md)
  - [LookupLookupFilter](docs/LookupLookupFilter.md)
+ - [ModelAWSWafARN](docs/ModelAWSWafARN.md)
+ - [ModelAddScheduledTaskRequest](docs/ModelAddScheduledTaskRequest.md)
  - [ModelAgentId](docs/ModelAgentId.md)
  - [ModelAgentPluginConfigNames](docs/ModelAgentPluginConfigNames.md)
  - [ModelAgentPluginDisable](docs/ModelAgentPluginDisable.md)
@@ -397,6 +408,7 @@ Class | Method | HTTP request | Description
  - [ModelCloudNodeEnableDisableReq](docs/ModelCloudNodeEnableDisableReq.md)
  - [ModelCloudNodeProvidersListResp](docs/ModelCloudNodeProvidersListResp.md)
  - [ModelCloudResource](docs/ModelCloudResource.md)
+ - [ModelCloudWafConfig](docs/ModelCloudWafConfig.md)
  - [ModelCommonAlert](docs/ModelCommonAlert.md)
  - [ModelCompliance](docs/ModelCompliance.md)
  - [ModelComplianceRule](docs/ModelComplianceRule.md)
@@ -407,6 +419,7 @@ Class | Method | HTTP request | Description
  - [ModelConnection](docs/ModelConnection.md)
  - [ModelContainer](docs/ModelContainer.md)
  - [ModelContainerImage](docs/ModelContainerImage.md)
+ - [ModelDeleteFilter](docs/ModelDeleteFilter.md)
  - [ModelDisableNetworkTracerReq](docs/ModelDisableNetworkTracerReq.md)
  - [ModelDownloadReportResponse](docs/ModelDownloadReportResponse.md)
  - [ModelDownloadScanResultsResponse](docs/ModelDownloadScanResultsResponse.md)
@@ -456,6 +469,7 @@ Class | Method | HTTP request | Description
  - [ModelPod](docs/ModelPod.md)
  - [ModelPostureProvider](docs/ModelPostureProvider.md)
  - [ModelProcess](docs/ModelProcess.md)
+ - [ModelQuarantineViolation](docs/ModelQuarantineViolation.md)
  - [ModelRegisterInvitedUserRequest](docs/ModelRegisterInvitedUserRequest.md)
  - [ModelRegisterLicenseRequest](docs/ModelRegisterLicenseRequest.md)
  - [ModelRegistryAccount](docs/ModelRegistryAccount.md)

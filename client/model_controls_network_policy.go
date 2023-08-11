@@ -15,44 +15,70 @@ import (
 	"encoding/json"
 )
 
-// checks if the ControlsPolicy type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ControlsPolicy{}
+// checks if the ControlsNetworkPolicy type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControlsNetworkPolicy{}
 
-// ControlsPolicy struct for ControlsPolicy
-type ControlsPolicy struct {
+// ControlsNetworkPolicy struct for ControlsNetworkPolicy
+type ControlsNetworkPolicy struct {
+	Action string `json:"action"`
 	CountLimit int32 `json:"count_limit"`
 	DurationCountLimitSec int32 `json:"duration_count_limit_sec"`
 	DurationSec int32 `json:"duration_sec"`
-	EventType string `json:"event_type"`
 	Matcher ControlsPolicyAlertMatcher `json:"matcher"`
 	PolicyId string `json:"policy_id"`
+	UpdatedAt int32 `json:"updated_at"`
 }
 
-// NewControlsPolicy instantiates a new ControlsPolicy object
+// NewControlsNetworkPolicy instantiates a new ControlsNetworkPolicy object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsPolicy(countLimit int32, durationCountLimitSec int32, durationSec int32, eventType string, matcher ControlsPolicyAlertMatcher, policyId string) *ControlsPolicy {
-	this := ControlsPolicy{}
+func NewControlsNetworkPolicy(action string, countLimit int32, durationCountLimitSec int32, durationSec int32, matcher ControlsPolicyAlertMatcher, policyId string, updatedAt int32) *ControlsNetworkPolicy {
+	this := ControlsNetworkPolicy{}
+	this.Action = action
 	this.CountLimit = countLimit
 	this.DurationCountLimitSec = durationCountLimitSec
 	this.DurationSec = durationSec
-	this.EventType = eventType
 	this.Matcher = matcher
 	this.PolicyId = policyId
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
-// NewControlsPolicyWithDefaults instantiates a new ControlsPolicy object
+// NewControlsNetworkPolicyWithDefaults instantiates a new ControlsNetworkPolicy object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewControlsPolicyWithDefaults() *ControlsPolicy {
-	this := ControlsPolicy{}
+func NewControlsNetworkPolicyWithDefaults() *ControlsNetworkPolicy {
+	this := ControlsNetworkPolicy{}
 	return &this
+}
+
+// GetAction returns the Action field value
+func (o *ControlsNetworkPolicy) GetAction() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Action
+}
+
+// GetActionOk returns a tuple with the Action field value
+// and a boolean to check if the value has been set.
+func (o *ControlsNetworkPolicy) GetActionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Action, true
+}
+
+// SetAction sets field value
+func (o *ControlsNetworkPolicy) SetAction(v string) {
+	o.Action = v
 }
 
 // GetCountLimit returns the CountLimit field value
-func (o *ControlsPolicy) GetCountLimit() int32 {
+func (o *ControlsNetworkPolicy) GetCountLimit() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -63,7 +89,7 @@ func (o *ControlsPolicy) GetCountLimit() int32 {
 
 // GetCountLimitOk returns a tuple with the CountLimit field value
 // and a boolean to check if the value has been set.
-func (o *ControlsPolicy) GetCountLimitOk() (*int32, bool) {
+func (o *ControlsNetworkPolicy) GetCountLimitOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -71,12 +97,12 @@ func (o *ControlsPolicy) GetCountLimitOk() (*int32, bool) {
 }
 
 // SetCountLimit sets field value
-func (o *ControlsPolicy) SetCountLimit(v int32) {
+func (o *ControlsNetworkPolicy) SetCountLimit(v int32) {
 	o.CountLimit = v
 }
 
 // GetDurationCountLimitSec returns the DurationCountLimitSec field value
-func (o *ControlsPolicy) GetDurationCountLimitSec() int32 {
+func (o *ControlsNetworkPolicy) GetDurationCountLimitSec() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -87,7 +113,7 @@ func (o *ControlsPolicy) GetDurationCountLimitSec() int32 {
 
 // GetDurationCountLimitSecOk returns a tuple with the DurationCountLimitSec field value
 // and a boolean to check if the value has been set.
-func (o *ControlsPolicy) GetDurationCountLimitSecOk() (*int32, bool) {
+func (o *ControlsNetworkPolicy) GetDurationCountLimitSecOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -95,12 +121,12 @@ func (o *ControlsPolicy) GetDurationCountLimitSecOk() (*int32, bool) {
 }
 
 // SetDurationCountLimitSec sets field value
-func (o *ControlsPolicy) SetDurationCountLimitSec(v int32) {
+func (o *ControlsNetworkPolicy) SetDurationCountLimitSec(v int32) {
 	o.DurationCountLimitSec = v
 }
 
 // GetDurationSec returns the DurationSec field value
-func (o *ControlsPolicy) GetDurationSec() int32 {
+func (o *ControlsNetworkPolicy) GetDurationSec() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -111,7 +137,7 @@ func (o *ControlsPolicy) GetDurationSec() int32 {
 
 // GetDurationSecOk returns a tuple with the DurationSec field value
 // and a boolean to check if the value has been set.
-func (o *ControlsPolicy) GetDurationSecOk() (*int32, bool) {
+func (o *ControlsNetworkPolicy) GetDurationSecOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -119,36 +145,12 @@ func (o *ControlsPolicy) GetDurationSecOk() (*int32, bool) {
 }
 
 // SetDurationSec sets field value
-func (o *ControlsPolicy) SetDurationSec(v int32) {
+func (o *ControlsNetworkPolicy) SetDurationSec(v int32) {
 	o.DurationSec = v
 }
 
-// GetEventType returns the EventType field value
-func (o *ControlsPolicy) GetEventType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.EventType
-}
-
-// GetEventTypeOk returns a tuple with the EventType field value
-// and a boolean to check if the value has been set.
-func (o *ControlsPolicy) GetEventTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.EventType, true
-}
-
-// SetEventType sets field value
-func (o *ControlsPolicy) SetEventType(v string) {
-	o.EventType = v
-}
-
 // GetMatcher returns the Matcher field value
-func (o *ControlsPolicy) GetMatcher() ControlsPolicyAlertMatcher {
+func (o *ControlsNetworkPolicy) GetMatcher() ControlsPolicyAlertMatcher {
 	if o == nil {
 		var ret ControlsPolicyAlertMatcher
 		return ret
@@ -159,7 +161,7 @@ func (o *ControlsPolicy) GetMatcher() ControlsPolicyAlertMatcher {
 
 // GetMatcherOk returns a tuple with the Matcher field value
 // and a boolean to check if the value has been set.
-func (o *ControlsPolicy) GetMatcherOk() (*ControlsPolicyAlertMatcher, bool) {
+func (o *ControlsNetworkPolicy) GetMatcherOk() (*ControlsPolicyAlertMatcher, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -167,12 +169,12 @@ func (o *ControlsPolicy) GetMatcherOk() (*ControlsPolicyAlertMatcher, bool) {
 }
 
 // SetMatcher sets field value
-func (o *ControlsPolicy) SetMatcher(v ControlsPolicyAlertMatcher) {
+func (o *ControlsNetworkPolicy) SetMatcher(v ControlsPolicyAlertMatcher) {
 	o.Matcher = v
 }
 
 // GetPolicyId returns the PolicyId field value
-func (o *ControlsPolicy) GetPolicyId() string {
+func (o *ControlsNetworkPolicy) GetPolicyId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -183,7 +185,7 @@ func (o *ControlsPolicy) GetPolicyId() string {
 
 // GetPolicyIdOk returns a tuple with the PolicyId field value
 // and a boolean to check if the value has been set.
-func (o *ControlsPolicy) GetPolicyIdOk() (*string, bool) {
+func (o *ControlsNetworkPolicy) GetPolicyIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -191,11 +193,35 @@ func (o *ControlsPolicy) GetPolicyIdOk() (*string, bool) {
 }
 
 // SetPolicyId sets field value
-func (o *ControlsPolicy) SetPolicyId(v string) {
+func (o *ControlsNetworkPolicy) SetPolicyId(v string) {
 	o.PolicyId = v
 }
 
-func (o ControlsPolicy) MarshalJSON() ([]byte, error) {
+// GetUpdatedAt returns the UpdatedAt field value
+func (o *ControlsNetworkPolicy) GetUpdatedAt() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
+// and a boolean to check if the value has been set.
+func (o *ControlsNetworkPolicy) GetUpdatedAtOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UpdatedAt, true
+}
+
+// SetUpdatedAt sets field value
+func (o *ControlsNetworkPolicy) SetUpdatedAt(v int32) {
+	o.UpdatedAt = v
+}
+
+func (o ControlsNetworkPolicy) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -203,49 +229,50 @@ func (o ControlsPolicy) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ControlsPolicy) ToMap() (map[string]interface{}, error) {
+func (o ControlsNetworkPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["action"] = o.Action
 	toSerialize["count_limit"] = o.CountLimit
 	toSerialize["duration_count_limit_sec"] = o.DurationCountLimitSec
 	toSerialize["duration_sec"] = o.DurationSec
-	toSerialize["event_type"] = o.EventType
 	toSerialize["matcher"] = o.Matcher
 	toSerialize["policy_id"] = o.PolicyId
+	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil
 }
 
-type NullableControlsPolicy struct {
-	value *ControlsPolicy
+type NullableControlsNetworkPolicy struct {
+	value *ControlsNetworkPolicy
 	isSet bool
 }
 
-func (v NullableControlsPolicy) Get() *ControlsPolicy {
+func (v NullableControlsNetworkPolicy) Get() *ControlsNetworkPolicy {
 	return v.value
 }
 
-func (v *NullableControlsPolicy) Set(val *ControlsPolicy) {
+func (v *NullableControlsNetworkPolicy) Set(val *ControlsNetworkPolicy) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableControlsPolicy) IsSet() bool {
+func (v NullableControlsNetworkPolicy) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableControlsPolicy) Unset() {
+func (v *NullableControlsNetworkPolicy) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableControlsPolicy(val *ControlsPolicy) *NullableControlsPolicy {
-	return &NullableControlsPolicy{value: val, isSet: true}
+func NewNullableControlsNetworkPolicy(val *ControlsNetworkPolicy) *NullableControlsNetworkPolicy {
+	return &NullableControlsNetworkPolicy{value: val, isSet: true}
 }
 
-func (v NullableControlsPolicy) MarshalJSON() ([]byte, error) {
+func (v NullableControlsNetworkPolicy) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableControlsPolicy) UnmarshalJSON(src []byte) error {
+func (v *NullableControlsNetworkPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

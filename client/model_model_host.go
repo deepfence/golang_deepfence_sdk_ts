@@ -33,6 +33,7 @@ type ModelHost struct {
 	Containers []ModelContainer `json:"containers"`
 	CpuMax float32 `json:"cpu_max"`
 	CpuUsage float32 `json:"cpu_usage"`
+	FilesystemTracerStatus string `json:"filesystem_tracer_status"`
 	HostName string `json:"host_name"`
 	InboundConnections []ModelConnection `json:"inbound_connections"`
 	InstanceId string `json:"instance_id"`
@@ -47,6 +48,9 @@ type ModelHost struct {
 	MalwaresCount int32 `json:"malwares_count"`
 	MemoryMax int32 `json:"memory_max"`
 	MemoryUsage int32 `json:"memory_usage"`
+	NetworkFilterStatus string `json:"network_filter_status"`
+	NetworkTracerStatus string `json:"network_tracer_status"`
+	NetworkTracerStatusUpdatedAt int32 `json:"network_tracer_status_updated_at"`
 	NodeId string `json:"node_id"`
 	NodeName string `json:"node_name"`
 	Os string `json:"os"`
@@ -71,7 +75,7 @@ type ModelHost struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelHost(agentRunning bool, alertsCounts map[string]int32, availabilityZone string, cloudProvider string, cloudRegion string, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string) *ModelHost {
+func NewModelHost(agentRunning bool, alertsCounts map[string]int32, availabilityZone string, cloudProvider string, cloudRegion string, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, filesystemTracerStatus string, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, networkFilterStatus string, networkTracerStatus string, networkTracerStatusUpdatedAt int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string) *ModelHost {
 	this := ModelHost{}
 	this.AgentRunning = agentRunning
 	this.AlertsCounts = alertsCounts
@@ -86,6 +90,7 @@ func NewModelHost(agentRunning bool, alertsCounts map[string]int32, availability
 	this.Containers = containers
 	this.CpuMax = cpuMax
 	this.CpuUsage = cpuUsage
+	this.FilesystemTracerStatus = filesystemTracerStatus
 	this.HostName = hostName
 	this.InboundConnections = inboundConnections
 	this.InstanceId = instanceId
@@ -100,6 +105,9 @@ func NewModelHost(agentRunning bool, alertsCounts map[string]int32, availability
 	this.MalwaresCount = malwaresCount
 	this.MemoryMax = memoryMax
 	this.MemoryUsage = memoryUsage
+	this.NetworkFilterStatus = networkFilterStatus
+	this.NetworkTracerStatus = networkTracerStatus
+	this.NetworkTracerStatusUpdatedAt = networkTracerStatusUpdatedAt
 	this.NodeId = nodeId
 	this.NodeName = nodeName
 	this.Os = os
@@ -447,6 +455,30 @@ func (o *ModelHost) SetCpuUsage(v float32) {
 	o.CpuUsage = v
 }
 
+// GetFilesystemTracerStatus returns the FilesystemTracerStatus field value
+func (o *ModelHost) GetFilesystemTracerStatus() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.FilesystemTracerStatus
+}
+
+// GetFilesystemTracerStatusOk returns a tuple with the FilesystemTracerStatus field value
+// and a boolean to check if the value has been set.
+func (o *ModelHost) GetFilesystemTracerStatusOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.FilesystemTracerStatus, true
+}
+
+// SetFilesystemTracerStatus sets field value
+func (o *ModelHost) SetFilesystemTracerStatus(v string) {
+	o.FilesystemTracerStatus = v
+}
+
 // GetHostName returns the HostName field value
 func (o *ModelHost) GetHostName() string {
 	if o == nil {
@@ -787,6 +819,78 @@ func (o *ModelHost) GetMemoryUsageOk() (*int32, bool) {
 // SetMemoryUsage sets field value
 func (o *ModelHost) SetMemoryUsage(v int32) {
 	o.MemoryUsage = v
+}
+
+// GetNetworkFilterStatus returns the NetworkFilterStatus field value
+func (o *ModelHost) GetNetworkFilterStatus() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.NetworkFilterStatus
+}
+
+// GetNetworkFilterStatusOk returns a tuple with the NetworkFilterStatus field value
+// and a boolean to check if the value has been set.
+func (o *ModelHost) GetNetworkFilterStatusOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.NetworkFilterStatus, true
+}
+
+// SetNetworkFilterStatus sets field value
+func (o *ModelHost) SetNetworkFilterStatus(v string) {
+	o.NetworkFilterStatus = v
+}
+
+// GetNetworkTracerStatus returns the NetworkTracerStatus field value
+func (o *ModelHost) GetNetworkTracerStatus() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.NetworkTracerStatus
+}
+
+// GetNetworkTracerStatusOk returns a tuple with the NetworkTracerStatus field value
+// and a boolean to check if the value has been set.
+func (o *ModelHost) GetNetworkTracerStatusOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.NetworkTracerStatus, true
+}
+
+// SetNetworkTracerStatus sets field value
+func (o *ModelHost) SetNetworkTracerStatus(v string) {
+	o.NetworkTracerStatus = v
+}
+
+// GetNetworkTracerStatusUpdatedAt returns the NetworkTracerStatusUpdatedAt field value
+func (o *ModelHost) GetNetworkTracerStatusUpdatedAt() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.NetworkTracerStatusUpdatedAt
+}
+
+// GetNetworkTracerStatusUpdatedAtOk returns a tuple with the NetworkTracerStatusUpdatedAt field value
+// and a boolean to check if the value has been set.
+func (o *ModelHost) GetNetworkTracerStatusUpdatedAtOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.NetworkTracerStatusUpdatedAt, true
+}
+
+// SetNetworkTracerStatusUpdatedAt sets field value
+func (o *ModelHost) SetNetworkTracerStatusUpdatedAt(v int32) {
+	o.NetworkTracerStatusUpdatedAt = v
 }
 
 // GetNodeId returns the NodeId field value
@@ -1260,6 +1364,7 @@ func (o ModelHost) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["cpu_max"] = o.CpuMax
 	toSerialize["cpu_usage"] = o.CpuUsage
+	toSerialize["filesystem_tracer_status"] = o.FilesystemTracerStatus
 	toSerialize["host_name"] = o.HostName
 	if o.InboundConnections != nil {
 		toSerialize["inbound_connections"] = o.InboundConnections
@@ -1280,6 +1385,9 @@ func (o ModelHost) ToMap() (map[string]interface{}, error) {
 	toSerialize["malwares_count"] = o.MalwaresCount
 	toSerialize["memory_max"] = o.MemoryMax
 	toSerialize["memory_usage"] = o.MemoryUsage
+	toSerialize["network_filter_status"] = o.NetworkFilterStatus
+	toSerialize["network_tracer_status"] = o.NetworkTracerStatus
+	toSerialize["network_tracer_status_updated_at"] = o.NetworkTracerStatusUpdatedAt
 	toSerialize["node_id"] = o.NodeId
 	toSerialize["node_name"] = o.NodeName
 	toSerialize["os"] = o.Os

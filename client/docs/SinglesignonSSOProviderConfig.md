@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ClientId** | **string** |  | 
 **ClientSecret** | **string** |  | 
 **DisablePasswordLogin** | **bool** |  | 
+**HostName** | Pointer to **string** |  | [optional] 
 **IssuerUrl** | Pointer to **string** |  | [optional] 
 **SsoProviderType** | **string** |  | 
 
@@ -88,6 +89,31 @@ and a boolean to check if the value has been set.
 
 SetDisablePasswordLogin sets DisablePasswordLogin field to given value.
 
+
+### GetHostName
+
+`func (o *SinglesignonSSOProviderConfig) GetHostName() string`
+
+GetHostName returns the HostName field if non-nil, zero value otherwise.
+
+### GetHostNameOk
+
+`func (o *SinglesignonSSOProviderConfig) GetHostNameOk() (*string, bool)`
+
+GetHostNameOk returns a tuple with the HostName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostName
+
+`func (o *SinglesignonSSOProviderConfig) SetHostName(v string)`
+
+SetHostName sets HostName field to given value.
+
+### HasHostName
+
+`func (o *SinglesignonSSOProviderConfig) HasHostName() bool`
+
+HasHostName returns a boolean if a field has been set.
 
 ### GetIssuerUrl
 

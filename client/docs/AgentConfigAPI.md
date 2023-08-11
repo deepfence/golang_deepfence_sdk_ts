@@ -622,7 +622,7 @@ import (
 )
 
 func main() {
-    controlsFilesystemTracerConfig := *openapiclient.NewControlsFilesystemTracerConfig([]openapiclient.ControlsMonitoredFilesConfig{*openapiclient.NewControlsMonitoredFilesConfig([]string{"AccessTypes_example"}, "Path_example", "Wight_example")}, "NodeId_example", []openapiclient.ControlsProcessEventConfig{*openapiclient.NewControlsProcessEventConfig("EventName_example", "Wight_example")}) // ControlsFilesystemTracerConfig |  (optional)
+    controlsFilesystemTracerConfig := *openapiclient.NewControlsFilesystemTracerConfig([]openapiclient.ControlsMonitoredFilesConfig{*openapiclient.NewControlsMonitoredFilesConfig([]string{"AccessTypes_example"}, "Path_example", "Weight_example")}, "NodeId_example", []openapiclient.ControlsProcessEventConfig{*openapiclient.NewControlsProcessEventConfig("EventName_example", "Weight_example")}, int32(123)) // ControlsFilesystemTracerConfig |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -686,7 +686,7 @@ import (
 )
 
 func main() {
-    controlsNetworkTracerConfig := *openapiclient.NewControlsNetworkTracerConfig(*openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), "Mode_example", "NodeId_example", []string{"ProcessNames_example"}, *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"})) // ControlsNetworkTracerConfig |  (optional)
+    controlsNetworkTracerConfig := *openapiclient.NewControlsNetworkTracerConfig(*openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), "Mode_example", "NodeId_example", []string{"ProcessNames_example"}, *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), int32(123)) // ControlsNetworkTracerConfig |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -750,7 +750,7 @@ import (
 )
 
 func main() {
-    controlsPolicyFilterConfig := *openapiclient.NewControlsPolicyFilterConfig("NodeId_example", []openapiclient.ControlsPolicy{*openapiclient.NewControlsPolicy(int32(123), int32(123), int32(123), "EventType_example", *openapiclient.NewControlsPolicyAlertMatcher(map[string][]string{"key": []string{"Inner_example"}}), "PolicyId_example")}, false) // ControlsPolicyFilterConfig |  (optional)
+    controlsPolicyFilterConfig := *openapiclient.NewControlsPolicyFilterConfig([]string{"IgnoredRemoteIps_example"}, "NodeId_example", []openapiclient.ControlsNetworkPolicy{*openapiclient.NewControlsNetworkPolicy("Action_example", int32(123), int32(123), int32(123), *openapiclient.NewControlsPolicyAlertMatcher(map[string][]string{"key": []string{"Inner_example"}}), "PolicyId_example", int32(123))}, int32(123), false) // ControlsPolicyFilterConfig |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -814,7 +814,7 @@ import (
 )
 
 func main() {
-    controlsQuarantineConfig := *openapiclient.NewControlsQuarantineConfig("NodeId_example", []openapiclient.ControlsPolicy{*openapiclient.NewControlsPolicy(int32(123), int32(123), int32(123), "EventType_example", *openapiclient.NewControlsPolicyAlertMatcher(map[string][]string{"key": []string{"Inner_example"}}), "PolicyId_example")}) // ControlsQuarantineConfig |  (optional)
+    controlsQuarantineConfig := *openapiclient.NewControlsQuarantineConfig("NodeId_example", []openapiclient.ControlsRuncPolicy{*openapiclient.NewControlsRuncPolicy("Action_example", int32(123), int32(123), *openapiclient.NewControlsPolicyAlertMatcher(map[string][]string{"key": []string{"Inner_example"}}), "NodeType_example", "PolicyId_example", int32(123))}, int32(123)) // ControlsQuarantineConfig |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
