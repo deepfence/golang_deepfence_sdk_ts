@@ -293,7 +293,7 @@ func (r ApiGetMitreAttackMatrixRequest) ModelMitreAttackMatrixRequest(modelMitre
 	return r
 }
 
-func (r ApiGetMitreAttackMatrixRequest) Execute() (*ModelMitreAttackMatrix, *http.Response, error) {
+func (r ApiGetMitreAttackMatrixRequest) Execute() ([]ModelMitreAttackMatrix, *http.Response, error) {
 	return r.ApiService.GetMitreAttackMatrixExecute(r)
 }
 
@@ -313,13 +313,13 @@ func (a *AlertAPIService) GetMitreAttackMatrix(ctx context.Context) ApiGetMitreA
 }
 
 // Execute executes the request
-//  @return ModelMitreAttackMatrix
-func (a *AlertAPIService) GetMitreAttackMatrixExecute(r ApiGetMitreAttackMatrixRequest) (*ModelMitreAttackMatrix, *http.Response, error) {
+//  @return []ModelMitreAttackMatrix
+func (a *AlertAPIService) GetMitreAttackMatrixExecute(r ApiGetMitreAttackMatrixRequest) ([]ModelMitreAttackMatrix, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ModelMitreAttackMatrix
+		localVarReturnValue  []ModelMitreAttackMatrix
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertAPIService.GetMitreAttackMatrix")

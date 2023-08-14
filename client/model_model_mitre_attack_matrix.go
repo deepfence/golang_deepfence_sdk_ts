@@ -20,16 +20,20 @@ var _ MappedNullable = &ModelMitreAttackMatrix{}
 
 // ModelMitreAttackMatrix struct for ModelMitreAttackMatrix
 type ModelMitreAttackMatrix struct {
-	TacticSummary map[string]ModelMitreTacticSummary `json:"tactic_summary"`
+	Count int32 `json:"count"`
+	Tactic string `json:"tactic"`
+	TechniqueSummary map[string]ModelMitreTechniqueSummary `json:"technique_summary"`
 }
 
 // NewModelMitreAttackMatrix instantiates a new ModelMitreAttackMatrix object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelMitreAttackMatrix(tacticSummary map[string]ModelMitreTacticSummary) *ModelMitreAttackMatrix {
+func NewModelMitreAttackMatrix(count int32, tactic string, techniqueSummary map[string]ModelMitreTechniqueSummary) *ModelMitreAttackMatrix {
 	this := ModelMitreAttackMatrix{}
-	this.TacticSummary = tacticSummary
+	this.Count = count
+	this.Tactic = tactic
+	this.TechniqueSummary = techniqueSummary
 	return &this
 }
 
@@ -41,30 +45,78 @@ func NewModelMitreAttackMatrixWithDefaults() *ModelMitreAttackMatrix {
 	return &this
 }
 
-// GetTacticSummary returns the TacticSummary field value
-// If the value is explicit nil, the zero value for map[string]ModelMitreTacticSummary will be returned
-func (o *ModelMitreAttackMatrix) GetTacticSummary() map[string]ModelMitreTacticSummary {
+// GetCount returns the Count field value
+func (o *ModelMitreAttackMatrix) GetCount() int32 {
 	if o == nil {
-		var ret map[string]ModelMitreTacticSummary
+		var ret int32
 		return ret
 	}
 
-	return o.TacticSummary
+	return o.Count
 }
 
-// GetTacticSummaryOk returns a tuple with the TacticSummary field value
+// GetCountOk returns a tuple with the Count field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelMitreAttackMatrix) GetTacticSummaryOk() (*map[string]ModelMitreTacticSummary, bool) {
-	if o == nil || IsNil(o.TacticSummary) {
+func (o *ModelMitreAttackMatrix) GetCountOk() (*int32, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.TacticSummary, true
+	return &o.Count, true
 }
 
-// SetTacticSummary sets field value
-func (o *ModelMitreAttackMatrix) SetTacticSummary(v map[string]ModelMitreTacticSummary) {
-	o.TacticSummary = v
+// SetCount sets field value
+func (o *ModelMitreAttackMatrix) SetCount(v int32) {
+	o.Count = v
+}
+
+// GetTactic returns the Tactic field value
+func (o *ModelMitreAttackMatrix) GetTactic() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Tactic
+}
+
+// GetTacticOk returns a tuple with the Tactic field value
+// and a boolean to check if the value has been set.
+func (o *ModelMitreAttackMatrix) GetTacticOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Tactic, true
+}
+
+// SetTactic sets field value
+func (o *ModelMitreAttackMatrix) SetTactic(v string) {
+	o.Tactic = v
+}
+
+// GetTechniqueSummary returns the TechniqueSummary field value
+// If the value is explicit nil, the zero value for map[string]ModelMitreTechniqueSummary will be returned
+func (o *ModelMitreAttackMatrix) GetTechniqueSummary() map[string]ModelMitreTechniqueSummary {
+	if o == nil {
+		var ret map[string]ModelMitreTechniqueSummary
+		return ret
+	}
+
+	return o.TechniqueSummary
+}
+
+// GetTechniqueSummaryOk returns a tuple with the TechniqueSummary field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelMitreAttackMatrix) GetTechniqueSummaryOk() (*map[string]ModelMitreTechniqueSummary, bool) {
+	if o == nil || IsNil(o.TechniqueSummary) {
+		return nil, false
+	}
+	return &o.TechniqueSummary, true
+}
+
+// SetTechniqueSummary sets field value
+func (o *ModelMitreAttackMatrix) SetTechniqueSummary(v map[string]ModelMitreTechniqueSummary) {
+	o.TechniqueSummary = v
 }
 
 func (o ModelMitreAttackMatrix) MarshalJSON() ([]byte, error) {
@@ -77,8 +129,10 @@ func (o ModelMitreAttackMatrix) MarshalJSON() ([]byte, error) {
 
 func (o ModelMitreAttackMatrix) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.TacticSummary != nil {
-		toSerialize["tactic_summary"] = o.TacticSummary
+	toSerialize["count"] = o.Count
+	toSerialize["tactic"] = o.Tactic
+	if o.TechniqueSummary != nil {
+		toSerialize["technique_summary"] = o.TechniqueSummary
 	}
 	return toSerialize, nil
 }

@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 
 ## GetMitreAttackMatrix
 
-> ModelMitreAttackMatrix GetMitreAttackMatrix(ctx).ModelMitreAttackMatrixRequest(modelMitreAttackMatrixRequest).Execute()
+> []ModelMitreAttackMatrix GetMitreAttackMatrix(ctx).ModelMitreAttackMatrixRequest(modelMitreAttackMatrixRequest).Execute()
 
 Get Mitre Attack Matrix
 
@@ -168,7 +168,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertAPI.GetMitreAttackMatrix``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetMitreAttackMatrix`: ModelMitreAttackMatrix
+    // response from `GetMitreAttackMatrix`: []ModelMitreAttackMatrix
     fmt.Fprintf(os.Stdout, "Response from `AlertAPI.GetMitreAttackMatrix`: %v\n", resp)
 }
 ```
@@ -188,7 +188,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ModelMitreAttackMatrix**](ModelMitreAttackMatrix.md)
+[**[]ModelMitreAttackMatrix**](ModelMitreAttackMatrix.md)
 
 ### Authorization
 

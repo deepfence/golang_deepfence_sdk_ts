@@ -177,7 +177,6 @@ docs/ModelMalwareScanTriggerReq.md
 docs/ModelMessageResponse.md
 docs/ModelMitreAttackMatrix.md
 docs/ModelMitreAttackMatrixRequest.md
-docs/ModelMitreTacticSummary.md
 docs/ModelMitreTechniqueSummary.md
 docs/ModelNetworkAlert.md
 docs/ModelNetworkViolation.md
@@ -409,7 +408,6 @@ model_model_malware_scan_trigger_req.go
 model_model_message_response.go
 model_model_mitre_attack_matrix.go
 model_model_mitre_attack_matrix_request.go
-model_model_mitre_tactic_summary.go
 model_model_mitre_technique_summary.go
 model_model_network_alert.go
 model_model_network_violation.go

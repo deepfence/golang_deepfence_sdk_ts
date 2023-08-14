@@ -4,13 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TacticSummary** | [**map[string]ModelMitreTacticSummary**](ModelMitreTacticSummary.md) |  | 
+**Count** | **int32** |  | 
+**Tactic** | **string** |  | 
+**TechniqueSummary** | [**map[string]ModelMitreTechniqueSummary**](ModelMitreTechniqueSummary.md) |  | 
 
 ## Methods
 
 ### NewModelMitreAttackMatrix
 
-`func NewModelMitreAttackMatrix(tacticSummary map[string]ModelMitreTacticSummary, ) *ModelMitreAttackMatrix`
+`func NewModelMitreAttackMatrix(count int32, tactic string, techniqueSummary map[string]ModelMitreTechniqueSummary, ) *ModelMitreAttackMatrix`
 
 NewModelMitreAttackMatrix instantiates a new ModelMitreAttackMatrix object
 This constructor will assign default values to properties that have it defined,
@@ -25,36 +27,76 @@ NewModelMitreAttackMatrixWithDefaults instantiates a new ModelMitreAttackMatrix 
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetTacticSummary
+### GetCount
 
-`func (o *ModelMitreAttackMatrix) GetTacticSummary() map[string]ModelMitreTacticSummary`
+`func (o *ModelMitreAttackMatrix) GetCount() int32`
 
-GetTacticSummary returns the TacticSummary field if non-nil, zero value otherwise.
+GetCount returns the Count field if non-nil, zero value otherwise.
 
-### GetTacticSummaryOk
+### GetCountOk
 
-`func (o *ModelMitreAttackMatrix) GetTacticSummaryOk() (*map[string]ModelMitreTacticSummary, bool)`
+`func (o *ModelMitreAttackMatrix) GetCountOk() (*int32, bool)`
 
-GetTacticSummaryOk returns a tuple with the TacticSummary field if it's non-nil, zero value otherwise
+GetCountOk returns a tuple with the Count field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTacticSummary
+### SetCount
 
-`func (o *ModelMitreAttackMatrix) SetTacticSummary(v map[string]ModelMitreTacticSummary)`
+`func (o *ModelMitreAttackMatrix) SetCount(v int32)`
 
-SetTacticSummary sets TacticSummary field to given value.
+SetCount sets Count field to given value.
 
 
-### SetTacticSummaryNil
+### GetTactic
 
-`func (o *ModelMitreAttackMatrix) SetTacticSummaryNil(b bool)`
+`func (o *ModelMitreAttackMatrix) GetTactic() string`
 
- SetTacticSummaryNil sets the value for TacticSummary to be an explicit nil
+GetTactic returns the Tactic field if non-nil, zero value otherwise.
 
-### UnsetTacticSummary
-`func (o *ModelMitreAttackMatrix) UnsetTacticSummary()`
+### GetTacticOk
 
-UnsetTacticSummary ensures that no value is present for TacticSummary, not even an explicit nil
+`func (o *ModelMitreAttackMatrix) GetTacticOk() (*string, bool)`
+
+GetTacticOk returns a tuple with the Tactic field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTactic
+
+`func (o *ModelMitreAttackMatrix) SetTactic(v string)`
+
+SetTactic sets Tactic field to given value.
+
+
+### GetTechniqueSummary
+
+`func (o *ModelMitreAttackMatrix) GetTechniqueSummary() map[string]ModelMitreTechniqueSummary`
+
+GetTechniqueSummary returns the TechniqueSummary field if non-nil, zero value otherwise.
+
+### GetTechniqueSummaryOk
+
+`func (o *ModelMitreAttackMatrix) GetTechniqueSummaryOk() (*map[string]ModelMitreTechniqueSummary, bool)`
+
+GetTechniqueSummaryOk returns a tuple with the TechniqueSummary field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTechniqueSummary
+
+`func (o *ModelMitreAttackMatrix) SetTechniqueSummary(v map[string]ModelMitreTechniqueSummary)`
+
+SetTechniqueSummary sets TechniqueSummary field to given value.
+
+
+### SetTechniqueSummaryNil
+
+`func (o *ModelMitreAttackMatrix) SetTechniqueSummaryNil(b bool)`
+
+ SetTechniqueSummaryNil sets the value for TechniqueSummary to be an explicit nil
+
+### UnsetTechniqueSummary
+`func (o *ModelMitreAttackMatrix) UnsetTechniqueSummary()`
+
+UnsetTechniqueSummary ensures that no value is present for TechniqueSummary, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -456,7 +456,6 @@ Class | Method | HTTP request | Description
  - [ModelMessageResponse](docs/ModelMessageResponse.md)
  - [ModelMitreAttackMatrix](docs/ModelMitreAttackMatrix.md)
  - [ModelMitreAttackMatrixRequest](docs/ModelMitreAttackMatrixRequest.md)
- - [ModelMitreTacticSummary](docs/ModelMitreTacticSummary.md)
  - [ModelMitreTechniqueSummary](docs/ModelMitreTechniqueSummary.md)
  - [ModelNetworkAlert](docs/ModelNetworkAlert.md)
  - [ModelNetworkViolation](docs/ModelNetworkViolation.md)

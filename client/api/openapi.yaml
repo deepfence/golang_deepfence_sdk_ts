@@ -201,7 +201,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ModelMitreAttackMatrix'
+                items:
+                  $ref: '#/components/schemas/ModelMitreAttackMatrix'
+                type: array
           description: OK
         "400":
           content:
@@ -17598,21 +17600,26 @@ components:
       type: object
     ModelMitreAttackMatrix:
       example:
-        tactic_summary:
+        count: 0
+        technique_summary:
           key:
-            count: 0
-            technique_summary:
-              key:
-                severity: severity
-                count: 6
+            severity: severity
+            count: 6
+        tactic: tactic
       properties:
-        tactic_summary:
+        count:
+          type: integer
+        tactic:
+          type: string
+        technique_summary:
           additionalProperties:
-            $ref: '#/components/schemas/ModelMitreTacticSummary'
+            $ref: '#/components/schemas/ModelMitreTechniqueSummary'
           nullable: true
           type: object
       required:
-      - tactic_summary
+      - count
+      - tactic
+      - technique_summary
       type: object
     ModelMitreAttackMatrixRequest:
       example:
@@ -17625,25 +17632,6 @@ components:
             type: string
           nullable: true
           type: array
-      type: object
-    ModelMitreTacticSummary:
-      example:
-        count: 0
-        technique_summary:
-          key:
-            severity: severity
-            count: 6
-      properties:
-        count:
-          type: integer
-        technique_summary:
-          additionalProperties:
-            $ref: '#/components/schemas/ModelMitreTechniqueSummary'
-          nullable: true
-          type: object
-      required:
-      - count
-      - technique_summary
       type: object
     ModelMitreTechniqueSummary:
       example:
