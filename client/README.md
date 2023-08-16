@@ -108,6 +108,7 @@ Class | Method | HTTP request | Description
 *AuthenticationAPI* | [**GetSSOProviders**](docs/AuthenticationAPI.md#getssoproviders) | **Get** /deepfence/single-sign-on | Get Single sign-on configurations
 *AuthenticationAPI* | [**Login**](docs/AuthenticationAPI.md#login) | **Post** /deepfence/user/login | Login API
 *AuthenticationAPI* | [**Logout**](docs/AuthenticationAPI.md#logout) | **Post** /deepfence/user/logout | Logout API
+*AuthenticationAPI* | [**SsoInitiateLogin**](docs/AuthenticationAPI.md#ssoinitiatelogin) | **Get** /deepfence/sso/login/{namespace} | SSO Login
 *AuthenticationAPI* | [**SsoLogin**](docs/AuthenticationAPI.md#ssologin) | **Get** /deepfence/sso/login | SSO Login
 *AuthenticationAPI* | [**UpdateSSOProvider**](docs/AuthenticationAPI.md#updatessoprovider) | **Put** /deepfence/single-sign-on/{id} | Update Single sign-on
 *AuthenticationAPI* | [**VerifySSOAuth**](docs/AuthenticationAPI.md#verifyssoauth) | **Post** /deepfence/sso/verify | Verify SSO auth code

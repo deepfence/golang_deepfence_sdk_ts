@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**GetSSOProviders**](AuthenticationAPI.md#GetSSOProviders) | **Get** /deepfence/single-sign-on | Get Single sign-on configurations
 [**Login**](AuthenticationAPI.md#Login) | **Post** /deepfence/user/login | Login API
 [**Logout**](AuthenticationAPI.md#Logout) | **Post** /deepfence/user/logout | Logout API
+[**SsoInitiateLogin**](AuthenticationAPI.md#SsoInitiateLogin) | **Get** /deepfence/sso/login/{namespace} | SSO Login
 [**SsoLogin**](AuthenticationAPI.md#SsoLogin) | **Get** /deepfence/sso/login | SSO Login
 [**UpdateSSOProvider**](AuthenticationAPI.md#UpdateSSOProvider) | **Put** /deepfence/single-sign-on/{id} | Update Single sign-on
 [**VerifySSOAuth**](AuthenticationAPI.md#VerifySSOAuth) | **Post** /deepfence/sso/verify | Verify SSO auth code
@@ -451,6 +452,74 @@ Other parameters are passed through a pointer to a apiLogoutRequest struct via t
 ### Authorization
 
 [bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SsoInitiateLogin
+
+> SsoInitiateLogin(ctx, namespace).Execute()
+
+SSO Login
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.AuthenticationAPI.SsoInitiateLogin(context.Background(), namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.SsoInitiateLogin``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSsoInitiateLoginRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
 
 ### HTTP request headers
 

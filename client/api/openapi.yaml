@@ -9613,6 +9613,46 @@ paths:
       summary: SSO Login
       tags:
       - Authentication
+  /deepfence/sso/login/{namespace}:
+    get:
+      description: Initiate SSO login request
+      operationId: ssoInitiateLogin
+      parameters:
+      - explode: false
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "302":
+          description: Found
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      summary: SSO Login
+      tags:
+      - Authentication
   /deepfence/sso/verify:
     post:
       description: Verify code and get access token
@@ -12562,6 +12602,10 @@ components:
           - Malware
           - Compliance
           - CloudCompliance
+          - Alert
+          - NetworkPolicyLogs
+          - QuarantinePolicyLogs
+          - WorkloadPolicyLogs
           type: string
       required:
       - filters
@@ -14206,7 +14250,6 @@ components:
     ModelFileAlert:
       example:
         container_ip: container_ip
-        anomaly: anomaly
         masked: true
         created_at: 6
         pid: 1
@@ -14241,8 +14284,6 @@ components:
         node_id: node_id
         severity_score: 5.962133916683182
       properties:
-        anomaly:
-          type: string
         category:
           type: string
         container_id:
@@ -14310,7 +14351,6 @@ components:
         w:
           type: integer
       required:
-      - anomaly
       - category
       - container_id
       - container_image
@@ -19844,6 +19884,7 @@ components:
       example:
         password: password
         console_url: console_url
+        namespace: namespace
         last_name: last_name
         company: company
         first_name: first_name
@@ -19861,6 +19902,8 @@ components:
         is_temporary_password:
           type: boolean
         last_name:
+          type: string
+        namespace:
           type: string
         password:
           type: string

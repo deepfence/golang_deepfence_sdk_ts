@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **FirstName** | **string** |  | 
 **IsTemporaryPassword** | Pointer to **bool** |  | [optional] 
 **LastName** | **string** |  | 
+**Namespace** | Pointer to **string** |  | [optional] 
 **Password** | **string** |  | 
 
 ## Methods
@@ -155,6 +156,31 @@ and a boolean to check if the value has been set.
 
 SetLastName sets LastName field to given value.
 
+
+### GetNamespace
+
+`func (o *ModelUserRegisterRequest) GetNamespace() string`
+
+GetNamespace returns the Namespace field if non-nil, zero value otherwise.
+
+### GetNamespaceOk
+
+`func (o *ModelUserRegisterRequest) GetNamespaceOk() (*string, bool)`
+
+GetNamespaceOk returns a tuple with the Namespace field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNamespace
+
+`func (o *ModelUserRegisterRequest) SetNamespace(v string)`
+
+SetNamespace sets Namespace field to given value.
+
+### HasNamespace
+
+`func (o *ModelUserRegisterRequest) HasNamespace() bool`
+
+HasNamespace returns a boolean if a field has been set.
 
 ### GetPassword
 

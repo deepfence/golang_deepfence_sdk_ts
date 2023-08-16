@@ -20,7 +20,6 @@ var _ MappedNullable = &ModelFileAlert{}
 
 // ModelFileAlert struct for ModelFileAlert
 type ModelFileAlert struct {
-	Anomaly string `json:"anomaly"`
 	Category string `json:"category"`
 	ContainerId string `json:"container_id"`
 	ContainerImage string `json:"container_image"`
@@ -57,9 +56,8 @@ type ModelFileAlert struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelFileAlert(anomaly string, category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32) *ModelFileAlert {
+func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32) *ModelFileAlert {
 	this := ModelFileAlert{}
-	this.Anomaly = anomaly
 	this.Category = category
 	this.ContainerId = containerId
 	this.ContainerImage = containerImage
@@ -99,30 +97,6 @@ func NewModelFileAlert(anomaly string, category string, containerId string, cont
 func NewModelFileAlertWithDefaults() *ModelFileAlert {
 	this := ModelFileAlert{}
 	return &this
-}
-
-// GetAnomaly returns the Anomaly field value
-func (o *ModelFileAlert) GetAnomaly() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Anomaly
-}
-
-// GetAnomalyOk returns a tuple with the Anomaly field value
-// and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetAnomalyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Anomaly, true
-}
-
-// SetAnomaly sets field value
-func (o *ModelFileAlert) SetAnomaly(v string) {
-	o.Anomaly = v
 }
 
 // GetCategory returns the Category field value
@@ -859,7 +833,6 @@ func (o ModelFileAlert) MarshalJSON() ([]byte, error) {
 
 func (o ModelFileAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["anomaly"] = o.Anomaly
 	toSerialize["category"] = o.Category
 	toSerialize["container_id"] = o.ContainerId
 	toSerialize["container_image"] = o.ContainerImage

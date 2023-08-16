@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Anomaly** | **string** |  | 
 **Category** | **string** |  | 
 **ContainerId** | **string** |  | 
 **ContainerImage** | **string** |  | 
@@ -40,7 +39,7 @@ Name | Type | Description | Notes
 
 ### NewModelFileAlert
 
-`func NewModelFileAlert(anomaly string, category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32, ) *ModelFileAlert`
+`func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32, ) *ModelFileAlert`
 
 NewModelFileAlert instantiates a new ModelFileAlert object
 This constructor will assign default values to properties that have it defined,
@@ -54,26 +53,6 @@ will change when the set of required properties is changed
 NewModelFileAlertWithDefaults instantiates a new ModelFileAlert object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAnomaly
-
-`func (o *ModelFileAlert) GetAnomaly() string`
-
-GetAnomaly returns the Anomaly field if non-nil, zero value otherwise.
-
-### GetAnomalyOk
-
-`func (o *ModelFileAlert) GetAnomalyOk() (*string, bool)`
-
-GetAnomalyOk returns a tuple with the Anomaly field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAnomaly
-
-`func (o *ModelFileAlert) SetAnomaly(v string)`
-
-SetAnomaly sets Anomaly field to given value.
-
 
 ### GetCategory
 

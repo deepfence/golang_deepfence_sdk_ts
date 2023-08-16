@@ -26,6 +26,7 @@ type ModelUserRegisterRequest struct {
 	FirstName string `json:"first_name"`
 	IsTemporaryPassword *bool `json:"is_temporary_password,omitempty"`
 	LastName string `json:"last_name"`
+	Namespace *string `json:"namespace,omitempty"`
 	Password string `json:"password"`
 }
 
@@ -204,6 +205,38 @@ func (o *ModelUserRegisterRequest) SetLastName(v string) {
 	o.LastName = v
 }
 
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
+func (o *ModelUserRegisterRequest) GetNamespace() string {
+	if o == nil || IsNil(o.Namespace) {
+		var ret string
+		return ret
+	}
+	return *o.Namespace
+}
+
+// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelUserRegisterRequest) GetNamespaceOk() (*string, bool) {
+	if o == nil || IsNil(o.Namespace) {
+		return nil, false
+	}
+	return o.Namespace, true
+}
+
+// HasNamespace returns a boolean if a field has been set.
+func (o *ModelUserRegisterRequest) HasNamespace() bool {
+	if o != nil && !IsNil(o.Namespace) {
+		return true
+	}
+
+	return false
+}
+
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
+func (o *ModelUserRegisterRequest) SetNamespace(v string) {
+	o.Namespace = &v
+}
+
 // GetPassword returns the Password field value
 func (o *ModelUserRegisterRequest) GetPassword() string {
 	if o == nil {
@@ -246,6 +279,9 @@ func (o ModelUserRegisterRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["is_temporary_password"] = o.IsTemporaryPassword
 	}
 	toSerialize["last_name"] = o.LastName
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
+	}
 	toSerialize["password"] = o.Password
 	return toSerialize, nil
 }
