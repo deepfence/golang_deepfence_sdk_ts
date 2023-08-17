@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 
 ## GetCloudWafConfiguration
 
-> ModelCloudWafConfig GetCloudWafConfiguration(ctx).Execute()
+> IngestersCloudWafConfig GetCloudWafConfiguration(ctx).Execute()
 
 Get Cloud WAF Configuration
 
@@ -309,7 +309,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.GetCloudWafConfiguration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCloudWafConfiguration`: ModelCloudWafConfig
+    // response from `GetCloudWafConfiguration`: IngestersCloudWafConfig
     fmt.Fprintf(os.Stdout, "Response from `SettingsAPI.GetCloudWafConfiguration`: %v\n", resp)
 }
 ```
@@ -325,7 +325,7 @@ Other parameters are passed through a pointer to a apiGetCloudWafConfigurationRe
 
 ### Return type
 
-[**ModelCloudWafConfig**](ModelCloudWafConfig.md)
+[**IngestersCloudWafConfig**](IngestersCloudWafConfig.md)
 
 ### Authorization
 
@@ -712,7 +712,7 @@ Name | Type | Description  | Notes
 
 ## SetCloudWafConfiguration
 
-> SetCloudWafConfiguration(ctx).ModelCloudWafConfig(modelCloudWafConfig).Execute()
+> SetCloudWafConfiguration(ctx).IngestersCloudWafConfig(ingestersCloudWafConfig).Execute()
 
 Set Cloud WAF Configuration
 
@@ -731,11 +731,11 @@ import (
 )
 
 func main() {
-    modelCloudWafConfig := *openapiclient.NewModelCloudWafConfig([]openapiclient.ModelAWSWafARN{*openapiclient.NewModelAWSWafARN("Arn_example", "Region_example")}, "CloudProvider_example") // ModelCloudWafConfig |  (optional)
+    ingestersCloudWafConfig := *openapiclient.NewIngestersCloudWafConfig([]openapiclient.IngestersAWSWafARN{*openapiclient.NewIngestersAWSWafARN("Arn_example", "Region_example")}, "CloudProvider_example") // IngestersCloudWafConfig |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SettingsAPI.SetCloudWafConfiguration(context.Background()).ModelCloudWafConfig(modelCloudWafConfig).Execute()
+    r, err := apiClient.SettingsAPI.SetCloudWafConfiguration(context.Background()).IngestersCloudWafConfig(ingestersCloudWafConfig).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.SetCloudWafConfiguration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -754,7 +754,7 @@ Other parameters are passed through a pointer to a apiSetCloudWafConfigurationRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelCloudWafConfig** | [**ModelCloudWafConfig**](ModelCloudWafConfig.md) |  | 
+ **ingestersCloudWafConfig** | [**IngestersCloudWafConfig**](IngestersCloudWafConfig.md) |  | 
 
 ### Return type
 

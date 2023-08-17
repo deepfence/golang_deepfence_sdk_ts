@@ -2339,6 +2339,48 @@ paths:
       summary: Ingest Compliances
       tags:
       - Compliance
+  /deepfence/ingest/compliance-scan-logs:
+    post:
+      description: Ingest compliance issues found while scanning the agent
+      operationId: ingestComplianceScanStatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/IngestersComplianceScanStatus'
+              nullable: true
+              type: array
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Ingest Compliance Scan Status
+      tags:
+      - Compliance
   /deepfence/ingest/malware:
     post:
       description: Ingest malware found while scanning the agent
@@ -9087,7 +9129,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ModelCloudWafConfig'
+                $ref: '#/components/schemas/IngestersCloudWafConfig'
           description: OK
         "400":
           content:
@@ -9123,7 +9165,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ModelCloudWafConfig'
+              $ref: '#/components/schemas/IngestersCloudWafConfig'
       responses:
         "204":
           description: No Content
@@ -10509,8 +10551,6 @@ components:
       - id
       - request_payload
       type: object
-    ControlsActionID:
-      type: integer
     ControlsAgentBeat:
       example:
         beatrate: 0
@@ -11510,6 +11550,37 @@ components:
       - region_filter
       - skip_connections
       type: object
+    IngestersAWSWafARN:
+      example:
+        arn: arn
+        region: CLOUDFRONT
+      properties:
+        arn:
+          type: string
+        region:
+          enum:
+          - CLOUDFRONT
+          - us-east-1
+          - us-east-2
+          - us-west-1
+          - us-west-2
+          - ap-south-1
+          - ap-northeast-1
+          - ap-northeast-2
+          - ap-northeast-3
+          - ap-southeast-1
+          - ap-southeast-2
+          - eu-central-1
+          - eu-west-1
+          - eu-west-2
+          - eu-west-3
+          - eu-south-1
+          - sa-east-1
+          type: string
+      required:
+      - arn
+      - region
+      type: object
     IngestersCloudCompliance:
       example:
         severity: severity
@@ -11802,6 +11873,28 @@ components:
         vpc_security_group_ids: {}
         vpc_security_groups: {}
       type: object
+    IngestersCloudWafConfig:
+      example:
+        aws_waf_arn:
+        - arn: arn
+          region: CLOUDFRONT
+        - arn: arn
+          region: CLOUDFRONT
+        cloud_provider: aws
+      properties:
+        aws_waf_arn:
+          items:
+            $ref: '#/components/schemas/IngestersAWSWafARN'
+          nullable: true
+          type: array
+        cloud_provider:
+          enum:
+          - aws
+          type: string
+      required:
+      - aws_waf_arn
+      - cloud_provider
+      type: object
     IngestersCompliance:
       example:
         resource: resource
@@ -11852,6 +11945,19 @@ components:
         test_severity:
           type: string
         type:
+          type: string
+      type: object
+    IngestersComplianceScanStatus:
+      example:
+        scan_message: scan_message
+        scan_status: scan_status
+        scan_id: scan_id
+      properties:
+        scan_id:
+          type: string
+        scan_message:
+          type: string
+        scan_status:
           type: string
       type: object
     IngestersComplianceStats:
@@ -12319,37 +12425,6 @@ components:
       - in_field_filter
       - node_ids
       - window
-      type: object
-    ModelAWSWafARN:
-      example:
-        arn: arn
-        region: CLOUDFRONT
-      properties:
-        arn:
-          type: string
-        region:
-          enum:
-          - CLOUDFRONT
-          - us-east-1
-          - us-east-2
-          - us-west-1
-          - us-west-2
-          - ap-south-1
-          - ap-northeast-1
-          - ap-northeast-2
-          - ap-northeast-3
-          - ap-southeast-1
-          - ap-southeast-2
-          - eu-central-1
-          - eu-west-1
-          - eu-west-2
-          - eu-west-3
-          - eu-south-1
-          - sa-east-1
-          type: string
-      required:
-      - arn
-      - region
       type: object
     ModelAddScheduledTaskRequest:
       example:
@@ -13214,28 +13289,6 @@ components:
       - node_name
       - node_type
       - type_label
-      type: object
-    ModelCloudWafConfig:
-      example:
-        aws_waf_arn:
-        - arn: arn
-          region: CLOUDFRONT
-        - arn: arn
-          region: CLOUDFRONT
-        cloud_provider: aws
-      properties:
-        aws_waf_arn:
-          items:
-            $ref: '#/components/schemas/ModelAWSWafARN'
-          nullable: true
-          type: array
-        cloud_provider:
-          enum:
-          - aws
-          type: string
-      required:
-      - aws_waf_arn
-      - cloud_provider
       type: object
     ModelCommonAlert:
       example:

@@ -125,6 +125,7 @@ Class | Method | HTTP request | Description
 *CloudScannerAPI* | [**StatusCloudComplianceScan**](docs/CloudScannerAPI.md#statuscloudcompliancescan) | **Post** /deepfence/scan/status/cloud-compliance | Get Cloud Compliance Scan Status
 *CommonAPI* | [**Eula**](docs/CommonAPI.md#eula) | **Get** /deepfence/end-user-license-agreement | Get End User License Agreement
 *ComplianceAPI* | [**CountResultsComplianceScan**](docs/ComplianceAPI.md#countresultscompliancescan) | **Post** /deepfence/scan/results/count/compliance | Get Compliance Scans Results
+*ComplianceAPI* | [**IngestComplianceScanStatus**](docs/ComplianceAPI.md#ingestcompliancescanstatus) | **Post** /deepfence/ingest/compliance-scan-logs | Ingest Compliance Scan Status
 *ComplianceAPI* | [**IngestCompliances**](docs/ComplianceAPI.md#ingestcompliances) | **Post** /deepfence/ingest/compliance | Ingest Compliances
 *ComplianceAPI* | [**ListComplianceScan**](docs/ComplianceAPI.md#listcompliancescan) | **Post** /deepfence/scan/list/compliance | Get Compliance Scans List
 *ComplianceAPI* | [**ResultsComplianceScan**](docs/ComplianceAPI.md#resultscompliancescan) | **Post** /deepfence/scan/results/compliance | Get Compliance Scans Results
@@ -360,10 +361,13 @@ Class | Method | HTTP request | Description
  - [GraphThreatFilters](docs/GraphThreatFilters.md)
  - [GraphThreatNodeInfo](docs/GraphThreatNodeInfo.md)
  - [GraphTopologyFilters](docs/GraphTopologyFilters.md)
+ - [IngestersAWSWafARN](docs/IngestersAWSWafARN.md)
  - [IngestersCloudCompliance](docs/IngestersCloudCompliance.md)
  - [IngestersCloudComplianceScanStatus](docs/IngestersCloudComplianceScanStatus.md)
  - [IngestersCloudResource](docs/IngestersCloudResource.md)
+ - [IngestersCloudWafConfig](docs/IngestersCloudWafConfig.md)
  - [IngestersCompliance](docs/IngestersCompliance.md)
+ - [IngestersComplianceScanStatus](docs/IngestersComplianceScanStatus.md)
  - [IngestersComplianceStats](docs/IngestersComplianceStats.md)
  - [IngestersMalware](docs/IngestersMalware.md)
  - [IngestersMalwareScanStatus](docs/IngestersMalwareScanStatus.md)
@@ -378,7 +382,6 @@ Class | Method | HTTP request | Description
  - [IngestersVulnerabilityScanStatus](docs/IngestersVulnerabilityScanStatus.md)
  - [IngestersWAFRule](docs/IngestersWAFRule.md)
  - [LookupLookupFilter](docs/LookupLookupFilter.md)
- - [ModelAWSWafARN](docs/ModelAWSWafARN.md)
  - [ModelAddScheduledTaskRequest](docs/ModelAddScheduledTaskRequest.md)
  - [ModelAgentId](docs/ModelAgentId.md)
  - [ModelAgentPluginConfigNames](docs/ModelAgentPluginConfigNames.md)
@@ -409,7 +412,6 @@ Class | Method | HTTP request | Description
  - [ModelCloudNodeEnableDisableReq](docs/ModelCloudNodeEnableDisableReq.md)
  - [ModelCloudNodeProvidersListResp](docs/ModelCloudNodeProvidersListResp.md)
  - [ModelCloudResource](docs/ModelCloudResource.md)
- - [ModelCloudWafConfig](docs/ModelCloudWafConfig.md)
  - [ModelCommonAlert](docs/ModelCommonAlert.md)
  - [ModelCompliance](docs/ModelCompliance.md)
  - [ModelComplianceRule](docs/ModelComplianceRule.md)

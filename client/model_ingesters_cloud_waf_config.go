@@ -15,39 +15,39 @@ import (
 	"encoding/json"
 )
 
-// checks if the ModelCloudWafConfig type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ModelCloudWafConfig{}
+// checks if the IngestersCloudWafConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IngestersCloudWafConfig{}
 
-// ModelCloudWafConfig struct for ModelCloudWafConfig
-type ModelCloudWafConfig struct {
-	AwsWafArn []ModelAWSWafARN `json:"aws_waf_arn"`
+// IngestersCloudWafConfig struct for IngestersCloudWafConfig
+type IngestersCloudWafConfig struct {
+	AwsWafArn []IngestersAWSWafARN `json:"aws_waf_arn"`
 	CloudProvider string `json:"cloud_provider"`
 }
 
-// NewModelCloudWafConfig instantiates a new ModelCloudWafConfig object
+// NewIngestersCloudWafConfig instantiates a new IngestersCloudWafConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelCloudWafConfig(awsWafArn []ModelAWSWafARN, cloudProvider string) *ModelCloudWafConfig {
-	this := ModelCloudWafConfig{}
+func NewIngestersCloudWafConfig(awsWafArn []IngestersAWSWafARN, cloudProvider string) *IngestersCloudWafConfig {
+	this := IngestersCloudWafConfig{}
 	this.AwsWafArn = awsWafArn
 	this.CloudProvider = cloudProvider
 	return &this
 }
 
-// NewModelCloudWafConfigWithDefaults instantiates a new ModelCloudWafConfig object
+// NewIngestersCloudWafConfigWithDefaults instantiates a new IngestersCloudWafConfig object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewModelCloudWafConfigWithDefaults() *ModelCloudWafConfig {
-	this := ModelCloudWafConfig{}
+func NewIngestersCloudWafConfigWithDefaults() *IngestersCloudWafConfig {
+	this := IngestersCloudWafConfig{}
 	return &this
 }
 
 // GetAwsWafArn returns the AwsWafArn field value
-// If the value is explicit nil, the zero value for []ModelAWSWafARN will be returned
-func (o *ModelCloudWafConfig) GetAwsWafArn() []ModelAWSWafARN {
+// If the value is explicit nil, the zero value for []IngestersAWSWafARN will be returned
+func (o *IngestersCloudWafConfig) GetAwsWafArn() []IngestersAWSWafARN {
 	if o == nil {
-		var ret []ModelAWSWafARN
+		var ret []IngestersAWSWafARN
 		return ret
 	}
 
@@ -57,7 +57,7 @@ func (o *ModelCloudWafConfig) GetAwsWafArn() []ModelAWSWafARN {
 // GetAwsWafArnOk returns a tuple with the AwsWafArn field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelCloudWafConfig) GetAwsWafArnOk() ([]ModelAWSWafARN, bool) {
+func (o *IngestersCloudWafConfig) GetAwsWafArnOk() ([]IngestersAWSWafARN, bool) {
 	if o == nil || IsNil(o.AwsWafArn) {
 		return nil, false
 	}
@@ -65,12 +65,12 @@ func (o *ModelCloudWafConfig) GetAwsWafArnOk() ([]ModelAWSWafARN, bool) {
 }
 
 // SetAwsWafArn sets field value
-func (o *ModelCloudWafConfig) SetAwsWafArn(v []ModelAWSWafARN) {
+func (o *IngestersCloudWafConfig) SetAwsWafArn(v []IngestersAWSWafARN) {
 	o.AwsWafArn = v
 }
 
 // GetCloudProvider returns the CloudProvider field value
-func (o *ModelCloudWafConfig) GetCloudProvider() string {
+func (o *IngestersCloudWafConfig) GetCloudProvider() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -81,7 +81,7 @@ func (o *ModelCloudWafConfig) GetCloudProvider() string {
 
 // GetCloudProviderOk returns a tuple with the CloudProvider field value
 // and a boolean to check if the value has been set.
-func (o *ModelCloudWafConfig) GetCloudProviderOk() (*string, bool) {
+func (o *IngestersCloudWafConfig) GetCloudProviderOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -89,11 +89,11 @@ func (o *ModelCloudWafConfig) GetCloudProviderOk() (*string, bool) {
 }
 
 // SetCloudProvider sets field value
-func (o *ModelCloudWafConfig) SetCloudProvider(v string) {
+func (o *IngestersCloudWafConfig) SetCloudProvider(v string) {
 	o.CloudProvider = v
 }
 
-func (o ModelCloudWafConfig) MarshalJSON() ([]byte, error) {
+func (o IngestersCloudWafConfig) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -101,7 +101,7 @@ func (o ModelCloudWafConfig) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ModelCloudWafConfig) ToMap() (map[string]interface{}, error) {
+func (o IngestersCloudWafConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AwsWafArn != nil {
 		toSerialize["aws_waf_arn"] = o.AwsWafArn
@@ -110,38 +110,38 @@ func (o ModelCloudWafConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableModelCloudWafConfig struct {
-	value *ModelCloudWafConfig
+type NullableIngestersCloudWafConfig struct {
+	value *IngestersCloudWafConfig
 	isSet bool
 }
 
-func (v NullableModelCloudWafConfig) Get() *ModelCloudWafConfig {
+func (v NullableIngestersCloudWafConfig) Get() *IngestersCloudWafConfig {
 	return v.value
 }
 
-func (v *NullableModelCloudWafConfig) Set(val *ModelCloudWafConfig) {
+func (v *NullableIngestersCloudWafConfig) Set(val *IngestersCloudWafConfig) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableModelCloudWafConfig) IsSet() bool {
+func (v NullableIngestersCloudWafConfig) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableModelCloudWafConfig) Unset() {
+func (v *NullableIngestersCloudWafConfig) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableModelCloudWafConfig(val *ModelCloudWafConfig) *NullableModelCloudWafConfig {
-	return &NullableModelCloudWafConfig{value: val, isSet: true}
+func NewNullableIngestersCloudWafConfig(val *IngestersCloudWafConfig) *NullableIngestersCloudWafConfig {
+	return &NullableIngestersCloudWafConfig{value: val, isSet: true}
 }
 
-func (v NullableModelCloudWafConfig) MarshalJSON() ([]byte, error) {
+func (v NullableIngestersCloudWafConfig) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableModelCloudWafConfig) UnmarshalJSON(src []byte) error {
+func (v *NullableIngestersCloudWafConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

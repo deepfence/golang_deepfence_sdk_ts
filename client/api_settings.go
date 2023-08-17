@@ -541,7 +541,7 @@ type ApiGetCloudWafConfigurationRequest struct {
 	ApiService *SettingsAPIService
 }
 
-func (r ApiGetCloudWafConfigurationRequest) Execute() (*ModelCloudWafConfig, *http.Response, error) {
+func (r ApiGetCloudWafConfigurationRequest) Execute() (*IngestersCloudWafConfig, *http.Response, error) {
 	return r.ApiService.GetCloudWafConfigurationExecute(r)
 }
 
@@ -561,13 +561,13 @@ func (a *SettingsAPIService) GetCloudWafConfiguration(ctx context.Context) ApiGe
 }
 
 // Execute executes the request
-//  @return ModelCloudWafConfig
-func (a *SettingsAPIService) GetCloudWafConfigurationExecute(r ApiGetCloudWafConfigurationRequest) (*ModelCloudWafConfig, *http.Response, error) {
+//  @return IngestersCloudWafConfig
+func (a *SettingsAPIService) GetCloudWafConfigurationExecute(r ApiGetCloudWafConfigurationRequest) (*IngestersCloudWafConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ModelCloudWafConfig
+		localVarReturnValue  *IngestersCloudWafConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SettingsAPIService.GetCloudWafConfiguration")
@@ -1453,11 +1453,11 @@ func (a *SettingsAPIService) RegisterLicenseExecute(r ApiRegisterLicenseRequest)
 type ApiSetCloudWafConfigurationRequest struct {
 	ctx context.Context
 	ApiService *SettingsAPIService
-	modelCloudWafConfig *ModelCloudWafConfig
+	ingestersCloudWafConfig *IngestersCloudWafConfig
 }
 
-func (r ApiSetCloudWafConfigurationRequest) ModelCloudWafConfig(modelCloudWafConfig ModelCloudWafConfig) ApiSetCloudWafConfigurationRequest {
-	r.modelCloudWafConfig = &modelCloudWafConfig
+func (r ApiSetCloudWafConfigurationRequest) IngestersCloudWafConfig(ingestersCloudWafConfig IngestersCloudWafConfig) ApiSetCloudWafConfigurationRequest {
+	r.ingestersCloudWafConfig = &ingestersCloudWafConfig
 	return r
 }
 
@@ -1517,7 +1517,7 @@ func (a *SettingsAPIService) SetCloudWafConfigurationExecute(r ApiSetCloudWafCon
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.modelCloudWafConfig
+	localVarPostBody = r.ingestersCloudWafConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

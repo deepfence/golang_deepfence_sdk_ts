@@ -1,77 +1,77 @@
-# ModelCloudWafConfig
+# IngestersCloudWafConfig
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AwsWafArn** | [**[]ModelAWSWafARN**](ModelAWSWafARN.md) |  | 
+**AwsWafArn** | [**[]IngestersAWSWafARN**](IngestersAWSWafARN.md) |  | 
 **CloudProvider** | **string** |  | 
 
 ## Methods
 
-### NewModelCloudWafConfig
+### NewIngestersCloudWafConfig
 
-`func NewModelCloudWafConfig(awsWafArn []ModelAWSWafARN, cloudProvider string, ) *ModelCloudWafConfig`
+`func NewIngestersCloudWafConfig(awsWafArn []IngestersAWSWafARN, cloudProvider string, ) *IngestersCloudWafConfig`
 
-NewModelCloudWafConfig instantiates a new ModelCloudWafConfig object
+NewIngestersCloudWafConfig instantiates a new IngestersCloudWafConfig object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewModelCloudWafConfigWithDefaults
+### NewIngestersCloudWafConfigWithDefaults
 
-`func NewModelCloudWafConfigWithDefaults() *ModelCloudWafConfig`
+`func NewIngestersCloudWafConfigWithDefaults() *IngestersCloudWafConfig`
 
-NewModelCloudWafConfigWithDefaults instantiates a new ModelCloudWafConfig object
+NewIngestersCloudWafConfigWithDefaults instantiates a new IngestersCloudWafConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetAwsWafArn
 
-`func (o *ModelCloudWafConfig) GetAwsWafArn() []ModelAWSWafARN`
+`func (o *IngestersCloudWafConfig) GetAwsWafArn() []IngestersAWSWafARN`
 
 GetAwsWafArn returns the AwsWafArn field if non-nil, zero value otherwise.
 
 ### GetAwsWafArnOk
 
-`func (o *ModelCloudWafConfig) GetAwsWafArnOk() (*[]ModelAWSWafARN, bool)`
+`func (o *IngestersCloudWafConfig) GetAwsWafArnOk() (*[]IngestersAWSWafARN, bool)`
 
 GetAwsWafArnOk returns a tuple with the AwsWafArn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAwsWafArn
 
-`func (o *ModelCloudWafConfig) SetAwsWafArn(v []ModelAWSWafARN)`
+`func (o *IngestersCloudWafConfig) SetAwsWafArn(v []IngestersAWSWafARN)`
 
 SetAwsWafArn sets AwsWafArn field to given value.
 
 
 ### SetAwsWafArnNil
 
-`func (o *ModelCloudWafConfig) SetAwsWafArnNil(b bool)`
+`func (o *IngestersCloudWafConfig) SetAwsWafArnNil(b bool)`
 
  SetAwsWafArnNil sets the value for AwsWafArn to be an explicit nil
 
 ### UnsetAwsWafArn
-`func (o *ModelCloudWafConfig) UnsetAwsWafArn()`
+`func (o *IngestersCloudWafConfig) UnsetAwsWafArn()`
 
 UnsetAwsWafArn ensures that no value is present for AwsWafArn, not even an explicit nil
 ### GetCloudProvider
 
-`func (o *ModelCloudWafConfig) GetCloudProvider() string`
+`func (o *IngestersCloudWafConfig) GetCloudProvider() string`
 
 GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
 
 ### GetCloudProviderOk
 
-`func (o *ModelCloudWafConfig) GetCloudProviderOk() (*string, bool)`
+`func (o *IngestersCloudWafConfig) GetCloudProviderOk() (*string, bool)`
 
 GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCloudProvider
 
-`func (o *ModelCloudWafConfig) SetCloudProvider(v string)`
+`func (o *IngestersCloudWafConfig) SetCloudProvider(v string)`
 
 SetCloudProvider sets CloudProvider field to given value.
 

@@ -76,10 +76,13 @@ docs/GraphProviderThreatGraph.md
 docs/GraphThreatFilters.md
 docs/GraphThreatNodeInfo.md
 docs/GraphTopologyFilters.md
+docs/IngestersAWSWafARN.md
 docs/IngestersCloudCompliance.md
 docs/IngestersCloudComplianceScanStatus.md
 docs/IngestersCloudResource.md
+docs/IngestersCloudWafConfig.md
 docs/IngestersCompliance.md
+docs/IngestersComplianceScanStatus.md
 docs/IngestersComplianceStats.md
 docs/IngestersMalware.md
 docs/IngestersMalwareScanStatus.md
@@ -98,7 +101,6 @@ docs/InternalAPI.md
 docs/LookupAPI.md
 docs/LookupLookupFilter.md
 docs/MalwareScanAPI.md
-docs/ModelAWSWafARN.md
 docs/ModelAddScheduledTaskRequest.md
 docs/ModelAgentId.md
 docs/ModelAgentPluginConfigNames.md
@@ -129,7 +131,6 @@ docs/ModelCloudNodeControlResp.md
 docs/ModelCloudNodeEnableDisableReq.md
 docs/ModelCloudNodeProvidersListResp.md
 docs/ModelCloudResource.md
-docs/ModelCloudWafConfig.md
 docs/ModelCommonAlert.md
 docs/ModelCompliance.md
 docs/ModelComplianceRule.md
@@ -311,10 +312,13 @@ model_graph_provider_threat_graph.go
 model_graph_threat_filters.go
 model_graph_threat_node_info.go
 model_graph_topology_filters.go
+model_ingesters_aws_waf_arn.go
 model_ingesters_cloud_compliance.go
 model_ingesters_cloud_compliance_scan_status.go
 model_ingesters_cloud_resource.go
+model_ingesters_cloud_waf_config.go
 model_ingesters_compliance.go
+model_ingesters_compliance_scan_status.go
 model_ingesters_compliance_stats.go
 model_ingesters_malware.go
 model_ingesters_malware_scan_status.go
@@ -340,7 +344,6 @@ model_model_alerts_action_request.go
 model_model_api_auth_request.go
 model_model_api_token_response.go
 model_model_attach_agent_config_req.go
-model_model_aws_waf_arn.go
 model_model_basic_node.go
 model_model_bulk_delete_scans_request.go
 model_model_cloud_compliance.go
@@ -360,7 +363,6 @@ model_model_cloud_node_control_resp.go
 model_model_cloud_node_enable_disable_req.go
 model_model_cloud_node_providers_list_resp.go
 model_model_cloud_resource.go
-model_model_cloud_waf_config.go
 model_model_common_alert.go
 model_model_compliance.go
 model_model_compliance_rule.go

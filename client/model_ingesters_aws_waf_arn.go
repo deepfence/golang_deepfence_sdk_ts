@@ -15,36 +15,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the ModelAWSWafARN type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ModelAWSWafARN{}
+// checks if the IngestersAWSWafARN type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IngestersAWSWafARN{}
 
-// ModelAWSWafARN struct for ModelAWSWafARN
-type ModelAWSWafARN struct {
+// IngestersAWSWafARN struct for IngestersAWSWafARN
+type IngestersAWSWafARN struct {
 	Arn string `json:"arn"`
 	Region string `json:"region"`
 }
 
-// NewModelAWSWafARN instantiates a new ModelAWSWafARN object
+// NewIngestersAWSWafARN instantiates a new IngestersAWSWafARN object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelAWSWafARN(arn string, region string) *ModelAWSWafARN {
-	this := ModelAWSWafARN{}
+func NewIngestersAWSWafARN(arn string, region string) *IngestersAWSWafARN {
+	this := IngestersAWSWafARN{}
 	this.Arn = arn
 	this.Region = region
 	return &this
 }
 
-// NewModelAWSWafARNWithDefaults instantiates a new ModelAWSWafARN object
+// NewIngestersAWSWafARNWithDefaults instantiates a new IngestersAWSWafARN object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewModelAWSWafARNWithDefaults() *ModelAWSWafARN {
-	this := ModelAWSWafARN{}
+func NewIngestersAWSWafARNWithDefaults() *IngestersAWSWafARN {
+	this := IngestersAWSWafARN{}
 	return &this
 }
 
 // GetArn returns the Arn field value
-func (o *ModelAWSWafARN) GetArn() string {
+func (o *IngestersAWSWafARN) GetArn() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -55,7 +55,7 @@ func (o *ModelAWSWafARN) GetArn() string {
 
 // GetArnOk returns a tuple with the Arn field value
 // and a boolean to check if the value has been set.
-func (o *ModelAWSWafARN) GetArnOk() (*string, bool) {
+func (o *IngestersAWSWafARN) GetArnOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -63,12 +63,12 @@ func (o *ModelAWSWafARN) GetArnOk() (*string, bool) {
 }
 
 // SetArn sets field value
-func (o *ModelAWSWafARN) SetArn(v string) {
+func (o *IngestersAWSWafARN) SetArn(v string) {
 	o.Arn = v
 }
 
 // GetRegion returns the Region field value
-func (o *ModelAWSWafARN) GetRegion() string {
+func (o *IngestersAWSWafARN) GetRegion() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -79,7 +79,7 @@ func (o *ModelAWSWafARN) GetRegion() string {
 
 // GetRegionOk returns a tuple with the Region field value
 // and a boolean to check if the value has been set.
-func (o *ModelAWSWafARN) GetRegionOk() (*string, bool) {
+func (o *IngestersAWSWafARN) GetRegionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -87,11 +87,11 @@ func (o *ModelAWSWafARN) GetRegionOk() (*string, bool) {
 }
 
 // SetRegion sets field value
-func (o *ModelAWSWafARN) SetRegion(v string) {
+func (o *IngestersAWSWafARN) SetRegion(v string) {
 	o.Region = v
 }
 
-func (o ModelAWSWafARN) MarshalJSON() ([]byte, error) {
+func (o IngestersAWSWafARN) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -99,45 +99,45 @@ func (o ModelAWSWafARN) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ModelAWSWafARN) ToMap() (map[string]interface{}, error) {
+func (o IngestersAWSWafARN) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["arn"] = o.Arn
 	toSerialize["region"] = o.Region
 	return toSerialize, nil
 }
 
-type NullableModelAWSWafARN struct {
-	value *ModelAWSWafARN
+type NullableIngestersAWSWafARN struct {
+	value *IngestersAWSWafARN
 	isSet bool
 }
 
-func (v NullableModelAWSWafARN) Get() *ModelAWSWafARN {
+func (v NullableIngestersAWSWafARN) Get() *IngestersAWSWafARN {
 	return v.value
 }
 
-func (v *NullableModelAWSWafARN) Set(val *ModelAWSWafARN) {
+func (v *NullableIngestersAWSWafARN) Set(val *IngestersAWSWafARN) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableModelAWSWafARN) IsSet() bool {
+func (v NullableIngestersAWSWafARN) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableModelAWSWafARN) Unset() {
+func (v *NullableIngestersAWSWafARN) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableModelAWSWafARN(val *ModelAWSWafARN) *NullableModelAWSWafARN {
-	return &NullableModelAWSWafARN{value: val, isSet: true}
+func NewNullableIngestersAWSWafARN(val *IngestersAWSWafARN) *NullableIngestersAWSWafARN {
+	return &NullableIngestersAWSWafARN{value: val, isSet: true}
 }
 
-func (v NullableModelAWSWafARN) MarshalJSON() ([]byte, error) {
+func (v NullableIngestersAWSWafARN) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableModelAWSWafARN) UnmarshalJSON(src []byte) error {
+func (v *NullableIngestersAWSWafARN) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
