@@ -517,6 +517,49 @@ paths:
       summary: List Cloud Node Providers
       tags:
       - Cloud Nodes
+  /deepfence/cloud-resource/deploy-agent:
+    post:
+      description: Deploy Agent on Cloud Resource eligible for agent deployment
+      operationId: deployCloudResourceAgent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelCloudResourceDeployAgentReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelMessageResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Deploy Agent on Cloud Resource
+      tags:
+      - Cloud Nodes
   /deepfence/configs/agent/filemon/:
     post:
       description: Register Agent Filesystem config
@@ -12946,6 +12989,22 @@ components:
       - status_counts
       - updated_at
       type: object
+    ModelCloudInstanceDeployment:
+      example:
+        hostname: hostname
+        account_id: account_id
+        instance_id: instance_id
+        region: region
+      properties:
+        account_id:
+          type: string
+        hostname:
+          type: string
+        instance_id:
+          type: string
+        region:
+          type: string
+      type: object
     ModelCloudNodeAccountInfo:
       example:
         last_scan_status: last_scan_status
@@ -13011,6 +13070,15 @@ components:
     ModelCloudNodeAccountRegisterResp:
       example:
         data:
+          deploy_instances:
+          - hostname: hostname
+            account_id: account_id
+            instance_id: instance_id
+            region: region
+          - hostname: hostname
+            account_id: account_id
+            instance_id: instance_id
+            region: region
           cloudtrail_trails:
           - account_id: account_id
             trail_name: trail_name
@@ -13041,6 +13109,15 @@ components:
       type: object
     ModelCloudNodeAccountRegisterRespData:
       example:
+        deploy_instances:
+        - hostname: hostname
+          account_id: account_id
+          instance_id: instance_id
+          region: region
+        - hostname: hostname
+          account_id: account_id
+          instance_id: instance_id
+          region: region
         cloudtrail_trails:
         - account_id: account_id
           trail_name: trail_name
@@ -13069,6 +13146,11 @@ components:
         cloudtrail_trails:
           items:
             $ref: '#/components/schemas/ModelCloudNodeCloudtrailTrail'
+          nullable: true
+          type: array
+        deploy_instances:
+          items:
+            $ref: '#/components/schemas/ModelCloudInstanceDeployment'
           nullable: true
           type: array
         refresh:
@@ -13258,6 +13340,7 @@ components:
         cloud_compliance_scan_status: cloud_compliance_scan_status
         cloud_region: cloud_region
         node_name: node_name
+        cloud_provider: cloud_provider
         type_label: type_label
         node_id: node_id
       properties:
@@ -13269,6 +13352,8 @@ components:
           type: string
         cloud_compliances_count:
           type: integer
+        cloud_provider:
+          type: string
         cloud_region:
           type: string
         node_id:
@@ -13284,11 +13369,26 @@ components:
       - cloud_compliance_latest_scan_id
       - cloud_compliance_scan_status
       - cloud_compliances_count
+      - cloud_provider
       - cloud_region
       - node_id
       - node_name
       - node_type
       - type_label
+      type: object
+    ModelCloudResourceDeployAgentReq:
+      example:
+        node_ids:
+        - node_ids
+        - node_ids
+      properties:
+        node_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
+      required:
+      - node_ids
       type: object
     ModelCommonAlert:
       example:

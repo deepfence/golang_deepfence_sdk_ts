@@ -112,6 +112,7 @@ Class | Method | HTTP request | Description
 *AuthenticationAPI* | [**SsoLogin**](docs/AuthenticationAPI.md#ssologin) | **Get** /deepfence/sso/login | SSO Login
 *AuthenticationAPI* | [**UpdateSSOProvider**](docs/AuthenticationAPI.md#updatessoprovider) | **Put** /deepfence/single-sign-on/{id} | Update Single sign-on
 *AuthenticationAPI* | [**VerifySSOAuth**](docs/AuthenticationAPI.md#verifyssoauth) | **Post** /deepfence/sso/verify | Verify SSO auth code
+*CloudNodesAPI* | [**DeployCloudResourceAgent**](docs/CloudNodesAPI.md#deploycloudresourceagent) | **Post** /deepfence/cloud-resource/deploy-agent | Deploy Agent on Cloud Resource
 *CloudNodesAPI* | [**ListCloudNodeAccount**](docs/CloudNodesAPI.md#listcloudnodeaccount) | **Post** /deepfence/cloud-node/list/accounts | List Cloud Node Accounts
 *CloudNodesAPI* | [**ListCloudProviders**](docs/CloudNodesAPI.md#listcloudproviders) | **Get** /deepfence/cloud-node/list/providers | List Cloud Node Providers
 *CloudNodesAPI* | [**RegisterCloudNodeAccount**](docs/CloudNodesAPI.md#registercloudnodeaccount) | **Post** /deepfence/cloud-node/account | Register Cloud Node Account
@@ -399,6 +400,7 @@ Class | Method | HTTP request | Description
  - [ModelCloudComplianceBenchmark](docs/ModelCloudComplianceBenchmark.md)
  - [ModelCloudComplianceScanDetails](docs/ModelCloudComplianceScanDetails.md)
  - [ModelCloudComplianceScanResult](docs/ModelCloudComplianceScanResult.md)
+ - [ModelCloudInstanceDeployment](docs/ModelCloudInstanceDeployment.md)
  - [ModelCloudNodeAccountInfo](docs/ModelCloudNodeAccountInfo.md)
  - [ModelCloudNodeAccountRegisterReq](docs/ModelCloudNodeAccountRegisterReq.md)
  - [ModelCloudNodeAccountRegisterResp](docs/ModelCloudNodeAccountRegisterResp.md)
@@ -412,6 +414,7 @@ Class | Method | HTTP request | Description
  - [ModelCloudNodeEnableDisableReq](docs/ModelCloudNodeEnableDisableReq.md)
  - [ModelCloudNodeProvidersListResp](docs/ModelCloudNodeProvidersListResp.md)
  - [ModelCloudResource](docs/ModelCloudResource.md)
+ - [ModelCloudResourceDeployAgentReq](docs/ModelCloudResourceDeployAgentReq.md)
  - [ModelCommonAlert](docs/ModelCommonAlert.md)
  - [ModelCompliance](docs/ModelCompliance.md)
  - [ModelComplianceRule](docs/ModelComplianceRule.md)
