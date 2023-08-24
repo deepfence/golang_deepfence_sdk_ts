@@ -20,9 +20,10 @@ var _ MappedNullable = &IngestersWAFRule{}
 
 // IngestersWAFRule struct for IngestersWAFRule
 type IngestersWAFRule struct {
+	Action string `json:"action"`
 	ExecutedAt *int32 `json:"executed_at,omitempty"`
 	HostName *string `json:"host_name,omitempty"`
-	RemoteIp *string `json:"remote_ip,omitempty"`
+	RemoteIp string `json:"remote_ip"`
 	RemotePort *int32 `json:"remote_port,omitempty"`
 }
 
@@ -30,8 +31,10 @@ type IngestersWAFRule struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIngestersWAFRule() *IngestersWAFRule {
+func NewIngestersWAFRule(action string, remoteIp string) *IngestersWAFRule {
 	this := IngestersWAFRule{}
+	this.Action = action
+	this.RemoteIp = remoteIp
 	return &this
 }
 
@@ -41,6 +44,30 @@ func NewIngestersWAFRule() *IngestersWAFRule {
 func NewIngestersWAFRuleWithDefaults() *IngestersWAFRule {
 	this := IngestersWAFRule{}
 	return &this
+}
+
+// GetAction returns the Action field value
+func (o *IngestersWAFRule) GetAction() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Action
+}
+
+// GetActionOk returns a tuple with the Action field value
+// and a boolean to check if the value has been set.
+func (o *IngestersWAFRule) GetActionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Action, true
+}
+
+// SetAction sets field value
+func (o *IngestersWAFRule) SetAction(v string) {
+	o.Action = v
 }
 
 // GetExecutedAt returns the ExecutedAt field value if set, zero value otherwise.
@@ -107,36 +134,28 @@ func (o *IngestersWAFRule) SetHostName(v string) {
 	o.HostName = &v
 }
 
-// GetRemoteIp returns the RemoteIp field value if set, zero value otherwise.
+// GetRemoteIp returns the RemoteIp field value
 func (o *IngestersWAFRule) GetRemoteIp() string {
-	if o == nil || IsNil(o.RemoteIp) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.RemoteIp
+
+	return o.RemoteIp
 }
 
-// GetRemoteIpOk returns a tuple with the RemoteIp field value if set, nil otherwise
+// GetRemoteIpOk returns a tuple with the RemoteIp field value
 // and a boolean to check if the value has been set.
 func (o *IngestersWAFRule) GetRemoteIpOk() (*string, bool) {
-	if o == nil || IsNil(o.RemoteIp) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RemoteIp, true
+	return &o.RemoteIp, true
 }
 
-// HasRemoteIp returns a boolean if a field has been set.
-func (o *IngestersWAFRule) HasRemoteIp() bool {
-	if o != nil && !IsNil(o.RemoteIp) {
-		return true
-	}
-
-	return false
-}
-
-// SetRemoteIp gets a reference to the given string and assigns it to the RemoteIp field.
+// SetRemoteIp sets field value
 func (o *IngestersWAFRule) SetRemoteIp(v string) {
-	o.RemoteIp = &v
+	o.RemoteIp = v
 }
 
 // GetRemotePort returns the RemotePort field value if set, zero value otherwise.
@@ -181,15 +200,14 @@ func (o IngestersWAFRule) MarshalJSON() ([]byte, error) {
 
 func (o IngestersWAFRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["action"] = o.Action
 	if !IsNil(o.ExecutedAt) {
 		toSerialize["executed_at"] = o.ExecutedAt
 	}
 	if !IsNil(o.HostName) {
 		toSerialize["host_name"] = o.HostName
 	}
-	if !IsNil(o.RemoteIp) {
-		toSerialize["remote_ip"] = o.RemoteIp
-	}
+	toSerialize["remote_ip"] = o.RemoteIp
 	if !IsNil(o.RemotePort) {
 		toSerialize["remote_port"] = o.RemotePort
 	}

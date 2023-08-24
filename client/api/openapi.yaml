@@ -12429,8 +12429,14 @@ components:
         remote_ip: remote_ip
         executed_at: 0
         remote_port: 6
+        action: block
         host_name: host_name
       properties:
+        action:
+          enum:
+          - block
+          - unblock
+          type: string
         executed_at:
           type: integer
         host_name:
@@ -12439,6 +12445,9 @@ components:
           type: string
         remote_port:
           type: integer
+      required:
+      - action
+      - remote_ip
       type: object
     LookupLookupFilter:
       example:

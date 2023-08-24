@@ -4,16 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Action** | **string** |  | 
 **ExecutedAt** | Pointer to **int32** |  | [optional] 
 **HostName** | Pointer to **string** |  | [optional] 
-**RemoteIp** | Pointer to **string** |  | [optional] 
+**RemoteIp** | **string** |  | 
 **RemotePort** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
 ### NewIngestersWAFRule
 
-`func NewIngestersWAFRule() *IngestersWAFRule`
+`func NewIngestersWAFRule(action string, remoteIp string, ) *IngestersWAFRule`
 
 NewIngestersWAFRule instantiates a new IngestersWAFRule object
 This constructor will assign default values to properties that have it defined,
@@ -27,6 +28,26 @@ will change when the set of required properties is changed
 NewIngestersWAFRuleWithDefaults instantiates a new IngestersWAFRule object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAction
+
+`func (o *IngestersWAFRule) GetAction() string`
+
+GetAction returns the Action field if non-nil, zero value otherwise.
+
+### GetActionOk
+
+`func (o *IngestersWAFRule) GetActionOk() (*string, bool)`
+
+GetActionOk returns a tuple with the Action field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAction
+
+`func (o *IngestersWAFRule) SetAction(v string)`
+
+SetAction sets Action field to given value.
+
 
 ### GetExecutedAt
 
@@ -97,11 +118,6 @@ and a boolean to check if the value has been set.
 
 SetRemoteIp sets RemoteIp field to given value.
 
-### HasRemoteIp
-
-`func (o *IngestersWAFRule) HasRemoteIp() bool`
-
-HasRemoteIp returns a boolean if a field has been set.
 
 ### GetRemotePort
 

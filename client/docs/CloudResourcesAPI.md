@@ -94,7 +94,7 @@ import (
 )
 
 func main() {
-    ingestersWAFRule := []openapiclient.IngestersWAFRule{*openapiclient.NewIngestersWAFRule()} // []IngestersWAFRule |  (optional)
+    ingestersWAFRule := []openapiclient.IngestersWAFRule{*openapiclient.NewIngestersWAFRule("Action_example", "RemoteIp_example")} // []IngestersWAFRule |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
