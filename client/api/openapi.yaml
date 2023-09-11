@@ -1092,6 +1092,90 @@ paths:
       summary: Register Agent Policy config
       tags:
       - AgentConfig
+  /deepfence/configs/agent/threatintel/:
+    post:
+      description: Register Agent Policy config
+      operationId: registerThreatIntelConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ControlsThreatIntelInfo'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Register Agent Policy config
+      tags:
+      - AgentConfig
+  /deepfence/configs/agent/threatintel/list:
+    post:
+      description: Register Agent threat intel
+      operationId: getAgentThreatIntelConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelGetAgentConfigReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ControlsThreatIntelInfo'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Register Agent Threat intel config
+      tags:
+      - AgentConfig
   /deepfence/controls/agent:
     post:
       description: Fetch actions for a given agent
@@ -1705,6 +1789,221 @@ paths:
       summary: Get Diagnostic Notification
       tags:
       - Diagnosis
+  /deepfence/diff-add/cloud-compliance:
+    post:
+      description: Get Cloud Compliance Diff between two scans
+      operationId: diffAddCloudCompliance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelScanCompareReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelCloudCompliance'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Cloud Compliance Diff
+      tags:
+      - Diff Add
+  /deepfence/diff-add/compliance:
+    post:
+      description: Get Compliance Diff between two scans
+      operationId: diffAddCompliance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelScanCompareReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelCompliance'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Compliance Diff
+      tags:
+      - Diff Add
+  /deepfence/diff-add/malware:
+    post:
+      description: Get Malware Diff between two scans
+      operationId: diffAddMalware
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelScanCompareReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelMalware'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Malware Diff
+      tags:
+      - Diff Add
+  /deepfence/diff-add/secret:
+    post:
+      description: Get Secret Diff between two scans
+      operationId: diffAddSecret
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelScanCompareReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelSecret'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Secret Diff
+      tags:
+      - Diff Add
+  /deepfence/diff-add/vulnerability:
+    post:
+      description: Get Vulnerability Diff between two scans
+      operationId: diffAddVulnerability
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelScanCompareReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelVulnerability'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Vulnerability Diff
+      tags:
+      - Diff Add
   /deepfence/end-user-license-agreement:
     get:
       description: Get End User License Agreement
@@ -3562,6 +3861,51 @@ paths:
       summary: Retrieve Malwares data
       tags:
       - Lookup
+  /deepfence/lookup/network-alert-rules:
+    post:
+      description: Retrieve network rules resources
+      operationId: getNetworkAlertRules
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LookupLookupFilter'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelNetworkAlertRule'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Network Alerts
+      tags:
+      - Lookup
   /deepfence/lookup/network-alerts:
     post:
       description: Retrieve network alerts resources
@@ -4050,6 +4394,10 @@ paths:
               $ref: '#/components/schemas/ModelRegistryAddReq'
       responses:
         "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelMessageResponse'
           description: OK
         "400":
           content:
@@ -4138,6 +4486,10 @@ paths:
               $ref: '#/components/schemas/ModelRegistryUpdateReq'
       responses:
         "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelMessageResponse'
           description: OK
         "400":
           content:
@@ -4401,6 +4753,10 @@ paths:
               $ref: '#/components/schemas/FormDataModelRegistryGCRAddReq'
       responses:
         "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelMessageResponse'
           description: OK
         "400":
           content:
@@ -6532,8 +6888,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ModelStopScanRequest'
       responses:
-        "200":
-          description: OK
+        "202":
+          description: Accepted
         "400":
           content:
             application/json:
@@ -6571,8 +6927,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ModelStopScanRequest'
       responses:
-        "200":
-          description: OK
+        "202":
+          description: Accepted
         "400":
           content:
             application/json:
@@ -7897,6 +8253,49 @@ paths:
       summary: Count Malwares
       tags:
       - Search
+  /deepfence/search/count/network-alert-rules:
+    post:
+      description: Count across all data associated with network alert rules
+      operationId: countNetworkAlertRules
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchSearchCountResp'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Count network alert rules
+      tags:
+      - Search
   /deepfence/search/count/network-alerts:
     post:
       description: Count across all data associated with network alerts
@@ -8680,6 +9079,51 @@ paths:
       summary: Search Malwares
       tags:
       - Search
+  /deepfence/search/network-alert-rules:
+    post:
+      description: Search across all data associated with network alert rules
+      operationId: searchNetworkAlertRules
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelNetworkAlertRule'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Search network alert rules
+      tags:
+      - Search
   /deepfence/search/network-alerts:
     post:
       description: Search across all data associated with network alerts
@@ -8723,6 +9167,51 @@ paths:
       security:
       - bearer_token: []
       summary: Search network alerts
+      tags:
+      - Search
+  /deepfence/search/network-violation-stubs:
+    post:
+      description: Search across all data associated with network violation stubs
+      operationId: searchNetworkViolationStubs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelNetworkViolationStub'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Search network violation stubs
       tags:
       - Search
   /deepfence/search/network-violations:
@@ -10500,6 +10989,7 @@ components:
               connection_count: 0
               docker_image_size: docker_image_size
               cpu_usage: 1.4658129805029452
+              pod_id: pod_id
               docker_label: docker_label
               instance_type: instance_type
               docker_image_name: docker_image_name
@@ -10769,6 +11259,9 @@ components:
           - outbound
           - outbound
         updated_at: 0
+        ignored_rule_ids:
+        - ignored_rule_ids
+        - ignored_rule_ids
         https_rules:
           inbound:
           - inbound
@@ -10782,6 +11275,11 @@ components:
           $ref: '#/components/schemas/ControlsNetworkRules'
         https_rules:
           $ref: '#/components/schemas/ControlsNetworkRules'
+        ignored_rule_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
         mode:
           enum:
           - all
@@ -10978,6 +11476,41 @@ components:
       - policy_id
       - updated_at
       type: object
+    ControlsThreatIntelInfo:
+      example:
+        updated_at: 0
+        network_alert_rules_url: network_alert_rules_url
+        ignored_alert_rule_ids:
+        - ignored_alert_rule_ids
+        - ignored_alert_rule_ids
+        internal_ips:
+        - internal_ips
+        - internal_ips
+        rules_hash: rules_hash
+      properties:
+        ignored_alert_rule_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
+        internal_ips:
+          items:
+            type: string
+          nullable: true
+          type: array
+        network_alert_rules_url:
+          type: string
+        rules_hash:
+          type: string
+        updated_at:
+          type: integer
+      required:
+      - ignored_alert_rule_ids
+      - internal_ips
+      - network_alert_rules_url
+      - rules_hash
+      - updated_at
+      type: object
     DetailedConnectionSummary:
       example:
         source: source
@@ -11036,6 +11569,7 @@ components:
           connection_count: 0
           docker_image_size: docker_image_size
           cpu_usage: 1.4658129805029452
+          pod_id: pod_id
           docker_label: docker_label
           instance_type: instance_type
           docker_image_name: docker_image_name
@@ -11532,6 +12066,11 @@ components:
               key:
               - ""
               - ""
+          match_in_array_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
         container_filter:
         - container_filter
         - container_filter
@@ -11735,6 +12274,7 @@ components:
         ip_configuration: ""
         access_level: access_level
         path: path
+        connectivity: connectivity
         policy_std: ""
         target_health_descriptions: ""
         iam_policy: ""
@@ -11746,6 +12286,7 @@ components:
         inline_policies: ""
         restrict_public_buckets: true
         db_cluster_identifier: db_cluster_identifier
+        group: group
         target_group_arn: target_group_arn
         ignore_public_acls: true
         storage_account_name: storage_account_name
@@ -11755,6 +12296,7 @@ components:
         network_interfaces: ""
         tags: ""
         security_groups: ""
+        task_arn: task_arn
         block_public_acls: true
         organization_master_account_email: organization_master_account_email
         instance_id: instance_id
@@ -11784,8 +12326,11 @@ components:
         private_dns_name: private_dns_name
         policy: ""
         public_ips: ""
+        cluster_name: cluster_name
+        cluster_arn: cluster_arn
         public_ip_address: public_ip_address
         cidr_ipv4: cidr_ipv4
+        last_status: last_status
         groups: ""
         user-groups: ""
         cloud_provider: cloud_provider
@@ -11820,6 +12365,12 @@ components:
           type: string
         cloud_provider:
           type: string
+        cluster_arn:
+          type: string
+        cluster_name:
+          type: string
+        connectivity:
+          type: string
         container_definitions: {}
         containers: {}
         create_date:
@@ -11829,6 +12380,8 @@ components:
         description:
           type: string
         event_notification_configuration: {}
+        group:
+          type: string
         group_id:
           type: string
         groups: {}
@@ -11855,6 +12408,8 @@ components:
         ip_configuration: {}
         is_egress:
           type: boolean
+        last_status:
+          type: string
         name:
           type: string
         network_configuration: {}
@@ -11903,6 +12458,8 @@ components:
         target_group_arn:
           type: string
         target_health_descriptions: {}
+        task_arn:
+          type: string
         task_definition: {}
         task_definition_arn:
           type: string
@@ -12719,6 +13276,11 @@ components:
               key:
               - ""
               - ""
+          match_in_array_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
       properties:
         filters:
           $ref: '#/components/schemas/ReportersFieldsFilters'
@@ -12732,7 +13294,6 @@ components:
           - Alert
           - NetworkPolicyLogs
           - QuarantinePolicyLogs
-          - WorkloadPolicyLogs
           type: string
       required:
       - filters
@@ -13022,6 +13583,8 @@ components:
         node_name: node_name
         active: true
         cloud_provider: cloud_provider
+        scan_status_map:
+          key: 6
         version: version
         node_id: node_id
       properties:
@@ -13039,6 +13602,11 @@ components:
           type: string
         node_name:
           type: string
+        scan_status_map:
+          additionalProperties:
+            type: integer
+          nullable: true
+          type: object
         version:
           type: string
       type: object
@@ -13186,7 +13754,7 @@ components:
       type: object
     ModelCloudNodeAccountsListResp:
       example:
-        total: 6
+        total: 1
         cloud_node_accounts_info:
         - last_scan_status: last_scan_status
           compliance_percentage: 0.8008281904610115
@@ -13194,6 +13762,8 @@ components:
           node_name: node_name
           active: true
           cloud_provider: cloud_provider
+          scan_status_map:
+            key: 6
           version: version
           node_id: node_id
         - last_scan_status: last_scan_status
@@ -13202,6 +13772,8 @@ components:
           node_name: node_name
           active: true
           cloud_provider: cloud_provider
+          scan_status_map:
+            key: 6
           version: version
           node_id: node_id
       properties:
@@ -13264,6 +13836,8 @@ components:
           - aws
           - gcp
           - azure
+          - linux
+          - kubernetes
           type: string
         compliance_type:
           type: string
@@ -14202,7 +14776,6 @@ components:
       - malware_latest_scan_id
       - malware_scan_status
       - malwares_count
-      - metadata
       - node_id
       - node_name
       - secret_latest_scan_id
@@ -15157,6 +15730,7 @@ components:
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
+          secret_scan_status: secret_scan_status
           kubernetes_cluster_id: kubernetes_cluster_id
           kubernetes_cluster_name: kubernetes_cluster_name
           kubernetes_state: kubernetes_state
@@ -15165,6 +15739,7 @@ components:
           pod_name: pod_name
           kubernetes_namespace: kubernetes_namespace
           kubernetes_is_in_host_network: true
+          malware_scan_status: malware_scan_status
           kubernetes_labels:
             key: ""
           containers:
@@ -15276,6 +15851,7 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
+          vulnerability_scan_status: vulnerability_scan_status
           host_name: host_name
           node_id: node_id
         - kubernetes_ip: kubernetes_ip
@@ -15302,6 +15878,7 @@ components:
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
+          secret_scan_status: secret_scan_status
           kubernetes_cluster_id: kubernetes_cluster_id
           kubernetes_cluster_name: kubernetes_cluster_name
           kubernetes_state: kubernetes_state
@@ -15310,6 +15887,7 @@ components:
           pod_name: pod_name
           kubernetes_namespace: kubernetes_namespace
           kubernetes_is_in_host_network: true
+          malware_scan_status: malware_scan_status
           kubernetes_labels:
             key: ""
           containers:
@@ -15421,6 +15999,7 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
+          vulnerability_scan_status: vulnerability_scan_status
           host_name: host_name
           node_id: node_id
         vulnerability_scan_status: vulnerability_scan_status
@@ -15680,6 +16259,11 @@ components:
                 key:
                 - ""
                 - ""
+            match_in_array_filter:
+              filter_in:
+                key:
+                - ""
+                - ""
           node_ids:
           - node_type: image
             node_id: node_id
@@ -15734,6 +16318,11 @@ components:
               - ""
               - ""
           match_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          match_in_array_filter:
             filter_in:
               key:
               - ""
@@ -15793,10 +16382,16 @@ components:
               key:
               - ""
               - ""
+          match_in_array_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
         id: 0
         integration_type: integration_type
         config:
           key: ""
+        last_error_msg: last_error_msg
       properties:
         config:
           additionalProperties: {}
@@ -15807,6 +16402,8 @@ components:
         id:
           type: integer
         integration_type:
+          type: string
+        last_error_msg:
           type: string
         notification_type:
           type: string
@@ -16346,6 +16943,7 @@ components:
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
+            secret_scan_status: secret_scan_status
             kubernetes_cluster_id: kubernetes_cluster_id
             kubernetes_cluster_name: kubernetes_cluster_name
             kubernetes_state: kubernetes_state
@@ -16354,6 +16952,7 @@ components:
             pod_name: pod_name
             kubernetes_namespace: kubernetes_namespace
             kubernetes_is_in_host_network: true
+            malware_scan_status: malware_scan_status
             kubernetes_labels:
               key: ""
             containers:
@@ -16465,6 +17064,7 @@ components:
               vulnerability_scan_status: vulnerability_scan_status
               host_name: host_name
               node_id: node_id
+            vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
           - kubernetes_ip: kubernetes_ip
@@ -16491,6 +17091,7 @@ components:
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
+            secret_scan_status: secret_scan_status
             kubernetes_cluster_id: kubernetes_cluster_id
             kubernetes_cluster_name: kubernetes_cluster_name
             kubernetes_state: kubernetes_state
@@ -16499,6 +17100,7 @@ components:
             pod_name: pod_name
             kubernetes_namespace: kubernetes_namespace
             kubernetes_is_in_host_network: true
+            malware_scan_status: malware_scan_status
             kubernetes_labels:
               key: ""
             containers:
@@ -16610,6 +17212,7 @@ components:
               vulnerability_scan_status: vulnerability_scan_status
               host_name: host_name
               node_id: node_id
+            vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
           vulnerability_scan_status: vulnerability_scan_status
@@ -17110,6 +17713,7 @@ components:
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
+            secret_scan_status: secret_scan_status
             kubernetes_cluster_id: kubernetes_cluster_id
             kubernetes_cluster_name: kubernetes_cluster_name
             kubernetes_state: kubernetes_state
@@ -17118,6 +17722,7 @@ components:
             pod_name: pod_name
             kubernetes_namespace: kubernetes_namespace
             kubernetes_is_in_host_network: true
+            malware_scan_status: malware_scan_status
             kubernetes_labels:
               key: ""
             containers:
@@ -17229,6 +17834,7 @@ components:
               vulnerability_scan_status: vulnerability_scan_status
               host_name: host_name
               node_id: node_id
+            vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
           - kubernetes_ip: kubernetes_ip
@@ -17255,6 +17861,7 @@ components:
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
+            secret_scan_status: secret_scan_status
             kubernetes_cluster_id: kubernetes_cluster_id
             kubernetes_cluster_name: kubernetes_cluster_name
             kubernetes_state: kubernetes_state
@@ -17263,6 +17870,7 @@ components:
             pod_name: pod_name
             kubernetes_namespace: kubernetes_namespace
             kubernetes_is_in_host_network: true
+            malware_scan_status: malware_scan_status
             kubernetes_labels:
               key: ""
             containers:
@@ -17374,6 +17982,7 @@ components:
               vulnerability_scan_status: vulnerability_scan_status
               host_name: host_name
               node_id: node_id
+            vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
           vulnerability_scan_status: vulnerability_scan_status
@@ -18050,6 +18659,69 @@ components:
       - updated_at
       - url
       type: object
+    ModelNetworkAlertRule:
+      example:
+        rule_id: rule_id
+        severity: severity
+        summary: summary
+        signature_id: 6
+        updated_at: 1
+        masked: true
+        techniques:
+        - techniques
+        - techniques
+        description: description
+        tactics:
+        - tactics
+        - tactics
+        category: category
+        node_id: node_id
+        severity_score: 0.8008281904610115
+      properties:
+        category:
+          type: string
+        description:
+          type: string
+        masked:
+          type: boolean
+        node_id:
+          type: string
+        rule_id:
+          type: string
+        severity:
+          type: string
+        severity_score:
+          type: number
+        signature_id:
+          type: integer
+        summary:
+          type: string
+        tactics:
+          items:
+            type: string
+          nullable: true
+          type: array
+        techniques:
+          items:
+            type: string
+          nullable: true
+          type: array
+        updated_at:
+          type: integer
+      required:
+      - category
+      - description
+      - masked
+      - node_id
+      - rule_id
+      - severity
+      - severity_score
+      - signature_id
+      - summary
+      - tactics
+      - techniques
+      - updated_at
+      type: object
     ModelNetworkViolation:
       example:
         severity: severity
@@ -18151,6 +18823,15 @@ components:
       - ttl
       - type
       type: object
+    ModelNetworkViolationStub:
+      example:
+        node_id: node_id
+      properties:
+        node_id:
+          type: string
+      required:
+      - node_id
+      type: object
     ModelNodeIdentifier:
       example:
         node_type: image
@@ -18166,6 +18847,7 @@ components:
           - cloud_account
           - cluster
           - registry
+          - pod
           type: string
       required:
       - node_id
@@ -18269,6 +18951,7 @@ components:
           cpu_usage: 7.061401241503109
           node_id: node_id
           ppid: 7
+        secret_scan_status: secret_scan_status
         kubernetes_cluster_id: kubernetes_cluster_id
         kubernetes_cluster_name: kubernetes_cluster_name
         kubernetes_state: kubernetes_state
@@ -18277,6 +18960,7 @@ components:
         pod_name: pod_name
         kubernetes_namespace: kubernetes_namespace
         kubernetes_is_in_host_network: true
+        malware_scan_status: malware_scan_status
         kubernetes_labels:
           key: ""
         containers:
@@ -18388,6 +19072,7 @@ components:
           vulnerability_scan_status: vulnerability_scan_status
           host_name: host_name
           node_id: node_id
+        vulnerability_scan_status: vulnerability_scan_status
         host_name: host_name
         node_id: node_id
       properties:
@@ -18416,6 +19101,8 @@ components:
           type: string
         kubernetes_state:
           type: string
+        malware_scan_status:
+          type: string
         node_id:
           type: string
         node_name:
@@ -18427,6 +19114,10 @@ components:
             $ref: '#/components/schemas/ModelProcess'
           nullable: true
           type: array
+        secret_scan_status:
+          type: string
+        vulnerability_scan_status:
+          type: string
       required:
       - containers
       - host_name
@@ -18438,10 +19129,13 @@ components:
       - kubernetes_labels
       - kubernetes_namespace
       - kubernetes_state
+      - malware_scan_status
       - node_id
       - node_name
       - pod_name
       - processes
+      - secret_scan_status
+      - vulnerability_scan_status
       type: object
     ModelPostureProvider:
       example:
@@ -18982,6 +19676,11 @@ components:
               key:
               - ""
               - ""
+          match_in_array_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
         window:
           offset: 0
           size: 6
@@ -19036,6 +19735,11 @@ components:
               key:
               - ""
               - ""
+          match_in_array_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
         window:
           offset: 0
           size: 6
@@ -19054,6 +19758,7 @@ components:
       type: object
     ModelRegistryListResp:
       example:
+        is_syncing: true
         updated_at: 1
         non_secret: ""
         registry_type: registry_type
@@ -19066,6 +19771,8 @@ components:
           type: integer
         id:
           type: integer
+        is_syncing:
+          type: boolean
         name:
           type: string
         node_id:
@@ -19163,6 +19870,343 @@ components:
           type: string
         version:
           type: string
+      type: object
+    ModelScanCompareReq:
+      example:
+        to_scan_id: to_scan_id
+        base_scan_id: base_scan_id
+        window:
+          offset: 0
+          size: 6
+        fields_filter:
+          compare_filter:
+          - greater_than: true
+            field_value: ""
+            field_name: field_name
+          - greater_than: true
+            field_value: ""
+            field_name: field_name
+          not_contains_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          order_filter:
+            order_fields:
+            - size: 0
+              descending: true
+              field_name: field_name
+            - size: 0
+              descending: true
+              field_name: field_name
+          contains_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          contains_in_array_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          match_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          match_in_array_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+      properties:
+        base_scan_id:
+          type: string
+        fields_filter:
+          $ref: '#/components/schemas/ReportersFieldsFilters'
+        to_scan_id:
+          type: string
+        window:
+          $ref: '#/components/schemas/ModelFetchWindow'
+      required:
+      - base_scan_id
+      - fields_filter
+      - to_scan_id
+      - window
+      type: object
+    ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelCloudCompliance:
+      example:
+        new:
+        - severity: severity
+          reason: reason
+          control_id: control_id
+          resource: resource
+          masked: true
+          count: 0
+          node_name: node_name
+          description: description
+          resources:
+          - resources
+          - resources
+          cloud_provider: cloud_provider
+          title: title
+          type: type
+          compliance_check_type: compliance_check_type
+          account_id: account_id
+          updated_at: 6
+          service: service
+          region: region
+          group: group
+          node_id: node_id
+          status: status
+        - severity: severity
+          reason: reason
+          control_id: control_id
+          resource: resource
+          masked: true
+          count: 0
+          node_name: node_name
+          description: description
+          resources:
+          - resources
+          - resources
+          cloud_provider: cloud_provider
+          title: title
+          type: type
+          compliance_check_type: compliance_check_type
+          account_id: account_id
+          updated_at: 6
+          service: service
+          region: region
+          group: group
+          node_id: node_id
+          status: status
+      properties:
+        new:
+          items:
+            $ref: '#/components/schemas/ModelCloudCompliance'
+          nullable: true
+          type: array
+      required:
+      - new
+      type: object
+    ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelCompliance:
+      example:
+        new:
+        - resource: resource
+          masked: true
+          description: description
+          resources:
+          - resources
+          - resources
+          test_category: test_category
+          remediation_ansible: remediation_ansible
+          compliance_check_type: compliance_check_type
+          rule_id: rule_id
+          test_rationale: test_rationale
+          test_severity: test_severity
+          node_type: node_type
+          updated_at: 0
+          remediation_puppet: remediation_puppet
+          remediation_script: remediation_script
+          node_id: node_id
+          status: status
+          test_desc: test_desc
+          test_number: test_number
+        - resource: resource
+          masked: true
+          description: description
+          resources:
+          - resources
+          - resources
+          test_category: test_category
+          remediation_ansible: remediation_ansible
+          compliance_check_type: compliance_check_type
+          rule_id: rule_id
+          test_rationale: test_rationale
+          test_severity: test_severity
+          node_type: node_type
+          updated_at: 0
+          remediation_puppet: remediation_puppet
+          remediation_script: remediation_script
+          node_id: node_id
+          status: status
+          test_desc: test_desc
+          test_number: test_number
+      properties:
+        new:
+          items:
+            $ref: '#/components/schemas/ModelCompliance'
+          nullable: true
+          type: array
+      required:
+      - new
+      type: object
+    ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelMalware:
+      example:
+        new:
+        - date: date
+          summary: summary
+          filetype: filetype
+          image_layer_id: image_layer_id
+          rule_name: rule_name
+          author: author
+          masked: true
+          file_sev_score: 0
+          file_severity: file_severity
+          strings_to_match:
+          - ""
+          - ""
+          description: description
+          resources:
+          - resources
+          - resources
+          version: version
+          rule_id: rule_id
+          complete_filename: complete_filename
+          class: class
+          info: info
+          node_id: node_id
+          severity_score: 6
+        - date: date
+          summary: summary
+          filetype: filetype
+          image_layer_id: image_layer_id
+          rule_name: rule_name
+          author: author
+          masked: true
+          file_sev_score: 0
+          file_severity: file_severity
+          strings_to_match:
+          - ""
+          - ""
+          description: description
+          resources:
+          - resources
+          - resources
+          version: version
+          rule_id: rule_id
+          complete_filename: complete_filename
+          class: class
+          info: info
+          node_id: node_id
+          severity_score: 6
+      properties:
+        new:
+          items:
+            $ref: '#/components/schemas/ModelMalware'
+          nullable: true
+          type: array
+      required:
+      - new
+      type: object
+    ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelSecret:
+      example:
+        new:
+        - full_filename: full_filename
+          level: level
+          masked: true
+          part: part
+          relative_ending_index: 0
+          starting_index: 5
+          resources:
+          - resources
+          - resources
+          signature_to_match: signature_to_match
+          rule_id: 1
+          score: 5.962133916683182
+          matched_content: matched_content
+          updated_at: 2
+          name: name
+          relative_starting_index: 6
+          node_id: node_id
+        - full_filename: full_filename
+          level: level
+          masked: true
+          part: part
+          relative_ending_index: 0
+          starting_index: 5
+          resources:
+          - resources
+          - resources
+          signature_to_match: signature_to_match
+          rule_id: 1
+          score: 5.962133916683182
+          matched_content: matched_content
+          updated_at: 2
+          name: name
+          relative_starting_index: 6
+          node_id: node_id
+      properties:
+        new:
+          items:
+            $ref: '#/components/schemas/ModelSecret'
+          nullable: true
+          type: array
+      required:
+      - new
+      type: object
+    ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelVulnerability:
+      example:
+        new:
+        - parsed_attack_vector: parsed_attack_vector
+          cve_container_layer: cve_container_layer
+          masked: true
+          cve_description: cve_description
+          cve_overall_score: 6.027456183070403
+          resources:
+          - resources
+          - resources
+          cve_caused_by_package: cve_caused_by_package
+          cve_attack_vector: cve_attack_vector
+          cve_cvss_score: 0.8008281904610115
+          rule_id: rule_id
+          urls:
+          - ""
+          - ""
+          cve_severity: cve_severity
+          cve_caused_by_package_path: cve_caused_by_package_path
+          updated_at: 1
+          cve_id: cve_id
+          exploit_poc: exploit_poc
+          cve_type: cve_type
+          has_live_connection: true
+          cve_fixed_in: cve_fixed_in
+          cve_link: cve_link
+          node_id: node_id
+        - parsed_attack_vector: parsed_attack_vector
+          cve_container_layer: cve_container_layer
+          masked: true
+          cve_description: cve_description
+          cve_overall_score: 6.027456183070403
+          resources:
+          - resources
+          - resources
+          cve_caused_by_package: cve_caused_by_package
+          cve_attack_vector: cve_attack_vector
+          cve_cvss_score: 0.8008281904610115
+          rule_id: rule_id
+          urls:
+          - ""
+          - ""
+          cve_severity: cve_severity
+          cve_caused_by_package_path: cve_caused_by_package_path
+          updated_at: 1
+          cve_id: cve_id
+          exploit_poc: exploit_poc
+          cve_type: cve_type
+          has_live_connection: true
+          cve_fixed_in: cve_fixed_in
+          cve_link: cve_link
+          node_id: node_id
+      properties:
+        new:
+          items:
+            $ref: '#/components/schemas/ModelVulnerability'
+          nullable: true
+          type: array
+      required:
+      - new
       type: object
     ModelScanFilter:
       example:
@@ -19293,6 +20337,11 @@ components:
               - ""
               - ""
           match_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          match_in_array_filter:
             filter_in:
               key:
               - ""
@@ -19517,6 +20566,11 @@ components:
               - ""
               - ""
           match_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          match_in_array_filter:
             filter_in:
               key:
               - ""
@@ -20253,19 +21307,20 @@ components:
       type: object
     ModelVulnerabilityScanConfigLanguage:
       example:
-        language: all
+        language: base
       properties:
         language:
           enum:
-          - all
           - base
           - ruby
           - python
           - javascript
           - php
           - golang
+          - golang-binary
           - java
           - rust
+          - rust-binary
           - dotnet
           type: string
       required:
@@ -20386,8 +21441,8 @@ components:
     ModelVulnerabilityScanTriggerReq:
       example:
         scan_config:
-        - language: all
-        - language: all
+        - language: base
+        - language: base
         filters:
           container_scan_filter:
             filter_in:
@@ -20547,6 +21602,7 @@ components:
         connection_count: 0
         docker_image_size: docker_image_size
         cpu_usage: 1.4658129805029452
+        pod_id: pod_id
         docker_label: docker_label
         instance_type: instance_type
         docker_image_name: docker_image_name
@@ -20737,6 +21793,8 @@ components:
           type: string
         pid:
           type: integer
+        pod_id:
+          type: string
         pod_name:
           type: string
         ppid:
@@ -20863,6 +21921,11 @@ components:
             key:
             - ""
             - ""
+        match_in_array_filter:
+          filter_in:
+            key:
+            - ""
+            - ""
       properties:
         compare_filter:
           items:
@@ -20874,6 +21937,8 @@ components:
         contains_in_array_filter:
           $ref: '#/components/schemas/ReportersContainsFilter'
         match_filter:
+          $ref: '#/components/schemas/ReportersMatchFilter'
+        match_in_array_filter:
           $ref: '#/components/schemas/ReportersMatchFilter'
         not_contains_filter:
           $ref: '#/components/schemas/ReportersContainsFilter'
@@ -20947,6 +22012,69 @@ components:
           type: object
       required:
       - counts
+      type: object
+    SearchChainedSearchFilter:
+      example:
+        node_filter:
+          in_field_filter:
+          - in_field_filter
+          - in_field_filter
+          filters:
+            compare_filter:
+            - greater_than: true
+              field_value: ""
+              field_name: field_name
+            - greater_than: true
+              field_value: ""
+              field_name: field_name
+            not_contains_filter:
+              filter_in:
+                key:
+                - ""
+                - ""
+            order_filter:
+              order_fields:
+              - size: 0
+                descending: true
+                field_name: field_name
+              - size: 0
+                descending: true
+                field_name: field_name
+            contains_filter:
+              filter_in:
+                key:
+                - ""
+                - ""
+            contains_in_array_filter:
+              filter_in:
+                key:
+                - ""
+                - ""
+            match_filter:
+              filter_in:
+                key:
+                - ""
+                - ""
+            match_in_array_filter:
+              filter_in:
+                key:
+                - ""
+                - ""
+          window:
+            offset: 0
+            size: 6
+        next_filter: ""
+        relation_ship: relation_ship
+      properties:
+        next_filter:
+          nullable: true
+        node_filter:
+          $ref: '#/components/schemas/SearchSearchFilter'
+        relation_ship:
+          type: string
+      required:
+      - node_filter
+      - relation_ship
       type: object
     SearchNodeCountResp:
       example:
@@ -21068,6 +22196,11 @@ components:
               key:
               - ""
               - ""
+          match_in_array_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
         window:
           offset: 0
           size: 6
@@ -21128,6 +22261,11 @@ components:
                 key:
                 - ""
                 - ""
+            match_in_array_filter:
+              filter_in:
+                key:
+                - ""
+                - ""
           window:
             offset: 0
             size: 6
@@ -21171,9 +22309,65 @@ components:
                 key:
                 - ""
                 - ""
+            match_in_array_filter:
+              filter_in:
+                key:
+                - ""
+                - ""
           window:
             offset: 0
             size: 6
+        related_node_filter:
+          node_filter:
+            in_field_filter:
+            - in_field_filter
+            - in_field_filter
+            filters:
+              compare_filter:
+              - greater_than: true
+                field_value: ""
+                field_name: field_name
+              - greater_than: true
+                field_value: ""
+                field_name: field_name
+              not_contains_filter:
+                filter_in:
+                  key:
+                  - ""
+                  - ""
+              order_filter:
+                order_fields:
+                - size: 0
+                  descending: true
+                  field_name: field_name
+                - size: 0
+                  descending: true
+                  field_name: field_name
+              contains_filter:
+                filter_in:
+                  key:
+                  - ""
+                  - ""
+              contains_in_array_filter:
+                filter_in:
+                  key:
+                  - ""
+                  - ""
+              match_filter:
+                filter_in:
+                  key:
+                  - ""
+                  - ""
+              match_in_array_filter:
+                filter_in:
+                  key:
+                  - ""
+                  - ""
+            window:
+              offset: 0
+              size: 6
+          next_filter: ""
+          relation_ship: relation_ship
         window:
           offset: 0
           size: 6
@@ -21182,6 +22376,8 @@ components:
           $ref: '#/components/schemas/SearchSearchFilter'
         node_filter:
           $ref: '#/components/schemas/SearchSearchFilter'
+        related_node_filter:
+          $ref: '#/components/schemas/SearchChainedSearchFilter'
         window:
           $ref: '#/components/schemas/ModelFetchWindow'
       required:
@@ -21230,6 +22426,11 @@ components:
                 key:
                 - ""
                 - ""
+            match_in_array_filter:
+              filter_in:
+                key:
+                - ""
+                - ""
           window:
             offset: 0
             size: 6
@@ -21269,6 +22470,11 @@ components:
                 - ""
                 - ""
             match_filter:
+              filter_in:
+                key:
+                - ""
+                - ""
+            match_in_array_filter:
               filter_in:
                 key:
                 - ""

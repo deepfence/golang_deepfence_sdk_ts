@@ -87,11 +87,13 @@ Class | Method | HTTP request | Description
 *AgentConfigAPI* | [**GetAgentNetworkConfig**](docs/AgentConfigAPI.md#getagentnetworkconfig) | **Post** /deepfence/configs/agent/network/list | Register Agent Network config
 *AgentConfigAPI* | [**GetAgentPolicyConfig**](docs/AgentConfigAPI.md#getagentpolicyconfig) | **Post** /deepfence/configs/agent/policy/list | Register Agent Policy config
 *AgentConfigAPI* | [**GetAgentQuarantineConfig**](docs/AgentConfigAPI.md#getagentquarantineconfig) | **Post** /deepfence/configs/agent/quarantine/list | Register Agent Policy config
+*AgentConfigAPI* | [**GetAgentThreatIntelConfig**](docs/AgentConfigAPI.md#getagentthreatintelconfig) | **Post** /deepfence/configs/agent/threatintel/list | Register Agent Threat intel config
 *AgentConfigAPI* | [**GetNetworkRules**](docs/AgentConfigAPI.md#getnetworkrules) | **Get** /deepfence/configs/agent/network/rules | Get Network Rules
 *AgentConfigAPI* | [**RegisterAgentFilesystemConfig**](docs/AgentConfigAPI.md#registeragentfilesystemconfig) | **Post** /deepfence/configs/agent/filemon/ | Register Agent Filesystem config
 *AgentConfigAPI* | [**RegisterAgentNetworkConfig**](docs/AgentConfigAPI.md#registeragentnetworkconfig) | **Post** /deepfence/configs/agent/network/ | Register Agent Network config
 *AgentConfigAPI* | [**RegisterAgentPolicyConfig**](docs/AgentConfigAPI.md#registeragentpolicyconfig) | **Post** /deepfence/configs/agent/policy/ | Register Agent Policy config
 *AgentConfigAPI* | [**RegisterAgentQuarantineConfig**](docs/AgentConfigAPI.md#registeragentquarantineconfig) | **Post** /deepfence/configs/agent/quarantine/ | Register Agent Policy config
+*AgentConfigAPI* | [**RegisterThreatIntelConfig**](docs/AgentConfigAPI.md#registerthreatintelconfig) | **Post** /deepfence/configs/agent/threatintel/ | Register Agent Policy config
 *AgentFilesystemAPI* | [**EnableFilesystemTracer**](docs/AgentFilesystemAPI.md#enablefilesystemtracer) | **Post** /deepfence/filesystem/tracer/enable | Enable filesystem tracer
 *AgentNetworkAPI* | [**DisableNetworkTracer**](docs/AgentNetworkAPI.md#disablenetworktracer) | **Post** /deepfence/network/tracer/disable | Disable network tracer
 *AgentNetworkAPI* | [**EnableNetworkTracer**](docs/AgentNetworkAPI.md#enablenetworktracer) | **Post** /deepfence/network/tracer/enable | Enable network tracer
@@ -147,6 +149,11 @@ Class | Method | HTTP request | Description
 *DiagnosisAPI* | [**GenerateConsoleDiagnosticLogs**](docs/DiagnosisAPI.md#generateconsolediagnosticlogs) | **Post** /deepfence/diagnosis/console-logs | Generate Console Diagnostic Logs
 *DiagnosisAPI* | [**GetDiagnosticLogs**](docs/DiagnosisAPI.md#getdiagnosticlogs) | **Get** /deepfence/diagnosis/diagnostic-logs | Get Diagnostic Logs
 *DiagnosisAPI* | [**UpdateAgentDiagnosticLogsStatus**](docs/DiagnosisAPI.md#updateagentdiagnosticlogsstatus) | **Put** /deepfence/diagnosis/agent-logs/status/{node_id} | Update Agent Diagnostic Logs Status
+*DiffAddAPI* | [**DiffAddCloudCompliance**](docs/DiffAddAPI.md#diffaddcloudcompliance) | **Post** /deepfence/diff-add/cloud-compliance | Get Cloud Compliance Diff
+*DiffAddAPI* | [**DiffAddCompliance**](docs/DiffAddAPI.md#diffaddcompliance) | **Post** /deepfence/diff-add/compliance | Get Compliance Diff
+*DiffAddAPI* | [**DiffAddMalware**](docs/DiffAddAPI.md#diffaddmalware) | **Post** /deepfence/diff-add/malware | Get Malware Diff
+*DiffAddAPI* | [**DiffAddSecret**](docs/DiffAddAPI.md#diffaddsecret) | **Post** /deepfence/diff-add/secret | Get Secret Diff
+*DiffAddAPI* | [**DiffAddVulnerability**](docs/DiffAddAPI.md#diffaddvulnerability) | **Post** /deepfence/diff-add/vulnerability | Get Vulnerability Diff
 *IntegrationAPI* | [**AddIntegration**](docs/IntegrationAPI.md#addintegration) | **Post** /deepfence/integration | Add Integration
 *IntegrationAPI* | [**DeleteIntegration**](docs/IntegrationAPI.md#deleteintegration) | **Delete** /deepfence/integration/{integration_id} | Delete Integration
 *IntegrationAPI* | [**ListIntegration**](docs/IntegrationAPI.md#listintegration) | **Get** /deepfence/integration | List Integrations
@@ -160,6 +167,7 @@ Class | Method | HTTP request | Description
 *LookupAPI* | [**GetHosts**](docs/LookupAPI.md#gethosts) | **Post** /deepfence/lookup/hosts | Retrieve Hosts data
 *LookupAPI* | [**GetKubernetesClusters**](docs/LookupAPI.md#getkubernetesclusters) | **Post** /deepfence/lookup/kubernetesclusters | Retrieve K8s data
 *LookupAPI* | [**GetMalwares**](docs/LookupAPI.md#getmalwares) | **Post** /deepfence/lookup/malwares | Retrieve Malwares data
+*LookupAPI* | [**GetNetworkAlertRules**](docs/LookupAPI.md#getnetworkalertrules) | **Post** /deepfence/lookup/network-alert-rules | Get Network Alerts
 *LookupAPI* | [**GetNetworkAlerts**](docs/LookupAPI.md#getnetworkalerts) | **Post** /deepfence/lookup/network-alerts | Get Network Alerts
 *LookupAPI* | [**GetNetworkViolations**](docs/LookupAPI.md#getnetworkviolations) | **Post** /deepfence/lookup/network-violations | Get Network Violations
 *LookupAPI* | [**GetPods**](docs/LookupAPI.md#getpods) | **Post** /deepfence/lookup/pods | Retrieve Pods data
@@ -221,6 +229,7 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**CountMalwareRules**](docs/SearchAPI.md#countmalwarerules) | **Post** /deepfence/search/count/malware-rules | Count Malware Rules
 *SearchAPI* | [**CountMalwareScans**](docs/SearchAPI.md#countmalwarescans) | **Post** /deepfence/search/count/malware/scans | Count Malware Scan results
 *SearchAPI* | [**CountMalwares**](docs/SearchAPI.md#countmalwares) | **Post** /deepfence/search/count/malwares | Count Malwares
+*SearchAPI* | [**CountNetworkAlertRules**](docs/SearchAPI.md#countnetworkalertrules) | **Post** /deepfence/search/count/network-alert-rules | Count network alert rules
 *SearchAPI* | [**CountNetworkAlerts**](docs/SearchAPI.md#countnetworkalerts) | **Post** /deepfence/search/count/network-alerts | Count network alerts
 *SearchAPI* | [**CountNetworkViolations**](docs/SearchAPI.md#countnetworkviolations) | **Post** /deepfence/search/count/network-violations | Count network violations
 *SearchAPI* | [**CountNodes**](docs/SearchAPI.md#countnodes) | **Get** /deepfence/search/count/nodes | Count nodes
@@ -250,7 +259,9 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**SearchMalwareRules**](docs/SearchAPI.md#searchmalwarerules) | **Post** /deepfence/search/malware-rules | Search Malware Rules
 *SearchAPI* | [**SearchMalwareScans**](docs/SearchAPI.md#searchmalwarescans) | **Post** /deepfence/search/malware/scans | Search Malware Scan results
 *SearchAPI* | [**SearchMalwares**](docs/SearchAPI.md#searchmalwares) | **Post** /deepfence/search/malwares | Search Malwares
+*SearchAPI* | [**SearchNetworkAlertRules**](docs/SearchAPI.md#searchnetworkalertrules) | **Post** /deepfence/search/network-alert-rules | Search network alert rules
 *SearchAPI* | [**SearchNetworkAlerts**](docs/SearchAPI.md#searchnetworkalerts) | **Post** /deepfence/search/network-alerts | Search network alerts
+*SearchAPI* | [**SearchNetworkViolationStubs**](docs/SearchAPI.md#searchnetworkviolationstubs) | **Post** /deepfence/search/network-violation-stubs | Search network violation stubs
 *SearchAPI* | [**SearchNetworkViolations**](docs/SearchAPI.md#searchnetworkviolations) | **Post** /deepfence/search/network-violations | Search network violations
 *SearchAPI* | [**SearchPods**](docs/SearchAPI.md#searchpods) | **Post** /deepfence/search/pods | Search Pods
 *SearchAPI* | [**SearchQuarantineViolations**](docs/SearchAPI.md#searchquarantineviolations) | **Post** /deepfence/search/quarantine-violations | Search quarantine violations
@@ -345,6 +356,7 @@ Class | Method | HTTP request | Description
  - [ControlsProcessEventConfig](docs/ControlsProcessEventConfig.md)
  - [ControlsQuarantineConfig](docs/ControlsQuarantineConfig.md)
  - [ControlsRuncPolicy](docs/ControlsRuncPolicy.md)
+ - [ControlsThreatIntelInfo](docs/ControlsThreatIntelInfo.md)
  - [DetailedConnectionSummary](docs/DetailedConnectionSummary.md)
  - [DetailedNodeSummary](docs/DetailedNodeSummary.md)
  - [DiagnosisDiagnosticLogsLink](docs/DiagnosisDiagnosticLogsLink.md)
@@ -464,7 +476,9 @@ Class | Method | HTTP request | Description
  - [ModelMitreAttackMatrixRequest](docs/ModelMitreAttackMatrixRequest.md)
  - [ModelMitreTechniqueSummary](docs/ModelMitreTechniqueSummary.md)
  - [ModelNetworkAlert](docs/ModelNetworkAlert.md)
+ - [ModelNetworkAlertRule](docs/ModelNetworkAlertRule.md)
  - [ModelNetworkViolation](docs/ModelNetworkViolation.md)
+ - [ModelNetworkViolationStub](docs/ModelNetworkViolationStub.md)
  - [ModelNodeIdentifier](docs/ModelNodeIdentifier.md)
  - [ModelNodesInScanResultRequest](docs/ModelNodesInScanResultRequest.md)
  - [ModelNotificationThresholdUpdateRequest](docs/ModelNotificationThresholdUpdateRequest.md)
@@ -488,6 +502,12 @@ Class | Method | HTTP request | Description
  - [ModelResponseAccessToken](docs/ModelResponseAccessToken.md)
  - [ModelSbomRequest](docs/ModelSbomRequest.md)
  - [ModelSbomResponse](docs/ModelSbomResponse.md)
+ - [ModelScanCompareReq](docs/ModelScanCompareReq.md)
+ - [ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelCloudCompliance](docs/ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelCloudCompliance.md)
+ - [ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelCompliance](docs/ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelCompliance.md)
+ - [ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelMalware](docs/ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelMalware.md)
+ - [ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelSecret](docs/ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelSecret.md)
+ - [ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelVulnerability](docs/ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelVulnerability.md)
  - [ModelScanFilter](docs/ModelScanFilter.md)
  - [ModelScanInfo](docs/ModelScanInfo.md)
  - [ModelScanListReq](docs/ModelScanListReq.md)
@@ -532,6 +552,7 @@ Class | Method | HTTP request | Description
  - [ReportersOrderFilter](docs/ReportersOrderFilter.md)
  - [ReportersOrderSpec](docs/ReportersOrderSpec.md)
  - [ReportersSevCounts](docs/ReportersSevCounts.md)
+ - [SearchChainedSearchFilter](docs/SearchChainedSearchFilter.md)
  - [SearchNodeCountResp](docs/SearchNodeCountResp.md)
  - [SearchResultGroup](docs/SearchResultGroup.md)
  - [SearchResultGroupResp](docs/SearchResultGroupResp.md)

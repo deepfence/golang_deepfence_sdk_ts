@@ -14,6 +14,7 @@ api_common.go
 api_compliance.go
 api_controls.go
 api_diagnosis.go
+api_diff_add.go
 api_integration.go
 api_internal.go
 api_lookup.go
@@ -58,6 +59,7 @@ docs/ControlsPolicyFilterConfig.md
 docs/ControlsProcessEventConfig.md
 docs/ControlsQuarantineConfig.md
 docs/ControlsRuncPolicy.md
+docs/ControlsThreatIntelInfo.md
 docs/DetailedConnectionSummary.md
 docs/DetailedNodeSummary.md
 docs/DiagnosisAPI.md
@@ -68,6 +70,7 @@ docs/DiagnosisGenerateAgentDiagnosticLogsRequest.md
 docs/DiagnosisGenerateConsoleDiagnosticLogsRequest.md
 docs/DiagnosisGetDiagnosticLogsResponse.md
 docs/DiagnosisNodeIdentifier.md
+docs/DiffAddAPI.md
 docs/GraphCloudProviderFilter.md
 docs/GraphIndividualThreatGraph.md
 docs/GraphIndividualThreatGraphRequest.md
@@ -182,7 +185,9 @@ docs/ModelMitreAttackMatrix.md
 docs/ModelMitreAttackMatrixRequest.md
 docs/ModelMitreTechniqueSummary.md
 docs/ModelNetworkAlert.md
+docs/ModelNetworkAlertRule.md
 docs/ModelNetworkViolation.md
+docs/ModelNetworkViolationStub.md
 docs/ModelNodeIdentifier.md
 docs/ModelNodesInScanResultRequest.md
 docs/ModelNotificationThresholdUpdateRequest.md
@@ -206,6 +211,12 @@ docs/ModelRegistryUpdateReq.md
 docs/ModelResponseAccessToken.md
 docs/ModelSbomRequest.md
 docs/ModelSbomResponse.md
+docs/ModelScanCompareReq.md
+docs/ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelCloudCompliance.md
+docs/ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelCompliance.md
+docs/ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelMalware.md
+docs/ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelSecret.md
+docs/ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelVulnerability.md
 docs/ModelScanFilter.md
 docs/ModelScanInfo.md
 docs/ModelScanListReq.md
@@ -254,6 +265,7 @@ docs/ReportersSevCounts.md
 docs/ReportsAPI.md
 docs/ScanResultsAPI.md
 docs/SearchAPI.md
+docs/SearchChainedSearchFilter.md
 docs/SearchNodeCountResp.md
 docs/SearchResultGroup.md
 docs/SearchResultGroupResp.md
@@ -297,6 +309,7 @@ model_controls_policy_filter_config.go
 model_controls_process_event_config.go
 model_controls_quarantine_config.go
 model_controls_runc_policy.go
+model_controls_threat_intel_info.go
 model_detailed_connection_summary.go
 model_detailed_node_summary.go
 model_diagnosis_diagnostic_logs_link.go
@@ -416,7 +429,9 @@ model_model_mitre_attack_matrix.go
 model_model_mitre_attack_matrix_request.go
 model_model_mitre_technique_summary.go
 model_model_network_alert.go
+model_model_network_alert_rule.go
 model_model_network_violation.go
+model_model_network_violation_stub.go
 model_model_node_identifier.go
 model_model_nodes_in_scan_result_request.go
 model_model_notification_threshold_update_request.go
@@ -440,6 +455,12 @@ model_model_registry_update_req.go
 model_model_response_access_token.go
 model_model_sbom_request.go
 model_model_sbom_response.go
+model_model_scan_compare_req.go
+model_model_scan_compare_res_github_com_deepfence_threat_mapper_deepfence_server_model_cloud_compliance.go
+model_model_scan_compare_res_github_com_deepfence_threat_mapper_deepfence_server_model_compliance.go
+model_model_scan_compare_res_github_com_deepfence_threat_mapper_deepfence_server_model_malware.go
+model_model_scan_compare_res_github_com_deepfence_threat_mapper_deepfence_server_model_secret.go
+model_model_scan_compare_res_github_com_deepfence_threat_mapper_deepfence_server_model_vulnerability.go
 model_model_scan_filter.go
 model_model_scan_info.go
 model_model_scan_list_req.go
@@ -484,6 +505,7 @@ model_reporters_match_filter.go
 model_reporters_order_filter.go
 model_reporters_order_spec.go
 model_reporters_sev_counts.go
+model_search_chained_search_filter.go
 model_search_node_count_resp.go
 model_search_result_group.go
 model_search_result_group_resp.go
@@ -514,6 +536,7 @@ test/api_common_test.go
 test/api_compliance_test.go
 test/api_controls_test.go
 test/api_diagnosis_test.go
+test/api_diff_add_test.go
 test/api_integration_test.go
 test/api_internal_test.go
 test/api_lookup_test.go

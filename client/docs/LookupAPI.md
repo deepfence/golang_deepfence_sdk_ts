@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**GetHosts**](LookupAPI.md#GetHosts) | **Post** /deepfence/lookup/hosts | Retrieve Hosts data
 [**GetKubernetesClusters**](LookupAPI.md#GetKubernetesClusters) | **Post** /deepfence/lookup/kubernetesclusters | Retrieve K8s data
 [**GetMalwares**](LookupAPI.md#GetMalwares) | **Post** /deepfence/lookup/malwares | Retrieve Malwares data
+[**GetNetworkAlertRules**](LookupAPI.md#GetNetworkAlertRules) | **Post** /deepfence/lookup/network-alert-rules | Get Network Alerts
 [**GetNetworkAlerts**](LookupAPI.md#GetNetworkAlerts) | **Post** /deepfence/lookup/network-alerts | Get Network Alerts
 [**GetNetworkViolations**](LookupAPI.md#GetNetworkViolations) | **Post** /deepfence/lookup/network-violations | Get Network Violations
 [**GetPods**](LookupAPI.md#GetPods) | **Post** /deepfence/lookup/pods | Retrieve Pods data
@@ -603,6 +604,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]ModelMalware**](ModelMalware.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetNetworkAlertRules
+
+> []ModelNetworkAlertRule GetNetworkAlertRules(ctx).LookupLookupFilter(lookupLookupFilter).Execute()
+
+Get Network Alerts
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    lookupLookupFilter := *openapiclient.NewLookupLookupFilter([]string{"InFieldFilter_example"}, []string{"NodeIds_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // LookupLookupFilter |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LookupAPI.GetNetworkAlertRules(context.Background()).LookupLookupFilter(lookupLookupFilter).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LookupAPI.GetNetworkAlertRules``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetNetworkAlertRules`: []ModelNetworkAlertRule
+    fmt.Fprintf(os.Stdout, "Response from `LookupAPI.GetNetworkAlertRules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetNetworkAlertRulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **lookupLookupFilter** | [**LookupLookupFilter**](LookupLookupFilter.md) |  | 
+
+### Return type
+
+[**[]ModelNetworkAlertRule**](ModelNetworkAlertRule.md)
 
 ### Authorization
 

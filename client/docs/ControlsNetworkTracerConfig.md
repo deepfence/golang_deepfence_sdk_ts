@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **HttpRules** | [**ControlsNetworkRules**](ControlsNetworkRules.md) |  | 
 **HttpsRules** | [**ControlsNetworkRules**](ControlsNetworkRules.md) |  | 
+**IgnoredRuleIds** | Pointer to **[]string** |  | [optional] 
 **Mode** | **string** |  | 
 **NodeId** | **string** |  | 
 **ProcessNames** | **[]string** |  | 
@@ -71,6 +72,41 @@ and a boolean to check if the value has been set.
 SetHttpsRules sets HttpsRules field to given value.
 
 
+### GetIgnoredRuleIds
+
+`func (o *ControlsNetworkTracerConfig) GetIgnoredRuleIds() []string`
+
+GetIgnoredRuleIds returns the IgnoredRuleIds field if non-nil, zero value otherwise.
+
+### GetIgnoredRuleIdsOk
+
+`func (o *ControlsNetworkTracerConfig) GetIgnoredRuleIdsOk() (*[]string, bool)`
+
+GetIgnoredRuleIdsOk returns a tuple with the IgnoredRuleIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIgnoredRuleIds
+
+`func (o *ControlsNetworkTracerConfig) SetIgnoredRuleIds(v []string)`
+
+SetIgnoredRuleIds sets IgnoredRuleIds field to given value.
+
+### HasIgnoredRuleIds
+
+`func (o *ControlsNetworkTracerConfig) HasIgnoredRuleIds() bool`
+
+HasIgnoredRuleIds returns a boolean if a field has been set.
+
+### SetIgnoredRuleIdsNil
+
+`func (o *ControlsNetworkTracerConfig) SetIgnoredRuleIdsNil(b bool)`
+
+ SetIgnoredRuleIdsNil sets the value for IgnoredRuleIds to be an explicit nil
+
+### UnsetIgnoredRuleIds
+`func (o *ControlsNetworkTracerConfig) UnsetIgnoredRuleIds()`
+
+UnsetIgnoredRuleIds ensures that no value is present for IgnoredRuleIds, not even an explicit nil
 ### GetMode
 
 `func (o *ControlsNetworkTracerConfig) GetMode() string`

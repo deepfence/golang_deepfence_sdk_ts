@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**CountMalwareRules**](SearchAPI.md#CountMalwareRules) | **Post** /deepfence/search/count/malware-rules | Count Malware Rules
 [**CountMalwareScans**](SearchAPI.md#CountMalwareScans) | **Post** /deepfence/search/count/malware/scans | Count Malware Scan results
 [**CountMalwares**](SearchAPI.md#CountMalwares) | **Post** /deepfence/search/count/malwares | Count Malwares
+[**CountNetworkAlertRules**](SearchAPI.md#CountNetworkAlertRules) | **Post** /deepfence/search/count/network-alert-rules | Count network alert rules
 [**CountNetworkAlerts**](SearchAPI.md#CountNetworkAlerts) | **Post** /deepfence/search/count/network-alerts | Count network alerts
 [**CountNetworkViolations**](SearchAPI.md#CountNetworkViolations) | **Post** /deepfence/search/count/network-violations | Count network violations
 [**CountNodes**](SearchAPI.md#CountNodes) | **Get** /deepfence/search/count/nodes | Count nodes
@@ -49,7 +50,9 @@ Method | HTTP request | Description
 [**SearchMalwareRules**](SearchAPI.md#SearchMalwareRules) | **Post** /deepfence/search/malware-rules | Search Malware Rules
 [**SearchMalwareScans**](SearchAPI.md#SearchMalwareScans) | **Post** /deepfence/search/malware/scans | Search Malware Scan results
 [**SearchMalwares**](SearchAPI.md#SearchMalwares) | **Post** /deepfence/search/malwares | Search Malwares
+[**SearchNetworkAlertRules**](SearchAPI.md#SearchNetworkAlertRules) | **Post** /deepfence/search/network-alert-rules | Search network alert rules
 [**SearchNetworkAlerts**](SearchAPI.md#SearchNetworkAlerts) | **Post** /deepfence/search/network-alerts | Search network alerts
+[**SearchNetworkViolationStubs**](SearchAPI.md#SearchNetworkViolationStubs) | **Post** /deepfence/search/network-violation-stubs | Search network violation stubs
 [**SearchNetworkViolations**](SearchAPI.md#SearchNetworkViolations) | **Post** /deepfence/search/network-violations | Search network violations
 [**SearchPods**](SearchAPI.md#SearchPods) | **Post** /deepfence/search/pods | Search Pods
 [**SearchQuarantineViolations**](SearchAPI.md#SearchQuarantineViolations) | **Post** /deepfence/search/quarantine-violations | Search quarantine violations
@@ -1094,6 +1097,72 @@ func main() {
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCountMalwaresRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchSearchNodeReq** | [**SearchSearchNodeReq**](SearchSearchNodeReq.md) |  | 
+
+### Return type
+
+[**SearchSearchCountResp**](SearchSearchCountResp.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CountNetworkAlertRules
+
+> SearchSearchCountResp CountNetworkAlertRules(ctx).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+
+Count network alert rules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    searchSearchNodeReq := *openapiclient.NewSearchSearchNodeReq(*openapiclient.NewSearchSearchFilter(*openapiclient.NewReportersFieldsFilters([]openapiclient.ReportersCompareFilter{*openapiclient.NewReportersCompareFilter("FieldName_example", interface{}(123), false)}, *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersMatchFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersOrderFilter([]openapiclient.ReportersOrderSpec{*openapiclient.NewReportersOrderSpec(false, "FieldName_example")})), []string{"InFieldFilter_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))), *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // SearchSearchNodeReq |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SearchAPI.CountNetworkAlertRules(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.CountNetworkAlertRules``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CountNetworkAlertRules`: SearchSearchCountResp
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.CountNetworkAlertRules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCountNetworkAlertRulesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3027,6 +3096,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## SearchNetworkAlertRules
+
+> []ModelNetworkAlertRule SearchNetworkAlertRules(ctx).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+
+Search network alert rules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    searchSearchNodeReq := *openapiclient.NewSearchSearchNodeReq(*openapiclient.NewSearchSearchFilter(*openapiclient.NewReportersFieldsFilters([]openapiclient.ReportersCompareFilter{*openapiclient.NewReportersCompareFilter("FieldName_example", interface{}(123), false)}, *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersMatchFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersOrderFilter([]openapiclient.ReportersOrderSpec{*openapiclient.NewReportersOrderSpec(false, "FieldName_example")})), []string{"InFieldFilter_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))), *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // SearchSearchNodeReq |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SearchAPI.SearchNetworkAlertRules(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchNetworkAlertRules``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SearchNetworkAlertRules`: []ModelNetworkAlertRule
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchNetworkAlertRules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchNetworkAlertRulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchSearchNodeReq** | [**SearchSearchNodeReq**](SearchSearchNodeReq.md) |  | 
+
+### Return type
+
+[**[]ModelNetworkAlertRule**](ModelNetworkAlertRule.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SearchNetworkAlerts
 
 > []ModelNetworkAlert SearchNetworkAlerts(ctx).SearchSearchNodeReq(searchSearchNodeReq).Execute()
@@ -3078,6 +3213,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]ModelNetworkAlert**](ModelNetworkAlert.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchNetworkViolationStubs
+
+> []ModelNetworkViolationStub SearchNetworkViolationStubs(ctx).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+
+Search network violation stubs
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    searchSearchNodeReq := *openapiclient.NewSearchSearchNodeReq(*openapiclient.NewSearchSearchFilter(*openapiclient.NewReportersFieldsFilters([]openapiclient.ReportersCompareFilter{*openapiclient.NewReportersCompareFilter("FieldName_example", interface{}(123), false)}, *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersMatchFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersOrderFilter([]openapiclient.ReportersOrderSpec{*openapiclient.NewReportersOrderSpec(false, "FieldName_example")})), []string{"InFieldFilter_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))), *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // SearchSearchNodeReq |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SearchAPI.SearchNetworkViolationStubs(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchNetworkViolationStubs``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SearchNetworkViolationStubs`: []ModelNetworkViolationStub
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchNetworkViolationStubs`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchNetworkViolationStubsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchSearchNodeReq** | [**SearchSearchNodeReq**](SearchSearchNodeReq.md) |  | 
+
+### Return type
+
+[**[]ModelNetworkViolationStub**](ModelNetworkViolationStub.md)
 
 ### Authorization
 

@@ -12,11 +12,13 @@ Method | HTTP request | Description
 [**GetAgentNetworkConfig**](AgentConfigAPI.md#GetAgentNetworkConfig) | **Post** /deepfence/configs/agent/network/list | Register Agent Network config
 [**GetAgentPolicyConfig**](AgentConfigAPI.md#GetAgentPolicyConfig) | **Post** /deepfence/configs/agent/policy/list | Register Agent Policy config
 [**GetAgentQuarantineConfig**](AgentConfigAPI.md#GetAgentQuarantineConfig) | **Post** /deepfence/configs/agent/quarantine/list | Register Agent Policy config
+[**GetAgentThreatIntelConfig**](AgentConfigAPI.md#GetAgentThreatIntelConfig) | **Post** /deepfence/configs/agent/threatintel/list | Register Agent Threat intel config
 [**GetNetworkRules**](AgentConfigAPI.md#GetNetworkRules) | **Get** /deepfence/configs/agent/network/rules | Get Network Rules
 [**RegisterAgentFilesystemConfig**](AgentConfigAPI.md#RegisterAgentFilesystemConfig) | **Post** /deepfence/configs/agent/filemon/ | Register Agent Filesystem config
 [**RegisterAgentNetworkConfig**](AgentConfigAPI.md#RegisterAgentNetworkConfig) | **Post** /deepfence/configs/agent/network/ | Register Agent Network config
 [**RegisterAgentPolicyConfig**](AgentConfigAPI.md#RegisterAgentPolicyConfig) | **Post** /deepfence/configs/agent/policy/ | Register Agent Policy config
 [**RegisterAgentQuarantineConfig**](AgentConfigAPI.md#RegisterAgentQuarantineConfig) | **Post** /deepfence/configs/agent/quarantine/ | Register Agent Policy config
+[**RegisterThreatIntelConfig**](AgentConfigAPI.md#RegisterThreatIntelConfig) | **Post** /deepfence/configs/agent/threatintel/ | Register Agent Policy config
 
 
 
@@ -540,6 +542,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetAgentThreatIntelConfig
+
+> []ControlsThreatIntelInfo GetAgentThreatIntelConfig(ctx).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
+
+Register Agent Threat intel config
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    modelGetAgentConfigReq := *openapiclient.NewModelGetAgentConfigReq([]string{"ConfigIds_example"}) // ModelGetAgentConfigReq |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AgentConfigAPI.GetAgentThreatIntelConfig(context.Background()).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.GetAgentThreatIntelConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAgentThreatIntelConfig`: []ControlsThreatIntelInfo
+    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.GetAgentThreatIntelConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAgentThreatIntelConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **modelGetAgentConfigReq** | [**ModelGetAgentConfigReq**](ModelGetAgentConfigReq.md) |  | 
+
+### Return type
+
+[**[]ControlsThreatIntelInfo**](ControlsThreatIntelInfo.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetNetworkRules
 
 > map[string]string GetNetworkRules(ctx).Execute()
@@ -838,6 +906,70 @@ Other parameters are passed through a pointer to a apiRegisterAgentQuarantineCon
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **controlsQuarantineConfig** | [**ControlsQuarantineConfig**](ControlsQuarantineConfig.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RegisterThreatIntelConfig
+
+> RegisterThreatIntelConfig(ctx).ControlsThreatIntelInfo(controlsThreatIntelInfo).Execute()
+
+Register Agent Policy config
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    controlsThreatIntelInfo := *openapiclient.NewControlsThreatIntelInfo([]string{"IgnoredAlertRuleIds_example"}, []string{"InternalIps_example"}, "NetworkAlertRulesUrl_example", "RulesHash_example", int32(123)) // ControlsThreatIntelInfo |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.AgentConfigAPI.RegisterThreatIntelConfig(context.Background()).ControlsThreatIntelInfo(controlsThreatIntelInfo).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.RegisterThreatIntelConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRegisterThreatIntelConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **controlsThreatIntelInfo** | [**ControlsThreatIntelInfo**](ControlsThreatIntelInfo.md) |  | 
 
 ### Return type
 

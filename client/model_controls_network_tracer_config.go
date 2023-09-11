@@ -22,6 +22,7 @@ var _ MappedNullable = &ControlsNetworkTracerConfig{}
 type ControlsNetworkTracerConfig struct {
 	HttpRules ControlsNetworkRules `json:"http_rules"`
 	HttpsRules ControlsNetworkRules `json:"https_rules"`
+	IgnoredRuleIds []string `json:"ignored_rule_ids,omitempty"`
 	Mode string `json:"mode"`
 	NodeId string `json:"node_id"`
 	ProcessNames []string `json:"process_names"`
@@ -99,6 +100,39 @@ func (o *ControlsNetworkTracerConfig) GetHttpsRulesOk() (*ControlsNetworkRules, 
 // SetHttpsRules sets field value
 func (o *ControlsNetworkTracerConfig) SetHttpsRules(v ControlsNetworkRules) {
 	o.HttpsRules = v
+}
+
+// GetIgnoredRuleIds returns the IgnoredRuleIds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ControlsNetworkTracerConfig) GetIgnoredRuleIds() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.IgnoredRuleIds
+}
+
+// GetIgnoredRuleIdsOk returns a tuple with the IgnoredRuleIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ControlsNetworkTracerConfig) GetIgnoredRuleIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.IgnoredRuleIds) {
+		return nil, false
+	}
+	return o.IgnoredRuleIds, true
+}
+
+// HasIgnoredRuleIds returns a boolean if a field has been set.
+func (o *ControlsNetworkTracerConfig) HasIgnoredRuleIds() bool {
+	if o != nil && IsNil(o.IgnoredRuleIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetIgnoredRuleIds gets a reference to the given []string and assigns it to the IgnoredRuleIds field.
+func (o *ControlsNetworkTracerConfig) SetIgnoredRuleIds(v []string) {
+	o.IgnoredRuleIds = v
 }
 
 // GetMode returns the Mode field value
@@ -235,6 +269,9 @@ func (o ControlsNetworkTracerConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["http_rules"] = o.HttpRules
 	toSerialize["https_rules"] = o.HttpsRules
+	if o.IgnoredRuleIds != nil {
+		toSerialize["ignored_rule_ids"] = o.IgnoredRuleIds
+	}
 	toSerialize["mode"] = o.Mode
 	toSerialize["node_id"] = o.NodeId
 	if o.ProcessNames != nil {
