@@ -32,11 +32,13 @@ type ModelFileAlert struct {
 	Filepath string `json:"filepath"`
 	Fstat string `json:"fstat"`
 	HostName string `json:"host_name"`
+	KubernetesClusterName string `json:"kubernetes_cluster_name"`
 	Masked bool `json:"masked"`
 	Netstat string `json:"netstat"`
 	NodeId string `json:"node_id"`
 	NodeType string `json:"node_type"`
 	Pid int32 `json:"pid"`
+	PodName string `json:"pod_name"`
 	ProcStatus string `json:"proc_status"`
 	ProcessName string `json:"process_name"`
 	ResourceType string `json:"resource_type"`
@@ -56,7 +58,7 @@ type ModelFileAlert struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32) *ModelFileAlert {
+func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostName string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32) *ModelFileAlert {
 	this := ModelFileAlert{}
 	this.Category = category
 	this.ContainerId = containerId
@@ -70,11 +72,13 @@ func NewModelFileAlert(category string, containerId string, containerImage strin
 	this.Filepath = filepath
 	this.Fstat = fstat
 	this.HostName = hostName
+	this.KubernetesClusterName = kubernetesClusterName
 	this.Masked = masked
 	this.Netstat = netstat
 	this.NodeId = nodeId
 	this.NodeType = nodeType
 	this.Pid = pid
+	this.PodName = podName
 	this.ProcStatus = procStatus
 	this.ProcessName = processName
 	this.ResourceType = resourceType
@@ -387,6 +391,30 @@ func (o *ModelFileAlert) SetHostName(v string) {
 	o.HostName = v
 }
 
+// GetKubernetesClusterName returns the KubernetesClusterName field value
+func (o *ModelFileAlert) GetKubernetesClusterName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.KubernetesClusterName
+}
+
+// GetKubernetesClusterNameOk returns a tuple with the KubernetesClusterName field value
+// and a boolean to check if the value has been set.
+func (o *ModelFileAlert) GetKubernetesClusterNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.KubernetesClusterName, true
+}
+
+// SetKubernetesClusterName sets field value
+func (o *ModelFileAlert) SetKubernetesClusterName(v string) {
+	o.KubernetesClusterName = v
+}
+
 // GetMasked returns the Masked field value
 func (o *ModelFileAlert) GetMasked() bool {
 	if o == nil {
@@ -505,6 +533,30 @@ func (o *ModelFileAlert) GetPidOk() (*int32, bool) {
 // SetPid sets field value
 func (o *ModelFileAlert) SetPid(v int32) {
 	o.Pid = v
+}
+
+// GetPodName returns the PodName field value
+func (o *ModelFileAlert) GetPodName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PodName
+}
+
+// GetPodNameOk returns a tuple with the PodName field value
+// and a boolean to check if the value has been set.
+func (o *ModelFileAlert) GetPodNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PodName, true
+}
+
+// SetPodName sets field value
+func (o *ModelFileAlert) SetPodName(v string) {
+	o.PodName = v
 }
 
 // GetProcStatus returns the ProcStatus field value
@@ -845,11 +897,13 @@ func (o ModelFileAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["filepath"] = o.Filepath
 	toSerialize["fstat"] = o.Fstat
 	toSerialize["host_name"] = o.HostName
+	toSerialize["kubernetes_cluster_name"] = o.KubernetesClusterName
 	toSerialize["masked"] = o.Masked
 	toSerialize["netstat"] = o.Netstat
 	toSerialize["node_id"] = o.NodeId
 	toSerialize["node_type"] = o.NodeType
 	toSerialize["pid"] = o.Pid
+	toSerialize["pod_name"] = o.PodName
 	toSerialize["proc_status"] = o.ProcStatus
 	toSerialize["process_name"] = o.ProcessName
 	toSerialize["resource_type"] = o.ResourceType

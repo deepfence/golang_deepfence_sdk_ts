@@ -13977,22 +13977,29 @@ components:
       example:
         severity: severity
         summary: summary
-        event_type: event_type
-        updated_at: 1
+        geoip: geoip
+        kubernetes_cluster_name: kubernetes_cluster_name
         masked: true
+        count: 0
+        created_at: 6
+        pod_name: pod_name
+        event_type: event_type
+        container_name: container_name
+        updated_at: 1
         techniques:
         - techniques
         - techniques
-        count: 0
-        created_at: 6
         tactics:
         - tactics
         - tactics
+        matched: matched
         category: category
         host_name: host_name
         node_id: node_id
       properties:
         category:
+          type: string
+        container_name:
           type: string
         count:
           type: integer
@@ -14000,11 +14007,19 @@ components:
           type: integer
         event_type:
           type: string
+        geoip:
+          type: string
         host_name:
+          type: string
+        kubernetes_cluster_name:
           type: string
         masked:
           type: boolean
+        matched:
+          type: string
         node_id:
+          type: string
+        pod_name:
           type: string
         severity:
           type: string
@@ -14024,12 +14039,17 @@ components:
           type: integer
       required:
       - category
+      - container_name
       - count
       - created_at
       - event_type
+      - geoip
       - host_name
+      - kubernetes_cluster_name
       - masked
+      - matched
       - node_id
+      - pod_name
       - severity
       - summary
       - tactics
@@ -14599,6 +14619,7 @@ components:
         docker_image_tag: docker_image_tag
         malware_scan_status: malware_scan_status
         docker_image_size: docker_image_size
+        image_node_id: image_node_id
         docker_image_virtual_size: docker_image_virtual_size
         containers:
         - vulnerabilities_count: 6
@@ -14739,6 +14760,8 @@ components:
           type: array
         docker_image_virtual_size:
           type: string
+        image_node_id:
+          type: string
         malware_latest_scan_id:
           type: string
         malware_scan_status:
@@ -14773,6 +14796,7 @@ components:
       - docker_image_tag
       - docker_image_tag_list
       - docker_image_virtual_size
+      - image_node_id
       - malware_latest_scan_id
       - malware_scan_status
       - malwares_count
@@ -14985,6 +15009,7 @@ components:
     ModelFileAlert:
       example:
         container_ip: container_ip
+        kubernetes_cluster_name: kubernetes_cluster_name
         masked: true
         created_at: 6
         pid: 1
@@ -15004,6 +15029,7 @@ components:
         container_image: container_image
         netstat: netstat
         users: users
+        pod_name: pod_name
         container_name: container_name
         techniques:
         - techniques
@@ -15043,6 +15069,8 @@ components:
           type: string
         host_name:
           type: string
+        kubernetes_cluster_name:
+          type: string
         masked:
           type: boolean
         netstat:
@@ -15053,6 +15081,8 @@ components:
           type: string
         pid:
           type: integer
+        pod_name:
+          type: string
         proc_status:
           type: string
         process_name:
@@ -15098,11 +15128,13 @@ components:
       - filepath
       - fstat
       - host_name
+      - kubernetes_cluster_name
       - masked
       - netstat
       - node_id
       - node_type
       - pid
+      - pod_name
       - proc_status
       - process_name
       - resource_type
@@ -15253,6 +15285,7 @@ components:
           docker_image_tag: docker_image_tag
           malware_scan_status: malware_scan_status
           docker_image_size: docker_image_size
+          image_node_id: image_node_id
           docker_image_virtual_size: docker_image_virtual_size
           containers:
           - vulnerabilities_count: 6
@@ -15384,6 +15417,7 @@ components:
           docker_image_tag: docker_image_tag
           malware_scan_status: malware_scan_status
           docker_image_size: docker_image_size
+          image_node_id: image_node_id
           docker_image_virtual_size: docker_image_virtual_size
           containers:
           - vulnerabilities_count: 6
@@ -16466,6 +16500,7 @@ components:
             docker_image_tag: docker_image_tag
             malware_scan_status: malware_scan_status
             docker_image_size: docker_image_size
+            image_node_id: image_node_id
             docker_image_virtual_size: docker_image_virtual_size
             containers:
             - vulnerabilities_count: 6
@@ -16597,6 +16632,7 @@ components:
             docker_image_tag: docker_image_tag
             malware_scan_status: malware_scan_status
             docker_image_size: docker_image_size
+            image_node_id: image_node_id
             docker_image_virtual_size: docker_image_virtual_size
             containers:
             - vulnerabilities_count: 6
@@ -17236,6 +17272,7 @@ components:
             docker_image_tag: docker_image_tag
             malware_scan_status: malware_scan_status
             docker_image_size: docker_image_size
+            image_node_id: image_node_id
             docker_image_virtual_size: docker_image_virtual_size
             containers:
             - vulnerabilities_count: 6
@@ -17367,6 +17404,7 @@ components:
             docker_image_tag: docker_image_tag
             malware_scan_status: malware_scan_status
             docker_image_size: docker_image_size
+            image_node_id: image_node_id
             docker_image_virtual_size: docker_image_virtual_size
             containers:
             - vulnerabilities_count: 6
@@ -19322,6 +19360,7 @@ components:
           docker_image_tag: docker_image_tag
           malware_scan_status: malware_scan_status
           docker_image_size: docker_image_size
+          image_node_id: image_node_id
           docker_image_virtual_size: docker_image_virtual_size
           containers:
           - vulnerabilities_count: 6
@@ -19453,6 +19492,7 @@ components:
           docker_image_tag: docker_image_tag
           malware_scan_status: malware_scan_status
           docker_image_size: docker_image_size
+          image_node_id: image_node_id
           docker_image_virtual_size: docker_image_virtual_size
           containers:
           - vulnerabilities_count: 6
@@ -20424,12 +20464,15 @@ components:
       type: object
     ModelScanResultsActionRequest:
       example:
+        notify_individual: true
         result_ids:
         - result_ids
         - result_ids
         scan_type: SecretScan
         scan_id: scan_id
       properties:
+        notify_individual:
+          type: boolean
         result_ids:
           items:
             type: string

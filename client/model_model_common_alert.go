@@ -21,12 +21,17 @@ var _ MappedNullable = &ModelCommonAlert{}
 // ModelCommonAlert struct for ModelCommonAlert
 type ModelCommonAlert struct {
 	Category string `json:"category"`
+	ContainerName string `json:"container_name"`
 	Count int32 `json:"count"`
 	CreatedAt int32 `json:"created_at"`
 	EventType string `json:"event_type"`
+	Geoip string `json:"geoip"`
 	HostName string `json:"host_name"`
+	KubernetesClusterName string `json:"kubernetes_cluster_name"`
 	Masked bool `json:"masked"`
+	Matched string `json:"matched"`
 	NodeId string `json:"node_id"`
+	PodName string `json:"pod_name"`
 	Severity string `json:"severity"`
 	Summary string `json:"summary"`
 	Tactics []string `json:"tactics"`
@@ -38,15 +43,20 @@ type ModelCommonAlert struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelCommonAlert(category string, count int32, createdAt int32, eventType string, hostName string, masked bool, nodeId string, severity string, summary string, tactics []string, techniques []string, updatedAt int32) *ModelCommonAlert {
+func NewModelCommonAlert(category string, containerName string, count int32, createdAt int32, eventType string, geoip string, hostName string, kubernetesClusterName string, masked bool, matched string, nodeId string, podName string, severity string, summary string, tactics []string, techniques []string, updatedAt int32) *ModelCommonAlert {
 	this := ModelCommonAlert{}
 	this.Category = category
+	this.ContainerName = containerName
 	this.Count = count
 	this.CreatedAt = createdAt
 	this.EventType = eventType
+	this.Geoip = geoip
 	this.HostName = hostName
+	this.KubernetesClusterName = kubernetesClusterName
 	this.Masked = masked
+	this.Matched = matched
 	this.NodeId = nodeId
+	this.PodName = podName
 	this.Severity = severity
 	this.Summary = summary
 	this.Tactics = tactics
@@ -85,6 +95,30 @@ func (o *ModelCommonAlert) GetCategoryOk() (*string, bool) {
 // SetCategory sets field value
 func (o *ModelCommonAlert) SetCategory(v string) {
 	o.Category = v
+}
+
+// GetContainerName returns the ContainerName field value
+func (o *ModelCommonAlert) GetContainerName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ContainerName
+}
+
+// GetContainerNameOk returns a tuple with the ContainerName field value
+// and a boolean to check if the value has been set.
+func (o *ModelCommonAlert) GetContainerNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ContainerName, true
+}
+
+// SetContainerName sets field value
+func (o *ModelCommonAlert) SetContainerName(v string) {
+	o.ContainerName = v
 }
 
 // GetCount returns the Count field value
@@ -159,6 +193,30 @@ func (o *ModelCommonAlert) SetEventType(v string) {
 	o.EventType = v
 }
 
+// GetGeoip returns the Geoip field value
+func (o *ModelCommonAlert) GetGeoip() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Geoip
+}
+
+// GetGeoipOk returns a tuple with the Geoip field value
+// and a boolean to check if the value has been set.
+func (o *ModelCommonAlert) GetGeoipOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Geoip, true
+}
+
+// SetGeoip sets field value
+func (o *ModelCommonAlert) SetGeoip(v string) {
+	o.Geoip = v
+}
+
 // GetHostName returns the HostName field value
 func (o *ModelCommonAlert) GetHostName() string {
 	if o == nil {
@@ -181,6 +239,30 @@ func (o *ModelCommonAlert) GetHostNameOk() (*string, bool) {
 // SetHostName sets field value
 func (o *ModelCommonAlert) SetHostName(v string) {
 	o.HostName = v
+}
+
+// GetKubernetesClusterName returns the KubernetesClusterName field value
+func (o *ModelCommonAlert) GetKubernetesClusterName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.KubernetesClusterName
+}
+
+// GetKubernetesClusterNameOk returns a tuple with the KubernetesClusterName field value
+// and a boolean to check if the value has been set.
+func (o *ModelCommonAlert) GetKubernetesClusterNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.KubernetesClusterName, true
+}
+
+// SetKubernetesClusterName sets field value
+func (o *ModelCommonAlert) SetKubernetesClusterName(v string) {
+	o.KubernetesClusterName = v
 }
 
 // GetMasked returns the Masked field value
@@ -207,6 +289,30 @@ func (o *ModelCommonAlert) SetMasked(v bool) {
 	o.Masked = v
 }
 
+// GetMatched returns the Matched field value
+func (o *ModelCommonAlert) GetMatched() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Matched
+}
+
+// GetMatchedOk returns a tuple with the Matched field value
+// and a boolean to check if the value has been set.
+func (o *ModelCommonAlert) GetMatchedOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Matched, true
+}
+
+// SetMatched sets field value
+func (o *ModelCommonAlert) SetMatched(v string) {
+	o.Matched = v
+}
+
 // GetNodeId returns the NodeId field value
 func (o *ModelCommonAlert) GetNodeId() string {
 	if o == nil {
@@ -229,6 +335,30 @@ func (o *ModelCommonAlert) GetNodeIdOk() (*string, bool) {
 // SetNodeId sets field value
 func (o *ModelCommonAlert) SetNodeId(v string) {
 	o.NodeId = v
+}
+
+// GetPodName returns the PodName field value
+func (o *ModelCommonAlert) GetPodName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PodName
+}
+
+// GetPodNameOk returns a tuple with the PodName field value
+// and a boolean to check if the value has been set.
+func (o *ModelCommonAlert) GetPodNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PodName, true
+}
+
+// SetPodName sets field value
+func (o *ModelCommonAlert) SetPodName(v string) {
+	o.PodName = v
 }
 
 // GetSeverity returns the Severity field value
@@ -366,12 +496,17 @@ func (o ModelCommonAlert) MarshalJSON() ([]byte, error) {
 func (o ModelCommonAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["category"] = o.Category
+	toSerialize["container_name"] = o.ContainerName
 	toSerialize["count"] = o.Count
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["event_type"] = o.EventType
+	toSerialize["geoip"] = o.Geoip
 	toSerialize["host_name"] = o.HostName
+	toSerialize["kubernetes_cluster_name"] = o.KubernetesClusterName
 	toSerialize["masked"] = o.Masked
+	toSerialize["matched"] = o.Matched
 	toSerialize["node_id"] = o.NodeId
+	toSerialize["pod_name"] = o.PodName
 	toSerialize["severity"] = o.Severity
 	toSerialize["summary"] = o.Summary
 	if o.Tactics != nil {

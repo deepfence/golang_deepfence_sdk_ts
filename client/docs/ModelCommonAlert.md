@@ -5,12 +5,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Category** | **string** |  | 
+**ContainerName** | **string** |  | 
 **Count** | **int32** |  | 
 **CreatedAt** | **int32** |  | 
 **EventType** | **string** |  | 
+**Geoip** | **string** |  | 
 **HostName** | **string** |  | 
+**KubernetesClusterName** | **string** |  | 
 **Masked** | **bool** |  | 
+**Matched** | **string** |  | 
 **NodeId** | **string** |  | 
+**PodName** | **string** |  | 
 **Severity** | **string** |  | 
 **Summary** | **string** |  | 
 **Tactics** | **[]string** |  | 
@@ -21,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewModelCommonAlert
 
-`func NewModelCommonAlert(category string, count int32, createdAt int32, eventType string, hostName string, masked bool, nodeId string, severity string, summary string, tactics []string, techniques []string, updatedAt int32, ) *ModelCommonAlert`
+`func NewModelCommonAlert(category string, containerName string, count int32, createdAt int32, eventType string, geoip string, hostName string, kubernetesClusterName string, masked bool, matched string, nodeId string, podName string, severity string, summary string, tactics []string, techniques []string, updatedAt int32, ) *ModelCommonAlert`
 
 NewModelCommonAlert instantiates a new ModelCommonAlert object
 This constructor will assign default values to properties that have it defined,
@@ -54,6 +59,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelCommonAlert) SetCategory(v string)`
 
 SetCategory sets Category field to given value.
+
+
+### GetContainerName
+
+`func (o *ModelCommonAlert) GetContainerName() string`
+
+GetContainerName returns the ContainerName field if non-nil, zero value otherwise.
+
+### GetContainerNameOk
+
+`func (o *ModelCommonAlert) GetContainerNameOk() (*string, bool)`
+
+GetContainerNameOk returns a tuple with the ContainerName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContainerName
+
+`func (o *ModelCommonAlert) SetContainerName(v string)`
+
+SetContainerName sets ContainerName field to given value.
 
 
 ### GetCount
@@ -116,6 +141,26 @@ and a boolean to check if the value has been set.
 SetEventType sets EventType field to given value.
 
 
+### GetGeoip
+
+`func (o *ModelCommonAlert) GetGeoip() string`
+
+GetGeoip returns the Geoip field if non-nil, zero value otherwise.
+
+### GetGeoipOk
+
+`func (o *ModelCommonAlert) GetGeoipOk() (*string, bool)`
+
+GetGeoipOk returns a tuple with the Geoip field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGeoip
+
+`func (o *ModelCommonAlert) SetGeoip(v string)`
+
+SetGeoip sets Geoip field to given value.
+
+
 ### GetHostName
 
 `func (o *ModelCommonAlert) GetHostName() string`
@@ -134,6 +179,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelCommonAlert) SetHostName(v string)`
 
 SetHostName sets HostName field to given value.
+
+
+### GetKubernetesClusterName
+
+`func (o *ModelCommonAlert) GetKubernetesClusterName() string`
+
+GetKubernetesClusterName returns the KubernetesClusterName field if non-nil, zero value otherwise.
+
+### GetKubernetesClusterNameOk
+
+`func (o *ModelCommonAlert) GetKubernetesClusterNameOk() (*string, bool)`
+
+GetKubernetesClusterNameOk returns a tuple with the KubernetesClusterName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKubernetesClusterName
+
+`func (o *ModelCommonAlert) SetKubernetesClusterName(v string)`
+
+SetKubernetesClusterName sets KubernetesClusterName field to given value.
 
 
 ### GetMasked
@@ -156,6 +221,26 @@ and a boolean to check if the value has been set.
 SetMasked sets Masked field to given value.
 
 
+### GetMatched
+
+`func (o *ModelCommonAlert) GetMatched() string`
+
+GetMatched returns the Matched field if non-nil, zero value otherwise.
+
+### GetMatchedOk
+
+`func (o *ModelCommonAlert) GetMatchedOk() (*string, bool)`
+
+GetMatchedOk returns a tuple with the Matched field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMatched
+
+`func (o *ModelCommonAlert) SetMatched(v string)`
+
+SetMatched sets Matched field to given value.
+
+
 ### GetNodeId
 
 `func (o *ModelCommonAlert) GetNodeId() string`
@@ -174,6 +259,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelCommonAlert) SetNodeId(v string)`
 
 SetNodeId sets NodeId field to given value.
+
+
+### GetPodName
+
+`func (o *ModelCommonAlert) GetPodName() string`
+
+GetPodName returns the PodName field if non-nil, zero value otherwise.
+
+### GetPodNameOk
+
+`func (o *ModelCommonAlert) GetPodNameOk() (*string, bool)`
+
+GetPodNameOk returns a tuple with the PodName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPodName
+
+`func (o *ModelCommonAlert) SetPodName(v string)`
+
+SetPodName sets PodName field to given value.
 
 
 ### GetSeverity
