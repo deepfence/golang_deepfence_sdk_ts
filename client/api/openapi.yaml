@@ -6847,7 +6847,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ModelComplianceScanTriggerReq'
+              $ref: '#/components/schemas/ModelStopScanRequest'
       responses:
         "202":
           description: Accepted
@@ -6964,7 +6964,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ModelVulnerabilityScanTriggerReq'
+              $ref: '#/components/schemas/ModelStopScanRequest'
       responses:
         "202":
           description: Accepted
@@ -13409,6 +13409,7 @@ components:
     ModelCloudComplianceScanDetails:
       example:
         account_id: account_id
+        stop_requested: true
         benchmarks:
         - controls:
           - controls
@@ -13439,6 +13440,8 @@ components:
             type: string
           nullable: true
           type: array
+        stop_requested:
+          type: boolean
       type: object
     ModelCloudComplianceScanResult:
       example:
@@ -13664,6 +13667,7 @@ components:
           scans:
             key:
               account_id: account_id
+              stop_requested: true
               benchmarks:
               - controls:
                 - controls
@@ -13703,6 +13707,7 @@ components:
         scans:
           key:
             account_id: account_id
+            stop_requested: true
             benchmarks:
             - controls:
               - controls
