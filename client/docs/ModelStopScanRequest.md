@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ScanId** | **string** |  | 
+**ScanIds** | **[]string** |  | 
 **ScanType** | **string** |  | 
 
 ## Methods
 
 ### NewModelStopScanRequest
 
-`func NewModelStopScanRequest(scanId string, scanType string, ) *ModelStopScanRequest`
+`func NewModelStopScanRequest(scanIds []string, scanType string, ) *ModelStopScanRequest`
 
 NewModelStopScanRequest instantiates a new ModelStopScanRequest object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +26,36 @@ NewModelStopScanRequestWithDefaults instantiates a new ModelStopScanRequest obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetScanId
+### GetScanIds
 
-`func (o *ModelStopScanRequest) GetScanId() string`
+`func (o *ModelStopScanRequest) GetScanIds() []string`
 
-GetScanId returns the ScanId field if non-nil, zero value otherwise.
+GetScanIds returns the ScanIds field if non-nil, zero value otherwise.
 
-### GetScanIdOk
+### GetScanIdsOk
 
-`func (o *ModelStopScanRequest) GetScanIdOk() (*string, bool)`
+`func (o *ModelStopScanRequest) GetScanIdsOk() (*[]string, bool)`
 
-GetScanIdOk returns a tuple with the ScanId field if it's non-nil, zero value otherwise
+GetScanIdsOk returns a tuple with the ScanIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetScanId
+### SetScanIds
 
-`func (o *ModelStopScanRequest) SetScanId(v string)`
+`func (o *ModelStopScanRequest) SetScanIds(v []string)`
 
-SetScanId sets ScanId field to given value.
+SetScanIds sets ScanIds field to given value.
 
 
+### SetScanIdsNil
+
+`func (o *ModelStopScanRequest) SetScanIdsNil(b bool)`
+
+ SetScanIdsNil sets the value for ScanIds to be an explicit nil
+
+### UnsetScanIds
+`func (o *ModelStopScanRequest) UnsetScanIds()`
+
+UnsetScanIds ensures that no value is present for ScanIds, not even an explicit nil
 ### GetScanType
 
 `func (o *ModelStopScanRequest) GetScanType() string`

@@ -127,6 +127,7 @@ Class | Method | HTTP request | Description
 *CloudScannerAPI* | [**ResultsCloudComplianceScan**](docs/CloudScannerAPI.md#resultscloudcompliancescan) | **Post** /deepfence/scan/results/cloud-compliance | Get Cloud Compliance Scan Results
 *CloudScannerAPI* | [**StatusCloudComplianceScan**](docs/CloudScannerAPI.md#statuscloudcompliancescan) | **Post** /deepfence/scan/status/cloud-compliance | Get Cloud Compliance Scan Status
 *CommonAPI* | [**Eula**](docs/CommonAPI.md#eula) | **Get** /deepfence/end-user-license-agreement | Get End User License Agreement
+*CommonAPI* | [**GetScanReportFields**](docs/CommonAPI.md#getscanreportfields) | **Get** /deepfence/scan/results/fields | Get Scan Report Fields
 *ComplianceAPI* | [**CountResultsComplianceScan**](docs/ComplianceAPI.md#countresultscompliancescan) | **Post** /deepfence/scan/results/count/compliance | Get Compliance Scans Results
 *ComplianceAPI* | [**IngestComplianceScanStatus**](docs/ComplianceAPI.md#ingestcompliancescanstatus) | **Post** /deepfence/ingest/compliance-scan-logs | Ingest Compliance Scan Status
 *ComplianceAPI* | [**IngestCompliances**](docs/ComplianceAPI.md#ingestcompliances) | **Post** /deepfence/ingest/compliance | Ingest Compliances
@@ -512,6 +513,7 @@ Class | Method | HTTP request | Description
  - [ModelScanInfo](docs/ModelScanInfo.md)
  - [ModelScanListReq](docs/ModelScanListReq.md)
  - [ModelScanListResp](docs/ModelScanListResp.md)
+ - [ModelScanReportFieldsResponse](docs/ModelScanReportFieldsResponse.md)
  - [ModelScanResultBasicNode](docs/ModelScanResultBasicNode.md)
  - [ModelScanResultsActionRequest](docs/ModelScanResultsActionRequest.md)
  - [ModelScanResultsCommon](docs/ModelScanResultsCommon.md)

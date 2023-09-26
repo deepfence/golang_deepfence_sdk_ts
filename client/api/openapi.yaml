@@ -6106,6 +6106,44 @@ paths:
       summary: Get Vulnerability Scans Results
       tags:
       - Vulnerability
+  /deepfence/scan/results/fields:
+    get:
+      description: Get all the fields available in all the scan reports
+      operationId: getScanReportFields
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelScanReportFieldsResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Scan Report Fields
+      tags:
+      - Common
   /deepfence/scan/results/malware:
     post:
       description: Get Malware Scans results on agent or registry
@@ -20443,6 +20481,42 @@ components:
       required:
       - scans_info
       type: object
+    ModelScanReportFieldsResponse:
+      example:
+        malware:
+        - malware
+        - malware
+        compliance:
+        - compliance
+        - compliance
+        secret:
+        - secret
+        - secret
+        vulnerability:
+        - vulnerability
+        - vulnerability
+      properties:
+        compliance:
+          items:
+            type: string
+          nullable: true
+          type: array
+        malware:
+          items:
+            type: string
+          nullable: true
+          type: array
+        secret:
+          items:
+            type: string
+          nullable: true
+          type: array
+        vulnerability:
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
     ModelScanResultBasicNode:
       example:
         basic_nodes:
@@ -20989,11 +21063,16 @@ components:
       type: object
     ModelStopScanRequest:
       example:
+        scan_ids:
+        - scan_ids
+        - scan_ids
         scan_type: SecretScan
-        scan_id: scan_id
       properties:
-        scan_id:
-          type: string
+        scan_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
         scan_type:
           enum:
           - SecretScan
@@ -21003,7 +21082,7 @@ components:
           - CloudComplianceScan
           type: string
       required:
-      - scan_id
+      - scan_ids
       - scan_type
       type: object
     ModelSummary:
