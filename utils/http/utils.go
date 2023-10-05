@@ -5,7 +5,7 @@ import (
 	"crypto/x509"
 	"fmt"
 	"net/http"
-	"strings"
+	"os"
 	"time"
 
 	openapi "github.com/deepfence/golang_deepfence_sdk/client"
@@ -13,7 +13,7 @@ import (
 )
 
 func IsConsoleAgent(url string) bool {
-	return strings.Contains(url, "127.0.0.1") || strings.Contains(url, "deepfence-server") || strings.Contains(url, "deepfence-router")
+	return len(os.Getenv("DEEPFENCE_CONSOLE_AGENT")) > 0
 }
 
 func GetConsoleApiToken(console, port string) (string, error) {
