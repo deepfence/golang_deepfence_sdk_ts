@@ -23,6 +23,7 @@ type ModelHost struct {
 	AgentRunning bool `json:"agent_running"`
 	AlertsCounts map[string]int32 `json:"alerts_counts"`
 	AvailabilityZone string `json:"availability_zone"`
+	CloudAccountId string `json:"cloud_account_id"`
 	CloudProvider string `json:"cloud_provider"`
 	CloudRegion string `json:"cloud_region"`
 	ComplianceLatestScanId string `json:"compliance_latest_scan_id"`
@@ -75,11 +76,12 @@ type ModelHost struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelHost(agentRunning bool, alertsCounts map[string]int32, availabilityZone string, cloudProvider string, cloudRegion string, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, filesystemTracerStatus string, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, networkFilterStatus string, networkTracerStatus string, networkTracerStatusUpdatedAt int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string) *ModelHost {
+func NewModelHost(agentRunning bool, alertsCounts map[string]int32, availabilityZone string, cloudAccountId string, cloudProvider string, cloudRegion string, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, filesystemTracerStatus string, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, networkFilterStatus string, networkTracerStatus string, networkTracerStatusUpdatedAt int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string) *ModelHost {
 	this := ModelHost{}
 	this.AgentRunning = agentRunning
 	this.AlertsCounts = alertsCounts
 	this.AvailabilityZone = availabilityZone
+	this.CloudAccountId = cloudAccountId
 	this.CloudProvider = cloudProvider
 	this.CloudRegion = cloudRegion
 	this.ComplianceLatestScanId = complianceLatestScanId
@@ -209,6 +211,30 @@ func (o *ModelHost) GetAvailabilityZoneOk() (*string, bool) {
 // SetAvailabilityZone sets field value
 func (o *ModelHost) SetAvailabilityZone(v string) {
 	o.AvailabilityZone = v
+}
+
+// GetCloudAccountId returns the CloudAccountId field value
+func (o *ModelHost) GetCloudAccountId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CloudAccountId
+}
+
+// GetCloudAccountIdOk returns a tuple with the CloudAccountId field value
+// and a boolean to check if the value has been set.
+func (o *ModelHost) GetCloudAccountIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CloudAccountId, true
+}
+
+// SetCloudAccountId sets field value
+func (o *ModelHost) SetCloudAccountId(v string) {
+	o.CloudAccountId = v
 }
 
 // GetCloudProvider returns the CloudProvider field value
@@ -1350,6 +1376,7 @@ func (o ModelHost) ToMap() (map[string]interface{}, error) {
 		toSerialize["alerts_counts"] = o.AlertsCounts
 	}
 	toSerialize["availability_zone"] = o.AvailabilityZone
+	toSerialize["cloud_account_id"] = o.CloudAccountId
 	toSerialize["cloud_provider"] = o.CloudProvider
 	toSerialize["cloud_region"] = o.CloudRegion
 	toSerialize["compliance_latest_scan_id"] = o.ComplianceLatestScanId

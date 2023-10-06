@@ -32,6 +32,7 @@ type ModelFileAlert struct {
 	Filepath string `json:"filepath"`
 	Fstat string `json:"fstat"`
 	HostName string `json:"host_name"`
+	KubernetesClusterId string `json:"kubernetes_cluster_id"`
 	KubernetesClusterName string `json:"kubernetes_cluster_name"`
 	Masked bool `json:"masked"`
 	Netstat string `json:"netstat"`
@@ -58,7 +59,7 @@ type ModelFileAlert struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostName string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32) *ModelFileAlert {
+func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostName string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32) *ModelFileAlert {
 	this := ModelFileAlert{}
 	this.Category = category
 	this.ContainerId = containerId
@@ -72,6 +73,7 @@ func NewModelFileAlert(category string, containerId string, containerImage strin
 	this.Filepath = filepath
 	this.Fstat = fstat
 	this.HostName = hostName
+	this.KubernetesClusterId = kubernetesClusterId
 	this.KubernetesClusterName = kubernetesClusterName
 	this.Masked = masked
 	this.Netstat = netstat
@@ -389,6 +391,30 @@ func (o *ModelFileAlert) GetHostNameOk() (*string, bool) {
 // SetHostName sets field value
 func (o *ModelFileAlert) SetHostName(v string) {
 	o.HostName = v
+}
+
+// GetKubernetesClusterId returns the KubernetesClusterId field value
+func (o *ModelFileAlert) GetKubernetesClusterId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.KubernetesClusterId
+}
+
+// GetKubernetesClusterIdOk returns a tuple with the KubernetesClusterId field value
+// and a boolean to check if the value has been set.
+func (o *ModelFileAlert) GetKubernetesClusterIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.KubernetesClusterId, true
+}
+
+// SetKubernetesClusterId sets field value
+func (o *ModelFileAlert) SetKubernetesClusterId(v string) {
+	o.KubernetesClusterId = v
 }
 
 // GetKubernetesClusterName returns the KubernetesClusterName field value
@@ -897,6 +923,7 @@ func (o ModelFileAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["filepath"] = o.Filepath
 	toSerialize["fstat"] = o.Fstat
 	toSerialize["host_name"] = o.HostName
+	toSerialize["kubernetes_cluster_id"] = o.KubernetesClusterId
 	toSerialize["kubernetes_cluster_name"] = o.KubernetesClusterName
 	toSerialize["masked"] = o.Masked
 	toSerialize["netstat"] = o.Netstat

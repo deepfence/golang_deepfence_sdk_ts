@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Filepath** | **string** |  | 
 **Fstat** | **string** |  | 
 **HostName** | **string** |  | 
+**KubernetesClusterId** | **string** |  | 
 **KubernetesClusterName** | **string** |  | 
 **Masked** | **bool** |  | 
 **Netstat** | **string** |  | 
@@ -41,7 +42,7 @@ Name | Type | Description | Notes
 
 ### NewModelFileAlert
 
-`func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostName string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32, ) *ModelFileAlert`
+`func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostName string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32, ) *ModelFileAlert`
 
 NewModelFileAlert instantiates a new ModelFileAlert object
 This constructor will assign default values to properties that have it defined,
@@ -294,6 +295,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelFileAlert) SetHostName(v string)`
 
 SetHostName sets HostName field to given value.
+
+
+### GetKubernetesClusterId
+
+`func (o *ModelFileAlert) GetKubernetesClusterId() string`
+
+GetKubernetesClusterId returns the KubernetesClusterId field if non-nil, zero value otherwise.
+
+### GetKubernetesClusterIdOk
+
+`func (o *ModelFileAlert) GetKubernetesClusterIdOk() (*string, bool)`
+
+GetKubernetesClusterIdOk returns a tuple with the KubernetesClusterId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKubernetesClusterId
+
+`func (o *ModelFileAlert) SetKubernetesClusterId(v string)`
+
+SetKubernetesClusterId sets KubernetesClusterId field to given value.
 
 
 ### GetKubernetesClusterName

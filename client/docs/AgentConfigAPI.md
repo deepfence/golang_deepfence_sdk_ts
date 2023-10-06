@@ -4,29 +4,313 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AttachAgentFilesystemConfig**](AgentConfigAPI.md#AttachAgentFilesystemConfig) | **Post** /deepfence/configs/agent/filemon/attach | Register Agent Filesystem config
-[**AttachAgentNetworkConfig**](AgentConfigAPI.md#AttachAgentNetworkConfig) | **Post** /deepfence/configs/agent/network/attach | Register Agent Network config
-[**AttachAgentPolicyConfig**](AgentConfigAPI.md#AttachAgentPolicyConfig) | **Post** /deepfence/configs/agent/policy/attach | Register Agent Policy config
-[**AttachAgentQuarantineConfig**](AgentConfigAPI.md#AttachAgentQuarantineConfig) | **Post** /deepfence/configs/agent/quarantine/attach | Register Agent Policy config
-[**GetAgentFilesystemConfig**](AgentConfigAPI.md#GetAgentFilesystemConfig) | **Post** /deepfence/configs/agent/filemon/list | Register Agent Filesystem config
-[**GetAgentNetworkConfig**](AgentConfigAPI.md#GetAgentNetworkConfig) | **Post** /deepfence/configs/agent/network/list | Register Agent Network config
-[**GetAgentPolicyConfig**](AgentConfigAPI.md#GetAgentPolicyConfig) | **Post** /deepfence/configs/agent/policy/list | Register Agent Policy config
-[**GetAgentQuarantineConfig**](AgentConfigAPI.md#GetAgentQuarantineConfig) | **Post** /deepfence/configs/agent/quarantine/list | Register Agent Policy config
-[**GetAgentThreatIntelConfig**](AgentConfigAPI.md#GetAgentThreatIntelConfig) | **Post** /deepfence/configs/agent/threatintel/list | Register Agent Threat intel config
+[**AgentFilesystemConfigAttachedNodes**](AgentConfigAPI.md#AgentFilesystemConfigAttachedNodes) | **Get** /deepfence/configs/agent/filemon/attached-nodes/{config_id} | Get Agent Filesystem config attached nodes
+[**AgentNetworkConfigAttachedNodes**](AgentConfigAPI.md#AgentNetworkConfigAttachedNodes) | **Get** /deepfence/configs/agent/network/attached-nodes/{config_id} | Get Agent Network config attached nodes
+[**AgentPolicyConfigAttachedNodes**](AgentConfigAPI.md#AgentPolicyConfigAttachedNodes) | **Get** /deepfence/configs/agent/policy/attached-nodes/{config_id} | Get Agent Policy config attached nodes
+[**AgentQuarantineConfigAttachedNodes**](AgentConfigAPI.md#AgentQuarantineConfigAttachedNodes) | **Get** /deepfence/configs/agent/quarantine/attached-nodes/{config_id} | Get Agent Quarantine config attached nodes
+[**AttachAgentFilesystemConfig**](AgentConfigAPI.md#AttachAgentFilesystemConfig) | **Post** /deepfence/configs/agent/filemon/attach | Attach Agent Filesystem config
+[**AttachAgentNetworkConfig**](AgentConfigAPI.md#AttachAgentNetworkConfig) | **Post** /deepfence/configs/agent/network/attach | Attach Agent Network config
+[**AttachAgentPolicyConfig**](AgentConfigAPI.md#AttachAgentPolicyConfig) | **Post** /deepfence/configs/agent/policy/attach | Attach Agent Policy config
+[**AttachAgentQuarantineConfig**](AgentConfigAPI.md#AttachAgentQuarantineConfig) | **Post** /deepfence/configs/agent/quarantine/attach | Attach Agent Quarantine config
+[**GetAgentFilesystemConfig**](AgentConfigAPI.md#GetAgentFilesystemConfig) | **Post** /deepfence/configs/agent/filemon/list | Get Agent Filesystem config
+[**GetAgentNetworkConfig**](AgentConfigAPI.md#GetAgentNetworkConfig) | **Post** /deepfence/configs/agent/network/list | Get Agent Network config
+[**GetAgentPolicyConfig**](AgentConfigAPI.md#GetAgentPolicyConfig) | **Post** /deepfence/configs/agent/policy/list | Get Agent Policy config
+[**GetAgentQuarantineConfig**](AgentConfigAPI.md#GetAgentQuarantineConfig) | **Post** /deepfence/configs/agent/quarantine/list | Get Agent Quarantine config
+[**GetAgentThreatIntelConfig**](AgentConfigAPI.md#GetAgentThreatIntelConfig) | **Post** /deepfence/configs/agent/threatintel/list | Get Agent threat intel config
 [**GetNetworkRules**](AgentConfigAPI.md#GetNetworkRules) | **Get** /deepfence/configs/agent/network/rules | Get Network Rules
 [**RegisterAgentFilesystemConfig**](AgentConfigAPI.md#RegisterAgentFilesystemConfig) | **Post** /deepfence/configs/agent/filemon/ | Register Agent Filesystem config
 [**RegisterAgentNetworkConfig**](AgentConfigAPI.md#RegisterAgentNetworkConfig) | **Post** /deepfence/configs/agent/network/ | Register Agent Network config
 [**RegisterAgentPolicyConfig**](AgentConfigAPI.md#RegisterAgentPolicyConfig) | **Post** /deepfence/configs/agent/policy/ | Register Agent Policy config
-[**RegisterAgentQuarantineConfig**](AgentConfigAPI.md#RegisterAgentQuarantineConfig) | **Post** /deepfence/configs/agent/quarantine/ | Register Agent Policy config
-[**RegisterThreatIntelConfig**](AgentConfigAPI.md#RegisterThreatIntelConfig) | **Post** /deepfence/configs/agent/threatintel/ | Register Agent Policy config
+[**RegisterAgentQuarantineConfig**](AgentConfigAPI.md#RegisterAgentQuarantineConfig) | **Post** /deepfence/configs/agent/quarantine/ | Register Agent Quarantine config
+[**RegisterThreatIntelConfig**](AgentConfigAPI.md#RegisterThreatIntelConfig) | **Post** /deepfence/configs/agent/threatintel/ | Register threat intel config
 
+
+
+## AgentFilesystemConfigAttachedNodes
+
+> ModelGetAttachedNodesResp AgentFilesystemConfigAttachedNodes(ctx, configId).Execute()
+
+Get Agent Filesystem config attached nodes
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    configId := "configId_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AgentConfigAPI.AgentFilesystemConfigAttachedNodes(context.Background(), configId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AgentFilesystemConfigAttachedNodes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AgentFilesystemConfigAttachedNodes`: ModelGetAttachedNodesResp
+    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.AgentFilesystemConfigAttachedNodes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**configId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAgentFilesystemConfigAttachedNodesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ModelGetAttachedNodesResp**](ModelGetAttachedNodesResp.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AgentNetworkConfigAttachedNodes
+
+> ModelGetAttachedNodesResp AgentNetworkConfigAttachedNodes(ctx, configId).Execute()
+
+Get Agent Network config attached nodes
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    configId := "configId_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AgentConfigAPI.AgentNetworkConfigAttachedNodes(context.Background(), configId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AgentNetworkConfigAttachedNodes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AgentNetworkConfigAttachedNodes`: ModelGetAttachedNodesResp
+    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.AgentNetworkConfigAttachedNodes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**configId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAgentNetworkConfigAttachedNodesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ModelGetAttachedNodesResp**](ModelGetAttachedNodesResp.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AgentPolicyConfigAttachedNodes
+
+> ModelGetAttachedNodesResp AgentPolicyConfigAttachedNodes(ctx, configId).Execute()
+
+Get Agent Policy config attached nodes
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    configId := "configId_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AgentConfigAPI.AgentPolicyConfigAttachedNodes(context.Background(), configId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AgentPolicyConfigAttachedNodes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AgentPolicyConfigAttachedNodes`: ModelGetAttachedNodesResp
+    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.AgentPolicyConfigAttachedNodes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**configId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAgentPolicyConfigAttachedNodesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ModelGetAttachedNodesResp**](ModelGetAttachedNodesResp.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AgentQuarantineConfigAttachedNodes
+
+> ModelGetAttachedNodesResp AgentQuarantineConfigAttachedNodes(ctx, configId).Execute()
+
+Get Agent Quarantine config attached nodes
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    configId := "configId_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AgentConfigAPI.AgentQuarantineConfigAttachedNodes(context.Background(), configId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AgentQuarantineConfigAttachedNodes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AgentQuarantineConfigAttachedNodes`: ModelGetAttachedNodesResp
+    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.AgentQuarantineConfigAttachedNodes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**configId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAgentQuarantineConfigAttachedNodesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ModelGetAttachedNodesResp**](ModelGetAttachedNodesResp.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## AttachAgentFilesystemConfig
 
 > AttachAgentFilesystemConfig(ctx).ModelAttachAgentConfigReq(modelAttachAgentConfigReq).Execute()
 
-Register Agent Filesystem config
+Attach Agent Filesystem config
 
 
 
@@ -90,7 +374,7 @@ Name | Type | Description  | Notes
 
 > AttachAgentNetworkConfig(ctx).ModelAttachAgentConfigReq(modelAttachAgentConfigReq).Execute()
 
-Register Agent Network config
+Attach Agent Network config
 
 
 
@@ -154,7 +438,7 @@ Name | Type | Description  | Notes
 
 > AttachAgentPolicyConfig(ctx).ModelAttachAgentConfigReq(modelAttachAgentConfigReq).Execute()
 
-Register Agent Policy config
+Attach Agent Policy config
 
 
 
@@ -218,7 +502,7 @@ Name | Type | Description  | Notes
 
 > AttachAgentQuarantineConfig(ctx).ModelAttachAgentConfigReq(modelAttachAgentConfigReq).Execute()
 
-Register Agent Policy config
+Attach Agent Quarantine config
 
 
 
@@ -282,7 +566,7 @@ Name | Type | Description  | Notes
 
 > []ControlsFilesystemTracerConfig GetAgentFilesystemConfig(ctx).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
 
-Register Agent Filesystem config
+Get Agent Filesystem config
 
 
 
@@ -348,7 +632,7 @@ Name | Type | Description  | Notes
 
 > []ControlsNetworkTracerConfig GetAgentNetworkConfig(ctx).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
 
-Register Agent Network config
+Get Agent Network config
 
 
 
@@ -414,7 +698,7 @@ Name | Type | Description  | Notes
 
 > []ControlsPolicyFilterConfig GetAgentPolicyConfig(ctx).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
 
-Register Agent Policy config
+Get Agent Policy config
 
 
 
@@ -480,7 +764,7 @@ Name | Type | Description  | Notes
 
 > []ControlsQuarantineConfig GetAgentQuarantineConfig(ctx).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
 
-Register Agent Policy config
+Get Agent Quarantine config
 
 
 
@@ -546,7 +830,7 @@ Name | Type | Description  | Notes
 
 > []ControlsThreatIntelInfo GetAgentThreatIntelConfig(ctx).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
 
-Register Agent Threat intel config
+Get Agent threat intel config
 
 
 
@@ -865,7 +1149,7 @@ Name | Type | Description  | Notes
 
 > RegisterAgentQuarantineConfig(ctx).ControlsQuarantineConfig(controlsQuarantineConfig).Execute()
 
-Register Agent Policy config
+Register Agent Quarantine config
 
 
 
@@ -929,7 +1213,7 @@ Name | Type | Description  | Notes
 
 > RegisterThreatIntelConfig(ctx).ControlsThreatIntelInfo(controlsThreatIntelInfo).Execute()
 
-Register Agent Policy config
+Register threat intel config
 
 
 

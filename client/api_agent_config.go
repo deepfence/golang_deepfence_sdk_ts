@@ -17,11 +17,552 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 
 // AgentConfigAPIService AgentConfigAPI service
 type AgentConfigAPIService service
+
+type ApiAgentFilesystemConfigAttachedNodesRequest struct {
+	ctx context.Context
+	ApiService *AgentConfigAPIService
+	configId string
+}
+
+func (r ApiAgentFilesystemConfigAttachedNodesRequest) Execute() (*ModelGetAttachedNodesResp, *http.Response, error) {
+	return r.ApiService.AgentFilesystemConfigAttachedNodesExecute(r)
+}
+
+/*
+AgentFilesystemConfigAttachedNodes Get Agent Filesystem config attached nodes
+
+Get Agent Filesystem config attached nodes
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param configId
+ @return ApiAgentFilesystemConfigAttachedNodesRequest
+*/
+func (a *AgentConfigAPIService) AgentFilesystemConfigAttachedNodes(ctx context.Context, configId string) ApiAgentFilesystemConfigAttachedNodesRequest {
+	return ApiAgentFilesystemConfigAttachedNodesRequest{
+		ApiService: a,
+		ctx: ctx,
+		configId: configId,
+	}
+}
+
+// Execute executes the request
+//  @return ModelGetAttachedNodesResp
+func (a *AgentConfigAPIService) AgentFilesystemConfigAttachedNodesExecute(r ApiAgentFilesystemConfigAttachedNodesRequest) (*ModelGetAttachedNodesResp, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ModelGetAttachedNodesResp
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentConfigAPIService.AgentFilesystemConfigAttachedNodes")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/deepfence/configs/agent/filemon/attached-nodes/{config_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"config_id"+"}", url.PathEscape(parameterValueToString(r.configId, "configId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiDocsBadRequestResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiAgentNetworkConfigAttachedNodesRequest struct {
+	ctx context.Context
+	ApiService *AgentConfigAPIService
+	configId string
+}
+
+func (r ApiAgentNetworkConfigAttachedNodesRequest) Execute() (*ModelGetAttachedNodesResp, *http.Response, error) {
+	return r.ApiService.AgentNetworkConfigAttachedNodesExecute(r)
+}
+
+/*
+AgentNetworkConfigAttachedNodes Get Agent Network config attached nodes
+
+Get Agent Network config attached nodes
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param configId
+ @return ApiAgentNetworkConfigAttachedNodesRequest
+*/
+func (a *AgentConfigAPIService) AgentNetworkConfigAttachedNodes(ctx context.Context, configId string) ApiAgentNetworkConfigAttachedNodesRequest {
+	return ApiAgentNetworkConfigAttachedNodesRequest{
+		ApiService: a,
+		ctx: ctx,
+		configId: configId,
+	}
+}
+
+// Execute executes the request
+//  @return ModelGetAttachedNodesResp
+func (a *AgentConfigAPIService) AgentNetworkConfigAttachedNodesExecute(r ApiAgentNetworkConfigAttachedNodesRequest) (*ModelGetAttachedNodesResp, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ModelGetAttachedNodesResp
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentConfigAPIService.AgentNetworkConfigAttachedNodes")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/deepfence/configs/agent/network/attached-nodes/{config_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"config_id"+"}", url.PathEscape(parameterValueToString(r.configId, "configId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiDocsBadRequestResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiAgentPolicyConfigAttachedNodesRequest struct {
+	ctx context.Context
+	ApiService *AgentConfigAPIService
+	configId string
+}
+
+func (r ApiAgentPolicyConfigAttachedNodesRequest) Execute() (*ModelGetAttachedNodesResp, *http.Response, error) {
+	return r.ApiService.AgentPolicyConfigAttachedNodesExecute(r)
+}
+
+/*
+AgentPolicyConfigAttachedNodes Get Agent Policy config attached nodes
+
+Get Agent Policy config attached nodes
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param configId
+ @return ApiAgentPolicyConfigAttachedNodesRequest
+*/
+func (a *AgentConfigAPIService) AgentPolicyConfigAttachedNodes(ctx context.Context, configId string) ApiAgentPolicyConfigAttachedNodesRequest {
+	return ApiAgentPolicyConfigAttachedNodesRequest{
+		ApiService: a,
+		ctx: ctx,
+		configId: configId,
+	}
+}
+
+// Execute executes the request
+//  @return ModelGetAttachedNodesResp
+func (a *AgentConfigAPIService) AgentPolicyConfigAttachedNodesExecute(r ApiAgentPolicyConfigAttachedNodesRequest) (*ModelGetAttachedNodesResp, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ModelGetAttachedNodesResp
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentConfigAPIService.AgentPolicyConfigAttachedNodes")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/deepfence/configs/agent/policy/attached-nodes/{config_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"config_id"+"}", url.PathEscape(parameterValueToString(r.configId, "configId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiDocsBadRequestResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiAgentQuarantineConfigAttachedNodesRequest struct {
+	ctx context.Context
+	ApiService *AgentConfigAPIService
+	configId string
+}
+
+func (r ApiAgentQuarantineConfigAttachedNodesRequest) Execute() (*ModelGetAttachedNodesResp, *http.Response, error) {
+	return r.ApiService.AgentQuarantineConfigAttachedNodesExecute(r)
+}
+
+/*
+AgentQuarantineConfigAttachedNodes Get Agent Quarantine config attached nodes
+
+Get Agent Quarantine config attached nodes
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param configId
+ @return ApiAgentQuarantineConfigAttachedNodesRequest
+*/
+func (a *AgentConfigAPIService) AgentQuarantineConfigAttachedNodes(ctx context.Context, configId string) ApiAgentQuarantineConfigAttachedNodesRequest {
+	return ApiAgentQuarantineConfigAttachedNodesRequest{
+		ApiService: a,
+		ctx: ctx,
+		configId: configId,
+	}
+}
+
+// Execute executes the request
+//  @return ModelGetAttachedNodesResp
+func (a *AgentConfigAPIService) AgentQuarantineConfigAttachedNodesExecute(r ApiAgentQuarantineConfigAttachedNodesRequest) (*ModelGetAttachedNodesResp, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ModelGetAttachedNodesResp
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentConfigAPIService.AgentQuarantineConfigAttachedNodes")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/deepfence/configs/agent/quarantine/attached-nodes/{config_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"config_id"+"}", url.PathEscape(parameterValueToString(r.configId, "configId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiDocsBadRequestResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type ApiAttachAgentFilesystemConfigRequest struct {
 	ctx context.Context
@@ -39,9 +580,9 @@ func (r ApiAttachAgentFilesystemConfigRequest) Execute() (*http.Response, error)
 }
 
 /*
-AttachAgentFilesystemConfig Register Agent Filesystem config
+AttachAgentFilesystemConfig Attach Agent Filesystem config
 
-Register Agent config
+Attach Agent Filesystem config
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAttachAgentFilesystemConfigRequest
@@ -167,9 +708,9 @@ func (r ApiAttachAgentNetworkConfigRequest) Execute() (*http.Response, error) {
 }
 
 /*
-AttachAgentNetworkConfig Register Agent Network config
+AttachAgentNetworkConfig Attach Agent Network config
 
-Register Agent config
+Attach Agent Network config
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAttachAgentNetworkConfigRequest
@@ -295,9 +836,9 @@ func (r ApiAttachAgentPolicyConfigRequest) Execute() (*http.Response, error) {
 }
 
 /*
-AttachAgentPolicyConfig Register Agent Policy config
+AttachAgentPolicyConfig Attach Agent Policy config
 
-Register Agent config
+Attach Agent Policy config
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAttachAgentPolicyConfigRequest
@@ -423,9 +964,9 @@ func (r ApiAttachAgentQuarantineConfigRequest) Execute() (*http.Response, error)
 }
 
 /*
-AttachAgentQuarantineConfig Register Agent Policy config
+AttachAgentQuarantineConfig Attach Agent Quarantine config
 
-Register Agent config
+Attach Agent Quarantine config
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAttachAgentQuarantineConfigRequest
@@ -551,9 +1092,9 @@ func (r ApiGetAgentFilesystemConfigRequest) Execute() ([]ControlsFilesystemTrace
 }
 
 /*
-GetAgentFilesystemConfig Register Agent Filesystem config
+GetAgentFilesystemConfig Get Agent Filesystem config
 
-Register Agent config
+Get Agent Filesystem config
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAgentFilesystemConfigRequest
@@ -690,9 +1231,9 @@ func (r ApiGetAgentNetworkConfigRequest) Execute() ([]ControlsNetworkTracerConfi
 }
 
 /*
-GetAgentNetworkConfig Register Agent Network config
+GetAgentNetworkConfig Get Agent Network config
 
-Register Agent config
+Get Agent Network config
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAgentNetworkConfigRequest
@@ -829,9 +1370,9 @@ func (r ApiGetAgentPolicyConfigRequest) Execute() ([]ControlsPolicyFilterConfig,
 }
 
 /*
-GetAgentPolicyConfig Register Agent Policy config
+GetAgentPolicyConfig Get Agent Policy config
 
-Register Agent config
+Get Agent Policy config
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAgentPolicyConfigRequest
@@ -968,9 +1509,9 @@ func (r ApiGetAgentQuarantineConfigRequest) Execute() ([]ControlsQuarantineConfi
 }
 
 /*
-GetAgentQuarantineConfig Register Agent Policy config
+GetAgentQuarantineConfig Get Agent Quarantine config
 
-Register Agent config
+Get Agent Quarantine config
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAgentQuarantineConfigRequest
@@ -1107,9 +1648,9 @@ func (r ApiGetAgentThreatIntelConfigRequest) Execute() ([]ControlsThreatIntelInf
 }
 
 /*
-GetAgentThreatIntelConfig Register Agent Threat intel config
+GetAgentThreatIntelConfig Get Agent threat intel config
 
-Register Agent threat intel
+Get Agent threat intel config
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAgentThreatIntelConfigRequest
@@ -1761,9 +2302,9 @@ func (r ApiRegisterAgentQuarantineConfigRequest) Execute() (*http.Response, erro
 }
 
 /*
-RegisterAgentQuarantineConfig Register Agent Policy config
+RegisterAgentQuarantineConfig Register Agent Quarantine config
 
-Register Agent Policy config
+Register Agent Quarantine config
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiRegisterAgentQuarantineConfigRequest
@@ -1889,9 +2430,9 @@ func (r ApiRegisterThreatIntelConfigRequest) Execute() (*http.Response, error) {
 }
 
 /*
-RegisterThreatIntelConfig Register Agent Policy config
+RegisterThreatIntelConfig Register threat intel config
 
-Register Agent Policy config
+Register threat intel config
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiRegisterThreatIntelConfigRequest

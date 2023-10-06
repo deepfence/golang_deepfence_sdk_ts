@@ -79,21 +79,25 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AgentConfigAPI* | [**AttachAgentFilesystemConfig**](docs/AgentConfigAPI.md#attachagentfilesystemconfig) | **Post** /deepfence/configs/agent/filemon/attach | Register Agent Filesystem config
-*AgentConfigAPI* | [**AttachAgentNetworkConfig**](docs/AgentConfigAPI.md#attachagentnetworkconfig) | **Post** /deepfence/configs/agent/network/attach | Register Agent Network config
-*AgentConfigAPI* | [**AttachAgentPolicyConfig**](docs/AgentConfigAPI.md#attachagentpolicyconfig) | **Post** /deepfence/configs/agent/policy/attach | Register Agent Policy config
-*AgentConfigAPI* | [**AttachAgentQuarantineConfig**](docs/AgentConfigAPI.md#attachagentquarantineconfig) | **Post** /deepfence/configs/agent/quarantine/attach | Register Agent Policy config
-*AgentConfigAPI* | [**GetAgentFilesystemConfig**](docs/AgentConfigAPI.md#getagentfilesystemconfig) | **Post** /deepfence/configs/agent/filemon/list | Register Agent Filesystem config
-*AgentConfigAPI* | [**GetAgentNetworkConfig**](docs/AgentConfigAPI.md#getagentnetworkconfig) | **Post** /deepfence/configs/agent/network/list | Register Agent Network config
-*AgentConfigAPI* | [**GetAgentPolicyConfig**](docs/AgentConfigAPI.md#getagentpolicyconfig) | **Post** /deepfence/configs/agent/policy/list | Register Agent Policy config
-*AgentConfigAPI* | [**GetAgentQuarantineConfig**](docs/AgentConfigAPI.md#getagentquarantineconfig) | **Post** /deepfence/configs/agent/quarantine/list | Register Agent Policy config
-*AgentConfigAPI* | [**GetAgentThreatIntelConfig**](docs/AgentConfigAPI.md#getagentthreatintelconfig) | **Post** /deepfence/configs/agent/threatintel/list | Register Agent Threat intel config
+*AgentConfigAPI* | [**AgentFilesystemConfigAttachedNodes**](docs/AgentConfigAPI.md#agentfilesystemconfigattachednodes) | **Get** /deepfence/configs/agent/filemon/attached-nodes/{config_id} | Get Agent Filesystem config attached nodes
+*AgentConfigAPI* | [**AgentNetworkConfigAttachedNodes**](docs/AgentConfigAPI.md#agentnetworkconfigattachednodes) | **Get** /deepfence/configs/agent/network/attached-nodes/{config_id} | Get Agent Network config attached nodes
+*AgentConfigAPI* | [**AgentPolicyConfigAttachedNodes**](docs/AgentConfigAPI.md#agentpolicyconfigattachednodes) | **Get** /deepfence/configs/agent/policy/attached-nodes/{config_id} | Get Agent Policy config attached nodes
+*AgentConfigAPI* | [**AgentQuarantineConfigAttachedNodes**](docs/AgentConfigAPI.md#agentquarantineconfigattachednodes) | **Get** /deepfence/configs/agent/quarantine/attached-nodes/{config_id} | Get Agent Quarantine config attached nodes
+*AgentConfigAPI* | [**AttachAgentFilesystemConfig**](docs/AgentConfigAPI.md#attachagentfilesystemconfig) | **Post** /deepfence/configs/agent/filemon/attach | Attach Agent Filesystem config
+*AgentConfigAPI* | [**AttachAgentNetworkConfig**](docs/AgentConfigAPI.md#attachagentnetworkconfig) | **Post** /deepfence/configs/agent/network/attach | Attach Agent Network config
+*AgentConfigAPI* | [**AttachAgentPolicyConfig**](docs/AgentConfigAPI.md#attachagentpolicyconfig) | **Post** /deepfence/configs/agent/policy/attach | Attach Agent Policy config
+*AgentConfigAPI* | [**AttachAgentQuarantineConfig**](docs/AgentConfigAPI.md#attachagentquarantineconfig) | **Post** /deepfence/configs/agent/quarantine/attach | Attach Agent Quarantine config
+*AgentConfigAPI* | [**GetAgentFilesystemConfig**](docs/AgentConfigAPI.md#getagentfilesystemconfig) | **Post** /deepfence/configs/agent/filemon/list | Get Agent Filesystem config
+*AgentConfigAPI* | [**GetAgentNetworkConfig**](docs/AgentConfigAPI.md#getagentnetworkconfig) | **Post** /deepfence/configs/agent/network/list | Get Agent Network config
+*AgentConfigAPI* | [**GetAgentPolicyConfig**](docs/AgentConfigAPI.md#getagentpolicyconfig) | **Post** /deepfence/configs/agent/policy/list | Get Agent Policy config
+*AgentConfigAPI* | [**GetAgentQuarantineConfig**](docs/AgentConfigAPI.md#getagentquarantineconfig) | **Post** /deepfence/configs/agent/quarantine/list | Get Agent Quarantine config
+*AgentConfigAPI* | [**GetAgentThreatIntelConfig**](docs/AgentConfigAPI.md#getagentthreatintelconfig) | **Post** /deepfence/configs/agent/threatintel/list | Get Agent threat intel config
 *AgentConfigAPI* | [**GetNetworkRules**](docs/AgentConfigAPI.md#getnetworkrules) | **Get** /deepfence/configs/agent/network/rules | Get Network Rules
 *AgentConfigAPI* | [**RegisterAgentFilesystemConfig**](docs/AgentConfigAPI.md#registeragentfilesystemconfig) | **Post** /deepfence/configs/agent/filemon/ | Register Agent Filesystem config
 *AgentConfigAPI* | [**RegisterAgentNetworkConfig**](docs/AgentConfigAPI.md#registeragentnetworkconfig) | **Post** /deepfence/configs/agent/network/ | Register Agent Network config
 *AgentConfigAPI* | [**RegisterAgentPolicyConfig**](docs/AgentConfigAPI.md#registeragentpolicyconfig) | **Post** /deepfence/configs/agent/policy/ | Register Agent Policy config
-*AgentConfigAPI* | [**RegisterAgentQuarantineConfig**](docs/AgentConfigAPI.md#registeragentquarantineconfig) | **Post** /deepfence/configs/agent/quarantine/ | Register Agent Policy config
-*AgentConfigAPI* | [**RegisterThreatIntelConfig**](docs/AgentConfigAPI.md#registerthreatintelconfig) | **Post** /deepfence/configs/agent/threatintel/ | Register Agent Policy config
+*AgentConfigAPI* | [**RegisterAgentQuarantineConfig**](docs/AgentConfigAPI.md#registeragentquarantineconfig) | **Post** /deepfence/configs/agent/quarantine/ | Register Agent Quarantine config
+*AgentConfigAPI* | [**RegisterThreatIntelConfig**](docs/AgentConfigAPI.md#registerthreatintelconfig) | **Post** /deepfence/configs/agent/threatintel/ | Register threat intel config
 *AgentFilesystemAPI* | [**EnableFilesystemTracer**](docs/AgentFilesystemAPI.md#enablefilesystemtracer) | **Post** /deepfence/filesystem/tracer/enable | Enable filesystem tracer
 *AgentNetworkAPI* | [**DisableNetworkTracer**](docs/AgentNetworkAPI.md#disablenetworktracer) | **Post** /deepfence/network/tracer/disable | Disable network tracer
 *AgentNetworkAPI* | [**EnableNetworkTracer**](docs/AgentNetworkAPI.md#enablenetworktracer) | **Post** /deepfence/network/tracer/enable | Enable network tracer
@@ -128,6 +132,9 @@ Class | Method | HTTP request | Description
 *CloudScannerAPI* | [**StatusCloudComplianceScan**](docs/CloudScannerAPI.md#statuscloudcompliancescan) | **Post** /deepfence/scan/status/cloud-compliance | Get Cloud Compliance Scan Status
 *CommonAPI* | [**Eula**](docs/CommonAPI.md#eula) | **Get** /deepfence/end-user-license-agreement | Get End User License Agreement
 *CommonAPI* | [**GetScanReportFields**](docs/CommonAPI.md#getscanreportfields) | **Get** /deepfence/scan/results/fields | Get Scan Report Fields
+*CompletionAPI* | [**CompleteHostInfo**](docs/CompletionAPI.md#completehostinfo) | **Post** /deepfence/complete/host | Get Completion for host fields
+*CompletionAPI* | [**CompleteProcessInfo**](docs/CompletionAPI.md#completeprocessinfo) | **Post** /deepfence/complete/process | Get Completion for process fields
+*CompletionAPI* | [**CompleteVulnerabilityInfo**](docs/CompletionAPI.md#completevulnerabilityinfo) | **Post** /deepfence/complete/vulnerability | Get Completion for vulnerability fields
 *ComplianceAPI* | [**CountResultsComplianceScan**](docs/ComplianceAPI.md#countresultscompliancescan) | **Post** /deepfence/scan/results/count/compliance | Get Compliance Scans Results
 *ComplianceAPI* | [**IngestComplianceScanStatus**](docs/ComplianceAPI.md#ingestcompliancescanstatus) | **Post** /deepfence/ingest/compliance-scan-logs | Ingest Compliance Scan Status
 *ComplianceAPI* | [**IngestCompliances**](docs/ComplianceAPI.md#ingestcompliances) | **Post** /deepfence/ingest/compliance | Ingest Compliances
@@ -291,7 +298,8 @@ Class | Method | HTTP request | Description
 *SettingsAPI* | [**GetLicense**](docs/SettingsAPI.md#getlicense) | **Get** /deepfence/license | Get License Details
 *SettingsAPI* | [**GetScheduledTasks**](docs/SettingsAPI.md#getscheduledtasks) | **Get** /deepfence/scheduled-task | Get scheduled tasks
 *SettingsAPI* | [**GetSettings**](docs/SettingsAPI.md#getsettings) | **Get** /deepfence/settings/global-settings | Get settings
-*SettingsAPI* | [**GetUserActivityLogs**](docs/SettingsAPI.md#getuseractivitylogs) | **Get** /deepfence/settings/user-activity-log | Get activity logs
+*SettingsAPI* | [**GetUserAuditLogs**](docs/SettingsAPI.md#getuserauditlogs) | **Post** /deepfence/settings/user-audit-log | Get user audit logs
+*SettingsAPI* | [**GetUserAuditLogsCount**](docs/SettingsAPI.md#getuserauditlogscount) | **Get** /deepfence/settings/user-audit-log/count | Get user audit logs count
 *SettingsAPI* | [**RegisterLicense**](docs/SettingsAPI.md#registerlicense) | **Post** /deepfence/license | Register License
 *SettingsAPI* | [**SetCloudWafConfiguration**](docs/SettingsAPI.md#setcloudwafconfiguration) | **Post** /deepfence/settings/cloud-waf | Set Cloud WAF Configuration
 *SettingsAPI* | [**UpdateNotificationThreshold**](docs/SettingsAPI.md#updatenotificationthreshold) | **Post** /deepfence/license/notification-threshold | Update Notification Threshold
@@ -304,6 +312,7 @@ Class | Method | HTTP request | Description
 *TopologyAPI* | [**GetHostsTopologyGraph**](docs/TopologyAPI.md#gethoststopologygraph) | **Post** /deepfence/graph/topology/hosts | Get Hosts Topology Graph
 *TopologyAPI* | [**GetKubernetesTopologyGraph**](docs/TopologyAPI.md#getkubernetestopologygraph) | **Post** /deepfence/graph/topology/kubernetes | Get Kubernetes Topology Graph
 *TopologyAPI* | [**GetPodsTopologyGraph**](docs/TopologyAPI.md#getpodstopologygraph) | **Post** /deepfence/graph/topology/pods | Get Pods Topology Graph
+*TopologyAPI* | [**GetTopologyDelta**](docs/TopologyAPI.md#gettopologydelta) | **Post** /deepfence/graph/topology/delta | Get Topology Delta
 *TopologyAPI* | [**GetTopologyGraph**](docs/TopologyAPI.md#gettopologygraph) | **Post** /deepfence/graph/topology/ | Get Topology Graph
 *TopologyAPI* | [**IngestAgentAlerts**](docs/TopologyAPI.md#ingestagentalerts) | **Post** /deepfence/ingest/alerts | Ingest Agent Alerts
 *TopologyAPI* | [**IngestAgentReport**](docs/TopologyAPI.md#ingestagentreport) | **Post** /deepfence/ingest/report | Ingest Topology Data
@@ -343,7 +352,8 @@ Class | Method | HTTP request | Description
 
  - [ApiDocsBadRequestResponse](docs/ApiDocsBadRequestResponse.md)
  - [ApiDocsFailureResponse](docs/ApiDocsFailureResponse.md)
- - [ApiDocsGraphResult](docs/ApiDocsGraphResult.md)
+ - [CompletionCompletionNodeFieldReq](docs/CompletionCompletionNodeFieldReq.md)
+ - [CompletionCompletionNodeFieldRes](docs/CompletionCompletionNodeFieldRes.md)
  - [ControlsAction](docs/ControlsAction.md)
  - [ControlsAgentBeat](docs/ControlsAgentBeat.md)
  - [ControlsAgentControls](docs/ControlsAgentControls.md)
@@ -454,6 +464,9 @@ Class | Method | HTTP request | Description
  - [ModelGenerateReportReq](docs/ModelGenerateReportReq.md)
  - [ModelGenerateReportResp](docs/ModelGenerateReportResp.md)
  - [ModelGetAgentConfigReq](docs/ModelGetAgentConfigReq.md)
+ - [ModelGetAttachedNodesResp](docs/ModelGetAttachedNodesResp.md)
+ - [ModelGetAuditLogsRequest](docs/ModelGetAuditLogsRequest.md)
+ - [ModelGraphResult](docs/ModelGraphResult.md)
  - [ModelHost](docs/ModelHost.md)
  - [ModelImageStub](docs/ModelImageStub.md)
  - [ModelInitAgentReq](docs/ModelInitAgentReq.md)
@@ -531,6 +544,8 @@ Class | Method | HTTP request | Description
  - [ModelSettingsResponse](docs/ModelSettingsResponse.md)
  - [ModelStopScanRequest](docs/ModelStopScanRequest.md)
  - [ModelSummary](docs/ModelSummary.md)
+ - [ModelTopologyDeltaReq](docs/ModelTopologyDeltaReq.md)
+ - [ModelTopologyDeltaResponse](docs/ModelTopologyDeltaResponse.md)
  - [ModelUpdateScheduledTaskRequest](docs/ModelUpdateScheduledTaskRequest.md)
  - [ModelUpdateUserIdRequest](docs/ModelUpdateUserIdRequest.md)
  - [ModelUpdateUserPasswordRequest](docs/ModelUpdateUserPasswordRequest.md)

@@ -39,6 +39,7 @@ type ModelNetworkAlert struct {
 	HttpUserAgent string `json:"http_user_agent"`
 	Internal string `json:"internal"`
 	IpReputation string `json:"ip_reputation"`
+	KubernetesClusterId string `json:"kubernetes_cluster_id"`
 	KubernetesClusterName string `json:"kubernetes_cluster_name"`
 	Length interface{} `json:"length"`
 	LocalPort int32 `json:"local_port"`
@@ -74,7 +75,7 @@ type ModelNetworkAlert struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelNetworkAlert(appProto string, category string, containerName string, count int32, createdAt int32, description string, destinationIp string, destinationPort int32, direction string, encrypted string, eventType string, geoip string, headers string, hostName string, httpContentType interface{}, httpType string, httpUserAgent string, internal string, ipReputation string, kubernetesClusterName string, length interface{}, localPort int32, masked bool, matched string, nodeId string, nodeType string, podName string, protocol int32, requestMethod string, requestPath string, requestPayload string, requestPrintablePayload string, resourceType string, responsePayload interface{}, responsePrintablePayload interface{}, ruleId string, severity string, severityScore float32, signatureId int32, sourceIp string, sourcePort int32, status interface{}, summary string, tactics []string, tags string, techniques []string, updatedAt int32, url string) *ModelNetworkAlert {
+func NewModelNetworkAlert(appProto string, category string, containerName string, count int32, createdAt int32, description string, destinationIp string, destinationPort int32, direction string, encrypted string, eventType string, geoip string, headers string, hostName string, httpContentType interface{}, httpType string, httpUserAgent string, internal string, ipReputation string, kubernetesClusterId string, kubernetesClusterName string, length interface{}, localPort int32, masked bool, matched string, nodeId string, nodeType string, podName string, protocol int32, requestMethod string, requestPath string, requestPayload string, requestPrintablePayload string, resourceType string, responsePayload interface{}, responsePrintablePayload interface{}, ruleId string, severity string, severityScore float32, signatureId int32, sourceIp string, sourcePort int32, status interface{}, summary string, tactics []string, tags string, techniques []string, updatedAt int32, url string) *ModelNetworkAlert {
 	this := ModelNetworkAlert{}
 	this.AppProto = appProto
 	this.Category = category
@@ -95,6 +96,7 @@ func NewModelNetworkAlert(appProto string, category string, containerName string
 	this.HttpUserAgent = httpUserAgent
 	this.Internal = internal
 	this.IpReputation = ipReputation
+	this.KubernetesClusterId = kubernetesClusterId
 	this.KubernetesClusterName = kubernetesClusterName
 	this.Length = length
 	this.LocalPort = localPort
@@ -591,6 +593,30 @@ func (o *ModelNetworkAlert) GetIpReputationOk() (*string, bool) {
 // SetIpReputation sets field value
 func (o *ModelNetworkAlert) SetIpReputation(v string) {
 	o.IpReputation = v
+}
+
+// GetKubernetesClusterId returns the KubernetesClusterId field value
+func (o *ModelNetworkAlert) GetKubernetesClusterId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.KubernetesClusterId
+}
+
+// GetKubernetesClusterIdOk returns a tuple with the KubernetesClusterId field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkAlert) GetKubernetesClusterIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.KubernetesClusterId, true
+}
+
+// SetKubernetesClusterId sets field value
+func (o *ModelNetworkAlert) SetKubernetesClusterId(v string) {
+	o.KubernetesClusterId = v
 }
 
 // GetKubernetesClusterName returns the KubernetesClusterName field value
@@ -1332,6 +1358,7 @@ func (o ModelNetworkAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["http_user_agent"] = o.HttpUserAgent
 	toSerialize["internal"] = o.Internal
 	toSerialize["ip_reputation"] = o.IpReputation
+	toSerialize["kubernetes_cluster_id"] = o.KubernetesClusterId
 	toSerialize["kubernetes_cluster_name"] = o.KubernetesClusterName
 	if o.Length != nil {
 		toSerialize["length"] = o.Length
