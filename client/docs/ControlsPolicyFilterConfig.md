@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **IgnoredRemoteIps** | **[]string** |  | 
 **NodeId** | **string** |  | 
 **Policies** | [**[]ControlsNetworkPolicy**](ControlsNetworkPolicy.md) |  | 
-**UpdatedAt** | **int32** |  | 
+**UpdatedAt** | **int64** |  | 
 **UseWaf** | **bool** |  | 
 
 ## Methods
 
 ### NewControlsPolicyFilterConfig
 
-`func NewControlsPolicyFilterConfig(ignoredRemoteIps []string, nodeId string, policies []ControlsNetworkPolicy, updatedAt int32, useWaf bool, ) *ControlsPolicyFilterConfig`
+`func NewControlsPolicyFilterConfig(ignoredRemoteIps []string, nodeId string, policies []ControlsNetworkPolicy, updatedAt int64, useWaf bool, ) *ControlsPolicyFilterConfig`
 
 NewControlsPolicyFilterConfig instantiates a new ControlsPolicyFilterConfig object
 This constructor will assign default values to properties that have it defined,
@@ -111,20 +111,20 @@ SetPolicies sets Policies field to given value.
 UnsetPolicies ensures that no value is present for Policies, not even an explicit nil
 ### GetUpdatedAt
 
-`func (o *ControlsPolicyFilterConfig) GetUpdatedAt() int32`
+`func (o *ControlsPolicyFilterConfig) GetUpdatedAt() int64`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *ControlsPolicyFilterConfig) GetUpdatedAtOk() (*int32, bool)`
+`func (o *ControlsPolicyFilterConfig) GetUpdatedAtOk() (*int64, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *ControlsPolicyFilterConfig) SetUpdatedAt(v int32)`
+`func (o *ControlsPolicyFilterConfig) SetUpdatedAt(v int64)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

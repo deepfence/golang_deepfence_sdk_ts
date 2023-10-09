@@ -10,13 +10,13 @@ Name | Type | Description | Notes
 **DurationSec** | **int32** |  | 
 **Matcher** | [**ControlsPolicyAlertMatcher**](ControlsPolicyAlertMatcher.md) |  | 
 **PolicyId** | **string** |  | 
-**UpdatedAt** | **int32** |  | 
+**UpdatedAt** | **int64** |  | 
 
 ## Methods
 
 ### NewControlsNetworkPolicy
 
-`func NewControlsNetworkPolicy(action string, countLimit int32, durationCountLimitSec int32, durationSec int32, matcher ControlsPolicyAlertMatcher, policyId string, updatedAt int32, ) *ControlsNetworkPolicy`
+`func NewControlsNetworkPolicy(action string, countLimit int32, durationCountLimitSec int32, durationSec int32, matcher ControlsPolicyAlertMatcher, policyId string, updatedAt int64, ) *ControlsNetworkPolicy`
 
 NewControlsNetworkPolicy instantiates a new ControlsNetworkPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -153,20 +153,20 @@ SetPolicyId sets PolicyId field to given value.
 
 ### GetUpdatedAt
 
-`func (o *ControlsNetworkPolicy) GetUpdatedAt() int32`
+`func (o *ControlsNetworkPolicy) GetUpdatedAt() int64`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *ControlsNetworkPolicy) GetUpdatedAtOk() (*int32, bool)`
+`func (o *ControlsNetworkPolicy) GetUpdatedAtOk() (*int64, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *ControlsNetworkPolicy) SetUpdatedAt(v int32)`
+`func (o *ControlsNetworkPolicy) SetUpdatedAt(v int64)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

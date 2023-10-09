@@ -12,12 +12,16 @@ Method | HTTP request | Description
 [**AttachAgentNetworkConfig**](AgentConfigAPI.md#AttachAgentNetworkConfig) | **Post** /deepfence/configs/agent/network/attach | Attach Agent Network config
 [**AttachAgentPolicyConfig**](AgentConfigAPI.md#AttachAgentPolicyConfig) | **Post** /deepfence/configs/agent/policy/attach | Attach Agent Policy config
 [**AttachAgentQuarantineConfig**](AgentConfigAPI.md#AttachAgentQuarantineConfig) | **Post** /deepfence/configs/agent/quarantine/attach | Attach Agent Quarantine config
+[**ExportAgentPolicyConfig**](AgentConfigAPI.md#ExportAgentPolicyConfig) | **Get** /deepfence/configs/agent/policy/export/{config_id} | Export Agent Policy config
+[**ExportAgentQuarantineConfig**](AgentConfigAPI.md#ExportAgentQuarantineConfig) | **Get** /deepfence/configs/agent/quarantine/export/{config_id} | Export Agent Quarantine config
 [**GetAgentFilesystemConfig**](AgentConfigAPI.md#GetAgentFilesystemConfig) | **Post** /deepfence/configs/agent/filemon/list | Get Agent Filesystem config
 [**GetAgentNetworkConfig**](AgentConfigAPI.md#GetAgentNetworkConfig) | **Post** /deepfence/configs/agent/network/list | Get Agent Network config
 [**GetAgentPolicyConfig**](AgentConfigAPI.md#GetAgentPolicyConfig) | **Post** /deepfence/configs/agent/policy/list | Get Agent Policy config
 [**GetAgentQuarantineConfig**](AgentConfigAPI.md#GetAgentQuarantineConfig) | **Post** /deepfence/configs/agent/quarantine/list | Get Agent Quarantine config
 [**GetAgentThreatIntelConfig**](AgentConfigAPI.md#GetAgentThreatIntelConfig) | **Post** /deepfence/configs/agent/threatintel/list | Get Agent threat intel config
 [**GetNetworkRules**](AgentConfigAPI.md#GetNetworkRules) | **Get** /deepfence/configs/agent/network/rules | Get Network Rules
+[**ImportAgentPolicyConfig**](AgentConfigAPI.md#ImportAgentPolicyConfig) | **Post** /deepfence/configs/agent/policy/import | Import Agent Policy config
+[**ImportAgentQuarantineConfig**](AgentConfigAPI.md#ImportAgentQuarantineConfig) | **Post** /deepfence/configs/agent/quarantine/import | Import Agent Quarantine config
 [**RegisterAgentFilesystemConfig**](AgentConfigAPI.md#RegisterAgentFilesystemConfig) | **Post** /deepfence/configs/agent/filemon/ | Register Agent Filesystem config
 [**RegisterAgentNetworkConfig**](AgentConfigAPI.md#RegisterAgentNetworkConfig) | **Post** /deepfence/configs/agent/network/ | Register Agent Network config
 [**RegisterAgentPolicyConfig**](AgentConfigAPI.md#RegisterAgentPolicyConfig) | **Post** /deepfence/configs/agent/policy/ | Register Agent Policy config
@@ -562,6 +566,146 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ExportAgentPolicyConfig
+
+> ControlsPolicyFilterConfig ExportAgentPolicyConfig(ctx, configId).Execute()
+
+Export Agent Policy config
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    configId := "configId_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AgentConfigAPI.ExportAgentPolicyConfig(context.Background(), configId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.ExportAgentPolicyConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ExportAgentPolicyConfig`: ControlsPolicyFilterConfig
+    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.ExportAgentPolicyConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**configId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiExportAgentPolicyConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ControlsPolicyFilterConfig**](ControlsPolicyFilterConfig.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ExportAgentQuarantineConfig
+
+> ControlsQuarantineConfig ExportAgentQuarantineConfig(ctx, configId).Execute()
+
+Export Agent Quarantine config
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    configId := "configId_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AgentConfigAPI.ExportAgentQuarantineConfig(context.Background(), configId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.ExportAgentQuarantineConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ExportAgentQuarantineConfig`: ControlsQuarantineConfig
+    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.ExportAgentQuarantineConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**configId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiExportAgentQuarantineConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ControlsQuarantineConfig**](ControlsQuarantineConfig.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetAgentFilesystemConfig
 
 > []ControlsFilesystemTracerConfig GetAgentFilesystemConfig(ctx).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
@@ -953,6 +1097,142 @@ Other parameters are passed through a pointer to a apiGetNetworkRulesRequest str
 [[Back to README]](../README.md)
 
 
+## ImportAgentPolicyConfig
+
+> ModelMessageResponse ImportAgentPolicyConfig(ctx).ConfigId(configId).NetworkPolicyJson(networkPolicyJson).Execute()
+
+Import Agent Policy config
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    configId := "configId_example" // string | 
+    networkPolicyJson := os.NewFile(1234, "some_file") // *os.File | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AgentConfigAPI.ImportAgentPolicyConfig(context.Background()).ConfigId(configId).NetworkPolicyJson(networkPolicyJson).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.ImportAgentPolicyConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ImportAgentPolicyConfig`: ModelMessageResponse
+    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.ImportAgentPolicyConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiImportAgentPolicyConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **configId** | **string** |  | 
+ **networkPolicyJson** | ***os.File** |  | 
+
+### Return type
+
+[**ModelMessageResponse**](ModelMessageResponse.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ImportAgentQuarantineConfig
+
+> ModelMessageResponse ImportAgentQuarantineConfig(ctx).ConfigId(configId).QuarantinePolicyJson(quarantinePolicyJson).Execute()
+
+Import Agent Quarantine config
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    configId := "configId_example" // string | 
+    quarantinePolicyJson := os.NewFile(1234, "some_file") // *os.File | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AgentConfigAPI.ImportAgentQuarantineConfig(context.Background()).ConfigId(configId).QuarantinePolicyJson(quarantinePolicyJson).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.ImportAgentQuarantineConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ImportAgentQuarantineConfig`: ModelMessageResponse
+    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.ImportAgentQuarantineConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiImportAgentQuarantineConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **configId** | **string** |  | 
+ **quarantinePolicyJson** | ***os.File** |  | 
+
+### Return type
+
+[**ModelMessageResponse**](ModelMessageResponse.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RegisterAgentFilesystemConfig
 
 > RegisterAgentFilesystemConfig(ctx).ControlsFilesystemTracerConfig(controlsFilesystemTracerConfig).Execute()
@@ -1102,7 +1382,7 @@ import (
 )
 
 func main() {
-    controlsPolicyFilterConfig := *openapiclient.NewControlsPolicyFilterConfig([]string{"IgnoredRemoteIps_example"}, "NodeId_example", []openapiclient.ControlsNetworkPolicy{*openapiclient.NewControlsNetworkPolicy("Action_example", int32(123), int32(123), int32(123), *openapiclient.NewControlsPolicyAlertMatcher(map[string][]string{"key": []string{"Inner_example"}}), "PolicyId_example", int32(123))}, int32(123), false) // ControlsPolicyFilterConfig |  (optional)
+    controlsPolicyFilterConfig := *openapiclient.NewControlsPolicyFilterConfig([]string{"IgnoredRemoteIps_example"}, "NodeId_example", []openapiclient.ControlsNetworkPolicy{*openapiclient.NewControlsNetworkPolicy("Action_example", int32(123), int32(123), int32(123), *openapiclient.NewControlsPolicyAlertMatcher(map[string][]string{"key": []string{"Inner_example"}}), "PolicyId_example", int64(123))}, int64(123), false) // ControlsPolicyFilterConfig |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

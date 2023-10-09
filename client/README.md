@@ -87,12 +87,16 @@ Class | Method | HTTP request | Description
 *AgentConfigAPI* | [**AttachAgentNetworkConfig**](docs/AgentConfigAPI.md#attachagentnetworkconfig) | **Post** /deepfence/configs/agent/network/attach | Attach Agent Network config
 *AgentConfigAPI* | [**AttachAgentPolicyConfig**](docs/AgentConfigAPI.md#attachagentpolicyconfig) | **Post** /deepfence/configs/agent/policy/attach | Attach Agent Policy config
 *AgentConfigAPI* | [**AttachAgentQuarantineConfig**](docs/AgentConfigAPI.md#attachagentquarantineconfig) | **Post** /deepfence/configs/agent/quarantine/attach | Attach Agent Quarantine config
+*AgentConfigAPI* | [**ExportAgentPolicyConfig**](docs/AgentConfigAPI.md#exportagentpolicyconfig) | **Get** /deepfence/configs/agent/policy/export/{config_id} | Export Agent Policy config
+*AgentConfigAPI* | [**ExportAgentQuarantineConfig**](docs/AgentConfigAPI.md#exportagentquarantineconfig) | **Get** /deepfence/configs/agent/quarantine/export/{config_id} | Export Agent Quarantine config
 *AgentConfigAPI* | [**GetAgentFilesystemConfig**](docs/AgentConfigAPI.md#getagentfilesystemconfig) | **Post** /deepfence/configs/agent/filemon/list | Get Agent Filesystem config
 *AgentConfigAPI* | [**GetAgentNetworkConfig**](docs/AgentConfigAPI.md#getagentnetworkconfig) | **Post** /deepfence/configs/agent/network/list | Get Agent Network config
 *AgentConfigAPI* | [**GetAgentPolicyConfig**](docs/AgentConfigAPI.md#getagentpolicyconfig) | **Post** /deepfence/configs/agent/policy/list | Get Agent Policy config
 *AgentConfigAPI* | [**GetAgentQuarantineConfig**](docs/AgentConfigAPI.md#getagentquarantineconfig) | **Post** /deepfence/configs/agent/quarantine/list | Get Agent Quarantine config
 *AgentConfigAPI* | [**GetAgentThreatIntelConfig**](docs/AgentConfigAPI.md#getagentthreatintelconfig) | **Post** /deepfence/configs/agent/threatintel/list | Get Agent threat intel config
 *AgentConfigAPI* | [**GetNetworkRules**](docs/AgentConfigAPI.md#getnetworkrules) | **Get** /deepfence/configs/agent/network/rules | Get Network Rules
+*AgentConfigAPI* | [**ImportAgentPolicyConfig**](docs/AgentConfigAPI.md#importagentpolicyconfig) | **Post** /deepfence/configs/agent/policy/import | Import Agent Policy config
+*AgentConfigAPI* | [**ImportAgentQuarantineConfig**](docs/AgentConfigAPI.md#importagentquarantineconfig) | **Post** /deepfence/configs/agent/quarantine/import | Import Agent Quarantine config
 *AgentConfigAPI* | [**RegisterAgentFilesystemConfig**](docs/AgentConfigAPI.md#registeragentfilesystemconfig) | **Post** /deepfence/configs/agent/filemon/ | Register Agent Filesystem config
 *AgentConfigAPI* | [**RegisterAgentNetworkConfig**](docs/AgentConfigAPI.md#registeragentnetworkconfig) | **Post** /deepfence/configs/agent/network/ | Register Agent Network config
 *AgentConfigAPI* | [**RegisterAgentPolicyConfig**](docs/AgentConfigAPI.md#registeragentpolicyconfig) | **Post** /deepfence/configs/agent/policy/ | Register Agent Policy config
