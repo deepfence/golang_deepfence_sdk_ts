@@ -160,6 +160,7 @@ docs/ModelEnableNetworkTracerReq.md
 docs/ModelExportReport.md
 docs/ModelFetchWindow.md
 docs/ModelFileAlert.md
+docs/ModelFilesystemAlertRule.md
 docs/ModelFiltersReq.md
 docs/ModelFiltersResult.md
 docs/ModelGenerateReportReq.md
@@ -411,6 +412,7 @@ model_model_enable_network_tracer_req.go
 model_model_export_report.go
 model_model_fetch_window.go
 model_model_file_alert.go
+model_model_filesystem_alert_rule.go
 model_model_filters_req.go
 model_model_filters_result.go
 model_model_generate_report_req.go

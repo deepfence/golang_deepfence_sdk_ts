@@ -10,10 +10,11 @@ Method | HTTP request | Description
 [**GetContainerImages**](LookupAPI.md#GetContainerImages) | **Post** /deepfence/lookup/containerimages | Retrieve Container Images data
 [**GetContainers**](LookupAPI.md#GetContainers) | **Post** /deepfence/lookup/containers | Retrieve Containers data
 [**GetFileAlerts**](LookupAPI.md#GetFileAlerts) | **Post** /deepfence/lookup/file-alerts | Get File Alerts
+[**GetFilesystemAlertRules**](LookupAPI.md#GetFilesystemAlertRules) | **Post** /deepfence/lookup/file-alert-rules | Get File Alert Rules
 [**GetHosts**](LookupAPI.md#GetHosts) | **Post** /deepfence/lookup/hosts | Retrieve Hosts data
 [**GetKubernetesClusters**](LookupAPI.md#GetKubernetesClusters) | **Post** /deepfence/lookup/kubernetesclusters | Retrieve K8s data
 [**GetMalwares**](LookupAPI.md#GetMalwares) | **Post** /deepfence/lookup/malwares | Retrieve Malwares data
-[**GetNetworkAlertRules**](LookupAPI.md#GetNetworkAlertRules) | **Post** /deepfence/lookup/network-alert-rules | Get Network Alerts
+[**GetNetworkAlertRules**](LookupAPI.md#GetNetworkAlertRules) | **Post** /deepfence/lookup/network-alert-rules | Get Network Alert Rules
 [**GetNetworkAlerts**](LookupAPI.md#GetNetworkAlerts) | **Post** /deepfence/lookup/network-alerts | Get Network Alerts
 [**GetNetworkViolations**](LookupAPI.md#GetNetworkViolations) | **Post** /deepfence/lookup/network-violations | Get Network Violations
 [**GetPods**](LookupAPI.md#GetPods) | **Post** /deepfence/lookup/pods | Retrieve Pods data
@@ -421,6 +422,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetFilesystemAlertRules
+
+> []ModelFilesystemAlertRule GetFilesystemAlertRules(ctx).LookupLookupFilter(lookupLookupFilter).Execute()
+
+Get File Alert Rules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    lookupLookupFilter := *openapiclient.NewLookupLookupFilter([]string{"InFieldFilter_example"}, []string{"NodeIds_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // LookupLookupFilter |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LookupAPI.GetFilesystemAlertRules(context.Background()).LookupLookupFilter(lookupLookupFilter).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LookupAPI.GetFilesystemAlertRules``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetFilesystemAlertRules`: []ModelFilesystemAlertRule
+    fmt.Fprintf(os.Stdout, "Response from `LookupAPI.GetFilesystemAlertRules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetFilesystemAlertRulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **lookupLookupFilter** | [**LookupLookupFilter**](LookupLookupFilter.md) |  | 
+
+### Return type
+
+[**[]ModelFilesystemAlertRule**](ModelFilesystemAlertRule.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetHosts
 
 > []ModelHost GetHosts(ctx).LookupLookupFilter(lookupLookupFilter).Execute()
@@ -623,7 +690,7 @@ Name | Type | Description  | Notes
 
 > []ModelNetworkAlertRule GetNetworkAlertRules(ctx).LookupLookupFilter(lookupLookupFilter).Execute()
 
-Get Network Alerts
+Get Network Alert Rules
 
 
 

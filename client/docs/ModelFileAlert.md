@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **ContainerName** | **string** |  | 
 **Count** | **int32** |  | 
 **CreatedAt** | **int32** |  | 
-**Direction** | **string** |  | 
 **EventType** | **string** |  | 
 **Filepath** | **string** |  | 
 **Fstat** | **string** |  | 
@@ -42,7 +41,7 @@ Name | Type | Description | Notes
 
 ### NewModelFileAlert
 
-`func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostName string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32, ) *ModelFileAlert`
+`func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, eventType string, filepath string, fstat string, hostName string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32, ) *ModelFileAlert`
 
 NewModelFileAlert instantiates a new ModelFileAlert object
 This constructor will assign default values to properties that have it defined,
@@ -195,26 +194,6 @@ and a boolean to check if the value has been set.
 `func (o *ModelFileAlert) SetCreatedAt(v int32)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
-
-### GetDirection
-
-`func (o *ModelFileAlert) GetDirection() string`
-
-GetDirection returns the Direction field if non-nil, zero value otherwise.
-
-### GetDirectionOk
-
-`func (o *ModelFileAlert) GetDirectionOk() (*string, bool)`
-
-GetDirectionOk returns a tuple with the Direction field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDirection
-
-`func (o *ModelFileAlert) SetDirection(v string)`
-
-SetDirection sets Direction field to given value.
 
 
 ### GetEventType

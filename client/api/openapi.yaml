@@ -4215,6 +4215,51 @@ paths:
       summary: Retrieve Containers data
       tags:
       - Lookup
+  /deepfence/lookup/file-alert-rules:
+    post:
+      description: Retrieve file alert rule resources
+      operationId: getFilesystemAlertRules
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LookupLookupFilter'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelFilesystemAlertRule'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get File Alert Rules
+      tags:
+      - Lookup
   /deepfence/lookup/file-alerts:
     post:
       description: Retrieve file alerts resources
@@ -4397,7 +4442,7 @@ paths:
       - Lookup
   /deepfence/lookup/network-alert-rules:
     post:
-      description: Retrieve network rules resources
+      description: Retrieve network alert rule resources
       operationId: getNetworkAlertRules
       requestBody:
         content:
@@ -4437,7 +4482,7 @@ paths:
           description: Internal Server Error
       security:
       - bearer_token: []
-      summary: Get Network Alerts
+      summary: Get Network Alert Rules
       tags:
       - Lookup
   /deepfence/lookup/network-alerts:
@@ -8524,6 +8569,49 @@ paths:
       summary: Count Containers data
       tags:
       - Search
+  /deepfence/search/count/file-alert-rules:
+    post:
+      description: Count across all data associated with file system alert rules
+      operationId: countFilesystemAlertRules
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchSearchCountResp'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Count file system alert rules
+      tags:
+      - Search
   /deepfence/search/count/file-alerts:
     post:
       description: Count across all data associated with file alerts
@@ -9334,6 +9422,51 @@ paths:
       security:
       - bearer_token: []
       summary: Count Vulnerability Scan results
+      tags:
+      - Search
+  /deepfence/search/file-alert-rules:
+    post:
+      description: Search across all data associated with file system alert rules
+      operationId: searchFilesystemAlertRules
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelFilesystemAlertRule'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Search file system alert rules
       tags:
       - Search
   /deepfence/search/file-alerts:
@@ -12093,6 +12226,7 @@ components:
           docker_env: docker_env
           connection_count: 0
           docker_image_size: docker_image_size
+          short_name: short_name
           cpu_usage: 1.4658129805029452
           pod_id: pod_id
           docker_label: docker_label
@@ -15030,6 +15164,7 @@ components:
           open_files_count: 2
           threads: 1
           pid: 4
+          short_name: short_name
           cpu_usage: 7.061401241503109
           node_id: node_id
           ppid: 7
@@ -15041,6 +15176,7 @@ components:
           open_files_count: 2
           threads: 1
           pid: 4
+          short_name: short_name
           cpu_usage: 7.061401241503109
           node_id: node_id
           ppid: 7
@@ -15200,6 +15336,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -15211,6 +15348,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -15254,6 +15392,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -15265,6 +15404,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -15574,7 +15714,6 @@ components:
         top: top
         updated_at: 2
         process_name: process_name
-        direction: direction
         severity: severity
         summary: summary
         kubernetes_cluster_id: kubernetes_cluster_id
@@ -15614,8 +15753,6 @@ components:
           type: integer
         created_at:
           type: integer
-        direction:
-          type: string
         event_type:
           type: string
         filepath:
@@ -15680,7 +15817,6 @@ components:
       - container_name
       - count
       - created_at
-      - direction
       - event_type
       - filepath
       - fstat
@@ -15706,6 +15842,50 @@ components:
       - updated_at
       - users
       - w
+      type: object
+    ModelFilesystemAlertRule:
+      example:
+        severity: severity
+        summary: summary
+        signature_id: 0
+        anomaly: anomaly
+        event_type: event_type
+        techniques:
+        - techniques
+        - techniques
+        resource_type: resource_type
+        tactics:
+        - tactics
+        - tactics
+        category: category
+        type: type
+      properties:
+        anomaly:
+          type: string
+        category:
+          type: string
+        event_type:
+          type: string
+        resource_type:
+          type: string
+        severity:
+          type: string
+        signature_id:
+          type: integer
+        summary:
+          type: string
+        tactics:
+          items:
+            type: string
+          nullable: true
+          type: array
+        techniques:
+          items:
+            type: string
+          nullable: true
+          type: array
+        type:
+          type: string
       type: object
     ModelFiltersReq:
       example:
@@ -15891,6 +16071,7 @@ components:
               docker_env: docker_env
               connection_count: 0
               docker_image_size: docker_image_size
+              short_name: short_name
               cpu_usage: 1.4658129805029452
               pod_id: pod_id
               docker_label: docker_label
@@ -16022,6 +16203,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -16033,6 +16215,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -16076,6 +16259,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -16087,6 +16271,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -16154,6 +16339,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -16165,6 +16351,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -16208,6 +16395,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -16219,6 +16407,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -16295,6 +16484,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -16306,6 +16496,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -16349,6 +16540,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -16360,6 +16552,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -16415,6 +16608,7 @@ components:
           open_files_count: 2
           threads: 1
           pid: 4
+          short_name: short_name
           cpu_usage: 7.061401241503109
           node_id: node_id
           ppid: 7
@@ -16426,6 +16620,7 @@ components:
           open_files_count: 2
           threads: 1
           pid: 4
+          short_name: short_name
           cpu_usage: 7.061401241503109
           node_id: node_id
           ppid: 7
@@ -16461,6 +16656,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -16472,6 +16668,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -16512,6 +16709,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -16523,6 +16721,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -16566,6 +16765,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -16577,6 +16777,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -16609,6 +16810,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -16620,6 +16822,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -16660,6 +16863,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -16671,6 +16875,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -16714,6 +16919,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -16725,6 +16931,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -17241,6 +17448,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -17252,6 +17460,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -17295,6 +17504,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -17306,6 +17516,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -17373,6 +17584,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -17384,6 +17596,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -17427,6 +17640,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -17438,6 +17652,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -17514,6 +17729,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -17525,6 +17741,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -17568,6 +17785,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -17579,6 +17797,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -17634,6 +17853,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -17645,6 +17865,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -17680,6 +17901,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -17691,6 +17913,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -17731,6 +17954,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -17742,6 +17966,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -17785,6 +18010,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -17796,6 +18022,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -17828,6 +18055,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -17839,6 +18067,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -17879,6 +18108,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -17890,6 +18120,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -17933,6 +18164,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -17944,6 +18176,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -18014,6 +18247,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -18025,6 +18259,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -18068,6 +18303,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -18079,6 +18315,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -18146,6 +18383,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -18157,6 +18395,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -18200,6 +18439,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -18211,6 +18451,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -18287,6 +18528,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -18298,6 +18540,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -18341,6 +18584,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -18352,6 +18596,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -18407,6 +18652,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -18418,6 +18664,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -18453,6 +18700,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -18464,6 +18712,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -18504,6 +18753,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -18515,6 +18765,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -18558,6 +18809,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -18569,6 +18821,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -18601,6 +18854,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -18612,6 +18866,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -18652,6 +18907,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -18663,6 +18919,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -18706,6 +18963,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -18717,6 +18975,7 @@ components:
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
                 ppid: 7
@@ -19695,6 +19954,7 @@ components:
           open_files_count: 2
           threads: 1
           pid: 4
+          short_name: short_name
           cpu_usage: 7.061401241503109
           node_id: node_id
           ppid: 7
@@ -19706,6 +19966,7 @@ components:
           open_files_count: 2
           threads: 1
           pid: 4
+          short_name: short_name
           cpu_usage: 7.061401241503109
           node_id: node_id
           ppid: 7
@@ -19746,6 +20007,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -19757,6 +20019,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -19800,6 +20063,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -19811,6 +20075,7 @@ components:
             open_files_count: 2
             threads: 1
             pid: 4
+            short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
             ppid: 7
@@ -19930,6 +20195,7 @@ components:
         open_files_count: 2
         threads: 1
         pid: 4
+        short_name: short_name
         cpu_usage: 7.061401241503109
         node_id: node_id
         ppid: 7
@@ -19954,6 +20220,8 @@ components:
           type: integer
         ppid:
           type: integer
+        short_name:
+          type: string
         threads:
           type: integer
       required:
@@ -19967,6 +20235,7 @@ components:
       - open_files_count
       - pid
       - ppid
+      - short_name
       - threads
       type: object
     ModelQuarantineViolation:
@@ -20107,6 +20376,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -20118,6 +20388,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -20161,6 +20432,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -20172,6 +20444,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -20239,6 +20512,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -20250,6 +20524,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -20293,6 +20568,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -20304,6 +20580,7 @@ components:
               open_files_count: 2
               threads: 1
               pid: 4
+              short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
               ppid: 7
@@ -22469,6 +22746,7 @@ components:
         docker_env: docker_env
         connection_count: 0
         docker_image_size: docker_image_size
+        short_name: short_name
         cpu_usage: 1.4658129805029452
         pod_id: pod_id
         docker_label: docker_label
@@ -22681,6 +22959,8 @@ components:
             type: string
           type: array
         resource_group:
+          type: string
+        short_name:
           type: string
         tags:
           items:

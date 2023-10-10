@@ -27,7 +27,6 @@ type ModelFileAlert struct {
 	ContainerName string `json:"container_name"`
 	Count int32 `json:"count"`
 	CreatedAt int32 `json:"created_at"`
-	Direction string `json:"direction"`
 	EventType string `json:"event_type"`
 	Filepath string `json:"filepath"`
 	Fstat string `json:"fstat"`
@@ -59,7 +58,7 @@ type ModelFileAlert struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, direction string, eventType string, filepath string, fstat string, hostName string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32) *ModelFileAlert {
+func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, eventType string, filepath string, fstat string, hostName string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32) *ModelFileAlert {
 	this := ModelFileAlert{}
 	this.Category = category
 	this.ContainerId = containerId
@@ -68,7 +67,6 @@ func NewModelFileAlert(category string, containerId string, containerImage strin
 	this.ContainerName = containerName
 	this.Count = count
 	this.CreatedAt = createdAt
-	this.Direction = direction
 	this.EventType = eventType
 	this.Filepath = filepath
 	this.Fstat = fstat
@@ -271,30 +269,6 @@ func (o *ModelFileAlert) GetCreatedAtOk() (*int32, bool) {
 // SetCreatedAt sets field value
 func (o *ModelFileAlert) SetCreatedAt(v int32) {
 	o.CreatedAt = v
-}
-
-// GetDirection returns the Direction field value
-func (o *ModelFileAlert) GetDirection() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Direction
-}
-
-// GetDirectionOk returns a tuple with the Direction field value
-// and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetDirectionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Direction, true
-}
-
-// SetDirection sets field value
-func (o *ModelFileAlert) SetDirection(v string) {
-	o.Direction = v
 }
 
 // GetEventType returns the EventType field value
@@ -918,7 +892,6 @@ func (o ModelFileAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["container_name"] = o.ContainerName
 	toSerialize["count"] = o.Count
 	toSerialize["created_at"] = o.CreatedAt
-	toSerialize["direction"] = o.Direction
 	toSerialize["event_type"] = o.EventType
 	toSerialize["filepath"] = o.Filepath
 	toSerialize["fstat"] = o.Fstat
