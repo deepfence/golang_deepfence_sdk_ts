@@ -26,14 +26,14 @@ type ControlsNetworkPolicy struct {
 	DurationSec int32 `json:"duration_sec"`
 	Matcher ControlsPolicyAlertMatcher `json:"matcher"`
 	PolicyId string `json:"policy_id"`
-	UpdatedAt int32 `json:"updated_at"`
+	UpdatedAt int64 `json:"updated_at"`
 }
 
 // NewControlsNetworkPolicy instantiates a new ControlsNetworkPolicy object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsNetworkPolicy(action string, countLimit int32, durationCountLimitSec int32, durationSec int32, matcher ControlsPolicyAlertMatcher, policyId string, updatedAt int32) *ControlsNetworkPolicy {
+func NewControlsNetworkPolicy(action string, countLimit int32, durationCountLimitSec int32, durationSec int32, matcher ControlsPolicyAlertMatcher, policyId string, updatedAt int64) *ControlsNetworkPolicy {
 	this := ControlsNetworkPolicy{}
 	this.Action = action
 	this.CountLimit = countLimit
@@ -198,9 +198,9 @@ func (o *ControlsNetworkPolicy) SetPolicyId(v string) {
 }
 
 // GetUpdatedAt returns the UpdatedAt field value
-func (o *ControlsNetworkPolicy) GetUpdatedAt() int32 {
+func (o *ControlsNetworkPolicy) GetUpdatedAt() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -209,7 +209,7 @@ func (o *ControlsNetworkPolicy) GetUpdatedAt() int32 {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value
 // and a boolean to check if the value has been set.
-func (o *ControlsNetworkPolicy) GetUpdatedAtOk() (*int32, bool) {
+func (o *ControlsNetworkPolicy) GetUpdatedAtOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -217,7 +217,7 @@ func (o *ControlsNetworkPolicy) GetUpdatedAtOk() (*int32, bool) {
 }
 
 // SetUpdatedAt sets field value
-func (o *ControlsNetworkPolicy) SetUpdatedAt(v int32) {
+func (o *ControlsNetworkPolicy) SetUpdatedAt(v int64) {
 	o.UpdatedAt = v
 }
 

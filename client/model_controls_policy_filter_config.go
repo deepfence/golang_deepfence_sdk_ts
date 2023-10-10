@@ -23,7 +23,7 @@ type ControlsPolicyFilterConfig struct {
 	IgnoredRemoteIps []string `json:"ignored_remote_ips"`
 	NodeId string `json:"node_id"`
 	Policies []ControlsNetworkPolicy `json:"policies"`
-	UpdatedAt int32 `json:"updated_at"`
+	UpdatedAt int64 `json:"updated_at"`
 	UseWaf bool `json:"use_waf"`
 }
 
@@ -31,7 +31,7 @@ type ControlsPolicyFilterConfig struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsPolicyFilterConfig(ignoredRemoteIps []string, nodeId string, policies []ControlsNetworkPolicy, updatedAt int32, useWaf bool) *ControlsPolicyFilterConfig {
+func NewControlsPolicyFilterConfig(ignoredRemoteIps []string, nodeId string, policies []ControlsNetworkPolicy, updatedAt int64, useWaf bool) *ControlsPolicyFilterConfig {
 	this := ControlsPolicyFilterConfig{}
 	this.IgnoredRemoteIps = ignoredRemoteIps
 	this.NodeId = nodeId
@@ -126,9 +126,9 @@ func (o *ControlsPolicyFilterConfig) SetPolicies(v []ControlsNetworkPolicy) {
 }
 
 // GetUpdatedAt returns the UpdatedAt field value
-func (o *ControlsPolicyFilterConfig) GetUpdatedAt() int32 {
+func (o *ControlsPolicyFilterConfig) GetUpdatedAt() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -137,7 +137,7 @@ func (o *ControlsPolicyFilterConfig) GetUpdatedAt() int32 {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value
 // and a boolean to check if the value has been set.
-func (o *ControlsPolicyFilterConfig) GetUpdatedAtOk() (*int32, bool) {
+func (o *ControlsPolicyFilterConfig) GetUpdatedAtOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -145,7 +145,7 @@ func (o *ControlsPolicyFilterConfig) GetUpdatedAtOk() (*int32, bool) {
 }
 
 // SetUpdatedAt sets field value
-func (o *ControlsPolicyFilterConfig) SetUpdatedAt(v int32) {
+func (o *ControlsPolicyFilterConfig) SetUpdatedAt(v int64) {
 	o.UpdatedAt = v
 }
 
