@@ -20,62 +20,37 @@ var _ MappedNullable = &ModelNetworkViolation{}
 
 // ModelNetworkViolation struct for ModelNetworkViolation
 type ModelNetworkViolation struct {
-	Action string `json:"action"`
-	AlertId string `json:"alert_id"`
-	BlockIp string `json:"block_ip"`
-	ConfigId string `json:"config_id"`
-	ContainerId string `json:"container_id"`
-	CreatedAt int32 `json:"created_at"`
-	Direction string `json:"direction"`
-	ExecutedAt int32 `json:"executed_at"`
-	HostName string `json:"host_name"`
-	LocalIp string `json:"local_ip"`
-	LocalPort int32 `json:"local_port"`
-	NodeId string `json:"node_id"`
-	NodePolicyType string `json:"node_policy_type"`
-	PacketDirection string `json:"packet_direction"`
-	PodId string `json:"pod_id"`
-	PolicyIndex int32 `json:"policy_index"`
-	Port int32 `json:"port"`
-	RemoteIp string `json:"remote_ip"`
-	RemotePort int32 `json:"remote_port"`
-	Severity string `json:"severity"`
-	SourceIp string `json:"source_ip"`
-	SourcePort int32 `json:"source_port"`
-	Ttl int32 `json:"ttl"`
-	Type string `json:"type"`
+	Action *string `json:"action,omitempty"`
+	AlertId *string `json:"alert_id,omitempty"`
+	BlockIp *string `json:"block_ip,omitempty"`
+	ConfigId *string `json:"config_id,omitempty"`
+	ContainerId *string `json:"container_id,omitempty"`
+	CreatedAt *int32 `json:"created_at,omitempty"`
+	Defenderd *string `json:"defenderd,omitempty"`
+	Direction *string `json:"direction,omitempty"`
+	EventType *string `json:"event_type,omitempty"`
+	ExecutedAt *int32 `json:"executed_at,omitempty"`
+	HostName *string `json:"host_name,omitempty"`
+	LocalIp *string `json:"local_ip,omitempty"`
+	LocalPort *int32 `json:"local_port,omitempty"`
+	NodeId *string `json:"node_id,omitempty"`
+	NodePolicyType *string `json:"node_policy_type,omitempty"`
+	PacketDirection *string `json:"packet_direction,omitempty"`
+	PodId *string `json:"pod_id,omitempty"`
+	PolicyIndex *int32 `json:"policy_index,omitempty"`
+	RemoteIp *string `json:"remote_ip,omitempty"`
+	RemotePort *int32 `json:"remote_port,omitempty"`
+	Severity *string `json:"severity,omitempty"`
+	Status *string `json:"status,omitempty"`
+	Ttl *int32 `json:"ttl,omitempty"`
 }
 
 // NewModelNetworkViolation instantiates a new ModelNetworkViolation object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelNetworkViolation(action string, alertId string, blockIp string, configId string, containerId string, createdAt int32, direction string, executedAt int32, hostName string, localIp string, localPort int32, nodeId string, nodePolicyType string, packetDirection string, podId string, policyIndex int32, port int32, remoteIp string, remotePort int32, severity string, sourceIp string, sourcePort int32, ttl int32, type_ string) *ModelNetworkViolation {
+func NewModelNetworkViolation() *ModelNetworkViolation {
 	this := ModelNetworkViolation{}
-	this.Action = action
-	this.AlertId = alertId
-	this.BlockIp = blockIp
-	this.ConfigId = configId
-	this.ContainerId = containerId
-	this.CreatedAt = createdAt
-	this.Direction = direction
-	this.ExecutedAt = executedAt
-	this.HostName = hostName
-	this.LocalIp = localIp
-	this.LocalPort = localPort
-	this.NodeId = nodeId
-	this.NodePolicyType = nodePolicyType
-	this.PacketDirection = packetDirection
-	this.PodId = podId
-	this.PolicyIndex = policyIndex
-	this.Port = port
-	this.RemoteIp = remoteIp
-	this.RemotePort = remotePort
-	this.Severity = severity
-	this.SourceIp = sourceIp
-	this.SourcePort = sourcePort
-	this.Ttl = ttl
-	this.Type = type_
 	return &this
 }
 
@@ -87,580 +62,740 @@ func NewModelNetworkViolationWithDefaults() *ModelNetworkViolation {
 	return &this
 }
 
-// GetAction returns the Action field value
+// GetAction returns the Action field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetAction() string {
-	if o == nil {
+	if o == nil || IsNil(o.Action) {
 		var ret string
 		return ret
 	}
-
-	return o.Action
+	return *o.Action
 }
 
-// GetActionOk returns a tuple with the Action field value
+// GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetActionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Action) {
 		return nil, false
 	}
-	return &o.Action, true
+	return o.Action, true
 }
 
-// SetAction sets field value
+// HasAction returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasAction() bool {
+	if o != nil && !IsNil(o.Action) {
+		return true
+	}
+
+	return false
+}
+
+// SetAction gets a reference to the given string and assigns it to the Action field.
 func (o *ModelNetworkViolation) SetAction(v string) {
-	o.Action = v
+	o.Action = &v
 }
 
-// GetAlertId returns the AlertId field value
+// GetAlertId returns the AlertId field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetAlertId() string {
-	if o == nil {
+	if o == nil || IsNil(o.AlertId) {
 		var ret string
 		return ret
 	}
-
-	return o.AlertId
+	return *o.AlertId
 }
 
-// GetAlertIdOk returns a tuple with the AlertId field value
+// GetAlertIdOk returns a tuple with the AlertId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetAlertIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AlertId) {
 		return nil, false
 	}
-	return &o.AlertId, true
+	return o.AlertId, true
 }
 
-// SetAlertId sets field value
+// HasAlertId returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasAlertId() bool {
+	if o != nil && !IsNil(o.AlertId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlertId gets a reference to the given string and assigns it to the AlertId field.
 func (o *ModelNetworkViolation) SetAlertId(v string) {
-	o.AlertId = v
+	o.AlertId = &v
 }
 
-// GetBlockIp returns the BlockIp field value
+// GetBlockIp returns the BlockIp field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetBlockIp() string {
-	if o == nil {
+	if o == nil || IsNil(o.BlockIp) {
 		var ret string
 		return ret
 	}
-
-	return o.BlockIp
+	return *o.BlockIp
 }
 
-// GetBlockIpOk returns a tuple with the BlockIp field value
+// GetBlockIpOk returns a tuple with the BlockIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetBlockIpOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BlockIp) {
 		return nil, false
 	}
-	return &o.BlockIp, true
+	return o.BlockIp, true
 }
 
-// SetBlockIp sets field value
+// HasBlockIp returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasBlockIp() bool {
+	if o != nil && !IsNil(o.BlockIp) {
+		return true
+	}
+
+	return false
+}
+
+// SetBlockIp gets a reference to the given string and assigns it to the BlockIp field.
 func (o *ModelNetworkViolation) SetBlockIp(v string) {
-	o.BlockIp = v
+	o.BlockIp = &v
 }
 
-// GetConfigId returns the ConfigId field value
+// GetConfigId returns the ConfigId field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetConfigId() string {
-	if o == nil {
+	if o == nil || IsNil(o.ConfigId) {
 		var ret string
 		return ret
 	}
-
-	return o.ConfigId
+	return *o.ConfigId
 }
 
-// GetConfigIdOk returns a tuple with the ConfigId field value
+// GetConfigIdOk returns a tuple with the ConfigId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetConfigIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ConfigId) {
 		return nil, false
 	}
-	return &o.ConfigId, true
+	return o.ConfigId, true
 }
 
-// SetConfigId sets field value
+// HasConfigId returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasConfigId() bool {
+	if o != nil && !IsNil(o.ConfigId) {
+		return true
+	}
+
+	return false
+}
+
+// SetConfigId gets a reference to the given string and assigns it to the ConfigId field.
 func (o *ModelNetworkViolation) SetConfigId(v string) {
-	o.ConfigId = v
+	o.ConfigId = &v
 }
 
-// GetContainerId returns the ContainerId field value
+// GetContainerId returns the ContainerId field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetContainerId() string {
-	if o == nil {
+	if o == nil || IsNil(o.ContainerId) {
 		var ret string
 		return ret
 	}
-
-	return o.ContainerId
+	return *o.ContainerId
 }
 
-// GetContainerIdOk returns a tuple with the ContainerId field value
+// GetContainerIdOk returns a tuple with the ContainerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetContainerIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ContainerId) {
 		return nil, false
 	}
-	return &o.ContainerId, true
+	return o.ContainerId, true
 }
 
-// SetContainerId sets field value
+// HasContainerId returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasContainerId() bool {
+	if o != nil && !IsNil(o.ContainerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetContainerId gets a reference to the given string and assigns it to the ContainerId field.
 func (o *ModelNetworkViolation) SetContainerId(v string) {
-	o.ContainerId = v
+	o.ContainerId = &v
 }
 
-// GetCreatedAt returns the CreatedAt field value
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetCreatedAt() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret int32
 		return ret
 	}
-
-	return o.CreatedAt
+	return *o.CreatedAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetCreatedAtOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
-	return &o.CreatedAt, true
+	return o.CreatedAt, true
 }
 
-// SetCreatedAt sets field value
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasCreatedAt() bool {
+	if o != nil && !IsNil(o.CreatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given int32 and assigns it to the CreatedAt field.
 func (o *ModelNetworkViolation) SetCreatedAt(v int32) {
-	o.CreatedAt = v
+	o.CreatedAt = &v
 }
 
-// GetDirection returns the Direction field value
-func (o *ModelNetworkViolation) GetDirection() string {
-	if o == nil {
+// GetDefenderd returns the Defenderd field value if set, zero value otherwise.
+func (o *ModelNetworkViolation) GetDefenderd() string {
+	if o == nil || IsNil(o.Defenderd) {
 		var ret string
 		return ret
 	}
-
-	return o.Direction
+	return *o.Defenderd
 }
 
-// GetDirectionOk returns a tuple with the Direction field value
+// GetDefenderdOk returns a tuple with the Defenderd field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkViolation) GetDefenderdOk() (*string, bool) {
+	if o == nil || IsNil(o.Defenderd) {
+		return nil, false
+	}
+	return o.Defenderd, true
+}
+
+// HasDefenderd returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasDefenderd() bool {
+	if o != nil && !IsNil(o.Defenderd) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefenderd gets a reference to the given string and assigns it to the Defenderd field.
+func (o *ModelNetworkViolation) SetDefenderd(v string) {
+	o.Defenderd = &v
+}
+
+// GetDirection returns the Direction field value if set, zero value otherwise.
+func (o *ModelNetworkViolation) GetDirection() string {
+	if o == nil || IsNil(o.Direction) {
+		var ret string
+		return ret
+	}
+	return *o.Direction
+}
+
+// GetDirectionOk returns a tuple with the Direction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetDirectionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Direction) {
 		return nil, false
 	}
-	return &o.Direction, true
+	return o.Direction, true
 }
 
-// SetDirection sets field value
+// HasDirection returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasDirection() bool {
+	if o != nil && !IsNil(o.Direction) {
+		return true
+	}
+
+	return false
+}
+
+// SetDirection gets a reference to the given string and assigns it to the Direction field.
 func (o *ModelNetworkViolation) SetDirection(v string) {
-	o.Direction = v
+	o.Direction = &v
 }
 
-// GetExecutedAt returns the ExecutedAt field value
+// GetEventType returns the EventType field value if set, zero value otherwise.
+func (o *ModelNetworkViolation) GetEventType() string {
+	if o == nil || IsNil(o.EventType) {
+		var ret string
+		return ret
+	}
+	return *o.EventType
+}
+
+// GetEventTypeOk returns a tuple with the EventType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkViolation) GetEventTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.EventType) {
+		return nil, false
+	}
+	return o.EventType, true
+}
+
+// HasEventType returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasEventType() bool {
+	if o != nil && !IsNil(o.EventType) {
+		return true
+	}
+
+	return false
+}
+
+// SetEventType gets a reference to the given string and assigns it to the EventType field.
+func (o *ModelNetworkViolation) SetEventType(v string) {
+	o.EventType = &v
+}
+
+// GetExecutedAt returns the ExecutedAt field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetExecutedAt() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.ExecutedAt) {
 		var ret int32
 		return ret
 	}
-
-	return o.ExecutedAt
+	return *o.ExecutedAt
 }
 
-// GetExecutedAtOk returns a tuple with the ExecutedAt field value
+// GetExecutedAtOk returns a tuple with the ExecutedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetExecutedAtOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExecutedAt) {
 		return nil, false
 	}
-	return &o.ExecutedAt, true
+	return o.ExecutedAt, true
 }
 
-// SetExecutedAt sets field value
+// HasExecutedAt returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasExecutedAt() bool {
+	if o != nil && !IsNil(o.ExecutedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetExecutedAt gets a reference to the given int32 and assigns it to the ExecutedAt field.
 func (o *ModelNetworkViolation) SetExecutedAt(v int32) {
-	o.ExecutedAt = v
+	o.ExecutedAt = &v
 }
 
-// GetHostName returns the HostName field value
+// GetHostName returns the HostName field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetHostName() string {
-	if o == nil {
+	if o == nil || IsNil(o.HostName) {
 		var ret string
 		return ret
 	}
-
-	return o.HostName
+	return *o.HostName
 }
 
-// GetHostNameOk returns a tuple with the HostName field value
+// GetHostNameOk returns a tuple with the HostName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetHostNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HostName) {
 		return nil, false
 	}
-	return &o.HostName, true
+	return o.HostName, true
 }
 
-// SetHostName sets field value
+// HasHostName returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasHostName() bool {
+	if o != nil && !IsNil(o.HostName) {
+		return true
+	}
+
+	return false
+}
+
+// SetHostName gets a reference to the given string and assigns it to the HostName field.
 func (o *ModelNetworkViolation) SetHostName(v string) {
-	o.HostName = v
+	o.HostName = &v
 }
 
-// GetLocalIp returns the LocalIp field value
+// GetLocalIp returns the LocalIp field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetLocalIp() string {
-	if o == nil {
+	if o == nil || IsNil(o.LocalIp) {
 		var ret string
 		return ret
 	}
-
-	return o.LocalIp
+	return *o.LocalIp
 }
 
-// GetLocalIpOk returns a tuple with the LocalIp field value
+// GetLocalIpOk returns a tuple with the LocalIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetLocalIpOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LocalIp) {
 		return nil, false
 	}
-	return &o.LocalIp, true
+	return o.LocalIp, true
 }
 
-// SetLocalIp sets field value
+// HasLocalIp returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasLocalIp() bool {
+	if o != nil && !IsNil(o.LocalIp) {
+		return true
+	}
+
+	return false
+}
+
+// SetLocalIp gets a reference to the given string and assigns it to the LocalIp field.
 func (o *ModelNetworkViolation) SetLocalIp(v string) {
-	o.LocalIp = v
+	o.LocalIp = &v
 }
 
-// GetLocalPort returns the LocalPort field value
+// GetLocalPort returns the LocalPort field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetLocalPort() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.LocalPort) {
 		var ret int32
 		return ret
 	}
-
-	return o.LocalPort
+	return *o.LocalPort
 }
 
-// GetLocalPortOk returns a tuple with the LocalPort field value
+// GetLocalPortOk returns a tuple with the LocalPort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetLocalPortOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LocalPort) {
 		return nil, false
 	}
-	return &o.LocalPort, true
+	return o.LocalPort, true
 }
 
-// SetLocalPort sets field value
+// HasLocalPort returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasLocalPort() bool {
+	if o != nil && !IsNil(o.LocalPort) {
+		return true
+	}
+
+	return false
+}
+
+// SetLocalPort gets a reference to the given int32 and assigns it to the LocalPort field.
 func (o *ModelNetworkViolation) SetLocalPort(v int32) {
-	o.LocalPort = v
+	o.LocalPort = &v
 }
 
-// GetNodeId returns the NodeId field value
+// GetNodeId returns the NodeId field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetNodeId() string {
-	if o == nil {
+	if o == nil || IsNil(o.NodeId) {
 		var ret string
 		return ret
 	}
-
-	return o.NodeId
+	return *o.NodeId
 }
 
-// GetNodeIdOk returns a tuple with the NodeId field value
+// GetNodeIdOk returns a tuple with the NodeId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetNodeIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.NodeId) {
 		return nil, false
 	}
-	return &o.NodeId, true
+	return o.NodeId, true
 }
 
-// SetNodeId sets field value
+// HasNodeId returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasNodeId() bool {
+	if o != nil && !IsNil(o.NodeId) {
+		return true
+	}
+
+	return false
+}
+
+// SetNodeId gets a reference to the given string and assigns it to the NodeId field.
 func (o *ModelNetworkViolation) SetNodeId(v string) {
-	o.NodeId = v
+	o.NodeId = &v
 }
 
-// GetNodePolicyType returns the NodePolicyType field value
+// GetNodePolicyType returns the NodePolicyType field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetNodePolicyType() string {
-	if o == nil {
+	if o == nil || IsNil(o.NodePolicyType) {
 		var ret string
 		return ret
 	}
-
-	return o.NodePolicyType
+	return *o.NodePolicyType
 }
 
-// GetNodePolicyTypeOk returns a tuple with the NodePolicyType field value
+// GetNodePolicyTypeOk returns a tuple with the NodePolicyType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetNodePolicyTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.NodePolicyType) {
 		return nil, false
 	}
-	return &o.NodePolicyType, true
+	return o.NodePolicyType, true
 }
 
-// SetNodePolicyType sets field value
+// HasNodePolicyType returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasNodePolicyType() bool {
+	if o != nil && !IsNil(o.NodePolicyType) {
+		return true
+	}
+
+	return false
+}
+
+// SetNodePolicyType gets a reference to the given string and assigns it to the NodePolicyType field.
 func (o *ModelNetworkViolation) SetNodePolicyType(v string) {
-	o.NodePolicyType = v
+	o.NodePolicyType = &v
 }
 
-// GetPacketDirection returns the PacketDirection field value
+// GetPacketDirection returns the PacketDirection field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetPacketDirection() string {
-	if o == nil {
+	if o == nil || IsNil(o.PacketDirection) {
 		var ret string
 		return ret
 	}
-
-	return o.PacketDirection
+	return *o.PacketDirection
 }
 
-// GetPacketDirectionOk returns a tuple with the PacketDirection field value
+// GetPacketDirectionOk returns a tuple with the PacketDirection field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetPacketDirectionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PacketDirection) {
 		return nil, false
 	}
-	return &o.PacketDirection, true
+	return o.PacketDirection, true
 }
 
-// SetPacketDirection sets field value
+// HasPacketDirection returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasPacketDirection() bool {
+	if o != nil && !IsNil(o.PacketDirection) {
+		return true
+	}
+
+	return false
+}
+
+// SetPacketDirection gets a reference to the given string and assigns it to the PacketDirection field.
 func (o *ModelNetworkViolation) SetPacketDirection(v string) {
-	o.PacketDirection = v
+	o.PacketDirection = &v
 }
 
-// GetPodId returns the PodId field value
+// GetPodId returns the PodId field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetPodId() string {
-	if o == nil {
+	if o == nil || IsNil(o.PodId) {
 		var ret string
 		return ret
 	}
-
-	return o.PodId
+	return *o.PodId
 }
 
-// GetPodIdOk returns a tuple with the PodId field value
+// GetPodIdOk returns a tuple with the PodId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetPodIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PodId) {
 		return nil, false
 	}
-	return &o.PodId, true
+	return o.PodId, true
 }
 
-// SetPodId sets field value
+// HasPodId returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasPodId() bool {
+	if o != nil && !IsNil(o.PodId) {
+		return true
+	}
+
+	return false
+}
+
+// SetPodId gets a reference to the given string and assigns it to the PodId field.
 func (o *ModelNetworkViolation) SetPodId(v string) {
-	o.PodId = v
+	o.PodId = &v
 }
 
-// GetPolicyIndex returns the PolicyIndex field value
+// GetPolicyIndex returns the PolicyIndex field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetPolicyIndex() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.PolicyIndex) {
 		var ret int32
 		return ret
 	}
-
-	return o.PolicyIndex
+	return *o.PolicyIndex
 }
 
-// GetPolicyIndexOk returns a tuple with the PolicyIndex field value
+// GetPolicyIndexOk returns a tuple with the PolicyIndex field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetPolicyIndexOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PolicyIndex) {
 		return nil, false
 	}
-	return &o.PolicyIndex, true
+	return o.PolicyIndex, true
 }
 
-// SetPolicyIndex sets field value
+// HasPolicyIndex returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasPolicyIndex() bool {
+	if o != nil && !IsNil(o.PolicyIndex) {
+		return true
+	}
+
+	return false
+}
+
+// SetPolicyIndex gets a reference to the given int32 and assigns it to the PolicyIndex field.
 func (o *ModelNetworkViolation) SetPolicyIndex(v int32) {
-	o.PolicyIndex = v
+	o.PolicyIndex = &v
 }
 
-// GetPort returns the Port field value
-func (o *ModelNetworkViolation) GetPort() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Port
-}
-
-// GetPortOk returns a tuple with the Port field value
-// and a boolean to check if the value has been set.
-func (o *ModelNetworkViolation) GetPortOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Port, true
-}
-
-// SetPort sets field value
-func (o *ModelNetworkViolation) SetPort(v int32) {
-	o.Port = v
-}
-
-// GetRemoteIp returns the RemoteIp field value
+// GetRemoteIp returns the RemoteIp field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetRemoteIp() string {
-	if o == nil {
+	if o == nil || IsNil(o.RemoteIp) {
 		var ret string
 		return ret
 	}
-
-	return o.RemoteIp
+	return *o.RemoteIp
 }
 
-// GetRemoteIpOk returns a tuple with the RemoteIp field value
+// GetRemoteIpOk returns a tuple with the RemoteIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetRemoteIpOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RemoteIp) {
 		return nil, false
 	}
-	return &o.RemoteIp, true
+	return o.RemoteIp, true
 }
 
-// SetRemoteIp sets field value
+// HasRemoteIp returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasRemoteIp() bool {
+	if o != nil && !IsNil(o.RemoteIp) {
+		return true
+	}
+
+	return false
+}
+
+// SetRemoteIp gets a reference to the given string and assigns it to the RemoteIp field.
 func (o *ModelNetworkViolation) SetRemoteIp(v string) {
-	o.RemoteIp = v
+	o.RemoteIp = &v
 }
 
-// GetRemotePort returns the RemotePort field value
+// GetRemotePort returns the RemotePort field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetRemotePort() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.RemotePort) {
 		var ret int32
 		return ret
 	}
-
-	return o.RemotePort
+	return *o.RemotePort
 }
 
-// GetRemotePortOk returns a tuple with the RemotePort field value
+// GetRemotePortOk returns a tuple with the RemotePort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetRemotePortOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RemotePort) {
 		return nil, false
 	}
-	return &o.RemotePort, true
+	return o.RemotePort, true
 }
 
-// SetRemotePort sets field value
+// HasRemotePort returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasRemotePort() bool {
+	if o != nil && !IsNil(o.RemotePort) {
+		return true
+	}
+
+	return false
+}
+
+// SetRemotePort gets a reference to the given int32 and assigns it to the RemotePort field.
 func (o *ModelNetworkViolation) SetRemotePort(v int32) {
-	o.RemotePort = v
+	o.RemotePort = &v
 }
 
-// GetSeverity returns the Severity field value
+// GetSeverity returns the Severity field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetSeverity() string {
-	if o == nil {
+	if o == nil || IsNil(o.Severity) {
 		var ret string
 		return ret
 	}
-
-	return o.Severity
+	return *o.Severity
 }
 
-// GetSeverityOk returns a tuple with the Severity field value
+// GetSeverityOk returns a tuple with the Severity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetSeverityOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Severity) {
 		return nil, false
 	}
-	return &o.Severity, true
+	return o.Severity, true
 }
 
-// SetSeverity sets field value
+// HasSeverity returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasSeverity() bool {
+	if o != nil && !IsNil(o.Severity) {
+		return true
+	}
+
+	return false
+}
+
+// SetSeverity gets a reference to the given string and assigns it to the Severity field.
 func (o *ModelNetworkViolation) SetSeverity(v string) {
-	o.Severity = v
+	o.Severity = &v
 }
 
-// GetSourceIp returns the SourceIp field value
-func (o *ModelNetworkViolation) GetSourceIp() string {
-	if o == nil {
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *ModelNetworkViolation) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
-
-	return o.SourceIp
+	return *o.Status
 }
 
-// GetSourceIpOk returns a tuple with the SourceIp field value
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelNetworkViolation) GetSourceIpOk() (*string, bool) {
-	if o == nil {
+func (o *ModelNetworkViolation) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return &o.SourceIp, true
+	return o.Status, true
 }
 
-// SetSourceIp sets field value
-func (o *ModelNetworkViolation) SetSourceIp(v string) {
-	o.SourceIp = v
-}
-
-// GetSourcePort returns the SourcePort field value
-func (o *ModelNetworkViolation) GetSourcePort() int32 {
-	if o == nil {
-		var ret int32
-		return ret
+// HasStatus returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
 	}
 
-	return o.SourcePort
+	return false
 }
 
-// GetSourcePortOk returns a tuple with the SourcePort field value
-// and a boolean to check if the value has been set.
-func (o *ModelNetworkViolation) GetSourcePortOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SourcePort, true
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *ModelNetworkViolation) SetStatus(v string) {
+	o.Status = &v
 }
 
-// SetSourcePort sets field value
-func (o *ModelNetworkViolation) SetSourcePort(v int32) {
-	o.SourcePort = v
-}
-
-// GetTtl returns the Ttl field value
+// GetTtl returns the Ttl field value if set, zero value otherwise.
 func (o *ModelNetworkViolation) GetTtl() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.Ttl) {
 		var ret int32
 		return ret
 	}
-
-	return o.Ttl
+	return *o.Ttl
 }
 
-// GetTtlOk returns a tuple with the Ttl field value
+// GetTtlOk returns a tuple with the Ttl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelNetworkViolation) GetTtlOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Ttl) {
 		return nil, false
 	}
-	return &o.Ttl, true
+	return o.Ttl, true
 }
 
-// SetTtl sets field value
+// HasTtl returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasTtl() bool {
+	if o != nil && !IsNil(o.Ttl) {
+		return true
+	}
+
+	return false
+}
+
+// SetTtl gets a reference to the given int32 and assigns it to the Ttl field.
 func (o *ModelNetworkViolation) SetTtl(v int32) {
-	o.Ttl = v
-}
-
-// GetType returns the Type field value
-func (o *ModelNetworkViolation) GetType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *ModelNetworkViolation) GetTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *ModelNetworkViolation) SetType(v string) {
-	o.Type = v
+	o.Ttl = &v
 }
 
 func (o ModelNetworkViolation) MarshalJSON() ([]byte, error) {
@@ -673,30 +808,75 @@ func (o ModelNetworkViolation) MarshalJSON() ([]byte, error) {
 
 func (o ModelNetworkViolation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["action"] = o.Action
-	toSerialize["alert_id"] = o.AlertId
-	toSerialize["block_ip"] = o.BlockIp
-	toSerialize["config_id"] = o.ConfigId
-	toSerialize["container_id"] = o.ContainerId
-	toSerialize["created_at"] = o.CreatedAt
-	toSerialize["direction"] = o.Direction
-	toSerialize["executed_at"] = o.ExecutedAt
-	toSerialize["host_name"] = o.HostName
-	toSerialize["local_ip"] = o.LocalIp
-	toSerialize["local_port"] = o.LocalPort
-	toSerialize["node_id"] = o.NodeId
-	toSerialize["node_policy_type"] = o.NodePolicyType
-	toSerialize["packet_direction"] = o.PacketDirection
-	toSerialize["pod_id"] = o.PodId
-	toSerialize["policy_index"] = o.PolicyIndex
-	toSerialize["port"] = o.Port
-	toSerialize["remote_ip"] = o.RemoteIp
-	toSerialize["remote_port"] = o.RemotePort
-	toSerialize["severity"] = o.Severity
-	toSerialize["source_ip"] = o.SourceIp
-	toSerialize["source_port"] = o.SourcePort
-	toSerialize["ttl"] = o.Ttl
-	toSerialize["type"] = o.Type
+	if !IsNil(o.Action) {
+		toSerialize["action"] = o.Action
+	}
+	if !IsNil(o.AlertId) {
+		toSerialize["alert_id"] = o.AlertId
+	}
+	if !IsNil(o.BlockIp) {
+		toSerialize["block_ip"] = o.BlockIp
+	}
+	if !IsNil(o.ConfigId) {
+		toSerialize["config_id"] = o.ConfigId
+	}
+	if !IsNil(o.ContainerId) {
+		toSerialize["container_id"] = o.ContainerId
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if !IsNil(o.Defenderd) {
+		toSerialize["defenderd"] = o.Defenderd
+	}
+	if !IsNil(o.Direction) {
+		toSerialize["direction"] = o.Direction
+	}
+	if !IsNil(o.EventType) {
+		toSerialize["event_type"] = o.EventType
+	}
+	if !IsNil(o.ExecutedAt) {
+		toSerialize["executed_at"] = o.ExecutedAt
+	}
+	if !IsNil(o.HostName) {
+		toSerialize["host_name"] = o.HostName
+	}
+	if !IsNil(o.LocalIp) {
+		toSerialize["local_ip"] = o.LocalIp
+	}
+	if !IsNil(o.LocalPort) {
+		toSerialize["local_port"] = o.LocalPort
+	}
+	if !IsNil(o.NodeId) {
+		toSerialize["node_id"] = o.NodeId
+	}
+	if !IsNil(o.NodePolicyType) {
+		toSerialize["node_policy_type"] = o.NodePolicyType
+	}
+	if !IsNil(o.PacketDirection) {
+		toSerialize["packet_direction"] = o.PacketDirection
+	}
+	if !IsNil(o.PodId) {
+		toSerialize["pod_id"] = o.PodId
+	}
+	if !IsNil(o.PolicyIndex) {
+		toSerialize["policy_index"] = o.PolicyIndex
+	}
+	if !IsNil(o.RemoteIp) {
+		toSerialize["remote_ip"] = o.RemoteIp
+	}
+	if !IsNil(o.RemotePort) {
+		toSerialize["remote_port"] = o.RemotePort
+	}
+	if !IsNil(o.Severity) {
+		toSerialize["severity"] = o.Severity
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Ttl) {
+		toSerialize["ttl"] = o.Ttl
+	}
 	return toSerialize, nil
 }
 

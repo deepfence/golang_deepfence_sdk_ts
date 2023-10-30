@@ -22,6 +22,7 @@ var _ MappedNullable = &ModelCloudNodeAccountRegisterRespData{}
 type ModelCloudNodeAccountRegisterRespData struct {
 	CloudtrailTrails []ModelCloudNodeCloudtrailTrail `json:"cloudtrail_trails,omitempty"`
 	DeployInstances []ModelCloudInstanceDeployment `json:"deploy_instances,omitempty"`
+	LogAction *ControlsAction `json:"log_action,omitempty"`
 	Refresh *string `json:"refresh,omitempty"`
 	Scans map[string]ModelCloudComplianceScanDetails `json:"scans,omitempty"`
 }
@@ -109,6 +110,38 @@ func (o *ModelCloudNodeAccountRegisterRespData) SetDeployInstances(v []ModelClou
 	o.DeployInstances = v
 }
 
+// GetLogAction returns the LogAction field value if set, zero value otherwise.
+func (o *ModelCloudNodeAccountRegisterRespData) GetLogAction() ControlsAction {
+	if o == nil || IsNil(o.LogAction) {
+		var ret ControlsAction
+		return ret
+	}
+	return *o.LogAction
+}
+
+// GetLogActionOk returns a tuple with the LogAction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelCloudNodeAccountRegisterRespData) GetLogActionOk() (*ControlsAction, bool) {
+	if o == nil || IsNil(o.LogAction) {
+		return nil, false
+	}
+	return o.LogAction, true
+}
+
+// HasLogAction returns a boolean if a field has been set.
+func (o *ModelCloudNodeAccountRegisterRespData) HasLogAction() bool {
+	if o != nil && !IsNil(o.LogAction) {
+		return true
+	}
+
+	return false
+}
+
+// SetLogAction gets a reference to the given ControlsAction and assigns it to the LogAction field.
+func (o *ModelCloudNodeAccountRegisterRespData) SetLogAction(v ControlsAction) {
+	o.LogAction = &v
+}
+
 // GetRefresh returns the Refresh field value if set, zero value otherwise.
 func (o *ModelCloudNodeAccountRegisterRespData) GetRefresh() string {
 	if o == nil || IsNil(o.Refresh) {
@@ -189,6 +222,9 @@ func (o ModelCloudNodeAccountRegisterRespData) ToMap() (map[string]interface{}, 
 	}
 	if o.DeployInstances != nil {
 		toSerialize["deploy_instances"] = o.DeployInstances
+	}
+	if !IsNil(o.LogAction) {
+		toSerialize["log_action"] = o.LogAction
 	}
 	if !IsNil(o.Refresh) {
 		toSerialize["refresh"] = o.Refresh

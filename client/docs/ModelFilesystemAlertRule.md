@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **Category** | Pointer to **string** |  | [optional] 
 **EventType** | Pointer to **string** |  | [optional] 
 **ResourceType** | Pointer to **string** |  | [optional] 
+**RuleId** | Pointer to **string** |  | [optional] 
 **Severity** | Pointer to **string** |  | [optional] 
-**SignatureId** | Pointer to **int32** |  | [optional] 
 **Summary** | Pointer to **string** |  | [optional] 
 **Tactics** | Pointer to **[]string** |  | [optional] 
 **Techniques** | Pointer to **[]string** |  | [optional] 
@@ -134,6 +134,31 @@ SetResourceType sets ResourceType field to given value.
 
 HasResourceType returns a boolean if a field has been set.
 
+### GetRuleId
+
+`func (o *ModelFilesystemAlertRule) GetRuleId() string`
+
+GetRuleId returns the RuleId field if non-nil, zero value otherwise.
+
+### GetRuleIdOk
+
+`func (o *ModelFilesystemAlertRule) GetRuleIdOk() (*string, bool)`
+
+GetRuleIdOk returns a tuple with the RuleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRuleId
+
+`func (o *ModelFilesystemAlertRule) SetRuleId(v string)`
+
+SetRuleId sets RuleId field to given value.
+
+### HasRuleId
+
+`func (o *ModelFilesystemAlertRule) HasRuleId() bool`
+
+HasRuleId returns a boolean if a field has been set.
+
 ### GetSeverity
 
 `func (o *ModelFilesystemAlertRule) GetSeverity() string`
@@ -158,31 +183,6 @@ SetSeverity sets Severity field to given value.
 `func (o *ModelFilesystemAlertRule) HasSeverity() bool`
 
 HasSeverity returns a boolean if a field has been set.
-
-### GetSignatureId
-
-`func (o *ModelFilesystemAlertRule) GetSignatureId() int32`
-
-GetSignatureId returns the SignatureId field if non-nil, zero value otherwise.
-
-### GetSignatureIdOk
-
-`func (o *ModelFilesystemAlertRule) GetSignatureIdOk() (*int32, bool)`
-
-GetSignatureIdOk returns a tuple with the SignatureId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSignatureId
-
-`func (o *ModelFilesystemAlertRule) SetSignatureId(v int32)`
-
-SetSignatureId sets SignatureId field to given value.
-
-### HasSignatureId
-
-`func (o *ModelFilesystemAlertRule) HasSignatureId() bool`
-
-HasSignatureId returns a boolean if a field has been set.
 
 ### GetSummary
 

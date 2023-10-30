@@ -42,9 +42,9 @@ type ModelFileAlert struct {
 	ProcStatus string `json:"proc_status"`
 	ProcessName string `json:"process_name"`
 	ResourceType string `json:"resource_type"`
+	RuleId string `json:"rule_id"`
 	Severity string `json:"severity"`
 	SeverityScore float32 `json:"severity_score"`
-	SignatureId int32 `json:"signature_id"`
 	Summary string `json:"summary"`
 	Tactics []string `json:"tactics"`
 	Techniques []string `json:"techniques"`
@@ -58,7 +58,7 @@ type ModelFileAlert struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, eventType string, filepath string, fstat string, hostName string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32) *ModelFileAlert {
+func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, eventType string, filepath string, fstat string, hostName string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, ruleId string, severity string, severityScore float32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32) *ModelFileAlert {
 	this := ModelFileAlert{}
 	this.Category = category
 	this.ContainerId = containerId
@@ -82,9 +82,9 @@ func NewModelFileAlert(category string, containerId string, containerImage strin
 	this.ProcStatus = procStatus
 	this.ProcessName = processName
 	this.ResourceType = resourceType
+	this.RuleId = ruleId
 	this.Severity = severity
 	this.SeverityScore = severityScore
-	this.SignatureId = signatureId
 	this.Summary = summary
 	this.Tactics = tactics
 	this.Techniques = techniques
@@ -631,6 +631,30 @@ func (o *ModelFileAlert) SetResourceType(v string) {
 	o.ResourceType = v
 }
 
+// GetRuleId returns the RuleId field value
+func (o *ModelFileAlert) GetRuleId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.RuleId
+}
+
+// GetRuleIdOk returns a tuple with the RuleId field value
+// and a boolean to check if the value has been set.
+func (o *ModelFileAlert) GetRuleIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RuleId, true
+}
+
+// SetRuleId sets field value
+func (o *ModelFileAlert) SetRuleId(v string) {
+	o.RuleId = v
+}
+
 // GetSeverity returns the Severity field value
 func (o *ModelFileAlert) GetSeverity() string {
 	if o == nil {
@@ -677,30 +701,6 @@ func (o *ModelFileAlert) GetSeverityScoreOk() (*float32, bool) {
 // SetSeverityScore sets field value
 func (o *ModelFileAlert) SetSeverityScore(v float32) {
 	o.SeverityScore = v
-}
-
-// GetSignatureId returns the SignatureId field value
-func (o *ModelFileAlert) GetSignatureId() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.SignatureId
-}
-
-// GetSignatureIdOk returns a tuple with the SignatureId field value
-// and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetSignatureIdOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SignatureId, true
-}
-
-// SetSignatureId sets field value
-func (o *ModelFileAlert) SetSignatureId(v int32) {
-	o.SignatureId = v
 }
 
 // GetSummary returns the Summary field value
@@ -907,9 +907,9 @@ func (o ModelFileAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["proc_status"] = o.ProcStatus
 	toSerialize["process_name"] = o.ProcessName
 	toSerialize["resource_type"] = o.ResourceType
+	toSerialize["rule_id"] = o.RuleId
 	toSerialize["severity"] = o.Severity
 	toSerialize["severity_score"] = o.SeverityScore
-	toSerialize["signature_id"] = o.SignatureId
 	toSerialize["summary"] = o.Summary
 	if o.Tactics != nil {
 		toSerialize["tactics"] = o.Tactics

@@ -29,7 +29,7 @@ type ModelCompliance struct {
 	RemediationPuppet string `json:"remediation_puppet"`
 	RemediationScript string `json:"remediation_script"`
 	Resource string `json:"resource"`
-	Resources []string `json:"resources,omitempty"`
+	Resources []ModelBasicNode `json:"resources,omitempty"`
 	RuleId string `json:"rule_id"`
 	Status string `json:"status"`
 	TestCategory string `json:"test_category"`
@@ -291,9 +291,9 @@ func (o *ModelCompliance) SetResource(v string) {
 }
 
 // GetResources returns the Resources field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ModelCompliance) GetResources() []string {
+func (o *ModelCompliance) GetResources() []ModelBasicNode {
 	if o == nil {
-		var ret []string
+		var ret []ModelBasicNode
 		return ret
 	}
 	return o.Resources
@@ -302,7 +302,7 @@ func (o *ModelCompliance) GetResources() []string {
 // GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelCompliance) GetResourcesOk() ([]string, bool) {
+func (o *ModelCompliance) GetResourcesOk() ([]ModelBasicNode, bool) {
 	if o == nil || IsNil(o.Resources) {
 		return nil, false
 	}
@@ -318,8 +318,8 @@ func (o *ModelCompliance) HasResources() bool {
 	return false
 }
 
-// SetResources gets a reference to the given []string and assigns it to the Resources field.
-func (o *ModelCompliance) SetResources(v []string) {
+// SetResources gets a reference to the given []ModelBasicNode and assigns it to the Resources field.
+func (o *ModelCompliance) SetResources(v []ModelBasicNode) {
 	o.Resources = v
 }
 

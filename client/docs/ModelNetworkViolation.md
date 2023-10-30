@@ -4,36 +4,35 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Action** | **string** |  | 
-**AlertId** | **string** |  | 
-**BlockIp** | **string** |  | 
-**ConfigId** | **string** |  | 
-**ContainerId** | **string** |  | 
-**CreatedAt** | **int32** |  | 
-**Direction** | **string** |  | 
-**ExecutedAt** | **int32** |  | 
-**HostName** | **string** |  | 
-**LocalIp** | **string** |  | 
-**LocalPort** | **int32** |  | 
-**NodeId** | **string** |  | 
-**NodePolicyType** | **string** |  | 
-**PacketDirection** | **string** |  | 
-**PodId** | **string** |  | 
-**PolicyIndex** | **int32** |  | 
-**Port** | **int32** |  | 
-**RemoteIp** | **string** |  | 
-**RemotePort** | **int32** |  | 
-**Severity** | **string** |  | 
-**SourceIp** | **string** |  | 
-**SourcePort** | **int32** |  | 
-**Ttl** | **int32** |  | 
-**Type** | **string** |  | 
+**Action** | Pointer to **string** |  | [optional] 
+**AlertId** | Pointer to **string** |  | [optional] 
+**BlockIp** | Pointer to **string** |  | [optional] 
+**ConfigId** | Pointer to **string** |  | [optional] 
+**ContainerId** | Pointer to **string** |  | [optional] 
+**CreatedAt** | Pointer to **int32** |  | [optional] 
+**Defenderd** | Pointer to **string** |  | [optional] 
+**Direction** | Pointer to **string** |  | [optional] 
+**EventType** | Pointer to **string** |  | [optional] 
+**ExecutedAt** | Pointer to **int32** |  | [optional] 
+**HostName** | Pointer to **string** |  | [optional] 
+**LocalIp** | Pointer to **string** |  | [optional] 
+**LocalPort** | Pointer to **int32** |  | [optional] 
+**NodeId** | Pointer to **string** |  | [optional] 
+**NodePolicyType** | Pointer to **string** |  | [optional] 
+**PacketDirection** | Pointer to **string** |  | [optional] 
+**PodId** | Pointer to **string** |  | [optional] 
+**PolicyIndex** | Pointer to **int32** |  | [optional] 
+**RemoteIp** | Pointer to **string** |  | [optional] 
+**RemotePort** | Pointer to **int32** |  | [optional] 
+**Severity** | Pointer to **string** |  | [optional] 
+**Status** | Pointer to **string** |  | [optional] 
+**Ttl** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
 ### NewModelNetworkViolation
 
-`func NewModelNetworkViolation(action string, alertId string, blockIp string, configId string, containerId string, createdAt int32, direction string, executedAt int32, hostName string, localIp string, localPort int32, nodeId string, nodePolicyType string, packetDirection string, podId string, policyIndex int32, port int32, remoteIp string, remotePort int32, severity string, sourceIp string, sourcePort int32, ttl int32, type_ string, ) *ModelNetworkViolation`
+`func NewModelNetworkViolation() *ModelNetworkViolation`
 
 NewModelNetworkViolation instantiates a new ModelNetworkViolation object
 This constructor will assign default values to properties that have it defined,
@@ -67,6 +66,11 @@ and a boolean to check if the value has been set.
 
 SetAction sets Action field to given value.
 
+### HasAction
+
+`func (o *ModelNetworkViolation) HasAction() bool`
+
+HasAction returns a boolean if a field has been set.
 
 ### GetAlertId
 
@@ -87,6 +91,11 @@ and a boolean to check if the value has been set.
 
 SetAlertId sets AlertId field to given value.
 
+### HasAlertId
+
+`func (o *ModelNetworkViolation) HasAlertId() bool`
+
+HasAlertId returns a boolean if a field has been set.
 
 ### GetBlockIp
 
@@ -107,6 +116,11 @@ and a boolean to check if the value has been set.
 
 SetBlockIp sets BlockIp field to given value.
 
+### HasBlockIp
+
+`func (o *ModelNetworkViolation) HasBlockIp() bool`
+
+HasBlockIp returns a boolean if a field has been set.
 
 ### GetConfigId
 
@@ -127,6 +141,11 @@ and a boolean to check if the value has been set.
 
 SetConfigId sets ConfigId field to given value.
 
+### HasConfigId
+
+`func (o *ModelNetworkViolation) HasConfigId() bool`
+
+HasConfigId returns a boolean if a field has been set.
 
 ### GetContainerId
 
@@ -147,6 +166,11 @@ and a boolean to check if the value has been set.
 
 SetContainerId sets ContainerId field to given value.
 
+### HasContainerId
+
+`func (o *ModelNetworkViolation) HasContainerId() bool`
+
+HasContainerId returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -167,6 +191,36 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
+### HasCreatedAt
+
+`func (o *ModelNetworkViolation) HasCreatedAt() bool`
+
+HasCreatedAt returns a boolean if a field has been set.
+
+### GetDefenderd
+
+`func (o *ModelNetworkViolation) GetDefenderd() string`
+
+GetDefenderd returns the Defenderd field if non-nil, zero value otherwise.
+
+### GetDefenderdOk
+
+`func (o *ModelNetworkViolation) GetDefenderdOk() (*string, bool)`
+
+GetDefenderdOk returns a tuple with the Defenderd field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefenderd
+
+`func (o *ModelNetworkViolation) SetDefenderd(v string)`
+
+SetDefenderd sets Defenderd field to given value.
+
+### HasDefenderd
+
+`func (o *ModelNetworkViolation) HasDefenderd() bool`
+
+HasDefenderd returns a boolean if a field has been set.
 
 ### GetDirection
 
@@ -187,6 +241,36 @@ and a boolean to check if the value has been set.
 
 SetDirection sets Direction field to given value.
 
+### HasDirection
+
+`func (o *ModelNetworkViolation) HasDirection() bool`
+
+HasDirection returns a boolean if a field has been set.
+
+### GetEventType
+
+`func (o *ModelNetworkViolation) GetEventType() string`
+
+GetEventType returns the EventType field if non-nil, zero value otherwise.
+
+### GetEventTypeOk
+
+`func (o *ModelNetworkViolation) GetEventTypeOk() (*string, bool)`
+
+GetEventTypeOk returns a tuple with the EventType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEventType
+
+`func (o *ModelNetworkViolation) SetEventType(v string)`
+
+SetEventType sets EventType field to given value.
+
+### HasEventType
+
+`func (o *ModelNetworkViolation) HasEventType() bool`
+
+HasEventType returns a boolean if a field has been set.
 
 ### GetExecutedAt
 
@@ -207,6 +291,11 @@ and a boolean to check if the value has been set.
 
 SetExecutedAt sets ExecutedAt field to given value.
 
+### HasExecutedAt
+
+`func (o *ModelNetworkViolation) HasExecutedAt() bool`
+
+HasExecutedAt returns a boolean if a field has been set.
 
 ### GetHostName
 
@@ -227,6 +316,11 @@ and a boolean to check if the value has been set.
 
 SetHostName sets HostName field to given value.
 
+### HasHostName
+
+`func (o *ModelNetworkViolation) HasHostName() bool`
+
+HasHostName returns a boolean if a field has been set.
 
 ### GetLocalIp
 
@@ -247,6 +341,11 @@ and a boolean to check if the value has been set.
 
 SetLocalIp sets LocalIp field to given value.
 
+### HasLocalIp
+
+`func (o *ModelNetworkViolation) HasLocalIp() bool`
+
+HasLocalIp returns a boolean if a field has been set.
 
 ### GetLocalPort
 
@@ -267,6 +366,11 @@ and a boolean to check if the value has been set.
 
 SetLocalPort sets LocalPort field to given value.
 
+### HasLocalPort
+
+`func (o *ModelNetworkViolation) HasLocalPort() bool`
+
+HasLocalPort returns a boolean if a field has been set.
 
 ### GetNodeId
 
@@ -287,6 +391,11 @@ and a boolean to check if the value has been set.
 
 SetNodeId sets NodeId field to given value.
 
+### HasNodeId
+
+`func (o *ModelNetworkViolation) HasNodeId() bool`
+
+HasNodeId returns a boolean if a field has been set.
 
 ### GetNodePolicyType
 
@@ -307,6 +416,11 @@ and a boolean to check if the value has been set.
 
 SetNodePolicyType sets NodePolicyType field to given value.
 
+### HasNodePolicyType
+
+`func (o *ModelNetworkViolation) HasNodePolicyType() bool`
+
+HasNodePolicyType returns a boolean if a field has been set.
 
 ### GetPacketDirection
 
@@ -327,6 +441,11 @@ and a boolean to check if the value has been set.
 
 SetPacketDirection sets PacketDirection field to given value.
 
+### HasPacketDirection
+
+`func (o *ModelNetworkViolation) HasPacketDirection() bool`
+
+HasPacketDirection returns a boolean if a field has been set.
 
 ### GetPodId
 
@@ -347,6 +466,11 @@ and a boolean to check if the value has been set.
 
 SetPodId sets PodId field to given value.
 
+### HasPodId
+
+`func (o *ModelNetworkViolation) HasPodId() bool`
+
+HasPodId returns a boolean if a field has been set.
 
 ### GetPolicyIndex
 
@@ -367,26 +491,11 @@ and a boolean to check if the value has been set.
 
 SetPolicyIndex sets PolicyIndex field to given value.
 
+### HasPolicyIndex
 
-### GetPort
+`func (o *ModelNetworkViolation) HasPolicyIndex() bool`
 
-`func (o *ModelNetworkViolation) GetPort() int32`
-
-GetPort returns the Port field if non-nil, zero value otherwise.
-
-### GetPortOk
-
-`func (o *ModelNetworkViolation) GetPortOk() (*int32, bool)`
-
-GetPortOk returns a tuple with the Port field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPort
-
-`func (o *ModelNetworkViolation) SetPort(v int32)`
-
-SetPort sets Port field to given value.
-
+HasPolicyIndex returns a boolean if a field has been set.
 
 ### GetRemoteIp
 
@@ -407,6 +516,11 @@ and a boolean to check if the value has been set.
 
 SetRemoteIp sets RemoteIp field to given value.
 
+### HasRemoteIp
+
+`func (o *ModelNetworkViolation) HasRemoteIp() bool`
+
+HasRemoteIp returns a boolean if a field has been set.
 
 ### GetRemotePort
 
@@ -427,6 +541,11 @@ and a boolean to check if the value has been set.
 
 SetRemotePort sets RemotePort field to given value.
 
+### HasRemotePort
+
+`func (o *ModelNetworkViolation) HasRemotePort() bool`
+
+HasRemotePort returns a boolean if a field has been set.
 
 ### GetSeverity
 
@@ -447,46 +566,36 @@ and a boolean to check if the value has been set.
 
 SetSeverity sets Severity field to given value.
 
+### HasSeverity
 
-### GetSourceIp
+`func (o *ModelNetworkViolation) HasSeverity() bool`
 
-`func (o *ModelNetworkViolation) GetSourceIp() string`
+HasSeverity returns a boolean if a field has been set.
 
-GetSourceIp returns the SourceIp field if non-nil, zero value otherwise.
+### GetStatus
 
-### GetSourceIpOk
+`func (o *ModelNetworkViolation) GetStatus() string`
 
-`func (o *ModelNetworkViolation) GetSourceIpOk() (*string, bool)`
+GetStatus returns the Status field if non-nil, zero value otherwise.
 
-GetSourceIpOk returns a tuple with the SourceIp field if it's non-nil, zero value otherwise
+### GetStatusOk
+
+`func (o *ModelNetworkViolation) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSourceIp
+### SetStatus
 
-`func (o *ModelNetworkViolation) SetSourceIp(v string)`
+`func (o *ModelNetworkViolation) SetStatus(v string)`
 
-SetSourceIp sets SourceIp field to given value.
+SetStatus sets Status field to given value.
 
+### HasStatus
 
-### GetSourcePort
+`func (o *ModelNetworkViolation) HasStatus() bool`
 
-`func (o *ModelNetworkViolation) GetSourcePort() int32`
-
-GetSourcePort returns the SourcePort field if non-nil, zero value otherwise.
-
-### GetSourcePortOk
-
-`func (o *ModelNetworkViolation) GetSourcePortOk() (*int32, bool)`
-
-GetSourcePortOk returns a tuple with the SourcePort field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSourcePort
-
-`func (o *ModelNetworkViolation) SetSourcePort(v int32)`
-
-SetSourcePort sets SourcePort field to given value.
-
+HasStatus returns a boolean if a field has been set.
 
 ### GetTtl
 
@@ -507,26 +616,11 @@ and a boolean to check if the value has been set.
 
 SetTtl sets Ttl field to given value.
 
+### HasTtl
 
-### GetType
+`func (o *ModelNetworkViolation) HasTtl() bool`
 
-`func (o *ModelNetworkViolation) GetType() string`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *ModelNetworkViolation) GetTypeOk() (*string, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *ModelNetworkViolation) SetType(v string)`
-
-SetType sets Type field to given value.
-
+HasTtl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

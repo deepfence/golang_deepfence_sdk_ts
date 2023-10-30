@@ -27,7 +27,6 @@ type ModelNetworkAlertRule struct {
 	RuleId string `json:"rule_id"`
 	Severity string `json:"severity"`
 	SeverityScore float32 `json:"severity_score"`
-	SignatureId int32 `json:"signature_id"`
 	Summary string `json:"summary"`
 	Tactics []string `json:"tactics"`
 	Techniques []string `json:"techniques"`
@@ -38,7 +37,7 @@ type ModelNetworkAlertRule struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelNetworkAlertRule(category string, description string, masked bool, nodeId string, ruleId string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, updatedAt int32) *ModelNetworkAlertRule {
+func NewModelNetworkAlertRule(category string, description string, masked bool, nodeId string, ruleId string, severity string, severityScore float32, summary string, tactics []string, techniques []string, updatedAt int32) *ModelNetworkAlertRule {
 	this := ModelNetworkAlertRule{}
 	this.Category = category
 	this.Description = description
@@ -47,7 +46,6 @@ func NewModelNetworkAlertRule(category string, description string, masked bool, 
 	this.RuleId = ruleId
 	this.Severity = severity
 	this.SeverityScore = severityScore
-	this.SignatureId = signatureId
 	this.Summary = summary
 	this.Tactics = tactics
 	this.Techniques = techniques
@@ -231,30 +229,6 @@ func (o *ModelNetworkAlertRule) SetSeverityScore(v float32) {
 	o.SeverityScore = v
 }
 
-// GetSignatureId returns the SignatureId field value
-func (o *ModelNetworkAlertRule) GetSignatureId() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.SignatureId
-}
-
-// GetSignatureIdOk returns a tuple with the SignatureId field value
-// and a boolean to check if the value has been set.
-func (o *ModelNetworkAlertRule) GetSignatureIdOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SignatureId, true
-}
-
-// SetSignatureId sets field value
-func (o *ModelNetworkAlertRule) SetSignatureId(v int32) {
-	o.SignatureId = v
-}
-
 // GetSummary returns the Summary field value
 func (o *ModelNetworkAlertRule) GetSummary() string {
 	if o == nil {
@@ -372,7 +346,6 @@ func (o ModelNetworkAlertRule) ToMap() (map[string]interface{}, error) {
 	toSerialize["rule_id"] = o.RuleId
 	toSerialize["severity"] = o.Severity
 	toSerialize["severity_score"] = o.SeverityScore
-	toSerialize["signature_id"] = o.SignatureId
 	toSerialize["summary"] = o.Summary
 	if o.Tactics != nil {
 		toSerialize["tactics"] = o.Tactics

@@ -20,7 +20,7 @@ var _ MappedNullable = &ModelScanResultsMaskRequest{}
 
 // ModelScanResultsMaskRequest struct for ModelScanResultsMaskRequest
 type ModelScanResultsMaskRequest struct {
-	MaskAcrossHostsAndImages *bool `json:"mask_across_hosts_and_images,omitempty"`
+	MaskAction string `json:"mask_action"`
 	ResultIds []string `json:"result_ids"`
 	ScanId string `json:"scan_id"`
 	ScanType string `json:"scan_type"`
@@ -30,8 +30,9 @@ type ModelScanResultsMaskRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelScanResultsMaskRequest(resultIds []string, scanId string, scanType string) *ModelScanResultsMaskRequest {
+func NewModelScanResultsMaskRequest(maskAction string, resultIds []string, scanId string, scanType string) *ModelScanResultsMaskRequest {
 	this := ModelScanResultsMaskRequest{}
+	this.MaskAction = maskAction
 	this.ResultIds = resultIds
 	this.ScanId = scanId
 	this.ScanType = scanType
@@ -46,36 +47,28 @@ func NewModelScanResultsMaskRequestWithDefaults() *ModelScanResultsMaskRequest {
 	return &this
 }
 
-// GetMaskAcrossHostsAndImages returns the MaskAcrossHostsAndImages field value if set, zero value otherwise.
-func (o *ModelScanResultsMaskRequest) GetMaskAcrossHostsAndImages() bool {
-	if o == nil || IsNil(o.MaskAcrossHostsAndImages) {
-		var ret bool
+// GetMaskAction returns the MaskAction field value
+func (o *ModelScanResultsMaskRequest) GetMaskAction() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return *o.MaskAcrossHostsAndImages
+
+	return o.MaskAction
 }
 
-// GetMaskAcrossHostsAndImagesOk returns a tuple with the MaskAcrossHostsAndImages field value if set, nil otherwise
+// GetMaskActionOk returns a tuple with the MaskAction field value
 // and a boolean to check if the value has been set.
-func (o *ModelScanResultsMaskRequest) GetMaskAcrossHostsAndImagesOk() (*bool, bool) {
-	if o == nil || IsNil(o.MaskAcrossHostsAndImages) {
+func (o *ModelScanResultsMaskRequest) GetMaskActionOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MaskAcrossHostsAndImages, true
+	return &o.MaskAction, true
 }
 
-// HasMaskAcrossHostsAndImages returns a boolean if a field has been set.
-func (o *ModelScanResultsMaskRequest) HasMaskAcrossHostsAndImages() bool {
-	if o != nil && !IsNil(o.MaskAcrossHostsAndImages) {
-		return true
-	}
-
-	return false
-}
-
-// SetMaskAcrossHostsAndImages gets a reference to the given bool and assigns it to the MaskAcrossHostsAndImages field.
-func (o *ModelScanResultsMaskRequest) SetMaskAcrossHostsAndImages(v bool) {
-	o.MaskAcrossHostsAndImages = &v
+// SetMaskAction sets field value
+func (o *ModelScanResultsMaskRequest) SetMaskAction(v string) {
+	o.MaskAction = v
 }
 
 // GetResultIds returns the ResultIds field value
@@ -162,9 +155,7 @@ func (o ModelScanResultsMaskRequest) MarshalJSON() ([]byte, error) {
 
 func (o ModelScanResultsMaskRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.MaskAcrossHostsAndImages) {
-		toSerialize["mask_across_hosts_and_images"] = o.MaskAcrossHostsAndImages
-	}
+	toSerialize["mask_action"] = o.MaskAction
 	if o.ResultIds != nil {
 		toSerialize["result_ids"] = o.ResultIds
 	}

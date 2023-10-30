@@ -24,8 +24,8 @@ type ModelFilesystemAlertRule struct {
 	Category *string `json:"category,omitempty"`
 	EventType *string `json:"event_type,omitempty"`
 	ResourceType *string `json:"resource_type,omitempty"`
+	RuleId *string `json:"rule_id,omitempty"`
 	Severity *string `json:"severity,omitempty"`
-	SignatureId *int32 `json:"signature_id,omitempty"`
 	Summary *string `json:"summary,omitempty"`
 	Tactics []string `json:"tactics,omitempty"`
 	Techniques []string `json:"techniques,omitempty"`
@@ -177,6 +177,38 @@ func (o *ModelFilesystemAlertRule) SetResourceType(v string) {
 	o.ResourceType = &v
 }
 
+// GetRuleId returns the RuleId field value if set, zero value otherwise.
+func (o *ModelFilesystemAlertRule) GetRuleId() string {
+	if o == nil || IsNil(o.RuleId) {
+		var ret string
+		return ret
+	}
+	return *o.RuleId
+}
+
+// GetRuleIdOk returns a tuple with the RuleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelFilesystemAlertRule) GetRuleIdOk() (*string, bool) {
+	if o == nil || IsNil(o.RuleId) {
+		return nil, false
+	}
+	return o.RuleId, true
+}
+
+// HasRuleId returns a boolean if a field has been set.
+func (o *ModelFilesystemAlertRule) HasRuleId() bool {
+	if o != nil && !IsNil(o.RuleId) {
+		return true
+	}
+
+	return false
+}
+
+// SetRuleId gets a reference to the given string and assigns it to the RuleId field.
+func (o *ModelFilesystemAlertRule) SetRuleId(v string) {
+	o.RuleId = &v
+}
+
 // GetSeverity returns the Severity field value if set, zero value otherwise.
 func (o *ModelFilesystemAlertRule) GetSeverity() string {
 	if o == nil || IsNil(o.Severity) {
@@ -207,38 +239,6 @@ func (o *ModelFilesystemAlertRule) HasSeverity() bool {
 // SetSeverity gets a reference to the given string and assigns it to the Severity field.
 func (o *ModelFilesystemAlertRule) SetSeverity(v string) {
 	o.Severity = &v
-}
-
-// GetSignatureId returns the SignatureId field value if set, zero value otherwise.
-func (o *ModelFilesystemAlertRule) GetSignatureId() int32 {
-	if o == nil || IsNil(o.SignatureId) {
-		var ret int32
-		return ret
-	}
-	return *o.SignatureId
-}
-
-// GetSignatureIdOk returns a tuple with the SignatureId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ModelFilesystemAlertRule) GetSignatureIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.SignatureId) {
-		return nil, false
-	}
-	return o.SignatureId, true
-}
-
-// HasSignatureId returns a boolean if a field has been set.
-func (o *ModelFilesystemAlertRule) HasSignatureId() bool {
-	if o != nil && !IsNil(o.SignatureId) {
-		return true
-	}
-
-	return false
-}
-
-// SetSignatureId gets a reference to the given int32 and assigns it to the SignatureId field.
-func (o *ModelFilesystemAlertRule) SetSignatureId(v int32) {
-	o.SignatureId = &v
 }
 
 // GetSummary returns the Summary field value if set, zero value otherwise.
@@ -393,11 +393,11 @@ func (o ModelFilesystemAlertRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ResourceType) {
 		toSerialize["resource_type"] = o.ResourceType
 	}
+	if !IsNil(o.RuleId) {
+		toSerialize["rule_id"] = o.RuleId
+	}
 	if !IsNil(o.Severity) {
 		toSerialize["severity"] = o.Severity
-	}
-	if !IsNil(o.SignatureId) {
-		toSerialize["signature_id"] = o.SignatureId
 	}
 	if !IsNil(o.Summary) {
 		toSerialize["summary"] = o.Summary

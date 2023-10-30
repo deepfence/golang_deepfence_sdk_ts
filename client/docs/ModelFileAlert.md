@@ -26,9 +26,9 @@ Name | Type | Description | Notes
 **ProcStatus** | **string** |  | 
 **ProcessName** | **string** |  | 
 **ResourceType** | **string** |  | 
+**RuleId** | **string** |  | 
 **Severity** | **string** |  | 
 **SeverityScore** | **float32** |  | 
-**SignatureId** | **int32** |  | 
 **Summary** | **string** |  | 
 **Tactics** | **[]string** |  | 
 **Techniques** | **[]string** |  | 
@@ -41,7 +41,7 @@ Name | Type | Description | Notes
 
 ### NewModelFileAlert
 
-`func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, eventType string, filepath string, fstat string, hostName string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32, ) *ModelFileAlert`
+`func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, eventType string, filepath string, fstat string, hostName string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, ruleId string, severity string, severityScore float32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32, ) *ModelFileAlert`
 
 NewModelFileAlert instantiates a new ModelFileAlert object
 This constructor will assign default values to properties that have it defined,
@@ -496,6 +496,26 @@ and a boolean to check if the value has been set.
 SetResourceType sets ResourceType field to given value.
 
 
+### GetRuleId
+
+`func (o *ModelFileAlert) GetRuleId() string`
+
+GetRuleId returns the RuleId field if non-nil, zero value otherwise.
+
+### GetRuleIdOk
+
+`func (o *ModelFileAlert) GetRuleIdOk() (*string, bool)`
+
+GetRuleIdOk returns a tuple with the RuleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRuleId
+
+`func (o *ModelFileAlert) SetRuleId(v string)`
+
+SetRuleId sets RuleId field to given value.
+
+
 ### GetSeverity
 
 `func (o *ModelFileAlert) GetSeverity() string`
@@ -534,26 +554,6 @@ and a boolean to check if the value has been set.
 `func (o *ModelFileAlert) SetSeverityScore(v float32)`
 
 SetSeverityScore sets SeverityScore field to given value.
-
-
-### GetSignatureId
-
-`func (o *ModelFileAlert) GetSignatureId() int32`
-
-GetSignatureId returns the SignatureId field if non-nil, zero value otherwise.
-
-### GetSignatureIdOk
-
-`func (o *ModelFileAlert) GetSignatureIdOk() (*int32, bool)`
-
-GetSignatureIdOk returns a tuple with the SignatureId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSignatureId
-
-`func (o *ModelFileAlert) SetSignatureId(v int32)`
-
-SetSignatureId sets SignatureId field to given value.
 
 
 ### GetSummary

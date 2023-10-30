@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Matcher** | [**ControlsPolicyAlertMatcher**](ControlsPolicyAlertMatcher.md) |  | 
 **PolicyId** | **string** |  | 
 **UpdatedAt** | **int64** |  | 
+**Uuid** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -170,6 +171,31 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
+
+### GetUuid
+
+`func (o *ControlsNetworkPolicy) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *ControlsNetworkPolicy) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *ControlsNetworkPolicy) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *ControlsNetworkPolicy) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

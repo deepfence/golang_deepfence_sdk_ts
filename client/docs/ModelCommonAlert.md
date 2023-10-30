@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Matched** | **string** |  | 
 **NodeId** | **string** |  | 
 **PodName** | **string** |  | 
+**RuleId** | **string** |  | 
 **Severity** | **string** |  | 
 **Summary** | **string** |  | 
 **Tactics** | **[]string** |  | 
@@ -26,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewModelCommonAlert
 
-`func NewModelCommonAlert(category string, containerName string, count int32, createdAt int32, eventType string, geoip string, hostName string, kubernetesClusterName string, masked bool, matched string, nodeId string, podName string, severity string, summary string, tactics []string, techniques []string, updatedAt int32, ) *ModelCommonAlert`
+`func NewModelCommonAlert(category string, containerName string, count int32, createdAt int32, eventType string, geoip string, hostName string, kubernetesClusterName string, masked bool, matched string, nodeId string, podName string, ruleId string, severity string, summary string, tactics []string, techniques []string, updatedAt int32, ) *ModelCommonAlert`
 
 NewModelCommonAlert instantiates a new ModelCommonAlert object
 This constructor will assign default values to properties that have it defined,
@@ -279,6 +280,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelCommonAlert) SetPodName(v string)`
 
 SetPodName sets PodName field to given value.
+
+
+### GetRuleId
+
+`func (o *ModelCommonAlert) GetRuleId() string`
+
+GetRuleId returns the RuleId field if non-nil, zero value otherwise.
+
+### GetRuleIdOk
+
+`func (o *ModelCommonAlert) GetRuleIdOk() (*string, bool)`
+
+GetRuleIdOk returns a tuple with the RuleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRuleId
+
+`func (o *ModelCommonAlert) SetRuleId(v string)`
+
+SetRuleId sets RuleId field to given value.
 
 
 ### GetSeverity

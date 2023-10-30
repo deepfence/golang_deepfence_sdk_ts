@@ -27,6 +27,7 @@ type ControlsNetworkPolicy struct {
 	Matcher ControlsPolicyAlertMatcher `json:"matcher"`
 	PolicyId string `json:"policy_id"`
 	UpdatedAt int64 `json:"updated_at"`
+	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewControlsNetworkPolicy instantiates a new ControlsNetworkPolicy object
@@ -221,6 +222,38 @@ func (o *ControlsNetworkPolicy) SetUpdatedAt(v int64) {
 	o.UpdatedAt = v
 }
 
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *ControlsNetworkPolicy) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControlsNetworkPolicy) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *ControlsNetworkPolicy) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *ControlsNetworkPolicy) SetUuid(v string) {
+	o.Uuid = &v
+}
+
 func (o ControlsNetworkPolicy) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -238,6 +271,9 @@ func (o ControlsNetworkPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize["matcher"] = o.Matcher
 	toSerialize["policy_id"] = o.PolicyId
 	toSerialize["updated_at"] = o.UpdatedAt
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	return toSerialize, nil
 }
 

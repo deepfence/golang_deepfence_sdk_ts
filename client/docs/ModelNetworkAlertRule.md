@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **RuleId** | **string** |  | 
 **Severity** | **string** |  | 
 **SeverityScore** | **float32** |  | 
-**SignatureId** | **int32** |  | 
 **Summary** | **string** |  | 
 **Tactics** | **[]string** |  | 
 **Techniques** | **[]string** |  | 
@@ -21,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewModelNetworkAlertRule
 
-`func NewModelNetworkAlertRule(category string, description string, masked bool, nodeId string, ruleId string, severity string, severityScore float32, signatureId int32, summary string, tactics []string, techniques []string, updatedAt int32, ) *ModelNetworkAlertRule`
+`func NewModelNetworkAlertRule(category string, description string, masked bool, nodeId string, ruleId string, severity string, severityScore float32, summary string, tactics []string, techniques []string, updatedAt int32, ) *ModelNetworkAlertRule`
 
 NewModelNetworkAlertRule instantiates a new ModelNetworkAlertRule object
 This constructor will assign default values to properties that have it defined,
@@ -174,26 +173,6 @@ and a boolean to check if the value has been set.
 `func (o *ModelNetworkAlertRule) SetSeverityScore(v float32)`
 
 SetSeverityScore sets SeverityScore field to given value.
-
-
-### GetSignatureId
-
-`func (o *ModelNetworkAlertRule) GetSignatureId() int32`
-
-GetSignatureId returns the SignatureId field if non-nil, zero value otherwise.
-
-### GetSignatureIdOk
-
-`func (o *ModelNetworkAlertRule) GetSignatureIdOk() (*int32, bool)`
-
-GetSignatureIdOk returns a tuple with the SignatureId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSignatureId
-
-`func (o *ModelNetworkAlertRule) SetSignatureId(v int32)`
-
-SetSignatureId sets SignatureId field to given value.
 
 
 ### GetSummary

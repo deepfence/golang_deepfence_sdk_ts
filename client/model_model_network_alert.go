@@ -59,7 +59,6 @@ type ModelNetworkAlert struct {
 	RuleId string `json:"rule_id"`
 	Severity string `json:"severity"`
 	SeverityScore float32 `json:"severity_score"`
-	SignatureId int32 `json:"signature_id"`
 	SourceIp string `json:"source_ip"`
 	SourcePort int32 `json:"source_port"`
 	Status interface{} `json:"status"`
@@ -75,7 +74,7 @@ type ModelNetworkAlert struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelNetworkAlert(appProto string, category string, containerName string, count int32, createdAt int32, description string, destinationIp string, destinationPort int32, direction string, encrypted string, eventType string, geoip string, headers string, hostName string, httpContentType interface{}, httpType string, httpUserAgent string, internal string, ipReputation string, kubernetesClusterId string, kubernetesClusterName string, length interface{}, localPort int32, masked bool, matched string, nodeId string, nodeType string, podName string, protocol int32, requestMethod string, requestPath string, requestPayload string, requestPrintablePayload string, resourceType string, responsePayload interface{}, responsePrintablePayload interface{}, ruleId string, severity string, severityScore float32, signatureId int32, sourceIp string, sourcePort int32, status interface{}, summary string, tactics []string, tags string, techniques []string, updatedAt int32, url string) *ModelNetworkAlert {
+func NewModelNetworkAlert(appProto string, category string, containerName string, count int32, createdAt int32, description string, destinationIp string, destinationPort int32, direction string, encrypted string, eventType string, geoip string, headers string, hostName string, httpContentType interface{}, httpType string, httpUserAgent string, internal string, ipReputation string, kubernetesClusterId string, kubernetesClusterName string, length interface{}, localPort int32, masked bool, matched string, nodeId string, nodeType string, podName string, protocol int32, requestMethod string, requestPath string, requestPayload string, requestPrintablePayload string, resourceType string, responsePayload interface{}, responsePrintablePayload interface{}, ruleId string, severity string, severityScore float32, sourceIp string, sourcePort int32, status interface{}, summary string, tactics []string, tags string, techniques []string, updatedAt int32, url string) *ModelNetworkAlert {
 	this := ModelNetworkAlert{}
 	this.AppProto = appProto
 	this.Category = category
@@ -116,7 +115,6 @@ func NewModelNetworkAlert(appProto string, category string, containerName string
 	this.RuleId = ruleId
 	this.Severity = severity
 	this.SeverityScore = severityScore
-	this.SignatureId = signatureId
 	this.SourceIp = sourceIp
 	this.SourcePort = sourcePort
 	this.Status = status
@@ -1081,30 +1079,6 @@ func (o *ModelNetworkAlert) SetSeverityScore(v float32) {
 	o.SeverityScore = v
 }
 
-// GetSignatureId returns the SignatureId field value
-func (o *ModelNetworkAlert) GetSignatureId() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.SignatureId
-}
-
-// GetSignatureIdOk returns a tuple with the SignatureId field value
-// and a boolean to check if the value has been set.
-func (o *ModelNetworkAlert) GetSignatureIdOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SignatureId, true
-}
-
-// SetSignatureId sets field value
-func (o *ModelNetworkAlert) SetSignatureId(v int32) {
-	o.SignatureId = v
-}
-
 // GetSourceIp returns the SourceIp field value
 func (o *ModelNetworkAlert) GetSourceIp() string {
 	if o == nil {
@@ -1384,7 +1358,6 @@ func (o ModelNetworkAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["rule_id"] = o.RuleId
 	toSerialize["severity"] = o.Severity
 	toSerialize["severity_score"] = o.SeverityScore
-	toSerialize["signature_id"] = o.SignatureId
 	toSerialize["source_ip"] = o.SourceIp
 	toSerialize["source_port"] = o.SourcePort
 	if o.Status != nil {

@@ -43,7 +43,6 @@ Name | Type | Description | Notes
 **RuleId** | **string** |  | 
 **Severity** | **string** |  | 
 **SeverityScore** | **float32** |  | 
-**SignatureId** | **int32** |  | 
 **SourceIp** | **string** |  | 
 **SourcePort** | **int32** |  | 
 **Status** | **interface{}** |  | 
@@ -58,7 +57,7 @@ Name | Type | Description | Notes
 
 ### NewModelNetworkAlert
 
-`func NewModelNetworkAlert(appProto string, category string, containerName string, count int32, createdAt int32, description string, destinationIp string, destinationPort int32, direction string, encrypted string, eventType string, geoip string, headers string, hostName string, httpContentType interface{}, httpType string, httpUserAgent string, internal string, ipReputation string, kubernetesClusterId string, kubernetesClusterName string, length interface{}, localPort int32, masked bool, matched string, nodeId string, nodeType string, podName string, protocol int32, requestMethod string, requestPath string, requestPayload string, requestPrintablePayload string, resourceType string, responsePayload interface{}, responsePrintablePayload interface{}, ruleId string, severity string, severityScore float32, signatureId int32, sourceIp string, sourcePort int32, status interface{}, summary string, tactics []string, tags string, techniques []string, updatedAt int32, url string, ) *ModelNetworkAlert`
+`func NewModelNetworkAlert(appProto string, category string, containerName string, count int32, createdAt int32, description string, destinationIp string, destinationPort int32, direction string, encrypted string, eventType string, geoip string, headers string, hostName string, httpContentType interface{}, httpType string, httpUserAgent string, internal string, ipReputation string, kubernetesClusterId string, kubernetesClusterName string, length interface{}, localPort int32, masked bool, matched string, nodeId string, nodeType string, podName string, protocol int32, requestMethod string, requestPath string, requestPayload string, requestPrintablePayload string, resourceType string, responsePayload interface{}, responsePrintablePayload interface{}, ruleId string, severity string, severityScore float32, sourceIp string, sourcePort int32, status interface{}, summary string, tactics []string, tags string, techniques []string, updatedAt int32, url string, ) *ModelNetworkAlert`
 
 NewModelNetworkAlert instantiates a new ModelNetworkAlert object
 This constructor will assign default values to properties that have it defined,
@@ -891,26 +890,6 @@ and a boolean to check if the value has been set.
 `func (o *ModelNetworkAlert) SetSeverityScore(v float32)`
 
 SetSeverityScore sets SeverityScore field to given value.
-
-
-### GetSignatureId
-
-`func (o *ModelNetworkAlert) GetSignatureId() int32`
-
-GetSignatureId returns the SignatureId field if non-nil, zero value otherwise.
-
-### GetSignatureIdOk
-
-`func (o *ModelNetworkAlert) GetSignatureIdOk() (*int32, bool)`
-
-GetSignatureIdOk returns a tuple with the SignatureId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSignatureId
-
-`func (o *ModelNetworkAlert) SetSignatureId(v int32)`
-
-SetSignatureId sets SignatureId field to given value.
 
 
 ### GetSourceIp

@@ -38,7 +38,7 @@ Default configuration comes with `Servers` field that contains server objects as
 
 ### Select Server Configuration
 
-For using other server than the one defined on index 0 set context value `sw.ContextServerIndex` of type `int`.
+For using other server than the one defined on index 0 set context value `client.ContextServerIndex` of type `int`.
 
 ```golang
 ctx := context.WithValue(context.Background(), client.ContextServerIndex, 1)
@@ -46,7 +46,7 @@ ctx := context.WithValue(context.Background(), client.ContextServerIndex, 1)
 
 ### Templated Server URL
 
-Templated server URL is formatted using default variables from configuration or from context value `sw.ContextServerVariables` of type `map[string]string`.
+Templated server URL is formatted using default variables from configuration or from context value `client.ContextServerVariables` of type `map[string]string`.
 
 ```golang
 ctx := context.WithValue(context.Background(), client.ContextServerVariables, map[string]string{
@@ -60,7 +60,7 @@ Note, enum values are always validated and all unused variables are silently ign
 
 Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
-Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
+Similar rules for overriding default operation server index and variables applies by using `client.ContextOperationServerIndices` and `client.ContextOperationServerVariables` context maps.
 
 ```golang
 ctx := context.WithValue(context.Background(), client.ContextOperationServerIndices, map[string]int{
@@ -87,6 +87,10 @@ Class | Method | HTTP request | Description
 *AgentConfigAPI* | [**AttachAgentNetworkConfig**](docs/AgentConfigAPI.md#attachagentnetworkconfig) | **Post** /deepfence/configs/agent/network/attach | Attach Agent Network config
 *AgentConfigAPI* | [**AttachAgentPolicyConfig**](docs/AgentConfigAPI.md#attachagentpolicyconfig) | **Post** /deepfence/configs/agent/policy/attach | Attach Agent Policy config
 *AgentConfigAPI* | [**AttachAgentQuarantineConfig**](docs/AgentConfigAPI.md#attachagentquarantineconfig) | **Post** /deepfence/configs/agent/quarantine/attach | Attach Agent Quarantine config
+*AgentConfigAPI* | [**DeleteAgentFilesystemConfig**](docs/AgentConfigAPI.md#deleteagentfilesystemconfig) | **Delete** /deepfence/configs/agent/filemon/{config_id} | Delete Agent Filesystem config
+*AgentConfigAPI* | [**DeleteAgentNetworkConfig**](docs/AgentConfigAPI.md#deleteagentnetworkconfig) | **Delete** /deepfence/configs/agent/network/{config_id} | Delete Agent Network config
+*AgentConfigAPI* | [**DeleteAgentPolicyConfig**](docs/AgentConfigAPI.md#deleteagentpolicyconfig) | **Delete** /deepfence/configs/agent/policy/{config_id} | Delete Agent Policy config
+*AgentConfigAPI* | [**DeleteAgentQuarantineConfig**](docs/AgentConfigAPI.md#deleteagentquarantineconfig) | **Delete** /deepfence/configs/agent/quarantine/{config_id} | Delete Agent Quarantine config
 *AgentConfigAPI* | [**ExportAgentPolicyConfig**](docs/AgentConfigAPI.md#exportagentpolicyconfig) | **Get** /deepfence/configs/agent/policy/export/{config_id} | Export Agent Policy config
 *AgentConfigAPI* | [**ExportAgentQuarantineConfig**](docs/AgentConfigAPI.md#exportagentquarantineconfig) | **Get** /deepfence/configs/agent/quarantine/export/{config_id} | Export Agent Quarantine config
 *AgentConfigAPI* | [**GetAgentFilesystemConfig**](docs/AgentConfigAPI.md#getagentfilesystemconfig) | **Post** /deepfence/configs/agent/filemon/list | Get Agent Filesystem config
@@ -158,9 +162,11 @@ Class | Method | HTTP request | Description
 *ControlsAPI* | [**UpgradeAgentVersion**](docs/ControlsAPI.md#upgradeagentversion) | **Post** /deepfence/controls/agent-upgrade | Schedule new agent version upgrade
 *DiagnosisAPI* | [**DiagnosticNotification**](docs/DiagnosisAPI.md#diagnosticnotification) | **Get** /deepfence/diagnosis/notification | Get Diagnostic Notification
 *DiagnosisAPI* | [**GenerateAgentDiagnosticLogs**](docs/DiagnosisAPI.md#generateagentdiagnosticlogs) | **Post** /deepfence/diagnosis/agent-logs | Generate Agent Diagnostic Logs
+*DiagnosisAPI* | [**GenerateCloudScannerDiagnosticLogs**](docs/DiagnosisAPI.md#generatecloudscannerdiagnosticlogs) | **Post** /deepfence/diagnosis/cloud-scanner-logs | Generate Cloud Scanner Diagnostic Logs
 *DiagnosisAPI* | [**GenerateConsoleDiagnosticLogs**](docs/DiagnosisAPI.md#generateconsolediagnosticlogs) | **Post** /deepfence/diagnosis/console-logs | Generate Console Diagnostic Logs
 *DiagnosisAPI* | [**GetDiagnosticLogs**](docs/DiagnosisAPI.md#getdiagnosticlogs) | **Get** /deepfence/diagnosis/diagnostic-logs | Get Diagnostic Logs
 *DiagnosisAPI* | [**UpdateAgentDiagnosticLogsStatus**](docs/DiagnosisAPI.md#updateagentdiagnosticlogsstatus) | **Put** /deepfence/diagnosis/agent-logs/status/{node_id} | Update Agent Diagnostic Logs Status
+*DiagnosisAPI* | [**UpdateCloudScannerDiagnosticLogsStatus**](docs/DiagnosisAPI.md#updatecloudscannerdiagnosticlogsstatus) | **Put** /deepfence/diagnosis/cloud-scanner-logs/status/{node_id} | Update Cloud Scanner Diagnostic Logs Status
 *DiffAddAPI* | [**DiffAddCloudCompliance**](docs/DiffAddAPI.md#diffaddcloudcompliance) | **Post** /deepfence/diff-add/cloud-compliance | Get Cloud Compliance Diff
 *DiffAddAPI* | [**DiffAddCompliance**](docs/DiffAddAPI.md#diffaddcompliance) | **Post** /deepfence/diff-add/compliance | Get Compliance Diff
 *DiffAddAPI* | [**DiffAddMalware**](docs/DiffAddAPI.md#diffaddmalware) | **Post** /deepfence/diff-add/malware | Get Malware Diff
@@ -381,6 +387,7 @@ Class | Method | HTTP request | Description
  - [DiagnosisDiagnosticLogsStatus](docs/DiagnosisDiagnosticLogsStatus.md)
  - [DiagnosisDiagnosticNotification](docs/DiagnosisDiagnosticNotification.md)
  - [DiagnosisGenerateAgentDiagnosticLogsRequest](docs/DiagnosisGenerateAgentDiagnosticLogsRequest.md)
+ - [DiagnosisGenerateCloudScannerDiagnosticLogsRequest](docs/DiagnosisGenerateCloudScannerDiagnosticLogsRequest.md)
  - [DiagnosisGenerateConsoleDiagnosticLogsRequest](docs/DiagnosisGenerateConsoleDiagnosticLogsRequest.md)
  - [DiagnosisGetDiagnosticLogsResponse](docs/DiagnosisGetDiagnosticLogsResponse.md)
  - [DiagnosisNodeIdentifier](docs/DiagnosisNodeIdentifier.md)
@@ -608,7 +615,7 @@ Authentication schemes defined for the API:
 Example
 
 ```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
+auth := context.WithValue(context.Background(), client.ContextAccessToken, "BEARER_TOKEN_STRING")
 r, err := client.Service.Operation(auth, args)
 ```
 

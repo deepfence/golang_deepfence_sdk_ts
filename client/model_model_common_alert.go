@@ -32,6 +32,7 @@ type ModelCommonAlert struct {
 	Matched string `json:"matched"`
 	NodeId string `json:"node_id"`
 	PodName string `json:"pod_name"`
+	RuleId string `json:"rule_id"`
 	Severity string `json:"severity"`
 	Summary string `json:"summary"`
 	Tactics []string `json:"tactics"`
@@ -43,7 +44,7 @@ type ModelCommonAlert struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelCommonAlert(category string, containerName string, count int32, createdAt int32, eventType string, geoip string, hostName string, kubernetesClusterName string, masked bool, matched string, nodeId string, podName string, severity string, summary string, tactics []string, techniques []string, updatedAt int32) *ModelCommonAlert {
+func NewModelCommonAlert(category string, containerName string, count int32, createdAt int32, eventType string, geoip string, hostName string, kubernetesClusterName string, masked bool, matched string, nodeId string, podName string, ruleId string, severity string, summary string, tactics []string, techniques []string, updatedAt int32) *ModelCommonAlert {
 	this := ModelCommonAlert{}
 	this.Category = category
 	this.ContainerName = containerName
@@ -57,6 +58,7 @@ func NewModelCommonAlert(category string, containerName string, count int32, cre
 	this.Matched = matched
 	this.NodeId = nodeId
 	this.PodName = podName
+	this.RuleId = ruleId
 	this.Severity = severity
 	this.Summary = summary
 	this.Tactics = tactics
@@ -361,6 +363,30 @@ func (o *ModelCommonAlert) SetPodName(v string) {
 	o.PodName = v
 }
 
+// GetRuleId returns the RuleId field value
+func (o *ModelCommonAlert) GetRuleId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.RuleId
+}
+
+// GetRuleIdOk returns a tuple with the RuleId field value
+// and a boolean to check if the value has been set.
+func (o *ModelCommonAlert) GetRuleIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RuleId, true
+}
+
+// SetRuleId sets field value
+func (o *ModelCommonAlert) SetRuleId(v string) {
+	o.RuleId = v
+}
+
 // GetSeverity returns the Severity field value
 func (o *ModelCommonAlert) GetSeverity() string {
 	if o == nil {
@@ -507,6 +533,7 @@ func (o ModelCommonAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["matched"] = o.Matched
 	toSerialize["node_id"] = o.NodeId
 	toSerialize["pod_name"] = o.PodName
+	toSerialize["rule_id"] = o.RuleId
 	toSerialize["severity"] = o.Severity
 	toSerialize["summary"] = o.Summary
 	if o.Tactics != nil {
