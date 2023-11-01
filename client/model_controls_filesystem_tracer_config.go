@@ -20,22 +20,20 @@ var _ MappedNullable = &ControlsFilesystemTracerConfig{}
 
 // ControlsFilesystemTracerConfig struct for ControlsFilesystemTracerConfig
 type ControlsFilesystemTracerConfig struct {
-	MonitoredFiles []ControlsMonitoredFilesConfig `json:"monitored_files"`
 	NodeId string `json:"node_id"`
-	ProcessEvents []ControlsProcessEventConfig `json:"process_events"`
 	UpdatedAt int32 `json:"updated_at"`
+	Watchedentries []ControlsMonitoredFilesConfig `json:"watchedentries"`
 }
 
 // NewControlsFilesystemTracerConfig instantiates a new ControlsFilesystemTracerConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsFilesystemTracerConfig(monitoredFiles []ControlsMonitoredFilesConfig, nodeId string, processEvents []ControlsProcessEventConfig, updatedAt int32) *ControlsFilesystemTracerConfig {
+func NewControlsFilesystemTracerConfig(nodeId string, updatedAt int32, watchedentries []ControlsMonitoredFilesConfig) *ControlsFilesystemTracerConfig {
 	this := ControlsFilesystemTracerConfig{}
-	this.MonitoredFiles = monitoredFiles
 	this.NodeId = nodeId
-	this.ProcessEvents = processEvents
 	this.UpdatedAt = updatedAt
+	this.Watchedentries = watchedentries
 	return &this
 }
 
@@ -45,32 +43,6 @@ func NewControlsFilesystemTracerConfig(monitoredFiles []ControlsMonitoredFilesCo
 func NewControlsFilesystemTracerConfigWithDefaults() *ControlsFilesystemTracerConfig {
 	this := ControlsFilesystemTracerConfig{}
 	return &this
-}
-
-// GetMonitoredFiles returns the MonitoredFiles field value
-// If the value is explicit nil, the zero value for []ControlsMonitoredFilesConfig will be returned
-func (o *ControlsFilesystemTracerConfig) GetMonitoredFiles() []ControlsMonitoredFilesConfig {
-	if o == nil {
-		var ret []ControlsMonitoredFilesConfig
-		return ret
-	}
-
-	return o.MonitoredFiles
-}
-
-// GetMonitoredFilesOk returns a tuple with the MonitoredFiles field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ControlsFilesystemTracerConfig) GetMonitoredFilesOk() ([]ControlsMonitoredFilesConfig, bool) {
-	if o == nil || IsNil(o.MonitoredFiles) {
-		return nil, false
-	}
-	return o.MonitoredFiles, true
-}
-
-// SetMonitoredFiles sets field value
-func (o *ControlsFilesystemTracerConfig) SetMonitoredFiles(v []ControlsMonitoredFilesConfig) {
-	o.MonitoredFiles = v
 }
 
 // GetNodeId returns the NodeId field value
@@ -97,32 +69,6 @@ func (o *ControlsFilesystemTracerConfig) SetNodeId(v string) {
 	o.NodeId = v
 }
 
-// GetProcessEvents returns the ProcessEvents field value
-// If the value is explicit nil, the zero value for []ControlsProcessEventConfig will be returned
-func (o *ControlsFilesystemTracerConfig) GetProcessEvents() []ControlsProcessEventConfig {
-	if o == nil {
-		var ret []ControlsProcessEventConfig
-		return ret
-	}
-
-	return o.ProcessEvents
-}
-
-// GetProcessEventsOk returns a tuple with the ProcessEvents field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ControlsFilesystemTracerConfig) GetProcessEventsOk() ([]ControlsProcessEventConfig, bool) {
-	if o == nil || IsNil(o.ProcessEvents) {
-		return nil, false
-	}
-	return o.ProcessEvents, true
-}
-
-// SetProcessEvents sets field value
-func (o *ControlsFilesystemTracerConfig) SetProcessEvents(v []ControlsProcessEventConfig) {
-	o.ProcessEvents = v
-}
-
 // GetUpdatedAt returns the UpdatedAt field value
 func (o *ControlsFilesystemTracerConfig) GetUpdatedAt() int32 {
 	if o == nil {
@@ -147,6 +93,32 @@ func (o *ControlsFilesystemTracerConfig) SetUpdatedAt(v int32) {
 	o.UpdatedAt = v
 }
 
+// GetWatchedentries returns the Watchedentries field value
+// If the value is explicit nil, the zero value for []ControlsMonitoredFilesConfig will be returned
+func (o *ControlsFilesystemTracerConfig) GetWatchedentries() []ControlsMonitoredFilesConfig {
+	if o == nil {
+		var ret []ControlsMonitoredFilesConfig
+		return ret
+	}
+
+	return o.Watchedentries
+}
+
+// GetWatchedentriesOk returns a tuple with the Watchedentries field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ControlsFilesystemTracerConfig) GetWatchedentriesOk() ([]ControlsMonitoredFilesConfig, bool) {
+	if o == nil || IsNil(o.Watchedentries) {
+		return nil, false
+	}
+	return o.Watchedentries, true
+}
+
+// SetWatchedentries sets field value
+func (o *ControlsFilesystemTracerConfig) SetWatchedentries(v []ControlsMonitoredFilesConfig) {
+	o.Watchedentries = v
+}
+
 func (o ControlsFilesystemTracerConfig) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -157,14 +129,11 @@ func (o ControlsFilesystemTracerConfig) MarshalJSON() ([]byte, error) {
 
 func (o ControlsFilesystemTracerConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MonitoredFiles != nil {
-		toSerialize["monitored_files"] = o.MonitoredFiles
-	}
 	toSerialize["node_id"] = o.NodeId
-	if o.ProcessEvents != nil {
-		toSerialize["process_events"] = o.ProcessEvents
-	}
 	toSerialize["updated_at"] = o.UpdatedAt
+	if o.Watchedentries != nil {
+		toSerialize["watchedentries"] = o.Watchedentries
+	}
 	return toSerialize, nil
 }
 

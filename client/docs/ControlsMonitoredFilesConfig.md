@@ -4,15 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessTypes** | **[]string** |  | 
-**Path** | **string** |  | 
-**Weight** | **string** |  | 
+**Accesstypes** | **[]string** |  | 
+**Recursive** | **bool** |  | 
+**Root** | **string** |  | 
+**Severity** | **string** |  | 
 
 ## Methods
 
 ### NewControlsMonitoredFilesConfig
 
-`func NewControlsMonitoredFilesConfig(accessTypes []string, path string, weight string, ) *ControlsMonitoredFilesConfig`
+`func NewControlsMonitoredFilesConfig(accesstypes []string, recursive bool, root string, severity string, ) *ControlsMonitoredFilesConfig`
 
 NewControlsMonitoredFilesConfig instantiates a new ControlsMonitoredFilesConfig object
 This constructor will assign default values to properties that have it defined,
@@ -27,74 +28,94 @@ NewControlsMonitoredFilesConfigWithDefaults instantiates a new ControlsMonitored
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAccessTypes
+### GetAccesstypes
 
-`func (o *ControlsMonitoredFilesConfig) GetAccessTypes() []string`
+`func (o *ControlsMonitoredFilesConfig) GetAccesstypes() []string`
 
-GetAccessTypes returns the AccessTypes field if non-nil, zero value otherwise.
+GetAccesstypes returns the Accesstypes field if non-nil, zero value otherwise.
 
-### GetAccessTypesOk
+### GetAccesstypesOk
 
-`func (o *ControlsMonitoredFilesConfig) GetAccessTypesOk() (*[]string, bool)`
+`func (o *ControlsMonitoredFilesConfig) GetAccesstypesOk() (*[]string, bool)`
 
-GetAccessTypesOk returns a tuple with the AccessTypes field if it's non-nil, zero value otherwise
+GetAccesstypesOk returns a tuple with the Accesstypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccessTypes
+### SetAccesstypes
 
-`func (o *ControlsMonitoredFilesConfig) SetAccessTypes(v []string)`
+`func (o *ControlsMonitoredFilesConfig) SetAccesstypes(v []string)`
 
-SetAccessTypes sets AccessTypes field to given value.
+SetAccesstypes sets Accesstypes field to given value.
 
 
-### SetAccessTypesNil
+### SetAccesstypesNil
 
-`func (o *ControlsMonitoredFilesConfig) SetAccessTypesNil(b bool)`
+`func (o *ControlsMonitoredFilesConfig) SetAccesstypesNil(b bool)`
 
- SetAccessTypesNil sets the value for AccessTypes to be an explicit nil
+ SetAccesstypesNil sets the value for Accesstypes to be an explicit nil
 
-### UnsetAccessTypes
-`func (o *ControlsMonitoredFilesConfig) UnsetAccessTypes()`
+### UnsetAccesstypes
+`func (o *ControlsMonitoredFilesConfig) UnsetAccesstypes()`
 
-UnsetAccessTypes ensures that no value is present for AccessTypes, not even an explicit nil
-### GetPath
+UnsetAccesstypes ensures that no value is present for Accesstypes, not even an explicit nil
+### GetRecursive
 
-`func (o *ControlsMonitoredFilesConfig) GetPath() string`
+`func (o *ControlsMonitoredFilesConfig) GetRecursive() bool`
 
-GetPath returns the Path field if non-nil, zero value otherwise.
+GetRecursive returns the Recursive field if non-nil, zero value otherwise.
 
-### GetPathOk
+### GetRecursiveOk
 
-`func (o *ControlsMonitoredFilesConfig) GetPathOk() (*string, bool)`
+`func (o *ControlsMonitoredFilesConfig) GetRecursiveOk() (*bool, bool)`
 
-GetPathOk returns a tuple with the Path field if it's non-nil, zero value otherwise
+GetRecursiveOk returns a tuple with the Recursive field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPath
+### SetRecursive
 
-`func (o *ControlsMonitoredFilesConfig) SetPath(v string)`
+`func (o *ControlsMonitoredFilesConfig) SetRecursive(v bool)`
 
-SetPath sets Path field to given value.
+SetRecursive sets Recursive field to given value.
 
 
-### GetWeight
+### GetRoot
 
-`func (o *ControlsMonitoredFilesConfig) GetWeight() string`
+`func (o *ControlsMonitoredFilesConfig) GetRoot() string`
 
-GetWeight returns the Weight field if non-nil, zero value otherwise.
+GetRoot returns the Root field if non-nil, zero value otherwise.
 
-### GetWeightOk
+### GetRootOk
 
-`func (o *ControlsMonitoredFilesConfig) GetWeightOk() (*string, bool)`
+`func (o *ControlsMonitoredFilesConfig) GetRootOk() (*string, bool)`
 
-GetWeightOk returns a tuple with the Weight field if it's non-nil, zero value otherwise
+GetRootOk returns a tuple with the Root field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWeight
+### SetRoot
 
-`func (o *ControlsMonitoredFilesConfig) SetWeight(v string)`
+`func (o *ControlsMonitoredFilesConfig) SetRoot(v string)`
 
-SetWeight sets Weight field to given value.
+SetRoot sets Root field to given value.
+
+
+### GetSeverity
+
+`func (o *ControlsMonitoredFilesConfig) GetSeverity() string`
+
+GetSeverity returns the Severity field if non-nil, zero value otherwise.
+
+### GetSeverityOk
+
+`func (o *ControlsMonitoredFilesConfig) GetSeverityOk() (*string, bool)`
+
+GetSeverityOk returns a tuple with the Severity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSeverity
+
+`func (o *ControlsMonitoredFilesConfig) SetSeverity(v string)`
+
+SetSeverity sets Severity field to given value.
 
 
 

@@ -12025,66 +12025,61 @@ components:
       type: object
     ControlsFilesystemTracerConfig:
       example:
-        monitored_files:
-        - path: path
-          weight: weight
-          access_types:
-          - access_types
-          - access_types
-        - path: path
-          weight: weight
-          access_types:
-          - access_types
-          - access_types
         updated_at: 0
-        process_events:
-        - event_name: event_name
-          weight: weight
-        - event_name: event_name
-          weight: weight
+        watchedentries:
+        - severity: severity
+          accesstypes:
+          - accesstypes
+          - accesstypes
+          root: root
+          recursive: true
+        - severity: severity
+          accesstypes:
+          - accesstypes
+          - accesstypes
+          root: root
+          recursive: true
         node_id: node_id
       properties:
-        monitored_files:
+        node_id:
+          type: string
+        updated_at:
+          type: integer
+        watchedentries:
           items:
             $ref: '#/components/schemas/ControlsMonitoredFilesConfig'
           nullable: true
           type: array
-        node_id:
-          type: string
-        process_events:
-          items:
-            $ref: '#/components/schemas/ControlsProcessEventConfig'
-          nullable: true
-          type: array
-        updated_at:
-          type: integer
       required:
-      - monitored_files
       - node_id
-      - process_events
       - updated_at
+      - watchedentries
       type: object
     ControlsMonitoredFilesConfig:
       example:
-        path: path
-        weight: weight
-        access_types:
-        - access_types
-        - access_types
+        severity: severity
+        accesstypes:
+        - accesstypes
+        - accesstypes
+        root: root
+        recursive: true
       properties:
-        access_types:
+        accesstypes:
           items:
             type: string
           nullable: true
           type: array
-        path:
+        recursive:
+          type: boolean
+        root:
           type: string
-        weight:
+        severity:
           type: string
       required:
-      - access_types
-      - path
-      - weight
+      - accesstypes
+      - recursive
+      - root
+      - severity
       type: object
     ControlsNetworkPolicy:
       example:
@@ -12294,19 +12289,6 @@ components:
       - policies
       - updated_at
       - use_waf
-      type: object
-    ControlsProcessEventConfig:
-      example:
-        event_name: event_name
-        weight: weight
-      properties:
-        event_name:
-          type: string
-        weight:
-          type: string
-      required:
-      - event_name
-      - weight
       type: object
     ControlsQuarantineConfig:
       example:
@@ -14262,6 +14244,7 @@ components:
           - Alert
           - NetworkPolicyLogs
           - QuarantinePolicyLogs
+          - WorkloadPolicyLogs
           type: string
       required:
       - filters
@@ -14988,6 +14971,7 @@ components:
         pod_name: pod_name
         rule_id: rule_id
         event_type: event_type
+        node_type: node_type
         container_name: container_name
         updated_at: 1
         techniques:
@@ -15023,6 +15007,8 @@ components:
           type: string
         node_id:
           type: string
+        node_type:
+          type: string
         pod_name:
           type: string
         rule_id:
@@ -15055,6 +15041,7 @@ components:
       - masked
       - matched
       - node_id
+      - node_type
       - pod_name
       - rule_id
       - severity
@@ -16272,6 +16259,7 @@ components:
         filters:
           include_dead_nodes: true
           node_type: host
+          most_exploitable_report: true
           advanced_report_filters:
             image_name:
             - image_name
@@ -24378,6 +24366,7 @@ components:
       example:
         include_dead_nodes: true
         node_type: host
+        most_exploitable_report: true
         advanced_report_filters:
           image_name:
           - image_name
@@ -24412,6 +24401,8 @@ components:
         advanced_report_filters:
           $ref: '#/components/schemas/UtilsAdvancedReportFilters'
         include_dead_nodes:
+          type: boolean
+        most_exploitable_report:
           type: boolean
         node_type:
           enum:

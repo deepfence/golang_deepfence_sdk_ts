@@ -31,6 +31,7 @@ type ModelCommonAlert struct {
 	Masked bool `json:"masked"`
 	Matched string `json:"matched"`
 	NodeId string `json:"node_id"`
+	NodeType string `json:"node_type"`
 	PodName string `json:"pod_name"`
 	RuleId string `json:"rule_id"`
 	Severity string `json:"severity"`
@@ -44,7 +45,7 @@ type ModelCommonAlert struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelCommonAlert(category string, containerName string, count int32, createdAt int32, eventType string, geoip string, hostName string, kubernetesClusterName string, masked bool, matched string, nodeId string, podName string, ruleId string, severity string, summary string, tactics []string, techniques []string, updatedAt int32) *ModelCommonAlert {
+func NewModelCommonAlert(category string, containerName string, count int32, createdAt int32, eventType string, geoip string, hostName string, kubernetesClusterName string, masked bool, matched string, nodeId string, nodeType string, podName string, ruleId string, severity string, summary string, tactics []string, techniques []string, updatedAt int32) *ModelCommonAlert {
 	this := ModelCommonAlert{}
 	this.Category = category
 	this.ContainerName = containerName
@@ -57,6 +58,7 @@ func NewModelCommonAlert(category string, containerName string, count int32, cre
 	this.Masked = masked
 	this.Matched = matched
 	this.NodeId = nodeId
+	this.NodeType = nodeType
 	this.PodName = podName
 	this.RuleId = ruleId
 	this.Severity = severity
@@ -339,6 +341,30 @@ func (o *ModelCommonAlert) SetNodeId(v string) {
 	o.NodeId = v
 }
 
+// GetNodeType returns the NodeType field value
+func (o *ModelCommonAlert) GetNodeType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.NodeType
+}
+
+// GetNodeTypeOk returns a tuple with the NodeType field value
+// and a boolean to check if the value has been set.
+func (o *ModelCommonAlert) GetNodeTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.NodeType, true
+}
+
+// SetNodeType sets field value
+func (o *ModelCommonAlert) SetNodeType(v string) {
+	o.NodeType = v
+}
+
 // GetPodName returns the PodName field value
 func (o *ModelCommonAlert) GetPodName() string {
 	if o == nil {
@@ -532,6 +558,7 @@ func (o ModelCommonAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["masked"] = o.Masked
 	toSerialize["matched"] = o.Matched
 	toSerialize["node_id"] = o.NodeId
+	toSerialize["node_type"] = o.NodeType
 	toSerialize["pod_name"] = o.PodName
 	toSerialize["rule_id"] = o.RuleId
 	toSerialize["severity"] = o.Severity

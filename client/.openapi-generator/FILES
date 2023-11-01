@@ -59,7 +59,6 @@ docs/ControlsNetworkRules.md
 docs/ControlsNetworkTracerConfig.md
 docs/ControlsPolicyAlertMatcher.md
 docs/ControlsPolicyFilterConfig.md
-docs/ControlsProcessEventConfig.md
 docs/ControlsQuarantineConfig.md
 docs/ControlsRuncPolicy.md
 docs/ControlsThreatIntelInfo.md
@@ -318,7 +317,6 @@ model_controls_network_rules.go
 model_controls_network_tracer_config.go
 model_controls_policy_alert_matcher.go
 model_controls_policy_filter_config.go
-model_controls_process_event_config.go
 model_controls_quarantine_config.go
 model_controls_runc_policy.go
 model_controls_threat_intel_info.go

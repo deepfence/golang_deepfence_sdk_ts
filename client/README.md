@@ -377,7 +377,6 @@ Class | Method | HTTP request | Description
  - [ControlsNetworkTracerConfig](docs/ControlsNetworkTracerConfig.md)
  - [ControlsPolicyAlertMatcher](docs/ControlsPolicyAlertMatcher.md)
  - [ControlsPolicyFilterConfig](docs/ControlsPolicyFilterConfig.md)
- - [ControlsProcessEventConfig](docs/ControlsProcessEventConfig.md)
  - [ControlsQuarantineConfig](docs/ControlsQuarantineConfig.md)
  - [ControlsRuncPolicy](docs/ControlsRuncPolicy.md)
  - [ControlsThreatIntelInfo](docs/ControlsThreatIntelInfo.md)

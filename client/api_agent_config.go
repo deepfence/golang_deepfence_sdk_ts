@@ -2755,8 +2755,6 @@ func (a *AgentConfigAPIService) ImportAgentPolicyConfigExecute(r ApiImportAgentP
 	var networkPolicyJsonLocalVarFileBytes    []byte
 
 	networkPolicyJsonLocalVarFormFileName = "network_policy_json"
-
-
 	networkPolicyJsonLocalVarFile := r.networkPolicyJson
 
 	if networkPolicyJsonLocalVarFile != nil {
@@ -2922,8 +2920,6 @@ func (a *AgentConfigAPIService) ImportAgentQuarantineConfigExecute(r ApiImportAg
 	var quarantinePolicyJsonLocalVarFileBytes    []byte
 
 	quarantinePolicyJsonLocalVarFormFileName = "quarantine_policy_json"
-
-
 	quarantinePolicyJsonLocalVarFile := r.quarantinePolicyJson
 
 	if quarantinePolicyJsonLocalVarFile != nil {

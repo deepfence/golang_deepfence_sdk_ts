@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Masked** | **bool** |  | 
 **Matched** | **string** |  | 
 **NodeId** | **string** |  | 
+**NodeType** | **string** |  | 
 **PodName** | **string** |  | 
 **RuleId** | **string** |  | 
 **Severity** | **string** |  | 
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewModelCommonAlert
 
-`func NewModelCommonAlert(category string, containerName string, count int32, createdAt int32, eventType string, geoip string, hostName string, kubernetesClusterName string, masked bool, matched string, nodeId string, podName string, ruleId string, severity string, summary string, tactics []string, techniques []string, updatedAt int32, ) *ModelCommonAlert`
+`func NewModelCommonAlert(category string, containerName string, count int32, createdAt int32, eventType string, geoip string, hostName string, kubernetesClusterName string, masked bool, matched string, nodeId string, nodeType string, podName string, ruleId string, severity string, summary string, tactics []string, techniques []string, updatedAt int32, ) *ModelCommonAlert`
 
 NewModelCommonAlert instantiates a new ModelCommonAlert object
 This constructor will assign default values to properties that have it defined,
@@ -260,6 +261,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelCommonAlert) SetNodeId(v string)`
 
 SetNodeId sets NodeId field to given value.
+
+
+### GetNodeType
+
+`func (o *ModelCommonAlert) GetNodeType() string`
+
+GetNodeType returns the NodeType field if non-nil, zero value otherwise.
+
+### GetNodeTypeOk
+
+`func (o *ModelCommonAlert) GetNodeTypeOk() (*string, bool)`
+
+GetNodeTypeOk returns a tuple with the NodeType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNodeType
+
+`func (o *ModelCommonAlert) SetNodeType(v string)`
+
+SetNodeType sets NodeType field to given value.
 
 
 ### GetPodName

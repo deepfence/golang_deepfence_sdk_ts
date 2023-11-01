@@ -20,20 +20,22 @@ var _ MappedNullable = &ControlsMonitoredFilesConfig{}
 
 // ControlsMonitoredFilesConfig struct for ControlsMonitoredFilesConfig
 type ControlsMonitoredFilesConfig struct {
-	AccessTypes []string `json:"access_types"`
-	Path string `json:"path"`
-	Weight string `json:"weight"`
+	Accesstypes []string `json:"accesstypes"`
+	Recursive bool `json:"recursive"`
+	Root string `json:"root"`
+	Severity string `json:"severity"`
 }
 
 // NewControlsMonitoredFilesConfig instantiates a new ControlsMonitoredFilesConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsMonitoredFilesConfig(accessTypes []string, path string, weight string) *ControlsMonitoredFilesConfig {
+func NewControlsMonitoredFilesConfig(accesstypes []string, recursive bool, root string, severity string) *ControlsMonitoredFilesConfig {
 	this := ControlsMonitoredFilesConfig{}
-	this.AccessTypes = accessTypes
-	this.Path = path
-	this.Weight = weight
+	this.Accesstypes = accesstypes
+	this.Recursive = recursive
+	this.Root = root
+	this.Severity = severity
 	return &this
 }
 
@@ -45,78 +47,102 @@ func NewControlsMonitoredFilesConfigWithDefaults() *ControlsMonitoredFilesConfig
 	return &this
 }
 
-// GetAccessTypes returns the AccessTypes field value
+// GetAccesstypes returns the Accesstypes field value
 // If the value is explicit nil, the zero value for []string will be returned
-func (o *ControlsMonitoredFilesConfig) GetAccessTypes() []string {
+func (o *ControlsMonitoredFilesConfig) GetAccesstypes() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
 
-	return o.AccessTypes
+	return o.Accesstypes
 }
 
-// GetAccessTypesOk returns a tuple with the AccessTypes field value
+// GetAccesstypesOk returns a tuple with the Accesstypes field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ControlsMonitoredFilesConfig) GetAccessTypesOk() ([]string, bool) {
-	if o == nil || IsNil(o.AccessTypes) {
+func (o *ControlsMonitoredFilesConfig) GetAccesstypesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Accesstypes) {
 		return nil, false
 	}
-	return o.AccessTypes, true
+	return o.Accesstypes, true
 }
 
-// SetAccessTypes sets field value
-func (o *ControlsMonitoredFilesConfig) SetAccessTypes(v []string) {
-	o.AccessTypes = v
+// SetAccesstypes sets field value
+func (o *ControlsMonitoredFilesConfig) SetAccesstypes(v []string) {
+	o.Accesstypes = v
 }
 
-// GetPath returns the Path field value
-func (o *ControlsMonitoredFilesConfig) GetPath() string {
+// GetRecursive returns the Recursive field value
+func (o *ControlsMonitoredFilesConfig) GetRecursive() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Recursive
+}
+
+// GetRecursiveOk returns a tuple with the Recursive field value
+// and a boolean to check if the value has been set.
+func (o *ControlsMonitoredFilesConfig) GetRecursiveOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Recursive, true
+}
+
+// SetRecursive sets field value
+func (o *ControlsMonitoredFilesConfig) SetRecursive(v bool) {
+	o.Recursive = v
+}
+
+// GetRoot returns the Root field value
+func (o *ControlsMonitoredFilesConfig) GetRoot() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Path
+	return o.Root
 }
 
-// GetPathOk returns a tuple with the Path field value
+// GetRootOk returns a tuple with the Root field value
 // and a boolean to check if the value has been set.
-func (o *ControlsMonitoredFilesConfig) GetPathOk() (*string, bool) {
+func (o *ControlsMonitoredFilesConfig) GetRootOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Path, true
+	return &o.Root, true
 }
 
-// SetPath sets field value
-func (o *ControlsMonitoredFilesConfig) SetPath(v string) {
-	o.Path = v
+// SetRoot sets field value
+func (o *ControlsMonitoredFilesConfig) SetRoot(v string) {
+	o.Root = v
 }
 
-// GetWeight returns the Weight field value
-func (o *ControlsMonitoredFilesConfig) GetWeight() string {
+// GetSeverity returns the Severity field value
+func (o *ControlsMonitoredFilesConfig) GetSeverity() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Weight
+	return o.Severity
 }
 
-// GetWeightOk returns a tuple with the Weight field value
+// GetSeverityOk returns a tuple with the Severity field value
 // and a boolean to check if the value has been set.
-func (o *ControlsMonitoredFilesConfig) GetWeightOk() (*string, bool) {
+func (o *ControlsMonitoredFilesConfig) GetSeverityOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Weight, true
+	return &o.Severity, true
 }
 
-// SetWeight sets field value
-func (o *ControlsMonitoredFilesConfig) SetWeight(v string) {
-	o.Weight = v
+// SetSeverity sets field value
+func (o *ControlsMonitoredFilesConfig) SetSeverity(v string) {
+	o.Severity = v
 }
 
 func (o ControlsMonitoredFilesConfig) MarshalJSON() ([]byte, error) {
@@ -129,11 +155,12 @@ func (o ControlsMonitoredFilesConfig) MarshalJSON() ([]byte, error) {
 
 func (o ControlsMonitoredFilesConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AccessTypes != nil {
-		toSerialize["access_types"] = o.AccessTypes
+	if o.Accesstypes != nil {
+		toSerialize["accesstypes"] = o.Accesstypes
 	}
-	toSerialize["path"] = o.Path
-	toSerialize["weight"] = o.Weight
+	toSerialize["recursive"] = o.Recursive
+	toSerialize["root"] = o.Root
+	toSerialize["severity"] = o.Severity
 	return toSerialize, nil
 }
 

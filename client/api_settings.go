@@ -2185,8 +2185,6 @@ func (a *SettingsAPIService) UploadVulnerabilityDatabaseExecute(r ApiUploadVulne
 	var databaseLocalVarFileBytes    []byte
 
 	databaseLocalVarFormFileName = "database"
-
-
 	databaseLocalVarFile := r.database
 
 	if databaseLocalVarFile != nil {

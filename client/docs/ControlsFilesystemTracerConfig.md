@@ -4,16 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MonitoredFiles** | [**[]ControlsMonitoredFilesConfig**](ControlsMonitoredFilesConfig.md) |  | 
 **NodeId** | **string** |  | 
-**ProcessEvents** | [**[]ControlsProcessEventConfig**](ControlsProcessEventConfig.md) |  | 
 **UpdatedAt** | **int32** |  | 
+**Watchedentries** | [**[]ControlsMonitoredFilesConfig**](ControlsMonitoredFilesConfig.md) |  | 
 
 ## Methods
 
 ### NewControlsFilesystemTracerConfig
 
-`func NewControlsFilesystemTracerConfig(monitoredFiles []ControlsMonitoredFilesConfig, nodeId string, processEvents []ControlsProcessEventConfig, updatedAt int32, ) *ControlsFilesystemTracerConfig`
+`func NewControlsFilesystemTracerConfig(nodeId string, updatedAt int32, watchedentries []ControlsMonitoredFilesConfig, ) *ControlsFilesystemTracerConfig`
 
 NewControlsFilesystemTracerConfig instantiates a new ControlsFilesystemTracerConfig object
 This constructor will assign default values to properties that have it defined,
@@ -28,36 +27,6 @@ NewControlsFilesystemTracerConfigWithDefaults instantiates a new ControlsFilesys
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetMonitoredFiles
-
-`func (o *ControlsFilesystemTracerConfig) GetMonitoredFiles() []ControlsMonitoredFilesConfig`
-
-GetMonitoredFiles returns the MonitoredFiles field if non-nil, zero value otherwise.
-
-### GetMonitoredFilesOk
-
-`func (o *ControlsFilesystemTracerConfig) GetMonitoredFilesOk() (*[]ControlsMonitoredFilesConfig, bool)`
-
-GetMonitoredFilesOk returns a tuple with the MonitoredFiles field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMonitoredFiles
-
-`func (o *ControlsFilesystemTracerConfig) SetMonitoredFiles(v []ControlsMonitoredFilesConfig)`
-
-SetMonitoredFiles sets MonitoredFiles field to given value.
-
-
-### SetMonitoredFilesNil
-
-`func (o *ControlsFilesystemTracerConfig) SetMonitoredFilesNil(b bool)`
-
- SetMonitoredFilesNil sets the value for MonitoredFiles to be an explicit nil
-
-### UnsetMonitoredFiles
-`func (o *ControlsFilesystemTracerConfig) UnsetMonitoredFiles()`
-
-UnsetMonitoredFiles ensures that no value is present for MonitoredFiles, not even an explicit nil
 ### GetNodeId
 
 `func (o *ControlsFilesystemTracerConfig) GetNodeId() string`
@@ -78,36 +47,6 @@ and a boolean to check if the value has been set.
 SetNodeId sets NodeId field to given value.
 
 
-### GetProcessEvents
-
-`func (o *ControlsFilesystemTracerConfig) GetProcessEvents() []ControlsProcessEventConfig`
-
-GetProcessEvents returns the ProcessEvents field if non-nil, zero value otherwise.
-
-### GetProcessEventsOk
-
-`func (o *ControlsFilesystemTracerConfig) GetProcessEventsOk() (*[]ControlsProcessEventConfig, bool)`
-
-GetProcessEventsOk returns a tuple with the ProcessEvents field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProcessEvents
-
-`func (o *ControlsFilesystemTracerConfig) SetProcessEvents(v []ControlsProcessEventConfig)`
-
-SetProcessEvents sets ProcessEvents field to given value.
-
-
-### SetProcessEventsNil
-
-`func (o *ControlsFilesystemTracerConfig) SetProcessEventsNil(b bool)`
-
- SetProcessEventsNil sets the value for ProcessEvents to be an explicit nil
-
-### UnsetProcessEvents
-`func (o *ControlsFilesystemTracerConfig) UnsetProcessEvents()`
-
-UnsetProcessEvents ensures that no value is present for ProcessEvents, not even an explicit nil
 ### GetUpdatedAt
 
 `func (o *ControlsFilesystemTracerConfig) GetUpdatedAt() int32`
@@ -128,6 +67,36 @@ and a boolean to check if the value has been set.
 SetUpdatedAt sets UpdatedAt field to given value.
 
 
+### GetWatchedentries
+
+`func (o *ControlsFilesystemTracerConfig) GetWatchedentries() []ControlsMonitoredFilesConfig`
+
+GetWatchedentries returns the Watchedentries field if non-nil, zero value otherwise.
+
+### GetWatchedentriesOk
+
+`func (o *ControlsFilesystemTracerConfig) GetWatchedentriesOk() (*[]ControlsMonitoredFilesConfig, bool)`
+
+GetWatchedentriesOk returns a tuple with the Watchedentries field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWatchedentries
+
+`func (o *ControlsFilesystemTracerConfig) SetWatchedentries(v []ControlsMonitoredFilesConfig)`
+
+SetWatchedentries sets Watchedentries field to given value.
+
+
+### SetWatchedentriesNil
+
+`func (o *ControlsFilesystemTracerConfig) SetWatchedentriesNil(b bool)`
+
+ SetWatchedentriesNil sets the value for Watchedentries to be an explicit nil
+
+### UnsetWatchedentries
+`func (o *ControlsFilesystemTracerConfig) UnsetWatchedentries()`
+
+UnsetWatchedentries ensures that no value is present for Watchedentries, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

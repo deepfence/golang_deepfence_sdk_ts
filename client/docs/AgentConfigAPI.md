@@ -1530,7 +1530,7 @@ import (
 )
 
 func main() {
-    controlsFilesystemTracerConfig := *openapiclient.NewControlsFilesystemTracerConfig([]openapiclient.ControlsMonitoredFilesConfig{*openapiclient.NewControlsMonitoredFilesConfig([]string{"AccessTypes_example"}, "Path_example", "Weight_example")}, "NodeId_example", []openapiclient.ControlsProcessEventConfig{*openapiclient.NewControlsProcessEventConfig("EventName_example", "Weight_example")}, int32(123)) // ControlsFilesystemTracerConfig |  (optional)
+    controlsFilesystemTracerConfig := *openapiclient.NewControlsFilesystemTracerConfig("NodeId_example", int32(123), []openapiclient.ControlsMonitoredFilesConfig{*openapiclient.NewControlsMonitoredFilesConfig([]string{"Accesstypes_example"}, false, "Root_example", "Severity_example")}) // ControlsFilesystemTracerConfig |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
