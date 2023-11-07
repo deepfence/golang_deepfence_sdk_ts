@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ControlsThreatIntelInfo type satisfies the MappedNullable interface at compile time
@@ -26,6 +27,8 @@ type ControlsThreatIntelInfo struct {
 	RulesHash string `json:"rules_hash"`
 	UpdatedAt int32 `json:"updated_at"`
 }
+
+type _ControlsThreatIntelInfo ControlsThreatIntelInfo
 
 // NewControlsThreatIntelInfo instantiates a new ControlsThreatIntelInfo object
 // This constructor will assign default values to properties that have it defined,
@@ -193,6 +196,45 @@ func (o ControlsThreatIntelInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize["rules_hash"] = o.RulesHash
 	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil
+}
+
+func (o *ControlsThreatIntelInfo) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"ignored_alert_rule_ids",
+		"internal_ips",
+		"network_alert_rules_url",
+		"rules_hash",
+		"updated_at",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varControlsThreatIntelInfo := _ControlsThreatIntelInfo{}
+
+	err = json.Unmarshal(bytes, &varControlsThreatIntelInfo)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ControlsThreatIntelInfo(varControlsThreatIntelInfo)
+
+	return err
 }
 
 type NullableControlsThreatIntelInfo struct {

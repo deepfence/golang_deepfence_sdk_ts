@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ModelCommonAlert type satisfies the MappedNullable interface at compile time
@@ -40,6 +41,8 @@ type ModelCommonAlert struct {
 	Techniques []string `json:"techniques"`
 	UpdatedAt int32 `json:"updated_at"`
 }
+
+type _ModelCommonAlert ModelCommonAlert
 
 // NewModelCommonAlert instantiates a new ModelCommonAlert object
 // This constructor will assign default values to properties that have it defined,
@@ -571,6 +574,59 @@ func (o ModelCommonAlert) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil
+}
+
+func (o *ModelCommonAlert) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"category",
+		"container_name",
+		"count",
+		"created_at",
+		"event_type",
+		"geoip",
+		"host_name",
+		"kubernetes_cluster_name",
+		"masked",
+		"matched",
+		"node_id",
+		"node_type",
+		"pod_name",
+		"rule_id",
+		"severity",
+		"summary",
+		"tactics",
+		"techniques",
+		"updated_at",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varModelCommonAlert := _ModelCommonAlert{}
+
+	err = json.Unmarshal(bytes, &varModelCommonAlert)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ModelCommonAlert(varModelCommonAlert)
+
+	return err
 }
 
 type NullableModelCommonAlert struct {

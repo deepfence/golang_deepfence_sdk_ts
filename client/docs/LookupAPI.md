@@ -18,6 +18,8 @@ Method | HTTP request | Description
 [**GetNetworkAlerts**](LookupAPI.md#GetNetworkAlerts) | **Post** /deepfence/lookup/network-alerts | Get Network Alerts
 [**GetNetworkViolations**](LookupAPI.md#GetNetworkViolations) | **Post** /deepfence/lookup/network-violations | Get Network Violations
 [**GetPods**](LookupAPI.md#GetPods) | **Post** /deepfence/lookup/pods | Retrieve Pods data
+[**GetProcessAlertRules**](LookupAPI.md#GetProcessAlertRules) | **Post** /deepfence/lookup/process-alert-rules | Get Process Alert Rules
+[**GetProcessAlerts**](LookupAPI.md#GetProcessAlerts) | **Post** /deepfence/lookup/process-alerts | Get Process Alerts
 [**GetProcesses**](LookupAPI.md#GetProcesses) | **Post** /deepfence/lookup/processes | Retrieve Processes data
 [**GetQuarantineViolations**](LookupAPI.md#GetQuarantineViolations) | **Post** /deepfence/lookup/quarantine-violations | Get Quarantine Violations
 [**GetRegistryAccount**](LookupAPI.md#GetRegistryAccount) | **Post** /deepfence/lookup/registryaccount | Get Images in Registry
@@ -935,6 +937,138 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]ModelPod**](ModelPod.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetProcessAlertRules
+
+> []ModelProcessAlertRule GetProcessAlertRules(ctx).LookupLookupFilter(lookupLookupFilter).Execute()
+
+Get Process Alert Rules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    lookupLookupFilter := *openapiclient.NewLookupLookupFilter([]string{"InFieldFilter_example"}, []string{"NodeIds_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // LookupLookupFilter |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LookupAPI.GetProcessAlertRules(context.Background()).LookupLookupFilter(lookupLookupFilter).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LookupAPI.GetProcessAlertRules``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetProcessAlertRules`: []ModelProcessAlertRule
+    fmt.Fprintf(os.Stdout, "Response from `LookupAPI.GetProcessAlertRules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetProcessAlertRulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **lookupLookupFilter** | [**LookupLookupFilter**](LookupLookupFilter.md) |  | 
+
+### Return type
+
+[**[]ModelProcessAlertRule**](ModelProcessAlertRule.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetProcessAlerts
+
+> []ModelProcessAlert GetProcessAlerts(ctx).LookupLookupFilter(lookupLookupFilter).Execute()
+
+Get Process Alerts
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    lookupLookupFilter := *openapiclient.NewLookupLookupFilter([]string{"InFieldFilter_example"}, []string{"NodeIds_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // LookupLookupFilter |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LookupAPI.GetProcessAlerts(context.Background()).LookupLookupFilter(lookupLookupFilter).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LookupAPI.GetProcessAlerts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetProcessAlerts`: []ModelProcessAlert
+    fmt.Fprintf(os.Stdout, "Response from `LookupAPI.GetProcessAlerts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetProcessAlertsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **lookupLookupFilter** | [**LookupLookupFilter**](LookupLookupFilter.md) |  | 
+
+### Return type
+
+[**[]ModelProcessAlert**](ModelProcessAlert.md)
 
 ### Authorization
 

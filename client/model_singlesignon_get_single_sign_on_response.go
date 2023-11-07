@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the SinglesignonGetSingleSignOnResponse type satisfies the MappedNullable interface at compile time
@@ -23,6 +24,8 @@ type SinglesignonGetSingleSignOnResponse struct {
 	Config []SinglesignonSSOResponse `json:"config"`
 	Instructions SinglesignonSSOConfigurationInstructions `json:"instructions"`
 }
+
+type _SinglesignonGetSingleSignOnResponse SinglesignonGetSingleSignOnResponse
 
 // NewSinglesignonGetSingleSignOnResponse instantiates a new SinglesignonGetSingleSignOnResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -108,6 +111,42 @@ func (o SinglesignonGetSingleSignOnResponse) ToMap() (map[string]interface{}, er
 	}
 	toSerialize["instructions"] = o.Instructions
 	return toSerialize, nil
+}
+
+func (o *SinglesignonGetSingleSignOnResponse) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"config",
+		"instructions",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSinglesignonGetSingleSignOnResponse := _SinglesignonGetSingleSignOnResponse{}
+
+	err = json.Unmarshal(bytes, &varSinglesignonGetSingleSignOnResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SinglesignonGetSingleSignOnResponse(varSinglesignonGetSingleSignOnResponse)
+
+	return err
 }
 
 type NullableSinglesignonGetSingleSignOnResponse struct {

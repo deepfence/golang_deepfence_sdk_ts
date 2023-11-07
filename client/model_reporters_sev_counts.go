@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ReportersSevCounts type satisfies the MappedNullable interface at compile time
@@ -22,6 +23,8 @@ var _ MappedNullable = &ReportersSevCounts{}
 type ReportersSevCounts struct {
 	Counts map[string]int32 `json:"counts"`
 }
+
+type _ReportersSevCounts ReportersSevCounts
 
 // NewReportersSevCounts instantiates a new ReportersSevCounts object
 // This constructor will assign default values to properties that have it defined,
@@ -81,6 +84,41 @@ func (o ReportersSevCounts) ToMap() (map[string]interface{}, error) {
 		toSerialize["counts"] = o.Counts
 	}
 	return toSerialize, nil
+}
+
+func (o *ReportersSevCounts) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"counts",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varReportersSevCounts := _ReportersSevCounts{}
+
+	err = json.Unmarshal(bytes, &varReportersSevCounts)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ReportersSevCounts(varReportersSevCounts)
+
+	return err
 }
 
 type NullableReportersSevCounts struct {

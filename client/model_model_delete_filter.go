@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ModelDeleteFilter type satisfies the MappedNullable interface at compile time
@@ -22,6 +23,8 @@ var _ MappedNullable = &ModelDeleteFilter{}
 type ModelDeleteFilter struct {
 	NodeIds []string `json:"node_ids"`
 }
+
+type _ModelDeleteFilter ModelDeleteFilter
 
 // NewModelDeleteFilter instantiates a new ModelDeleteFilter object
 // This constructor will assign default values to properties that have it defined,
@@ -81,6 +84,41 @@ func (o ModelDeleteFilter) ToMap() (map[string]interface{}, error) {
 		toSerialize["node_ids"] = o.NodeIds
 	}
 	return toSerialize, nil
+}
+
+func (o *ModelDeleteFilter) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"node_ids",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varModelDeleteFilter := _ModelDeleteFilter{}
+
+	err = json.Unmarshal(bytes, &varModelDeleteFilter)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ModelDeleteFilter(varModelDeleteFilter)
+
+	return err
 }
 
 type NullableModelDeleteFilter struct {

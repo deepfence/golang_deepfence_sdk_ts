@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the SinglesignonSSOProviderConfig type satisfies the MappedNullable interface at compile time
@@ -27,6 +28,8 @@ type SinglesignonSSOProviderConfig struct {
 	IssuerUrl *string `json:"issuer_url,omitempty"`
 	SsoProviderType string `json:"sso_provider_type"`
 }
+
+type _SinglesignonSSOProviderConfig SinglesignonSSOProviderConfig
 
 // NewSinglesignonSSOProviderConfig instantiates a new SinglesignonSSOProviderConfig object
 // This constructor will assign default values to properties that have it defined,
@@ -230,6 +233,44 @@ func (o SinglesignonSSOProviderConfig) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["sso_provider_type"] = o.SsoProviderType
 	return toSerialize, nil
+}
+
+func (o *SinglesignonSSOProviderConfig) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"client_id",
+		"client_secret",
+		"disable_password_login",
+		"sso_provider_type",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSinglesignonSSOProviderConfig := _SinglesignonSSOProviderConfig{}
+
+	err = json.Unmarshal(bytes, &varSinglesignonSSOProviderConfig)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SinglesignonSSOProviderConfig(varSinglesignonSSOProviderConfig)
+
+	return err
 }
 
 type NullableSinglesignonSSOProviderConfig struct {

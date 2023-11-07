@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ModelNetworkAlert type satisfies the MappedNullable interface at compile time
@@ -69,6 +70,8 @@ type ModelNetworkAlert struct {
 	UpdatedAt int32 `json:"updated_at"`
 	Url string `json:"url"`
 }
+
+type _ModelNetworkAlert ModelNetworkAlert
 
 // NewModelNetworkAlert instantiates a new ModelNetworkAlert object
 // This constructor will assign default values to properties that have it defined,
@@ -1374,6 +1377,88 @@ func (o ModelNetworkAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["updated_at"] = o.UpdatedAt
 	toSerialize["url"] = o.Url
 	return toSerialize, nil
+}
+
+func (o *ModelNetworkAlert) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"app_proto",
+		"category",
+		"container_name",
+		"count",
+		"created_at",
+		"description",
+		"destination_ip",
+		"destination_port",
+		"direction",
+		"encrypted",
+		"event_type",
+		"geoip",
+		"headers",
+		"host_name",
+		"http_content_type",
+		"http_type",
+		"http_user_agent",
+		"internal",
+		"ip_reputation",
+		"kubernetes_cluster_id",
+		"kubernetes_cluster_name",
+		"length",
+		"local_port",
+		"masked",
+		"matched",
+		"node_id",
+		"node_type",
+		"pod_name",
+		"protocol",
+		"request_method",
+		"request_path",
+		"request_payload",
+		"request_printable_payload",
+		"resource_type",
+		"response_payload",
+		"response_printable_payload",
+		"rule_id",
+		"severity",
+		"severity_score",
+		"source_ip",
+		"source_port",
+		"status",
+		"summary",
+		"tactics",
+		"tags",
+		"techniques",
+		"updated_at",
+		"url",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varModelNetworkAlert := _ModelNetworkAlert{}
+
+	err = json.Unmarshal(bytes, &varModelNetworkAlert)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ModelNetworkAlert(varModelNetworkAlert)
+
+	return err
 }
 
 type NullableModelNetworkAlert struct {

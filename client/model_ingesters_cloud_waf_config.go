@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the IngestersCloudWafConfig type satisfies the MappedNullable interface at compile time
@@ -23,6 +24,8 @@ type IngestersCloudWafConfig struct {
 	AwsWafArn []IngestersAWSWafARN `json:"aws_waf_arn"`
 	CloudProvider string `json:"cloud_provider"`
 }
+
+type _IngestersCloudWafConfig IngestersCloudWafConfig
 
 // NewIngestersCloudWafConfig instantiates a new IngestersCloudWafConfig object
 // This constructor will assign default values to properties that have it defined,
@@ -108,6 +111,42 @@ func (o IngestersCloudWafConfig) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["cloud_provider"] = o.CloudProvider
 	return toSerialize, nil
+}
+
+func (o *IngestersCloudWafConfig) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"aws_waf_arn",
+		"cloud_provider",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIngestersCloudWafConfig := _IngestersCloudWafConfig{}
+
+	err = json.Unmarshal(bytes, &varIngestersCloudWafConfig)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IngestersCloudWafConfig(varIngestersCloudWafConfig)
+
+	return err
 }
 
 type NullableIngestersCloudWafConfig struct {

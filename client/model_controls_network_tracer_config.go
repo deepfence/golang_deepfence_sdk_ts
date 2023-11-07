@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ControlsNetworkTracerConfig type satisfies the MappedNullable interface at compile time
@@ -29,6 +30,8 @@ type ControlsNetworkTracerConfig struct {
 	TcpRules ControlsNetworkRules `json:"tcp_rules"`
 	UpdatedAt int32 `json:"updated_at"`
 }
+
+type _ControlsNetworkTracerConfig ControlsNetworkTracerConfig
 
 // NewControlsNetworkTracerConfig instantiates a new ControlsNetworkTracerConfig object
 // This constructor will assign default values to properties that have it defined,
@@ -280,6 +283,47 @@ func (o ControlsNetworkTracerConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize["tcp_rules"] = o.TcpRules
 	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil
+}
+
+func (o *ControlsNetworkTracerConfig) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"http_rules",
+		"https_rules",
+		"mode",
+		"node_id",
+		"process_names",
+		"tcp_rules",
+		"updated_at",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varControlsNetworkTracerConfig := _ControlsNetworkTracerConfig{}
+
+	err = json.Unmarshal(bytes, &varControlsNetworkTracerConfig)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ControlsNetworkTracerConfig(varControlsNetworkTracerConfig)
+
+	return err
 }
 
 type NullableControlsNetworkTracerConfig struct {

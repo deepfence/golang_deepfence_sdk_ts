@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ModelAgentPluginsStatus type satisfies the MappedNullable interface at compile time
@@ -24,6 +25,8 @@ type ModelAgentPluginsStatus struct {
 	NetworkFilterStatus ModelPluginStatus `json:"network_filter_status"`
 	NetworkTracerStatus ModelPluginStatus `json:"network_tracer_status"`
 }
+
+type _ModelAgentPluginsStatus ModelAgentPluginsStatus
 
 // NewModelAgentPluginsStatus instantiates a new ModelAgentPluginsStatus object
 // This constructor will assign default values to properties that have it defined,
@@ -131,6 +134,43 @@ func (o ModelAgentPluginsStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize["network_filter_status"] = o.NetworkFilterStatus
 	toSerialize["network_tracer_status"] = o.NetworkTracerStatus
 	return toSerialize, nil
+}
+
+func (o *ModelAgentPluginsStatus) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"filesystem_tracer_status",
+		"network_filter_status",
+		"network_tracer_status",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varModelAgentPluginsStatus := _ModelAgentPluginsStatus{}
+
+	err = json.Unmarshal(bytes, &varModelAgentPluginsStatus)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ModelAgentPluginsStatus(varModelAgentPluginsStatus)
+
+	return err
 }
 
 type NullableModelAgentPluginsStatus struct {

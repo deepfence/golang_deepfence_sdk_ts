@@ -26,6 +26,8 @@ Method | HTTP request | Description
 [**CountNetworkViolations**](SearchAPI.md#CountNetworkViolations) | **Post** /deepfence/search/count/network-violations | Count network violations
 [**CountNodes**](SearchAPI.md#CountNodes) | **Get** /deepfence/search/count/nodes | Count nodes
 [**CountPods**](SearchAPI.md#CountPods) | **Post** /deepfence/search/count/pods | Count Pods
+[**CountProcessAlertRules**](SearchAPI.md#CountProcessAlertRules) | **Post** /deepfence/search/count/process-alert-rules | Count process alert rules
+[**CountProcessAlerts**](SearchAPI.md#CountProcessAlerts) | **Post** /deepfence/search/count/process-alerts | Count process alerts
 [**CountQuarantineViolations**](SearchAPI.md#CountQuarantineViolations) | **Post** /deepfence/search/count/quarantine-violations | Count quarantine violations
 [**CountSecretRules**](SearchAPI.md#CountSecretRules) | **Post** /deepfence/search/count/secret-rules | Count Secret Rules
 [**CountSecrets**](SearchAPI.md#CountSecrets) | **Post** /deepfence/search/count/secrets | Count Secrets
@@ -57,6 +59,8 @@ Method | HTTP request | Description
 [**SearchNetworkViolationStubs**](SearchAPI.md#SearchNetworkViolationStubs) | **Post** /deepfence/search/network-violation-stubs | Search network violation stubs
 [**SearchNetworkViolations**](SearchAPI.md#SearchNetworkViolations) | **Post** /deepfence/search/network-violations | Search network violations
 [**SearchPods**](SearchAPI.md#SearchPods) | **Post** /deepfence/search/pods | Search Pods
+[**SearchProcessAlertRules**](SearchAPI.md#SearchProcessAlertRules) | **Post** /deepfence/search/process-alert-rules | Search process alert rules
+[**SearchProcessAlerts**](SearchAPI.md#SearchProcessAlerts) | **Post** /deepfence/search/process-alerts | Search process alerts
 [**SearchQuarantineViolations**](SearchAPI.md#SearchQuarantineViolations) | **Post** /deepfence/search/quarantine-violations | Search quarantine violations
 [**SearchSecretRules**](SearchAPI.md#SearchSecretRules) | **Post** /deepfence/search/secret-rules | Search Secret Rules
 [**SearchSecrets**](SearchAPI.md#SearchSecrets) | **Post** /deepfence/search/secrets | Search Secrets
@@ -1490,6 +1494,138 @@ func main() {
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCountPodsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchSearchNodeReq** | [**SearchSearchNodeReq**](SearchSearchNodeReq.md) |  | 
+
+### Return type
+
+[**SearchSearchCountResp**](SearchSearchCountResp.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CountProcessAlertRules
+
+> SearchSearchCountResp CountProcessAlertRules(ctx).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+
+Count process alert rules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    searchSearchNodeReq := *openapiclient.NewSearchSearchNodeReq(*openapiclient.NewSearchSearchFilter(*openapiclient.NewReportersFieldsFilters([]openapiclient.ReportersCompareFilter{*openapiclient.NewReportersCompareFilter("FieldName_example", interface{}(123), false)}, *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersMatchFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersOrderFilter([]openapiclient.ReportersOrderSpec{*openapiclient.NewReportersOrderSpec(false, "FieldName_example")})), []string{"InFieldFilter_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))), *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // SearchSearchNodeReq |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SearchAPI.CountProcessAlertRules(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.CountProcessAlertRules``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CountProcessAlertRules`: SearchSearchCountResp
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.CountProcessAlertRules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCountProcessAlertRulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchSearchNodeReq** | [**SearchSearchNodeReq**](SearchSearchNodeReq.md) |  | 
+
+### Return type
+
+[**SearchSearchCountResp**](SearchSearchCountResp.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CountProcessAlerts
+
+> SearchSearchCountResp CountProcessAlerts(ctx).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+
+Count process alerts
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    searchSearchNodeReq := *openapiclient.NewSearchSearchNodeReq(*openapiclient.NewSearchSearchFilter(*openapiclient.NewReportersFieldsFilters([]openapiclient.ReportersCompareFilter{*openapiclient.NewReportersCompareFilter("FieldName_example", interface{}(123), false)}, *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersMatchFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersOrderFilter([]openapiclient.ReportersOrderSpec{*openapiclient.NewReportersOrderSpec(false, "FieldName_example")})), []string{"InFieldFilter_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))), *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // SearchSearchNodeReq |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SearchAPI.CountProcessAlerts(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.CountProcessAlerts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CountProcessAlerts`: SearchSearchCountResp
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.CountProcessAlerts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCountProcessAlertsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3545,6 +3681,138 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]ModelPod**](ModelPod.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchProcessAlertRules
+
+> []ModelProcessAlertRule SearchProcessAlertRules(ctx).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+
+Search process alert rules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    searchSearchNodeReq := *openapiclient.NewSearchSearchNodeReq(*openapiclient.NewSearchSearchFilter(*openapiclient.NewReportersFieldsFilters([]openapiclient.ReportersCompareFilter{*openapiclient.NewReportersCompareFilter("FieldName_example", interface{}(123), false)}, *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersMatchFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersOrderFilter([]openapiclient.ReportersOrderSpec{*openapiclient.NewReportersOrderSpec(false, "FieldName_example")})), []string{"InFieldFilter_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))), *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // SearchSearchNodeReq |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SearchAPI.SearchProcessAlertRules(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchProcessAlertRules``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SearchProcessAlertRules`: []ModelProcessAlertRule
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchProcessAlertRules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchProcessAlertRulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchSearchNodeReq** | [**SearchSearchNodeReq**](SearchSearchNodeReq.md) |  | 
+
+### Return type
+
+[**[]ModelProcessAlertRule**](ModelProcessAlertRule.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchProcessAlerts
+
+> []ModelProcessAlert SearchProcessAlerts(ctx).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+
+Search process alerts
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    searchSearchNodeReq := *openapiclient.NewSearchSearchNodeReq(*openapiclient.NewSearchSearchFilter(*openapiclient.NewReportersFieldsFilters([]openapiclient.ReportersCompareFilter{*openapiclient.NewReportersCompareFilter("FieldName_example", interface{}(123), false)}, *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersMatchFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersOrderFilter([]openapiclient.ReportersOrderSpec{*openapiclient.NewReportersOrderSpec(false, "FieldName_example")})), []string{"InFieldFilter_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))), *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // SearchSearchNodeReq |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SearchAPI.SearchProcessAlerts(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchProcessAlerts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SearchProcessAlerts`: []ModelProcessAlert
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchProcessAlerts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchProcessAlertsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchSearchNodeReq** | [**SearchSearchNodeReq**](SearchSearchNodeReq.md) |  | 
+
+### Return type
+
+[**[]ModelProcessAlert**](ModelProcessAlert.md)
 
 ### Authorization
 

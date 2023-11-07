@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ModelComplianceScanTriggerReq type satisfies the MappedNullable interface at compile time
@@ -24,6 +25,8 @@ type ModelComplianceScanTriggerReq struct {
 	Filters ModelScanFilter `json:"filters"`
 	NodeIds []ModelNodeIdentifier `json:"node_ids"`
 }
+
+type _ModelComplianceScanTriggerReq ModelComplianceScanTriggerReq
 
 // NewModelComplianceScanTriggerReq instantiates a new ModelComplianceScanTriggerReq object
 // This constructor will assign default values to properties that have it defined,
@@ -139,6 +142,43 @@ func (o ModelComplianceScanTriggerReq) ToMap() (map[string]interface{}, error) {
 		toSerialize["node_ids"] = o.NodeIds
 	}
 	return toSerialize, nil
+}
+
+func (o *ModelComplianceScanTriggerReq) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"benchmark_types",
+		"filters",
+		"node_ids",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varModelComplianceScanTriggerReq := _ModelComplianceScanTriggerReq{}
+
+	err = json.Unmarshal(bytes, &varModelComplianceScanTriggerReq)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ModelComplianceScanTriggerReq(varModelComplianceScanTriggerReq)
+
+	return err
 }
 
 type NullableModelComplianceScanTriggerReq struct {

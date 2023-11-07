@@ -82,20 +82,24 @@ Class | Method | HTTP request | Description
 *AgentConfigAPI* | [**AgentFilesystemConfigAttachedNodes**](docs/AgentConfigAPI.md#agentfilesystemconfigattachednodes) | **Get** /deepfence/configs/agent/filemon/attached-nodes/{config_id} | Get Agent Filesystem config attached nodes
 *AgentConfigAPI* | [**AgentNetworkConfigAttachedNodes**](docs/AgentConfigAPI.md#agentnetworkconfigattachednodes) | **Get** /deepfence/configs/agent/network/attached-nodes/{config_id} | Get Agent Network config attached nodes
 *AgentConfigAPI* | [**AgentPolicyConfigAttachedNodes**](docs/AgentConfigAPI.md#agentpolicyconfigattachednodes) | **Get** /deepfence/configs/agent/policy/attached-nodes/{config_id} | Get Agent Policy config attached nodes
+*AgentConfigAPI* | [**AgentProcessConfigAttachedNodes**](docs/AgentConfigAPI.md#agentprocessconfigattachednodes) | **Get** /deepfence/configs/agent/procmon/attached-nodes/{config_id} | Get Agent Process config attached nodes
 *AgentConfigAPI* | [**AgentQuarantineConfigAttachedNodes**](docs/AgentConfigAPI.md#agentquarantineconfigattachednodes) | **Get** /deepfence/configs/agent/quarantine/attached-nodes/{config_id} | Get Agent Quarantine config attached nodes
 *AgentConfigAPI* | [**AttachAgentFilesystemConfig**](docs/AgentConfigAPI.md#attachagentfilesystemconfig) | **Post** /deepfence/configs/agent/filemon/attach | Attach Agent Filesystem config
 *AgentConfigAPI* | [**AttachAgentNetworkConfig**](docs/AgentConfigAPI.md#attachagentnetworkconfig) | **Post** /deepfence/configs/agent/network/attach | Attach Agent Network config
 *AgentConfigAPI* | [**AttachAgentPolicyConfig**](docs/AgentConfigAPI.md#attachagentpolicyconfig) | **Post** /deepfence/configs/agent/policy/attach | Attach Agent Policy config
+*AgentConfigAPI* | [**AttachAgentProcessConfig**](docs/AgentConfigAPI.md#attachagentprocessconfig) | **Post** /deepfence/configs/agent/procmon/attach | Attach Agent Process config
 *AgentConfigAPI* | [**AttachAgentQuarantineConfig**](docs/AgentConfigAPI.md#attachagentquarantineconfig) | **Post** /deepfence/configs/agent/quarantine/attach | Attach Agent Quarantine config
 *AgentConfigAPI* | [**DeleteAgentFilesystemConfig**](docs/AgentConfigAPI.md#deleteagentfilesystemconfig) | **Delete** /deepfence/configs/agent/filemon/{config_id} | Delete Agent Filesystem config
 *AgentConfigAPI* | [**DeleteAgentNetworkConfig**](docs/AgentConfigAPI.md#deleteagentnetworkconfig) | **Delete** /deepfence/configs/agent/network/{config_id} | Delete Agent Network config
 *AgentConfigAPI* | [**DeleteAgentPolicyConfig**](docs/AgentConfigAPI.md#deleteagentpolicyconfig) | **Delete** /deepfence/configs/agent/policy/{config_id} | Delete Agent Policy config
+*AgentConfigAPI* | [**DeleteAgentProcessConfig**](docs/AgentConfigAPI.md#deleteagentprocessconfig) | **Delete** /deepfence/configs/agent/procmon/{config_id} | Delete Agent Process config
 *AgentConfigAPI* | [**DeleteAgentQuarantineConfig**](docs/AgentConfigAPI.md#deleteagentquarantineconfig) | **Delete** /deepfence/configs/agent/quarantine/{config_id} | Delete Agent Quarantine config
 *AgentConfigAPI* | [**ExportAgentPolicyConfig**](docs/AgentConfigAPI.md#exportagentpolicyconfig) | **Get** /deepfence/configs/agent/policy/export/{config_id} | Export Agent Policy config
 *AgentConfigAPI* | [**ExportAgentQuarantineConfig**](docs/AgentConfigAPI.md#exportagentquarantineconfig) | **Get** /deepfence/configs/agent/quarantine/export/{config_id} | Export Agent Quarantine config
 *AgentConfigAPI* | [**GetAgentFilesystemConfig**](docs/AgentConfigAPI.md#getagentfilesystemconfig) | **Post** /deepfence/configs/agent/filemon/list | Get Agent Filesystem config
 *AgentConfigAPI* | [**GetAgentNetworkConfig**](docs/AgentConfigAPI.md#getagentnetworkconfig) | **Post** /deepfence/configs/agent/network/list | Get Agent Network config
 *AgentConfigAPI* | [**GetAgentPolicyConfig**](docs/AgentConfigAPI.md#getagentpolicyconfig) | **Post** /deepfence/configs/agent/policy/list | Get Agent Policy config
+*AgentConfigAPI* | [**GetAgentProcessConfig**](docs/AgentConfigAPI.md#getagentprocessconfig) | **Post** /deepfence/configs/agent/procmon/list | Get Agent Process config
 *AgentConfigAPI* | [**GetAgentQuarantineConfig**](docs/AgentConfigAPI.md#getagentquarantineconfig) | **Post** /deepfence/configs/agent/quarantine/list | Get Agent Quarantine config
 *AgentConfigAPI* | [**GetAgentThreatIntelConfig**](docs/AgentConfigAPI.md#getagentthreatintelconfig) | **Post** /deepfence/configs/agent/threatintel/list | Get Agent threat intel config
 *AgentConfigAPI* | [**GetNetworkRules**](docs/AgentConfigAPI.md#getnetworkrules) | **Get** /deepfence/configs/agent/network/rules | Get Network Rules
@@ -104,6 +108,7 @@ Class | Method | HTTP request | Description
 *AgentConfigAPI* | [**RegisterAgentFilesystemConfig**](docs/AgentConfigAPI.md#registeragentfilesystemconfig) | **Post** /deepfence/configs/agent/filemon/ | Register Agent Filesystem config
 *AgentConfigAPI* | [**RegisterAgentNetworkConfig**](docs/AgentConfigAPI.md#registeragentnetworkconfig) | **Post** /deepfence/configs/agent/network/ | Register Agent Network config
 *AgentConfigAPI* | [**RegisterAgentPolicyConfig**](docs/AgentConfigAPI.md#registeragentpolicyconfig) | **Post** /deepfence/configs/agent/policy/ | Register Agent Policy config
+*AgentConfigAPI* | [**RegisterAgentProcessConfig**](docs/AgentConfigAPI.md#registeragentprocessconfig) | **Post** /deepfence/configs/agent/procmon/ | Register Agent Process config
 *AgentConfigAPI* | [**RegisterAgentQuarantineConfig**](docs/AgentConfigAPI.md#registeragentquarantineconfig) | **Post** /deepfence/configs/agent/quarantine/ | Register Agent Quarantine config
 *AgentConfigAPI* | [**RegisterThreatIntelConfig**](docs/AgentConfigAPI.md#registerthreatintelconfig) | **Post** /deepfence/configs/agent/threatintel/ | Register threat intel config
 *AgentFilesystemAPI* | [**EnableFilesystemTracer**](docs/AgentFilesystemAPI.md#enablefilesystemtracer) | **Post** /deepfence/filesystem/tracer/enable | Enable filesystem tracer
@@ -190,6 +195,8 @@ Class | Method | HTTP request | Description
 *LookupAPI* | [**GetNetworkAlerts**](docs/LookupAPI.md#getnetworkalerts) | **Post** /deepfence/lookup/network-alerts | Get Network Alerts
 *LookupAPI* | [**GetNetworkViolations**](docs/LookupAPI.md#getnetworkviolations) | **Post** /deepfence/lookup/network-violations | Get Network Violations
 *LookupAPI* | [**GetPods**](docs/LookupAPI.md#getpods) | **Post** /deepfence/lookup/pods | Retrieve Pods data
+*LookupAPI* | [**GetProcessAlertRules**](docs/LookupAPI.md#getprocessalertrules) | **Post** /deepfence/lookup/process-alert-rules | Get Process Alert Rules
+*LookupAPI* | [**GetProcessAlerts**](docs/LookupAPI.md#getprocessalerts) | **Post** /deepfence/lookup/process-alerts | Get Process Alerts
 *LookupAPI* | [**GetProcesses**](docs/LookupAPI.md#getprocesses) | **Post** /deepfence/lookup/processes | Retrieve Processes data
 *LookupAPI* | [**GetQuarantineViolations**](docs/LookupAPI.md#getquarantineviolations) | **Post** /deepfence/lookup/quarantine-violations | Get Quarantine Violations
 *LookupAPI* | [**GetRegistryAccount**](docs/LookupAPI.md#getregistryaccount) | **Post** /deepfence/lookup/registryaccount | Get Images in Registry
@@ -254,6 +261,8 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**CountNetworkViolations**](docs/SearchAPI.md#countnetworkviolations) | **Post** /deepfence/search/count/network-violations | Count network violations
 *SearchAPI* | [**CountNodes**](docs/SearchAPI.md#countnodes) | **Get** /deepfence/search/count/nodes | Count nodes
 *SearchAPI* | [**CountPods**](docs/SearchAPI.md#countpods) | **Post** /deepfence/search/count/pods | Count Pods
+*SearchAPI* | [**CountProcessAlertRules**](docs/SearchAPI.md#countprocessalertrules) | **Post** /deepfence/search/count/process-alert-rules | Count process alert rules
+*SearchAPI* | [**CountProcessAlerts**](docs/SearchAPI.md#countprocessalerts) | **Post** /deepfence/search/count/process-alerts | Count process alerts
 *SearchAPI* | [**CountQuarantineViolations**](docs/SearchAPI.md#countquarantineviolations) | **Post** /deepfence/search/count/quarantine-violations | Count quarantine violations
 *SearchAPI* | [**CountSecretRules**](docs/SearchAPI.md#countsecretrules) | **Post** /deepfence/search/count/secret-rules | Count Secret Rules
 *SearchAPI* | [**CountSecrets**](docs/SearchAPI.md#countsecrets) | **Post** /deepfence/search/count/secrets | Count Secrets
@@ -285,6 +294,8 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**SearchNetworkViolationStubs**](docs/SearchAPI.md#searchnetworkviolationstubs) | **Post** /deepfence/search/network-violation-stubs | Search network violation stubs
 *SearchAPI* | [**SearchNetworkViolations**](docs/SearchAPI.md#searchnetworkviolations) | **Post** /deepfence/search/network-violations | Search network violations
 *SearchAPI* | [**SearchPods**](docs/SearchAPI.md#searchpods) | **Post** /deepfence/search/pods | Search Pods
+*SearchAPI* | [**SearchProcessAlertRules**](docs/SearchAPI.md#searchprocessalertrules) | **Post** /deepfence/search/process-alert-rules | Search process alert rules
+*SearchAPI* | [**SearchProcessAlerts**](docs/SearchAPI.md#searchprocessalerts) | **Post** /deepfence/search/process-alerts | Search process alerts
 *SearchAPI* | [**SearchQuarantineViolations**](docs/SearchAPI.md#searchquarantineviolations) | **Post** /deepfence/search/quarantine-violations | Search quarantine violations
 *SearchAPI* | [**SearchSecretRules**](docs/SearchAPI.md#searchsecretrules) | **Post** /deepfence/search/secret-rules | Search Secret Rules
 *SearchAPI* | [**SearchSecrets**](docs/SearchAPI.md#searchsecrets) | **Post** /deepfence/search/secrets | Search Secrets
@@ -305,6 +316,7 @@ Class | Method | HTTP request | Description
 *SettingsAPI* | [**AddEmailConfiguration**](docs/SettingsAPI.md#addemailconfiguration) | **Post** /deepfence/settings/email | Add Email Configuration
 *SettingsAPI* | [**AddScheduledTask**](docs/SettingsAPI.md#addscheduledtask) | **Post** /deepfence/scheduled-task | Add scheduled task
 *SettingsAPI* | [**DeleteCloudWafConfiguration**](docs/SettingsAPI.md#deletecloudwafconfiguration) | **Delete** /deepfence/settings/cloud-waf | Delete Cloud WAF Configuration
+*SettingsAPI* | [**DeleteCustomScheduledTask**](docs/SettingsAPI.md#deletecustomscheduledtask) | **Delete** /deepfence/scheduled-task/{id} | Delete Custom Schedule task
 *SettingsAPI* | [**DeleteEmailConfiguration**](docs/SettingsAPI.md#deleteemailconfiguration) | **Delete** /deepfence/settings/email/{config_id} | Delete Email Configurations
 *SettingsAPI* | [**GetCloudWafConfiguration**](docs/SettingsAPI.md#getcloudwafconfiguration) | **Get** /deepfence/settings/cloud-waf | Get Cloud WAF Configuration
 *SettingsAPI* | [**GetEmailConfiguration**](docs/SettingsAPI.md#getemailconfiguration) | **Get** /deepfence/settings/email | Get Email Configurations
@@ -516,6 +528,8 @@ Class | Method | HTTP request | Description
  - [ModelPod](docs/ModelPod.md)
  - [ModelPostureProvider](docs/ModelPostureProvider.md)
  - [ModelProcess](docs/ModelProcess.md)
+ - [ModelProcessAlert](docs/ModelProcessAlert.md)
+ - [ModelProcessAlertRule](docs/ModelProcessAlertRule.md)
  - [ModelQuarantineViolation](docs/ModelQuarantineViolation.md)
  - [ModelRegisterInvitedUserRequest](docs/ModelRegisterInvitedUserRequest.md)
  - [ModelRegisterLicenseRequest](docs/ModelRegisterLicenseRequest.md)

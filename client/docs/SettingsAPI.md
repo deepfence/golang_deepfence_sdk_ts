@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**AddEmailConfiguration**](SettingsAPI.md#AddEmailConfiguration) | **Post** /deepfence/settings/email | Add Email Configuration
 [**AddScheduledTask**](SettingsAPI.md#AddScheduledTask) | **Post** /deepfence/scheduled-task | Add scheduled task
 [**DeleteCloudWafConfiguration**](SettingsAPI.md#DeleteCloudWafConfiguration) | **Delete** /deepfence/settings/cloud-waf | Delete Cloud WAF Configuration
+[**DeleteCustomScheduledTask**](SettingsAPI.md#DeleteCustomScheduledTask) | **Delete** /deepfence/scheduled-task/{id} | Delete Custom Schedule task
 [**DeleteEmailConfiguration**](SettingsAPI.md#DeleteEmailConfiguration) | **Delete** /deepfence/settings/email/{config_id} | Delete Email Configurations
 [**GetCloudWafConfiguration**](SettingsAPI.md#GetCloudWafConfiguration) | **Get** /deepfence/settings/cloud-waf | Get Cloud WAF Configuration
 [**GetEmailConfiguration**](SettingsAPI.md#GetEmailConfiguration) | **Get** /deepfence/settings/email | Get Email Configurations
@@ -111,7 +112,7 @@ import (
 )
 
 func main() {
-    modelAddScheduledTaskRequest := *openapiclient.NewModelAddScheduledTaskRequest() // ModelAddScheduledTaskRequest |  (optional)
+    modelAddScheduledTaskRequest := *openapiclient.NewModelAddScheduledTaskRequest("Action_example", []string{"BenchmarkTypes_example"}, *openapiclient.NewModelScanFilter(*openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}})), []openapiclient.ModelNodeIdentifier{*openapiclient.NewModelNodeIdentifier("NodeId_example", "NodeType_example")}, []openapiclient.ModelVulnerabilityScanConfigLanguage{*openapiclient.NewModelVulnerabilityScanConfigLanguage("Language_example")}) // ModelAddScheduledTaskRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -193,6 +194,74 @@ This endpoint does not need any parameter.
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDeleteCloudWafConfigurationRequest struct via the builder pattern
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteCustomScheduledTask
+
+> DeleteCustomScheduledTask(ctx, id).Execute()
+
+Delete Custom Schedule task
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+    id := int32(56) // int32 | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.SettingsAPI.DeleteCustomScheduledTask(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.DeleteCustomScheduledTask``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteCustomScheduledTaskRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 
 ### Return type

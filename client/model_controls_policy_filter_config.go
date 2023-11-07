@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ControlsPolicyFilterConfig type satisfies the MappedNullable interface at compile time
@@ -26,6 +27,8 @@ type ControlsPolicyFilterConfig struct {
 	UpdatedAt int64 `json:"updated_at"`
 	UseWaf bool `json:"use_waf"`
 }
+
+type _ControlsPolicyFilterConfig ControlsPolicyFilterConfig
 
 // NewControlsPolicyFilterConfig instantiates a new ControlsPolicyFilterConfig object
 // This constructor will assign default values to properties that have it defined,
@@ -193,6 +196,45 @@ func (o ControlsPolicyFilterConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize["updated_at"] = o.UpdatedAt
 	toSerialize["use_waf"] = o.UseWaf
 	return toSerialize, nil
+}
+
+func (o *ControlsPolicyFilterConfig) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"ignored_remote_ips",
+		"node_id",
+		"policies",
+		"updated_at",
+		"use_waf",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varControlsPolicyFilterConfig := _ControlsPolicyFilterConfig{}
+
+	err = json.Unmarshal(bytes, &varControlsPolicyFilterConfig)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ControlsPolicyFilterConfig(varControlsPolicyFilterConfig)
+
+	return err
 }
 
 type NullableControlsPolicyFilterConfig struct {

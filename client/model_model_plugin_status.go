@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ModelPluginStatus type satisfies the MappedNullable interface at compile time
@@ -23,6 +24,8 @@ type ModelPluginStatus struct {
 	Description string `json:"description"`
 	Status string `json:"status"`
 }
+
+type _ModelPluginStatus ModelPluginStatus
 
 // NewModelPluginStatus instantiates a new ModelPluginStatus object
 // This constructor will assign default values to properties that have it defined,
@@ -104,6 +107,42 @@ func (o ModelPluginStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize["description"] = o.Description
 	toSerialize["status"] = o.Status
 	return toSerialize, nil
+}
+
+func (o *ModelPluginStatus) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"description",
+		"status",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varModelPluginStatus := _ModelPluginStatus{}
+
+	err = json.Unmarshal(bytes, &varModelPluginStatus)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ModelPluginStatus(varModelPluginStatus)
+
+	return err
 }
 
 type NullableModelPluginStatus struct {

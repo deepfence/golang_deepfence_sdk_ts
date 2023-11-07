@@ -204,6 +204,8 @@ docs/ModelPluginStatus.md
 docs/ModelPod.md
 docs/ModelPostureProvider.md
 docs/ModelProcess.md
+docs/ModelProcessAlert.md
+docs/ModelProcessAlertRule.md
 docs/ModelQuarantineViolation.md
 docs/ModelRegisterInvitedUserRequest.md
 docs/ModelRegisterLicenseRequest.md
@@ -456,6 +458,8 @@ model_model_plugin_status.go
 model_model_pod.go
 model_model_posture_provider.go
 model_model_process.go
+model_model_process_alert.go
+model_model_process_alert_rule.go
 model_model_quarantine_violation.go
 model_model_register_invited_user_request.go
 model_model_register_license_request.go

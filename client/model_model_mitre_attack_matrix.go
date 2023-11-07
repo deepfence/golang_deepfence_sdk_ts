@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ModelMitreAttackMatrix type satisfies the MappedNullable interface at compile time
@@ -24,6 +25,8 @@ type ModelMitreAttackMatrix struct {
 	Tactic string `json:"tactic"`
 	TechniqueSummary map[string]ModelMitreTechniqueSummary `json:"technique_summary"`
 }
+
+type _ModelMitreAttackMatrix ModelMitreAttackMatrix
 
 // NewModelMitreAttackMatrix instantiates a new ModelMitreAttackMatrix object
 // This constructor will assign default values to properties that have it defined,
@@ -135,6 +138,43 @@ func (o ModelMitreAttackMatrix) ToMap() (map[string]interface{}, error) {
 		toSerialize["technique_summary"] = o.TechniqueSummary
 	}
 	return toSerialize, nil
+}
+
+func (o *ModelMitreAttackMatrix) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"count",
+		"tactic",
+		"technique_summary",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varModelMitreAttackMatrix := _ModelMitreAttackMatrix{}
+
+	err = json.Unmarshal(bytes, &varModelMitreAttackMatrix)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ModelMitreAttackMatrix(varModelMitreAttackMatrix)
+
+	return err
 }
 
 type NullableModelMitreAttackMatrix struct {

@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ModelGetAgentConfigReq type satisfies the MappedNullable interface at compile time
@@ -22,6 +23,8 @@ var _ MappedNullable = &ModelGetAgentConfigReq{}
 type ModelGetAgentConfigReq struct {
 	ConfigIds []string `json:"config_ids"`
 }
+
+type _ModelGetAgentConfigReq ModelGetAgentConfigReq
 
 // NewModelGetAgentConfigReq instantiates a new ModelGetAgentConfigReq object
 // This constructor will assign default values to properties that have it defined,
@@ -81,6 +84,41 @@ func (o ModelGetAgentConfigReq) ToMap() (map[string]interface{}, error) {
 		toSerialize["config_ids"] = o.ConfigIds
 	}
 	return toSerialize, nil
+}
+
+func (o *ModelGetAgentConfigReq) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"config_ids",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varModelGetAgentConfigReq := _ModelGetAgentConfigReq{}
+
+	err = json.Unmarshal(bytes, &varModelGetAgentConfigReq)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ModelGetAgentConfigReq(varModelGetAgentConfigReq)
+
+	return err
 }
 
 type NullableModelGetAgentConfigReq struct {

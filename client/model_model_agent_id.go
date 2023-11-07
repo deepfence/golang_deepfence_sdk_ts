@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ModelAgentId type satisfies the MappedNullable interface at compile time
@@ -23,6 +24,8 @@ type ModelAgentId struct {
 	AvailableWorkload int32 `json:"available_workload"`
 	NodeId string `json:"node_id"`
 }
+
+type _ModelAgentId ModelAgentId
 
 // NewModelAgentId instantiates a new ModelAgentId object
 // This constructor will assign default values to properties that have it defined,
@@ -104,6 +107,42 @@ func (o ModelAgentId) ToMap() (map[string]interface{}, error) {
 	toSerialize["available_workload"] = o.AvailableWorkload
 	toSerialize["node_id"] = o.NodeId
 	return toSerialize, nil
+}
+
+func (o *ModelAgentId) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"available_workload",
+		"node_id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varModelAgentId := _ModelAgentId{}
+
+	err = json.Unmarshal(bytes, &varModelAgentId)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ModelAgentId(varModelAgentId)
+
+	return err
 }
 
 type NullableModelAgentId struct {

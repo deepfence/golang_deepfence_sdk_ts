@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the IngestersWAFRule type satisfies the MappedNullable interface at compile time
@@ -26,6 +27,8 @@ type IngestersWAFRule struct {
 	RemoteIp string `json:"remote_ip"`
 	RemotePort *int32 `json:"remote_port,omitempty"`
 }
+
+type _IngestersWAFRule IngestersWAFRule
 
 // NewIngestersWAFRule instantiates a new IngestersWAFRule object
 // This constructor will assign default values to properties that have it defined,
@@ -212,6 +215,42 @@ func (o IngestersWAFRule) ToMap() (map[string]interface{}, error) {
 		toSerialize["remote_port"] = o.RemotePort
 	}
 	return toSerialize, nil
+}
+
+func (o *IngestersWAFRule) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"action",
+		"remote_ip",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIngestersWAFRule := _IngestersWAFRule{}
+
+	err = json.Unmarshal(bytes, &varIngestersWAFRule)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IngestersWAFRule(varIngestersWAFRule)
+
+	return err
 }
 
 type NullableIngestersWAFRule struct {

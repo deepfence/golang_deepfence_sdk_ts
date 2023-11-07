@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ModelNetworkAlertRule type satisfies the MappedNullable interface at compile time
@@ -32,6 +33,8 @@ type ModelNetworkAlertRule struct {
 	Techniques []string `json:"techniques"`
 	UpdatedAt int32 `json:"updated_at"`
 }
+
+type _ModelNetworkAlertRule ModelNetworkAlertRule
 
 // NewModelNetworkAlertRule instantiates a new ModelNetworkAlertRule object
 // This constructor will assign default values to properties that have it defined,
@@ -355,6 +358,51 @@ func (o ModelNetworkAlertRule) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil
+}
+
+func (o *ModelNetworkAlertRule) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"category",
+		"description",
+		"masked",
+		"node_id",
+		"rule_id",
+		"severity",
+		"severity_score",
+		"summary",
+		"tactics",
+		"techniques",
+		"updated_at",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varModelNetworkAlertRule := _ModelNetworkAlertRule{}
+
+	err = json.Unmarshal(bytes, &varModelNetworkAlertRule)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ModelNetworkAlertRule(varModelNetworkAlertRule)
+
+	return err
 }
 
 type NullableModelNetworkAlertRule struct {

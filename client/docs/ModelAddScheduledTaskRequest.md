@@ -4,17 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Action** | Pointer to **string** |  | [optional] 
+**Action** | **string** |  | 
+**BenchmarkTypes** | **[]string** |  | 
 **CronExpr** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Filters** | Pointer to **string** |  | [optional] 
-**NodeType** | Pointer to **string** |  | [optional] 
+**Filters** | [**ModelScanFilter**](ModelScanFilter.md) |  | 
+**NodeIds** | [**[]ModelNodeIdentifier**](ModelNodeIdentifier.md) |  | 
+**ScanConfig** | [**[]ModelVulnerabilityScanConfigLanguage**](ModelVulnerabilityScanConfigLanguage.md) |  | 
 
 ## Methods
 
 ### NewModelAddScheduledTaskRequest
 
-`func NewModelAddScheduledTaskRequest() *ModelAddScheduledTaskRequest`
+`func NewModelAddScheduledTaskRequest(action string, benchmarkTypes []string, filters ModelScanFilter, nodeIds []ModelNodeIdentifier, scanConfig []ModelVulnerabilityScanConfigLanguage, ) *ModelAddScheduledTaskRequest`
 
 NewModelAddScheduledTaskRequest instantiates a new ModelAddScheduledTaskRequest object
 This constructor will assign default values to properties that have it defined,
@@ -48,12 +50,37 @@ and a boolean to check if the value has been set.
 
 SetAction sets Action field to given value.
 
-### HasAction
 
-`func (o *ModelAddScheduledTaskRequest) HasAction() bool`
+### GetBenchmarkTypes
 
-HasAction returns a boolean if a field has been set.
+`func (o *ModelAddScheduledTaskRequest) GetBenchmarkTypes() []string`
 
+GetBenchmarkTypes returns the BenchmarkTypes field if non-nil, zero value otherwise.
+
+### GetBenchmarkTypesOk
+
+`func (o *ModelAddScheduledTaskRequest) GetBenchmarkTypesOk() (*[]string, bool)`
+
+GetBenchmarkTypesOk returns a tuple with the BenchmarkTypes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBenchmarkTypes
+
+`func (o *ModelAddScheduledTaskRequest) SetBenchmarkTypes(v []string)`
+
+SetBenchmarkTypes sets BenchmarkTypes field to given value.
+
+
+### SetBenchmarkTypesNil
+
+`func (o *ModelAddScheduledTaskRequest) SetBenchmarkTypesNil(b bool)`
+
+ SetBenchmarkTypesNil sets the value for BenchmarkTypes to be an explicit nil
+
+### UnsetBenchmarkTypes
+`func (o *ModelAddScheduledTaskRequest) UnsetBenchmarkTypes()`
+
+UnsetBenchmarkTypes ensures that no value is present for BenchmarkTypes, not even an explicit nil
 ### GetCronExpr
 
 `func (o *ModelAddScheduledTaskRequest) GetCronExpr() string`
@@ -106,54 +133,84 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetFilters
 
-`func (o *ModelAddScheduledTaskRequest) GetFilters() string`
+`func (o *ModelAddScheduledTaskRequest) GetFilters() ModelScanFilter`
 
 GetFilters returns the Filters field if non-nil, zero value otherwise.
 
 ### GetFiltersOk
 
-`func (o *ModelAddScheduledTaskRequest) GetFiltersOk() (*string, bool)`
+`func (o *ModelAddScheduledTaskRequest) GetFiltersOk() (*ModelScanFilter, bool)`
 
 GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFilters
 
-`func (o *ModelAddScheduledTaskRequest) SetFilters(v string)`
+`func (o *ModelAddScheduledTaskRequest) SetFilters(v ModelScanFilter)`
 
 SetFilters sets Filters field to given value.
 
-### HasFilters
 
-`func (o *ModelAddScheduledTaskRequest) HasFilters() bool`
+### GetNodeIds
 
-HasFilters returns a boolean if a field has been set.
+`func (o *ModelAddScheduledTaskRequest) GetNodeIds() []ModelNodeIdentifier`
 
-### GetNodeType
+GetNodeIds returns the NodeIds field if non-nil, zero value otherwise.
 
-`func (o *ModelAddScheduledTaskRequest) GetNodeType() string`
+### GetNodeIdsOk
 
-GetNodeType returns the NodeType field if non-nil, zero value otherwise.
+`func (o *ModelAddScheduledTaskRequest) GetNodeIdsOk() (*[]ModelNodeIdentifier, bool)`
 
-### GetNodeTypeOk
-
-`func (o *ModelAddScheduledTaskRequest) GetNodeTypeOk() (*string, bool)`
-
-GetNodeTypeOk returns a tuple with the NodeType field if it's non-nil, zero value otherwise
+GetNodeIdsOk returns a tuple with the NodeIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNodeType
+### SetNodeIds
 
-`func (o *ModelAddScheduledTaskRequest) SetNodeType(v string)`
+`func (o *ModelAddScheduledTaskRequest) SetNodeIds(v []ModelNodeIdentifier)`
 
-SetNodeType sets NodeType field to given value.
+SetNodeIds sets NodeIds field to given value.
 
-### HasNodeType
 
-`func (o *ModelAddScheduledTaskRequest) HasNodeType() bool`
+### SetNodeIdsNil
 
-HasNodeType returns a boolean if a field has been set.
+`func (o *ModelAddScheduledTaskRequest) SetNodeIdsNil(b bool)`
 
+ SetNodeIdsNil sets the value for NodeIds to be an explicit nil
+
+### UnsetNodeIds
+`func (o *ModelAddScheduledTaskRequest) UnsetNodeIds()`
+
+UnsetNodeIds ensures that no value is present for NodeIds, not even an explicit nil
+### GetScanConfig
+
+`func (o *ModelAddScheduledTaskRequest) GetScanConfig() []ModelVulnerabilityScanConfigLanguage`
+
+GetScanConfig returns the ScanConfig field if non-nil, zero value otherwise.
+
+### GetScanConfigOk
+
+`func (o *ModelAddScheduledTaskRequest) GetScanConfigOk() (*[]ModelVulnerabilityScanConfigLanguage, bool)`
+
+GetScanConfigOk returns a tuple with the ScanConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScanConfig
+
+`func (o *ModelAddScheduledTaskRequest) SetScanConfig(v []ModelVulnerabilityScanConfigLanguage)`
+
+SetScanConfig sets ScanConfig field to given value.
+
+
+### SetScanConfigNil
+
+`func (o *ModelAddScheduledTaskRequest) SetScanConfigNil(b bool)`
+
+ SetScanConfigNil sets the value for ScanConfig to be an explicit nil
+
+### UnsetScanConfig
+`func (o *ModelAddScheduledTaskRequest) UnsetScanConfig()`
+
+UnsetScanConfig ensures that no value is present for ScanConfig, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

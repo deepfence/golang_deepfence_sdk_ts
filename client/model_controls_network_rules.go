@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ControlsNetworkRules type satisfies the MappedNullable interface at compile time
@@ -23,6 +24,8 @@ type ControlsNetworkRules struct {
 	Inbound []string `json:"inbound"`
 	Outbound []string `json:"outbound"`
 }
+
+type _ControlsNetworkRules ControlsNetworkRules
 
 // NewControlsNetworkRules instantiates a new ControlsNetworkRules object
 // This constructor will assign default values to properties that have it defined,
@@ -112,6 +115,42 @@ func (o ControlsNetworkRules) ToMap() (map[string]interface{}, error) {
 		toSerialize["outbound"] = o.Outbound
 	}
 	return toSerialize, nil
+}
+
+func (o *ControlsNetworkRules) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"inbound",
+		"outbound",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varControlsNetworkRules := _ControlsNetworkRules{}
+
+	err = json.Unmarshal(bytes, &varControlsNetworkRules)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ControlsNetworkRules(varControlsNetworkRules)
+
+	return err
 }
 
 type NullableControlsNetworkRules struct {

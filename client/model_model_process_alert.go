@@ -16,11 +16,11 @@ import (
 	"fmt"
 )
 
-// checks if the ModelFileAlert type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ModelFileAlert{}
+// checks if the ModelProcessAlert type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelProcessAlert{}
 
-// ModelFileAlert struct for ModelFileAlert
-type ModelFileAlert struct {
+// ModelProcessAlert struct for ModelProcessAlert
+type ModelProcessAlert struct {
 	Category string `json:"category"`
 	ContainerId string `json:"container_id"`
 	ContainerImage string `json:"container_image"`
@@ -55,14 +55,14 @@ type ModelFileAlert struct {
 	W int32 `json:"w"`
 }
 
-type _ModelFileAlert ModelFileAlert
+type _ModelProcessAlert ModelProcessAlert
 
-// NewModelFileAlert instantiates a new ModelFileAlert object
+// NewModelProcessAlert instantiates a new ModelProcessAlert object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, eventType string, filepath string, fstat string, hostName string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, ruleId string, severity string, severityScore float32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32) *ModelFileAlert {
-	this := ModelFileAlert{}
+func NewModelProcessAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, eventType string, filepath string, fstat string, hostName string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, ruleId string, severity string, severityScore float32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32) *ModelProcessAlert {
+	this := ModelProcessAlert{}
 	this.Category = category
 	this.ContainerId = containerId
 	this.ContainerImage = containerImage
@@ -98,16 +98,16 @@ func NewModelFileAlert(category string, containerId string, containerImage strin
 	return &this
 }
 
-// NewModelFileAlertWithDefaults instantiates a new ModelFileAlert object
+// NewModelProcessAlertWithDefaults instantiates a new ModelProcessAlert object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewModelFileAlertWithDefaults() *ModelFileAlert {
-	this := ModelFileAlert{}
+func NewModelProcessAlertWithDefaults() *ModelProcessAlert {
+	this := ModelProcessAlert{}
 	return &this
 }
 
 // GetCategory returns the Category field value
-func (o *ModelFileAlert) GetCategory() string {
+func (o *ModelProcessAlert) GetCategory() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -118,7 +118,7 @@ func (o *ModelFileAlert) GetCategory() string {
 
 // GetCategoryOk returns a tuple with the Category field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetCategoryOk() (*string, bool) {
+func (o *ModelProcessAlert) GetCategoryOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -126,12 +126,12 @@ func (o *ModelFileAlert) GetCategoryOk() (*string, bool) {
 }
 
 // SetCategory sets field value
-func (o *ModelFileAlert) SetCategory(v string) {
+func (o *ModelProcessAlert) SetCategory(v string) {
 	o.Category = v
 }
 
 // GetContainerId returns the ContainerId field value
-func (o *ModelFileAlert) GetContainerId() string {
+func (o *ModelProcessAlert) GetContainerId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -142,7 +142,7 @@ func (o *ModelFileAlert) GetContainerId() string {
 
 // GetContainerIdOk returns a tuple with the ContainerId field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetContainerIdOk() (*string, bool) {
+func (o *ModelProcessAlert) GetContainerIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -150,12 +150,12 @@ func (o *ModelFileAlert) GetContainerIdOk() (*string, bool) {
 }
 
 // SetContainerId sets field value
-func (o *ModelFileAlert) SetContainerId(v string) {
+func (o *ModelProcessAlert) SetContainerId(v string) {
 	o.ContainerId = v
 }
 
 // GetContainerImage returns the ContainerImage field value
-func (o *ModelFileAlert) GetContainerImage() string {
+func (o *ModelProcessAlert) GetContainerImage() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -166,7 +166,7 @@ func (o *ModelFileAlert) GetContainerImage() string {
 
 // GetContainerImageOk returns a tuple with the ContainerImage field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetContainerImageOk() (*string, bool) {
+func (o *ModelProcessAlert) GetContainerImageOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -174,12 +174,12 @@ func (o *ModelFileAlert) GetContainerImageOk() (*string, bool) {
 }
 
 // SetContainerImage sets field value
-func (o *ModelFileAlert) SetContainerImage(v string) {
+func (o *ModelProcessAlert) SetContainerImage(v string) {
 	o.ContainerImage = v
 }
 
 // GetContainerIp returns the ContainerIp field value
-func (o *ModelFileAlert) GetContainerIp() string {
+func (o *ModelProcessAlert) GetContainerIp() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -190,7 +190,7 @@ func (o *ModelFileAlert) GetContainerIp() string {
 
 // GetContainerIpOk returns a tuple with the ContainerIp field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetContainerIpOk() (*string, bool) {
+func (o *ModelProcessAlert) GetContainerIpOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -198,12 +198,12 @@ func (o *ModelFileAlert) GetContainerIpOk() (*string, bool) {
 }
 
 // SetContainerIp sets field value
-func (o *ModelFileAlert) SetContainerIp(v string) {
+func (o *ModelProcessAlert) SetContainerIp(v string) {
 	o.ContainerIp = v
 }
 
 // GetContainerName returns the ContainerName field value
-func (o *ModelFileAlert) GetContainerName() string {
+func (o *ModelProcessAlert) GetContainerName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -214,7 +214,7 @@ func (o *ModelFileAlert) GetContainerName() string {
 
 // GetContainerNameOk returns a tuple with the ContainerName field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetContainerNameOk() (*string, bool) {
+func (o *ModelProcessAlert) GetContainerNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -222,12 +222,12 @@ func (o *ModelFileAlert) GetContainerNameOk() (*string, bool) {
 }
 
 // SetContainerName sets field value
-func (o *ModelFileAlert) SetContainerName(v string) {
+func (o *ModelProcessAlert) SetContainerName(v string) {
 	o.ContainerName = v
 }
 
 // GetCount returns the Count field value
-func (o *ModelFileAlert) GetCount() int32 {
+func (o *ModelProcessAlert) GetCount() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -238,7 +238,7 @@ func (o *ModelFileAlert) GetCount() int32 {
 
 // GetCountOk returns a tuple with the Count field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetCountOk() (*int32, bool) {
+func (o *ModelProcessAlert) GetCountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -246,12 +246,12 @@ func (o *ModelFileAlert) GetCountOk() (*int32, bool) {
 }
 
 // SetCount sets field value
-func (o *ModelFileAlert) SetCount(v int32) {
+func (o *ModelProcessAlert) SetCount(v int32) {
 	o.Count = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
-func (o *ModelFileAlert) GetCreatedAt() int32 {
+func (o *ModelProcessAlert) GetCreatedAt() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -262,7 +262,7 @@ func (o *ModelFileAlert) GetCreatedAt() int32 {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetCreatedAtOk() (*int32, bool) {
+func (o *ModelProcessAlert) GetCreatedAtOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -270,12 +270,12 @@ func (o *ModelFileAlert) GetCreatedAtOk() (*int32, bool) {
 }
 
 // SetCreatedAt sets field value
-func (o *ModelFileAlert) SetCreatedAt(v int32) {
+func (o *ModelProcessAlert) SetCreatedAt(v int32) {
 	o.CreatedAt = v
 }
 
 // GetEventType returns the EventType field value
-func (o *ModelFileAlert) GetEventType() string {
+func (o *ModelProcessAlert) GetEventType() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -286,7 +286,7 @@ func (o *ModelFileAlert) GetEventType() string {
 
 // GetEventTypeOk returns a tuple with the EventType field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetEventTypeOk() (*string, bool) {
+func (o *ModelProcessAlert) GetEventTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -294,12 +294,12 @@ func (o *ModelFileAlert) GetEventTypeOk() (*string, bool) {
 }
 
 // SetEventType sets field value
-func (o *ModelFileAlert) SetEventType(v string) {
+func (o *ModelProcessAlert) SetEventType(v string) {
 	o.EventType = v
 }
 
 // GetFilepath returns the Filepath field value
-func (o *ModelFileAlert) GetFilepath() string {
+func (o *ModelProcessAlert) GetFilepath() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -310,7 +310,7 @@ func (o *ModelFileAlert) GetFilepath() string {
 
 // GetFilepathOk returns a tuple with the Filepath field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetFilepathOk() (*string, bool) {
+func (o *ModelProcessAlert) GetFilepathOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -318,12 +318,12 @@ func (o *ModelFileAlert) GetFilepathOk() (*string, bool) {
 }
 
 // SetFilepath sets field value
-func (o *ModelFileAlert) SetFilepath(v string) {
+func (o *ModelProcessAlert) SetFilepath(v string) {
 	o.Filepath = v
 }
 
 // GetFstat returns the Fstat field value
-func (o *ModelFileAlert) GetFstat() string {
+func (o *ModelProcessAlert) GetFstat() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -334,7 +334,7 @@ func (o *ModelFileAlert) GetFstat() string {
 
 // GetFstatOk returns a tuple with the Fstat field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetFstatOk() (*string, bool) {
+func (o *ModelProcessAlert) GetFstatOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -342,12 +342,12 @@ func (o *ModelFileAlert) GetFstatOk() (*string, bool) {
 }
 
 // SetFstat sets field value
-func (o *ModelFileAlert) SetFstat(v string) {
+func (o *ModelProcessAlert) SetFstat(v string) {
 	o.Fstat = v
 }
 
 // GetHostName returns the HostName field value
-func (o *ModelFileAlert) GetHostName() string {
+func (o *ModelProcessAlert) GetHostName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -358,7 +358,7 @@ func (o *ModelFileAlert) GetHostName() string {
 
 // GetHostNameOk returns a tuple with the HostName field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetHostNameOk() (*string, bool) {
+func (o *ModelProcessAlert) GetHostNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -366,12 +366,12 @@ func (o *ModelFileAlert) GetHostNameOk() (*string, bool) {
 }
 
 // SetHostName sets field value
-func (o *ModelFileAlert) SetHostName(v string) {
+func (o *ModelProcessAlert) SetHostName(v string) {
 	o.HostName = v
 }
 
 // GetKubernetesClusterId returns the KubernetesClusterId field value
-func (o *ModelFileAlert) GetKubernetesClusterId() string {
+func (o *ModelProcessAlert) GetKubernetesClusterId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -382,7 +382,7 @@ func (o *ModelFileAlert) GetKubernetesClusterId() string {
 
 // GetKubernetesClusterIdOk returns a tuple with the KubernetesClusterId field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetKubernetesClusterIdOk() (*string, bool) {
+func (o *ModelProcessAlert) GetKubernetesClusterIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -390,12 +390,12 @@ func (o *ModelFileAlert) GetKubernetesClusterIdOk() (*string, bool) {
 }
 
 // SetKubernetesClusterId sets field value
-func (o *ModelFileAlert) SetKubernetesClusterId(v string) {
+func (o *ModelProcessAlert) SetKubernetesClusterId(v string) {
 	o.KubernetesClusterId = v
 }
 
 // GetKubernetesClusterName returns the KubernetesClusterName field value
-func (o *ModelFileAlert) GetKubernetesClusterName() string {
+func (o *ModelProcessAlert) GetKubernetesClusterName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -406,7 +406,7 @@ func (o *ModelFileAlert) GetKubernetesClusterName() string {
 
 // GetKubernetesClusterNameOk returns a tuple with the KubernetesClusterName field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetKubernetesClusterNameOk() (*string, bool) {
+func (o *ModelProcessAlert) GetKubernetesClusterNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -414,12 +414,12 @@ func (o *ModelFileAlert) GetKubernetesClusterNameOk() (*string, bool) {
 }
 
 // SetKubernetesClusterName sets field value
-func (o *ModelFileAlert) SetKubernetesClusterName(v string) {
+func (o *ModelProcessAlert) SetKubernetesClusterName(v string) {
 	o.KubernetesClusterName = v
 }
 
 // GetMasked returns the Masked field value
-func (o *ModelFileAlert) GetMasked() bool {
+func (o *ModelProcessAlert) GetMasked() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -430,7 +430,7 @@ func (o *ModelFileAlert) GetMasked() bool {
 
 // GetMaskedOk returns a tuple with the Masked field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetMaskedOk() (*bool, bool) {
+func (o *ModelProcessAlert) GetMaskedOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -438,12 +438,12 @@ func (o *ModelFileAlert) GetMaskedOk() (*bool, bool) {
 }
 
 // SetMasked sets field value
-func (o *ModelFileAlert) SetMasked(v bool) {
+func (o *ModelProcessAlert) SetMasked(v bool) {
 	o.Masked = v
 }
 
 // GetNetstat returns the Netstat field value
-func (o *ModelFileAlert) GetNetstat() string {
+func (o *ModelProcessAlert) GetNetstat() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -454,7 +454,7 @@ func (o *ModelFileAlert) GetNetstat() string {
 
 // GetNetstatOk returns a tuple with the Netstat field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetNetstatOk() (*string, bool) {
+func (o *ModelProcessAlert) GetNetstatOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -462,12 +462,12 @@ func (o *ModelFileAlert) GetNetstatOk() (*string, bool) {
 }
 
 // SetNetstat sets field value
-func (o *ModelFileAlert) SetNetstat(v string) {
+func (o *ModelProcessAlert) SetNetstat(v string) {
 	o.Netstat = v
 }
 
 // GetNodeId returns the NodeId field value
-func (o *ModelFileAlert) GetNodeId() string {
+func (o *ModelProcessAlert) GetNodeId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -478,7 +478,7 @@ func (o *ModelFileAlert) GetNodeId() string {
 
 // GetNodeIdOk returns a tuple with the NodeId field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetNodeIdOk() (*string, bool) {
+func (o *ModelProcessAlert) GetNodeIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -486,12 +486,12 @@ func (o *ModelFileAlert) GetNodeIdOk() (*string, bool) {
 }
 
 // SetNodeId sets field value
-func (o *ModelFileAlert) SetNodeId(v string) {
+func (o *ModelProcessAlert) SetNodeId(v string) {
 	o.NodeId = v
 }
 
 // GetNodeType returns the NodeType field value
-func (o *ModelFileAlert) GetNodeType() string {
+func (o *ModelProcessAlert) GetNodeType() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -502,7 +502,7 @@ func (o *ModelFileAlert) GetNodeType() string {
 
 // GetNodeTypeOk returns a tuple with the NodeType field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetNodeTypeOk() (*string, bool) {
+func (o *ModelProcessAlert) GetNodeTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -510,12 +510,12 @@ func (o *ModelFileAlert) GetNodeTypeOk() (*string, bool) {
 }
 
 // SetNodeType sets field value
-func (o *ModelFileAlert) SetNodeType(v string) {
+func (o *ModelProcessAlert) SetNodeType(v string) {
 	o.NodeType = v
 }
 
 // GetPid returns the Pid field value
-func (o *ModelFileAlert) GetPid() int32 {
+func (o *ModelProcessAlert) GetPid() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -526,7 +526,7 @@ func (o *ModelFileAlert) GetPid() int32 {
 
 // GetPidOk returns a tuple with the Pid field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetPidOk() (*int32, bool) {
+func (o *ModelProcessAlert) GetPidOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -534,12 +534,12 @@ func (o *ModelFileAlert) GetPidOk() (*int32, bool) {
 }
 
 // SetPid sets field value
-func (o *ModelFileAlert) SetPid(v int32) {
+func (o *ModelProcessAlert) SetPid(v int32) {
 	o.Pid = v
 }
 
 // GetPodName returns the PodName field value
-func (o *ModelFileAlert) GetPodName() string {
+func (o *ModelProcessAlert) GetPodName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -550,7 +550,7 @@ func (o *ModelFileAlert) GetPodName() string {
 
 // GetPodNameOk returns a tuple with the PodName field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetPodNameOk() (*string, bool) {
+func (o *ModelProcessAlert) GetPodNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -558,12 +558,12 @@ func (o *ModelFileAlert) GetPodNameOk() (*string, bool) {
 }
 
 // SetPodName sets field value
-func (o *ModelFileAlert) SetPodName(v string) {
+func (o *ModelProcessAlert) SetPodName(v string) {
 	o.PodName = v
 }
 
 // GetProcStatus returns the ProcStatus field value
-func (o *ModelFileAlert) GetProcStatus() string {
+func (o *ModelProcessAlert) GetProcStatus() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -574,7 +574,7 @@ func (o *ModelFileAlert) GetProcStatus() string {
 
 // GetProcStatusOk returns a tuple with the ProcStatus field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetProcStatusOk() (*string, bool) {
+func (o *ModelProcessAlert) GetProcStatusOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -582,12 +582,12 @@ func (o *ModelFileAlert) GetProcStatusOk() (*string, bool) {
 }
 
 // SetProcStatus sets field value
-func (o *ModelFileAlert) SetProcStatus(v string) {
+func (o *ModelProcessAlert) SetProcStatus(v string) {
 	o.ProcStatus = v
 }
 
 // GetProcessName returns the ProcessName field value
-func (o *ModelFileAlert) GetProcessName() string {
+func (o *ModelProcessAlert) GetProcessName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -598,7 +598,7 @@ func (o *ModelFileAlert) GetProcessName() string {
 
 // GetProcessNameOk returns a tuple with the ProcessName field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetProcessNameOk() (*string, bool) {
+func (o *ModelProcessAlert) GetProcessNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -606,12 +606,12 @@ func (o *ModelFileAlert) GetProcessNameOk() (*string, bool) {
 }
 
 // SetProcessName sets field value
-func (o *ModelFileAlert) SetProcessName(v string) {
+func (o *ModelProcessAlert) SetProcessName(v string) {
 	o.ProcessName = v
 }
 
 // GetResourceType returns the ResourceType field value
-func (o *ModelFileAlert) GetResourceType() string {
+func (o *ModelProcessAlert) GetResourceType() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -622,7 +622,7 @@ func (o *ModelFileAlert) GetResourceType() string {
 
 // GetResourceTypeOk returns a tuple with the ResourceType field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetResourceTypeOk() (*string, bool) {
+func (o *ModelProcessAlert) GetResourceTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -630,12 +630,12 @@ func (o *ModelFileAlert) GetResourceTypeOk() (*string, bool) {
 }
 
 // SetResourceType sets field value
-func (o *ModelFileAlert) SetResourceType(v string) {
+func (o *ModelProcessAlert) SetResourceType(v string) {
 	o.ResourceType = v
 }
 
 // GetRuleId returns the RuleId field value
-func (o *ModelFileAlert) GetRuleId() string {
+func (o *ModelProcessAlert) GetRuleId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -646,7 +646,7 @@ func (o *ModelFileAlert) GetRuleId() string {
 
 // GetRuleIdOk returns a tuple with the RuleId field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetRuleIdOk() (*string, bool) {
+func (o *ModelProcessAlert) GetRuleIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -654,12 +654,12 @@ func (o *ModelFileAlert) GetRuleIdOk() (*string, bool) {
 }
 
 // SetRuleId sets field value
-func (o *ModelFileAlert) SetRuleId(v string) {
+func (o *ModelProcessAlert) SetRuleId(v string) {
 	o.RuleId = v
 }
 
 // GetSeverity returns the Severity field value
-func (o *ModelFileAlert) GetSeverity() string {
+func (o *ModelProcessAlert) GetSeverity() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -670,7 +670,7 @@ func (o *ModelFileAlert) GetSeverity() string {
 
 // GetSeverityOk returns a tuple with the Severity field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetSeverityOk() (*string, bool) {
+func (o *ModelProcessAlert) GetSeverityOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -678,12 +678,12 @@ func (o *ModelFileAlert) GetSeverityOk() (*string, bool) {
 }
 
 // SetSeverity sets field value
-func (o *ModelFileAlert) SetSeverity(v string) {
+func (o *ModelProcessAlert) SetSeverity(v string) {
 	o.Severity = v
 }
 
 // GetSeverityScore returns the SeverityScore field value
-func (o *ModelFileAlert) GetSeverityScore() float32 {
+func (o *ModelProcessAlert) GetSeverityScore() float32 {
 	if o == nil {
 		var ret float32
 		return ret
@@ -694,7 +694,7 @@ func (o *ModelFileAlert) GetSeverityScore() float32 {
 
 // GetSeverityScoreOk returns a tuple with the SeverityScore field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetSeverityScoreOk() (*float32, bool) {
+func (o *ModelProcessAlert) GetSeverityScoreOk() (*float32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -702,12 +702,12 @@ func (o *ModelFileAlert) GetSeverityScoreOk() (*float32, bool) {
 }
 
 // SetSeverityScore sets field value
-func (o *ModelFileAlert) SetSeverityScore(v float32) {
+func (o *ModelProcessAlert) SetSeverityScore(v float32) {
 	o.SeverityScore = v
 }
 
 // GetSummary returns the Summary field value
-func (o *ModelFileAlert) GetSummary() string {
+func (o *ModelProcessAlert) GetSummary() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -718,7 +718,7 @@ func (o *ModelFileAlert) GetSummary() string {
 
 // GetSummaryOk returns a tuple with the Summary field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetSummaryOk() (*string, bool) {
+func (o *ModelProcessAlert) GetSummaryOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -726,13 +726,13 @@ func (o *ModelFileAlert) GetSummaryOk() (*string, bool) {
 }
 
 // SetSummary sets field value
-func (o *ModelFileAlert) SetSummary(v string) {
+func (o *ModelProcessAlert) SetSummary(v string) {
 	o.Summary = v
 }
 
 // GetTactics returns the Tactics field value
 // If the value is explicit nil, the zero value for []string will be returned
-func (o *ModelFileAlert) GetTactics() []string {
+func (o *ModelProcessAlert) GetTactics() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -744,7 +744,7 @@ func (o *ModelFileAlert) GetTactics() []string {
 // GetTacticsOk returns a tuple with the Tactics field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelFileAlert) GetTacticsOk() ([]string, bool) {
+func (o *ModelProcessAlert) GetTacticsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Tactics) {
 		return nil, false
 	}
@@ -752,13 +752,13 @@ func (o *ModelFileAlert) GetTacticsOk() ([]string, bool) {
 }
 
 // SetTactics sets field value
-func (o *ModelFileAlert) SetTactics(v []string) {
+func (o *ModelProcessAlert) SetTactics(v []string) {
 	o.Tactics = v
 }
 
 // GetTechniques returns the Techniques field value
 // If the value is explicit nil, the zero value for []string will be returned
-func (o *ModelFileAlert) GetTechniques() []string {
+func (o *ModelProcessAlert) GetTechniques() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -770,7 +770,7 @@ func (o *ModelFileAlert) GetTechniques() []string {
 // GetTechniquesOk returns a tuple with the Techniques field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelFileAlert) GetTechniquesOk() ([]string, bool) {
+func (o *ModelProcessAlert) GetTechniquesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Techniques) {
 		return nil, false
 	}
@@ -778,12 +778,12 @@ func (o *ModelFileAlert) GetTechniquesOk() ([]string, bool) {
 }
 
 // SetTechniques sets field value
-func (o *ModelFileAlert) SetTechniques(v []string) {
+func (o *ModelProcessAlert) SetTechniques(v []string) {
 	o.Techniques = v
 }
 
 // GetTop returns the Top field value
-func (o *ModelFileAlert) GetTop() string {
+func (o *ModelProcessAlert) GetTop() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -794,7 +794,7 @@ func (o *ModelFileAlert) GetTop() string {
 
 // GetTopOk returns a tuple with the Top field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetTopOk() (*string, bool) {
+func (o *ModelProcessAlert) GetTopOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -802,12 +802,12 @@ func (o *ModelFileAlert) GetTopOk() (*string, bool) {
 }
 
 // SetTop sets field value
-func (o *ModelFileAlert) SetTop(v string) {
+func (o *ModelProcessAlert) SetTop(v string) {
 	o.Top = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value
-func (o *ModelFileAlert) GetUpdatedAt() int32 {
+func (o *ModelProcessAlert) GetUpdatedAt() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -818,7 +818,7 @@ func (o *ModelFileAlert) GetUpdatedAt() int32 {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetUpdatedAtOk() (*int32, bool) {
+func (o *ModelProcessAlert) GetUpdatedAtOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -826,12 +826,12 @@ func (o *ModelFileAlert) GetUpdatedAtOk() (*int32, bool) {
 }
 
 // SetUpdatedAt sets field value
-func (o *ModelFileAlert) SetUpdatedAt(v int32) {
+func (o *ModelProcessAlert) SetUpdatedAt(v int32) {
 	o.UpdatedAt = v
 }
 
 // GetUsers returns the Users field value
-func (o *ModelFileAlert) GetUsers() string {
+func (o *ModelProcessAlert) GetUsers() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -842,7 +842,7 @@ func (o *ModelFileAlert) GetUsers() string {
 
 // GetUsersOk returns a tuple with the Users field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetUsersOk() (*string, bool) {
+func (o *ModelProcessAlert) GetUsersOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -850,12 +850,12 @@ func (o *ModelFileAlert) GetUsersOk() (*string, bool) {
 }
 
 // SetUsers sets field value
-func (o *ModelFileAlert) SetUsers(v string) {
+func (o *ModelProcessAlert) SetUsers(v string) {
 	o.Users = v
 }
 
 // GetW returns the W field value
-func (o *ModelFileAlert) GetW() int32 {
+func (o *ModelProcessAlert) GetW() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -866,7 +866,7 @@ func (o *ModelFileAlert) GetW() int32 {
 
 // GetWOk returns a tuple with the W field value
 // and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetWOk() (*int32, bool) {
+func (o *ModelProcessAlert) GetWOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -874,11 +874,11 @@ func (o *ModelFileAlert) GetWOk() (*int32, bool) {
 }
 
 // SetW sets field value
-func (o *ModelFileAlert) SetW(v int32) {
+func (o *ModelProcessAlert) SetW(v int32) {
 	o.W = v
 }
 
-func (o ModelFileAlert) MarshalJSON() ([]byte, error) {
+func (o ModelProcessAlert) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -886,7 +886,7 @@ func (o ModelFileAlert) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ModelFileAlert) ToMap() (map[string]interface{}, error) {
+func (o ModelProcessAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["category"] = o.Category
 	toSerialize["container_id"] = o.ContainerId
@@ -927,7 +927,7 @@ func (o ModelFileAlert) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ModelFileAlert) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ModelProcessAlert) UnmarshalJSON(bytes []byte) (err error) {
     // This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -980,51 +980,51 @@ func (o *ModelFileAlert) UnmarshalJSON(bytes []byte) (err error) {
 		}
 	}
 
-	varModelFileAlert := _ModelFileAlert{}
+	varModelProcessAlert := _ModelProcessAlert{}
 
-	err = json.Unmarshal(bytes, &varModelFileAlert)
+	err = json.Unmarshal(bytes, &varModelProcessAlert)
 
 	if err != nil {
 		return err
 	}
 
-	*o = ModelFileAlert(varModelFileAlert)
+	*o = ModelProcessAlert(varModelProcessAlert)
 
 	return err
 }
 
-type NullableModelFileAlert struct {
-	value *ModelFileAlert
+type NullableModelProcessAlert struct {
+	value *ModelProcessAlert
 	isSet bool
 }
 
-func (v NullableModelFileAlert) Get() *ModelFileAlert {
+func (v NullableModelProcessAlert) Get() *ModelProcessAlert {
 	return v.value
 }
 
-func (v *NullableModelFileAlert) Set(val *ModelFileAlert) {
+func (v *NullableModelProcessAlert) Set(val *ModelProcessAlert) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableModelFileAlert) IsSet() bool {
+func (v NullableModelProcessAlert) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableModelFileAlert) Unset() {
+func (v *NullableModelProcessAlert) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableModelFileAlert(val *ModelFileAlert) *NullableModelFileAlert {
-	return &NullableModelFileAlert{value: val, isSet: true}
+func NewNullableModelProcessAlert(val *ModelProcessAlert) *NullableModelProcessAlert {
+	return &NullableModelProcessAlert{value: val, isSet: true}
 }
 
-func (v NullableModelFileAlert) MarshalJSON() ([]byte, error) {
+func (v NullableModelProcessAlert) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableModelFileAlert) UnmarshalJSON(src []byte) error {
+func (v *NullableModelProcessAlert) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
