@@ -15155,7 +15155,7 @@ components:
       type: object
     IngestersSecret:
       example:
-        ImageLayerID: ImageLayerID
+        ImageLayerId: ImageLayerId
         Severity:
           score: 5.637376656633329
           level: level
@@ -15172,7 +15172,7 @@ components:
           starting_index: 1
           relative_starting_index: 6
       properties:
-        ImageLayerID:
+        ImageLayerId:
           type: string
         Match:
           $ref: '#/components/schemas/IngestersSecret_Match'

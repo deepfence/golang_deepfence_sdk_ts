@@ -20,7 +20,7 @@ var _ MappedNullable = &IngestersSecret{}
 
 // IngestersSecret struct for IngestersSecret
 type IngestersSecret struct {
-	ImageLayerID *string `json:"ImageLayerID,omitempty"`
+	ImageLayerId *string `json:"ImageLayerId,omitempty"`
 	Match *IngestersSecretMatch `json:"Match,omitempty"`
 	Rule *IngestersSecretRule `json:"Rule,omitempty"`
 	Severity *IngestersSecretSeverity `json:"Severity,omitempty"`
@@ -44,36 +44,36 @@ func NewIngestersSecretWithDefaults() *IngestersSecret {
 	return &this
 }
 
-// GetImageLayerID returns the ImageLayerID field value if set, zero value otherwise.
-func (o *IngestersSecret) GetImageLayerID() string {
-	if o == nil || IsNil(o.ImageLayerID) {
+// GetImageLayerId returns the ImageLayerId field value if set, zero value otherwise.
+func (o *IngestersSecret) GetImageLayerId() string {
+	if o == nil || IsNil(o.ImageLayerId) {
 		var ret string
 		return ret
 	}
-	return *o.ImageLayerID
+	return *o.ImageLayerId
 }
 
-// GetImageLayerIDOk returns a tuple with the ImageLayerID field value if set, nil otherwise
+// GetImageLayerIdOk returns a tuple with the ImageLayerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IngestersSecret) GetImageLayerIDOk() (*string, bool) {
-	if o == nil || IsNil(o.ImageLayerID) {
+func (o *IngestersSecret) GetImageLayerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ImageLayerId) {
 		return nil, false
 	}
-	return o.ImageLayerID, true
+	return o.ImageLayerId, true
 }
 
-// HasImageLayerID returns a boolean if a field has been set.
-func (o *IngestersSecret) HasImageLayerID() bool {
-	if o != nil && !IsNil(o.ImageLayerID) {
+// HasImageLayerId returns a boolean if a field has been set.
+func (o *IngestersSecret) HasImageLayerId() bool {
+	if o != nil && !IsNil(o.ImageLayerId) {
 		return true
 	}
 
 	return false
 }
 
-// SetImageLayerID gets a reference to the given string and assigns it to the ImageLayerID field.
-func (o *IngestersSecret) SetImageLayerID(v string) {
-	o.ImageLayerID = &v
+// SetImageLayerId gets a reference to the given string and assigns it to the ImageLayerId field.
+func (o *IngestersSecret) SetImageLayerId(v string) {
+	o.ImageLayerId = &v
 }
 
 // GetMatch returns the Match field value if set, zero value otherwise.
@@ -214,8 +214,8 @@ func (o IngestersSecret) MarshalJSON() ([]byte, error) {
 
 func (o IngestersSecret) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ImageLayerID) {
-		toSerialize["ImageLayerID"] = o.ImageLayerID
+	if !IsNil(o.ImageLayerId) {
+		toSerialize["ImageLayerId"] = o.ImageLayerId
 	}
 	if !IsNil(o.Match) {
 		toSerialize["Match"] = o.Match
