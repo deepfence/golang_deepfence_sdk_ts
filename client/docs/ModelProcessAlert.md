@@ -5,43 +5,47 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Category** | **string** |  | 
+**Command** | **string** |  | 
 **ContainerId** | **string** |  | 
 **ContainerImage** | **string** |  | 
 **ContainerIp** | **string** |  | 
 **ContainerName** | **string** |  | 
 **Count** | **int32** |  | 
+**CpuTime** | **float32** |  | 
 **CreatedAt** | **int32** |  | 
 **EventType** | **string** |  | 
-**Filepath** | **string** |  | 
-**Fstat** | **string** |  | 
-**HostName** | **string** |  | 
+**ExecPath** | **string** |  | 
+**Failure** | **string** |  | 
+**Group** | **string** |  | 
 **KubernetesClusterId** | **string** |  | 
 **KubernetesClusterName** | **string** |  | 
 **Masked** | **bool** |  | 
 **Netstat** | **string** |  | 
 **NodeId** | **string** |  | 
 **NodeType** | **string** |  | 
+**NumThreads** | **int32** |  | 
 **Pid** | **int32** |  | 
 **PodName** | **string** |  | 
+**Priority** | **int32** |  | 
 **ProcStatus** | **string** |  | 
-**ProcessName** | **string** |  | 
-**ResourceType** | **string** |  | 
+**Return** | **int32** |  | 
+**Rss** | **int32** |  | 
 **RuleId** | **string** |  | 
+**Session** | **int32** |  | 
 **Severity** | **string** |  | 
-**SeverityScore** | **float32** |  | 
+**State** | **string** |  | 
 **Summary** | **string** |  | 
 **Tactics** | **[]string** |  | 
 **Techniques** | **[]string** |  | 
-**Top** | **string** |  | 
 **UpdatedAt** | **int32** |  | 
-**Users** | **string** |  | 
-**W** | **int32** |  | 
+**User** | **string** |  | 
+**Vsize** | **int32** |  | 
 
 ## Methods
 
 ### NewModelProcessAlert
 
-`func NewModelProcessAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, eventType string, filepath string, fstat string, hostName string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, ruleId string, severity string, severityScore float32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32, ) *ModelProcessAlert`
+`func NewModelProcessAlert(category string, command string, containerId string, containerImage string, containerIp string, containerName string, count int32, cpuTime float32, createdAt int32, eventType string, execPath string, failure string, group string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, numThreads int32, pid int32, podName string, priority int32, procStatus string, return_ int32, rss int32, ruleId string, session int32, severity string, state string, summary string, tactics []string, techniques []string, updatedAt int32, user string, vsize int32, ) *ModelProcessAlert`
 
 NewModelProcessAlert instantiates a new ModelProcessAlert object
 This constructor will assign default values to properties that have it defined,
@@ -74,6 +78,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelProcessAlert) SetCategory(v string)`
 
 SetCategory sets Category field to given value.
+
+
+### GetCommand
+
+`func (o *ModelProcessAlert) GetCommand() string`
+
+GetCommand returns the Command field if non-nil, zero value otherwise.
+
+### GetCommandOk
+
+`func (o *ModelProcessAlert) GetCommandOk() (*string, bool)`
+
+GetCommandOk returns a tuple with the Command field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommand
+
+`func (o *ModelProcessAlert) SetCommand(v string)`
+
+SetCommand sets Command field to given value.
 
 
 ### GetContainerId
@@ -176,6 +200,26 @@ and a boolean to check if the value has been set.
 SetCount sets Count field to given value.
 
 
+### GetCpuTime
+
+`func (o *ModelProcessAlert) GetCpuTime() float32`
+
+GetCpuTime returns the CpuTime field if non-nil, zero value otherwise.
+
+### GetCpuTimeOk
+
+`func (o *ModelProcessAlert) GetCpuTimeOk() (*float32, bool)`
+
+GetCpuTimeOk returns a tuple with the CpuTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCpuTime
+
+`func (o *ModelProcessAlert) SetCpuTime(v float32)`
+
+SetCpuTime sets CpuTime field to given value.
+
+
 ### GetCreatedAt
 
 `func (o *ModelProcessAlert) GetCreatedAt() int32`
@@ -216,64 +260,64 @@ and a boolean to check if the value has been set.
 SetEventType sets EventType field to given value.
 
 
-### GetFilepath
+### GetExecPath
 
-`func (o *ModelProcessAlert) GetFilepath() string`
+`func (o *ModelProcessAlert) GetExecPath() string`
 
-GetFilepath returns the Filepath field if non-nil, zero value otherwise.
+GetExecPath returns the ExecPath field if non-nil, zero value otherwise.
 
-### GetFilepathOk
+### GetExecPathOk
 
-`func (o *ModelProcessAlert) GetFilepathOk() (*string, bool)`
+`func (o *ModelProcessAlert) GetExecPathOk() (*string, bool)`
 
-GetFilepathOk returns a tuple with the Filepath field if it's non-nil, zero value otherwise
+GetExecPathOk returns a tuple with the ExecPath field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFilepath
+### SetExecPath
 
-`func (o *ModelProcessAlert) SetFilepath(v string)`
+`func (o *ModelProcessAlert) SetExecPath(v string)`
 
-SetFilepath sets Filepath field to given value.
+SetExecPath sets ExecPath field to given value.
 
 
-### GetFstat
+### GetFailure
 
-`func (o *ModelProcessAlert) GetFstat() string`
+`func (o *ModelProcessAlert) GetFailure() string`
 
-GetFstat returns the Fstat field if non-nil, zero value otherwise.
+GetFailure returns the Failure field if non-nil, zero value otherwise.
 
-### GetFstatOk
+### GetFailureOk
 
-`func (o *ModelProcessAlert) GetFstatOk() (*string, bool)`
+`func (o *ModelProcessAlert) GetFailureOk() (*string, bool)`
 
-GetFstatOk returns a tuple with the Fstat field if it's non-nil, zero value otherwise
+GetFailureOk returns a tuple with the Failure field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFstat
+### SetFailure
 
-`func (o *ModelProcessAlert) SetFstat(v string)`
+`func (o *ModelProcessAlert) SetFailure(v string)`
 
-SetFstat sets Fstat field to given value.
+SetFailure sets Failure field to given value.
 
 
-### GetHostName
+### GetGroup
 
-`func (o *ModelProcessAlert) GetHostName() string`
+`func (o *ModelProcessAlert) GetGroup() string`
 
-GetHostName returns the HostName field if non-nil, zero value otherwise.
+GetGroup returns the Group field if non-nil, zero value otherwise.
 
-### GetHostNameOk
+### GetGroupOk
 
-`func (o *ModelProcessAlert) GetHostNameOk() (*string, bool)`
+`func (o *ModelProcessAlert) GetGroupOk() (*string, bool)`
 
-GetHostNameOk returns a tuple with the HostName field if it's non-nil, zero value otherwise
+GetGroupOk returns a tuple with the Group field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetHostName
+### SetGroup
 
-`func (o *ModelProcessAlert) SetHostName(v string)`
+`func (o *ModelProcessAlert) SetGroup(v string)`
 
-SetHostName sets HostName field to given value.
+SetGroup sets Group field to given value.
 
 
 ### GetKubernetesClusterId
@@ -396,6 +440,26 @@ and a boolean to check if the value has been set.
 SetNodeType sets NodeType field to given value.
 
 
+### GetNumThreads
+
+`func (o *ModelProcessAlert) GetNumThreads() int32`
+
+GetNumThreads returns the NumThreads field if non-nil, zero value otherwise.
+
+### GetNumThreadsOk
+
+`func (o *ModelProcessAlert) GetNumThreadsOk() (*int32, bool)`
+
+GetNumThreadsOk returns a tuple with the NumThreads field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNumThreads
+
+`func (o *ModelProcessAlert) SetNumThreads(v int32)`
+
+SetNumThreads sets NumThreads field to given value.
+
+
 ### GetPid
 
 `func (o *ModelProcessAlert) GetPid() int32`
@@ -436,6 +500,26 @@ and a boolean to check if the value has been set.
 SetPodName sets PodName field to given value.
 
 
+### GetPriority
+
+`func (o *ModelProcessAlert) GetPriority() int32`
+
+GetPriority returns the Priority field if non-nil, zero value otherwise.
+
+### GetPriorityOk
+
+`func (o *ModelProcessAlert) GetPriorityOk() (*int32, bool)`
+
+GetPriorityOk returns a tuple with the Priority field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPriority
+
+`func (o *ModelProcessAlert) SetPriority(v int32)`
+
+SetPriority sets Priority field to given value.
+
+
 ### GetProcStatus
 
 `func (o *ModelProcessAlert) GetProcStatus() string`
@@ -456,44 +540,44 @@ and a boolean to check if the value has been set.
 SetProcStatus sets ProcStatus field to given value.
 
 
-### GetProcessName
+### GetReturn
 
-`func (o *ModelProcessAlert) GetProcessName() string`
+`func (o *ModelProcessAlert) GetReturn() int32`
 
-GetProcessName returns the ProcessName field if non-nil, zero value otherwise.
+GetReturn returns the Return field if non-nil, zero value otherwise.
 
-### GetProcessNameOk
+### GetReturnOk
 
-`func (o *ModelProcessAlert) GetProcessNameOk() (*string, bool)`
+`func (o *ModelProcessAlert) GetReturnOk() (*int32, bool)`
 
-GetProcessNameOk returns a tuple with the ProcessName field if it's non-nil, zero value otherwise
+GetReturnOk returns a tuple with the Return field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetProcessName
+### SetReturn
 
-`func (o *ModelProcessAlert) SetProcessName(v string)`
+`func (o *ModelProcessAlert) SetReturn(v int32)`
 
-SetProcessName sets ProcessName field to given value.
+SetReturn sets Return field to given value.
 
 
-### GetResourceType
+### GetRss
 
-`func (o *ModelProcessAlert) GetResourceType() string`
+`func (o *ModelProcessAlert) GetRss() int32`
 
-GetResourceType returns the ResourceType field if non-nil, zero value otherwise.
+GetRss returns the Rss field if non-nil, zero value otherwise.
 
-### GetResourceTypeOk
+### GetRssOk
 
-`func (o *ModelProcessAlert) GetResourceTypeOk() (*string, bool)`
+`func (o *ModelProcessAlert) GetRssOk() (*int32, bool)`
 
-GetResourceTypeOk returns a tuple with the ResourceType field if it's non-nil, zero value otherwise
+GetRssOk returns a tuple with the Rss field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetResourceType
+### SetRss
 
-`func (o *ModelProcessAlert) SetResourceType(v string)`
+`func (o *ModelProcessAlert) SetRss(v int32)`
 
-SetResourceType sets ResourceType field to given value.
+SetRss sets Rss field to given value.
 
 
 ### GetRuleId
@@ -516,6 +600,26 @@ and a boolean to check if the value has been set.
 SetRuleId sets RuleId field to given value.
 
 
+### GetSession
+
+`func (o *ModelProcessAlert) GetSession() int32`
+
+GetSession returns the Session field if non-nil, zero value otherwise.
+
+### GetSessionOk
+
+`func (o *ModelProcessAlert) GetSessionOk() (*int32, bool)`
+
+GetSessionOk returns a tuple with the Session field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSession
+
+`func (o *ModelProcessAlert) SetSession(v int32)`
+
+SetSession sets Session field to given value.
+
+
 ### GetSeverity
 
 `func (o *ModelProcessAlert) GetSeverity() string`
@@ -536,24 +640,24 @@ and a boolean to check if the value has been set.
 SetSeverity sets Severity field to given value.
 
 
-### GetSeverityScore
+### GetState
 
-`func (o *ModelProcessAlert) GetSeverityScore() float32`
+`func (o *ModelProcessAlert) GetState() string`
 
-GetSeverityScore returns the SeverityScore field if non-nil, zero value otherwise.
+GetState returns the State field if non-nil, zero value otherwise.
 
-### GetSeverityScoreOk
+### GetStateOk
 
-`func (o *ModelProcessAlert) GetSeverityScoreOk() (*float32, bool)`
+`func (o *ModelProcessAlert) GetStateOk() (*string, bool)`
 
-GetSeverityScoreOk returns a tuple with the SeverityScore field if it's non-nil, zero value otherwise
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSeverityScore
+### SetState
 
-`func (o *ModelProcessAlert) SetSeverityScore(v float32)`
+`func (o *ModelProcessAlert) SetState(v string)`
 
-SetSeverityScore sets SeverityScore field to given value.
+SetState sets State field to given value.
 
 
 ### GetSummary
@@ -636,26 +740,6 @@ SetTechniques sets Techniques field to given value.
 `func (o *ModelProcessAlert) UnsetTechniques()`
 
 UnsetTechniques ensures that no value is present for Techniques, not even an explicit nil
-### GetTop
-
-`func (o *ModelProcessAlert) GetTop() string`
-
-GetTop returns the Top field if non-nil, zero value otherwise.
-
-### GetTopOk
-
-`func (o *ModelProcessAlert) GetTopOk() (*string, bool)`
-
-GetTopOk returns a tuple with the Top field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTop
-
-`func (o *ModelProcessAlert) SetTop(v string)`
-
-SetTop sets Top field to given value.
-
-
 ### GetUpdatedAt
 
 `func (o *ModelProcessAlert) GetUpdatedAt() int32`
@@ -676,44 +760,44 @@ and a boolean to check if the value has been set.
 SetUpdatedAt sets UpdatedAt field to given value.
 
 
-### GetUsers
+### GetUser
 
-`func (o *ModelProcessAlert) GetUsers() string`
+`func (o *ModelProcessAlert) GetUser() string`
 
-GetUsers returns the Users field if non-nil, zero value otherwise.
+GetUser returns the User field if non-nil, zero value otherwise.
 
-### GetUsersOk
+### GetUserOk
 
-`func (o *ModelProcessAlert) GetUsersOk() (*string, bool)`
+`func (o *ModelProcessAlert) GetUserOk() (*string, bool)`
 
-GetUsersOk returns a tuple with the Users field if it's non-nil, zero value otherwise
+GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUsers
+### SetUser
 
-`func (o *ModelProcessAlert) SetUsers(v string)`
+`func (o *ModelProcessAlert) SetUser(v string)`
 
-SetUsers sets Users field to given value.
+SetUser sets User field to given value.
 
 
-### GetW
+### GetVsize
 
-`func (o *ModelProcessAlert) GetW() int32`
+`func (o *ModelProcessAlert) GetVsize() int32`
 
-GetW returns the W field if non-nil, zero value otherwise.
+GetVsize returns the Vsize field if non-nil, zero value otherwise.
 
-### GetWOk
+### GetVsizeOk
 
-`func (o *ModelProcessAlert) GetWOk() (*int32, bool)`
+`func (o *ModelProcessAlert) GetVsizeOk() (*int32, bool)`
 
-GetWOk returns a tuple with the W field if it's non-nil, zero value otherwise
+GetVsizeOk returns a tuple with the Vsize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetW
+### SetVsize
 
-`func (o *ModelProcessAlert) SetW(v int32)`
+`func (o *ModelProcessAlert) SetVsize(v int32)`
 
-SetW sets W field to given value.
+SetVsize sets Vsize field to given value.
 
 
 

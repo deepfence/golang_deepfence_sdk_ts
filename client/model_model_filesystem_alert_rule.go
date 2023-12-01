@@ -1,5 +1,5 @@
 /*
-Deepfence ThreatMapper
+Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
@@ -23,13 +23,11 @@ type ModelFilesystemAlertRule struct {
 	Anomaly *string `json:"anomaly,omitempty"`
 	Category *string `json:"category,omitempty"`
 	EventType *string `json:"event_type,omitempty"`
-	ResourceType *string `json:"resource_type,omitempty"`
 	RuleId *string `json:"rule_id,omitempty"`
 	Severity *string `json:"severity,omitempty"`
 	Summary *string `json:"summary,omitempty"`
 	Tactics []string `json:"tactics,omitempty"`
 	Techniques []string `json:"techniques,omitempty"`
-	Type *string `json:"type,omitempty"`
 }
 
 // NewModelFilesystemAlertRule instantiates a new ModelFilesystemAlertRule object
@@ -143,38 +141,6 @@ func (o *ModelFilesystemAlertRule) HasEventType() bool {
 // SetEventType gets a reference to the given string and assigns it to the EventType field.
 func (o *ModelFilesystemAlertRule) SetEventType(v string) {
 	o.EventType = &v
-}
-
-// GetResourceType returns the ResourceType field value if set, zero value otherwise.
-func (o *ModelFilesystemAlertRule) GetResourceType() string {
-	if o == nil || IsNil(o.ResourceType) {
-		var ret string
-		return ret
-	}
-	return *o.ResourceType
-}
-
-// GetResourceTypeOk returns a tuple with the ResourceType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ModelFilesystemAlertRule) GetResourceTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.ResourceType) {
-		return nil, false
-	}
-	return o.ResourceType, true
-}
-
-// HasResourceType returns a boolean if a field has been set.
-func (o *ModelFilesystemAlertRule) HasResourceType() bool {
-	if o != nil && !IsNil(o.ResourceType) {
-		return true
-	}
-
-	return false
-}
-
-// SetResourceType gets a reference to the given string and assigns it to the ResourceType field.
-func (o *ModelFilesystemAlertRule) SetResourceType(v string) {
-	o.ResourceType = &v
 }
 
 // GetRuleId returns the RuleId field value if set, zero value otherwise.
@@ -339,38 +305,6 @@ func (o *ModelFilesystemAlertRule) SetTechniques(v []string) {
 	o.Techniques = v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *ModelFilesystemAlertRule) GetType() string {
-	if o == nil || IsNil(o.Type) {
-		var ret string
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ModelFilesystemAlertRule) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *ModelFilesystemAlertRule) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *ModelFilesystemAlertRule) SetType(v string) {
-	o.Type = &v
-}
-
 func (o ModelFilesystemAlertRule) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -390,9 +324,6 @@ func (o ModelFilesystemAlertRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EventType) {
 		toSerialize["event_type"] = o.EventType
 	}
-	if !IsNil(o.ResourceType) {
-		toSerialize["resource_type"] = o.ResourceType
-	}
 	if !IsNil(o.RuleId) {
 		toSerialize["rule_id"] = o.RuleId
 	}
@@ -407,9 +338,6 @@ func (o ModelFilesystemAlertRule) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Techniques != nil {
 		toSerialize["techniques"] = o.Techniques
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil
 }

@@ -1,5 +1,5 @@
 /*
-Deepfence ThreatMapper
+Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &ModelAttachAgentConfigReq{}
 
 // ModelAttachAgentConfigReq struct for ModelAttachAgentConfigReq
 type ModelAttachAgentConfigReq struct {
-	AgentIds []ModelAgentId `json:"agent_ids"`
+	AgentIds []ModelAgentID `json:"agent_ids"`
 	ConfigId string `json:"config_id"`
 }
 
@@ -31,7 +31,7 @@ type _ModelAttachAgentConfigReq ModelAttachAgentConfigReq
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelAttachAgentConfigReq(agentIds []ModelAgentId, configId string) *ModelAttachAgentConfigReq {
+func NewModelAttachAgentConfigReq(agentIds []ModelAgentID, configId string) *ModelAttachAgentConfigReq {
 	this := ModelAttachAgentConfigReq{}
 	this.AgentIds = agentIds
 	this.ConfigId = configId
@@ -47,10 +47,10 @@ func NewModelAttachAgentConfigReqWithDefaults() *ModelAttachAgentConfigReq {
 }
 
 // GetAgentIds returns the AgentIds field value
-// If the value is explicit nil, the zero value for []ModelAgentId will be returned
-func (o *ModelAttachAgentConfigReq) GetAgentIds() []ModelAgentId {
+// If the value is explicit nil, the zero value for []ModelAgentID will be returned
+func (o *ModelAttachAgentConfigReq) GetAgentIds() []ModelAgentID {
 	if o == nil {
-		var ret []ModelAgentId
+		var ret []ModelAgentID
 		return ret
 	}
 
@@ -60,7 +60,7 @@ func (o *ModelAttachAgentConfigReq) GetAgentIds() []ModelAgentId {
 // GetAgentIdsOk returns a tuple with the AgentIds field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelAttachAgentConfigReq) GetAgentIdsOk() ([]ModelAgentId, bool) {
+func (o *ModelAttachAgentConfigReq) GetAgentIdsOk() ([]ModelAgentID, bool) {
 	if o == nil || IsNil(o.AgentIds) {
 		return nil, false
 	}
@@ -68,7 +68,7 @@ func (o *ModelAttachAgentConfigReq) GetAgentIdsOk() ([]ModelAgentId, bool) {
 }
 
 // SetAgentIds sets field value
-func (o *ModelAttachAgentConfigReq) SetAgentIds(v []ModelAgentId) {
+func (o *ModelAttachAgentConfigReq) SetAgentIds(v []ModelAgentID) {
 	o.AgentIds = v
 }
 

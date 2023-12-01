@@ -1,5 +1,5 @@
 /*
-Deepfence ThreatMapper
+Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
@@ -24,6 +24,7 @@ type ModelAgentPluginsStatus struct {
 	FilesystemTracerStatus ModelPluginStatus `json:"filesystem_tracer_status"`
 	NetworkFilterStatus ModelPluginStatus `json:"network_filter_status"`
 	NetworkTracerStatus ModelPluginStatus `json:"network_tracer_status"`
+	ProcessTracerStatus ModelPluginStatus `json:"process_tracer_status"`
 }
 
 type _ModelAgentPluginsStatus ModelAgentPluginsStatus
@@ -32,11 +33,12 @@ type _ModelAgentPluginsStatus ModelAgentPluginsStatus
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelAgentPluginsStatus(filesystemTracerStatus ModelPluginStatus, networkFilterStatus ModelPluginStatus, networkTracerStatus ModelPluginStatus) *ModelAgentPluginsStatus {
+func NewModelAgentPluginsStatus(filesystemTracerStatus ModelPluginStatus, networkFilterStatus ModelPluginStatus, networkTracerStatus ModelPluginStatus, processTracerStatus ModelPluginStatus) *ModelAgentPluginsStatus {
 	this := ModelAgentPluginsStatus{}
 	this.FilesystemTracerStatus = filesystemTracerStatus
 	this.NetworkFilterStatus = networkFilterStatus
 	this.NetworkTracerStatus = networkTracerStatus
+	this.ProcessTracerStatus = processTracerStatus
 	return &this
 }
 
@@ -120,6 +122,30 @@ func (o *ModelAgentPluginsStatus) SetNetworkTracerStatus(v ModelPluginStatus) {
 	o.NetworkTracerStatus = v
 }
 
+// GetProcessTracerStatus returns the ProcessTracerStatus field value
+func (o *ModelAgentPluginsStatus) GetProcessTracerStatus() ModelPluginStatus {
+	if o == nil {
+		var ret ModelPluginStatus
+		return ret
+	}
+
+	return o.ProcessTracerStatus
+}
+
+// GetProcessTracerStatusOk returns a tuple with the ProcessTracerStatus field value
+// and a boolean to check if the value has been set.
+func (o *ModelAgentPluginsStatus) GetProcessTracerStatusOk() (*ModelPluginStatus, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ProcessTracerStatus, true
+}
+
+// SetProcessTracerStatus sets field value
+func (o *ModelAgentPluginsStatus) SetProcessTracerStatus(v ModelPluginStatus) {
+	o.ProcessTracerStatus = v
+}
+
 func (o ModelAgentPluginsStatus) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -133,6 +159,7 @@ func (o ModelAgentPluginsStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize["filesystem_tracer_status"] = o.FilesystemTracerStatus
 	toSerialize["network_filter_status"] = o.NetworkFilterStatus
 	toSerialize["network_tracer_status"] = o.NetworkTracerStatus
+	toSerialize["process_tracer_status"] = o.ProcessTracerStatus
 	return toSerialize, nil
 }
 
@@ -144,6 +171,7 @@ func (o *ModelAgentPluginsStatus) UnmarshalJSON(bytes []byte) (err error) {
 		"filesystem_tracer_status",
 		"network_filter_status",
 		"network_tracer_status",
+		"process_tracer_status",
 	}
 
 	allProperties := make(map[string]interface{})

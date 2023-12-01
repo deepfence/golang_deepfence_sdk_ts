@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ImageLayerId** | Pointer to **string** |  | [optional] 
+**ImageLayerID** | Pointer to **string** |  | [optional] 
 **Match** | Pointer to [**IngestersSecretMatch**](IngestersSecretMatch.md) |  | [optional] 
 **Rule** | Pointer to [**IngestersSecretRule**](IngestersSecretRule.md) |  | [optional] 
 **Severity** | Pointer to [**IngestersSecretSeverity**](IngestersSecretSeverity.md) |  | [optional] 
@@ -29,30 +29,30 @@ NewIngestersSecretWithDefaults instantiates a new IngestersSecret object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetImageLayerId
+### GetImageLayerID
 
-`func (o *IngestersSecret) GetImageLayerId() string`
+`func (o *IngestersSecret) GetImageLayerID() string`
 
-GetImageLayerId returns the ImageLayerId field if non-nil, zero value otherwise.
+GetImageLayerID returns the ImageLayerID field if non-nil, zero value otherwise.
 
-### GetImageLayerIdOk
+### GetImageLayerIDOk
 
-`func (o *IngestersSecret) GetImageLayerIdOk() (*string, bool)`
+`func (o *IngestersSecret) GetImageLayerIDOk() (*string, bool)`
 
-GetImageLayerIdOk returns a tuple with the ImageLayerId field if it's non-nil, zero value otherwise
+GetImageLayerIDOk returns a tuple with the ImageLayerID field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetImageLayerId
+### SetImageLayerID
 
-`func (o *IngestersSecret) SetImageLayerId(v string)`
+`func (o *IngestersSecret) SetImageLayerID(v string)`
 
-SetImageLayerId sets ImageLayerId field to given value.
+SetImageLayerID sets ImageLayerID field to given value.
 
-### HasImageLayerId
+### HasImageLayerID
 
-`func (o *IngestersSecret) HasImageLayerId() bool`
+`func (o *IngestersSecret) HasImageLayerID() bool`
 
-HasImageLayerId returns a boolean if a field has been set.
+HasImageLayerID returns a boolean if a field has been set.
 
 ### GetMatch
 

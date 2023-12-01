@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 **FilesystemTracerStatus** | [**ModelPluginStatus**](ModelPluginStatus.md) |  | 
 **NetworkFilterStatus** | [**ModelPluginStatus**](ModelPluginStatus.md) |  | 
 **NetworkTracerStatus** | [**ModelPluginStatus**](ModelPluginStatus.md) |  | 
+**ProcessTracerStatus** | [**ModelPluginStatus**](ModelPluginStatus.md) |  | 
 
 ## Methods
 
 ### NewModelAgentPluginsStatus
 
-`func NewModelAgentPluginsStatus(filesystemTracerStatus ModelPluginStatus, networkFilterStatus ModelPluginStatus, networkTracerStatus ModelPluginStatus, ) *ModelAgentPluginsStatus`
+`func NewModelAgentPluginsStatus(filesystemTracerStatus ModelPluginStatus, networkFilterStatus ModelPluginStatus, networkTracerStatus ModelPluginStatus, processTracerStatus ModelPluginStatus, ) *ModelAgentPluginsStatus`
 
 NewModelAgentPluginsStatus instantiates a new ModelAgentPluginsStatus object
 This constructor will assign default values to properties that have it defined,
@@ -85,6 +86,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelAgentPluginsStatus) SetNetworkTracerStatus(v ModelPluginStatus)`
 
 SetNetworkTracerStatus sets NetworkTracerStatus field to given value.
+
+
+### GetProcessTracerStatus
+
+`func (o *ModelAgentPluginsStatus) GetProcessTracerStatus() ModelPluginStatus`
+
+GetProcessTracerStatus returns the ProcessTracerStatus field if non-nil, zero value otherwise.
+
+### GetProcessTracerStatusOk
+
+`func (o *ModelAgentPluginsStatus) GetProcessTracerStatusOk() (*ModelPluginStatus, bool)`
+
+GetProcessTracerStatusOk returns a tuple with the ProcessTracerStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProcessTracerStatus
+
+`func (o *ModelAgentPluginsStatus) SetProcessTracerStatus(v ModelPluginStatus)`
+
+SetProcessTracerStatus sets ProcessTracerStatus field to given value.
 
 
 

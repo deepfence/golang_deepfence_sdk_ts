@@ -1,5 +1,5 @@
 /*
-Deepfence ThreatMapper
+Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &IngestersSecret{}
 
 // IngestersSecret struct for IngestersSecret
 type IngestersSecret struct {
-	ImageLayerId *string `json:"ImageLayerId,omitempty"`
+	ImageLayerID *string `json:"ImageLayerID,omitempty"`
 	Match *IngestersSecretMatch `json:"Match,omitempty"`
 	Rule *IngestersSecretRule `json:"Rule,omitempty"`
 	Severity *IngestersSecretSeverity `json:"Severity,omitempty"`
@@ -44,36 +44,36 @@ func NewIngestersSecretWithDefaults() *IngestersSecret {
 	return &this
 }
 
-// GetImageLayerId returns the ImageLayerId field value if set, zero value otherwise.
-func (o *IngestersSecret) GetImageLayerId() string {
-	if o == nil || IsNil(o.ImageLayerId) {
+// GetImageLayerID returns the ImageLayerID field value if set, zero value otherwise.
+func (o *IngestersSecret) GetImageLayerID() string {
+	if o == nil || IsNil(o.ImageLayerID) {
 		var ret string
 		return ret
 	}
-	return *o.ImageLayerId
+	return *o.ImageLayerID
 }
 
-// GetImageLayerIdOk returns a tuple with the ImageLayerId field value if set, nil otherwise
+// GetImageLayerIDOk returns a tuple with the ImageLayerID field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IngestersSecret) GetImageLayerIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ImageLayerId) {
+func (o *IngestersSecret) GetImageLayerIDOk() (*string, bool) {
+	if o == nil || IsNil(o.ImageLayerID) {
 		return nil, false
 	}
-	return o.ImageLayerId, true
+	return o.ImageLayerID, true
 }
 
-// HasImageLayerId returns a boolean if a field has been set.
-func (o *IngestersSecret) HasImageLayerId() bool {
-	if o != nil && !IsNil(o.ImageLayerId) {
+// HasImageLayerID returns a boolean if a field has been set.
+func (o *IngestersSecret) HasImageLayerID() bool {
+	if o != nil && !IsNil(o.ImageLayerID) {
 		return true
 	}
 
 	return false
 }
 
-// SetImageLayerId gets a reference to the given string and assigns it to the ImageLayerId field.
-func (o *IngestersSecret) SetImageLayerId(v string) {
-	o.ImageLayerId = &v
+// SetImageLayerID gets a reference to the given string and assigns it to the ImageLayerID field.
+func (o *IngestersSecret) SetImageLayerID(v string) {
+	o.ImageLayerID = &v
 }
 
 // GetMatch returns the Match field value if set, zero value otherwise.
@@ -214,8 +214,8 @@ func (o IngestersSecret) MarshalJSON() ([]byte, error) {
 
 func (o IngestersSecret) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ImageLayerId) {
-		toSerialize["ImageLayerId"] = o.ImageLayerId
+	if !IsNil(o.ImageLayerID) {
+		toSerialize["ImageLayerID"] = o.ImageLayerID
 	}
 	if !IsNil(o.Match) {
 		toSerialize["Match"] = o.Match

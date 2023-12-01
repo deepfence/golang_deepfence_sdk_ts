@@ -1,5 +1,5 @@
 /*
-Deepfence ThreatMapper
+Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
@@ -28,7 +28,7 @@ type ApiGetConsoleApiTokenRequest struct {
 	ApiService *InternalAPIService
 }
 
-func (r ApiGetConsoleApiTokenRequest) Execute() (*ModelApiAuthRequest, *http.Response, error) {
+func (r ApiGetConsoleApiTokenRequest) Execute() (*ModelAPIAuthRequest, *http.Response, error) {
 	return r.ApiService.GetConsoleApiTokenExecute(r)
 }
 
@@ -48,13 +48,13 @@ func (a *InternalAPIService) GetConsoleApiToken(ctx context.Context) ApiGetConso
 }
 
 // Execute executes the request
-//  @return ModelApiAuthRequest
-func (a *InternalAPIService) GetConsoleApiTokenExecute(r ApiGetConsoleApiTokenRequest) (*ModelApiAuthRequest, *http.Response, error) {
+//  @return ModelAPIAuthRequest
+func (a *InternalAPIService) GetConsoleApiTokenExecute(r ApiGetConsoleApiTokenRequest) (*ModelAPIAuthRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ModelApiAuthRequest
+		localVarReturnValue  *ModelAPIAuthRequest
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InternalAPIService.GetConsoleApiToken")

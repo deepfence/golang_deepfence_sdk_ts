@@ -1,5 +1,5 @@
 /*
-Deepfence ThreatMapper
+Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
@@ -22,6 +22,7 @@ var _ MappedNullable = &ModelNetworkViolation{}
 type ModelNetworkViolation struct {
 	Action *string `json:"action,omitempty"`
 	AlertId *string `json:"alert_id,omitempty"`
+	AppliedBy *string `json:"applied_by,omitempty"`
 	BlockIp *string `json:"block_ip,omitempty"`
 	ConfigId *string `json:"config_id,omitempty"`
 	ContainerId *string `json:"container_id,omitempty"`
@@ -124,6 +125,38 @@ func (o *ModelNetworkViolation) HasAlertId() bool {
 // SetAlertId gets a reference to the given string and assigns it to the AlertId field.
 func (o *ModelNetworkViolation) SetAlertId(v string) {
 	o.AlertId = &v
+}
+
+// GetAppliedBy returns the AppliedBy field value if set, zero value otherwise.
+func (o *ModelNetworkViolation) GetAppliedBy() string {
+	if o == nil || IsNil(o.AppliedBy) {
+		var ret string
+		return ret
+	}
+	return *o.AppliedBy
+}
+
+// GetAppliedByOk returns a tuple with the AppliedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkViolation) GetAppliedByOk() (*string, bool) {
+	if o == nil || IsNil(o.AppliedBy) {
+		return nil, false
+	}
+	return o.AppliedBy, true
+}
+
+// HasAppliedBy returns a boolean if a field has been set.
+func (o *ModelNetworkViolation) HasAppliedBy() bool {
+	if o != nil && !IsNil(o.AppliedBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetAppliedBy gets a reference to the given string and assigns it to the AppliedBy field.
+func (o *ModelNetworkViolation) SetAppliedBy(v string) {
+	o.AppliedBy = &v
 }
 
 // GetBlockIp returns the BlockIp field value if set, zero value otherwise.
@@ -813,6 +846,9 @@ func (o ModelNetworkViolation) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AlertId) {
 		toSerialize["alert_id"] = o.AlertId
+	}
+	if !IsNil(o.AppliedBy) {
+		toSerialize["applied_by"] = o.AppliedBy
 	}
 	if !IsNil(o.BlockIp) {
 		toSerialize["block_ip"] = o.BlockIp

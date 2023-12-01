@@ -1,5 +1,5 @@
 /*
-Deepfence ThreatMapper
+Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
@@ -45,14 +45,12 @@ type ModelFileAlert struct {
 	ResourceType string `json:"resource_type"`
 	RuleId string `json:"rule_id"`
 	Severity string `json:"severity"`
-	SeverityScore float32 `json:"severity_score"`
 	Summary string `json:"summary"`
 	Tactics []string `json:"tactics"`
 	Techniques []string `json:"techniques"`
 	Top string `json:"top"`
 	UpdatedAt int32 `json:"updated_at"`
 	Users string `json:"users"`
-	W int32 `json:"w"`
 }
 
 type _ModelFileAlert ModelFileAlert
@@ -61,7 +59,7 @@ type _ModelFileAlert ModelFileAlert
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, eventType string, filepath string, fstat string, hostName string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, ruleId string, severity string, severityScore float32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32) *ModelFileAlert {
+func NewModelFileAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, eventType string, filepath string, fstat string, hostName string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, ruleId string, severity string, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string) *ModelFileAlert {
 	this := ModelFileAlert{}
 	this.Category = category
 	this.ContainerId = containerId
@@ -87,14 +85,12 @@ func NewModelFileAlert(category string, containerId string, containerImage strin
 	this.ResourceType = resourceType
 	this.RuleId = ruleId
 	this.Severity = severity
-	this.SeverityScore = severityScore
 	this.Summary = summary
 	this.Tactics = tactics
 	this.Techniques = techniques
 	this.Top = top
 	this.UpdatedAt = updatedAt
 	this.Users = users
-	this.W = w
 	return &this
 }
 
@@ -682,30 +678,6 @@ func (o *ModelFileAlert) SetSeverity(v string) {
 	o.Severity = v
 }
 
-// GetSeverityScore returns the SeverityScore field value
-func (o *ModelFileAlert) GetSeverityScore() float32 {
-	if o == nil {
-		var ret float32
-		return ret
-	}
-
-	return o.SeverityScore
-}
-
-// GetSeverityScoreOk returns a tuple with the SeverityScore field value
-// and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetSeverityScoreOk() (*float32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SeverityScore, true
-}
-
-// SetSeverityScore sets field value
-func (o *ModelFileAlert) SetSeverityScore(v float32) {
-	o.SeverityScore = v
-}
-
 // GetSummary returns the Summary field value
 func (o *ModelFileAlert) GetSummary() string {
 	if o == nil {
@@ -854,30 +826,6 @@ func (o *ModelFileAlert) SetUsers(v string) {
 	o.Users = v
 }
 
-// GetW returns the W field value
-func (o *ModelFileAlert) GetW() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.W
-}
-
-// GetWOk returns a tuple with the W field value
-// and a boolean to check if the value has been set.
-func (o *ModelFileAlert) GetWOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.W, true
-}
-
-// SetW sets field value
-func (o *ModelFileAlert) SetW(v int32) {
-	o.W = v
-}
-
 func (o ModelFileAlert) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -912,7 +860,6 @@ func (o ModelFileAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["resource_type"] = o.ResourceType
 	toSerialize["rule_id"] = o.RuleId
 	toSerialize["severity"] = o.Severity
-	toSerialize["severity_score"] = o.SeverityScore
 	toSerialize["summary"] = o.Summary
 	if o.Tactics != nil {
 		toSerialize["tactics"] = o.Tactics
@@ -923,7 +870,6 @@ func (o ModelFileAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["top"] = o.Top
 	toSerialize["updated_at"] = o.UpdatedAt
 	toSerialize["users"] = o.Users
-	toSerialize["w"] = o.W
 	return toSerialize, nil
 }
 
@@ -956,14 +902,12 @@ func (o *ModelFileAlert) UnmarshalJSON(bytes []byte) (err error) {
 		"resource_type",
 		"rule_id",
 		"severity",
-		"severity_score",
 		"summary",
 		"tactics",
 		"techniques",
 		"top",
 		"updated_at",
 		"users",
-		"w",
 	}
 
 	allProperties := make(map[string]interface{})

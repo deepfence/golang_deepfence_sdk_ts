@@ -1,5 +1,5 @@
 /*
-Deepfence ThreatMapper
+Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
@@ -26,11 +26,11 @@ type AgentNetworkAPIService service
 type ApiDisableNetworkTracerRequest struct {
 	ctx context.Context
 	ApiService *AgentNetworkAPIService
-	modelDisableNetworkTracerReq *ModelDisableNetworkTracerReq
+	modelDisableTracerReq *ModelDisableTracerReq
 }
 
-func (r ApiDisableNetworkTracerRequest) ModelDisableNetworkTracerReq(modelDisableNetworkTracerReq ModelDisableNetworkTracerReq) ApiDisableNetworkTracerRequest {
-	r.modelDisableNetworkTracerReq = &modelDisableNetworkTracerReq
+func (r ApiDisableNetworkTracerRequest) ModelDisableTracerReq(modelDisableTracerReq ModelDisableTracerReq) ApiDisableNetworkTracerRequest {
+	r.modelDisableTracerReq = &modelDisableTracerReq
 	return r
 }
 
@@ -90,7 +90,7 @@ func (a *AgentNetworkAPIService) DisableNetworkTracerExecute(r ApiDisableNetwork
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.modelDisableNetworkTracerReq
+	localVarPostBody = r.modelDisableTracerReq
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -154,11 +154,11 @@ func (a *AgentNetworkAPIService) DisableNetworkTracerExecute(r ApiDisableNetwork
 type ApiEnableNetworkTracerRequest struct {
 	ctx context.Context
 	ApiService *AgentNetworkAPIService
-	modelEnableNetworkTracerReq *ModelEnableNetworkTracerReq
+	modelEnableTracerReq *ModelEnableTracerReq
 }
 
-func (r ApiEnableNetworkTracerRequest) ModelEnableNetworkTracerReq(modelEnableNetworkTracerReq ModelEnableNetworkTracerReq) ApiEnableNetworkTracerRequest {
-	r.modelEnableNetworkTracerReq = &modelEnableNetworkTracerReq
+func (r ApiEnableNetworkTracerRequest) ModelEnableTracerReq(modelEnableTracerReq ModelEnableTracerReq) ApiEnableNetworkTracerRequest {
+	r.modelEnableTracerReq = &modelEnableTracerReq
 	return r
 }
 
@@ -218,7 +218,7 @@ func (a *AgentNetworkAPIService) EnableNetworkTracerExecute(r ApiEnableNetworkTr
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.modelEnableNetworkTracerReq
+	localVarPostBody = r.modelEnableTracerReq
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

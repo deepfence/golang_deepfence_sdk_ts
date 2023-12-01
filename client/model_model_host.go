@@ -1,5 +1,5 @@
 /*
-Deepfence ThreatMapper
+Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
@@ -36,6 +36,7 @@ type ModelHost struct {
 	CpuMax float32 `json:"cpu_max"`
 	CpuUsage float32 `json:"cpu_usage"`
 	FilesystemTracerStatus string `json:"filesystem_tracer_status"`
+	FilesystemTracerStatusUpdatedAt int32 `json:"filesystem_tracer_status_updated_at"`
 	HostName string `json:"host_name"`
 	InboundConnections []ModelConnection `json:"inbound_connections"`
 	InstanceId string `json:"instance_id"`
@@ -60,6 +61,8 @@ type ModelHost struct {
 	PluginStatus ModelAgentPluginsStatus `json:"plugin_status"`
 	Pods []ModelPod `json:"pods"`
 	PrivateIp []interface{} `json:"private_ip"`
+	ProcessTracerStatus string `json:"process_tracer_status"`
+	ProcessTracerStatusUpdatedAt int32 `json:"process_tracer_status_updated_at"`
 	Processes []ModelProcess `json:"processes"`
 	PublicIp []interface{} `json:"public_ip"`
 	ResourceGroup string `json:"resource_group"`
@@ -79,7 +82,7 @@ type _ModelHost ModelHost
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelHost(agentRunning bool, alertsCounts map[string]int32, availabilityZone string, cloudAccountId string, cloudProvider string, cloudRegion string, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, filesystemTracerStatus string, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, networkFilterStatus string, networkTracerStatus string, networkTracerStatusUpdatedAt int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string) *ModelHost {
+func NewModelHost(agentRunning bool, alertsCounts map[string]int32, availabilityZone string, cloudAccountId string, cloudProvider string, cloudRegion string, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, filesystemTracerStatus string, filesystemTracerStatusUpdatedAt int32, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, networkFilterStatus string, networkTracerStatus string, networkTracerStatusUpdatedAt int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processTracerStatus string, processTracerStatusUpdatedAt int32, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string) *ModelHost {
 	this := ModelHost{}
 	this.AgentRunning = agentRunning
 	this.AlertsCounts = alertsCounts
@@ -96,6 +99,7 @@ func NewModelHost(agentRunning bool, alertsCounts map[string]int32, availability
 	this.CpuMax = cpuMax
 	this.CpuUsage = cpuUsage
 	this.FilesystemTracerStatus = filesystemTracerStatus
+	this.FilesystemTracerStatusUpdatedAt = filesystemTracerStatusUpdatedAt
 	this.HostName = hostName
 	this.InboundConnections = inboundConnections
 	this.InstanceId = instanceId
@@ -120,6 +124,8 @@ func NewModelHost(agentRunning bool, alertsCounts map[string]int32, availability
 	this.PluginStatus = pluginStatus
 	this.Pods = pods
 	this.PrivateIp = privateIp
+	this.ProcessTracerStatus = processTracerStatus
+	this.ProcessTracerStatusUpdatedAt = processTracerStatusUpdatedAt
 	this.Processes = processes
 	this.PublicIp = publicIp
 	this.ResourceGroup = resourceGroup
@@ -506,6 +512,30 @@ func (o *ModelHost) GetFilesystemTracerStatusOk() (*string, bool) {
 // SetFilesystemTracerStatus sets field value
 func (o *ModelHost) SetFilesystemTracerStatus(v string) {
 	o.FilesystemTracerStatus = v
+}
+
+// GetFilesystemTracerStatusUpdatedAt returns the FilesystemTracerStatusUpdatedAt field value
+func (o *ModelHost) GetFilesystemTracerStatusUpdatedAt() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.FilesystemTracerStatusUpdatedAt
+}
+
+// GetFilesystemTracerStatusUpdatedAtOk returns a tuple with the FilesystemTracerStatusUpdatedAt field value
+// and a boolean to check if the value has been set.
+func (o *ModelHost) GetFilesystemTracerStatusUpdatedAtOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.FilesystemTracerStatusUpdatedAt, true
+}
+
+// SetFilesystemTracerStatusUpdatedAt sets field value
+func (o *ModelHost) SetFilesystemTracerStatusUpdatedAt(v int32) {
+	o.FilesystemTracerStatusUpdatedAt = v
 }
 
 // GetHostName returns the HostName field value
@@ -1096,6 +1126,54 @@ func (o *ModelHost) SetPrivateIp(v []interface{}) {
 	o.PrivateIp = v
 }
 
+// GetProcessTracerStatus returns the ProcessTracerStatus field value
+func (o *ModelHost) GetProcessTracerStatus() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ProcessTracerStatus
+}
+
+// GetProcessTracerStatusOk returns a tuple with the ProcessTracerStatus field value
+// and a boolean to check if the value has been set.
+func (o *ModelHost) GetProcessTracerStatusOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ProcessTracerStatus, true
+}
+
+// SetProcessTracerStatus sets field value
+func (o *ModelHost) SetProcessTracerStatus(v string) {
+	o.ProcessTracerStatus = v
+}
+
+// GetProcessTracerStatusUpdatedAt returns the ProcessTracerStatusUpdatedAt field value
+func (o *ModelHost) GetProcessTracerStatusUpdatedAt() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.ProcessTracerStatusUpdatedAt
+}
+
+// GetProcessTracerStatusUpdatedAtOk returns a tuple with the ProcessTracerStatusUpdatedAt field value
+// and a boolean to check if the value has been set.
+func (o *ModelHost) GetProcessTracerStatusUpdatedAtOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ProcessTracerStatusUpdatedAt, true
+}
+
+// SetProcessTracerStatusUpdatedAt sets field value
+func (o *ModelHost) SetProcessTracerStatusUpdatedAt(v int32) {
+	o.ProcessTracerStatusUpdatedAt = v
+}
+
 // GetProcesses returns the Processes field value
 // If the value is explicit nil, the zero value for []ModelProcess will be returned
 func (o *ModelHost) GetProcesses() []ModelProcess {
@@ -1395,6 +1473,7 @@ func (o ModelHost) ToMap() (map[string]interface{}, error) {
 	toSerialize["cpu_max"] = o.CpuMax
 	toSerialize["cpu_usage"] = o.CpuUsage
 	toSerialize["filesystem_tracer_status"] = o.FilesystemTracerStatus
+	toSerialize["filesystem_tracer_status_updated_at"] = o.FilesystemTracerStatusUpdatedAt
 	toSerialize["host_name"] = o.HostName
 	if o.InboundConnections != nil {
 		toSerialize["inbound_connections"] = o.InboundConnections
@@ -1431,6 +1510,8 @@ func (o ModelHost) ToMap() (map[string]interface{}, error) {
 	if o.PrivateIp != nil {
 		toSerialize["private_ip"] = o.PrivateIp
 	}
+	toSerialize["process_tracer_status"] = o.ProcessTracerStatus
+	toSerialize["process_tracer_status_updated_at"] = o.ProcessTracerStatusUpdatedAt
 	if o.Processes != nil {
 		toSerialize["processes"] = o.Processes
 	}
@@ -1469,6 +1550,7 @@ func (o *ModelHost) UnmarshalJSON(bytes []byte) (err error) {
 		"cpu_max",
 		"cpu_usage",
 		"filesystem_tracer_status",
+		"filesystem_tracer_status_updated_at",
 		"host_name",
 		"inbound_connections",
 		"instance_id",
@@ -1493,6 +1575,8 @@ func (o *ModelHost) UnmarshalJSON(bytes []byte) (err error) {
 		"plugin_status",
 		"pods",
 		"private_ip",
+		"process_tracer_status",
+		"process_tracer_status_updated_at",
 		"processes",
 		"public_ip",
 		"resource_group",

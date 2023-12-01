@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 **FilesystemConfigName** | **string** |  | 
 **NetworkConfigName** | **string** |  | 
 **PolicyConfigName** | **string** |  | 
+**ProcessConfigName** | **string** |  | 
 
 ## Methods
 
 ### NewModelAgentPluginConfigNames
 
-`func NewModelAgentPluginConfigNames(filesystemConfigName string, networkConfigName string, policyConfigName string, ) *ModelAgentPluginConfigNames`
+`func NewModelAgentPluginConfigNames(filesystemConfigName string, networkConfigName string, policyConfigName string, processConfigName string, ) *ModelAgentPluginConfigNames`
 
 NewModelAgentPluginConfigNames instantiates a new ModelAgentPluginConfigNames object
 This constructor will assign default values to properties that have it defined,
@@ -85,6 +86,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelAgentPluginConfigNames) SetPolicyConfigName(v string)`
 
 SetPolicyConfigName sets PolicyConfigName field to given value.
+
+
+### GetProcessConfigName
+
+`func (o *ModelAgentPluginConfigNames) GetProcessConfigName() string`
+
+GetProcessConfigName returns the ProcessConfigName field if non-nil, zero value otherwise.
+
+### GetProcessConfigNameOk
+
+`func (o *ModelAgentPluginConfigNames) GetProcessConfigNameOk() (*string, bool)`
+
+GetProcessConfigNameOk returns a tuple with the ProcessConfigName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProcessConfigName
+
+`func (o *ModelAgentPluginConfigNames) SetProcessConfigName(v string)`
+
+SetProcessConfigName sets ProcessConfigName field to given value.
 
 
 

@@ -1,58 +1,58 @@
-# ModelDisableNetworkTracerReq
+# ModelEnableTracerReq
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AgentIds** | [**[]ModelAgentId**](ModelAgentId.md) |  | 
+**AgentIds** | [**[]ModelAgentID**](ModelAgentID.md) |  | 
 
 ## Methods
 
-### NewModelDisableNetworkTracerReq
+### NewModelEnableTracerReq
 
-`func NewModelDisableNetworkTracerReq(agentIds []ModelAgentId, ) *ModelDisableNetworkTracerReq`
+`func NewModelEnableTracerReq(agentIds []ModelAgentID, ) *ModelEnableTracerReq`
 
-NewModelDisableNetworkTracerReq instantiates a new ModelDisableNetworkTracerReq object
+NewModelEnableTracerReq instantiates a new ModelEnableTracerReq object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewModelDisableNetworkTracerReqWithDefaults
+### NewModelEnableTracerReqWithDefaults
 
-`func NewModelDisableNetworkTracerReqWithDefaults() *ModelDisableNetworkTracerReq`
+`func NewModelEnableTracerReqWithDefaults() *ModelEnableTracerReq`
 
-NewModelDisableNetworkTracerReqWithDefaults instantiates a new ModelDisableNetworkTracerReq object
+NewModelEnableTracerReqWithDefaults instantiates a new ModelEnableTracerReq object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetAgentIds
 
-`func (o *ModelDisableNetworkTracerReq) GetAgentIds() []ModelAgentId`
+`func (o *ModelEnableTracerReq) GetAgentIds() []ModelAgentID`
 
 GetAgentIds returns the AgentIds field if non-nil, zero value otherwise.
 
 ### GetAgentIdsOk
 
-`func (o *ModelDisableNetworkTracerReq) GetAgentIdsOk() (*[]ModelAgentId, bool)`
+`func (o *ModelEnableTracerReq) GetAgentIdsOk() (*[]ModelAgentID, bool)`
 
 GetAgentIdsOk returns a tuple with the AgentIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAgentIds
 
-`func (o *ModelDisableNetworkTracerReq) SetAgentIds(v []ModelAgentId)`
+`func (o *ModelEnableTracerReq) SetAgentIds(v []ModelAgentID)`
 
 SetAgentIds sets AgentIds field to given value.
 
 
 ### SetAgentIdsNil
 
-`func (o *ModelDisableNetworkTracerReq) SetAgentIdsNil(b bool)`
+`func (o *ModelEnableTracerReq) SetAgentIdsNil(b bool)`
 
  SetAgentIdsNil sets the value for AgentIds to be an explicit nil
 
 ### UnsetAgentIds
-`func (o *ModelDisableNetworkTracerReq) UnsetAgentIds()`
+`func (o *ModelEnableTracerReq) UnsetAgentIds()`
 
 UnsetAgentIds ensures that no value is present for AgentIds, not even an explicit nil
 

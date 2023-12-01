@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Action** | Pointer to **string** |  | [optional] 
 **AlertId** | Pointer to **string** |  | [optional] 
+**AppliedBy** | Pointer to **string** |  | [optional] 
 **BlockIp** | Pointer to **string** |  | [optional] 
 **ConfigId** | Pointer to **string** |  | [optional] 
 **ContainerId** | Pointer to **string** |  | [optional] 
@@ -96,6 +97,31 @@ SetAlertId sets AlertId field to given value.
 `func (o *ModelNetworkViolation) HasAlertId() bool`
 
 HasAlertId returns a boolean if a field has been set.
+
+### GetAppliedBy
+
+`func (o *ModelNetworkViolation) GetAppliedBy() string`
+
+GetAppliedBy returns the AppliedBy field if non-nil, zero value otherwise.
+
+### GetAppliedByOk
+
+`func (o *ModelNetworkViolation) GetAppliedByOk() (*string, bool)`
+
+GetAppliedByOk returns a tuple with the AppliedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAppliedBy
+
+`func (o *ModelNetworkViolation) SetAppliedBy(v string)`
+
+SetAppliedBy sets AppliedBy field to given value.
+
+### HasAppliedBy
+
+`func (o *ModelNetworkViolation) HasAppliedBy() bool`
+
+HasAppliedBy returns a boolean if a field has been set.
 
 ### GetBlockIp
 

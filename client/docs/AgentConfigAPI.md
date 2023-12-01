@@ -410,7 +410,7 @@ import (
 )
 
 func main() {
-    modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentId{*openapiclient.NewModelAgentId(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
+    modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -474,7 +474,7 @@ import (
 )
 
 func main() {
-    modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentId{*openapiclient.NewModelAgentId(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
+    modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -538,7 +538,7 @@ import (
 )
 
 func main() {
-    modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentId{*openapiclient.NewModelAgentId(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
+    modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -602,7 +602,7 @@ import (
 )
 
 func main() {
-    modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentId{*openapiclient.NewModelAgentId(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
+    modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -666,7 +666,7 @@ import (
 )
 
 func main() {
-    modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentId{*openapiclient.NewModelAgentId(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
+    modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1389,7 +1389,7 @@ Name | Type | Description  | Notes
 
 ## GetAgentProcessConfig
 
-> []ControlsFilesystemTracerConfig GetAgentProcessConfig(ctx).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
+> []ControlsProcessTracerConfig GetAgentProcessConfig(ctx).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
 
 Get Agent Process config
 
@@ -1417,7 +1417,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.GetAgentProcessConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAgentProcessConfig`: []ControlsFilesystemTracerConfig
+    // response from `GetAgentProcessConfig`: []ControlsProcessTracerConfig
     fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.GetAgentProcessConfig`: %v\n", resp)
 }
 ```
@@ -1437,7 +1437,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ControlsFilesystemTracerConfig**](ControlsFilesystemTracerConfig.md)
+[**[]ControlsProcessTracerConfig**](ControlsProcessTracerConfig.md)
 
 ### Authorization
 
@@ -1976,7 +1976,7 @@ Name | Type | Description  | Notes
 
 ## RegisterAgentProcessConfig
 
-> RegisterAgentProcessConfig(ctx).ControlsFilesystemTracerConfig(controlsFilesystemTracerConfig).Execute()
+> RegisterAgentProcessConfig(ctx).ControlsProcessTracerConfig(controlsProcessTracerConfig).Execute()
 
 Register Agent Process config
 
@@ -1995,11 +1995,11 @@ import (
 )
 
 func main() {
-    controlsFilesystemTracerConfig := *openapiclient.NewControlsFilesystemTracerConfig("NodeId_example", int32(123), []openapiclient.ControlsMonitoredFilesConfig{*openapiclient.NewControlsMonitoredFilesConfig([]string{"Accesstypes_example"}, false, "Root_example", "Severity_example")}) // ControlsFilesystemTracerConfig |  (optional)
+    controlsProcessTracerConfig := *openapiclient.NewControlsProcessTracerConfig("NodeId_example", int32(123)) // ControlsProcessTracerConfig |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentConfigAPI.RegisterAgentProcessConfig(context.Background()).ControlsFilesystemTracerConfig(controlsFilesystemTracerConfig).Execute()
+    r, err := apiClient.AgentConfigAPI.RegisterAgentProcessConfig(context.Background()).ControlsProcessTracerConfig(controlsProcessTracerConfig).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.RegisterAgentProcessConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2018,7 +2018,7 @@ Other parameters are passed through a pointer to a apiRegisterAgentProcessConfig
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **controlsFilesystemTracerConfig** | [**ControlsFilesystemTracerConfig**](ControlsFilesystemTracerConfig.md) |  | 
+ **controlsProcessTracerConfig** | [**ControlsProcessTracerConfig**](ControlsProcessTracerConfig.md) |  | 
 
 ### Return type
 

@@ -7,13 +7,11 @@ Name | Type | Description | Notes
 **Anomaly** | Pointer to **string** |  | [optional] 
 **Category** | Pointer to **string** |  | [optional] 
 **EventType** | Pointer to **string** |  | [optional] 
-**ResourceType** | Pointer to **string** |  | [optional] 
 **RuleId** | Pointer to **string** |  | [optional] 
 **Severity** | Pointer to **string** |  | [optional] 
 **Summary** | Pointer to **string** |  | [optional] 
 **Tactics** | Pointer to **[]string** |  | [optional] 
 **Techniques** | Pointer to **[]string** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -108,31 +106,6 @@ SetEventType sets EventType field to given value.
 `func (o *ModelProcessAlertRule) HasEventType() bool`
 
 HasEventType returns a boolean if a field has been set.
-
-### GetResourceType
-
-`func (o *ModelProcessAlertRule) GetResourceType() string`
-
-GetResourceType returns the ResourceType field if non-nil, zero value otherwise.
-
-### GetResourceTypeOk
-
-`func (o *ModelProcessAlertRule) GetResourceTypeOk() (*string, bool)`
-
-GetResourceTypeOk returns a tuple with the ResourceType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetResourceType
-
-`func (o *ModelProcessAlertRule) SetResourceType(v string)`
-
-SetResourceType sets ResourceType field to given value.
-
-### HasResourceType
-
-`func (o *ModelProcessAlertRule) HasResourceType() bool`
-
-HasResourceType returns a boolean if a field has been set.
 
 ### GetRuleId
 
@@ -279,31 +252,6 @@ HasTechniques returns a boolean if a field has been set.
 `func (o *ModelProcessAlertRule) UnsetTechniques()`
 
 UnsetTechniques ensures that no value is present for Techniques, not even an explicit nil
-### GetType
-
-`func (o *ModelProcessAlertRule) GetType() string`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *ModelProcessAlertRule) GetTypeOk() (*string, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *ModelProcessAlertRule) SetType(v string)`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *ModelProcessAlertRule) HasType() bool`
-
-HasType returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

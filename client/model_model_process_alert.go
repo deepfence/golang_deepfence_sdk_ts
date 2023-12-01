@@ -1,5 +1,5 @@
 /*
-Deepfence ThreatMapper
+Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
@@ -22,37 +22,41 @@ var _ MappedNullable = &ModelProcessAlert{}
 // ModelProcessAlert struct for ModelProcessAlert
 type ModelProcessAlert struct {
 	Category string `json:"category"`
+	Command string `json:"command"`
 	ContainerId string `json:"container_id"`
 	ContainerImage string `json:"container_image"`
 	ContainerIp string `json:"container_ip"`
 	ContainerName string `json:"container_name"`
 	Count int32 `json:"count"`
+	CpuTime float32 `json:"cpu_time"`
 	CreatedAt int32 `json:"created_at"`
 	EventType string `json:"event_type"`
-	Filepath string `json:"filepath"`
-	Fstat string `json:"fstat"`
-	HostName string `json:"host_name"`
+	ExecPath string `json:"exec_path"`
+	Failure string `json:"failure"`
+	Group string `json:"group"`
 	KubernetesClusterId string `json:"kubernetes_cluster_id"`
 	KubernetesClusterName string `json:"kubernetes_cluster_name"`
 	Masked bool `json:"masked"`
 	Netstat string `json:"netstat"`
 	NodeId string `json:"node_id"`
 	NodeType string `json:"node_type"`
+	NumThreads int32 `json:"num_threads"`
 	Pid int32 `json:"pid"`
 	PodName string `json:"pod_name"`
+	Priority int32 `json:"priority"`
 	ProcStatus string `json:"proc_status"`
-	ProcessName string `json:"process_name"`
-	ResourceType string `json:"resource_type"`
+	Return int32 `json:"return"`
+	Rss int32 `json:"rss"`
 	RuleId string `json:"rule_id"`
+	Session int32 `json:"session"`
 	Severity string `json:"severity"`
-	SeverityScore float32 `json:"severity_score"`
+	State string `json:"state"`
 	Summary string `json:"summary"`
 	Tactics []string `json:"tactics"`
 	Techniques []string `json:"techniques"`
-	Top string `json:"top"`
 	UpdatedAt int32 `json:"updated_at"`
-	Users string `json:"users"`
-	W int32 `json:"w"`
+	User string `json:"user"`
+	Vsize int32 `json:"vsize"`
 }
 
 type _ModelProcessAlert ModelProcessAlert
@@ -61,40 +65,44 @@ type _ModelProcessAlert ModelProcessAlert
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelProcessAlert(category string, containerId string, containerImage string, containerIp string, containerName string, count int32, createdAt int32, eventType string, filepath string, fstat string, hostName string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, pid int32, podName string, procStatus string, processName string, resourceType string, ruleId string, severity string, severityScore float32, summary string, tactics []string, techniques []string, top string, updatedAt int32, users string, w int32) *ModelProcessAlert {
+func NewModelProcessAlert(category string, command string, containerId string, containerImage string, containerIp string, containerName string, count int32, cpuTime float32, createdAt int32, eventType string, execPath string, failure string, group string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, numThreads int32, pid int32, podName string, priority int32, procStatus string, return_ int32, rss int32, ruleId string, session int32, severity string, state string, summary string, tactics []string, techniques []string, updatedAt int32, user string, vsize int32) *ModelProcessAlert {
 	this := ModelProcessAlert{}
 	this.Category = category
+	this.Command = command
 	this.ContainerId = containerId
 	this.ContainerImage = containerImage
 	this.ContainerIp = containerIp
 	this.ContainerName = containerName
 	this.Count = count
+	this.CpuTime = cpuTime
 	this.CreatedAt = createdAt
 	this.EventType = eventType
-	this.Filepath = filepath
-	this.Fstat = fstat
-	this.HostName = hostName
+	this.ExecPath = execPath
+	this.Failure = failure
+	this.Group = group
 	this.KubernetesClusterId = kubernetesClusterId
 	this.KubernetesClusterName = kubernetesClusterName
 	this.Masked = masked
 	this.Netstat = netstat
 	this.NodeId = nodeId
 	this.NodeType = nodeType
+	this.NumThreads = numThreads
 	this.Pid = pid
 	this.PodName = podName
+	this.Priority = priority
 	this.ProcStatus = procStatus
-	this.ProcessName = processName
-	this.ResourceType = resourceType
+	this.Return = return_
+	this.Rss = rss
 	this.RuleId = ruleId
+	this.Session = session
 	this.Severity = severity
-	this.SeverityScore = severityScore
+	this.State = state
 	this.Summary = summary
 	this.Tactics = tactics
 	this.Techniques = techniques
-	this.Top = top
 	this.UpdatedAt = updatedAt
-	this.Users = users
-	this.W = w
+	this.User = user
+	this.Vsize = vsize
 	return &this
 }
 
@@ -128,6 +136,30 @@ func (o *ModelProcessAlert) GetCategoryOk() (*string, bool) {
 // SetCategory sets field value
 func (o *ModelProcessAlert) SetCategory(v string) {
 	o.Category = v
+}
+
+// GetCommand returns the Command field value
+func (o *ModelProcessAlert) GetCommand() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Command
+}
+
+// GetCommandOk returns a tuple with the Command field value
+// and a boolean to check if the value has been set.
+func (o *ModelProcessAlert) GetCommandOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Command, true
+}
+
+// SetCommand sets field value
+func (o *ModelProcessAlert) SetCommand(v string) {
+	o.Command = v
 }
 
 // GetContainerId returns the ContainerId field value
@@ -250,6 +282,30 @@ func (o *ModelProcessAlert) SetCount(v int32) {
 	o.Count = v
 }
 
+// GetCpuTime returns the CpuTime field value
+func (o *ModelProcessAlert) GetCpuTime() float32 {
+	if o == nil {
+		var ret float32
+		return ret
+	}
+
+	return o.CpuTime
+}
+
+// GetCpuTimeOk returns a tuple with the CpuTime field value
+// and a boolean to check if the value has been set.
+func (o *ModelProcessAlert) GetCpuTimeOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CpuTime, true
+}
+
+// SetCpuTime sets field value
+func (o *ModelProcessAlert) SetCpuTime(v float32) {
+	o.CpuTime = v
+}
+
 // GetCreatedAt returns the CreatedAt field value
 func (o *ModelProcessAlert) GetCreatedAt() int32 {
 	if o == nil {
@@ -298,76 +354,76 @@ func (o *ModelProcessAlert) SetEventType(v string) {
 	o.EventType = v
 }
 
-// GetFilepath returns the Filepath field value
-func (o *ModelProcessAlert) GetFilepath() string {
+// GetExecPath returns the ExecPath field value
+func (o *ModelProcessAlert) GetExecPath() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Filepath
+	return o.ExecPath
 }
 
-// GetFilepathOk returns a tuple with the Filepath field value
+// GetExecPathOk returns a tuple with the ExecPath field value
 // and a boolean to check if the value has been set.
-func (o *ModelProcessAlert) GetFilepathOk() (*string, bool) {
+func (o *ModelProcessAlert) GetExecPathOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Filepath, true
+	return &o.ExecPath, true
 }
 
-// SetFilepath sets field value
-func (o *ModelProcessAlert) SetFilepath(v string) {
-	o.Filepath = v
+// SetExecPath sets field value
+func (o *ModelProcessAlert) SetExecPath(v string) {
+	o.ExecPath = v
 }
 
-// GetFstat returns the Fstat field value
-func (o *ModelProcessAlert) GetFstat() string {
+// GetFailure returns the Failure field value
+func (o *ModelProcessAlert) GetFailure() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Fstat
+	return o.Failure
 }
 
-// GetFstatOk returns a tuple with the Fstat field value
+// GetFailureOk returns a tuple with the Failure field value
 // and a boolean to check if the value has been set.
-func (o *ModelProcessAlert) GetFstatOk() (*string, bool) {
+func (o *ModelProcessAlert) GetFailureOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Fstat, true
+	return &o.Failure, true
 }
 
-// SetFstat sets field value
-func (o *ModelProcessAlert) SetFstat(v string) {
-	o.Fstat = v
+// SetFailure sets field value
+func (o *ModelProcessAlert) SetFailure(v string) {
+	o.Failure = v
 }
 
-// GetHostName returns the HostName field value
-func (o *ModelProcessAlert) GetHostName() string {
+// GetGroup returns the Group field value
+func (o *ModelProcessAlert) GetGroup() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.HostName
+	return o.Group
 }
 
-// GetHostNameOk returns a tuple with the HostName field value
+// GetGroupOk returns a tuple with the Group field value
 // and a boolean to check if the value has been set.
-func (o *ModelProcessAlert) GetHostNameOk() (*string, bool) {
+func (o *ModelProcessAlert) GetGroupOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.HostName, true
+	return &o.Group, true
 }
 
-// SetHostName sets field value
-func (o *ModelProcessAlert) SetHostName(v string) {
-	o.HostName = v
+// SetGroup sets field value
+func (o *ModelProcessAlert) SetGroup(v string) {
+	o.Group = v
 }
 
 // GetKubernetesClusterId returns the KubernetesClusterId field value
@@ -514,6 +570,30 @@ func (o *ModelProcessAlert) SetNodeType(v string) {
 	o.NodeType = v
 }
 
+// GetNumThreads returns the NumThreads field value
+func (o *ModelProcessAlert) GetNumThreads() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.NumThreads
+}
+
+// GetNumThreadsOk returns a tuple with the NumThreads field value
+// and a boolean to check if the value has been set.
+func (o *ModelProcessAlert) GetNumThreadsOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.NumThreads, true
+}
+
+// SetNumThreads sets field value
+func (o *ModelProcessAlert) SetNumThreads(v int32) {
+	o.NumThreads = v
+}
+
 // GetPid returns the Pid field value
 func (o *ModelProcessAlert) GetPid() int32 {
 	if o == nil {
@@ -562,6 +642,30 @@ func (o *ModelProcessAlert) SetPodName(v string) {
 	o.PodName = v
 }
 
+// GetPriority returns the Priority field value
+func (o *ModelProcessAlert) GetPriority() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Priority
+}
+
+// GetPriorityOk returns a tuple with the Priority field value
+// and a boolean to check if the value has been set.
+func (o *ModelProcessAlert) GetPriorityOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Priority, true
+}
+
+// SetPriority sets field value
+func (o *ModelProcessAlert) SetPriority(v int32) {
+	o.Priority = v
+}
+
 // GetProcStatus returns the ProcStatus field value
 func (o *ModelProcessAlert) GetProcStatus() string {
 	if o == nil {
@@ -586,52 +690,52 @@ func (o *ModelProcessAlert) SetProcStatus(v string) {
 	o.ProcStatus = v
 }
 
-// GetProcessName returns the ProcessName field value
-func (o *ModelProcessAlert) GetProcessName() string {
+// GetReturn returns the Return field value
+func (o *ModelProcessAlert) GetReturn() int32 {
 	if o == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 
-	return o.ProcessName
+	return o.Return
 }
 
-// GetProcessNameOk returns a tuple with the ProcessName field value
+// GetReturnOk returns a tuple with the Return field value
 // and a boolean to check if the value has been set.
-func (o *ModelProcessAlert) GetProcessNameOk() (*string, bool) {
+func (o *ModelProcessAlert) GetReturnOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProcessName, true
+	return &o.Return, true
 }
 
-// SetProcessName sets field value
-func (o *ModelProcessAlert) SetProcessName(v string) {
-	o.ProcessName = v
+// SetReturn sets field value
+func (o *ModelProcessAlert) SetReturn(v int32) {
+	o.Return = v
 }
 
-// GetResourceType returns the ResourceType field value
-func (o *ModelProcessAlert) GetResourceType() string {
+// GetRss returns the Rss field value
+func (o *ModelProcessAlert) GetRss() int32 {
 	if o == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 
-	return o.ResourceType
+	return o.Rss
 }
 
-// GetResourceTypeOk returns a tuple with the ResourceType field value
+// GetRssOk returns a tuple with the Rss field value
 // and a boolean to check if the value has been set.
-func (o *ModelProcessAlert) GetResourceTypeOk() (*string, bool) {
+func (o *ModelProcessAlert) GetRssOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ResourceType, true
+	return &o.Rss, true
 }
 
-// SetResourceType sets field value
-func (o *ModelProcessAlert) SetResourceType(v string) {
-	o.ResourceType = v
+// SetRss sets field value
+func (o *ModelProcessAlert) SetRss(v int32) {
+	o.Rss = v
 }
 
 // GetRuleId returns the RuleId field value
@@ -658,6 +762,30 @@ func (o *ModelProcessAlert) SetRuleId(v string) {
 	o.RuleId = v
 }
 
+// GetSession returns the Session field value
+func (o *ModelProcessAlert) GetSession() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Session
+}
+
+// GetSessionOk returns a tuple with the Session field value
+// and a boolean to check if the value has been set.
+func (o *ModelProcessAlert) GetSessionOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Session, true
+}
+
+// SetSession sets field value
+func (o *ModelProcessAlert) SetSession(v int32) {
+	o.Session = v
+}
+
 // GetSeverity returns the Severity field value
 func (o *ModelProcessAlert) GetSeverity() string {
 	if o == nil {
@@ -682,28 +810,28 @@ func (o *ModelProcessAlert) SetSeverity(v string) {
 	o.Severity = v
 }
 
-// GetSeverityScore returns the SeverityScore field value
-func (o *ModelProcessAlert) GetSeverityScore() float32 {
+// GetState returns the State field value
+func (o *ModelProcessAlert) GetState() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
-	return o.SeverityScore
+	return o.State
 }
 
-// GetSeverityScoreOk returns a tuple with the SeverityScore field value
+// GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
-func (o *ModelProcessAlert) GetSeverityScoreOk() (*float32, bool) {
+func (o *ModelProcessAlert) GetStateOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.SeverityScore, true
+	return &o.State, true
 }
 
-// SetSeverityScore sets field value
-func (o *ModelProcessAlert) SetSeverityScore(v float32) {
-	o.SeverityScore = v
+// SetState sets field value
+func (o *ModelProcessAlert) SetState(v string) {
+	o.State = v
 }
 
 // GetSummary returns the Summary field value
@@ -782,30 +910,6 @@ func (o *ModelProcessAlert) SetTechniques(v []string) {
 	o.Techniques = v
 }
 
-// GetTop returns the Top field value
-func (o *ModelProcessAlert) GetTop() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Top
-}
-
-// GetTopOk returns a tuple with the Top field value
-// and a boolean to check if the value has been set.
-func (o *ModelProcessAlert) GetTopOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Top, true
-}
-
-// SetTop sets field value
-func (o *ModelProcessAlert) SetTop(v string) {
-	o.Top = v
-}
-
 // GetUpdatedAt returns the UpdatedAt field value
 func (o *ModelProcessAlert) GetUpdatedAt() int32 {
 	if o == nil {
@@ -830,52 +934,52 @@ func (o *ModelProcessAlert) SetUpdatedAt(v int32) {
 	o.UpdatedAt = v
 }
 
-// GetUsers returns the Users field value
-func (o *ModelProcessAlert) GetUsers() string {
+// GetUser returns the User field value
+func (o *ModelProcessAlert) GetUser() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Users
+	return o.User
 }
 
-// GetUsersOk returns a tuple with the Users field value
+// GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
-func (o *ModelProcessAlert) GetUsersOk() (*string, bool) {
+func (o *ModelProcessAlert) GetUserOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Users, true
+	return &o.User, true
 }
 
-// SetUsers sets field value
-func (o *ModelProcessAlert) SetUsers(v string) {
-	o.Users = v
+// SetUser sets field value
+func (o *ModelProcessAlert) SetUser(v string) {
+	o.User = v
 }
 
-// GetW returns the W field value
-func (o *ModelProcessAlert) GetW() int32 {
+// GetVsize returns the Vsize field value
+func (o *ModelProcessAlert) GetVsize() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.W
+	return o.Vsize
 }
 
-// GetWOk returns a tuple with the W field value
+// GetVsizeOk returns a tuple with the Vsize field value
 // and a boolean to check if the value has been set.
-func (o *ModelProcessAlert) GetWOk() (*int32, bool) {
+func (o *ModelProcessAlert) GetVsizeOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.W, true
+	return &o.Vsize, true
 }
 
-// SetW sets field value
-func (o *ModelProcessAlert) SetW(v int32) {
-	o.W = v
+// SetVsize sets field value
+func (o *ModelProcessAlert) SetVsize(v int32) {
+	o.Vsize = v
 }
 
 func (o ModelProcessAlert) MarshalJSON() ([]byte, error) {
@@ -889,30 +993,35 @@ func (o ModelProcessAlert) MarshalJSON() ([]byte, error) {
 func (o ModelProcessAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["category"] = o.Category
+	toSerialize["command"] = o.Command
 	toSerialize["container_id"] = o.ContainerId
 	toSerialize["container_image"] = o.ContainerImage
 	toSerialize["container_ip"] = o.ContainerIp
 	toSerialize["container_name"] = o.ContainerName
 	toSerialize["count"] = o.Count
+	toSerialize["cpu_time"] = o.CpuTime
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["event_type"] = o.EventType
-	toSerialize["filepath"] = o.Filepath
-	toSerialize["fstat"] = o.Fstat
-	toSerialize["host_name"] = o.HostName
+	toSerialize["exec_path"] = o.ExecPath
+	toSerialize["failure"] = o.Failure
+	toSerialize["group"] = o.Group
 	toSerialize["kubernetes_cluster_id"] = o.KubernetesClusterId
 	toSerialize["kubernetes_cluster_name"] = o.KubernetesClusterName
 	toSerialize["masked"] = o.Masked
 	toSerialize["netstat"] = o.Netstat
 	toSerialize["node_id"] = o.NodeId
 	toSerialize["node_type"] = o.NodeType
+	toSerialize["num_threads"] = o.NumThreads
 	toSerialize["pid"] = o.Pid
 	toSerialize["pod_name"] = o.PodName
+	toSerialize["priority"] = o.Priority
 	toSerialize["proc_status"] = o.ProcStatus
-	toSerialize["process_name"] = o.ProcessName
-	toSerialize["resource_type"] = o.ResourceType
+	toSerialize["return"] = o.Return
+	toSerialize["rss"] = o.Rss
 	toSerialize["rule_id"] = o.RuleId
+	toSerialize["session"] = o.Session
 	toSerialize["severity"] = o.Severity
-	toSerialize["severity_score"] = o.SeverityScore
+	toSerialize["state"] = o.State
 	toSerialize["summary"] = o.Summary
 	if o.Tactics != nil {
 		toSerialize["tactics"] = o.Tactics
@@ -920,10 +1029,9 @@ func (o ModelProcessAlert) ToMap() (map[string]interface{}, error) {
 	if o.Techniques != nil {
 		toSerialize["techniques"] = o.Techniques
 	}
-	toSerialize["top"] = o.Top
 	toSerialize["updated_at"] = o.UpdatedAt
-	toSerialize["users"] = o.Users
-	toSerialize["w"] = o.W
+	toSerialize["user"] = o.User
+	toSerialize["vsize"] = o.Vsize
 	return toSerialize, nil
 }
 
@@ -933,37 +1041,41 @@ func (o *ModelProcessAlert) UnmarshalJSON(bytes []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"category",
+		"command",
 		"container_id",
 		"container_image",
 		"container_ip",
 		"container_name",
 		"count",
+		"cpu_time",
 		"created_at",
 		"event_type",
-		"filepath",
-		"fstat",
-		"host_name",
+		"exec_path",
+		"failure",
+		"group",
 		"kubernetes_cluster_id",
 		"kubernetes_cluster_name",
 		"masked",
 		"netstat",
 		"node_id",
 		"node_type",
+		"num_threads",
 		"pid",
 		"pod_name",
+		"priority",
 		"proc_status",
-		"process_name",
-		"resource_type",
+		"return",
+		"rss",
 		"rule_id",
+		"session",
 		"severity",
-		"severity_score",
+		"state",
 		"summary",
 		"tactics",
 		"techniques",
-		"top",
 		"updated_at",
-		"users",
-		"w",
+		"user",
+		"vsize",
 	}
 
 	allProperties := make(map[string]interface{})

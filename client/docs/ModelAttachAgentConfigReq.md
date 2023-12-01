@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AgentIds** | [**[]ModelAgentId**](ModelAgentId.md) |  | 
+**AgentIds** | [**[]ModelAgentID**](ModelAgentID.md) |  | 
 **ConfigId** | **string** |  | 
 
 ## Methods
 
 ### NewModelAttachAgentConfigReq
 
-`func NewModelAttachAgentConfigReq(agentIds []ModelAgentId, configId string, ) *ModelAttachAgentConfigReq`
+`func NewModelAttachAgentConfigReq(agentIds []ModelAgentID, configId string, ) *ModelAttachAgentConfigReq`
 
 NewModelAttachAgentConfigReq instantiates a new ModelAttachAgentConfigReq object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAgentIds
 
-`func (o *ModelAttachAgentConfigReq) GetAgentIds() []ModelAgentId`
+`func (o *ModelAttachAgentConfigReq) GetAgentIds() []ModelAgentID`
 
 GetAgentIds returns the AgentIds field if non-nil, zero value otherwise.
 
 ### GetAgentIdsOk
 
-`func (o *ModelAttachAgentConfigReq) GetAgentIdsOk() (*[]ModelAgentId, bool)`
+`func (o *ModelAttachAgentConfigReq) GetAgentIdsOk() (*[]ModelAgentID, bool)`
 
 GetAgentIdsOk returns a tuple with the AgentIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAgentIds
 
-`func (o *ModelAttachAgentConfigReq) SetAgentIds(v []ModelAgentId)`
+`func (o *ModelAttachAgentConfigReq) SetAgentIds(v []ModelAgentID)`
 
 SetAgentIds sets AgentIds field to given value.
 

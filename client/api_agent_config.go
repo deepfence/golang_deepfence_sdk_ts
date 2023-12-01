@@ -1,5 +1,5 @@
 /*
-Deepfence ThreatMapper
+Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
@@ -2658,7 +2658,7 @@ func (r ApiGetAgentProcessConfigRequest) ModelGetAgentConfigReq(modelGetAgentCon
 	return r
 }
 
-func (r ApiGetAgentProcessConfigRequest) Execute() ([]ControlsFilesystemTracerConfig, *http.Response, error) {
+func (r ApiGetAgentProcessConfigRequest) Execute() ([]ControlsProcessTracerConfig, *http.Response, error) {
 	return r.ApiService.GetAgentProcessConfigExecute(r)
 }
 
@@ -2678,13 +2678,13 @@ func (a *AgentConfigAPIService) GetAgentProcessConfig(ctx context.Context) ApiGe
 }
 
 // Execute executes the request
-//  @return []ControlsFilesystemTracerConfig
-func (a *AgentConfigAPIService) GetAgentProcessConfigExecute(r ApiGetAgentProcessConfigRequest) ([]ControlsFilesystemTracerConfig, *http.Response, error) {
+//  @return []ControlsProcessTracerConfig
+func (a *AgentConfigAPIService) GetAgentProcessConfigExecute(r ApiGetAgentProcessConfigRequest) ([]ControlsProcessTracerConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []ControlsFilesystemTracerConfig
+		localVarReturnValue  []ControlsProcessTracerConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentConfigAPIService.GetAgentProcessConfig")
@@ -3912,11 +3912,11 @@ func (a *AgentConfigAPIService) RegisterAgentPolicyConfigExecute(r ApiRegisterAg
 type ApiRegisterAgentProcessConfigRequest struct {
 	ctx context.Context
 	ApiService *AgentConfigAPIService
-	controlsFilesystemTracerConfig *ControlsFilesystemTracerConfig
+	controlsProcessTracerConfig *ControlsProcessTracerConfig
 }
 
-func (r ApiRegisterAgentProcessConfigRequest) ControlsFilesystemTracerConfig(controlsFilesystemTracerConfig ControlsFilesystemTracerConfig) ApiRegisterAgentProcessConfigRequest {
-	r.controlsFilesystemTracerConfig = &controlsFilesystemTracerConfig
+func (r ApiRegisterAgentProcessConfigRequest) ControlsProcessTracerConfig(controlsProcessTracerConfig ControlsProcessTracerConfig) ApiRegisterAgentProcessConfigRequest {
+	r.controlsProcessTracerConfig = &controlsProcessTracerConfig
 	return r
 }
 
@@ -3976,7 +3976,7 @@ func (a *AgentConfigAPIService) RegisterAgentProcessConfigExecute(r ApiRegisterA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.controlsFilesystemTracerConfig
+	localVarPostBody = r.controlsProcessTracerConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

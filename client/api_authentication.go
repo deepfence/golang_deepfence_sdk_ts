@@ -1,5 +1,5 @@
 /*
-Deepfence ThreatMapper
+Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
@@ -27,11 +27,11 @@ type AuthenticationAPIService service
 type ApiAuthTokenRequest struct {
 	ctx context.Context
 	ApiService *AuthenticationAPIService
-	modelApiAuthRequest *ModelApiAuthRequest
+	modelAPIAuthRequest *ModelAPIAuthRequest
 }
 
-func (r ApiAuthTokenRequest) ModelApiAuthRequest(modelApiAuthRequest ModelApiAuthRequest) ApiAuthTokenRequest {
-	r.modelApiAuthRequest = &modelApiAuthRequest
+func (r ApiAuthTokenRequest) ModelAPIAuthRequest(modelAPIAuthRequest ModelAPIAuthRequest) ApiAuthTokenRequest {
+	r.modelAPIAuthRequest = &modelAPIAuthRequest
 	return r
 }
 
@@ -93,7 +93,7 @@ func (a *AuthenticationAPIService) AuthTokenExecute(r ApiAuthTokenRequest) (*Mod
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.modelApiAuthRequest
+	localVarPostBody = r.modelAPIAuthRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

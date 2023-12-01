@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**DeleteCloudWafConfiguration**](SettingsAPI.md#DeleteCloudWafConfiguration) | **Delete** /deepfence/settings/cloud-waf | Delete Cloud WAF Configuration
 [**DeleteCustomScheduledTask**](SettingsAPI.md#DeleteCustomScheduledTask) | **Delete** /deepfence/scheduled-task/{id} | Delete Custom Schedule task
 [**DeleteEmailConfiguration**](SettingsAPI.md#DeleteEmailConfiguration) | **Delete** /deepfence/settings/email/{config_id} | Delete Email Configurations
+[**GetAgentVersions**](SettingsAPI.md#GetAgentVersions) | **Get** /deepfence/agent/versions | Get available agent versions
 [**GetCloudWafConfiguration**](SettingsAPI.md#GetCloudWafConfiguration) | **Get** /deepfence/settings/cloud-waf | Get Cloud WAF Configuration
 [**GetEmailConfiguration**](SettingsAPI.md#GetEmailConfiguration) | **Get** /deepfence/settings/email | Get Email Configurations
 [**GetLicense**](SettingsAPI.md#GetLicense) | **Get** /deepfence/license | Get License Details
@@ -21,6 +22,7 @@ Method | HTTP request | Description
 [**UpdateNotificationThreshold**](SettingsAPI.md#UpdateNotificationThreshold) | **Post** /deepfence/license/notification-threshold | Update Notification Threshold
 [**UpdateScheduledTask**](SettingsAPI.md#UpdateScheduledTask) | **Patch** /deepfence/scheduled-task/{id} | Update scheduled task
 [**UpdateSetting**](SettingsAPI.md#UpdateSetting) | **Patch** /deepfence/settings/global-settings/{id} | Update setting
+[**UploadAgentVersion**](SettingsAPI.md#UploadAgentVersion) | **Put** /deepfence/agent/version | Upload New agent version
 [**UploadVulnerabilityDatabase**](SettingsAPI.md#UploadVulnerabilityDatabase) | **Put** /deepfence/database/vulnerability | Upload Vulnerability Database
 
 
@@ -335,6 +337,67 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAgentVersions
+
+> ModelListAgentVersionResp GetAgentVersions(ctx).Execute()
+
+Get available agent versions
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SettingsAPI.GetAgentVersions(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.GetAgentVersions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAgentVersions`: ModelListAgentVersionResp
+    fmt.Fprintf(os.Stdout, "Response from `SettingsAPI.GetAgentVersions`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAgentVersionsRequest struct via the builder pattern
+
+
+### Return type
+
+[**ModelListAgentVersionResp**](ModelListAgentVersionResp.md)
 
 ### Authorization
 
@@ -1107,6 +1170,65 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UploadAgentVersion
+
+> UploadAgentVersion(ctx).Execute()
+
+Upload New agent version
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.SettingsAPI.UploadAgentVersion(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.UploadAgentVersion``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUploadAgentVersionRequest struct via the builder pattern
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

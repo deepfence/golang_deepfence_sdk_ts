@@ -1,5 +1,5 @@
 /*
-Deepfence ThreatMapper
+Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
@@ -26,6 +26,7 @@ type ModelAddScheduledTaskRequest struct {
 	CronExpr *string `json:"cron_expr,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Filters ModelScanFilter `json:"filters"`
+	IsPriority *bool `json:"is_priority,omitempty"`
 	NodeIds []ModelNodeIdentifier `json:"node_ids"`
 	ScanConfig []ModelVulnerabilityScanConfigLanguage `json:"scan_config"`
 }
@@ -192,6 +193,38 @@ func (o *ModelAddScheduledTaskRequest) SetFilters(v ModelScanFilter) {
 	o.Filters = v
 }
 
+// GetIsPriority returns the IsPriority field value if set, zero value otherwise.
+func (o *ModelAddScheduledTaskRequest) GetIsPriority() bool {
+	if o == nil || IsNil(o.IsPriority) {
+		var ret bool
+		return ret
+	}
+	return *o.IsPriority
+}
+
+// GetIsPriorityOk returns a tuple with the IsPriority field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelAddScheduledTaskRequest) GetIsPriorityOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsPriority) {
+		return nil, false
+	}
+	return o.IsPriority, true
+}
+
+// HasIsPriority returns a boolean if a field has been set.
+func (o *ModelAddScheduledTaskRequest) HasIsPriority() bool {
+	if o != nil && !IsNil(o.IsPriority) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsPriority gets a reference to the given bool and assigns it to the IsPriority field.
+func (o *ModelAddScheduledTaskRequest) SetIsPriority(v bool) {
+	o.IsPriority = &v
+}
+
 // GetNodeIds returns the NodeIds field value
 // If the value is explicit nil, the zero value for []ModelNodeIdentifier will be returned
 func (o *ModelAddScheduledTaskRequest) GetNodeIds() []ModelNodeIdentifier {
@@ -265,6 +298,9 @@ func (o ModelAddScheduledTaskRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["filters"] = o.Filters
+	if !IsNil(o.IsPriority) {
+		toSerialize["is_priority"] = o.IsPriority
+	}
 	if o.NodeIds != nil {
 		toSerialize["node_ids"] = o.NodeIds
 	}

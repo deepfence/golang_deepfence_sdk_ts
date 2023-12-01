@@ -1,5 +1,5 @@
 /*
-Deepfence ThreatMapper
+Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
@@ -16,39 +16,39 @@ import (
 	"fmt"
 )
 
-// checks if the ModelEnableNetworkTracerReq type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ModelEnableNetworkTracerReq{}
+// checks if the ModelDisableTracerReq type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelDisableTracerReq{}
 
-// ModelEnableNetworkTracerReq struct for ModelEnableNetworkTracerReq
-type ModelEnableNetworkTracerReq struct {
-	AgentIds []ModelAgentId `json:"agent_ids"`
+// ModelDisableTracerReq struct for ModelDisableTracerReq
+type ModelDisableTracerReq struct {
+	AgentIds []ModelAgentID `json:"agent_ids"`
 }
 
-type _ModelEnableNetworkTracerReq ModelEnableNetworkTracerReq
+type _ModelDisableTracerReq ModelDisableTracerReq
 
-// NewModelEnableNetworkTracerReq instantiates a new ModelEnableNetworkTracerReq object
+// NewModelDisableTracerReq instantiates a new ModelDisableTracerReq object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelEnableNetworkTracerReq(agentIds []ModelAgentId) *ModelEnableNetworkTracerReq {
-	this := ModelEnableNetworkTracerReq{}
+func NewModelDisableTracerReq(agentIds []ModelAgentID) *ModelDisableTracerReq {
+	this := ModelDisableTracerReq{}
 	this.AgentIds = agentIds
 	return &this
 }
 
-// NewModelEnableNetworkTracerReqWithDefaults instantiates a new ModelEnableNetworkTracerReq object
+// NewModelDisableTracerReqWithDefaults instantiates a new ModelDisableTracerReq object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewModelEnableNetworkTracerReqWithDefaults() *ModelEnableNetworkTracerReq {
-	this := ModelEnableNetworkTracerReq{}
+func NewModelDisableTracerReqWithDefaults() *ModelDisableTracerReq {
+	this := ModelDisableTracerReq{}
 	return &this
 }
 
 // GetAgentIds returns the AgentIds field value
-// If the value is explicit nil, the zero value for []ModelAgentId will be returned
-func (o *ModelEnableNetworkTracerReq) GetAgentIds() []ModelAgentId {
+// If the value is explicit nil, the zero value for []ModelAgentID will be returned
+func (o *ModelDisableTracerReq) GetAgentIds() []ModelAgentID {
 	if o == nil {
-		var ret []ModelAgentId
+		var ret []ModelAgentID
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *ModelEnableNetworkTracerReq) GetAgentIds() []ModelAgentId {
 // GetAgentIdsOk returns a tuple with the AgentIds field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelEnableNetworkTracerReq) GetAgentIdsOk() ([]ModelAgentId, bool) {
+func (o *ModelDisableTracerReq) GetAgentIdsOk() ([]ModelAgentID, bool) {
 	if o == nil || IsNil(o.AgentIds) {
 		return nil, false
 	}
@@ -66,11 +66,11 @@ func (o *ModelEnableNetworkTracerReq) GetAgentIdsOk() ([]ModelAgentId, bool) {
 }
 
 // SetAgentIds sets field value
-func (o *ModelEnableNetworkTracerReq) SetAgentIds(v []ModelAgentId) {
+func (o *ModelDisableTracerReq) SetAgentIds(v []ModelAgentID) {
 	o.AgentIds = v
 }
 
-func (o ModelEnableNetworkTracerReq) MarshalJSON() ([]byte, error) {
+func (o ModelDisableTracerReq) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -78,7 +78,7 @@ func (o ModelEnableNetworkTracerReq) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ModelEnableNetworkTracerReq) ToMap() (map[string]interface{}, error) {
+func (o ModelDisableTracerReq) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AgentIds != nil {
 		toSerialize["agent_ids"] = o.AgentIds
@@ -86,7 +86,7 @@ func (o ModelEnableNetworkTracerReq) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ModelEnableNetworkTracerReq) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ModelDisableTracerReq) UnmarshalJSON(bytes []byte) (err error) {
     // This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -108,51 +108,51 @@ func (o *ModelEnableNetworkTracerReq) UnmarshalJSON(bytes []byte) (err error) {
 		}
 	}
 
-	varModelEnableNetworkTracerReq := _ModelEnableNetworkTracerReq{}
+	varModelDisableTracerReq := _ModelDisableTracerReq{}
 
-	err = json.Unmarshal(bytes, &varModelEnableNetworkTracerReq)
+	err = json.Unmarshal(bytes, &varModelDisableTracerReq)
 
 	if err != nil {
 		return err
 	}
 
-	*o = ModelEnableNetworkTracerReq(varModelEnableNetworkTracerReq)
+	*o = ModelDisableTracerReq(varModelDisableTracerReq)
 
 	return err
 }
 
-type NullableModelEnableNetworkTracerReq struct {
-	value *ModelEnableNetworkTracerReq
+type NullableModelDisableTracerReq struct {
+	value *ModelDisableTracerReq
 	isSet bool
 }
 
-func (v NullableModelEnableNetworkTracerReq) Get() *ModelEnableNetworkTracerReq {
+func (v NullableModelDisableTracerReq) Get() *ModelDisableTracerReq {
 	return v.value
 }
 
-func (v *NullableModelEnableNetworkTracerReq) Set(val *ModelEnableNetworkTracerReq) {
+func (v *NullableModelDisableTracerReq) Set(val *ModelDisableTracerReq) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableModelEnableNetworkTracerReq) IsSet() bool {
+func (v NullableModelDisableTracerReq) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableModelEnableNetworkTracerReq) Unset() {
+func (v *NullableModelDisableTracerReq) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableModelEnableNetworkTracerReq(val *ModelEnableNetworkTracerReq) *NullableModelEnableNetworkTracerReq {
-	return &NullableModelEnableNetworkTracerReq{value: val, isSet: true}
+func NewNullableModelDisableTracerReq(val *ModelDisableTracerReq) *NullableModelDisableTracerReq {
+	return &NullableModelDisableTracerReq{value: val, isSet: true}
 }
 
-func (v NullableModelEnableNetworkTracerReq) MarshalJSON() ([]byte, error) {
+func (v NullableModelDisableTracerReq) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableModelEnableNetworkTracerReq) UnmarshalJSON(src []byte) error {
+func (v *NullableModelDisableTracerReq) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

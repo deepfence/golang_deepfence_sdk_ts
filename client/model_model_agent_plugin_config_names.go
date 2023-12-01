@@ -1,5 +1,5 @@
 /*
-Deepfence ThreatMapper
+Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
@@ -24,6 +24,7 @@ type ModelAgentPluginConfigNames struct {
 	FilesystemConfigName string `json:"filesystem_config_name"`
 	NetworkConfigName string `json:"network_config_name"`
 	PolicyConfigName string `json:"policy_config_name"`
+	ProcessConfigName string `json:"process_config_name"`
 }
 
 type _ModelAgentPluginConfigNames ModelAgentPluginConfigNames
@@ -32,11 +33,12 @@ type _ModelAgentPluginConfigNames ModelAgentPluginConfigNames
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelAgentPluginConfigNames(filesystemConfigName string, networkConfigName string, policyConfigName string) *ModelAgentPluginConfigNames {
+func NewModelAgentPluginConfigNames(filesystemConfigName string, networkConfigName string, policyConfigName string, processConfigName string) *ModelAgentPluginConfigNames {
 	this := ModelAgentPluginConfigNames{}
 	this.FilesystemConfigName = filesystemConfigName
 	this.NetworkConfigName = networkConfigName
 	this.PolicyConfigName = policyConfigName
+	this.ProcessConfigName = processConfigName
 	return &this
 }
 
@@ -120,6 +122,30 @@ func (o *ModelAgentPluginConfigNames) SetPolicyConfigName(v string) {
 	o.PolicyConfigName = v
 }
 
+// GetProcessConfigName returns the ProcessConfigName field value
+func (o *ModelAgentPluginConfigNames) GetProcessConfigName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ProcessConfigName
+}
+
+// GetProcessConfigNameOk returns a tuple with the ProcessConfigName field value
+// and a boolean to check if the value has been set.
+func (o *ModelAgentPluginConfigNames) GetProcessConfigNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ProcessConfigName, true
+}
+
+// SetProcessConfigName sets field value
+func (o *ModelAgentPluginConfigNames) SetProcessConfigName(v string) {
+	o.ProcessConfigName = v
+}
+
 func (o ModelAgentPluginConfigNames) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -133,6 +159,7 @@ func (o ModelAgentPluginConfigNames) ToMap() (map[string]interface{}, error) {
 	toSerialize["filesystem_config_name"] = o.FilesystemConfigName
 	toSerialize["network_config_name"] = o.NetworkConfigName
 	toSerialize["policy_config_name"] = o.PolicyConfigName
+	toSerialize["process_config_name"] = o.ProcessConfigName
 	return toSerialize, nil
 }
 
@@ -144,6 +171,7 @@ func (o *ModelAgentPluginConfigNames) UnmarshalJSON(bytes []byte) (err error) {
 		"filesystem_config_name",
 		"network_config_name",
 		"policy_config_name",
+		"process_config_name",
 	}
 
 	allProperties := make(map[string]interface{})

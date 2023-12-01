@@ -1,5 +1,5 @@
 /*
-Deepfence ThreatMapper
+Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
@@ -23,14 +23,142 @@ import (
 // AgentFilesystemAPIService AgentFilesystemAPI service
 type AgentFilesystemAPIService service
 
+type ApiDisableFilesystemTracerRequest struct {
+	ctx context.Context
+	ApiService *AgentFilesystemAPIService
+	modelDisableTracerReq *ModelDisableTracerReq
+}
+
+func (r ApiDisableFilesystemTracerRequest) ModelDisableTracerReq(modelDisableTracerReq ModelDisableTracerReq) ApiDisableFilesystemTracerRequest {
+	r.modelDisableTracerReq = &modelDisableTracerReq
+	return r
+}
+
+func (r ApiDisableFilesystemTracerRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DisableFilesystemTracerExecute(r)
+}
+
+/*
+DisableFilesystemTracer Disable filesystem tracer
+
+Disable filesystem tracer on given agents
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiDisableFilesystemTracerRequest
+*/
+func (a *AgentFilesystemAPIService) DisableFilesystemTracer(ctx context.Context) ApiDisableFilesystemTracerRequest {
+	return ApiDisableFilesystemTracerRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *AgentFilesystemAPIService) DisableFilesystemTracerExecute(r ApiDisableFilesystemTracerRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentFilesystemAPIService.DisableFilesystemTracer")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/deepfence/filesystem/tracer/disable"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.modelDisableTracerReq
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiDocsBadRequestResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiDocsFailureResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiEnableFilesystemTracerRequest struct {
 	ctx context.Context
 	ApiService *AgentFilesystemAPIService
-	modelEnableFilesystemTracerReq *ModelEnableFilesystemTracerReq
+	modelEnableTracerReq *ModelEnableTracerReq
 }
 
-func (r ApiEnableFilesystemTracerRequest) ModelEnableFilesystemTracerReq(modelEnableFilesystemTracerReq ModelEnableFilesystemTracerReq) ApiEnableFilesystemTracerRequest {
-	r.modelEnableFilesystemTracerReq = &modelEnableFilesystemTracerReq
+func (r ApiEnableFilesystemTracerRequest) ModelEnableTracerReq(modelEnableTracerReq ModelEnableTracerReq) ApiEnableFilesystemTracerRequest {
+	r.modelEnableTracerReq = &modelEnableTracerReq
 	return r
 }
 
@@ -90,7 +218,7 @@ func (a *AgentFilesystemAPIService) EnableFilesystemTracerExecute(r ApiEnableFil
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.modelEnableFilesystemTracerReq
+	localVarPostBody = r.modelEnableTracerReq
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

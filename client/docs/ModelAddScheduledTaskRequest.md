@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CronExpr** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Filters** | [**ModelScanFilter**](ModelScanFilter.md) |  | 
+**IsPriority** | Pointer to **bool** |  | [optional] 
 **NodeIds** | [**[]ModelNodeIdentifier**](ModelNodeIdentifier.md) |  | 
 **ScanConfig** | [**[]ModelVulnerabilityScanConfigLanguage**](ModelVulnerabilityScanConfigLanguage.md) |  | 
 
@@ -150,6 +151,31 @@ and a boolean to check if the value has been set.
 
 SetFilters sets Filters field to given value.
 
+
+### GetIsPriority
+
+`func (o *ModelAddScheduledTaskRequest) GetIsPriority() bool`
+
+GetIsPriority returns the IsPriority field if non-nil, zero value otherwise.
+
+### GetIsPriorityOk
+
+`func (o *ModelAddScheduledTaskRequest) GetIsPriorityOk() (*bool, bool)`
+
+GetIsPriorityOk returns a tuple with the IsPriority field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsPriority
+
+`func (o *ModelAddScheduledTaskRequest) SetIsPriority(v bool)`
+
+SetIsPriority sets IsPriority field to given value.
+
+### HasIsPriority
+
+`func (o *ModelAddScheduledTaskRequest) HasIsPriority() bool`
+
+HasIsPriority returns a boolean if a field has been set.
 
 ### GetNodeIds
 

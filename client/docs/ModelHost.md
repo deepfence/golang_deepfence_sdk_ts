@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **CpuMax** | **float32** |  | 
 **CpuUsage** | **float32** |  | 
 **FilesystemTracerStatus** | **string** |  | 
+**FilesystemTracerStatusUpdatedAt** | **int32** |  | 
 **HostName** | **string** |  | 
 **InboundConnections** | [**[]ModelConnection**](ModelConnection.md) |  | 
 **InstanceId** | **string** |  | 
@@ -43,6 +44,8 @@ Name | Type | Description | Notes
 **PluginStatus** | [**ModelAgentPluginsStatus**](ModelAgentPluginsStatus.md) |  | 
 **Pods** | [**[]ModelPod**](ModelPod.md) |  | 
 **PrivateIp** | **[]interface{}** |  | 
+**ProcessTracerStatus** | **string** |  | 
+**ProcessTracerStatusUpdatedAt** | **int32** |  | 
 **Processes** | [**[]ModelProcess**](ModelProcess.md) |  | 
 **PublicIp** | **[]interface{}** |  | 
 **ResourceGroup** | **string** |  | 
@@ -59,7 +62,7 @@ Name | Type | Description | Notes
 
 ### NewModelHost
 
-`func NewModelHost(agentRunning bool, alertsCounts map[string]int32, availabilityZone string, cloudAccountId string, cloudProvider string, cloudRegion string, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, filesystemTracerStatus string, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, networkFilterStatus string, networkTracerStatus string, networkTracerStatusUpdatedAt int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string, ) *ModelHost`
+`func NewModelHost(agentRunning bool, alertsCounts map[string]int32, availabilityZone string, cloudAccountId string, cloudProvider string, cloudRegion string, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, filesystemTracerStatus string, filesystemTracerStatusUpdatedAt int32, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, networkFilterStatus string, networkTracerStatus string, networkTracerStatusUpdatedAt int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processTracerStatus string, processTracerStatusUpdatedAt int32, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string, ) *ModelHost`
 
 NewModelHost instantiates a new ModelHost object
 This constructor will assign default values to properties that have it defined,
@@ -402,6 +405,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelHost) SetFilesystemTracerStatus(v string)`
 
 SetFilesystemTracerStatus sets FilesystemTracerStatus field to given value.
+
+
+### GetFilesystemTracerStatusUpdatedAt
+
+`func (o *ModelHost) GetFilesystemTracerStatusUpdatedAt() int32`
+
+GetFilesystemTracerStatusUpdatedAt returns the FilesystemTracerStatusUpdatedAt field if non-nil, zero value otherwise.
+
+### GetFilesystemTracerStatusUpdatedAtOk
+
+`func (o *ModelHost) GetFilesystemTracerStatusUpdatedAtOk() (*int32, bool)`
+
+GetFilesystemTracerStatusUpdatedAtOk returns a tuple with the FilesystemTracerStatusUpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilesystemTracerStatusUpdatedAt
+
+`func (o *ModelHost) SetFilesystemTracerStatusUpdatedAt(v int32)`
+
+SetFilesystemTracerStatusUpdatedAt sets FilesystemTracerStatusUpdatedAt field to given value.
 
 
 ### GetHostName
@@ -944,6 +967,46 @@ SetPrivateIp sets PrivateIp field to given value.
 `func (o *ModelHost) UnsetPrivateIp()`
 
 UnsetPrivateIp ensures that no value is present for PrivateIp, not even an explicit nil
+### GetProcessTracerStatus
+
+`func (o *ModelHost) GetProcessTracerStatus() string`
+
+GetProcessTracerStatus returns the ProcessTracerStatus field if non-nil, zero value otherwise.
+
+### GetProcessTracerStatusOk
+
+`func (o *ModelHost) GetProcessTracerStatusOk() (*string, bool)`
+
+GetProcessTracerStatusOk returns a tuple with the ProcessTracerStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProcessTracerStatus
+
+`func (o *ModelHost) SetProcessTracerStatus(v string)`
+
+SetProcessTracerStatus sets ProcessTracerStatus field to given value.
+
+
+### GetProcessTracerStatusUpdatedAt
+
+`func (o *ModelHost) GetProcessTracerStatusUpdatedAt() int32`
+
+GetProcessTracerStatusUpdatedAt returns the ProcessTracerStatusUpdatedAt field if non-nil, zero value otherwise.
+
+### GetProcessTracerStatusUpdatedAtOk
+
+`func (o *ModelHost) GetProcessTracerStatusUpdatedAtOk() (*int32, bool)`
+
+GetProcessTracerStatusUpdatedAtOk returns a tuple with the ProcessTracerStatusUpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProcessTracerStatusUpdatedAt
+
+`func (o *ModelHost) SetProcessTracerStatusUpdatedAt(v int32)`
+
+SetProcessTracerStatusUpdatedAt sets ProcessTracerStatusUpdatedAt field to given value.
+
+
 ### GetProcesses
 
 `func (o *ModelHost) GetProcesses() []ModelProcess`

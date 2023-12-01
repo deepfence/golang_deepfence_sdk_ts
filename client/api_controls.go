@@ -1,5 +1,5 @@
 /*
-Deepfence ThreatMapper
+Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
@@ -538,11 +538,11 @@ func (a *ControlsAPIService) EnableCloudNodeControlsExecute(r ApiEnableCloudNode
 type ApiGetAgentControlsRequest struct {
 	ctx context.Context
 	ApiService *ControlsAPIService
-	modelAgentId *ModelAgentId
+	modelAgentID *ModelAgentID
 }
 
-func (r ApiGetAgentControlsRequest) ModelAgentId(modelAgentId ModelAgentId) ApiGetAgentControlsRequest {
-	r.modelAgentId = &modelAgentId
+func (r ApiGetAgentControlsRequest) ModelAgentID(modelAgentID ModelAgentID) ApiGetAgentControlsRequest {
+	r.modelAgentID = &modelAgentID
 	return r
 }
 
@@ -604,7 +604,7 @@ func (a *ControlsAPIService) GetAgentControlsExecute(r ApiGetAgentControlsReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.modelAgentId
+	localVarPostBody = r.modelAgentID
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -955,11 +955,11 @@ func (a *ControlsAPIService) GetCloudNodeControlsExecute(r ApiGetCloudNodeContro
 type ApiGetKubernetesClusterControlsRequest struct {
 	ctx context.Context
 	ApiService *ControlsAPIService
-	modelAgentId *ModelAgentId
+	modelAgentID *ModelAgentID
 }
 
-func (r ApiGetKubernetesClusterControlsRequest) ModelAgentId(modelAgentId ModelAgentId) ApiGetKubernetesClusterControlsRequest {
-	r.modelAgentId = &modelAgentId
+func (r ApiGetKubernetesClusterControlsRequest) ModelAgentID(modelAgentID ModelAgentID) ApiGetKubernetesClusterControlsRequest {
+	r.modelAgentID = &modelAgentID
 	return r
 }
 
@@ -1021,7 +1021,7 @@ func (a *ControlsAPIService) GetKubernetesClusterControlsExecute(r ApiGetKuberne
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.modelAgentId
+	localVarPostBody = r.modelAgentID
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

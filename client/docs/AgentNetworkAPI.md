@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## DisableNetworkTracer
 
-> DisableNetworkTracer(ctx).ModelDisableNetworkTracerReq(modelDisableNetworkTracerReq).Execute()
+> DisableNetworkTracer(ctx).ModelDisableTracerReq(modelDisableTracerReq).Execute()
 
 Disable network tracer
 
@@ -30,11 +30,11 @@ import (
 )
 
 func main() {
-    modelDisableNetworkTracerReq := *openapiclient.NewModelDisableNetworkTracerReq([]openapiclient.ModelAgentId{*openapiclient.NewModelAgentId(int32(123), "NodeId_example")}) // ModelDisableNetworkTracerReq |  (optional)
+    modelDisableTracerReq := *openapiclient.NewModelDisableTracerReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}) // ModelDisableTracerReq |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentNetworkAPI.DisableNetworkTracer(context.Background()).ModelDisableNetworkTracerReq(modelDisableNetworkTracerReq).Execute()
+    r, err := apiClient.AgentNetworkAPI.DisableNetworkTracer(context.Background()).ModelDisableTracerReq(modelDisableTracerReq).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AgentNetworkAPI.DisableNetworkTracer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -53,7 +53,7 @@ Other parameters are passed through a pointer to a apiDisableNetworkTracerReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelDisableNetworkTracerReq** | [**ModelDisableNetworkTracerReq**](ModelDisableNetworkTracerReq.md) |  | 
+ **modelDisableTracerReq** | [**ModelDisableTracerReq**](ModelDisableTracerReq.md) |  | 
 
 ### Return type
 
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ## EnableNetworkTracer
 
-> EnableNetworkTracer(ctx).ModelEnableNetworkTracerReq(modelEnableNetworkTracerReq).Execute()
+> EnableNetworkTracer(ctx).ModelEnableTracerReq(modelEnableTracerReq).Execute()
 
 Enable network tracer
 
@@ -94,11 +94,11 @@ import (
 )
 
 func main() {
-    modelEnableNetworkTracerReq := *openapiclient.NewModelEnableNetworkTracerReq([]openapiclient.ModelAgentId{*openapiclient.NewModelAgentId(int32(123), "NodeId_example")}) // ModelEnableNetworkTracerReq |  (optional)
+    modelEnableTracerReq := *openapiclient.NewModelEnableTracerReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}) // ModelEnableTracerReq |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentNetworkAPI.EnableNetworkTracer(context.Background()).ModelEnableNetworkTracerReq(modelEnableNetworkTracerReq).Execute()
+    r, err := apiClient.AgentNetworkAPI.EnableNetworkTracer(context.Background()).ModelEnableTracerReq(modelEnableTracerReq).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AgentNetworkAPI.EnableNetworkTracer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -117,7 +117,7 @@ Other parameters are passed through a pointer to a apiEnableNetworkTracerRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelEnableNetworkTracerReq** | [**ModelEnableNetworkTracerReq**](ModelEnableNetworkTracerReq.md) |  | 
+ **modelEnableTracerReq** | [**ModelEnableTracerReq**](ModelEnableTracerReq.md) |  | 
 
 ### Return type
 

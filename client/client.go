@@ -1,5 +1,5 @@
 /*
-Deepfence ThreatMapper
+Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
@@ -42,7 +42,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the Deepfence ThreatMapper API v2.0.0
+// APIClient manages communication with the Deepfence ThreatStryker API v2.0.0
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -55,6 +55,8 @@ type APIClient struct {
 	AgentFilesystemAPI *AgentFilesystemAPIService
 
 	AgentNetworkAPI *AgentNetworkAPIService
+
+	AgentProcessAPI *AgentProcessAPIService
 
 	AlertAPI *AlertAPIService
 
@@ -77,6 +79,8 @@ type APIClient struct {
 	DiagnosisAPI *DiagnosisAPIService
 
 	DiffAddAPI *DiffAddAPIService
+
+	GenerativeAIAPI *GenerativeAIAPIService
 
 	IntegrationAPI *IntegrationAPIService
 
@@ -128,6 +132,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AgentConfigAPI = (*AgentConfigAPIService)(&c.common)
 	c.AgentFilesystemAPI = (*AgentFilesystemAPIService)(&c.common)
 	c.AgentNetworkAPI = (*AgentNetworkAPIService)(&c.common)
+	c.AgentProcessAPI = (*AgentProcessAPIService)(&c.common)
 	c.AlertAPI = (*AlertAPIService)(&c.common)
 	c.AuthenticationAPI = (*AuthenticationAPIService)(&c.common)
 	c.CloudNodesAPI = (*CloudNodesAPIService)(&c.common)
@@ -139,6 +144,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ControlsAPI = (*ControlsAPIService)(&c.common)
 	c.DiagnosisAPI = (*DiagnosisAPIService)(&c.common)
 	c.DiffAddAPI = (*DiffAddAPIService)(&c.common)
+	c.GenerativeAIAPI = (*GenerativeAIAPIService)(&c.common)
 	c.IntegrationAPI = (*IntegrationAPIService)(&c.common)
 	c.InternalAPI = (*InternalAPIService)(&c.common)
 	c.LookupAPI = (*LookupAPIService)(&c.common)

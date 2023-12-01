@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **NodeId** | **string** |  | 
 **RuleId** | **string** |  | 
 **Severity** | **string** |  | 
-**SeverityScore** | **float32** |  | 
 **Summary** | **string** |  | 
 **Tactics** | **[]string** |  | 
 **Techniques** | **[]string** |  | 
@@ -20,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewModelNetworkAlertRule
 
-`func NewModelNetworkAlertRule(category string, description string, masked bool, nodeId string, ruleId string, severity string, severityScore float32, summary string, tactics []string, techniques []string, updatedAt int32, ) *ModelNetworkAlertRule`
+`func NewModelNetworkAlertRule(category string, description string, masked bool, nodeId string, ruleId string, severity string, summary string, tactics []string, techniques []string, updatedAt int32, ) *ModelNetworkAlertRule`
 
 NewModelNetworkAlertRule instantiates a new ModelNetworkAlertRule object
 This constructor will assign default values to properties that have it defined,
@@ -153,26 +152,6 @@ and a boolean to check if the value has been set.
 `func (o *ModelNetworkAlertRule) SetSeverity(v string)`
 
 SetSeverity sets Severity field to given value.
-
-
-### GetSeverityScore
-
-`func (o *ModelNetworkAlertRule) GetSeverityScore() float32`
-
-GetSeverityScore returns the SeverityScore field if non-nil, zero value otherwise.
-
-### GetSeverityScoreOk
-
-`func (o *ModelNetworkAlertRule) GetSeverityScoreOk() (*float32, bool)`
-
-GetSeverityScoreOk returns a tuple with the SeverityScore field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSeverityScore
-
-`func (o *ModelNetworkAlertRule) SetSeverityScore(v float32)`
-
-SetSeverityScore sets SeverityScore field to given value.
 
 
 ### GetSummary
