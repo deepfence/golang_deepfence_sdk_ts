@@ -23,22 +23,22 @@ Remove network violations
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelDeleteFilter := *openapiclient.NewModelDeleteFilter([]string{"NodeIds_example"}) // ModelDeleteFilter |  (optional)
+	modelDeleteFilter := *openapiclient.NewModelDeleteFilter([]string{"NodeIds_example"}) // ModelDeleteFilter |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ViolationsAPI.DeleteNetworkViolations(context.Background()).ModelDeleteFilter(modelDeleteFilter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViolationsAPI.DeleteNetworkViolations``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ViolationsAPI.DeleteNetworkViolations(context.Background()).ModelDeleteFilter(modelDeleteFilter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViolationsAPI.DeleteNetworkViolations``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -87,22 +87,22 @@ Remove quarantine violations
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelDeleteFilter := *openapiclient.NewModelDeleteFilter([]string{"NodeIds_example"}) // ModelDeleteFilter |  (optional)
+	modelDeleteFilter := *openapiclient.NewModelDeleteFilter([]string{"NodeIds_example"}) // ModelDeleteFilter |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ViolationsAPI.DeleteQuarantineViolations(context.Background()).ModelDeleteFilter(modelDeleteFilter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViolationsAPI.DeleteQuarantineViolations``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ViolationsAPI.DeleteQuarantineViolations(context.Background()).ModelDeleteFilter(modelDeleteFilter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViolationsAPI.DeleteQuarantineViolations``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 

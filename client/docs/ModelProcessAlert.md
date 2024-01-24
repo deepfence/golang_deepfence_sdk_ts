@@ -39,13 +39,14 @@ Name | Type | Description | Notes
 **Techniques** | **[]string** |  | 
 **UpdatedAt** | **int32** |  | 
 **User** | **string** |  | 
+**UserName** | **string** |  | 
 **Vsize** | **int32** |  | 
 
 ## Methods
 
 ### NewModelProcessAlert
 
-`func NewModelProcessAlert(category string, command string, containerId string, containerImage string, containerIp string, containerName string, count int32, cpuTime float32, createdAt int32, eventType string, execPath string, failure string, group string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, numThreads int32, pid int32, podName string, priority int32, procStatus string, return_ int32, rss int32, ruleId string, session int32, severity string, state string, summary string, tactics []string, techniques []string, updatedAt int32, user string, vsize int32, ) *ModelProcessAlert`
+`func NewModelProcessAlert(category string, command string, containerId string, containerImage string, containerIp string, containerName string, count int32, cpuTime float32, createdAt int32, eventType string, execPath string, failure string, group string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, numThreads int32, pid int32, podName string, priority int32, procStatus string, return_ int32, rss int32, ruleId string, session int32, severity string, state string, summary string, tactics []string, techniques []string, updatedAt int32, user string, userName string, vsize int32, ) *ModelProcessAlert`
 
 NewModelProcessAlert instantiates a new ModelProcessAlert object
 This constructor will assign default values to properties that have it defined,
@@ -778,6 +779,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelProcessAlert) SetUser(v string)`
 
 SetUser sets User field to given value.
+
+
+### GetUserName
+
+`func (o *ModelProcessAlert) GetUserName() string`
+
+GetUserName returns the UserName field if non-nil, zero value otherwise.
+
+### GetUserNameOk
+
+`func (o *ModelProcessAlert) GetUserNameOk() (*string, bool)`
+
+GetUserNameOk returns a tuple with the UserName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserName
+
+`func (o *ModelProcessAlert) SetUserName(v string)`
+
+SetUserName sets UserName field to given value.
 
 
 ### GetVsize

@@ -23,22 +23,22 @@ Disable network tracer
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelDisableTracerReq := *openapiclient.NewModelDisableTracerReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}) // ModelDisableTracerReq |  (optional)
+	modelDisableTracerReq := *openapiclient.NewModelDisableTracerReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}) // ModelDisableTracerReq |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentNetworkAPI.DisableNetworkTracer(context.Background()).ModelDisableTracerReq(modelDisableTracerReq).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentNetworkAPI.DisableNetworkTracer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentNetworkAPI.DisableNetworkTracer(context.Background()).ModelDisableTracerReq(modelDisableTracerReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentNetworkAPI.DisableNetworkTracer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -87,22 +87,22 @@ Enable network tracer
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelEnableTracerReq := *openapiclient.NewModelEnableTracerReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}) // ModelEnableTracerReq |  (optional)
+	modelEnableTracerReq := *openapiclient.NewModelEnableTracerReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}) // ModelEnableTracerReq |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentNetworkAPI.EnableNetworkTracer(context.Background()).ModelEnableTracerReq(modelEnableTracerReq).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentNetworkAPI.EnableNetworkTracer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentNetworkAPI.EnableNetworkTracer(context.Background()).ModelEnableTracerReq(modelEnableTracerReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentNetworkAPI.EnableNetworkTracer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 

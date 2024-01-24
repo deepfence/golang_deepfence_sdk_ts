@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -21,7 +22,7 @@ var _ MappedNullable = &ModelAgentUpgrade{}
 
 // ModelAgentUpgrade struct for ModelAgentUpgrade
 type ModelAgentUpgrade struct {
-	NodeId string `json:"node_id"`
+	NodeIds []string `json:"node_ids"`
 	Version string `json:"version"`
 }
 
@@ -31,9 +32,9 @@ type _ModelAgentUpgrade ModelAgentUpgrade
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelAgentUpgrade(nodeId string, version string) *ModelAgentUpgrade {
+func NewModelAgentUpgrade(nodeIds []string, version string) *ModelAgentUpgrade {
 	this := ModelAgentUpgrade{}
-	this.NodeId = nodeId
+	this.NodeIds = nodeIds
 	this.Version = version
 	return &this
 }
@@ -46,28 +47,30 @@ func NewModelAgentUpgradeWithDefaults() *ModelAgentUpgrade {
 	return &this
 }
 
-// GetNodeId returns the NodeId field value
-func (o *ModelAgentUpgrade) GetNodeId() string {
+// GetNodeIds returns the NodeIds field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ModelAgentUpgrade) GetNodeIds() []string {
 	if o == nil {
-		var ret string
+		var ret []string
 		return ret
 	}
 
-	return o.NodeId
+	return o.NodeIds
 }
 
-// GetNodeIdOk returns a tuple with the NodeId field value
+// GetNodeIdsOk returns a tuple with the NodeIds field value
 // and a boolean to check if the value has been set.
-func (o *ModelAgentUpgrade) GetNodeIdOk() (*string, bool) {
-	if o == nil {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelAgentUpgrade) GetNodeIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.NodeIds) {
 		return nil, false
 	}
-	return &o.NodeId, true
+	return o.NodeIds, true
 }
 
-// SetNodeId sets field value
-func (o *ModelAgentUpgrade) SetNodeId(v string) {
-	o.NodeId = v
+// SetNodeIds sets field value
+func (o *ModelAgentUpgrade) SetNodeIds(v []string) {
+	o.NodeIds = v
 }
 
 // GetVersion returns the Version field value
@@ -104,23 +107,25 @@ func (o ModelAgentUpgrade) MarshalJSON() ([]byte, error) {
 
 func (o ModelAgentUpgrade) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["node_id"] = o.NodeId
+	if o.NodeIds != nil {
+		toSerialize["node_ids"] = o.NodeIds
+	}
 	toSerialize["version"] = o.Version
 	return toSerialize, nil
 }
 
-func (o *ModelAgentUpgrade) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ModelAgentUpgrade) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"node_id",
+		"node_ids",
 		"version",
 	}
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -134,7 +139,9 @@ func (o *ModelAgentUpgrade) UnmarshalJSON(bytes []byte) (err error) {
 
 	varModelAgentUpgrade := _ModelAgentUpgrade{}
 
-	err = json.Unmarshal(bytes, &varModelAgentUpgrade)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varModelAgentUpgrade)
 
 	if err != nil {
 		return err

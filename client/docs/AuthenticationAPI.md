@@ -32,24 +32,24 @@ Get Access Token for API Token
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelAPIAuthRequest := *openapiclient.NewModelAPIAuthRequest("ApiToken_example") // ModelAPIAuthRequest |  (optional)
+	modelAPIAuthRequest := *openapiclient.NewModelAPIAuthRequest("ApiToken_example") // ModelAPIAuthRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticationAPI.AuthToken(context.Background()).ModelAPIAuthRequest(modelAPIAuthRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.AuthToken``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthToken`: ModelResponseAccessToken
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticationAPI.AuthToken`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticationAPI.AuthToken(context.Background()).ModelAPIAuthRequest(modelAPIAuthRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.AuthToken``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthToken`: ModelResponseAccessToken
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticationAPI.AuthToken`: %v\n", resp)
 }
 ```
 
@@ -98,23 +98,23 @@ Refresh access token
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticationAPI.AuthTokenRefresh(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.AuthTokenRefresh``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthTokenRefresh`: ModelResponseAccessToken
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticationAPI.AuthTokenRefresh`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticationAPI.AuthTokenRefresh(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.AuthTokenRefresh``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthTokenRefresh`: ModelResponseAccessToken
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticationAPI.AuthTokenRefresh`: %v\n", resp)
 }
 ```
 
@@ -159,22 +159,22 @@ Configure Single sign-on
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    singlesignonSSOProviderConfig := *openapiclient.NewSinglesignonSSOProviderConfig("ClientId_example", "ClientSecret_example", false, "SsoProviderType_example") // SinglesignonSSOProviderConfig |  (optional)
+	singlesignonSSOProviderConfig := *openapiclient.NewSinglesignonSSOProviderConfig("ClientId_example", "ClientSecret_example", false, "SsoProviderType_example") // SinglesignonSSOProviderConfig |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AuthenticationAPI.CreateSSOProvider(context.Background()).SinglesignonSSOProviderConfig(singlesignonSSOProviderConfig).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.CreateSSOProvider``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AuthenticationAPI.CreateSSOProvider(context.Background()).SinglesignonSSOProviderConfig(singlesignonSSOProviderConfig).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.CreateSSOProvider``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -223,22 +223,22 @@ Delete Single sign-on configuration
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    id := int32(56) // int32 | 
+	id := int32(56) // int32 | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AuthenticationAPI.DeleteSSOProvider(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.DeleteSSOProvider``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AuthenticationAPI.DeleteSSOProvider(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.DeleteSSOProvider``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -291,23 +291,23 @@ Get Single sign-on configurations
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticationAPI.GetSSOProviders(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.GetSSOProviders``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSSOProviders`: SinglesignonGetSingleSignOnResponse
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticationAPI.GetSSOProviders`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticationAPI.GetSSOProviders(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.GetSSOProviders``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetSSOProviders`: SinglesignonGetSingleSignOnResponse
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticationAPI.GetSSOProviders`: %v\n", resp)
 }
 ```
 
@@ -352,24 +352,24 @@ Login API
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelLoginRequest := *openapiclient.NewModelLoginRequest("Email_example", "Password_example") // ModelLoginRequest |  (optional)
+	modelLoginRequest := *openapiclient.NewModelLoginRequest("Email_example", "Password_example") // ModelLoginRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticationAPI.Login(context.Background()).ModelLoginRequest(modelLoginRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.Login``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Login`: ModelLoginResponse
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticationAPI.Login`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticationAPI.Login(context.Background()).ModelLoginRequest(modelLoginRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.Login``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Login`: ModelLoginResponse
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticationAPI.Login`: %v\n", resp)
 }
 ```
 
@@ -418,21 +418,21 @@ Logout API
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AuthenticationAPI.Logout(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.Logout``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AuthenticationAPI.Logout(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.Logout``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -477,22 +477,22 @@ SSO Login
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    namespace := "namespace_example" // string | 
+	namespace := "namespace_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AuthenticationAPI.SsoInitiateLogin(context.Background(), namespace).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.SsoInitiateLogin``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AuthenticationAPI.SsoInitiateLogin(context.Background(), namespace).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.SsoInitiateLogin``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -545,22 +545,22 @@ SSO Login
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    email := "email_example" // string | 
+	email := "email_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AuthenticationAPI.SsoLogin(context.Background()).Email(email).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.SsoLogin``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AuthenticationAPI.SsoLogin(context.Background()).Email(email).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.SsoLogin``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -609,25 +609,25 @@ Update Single sign-on
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    id := int32(56) // int32 | 
-    singlesignonUpdateSSOProviderConfig := *openapiclient.NewSinglesignonUpdateSSOProviderConfig("ClientId_example", false) // SinglesignonUpdateSSOProviderConfig |  (optional)
+	id := int32(56) // int32 | 
+	singlesignonUpdateSSOProviderConfig := *openapiclient.NewSinglesignonUpdateSSOProviderConfig("ClientId_example", false) // SinglesignonUpdateSSOProviderConfig |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticationAPI.UpdateSSOProvider(context.Background(), id).SinglesignonUpdateSSOProviderConfig(singlesignonUpdateSSOProviderConfig).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.UpdateSSOProvider``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateSSOProvider`: SinglesignonSSOResponse
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticationAPI.UpdateSSOProvider`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticationAPI.UpdateSSOProvider(context.Background(), id).SinglesignonUpdateSSOProviderConfig(singlesignonUpdateSSOProviderConfig).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.UpdateSSOProvider``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateSSOProvider`: SinglesignonSSOResponse
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticationAPI.UpdateSSOProvider`: %v\n", resp)
 }
 ```
 
@@ -681,24 +681,24 @@ Verify SSO auth code
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    singlesignonVerifySSOAuthRequest := *openapiclient.NewSinglesignonVerifySSOAuthRequest("Code_example", "Namespace_example", int32(123)) // SinglesignonVerifySSOAuthRequest |  (optional)
+	singlesignonVerifySSOAuthRequest := *openapiclient.NewSinglesignonVerifySSOAuthRequest("Code_example", "Namespace_example", int32(123)) // SinglesignonVerifySSOAuthRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticationAPI.VerifySSOAuth(context.Background()).SinglesignonVerifySSOAuthRequest(singlesignonVerifySSOAuthRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.VerifySSOAuth``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `VerifySSOAuth`: ModelLoginResponse
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticationAPI.VerifySSOAuth`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticationAPI.VerifySSOAuth(context.Background()).SinglesignonVerifySSOAuthRequest(singlesignonVerifySSOAuthRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationAPI.VerifySSOAuth``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `VerifySSOAuth`: ModelLoginResponse
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticationAPI.VerifySSOAuth`: %v\n", resp)
 }
 ```
 

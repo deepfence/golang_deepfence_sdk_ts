@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Anomaly** | Pointer to **string** |  | [optional] 
 **Category** | Pointer to **string** |  | [optional] 
-**EventType** | Pointer to **string** |  | [optional] 
 **RuleId** | Pointer to **string** |  | [optional] 
 **Severity** | Pointer to **string** |  | [optional] 
 **Summary** | Pointer to **string** |  | [optional] 
@@ -81,31 +80,6 @@ SetCategory sets Category field to given value.
 `func (o *ModelProcessAlertRule) HasCategory() bool`
 
 HasCategory returns a boolean if a field has been set.
-
-### GetEventType
-
-`func (o *ModelProcessAlertRule) GetEventType() string`
-
-GetEventType returns the EventType field if non-nil, zero value otherwise.
-
-### GetEventTypeOk
-
-`func (o *ModelProcessAlertRule) GetEventTypeOk() (*string, bool)`
-
-GetEventTypeOk returns a tuple with the EventType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEventType
-
-`func (o *ModelProcessAlertRule) SetEventType(v string)`
-
-SetEventType sets EventType field to given value.
-
-### HasEventType
-
-`func (o *ModelProcessAlertRule) HasEventType() bool`
-
-HasEventType returns a boolean if a field has been set.
 
 ### GetRuleId
 

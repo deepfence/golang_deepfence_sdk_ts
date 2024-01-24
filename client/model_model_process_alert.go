@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -56,6 +57,7 @@ type ModelProcessAlert struct {
 	Techniques []string `json:"techniques"`
 	UpdatedAt int32 `json:"updated_at"`
 	User string `json:"user"`
+	UserName string `json:"user_name"`
 	Vsize int32 `json:"vsize"`
 }
 
@@ -65,7 +67,7 @@ type _ModelProcessAlert ModelProcessAlert
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelProcessAlert(category string, command string, containerId string, containerImage string, containerIp string, containerName string, count int32, cpuTime float32, createdAt int32, eventType string, execPath string, failure string, group string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, numThreads int32, pid int32, podName string, priority int32, procStatus string, return_ int32, rss int32, ruleId string, session int32, severity string, state string, summary string, tactics []string, techniques []string, updatedAt int32, user string, vsize int32) *ModelProcessAlert {
+func NewModelProcessAlert(category string, command string, containerId string, containerImage string, containerIp string, containerName string, count int32, cpuTime float32, createdAt int32, eventType string, execPath string, failure string, group string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, numThreads int32, pid int32, podName string, priority int32, procStatus string, return_ int32, rss int32, ruleId string, session int32, severity string, state string, summary string, tactics []string, techniques []string, updatedAt int32, user string, userName string, vsize int32) *ModelProcessAlert {
 	this := ModelProcessAlert{}
 	this.Category = category
 	this.Command = command
@@ -102,6 +104,7 @@ func NewModelProcessAlert(category string, command string, containerId string, c
 	this.Techniques = techniques
 	this.UpdatedAt = updatedAt
 	this.User = user
+	this.UserName = userName
 	this.Vsize = vsize
 	return &this
 }
@@ -958,6 +961,30 @@ func (o *ModelProcessAlert) SetUser(v string) {
 	o.User = v
 }
 
+// GetUserName returns the UserName field value
+func (o *ModelProcessAlert) GetUserName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.UserName
+}
+
+// GetUserNameOk returns a tuple with the UserName field value
+// and a boolean to check if the value has been set.
+func (o *ModelProcessAlert) GetUserNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UserName, true
+}
+
+// SetUserName sets field value
+func (o *ModelProcessAlert) SetUserName(v string) {
+	o.UserName = v
+}
+
 // GetVsize returns the Vsize field value
 func (o *ModelProcessAlert) GetVsize() int32 {
 	if o == nil {
@@ -1031,12 +1058,13 @@ func (o ModelProcessAlert) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["updated_at"] = o.UpdatedAt
 	toSerialize["user"] = o.User
+	toSerialize["user_name"] = o.UserName
 	toSerialize["vsize"] = o.Vsize
 	return toSerialize, nil
 }
 
-func (o *ModelProcessAlert) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ModelProcessAlert) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -1075,12 +1103,13 @@ func (o *ModelProcessAlert) UnmarshalJSON(bytes []byte) (err error) {
 		"techniques",
 		"updated_at",
 		"user",
+		"user_name",
 		"vsize",
 	}
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -1094,7 +1123,9 @@ func (o *ModelProcessAlert) UnmarshalJSON(bytes []byte) (err error) {
 
 	varModelProcessAlert := _ModelProcessAlert{}
 
-	err = json.Unmarshal(bytes, &varModelProcessAlert)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varModelProcessAlert)
 
 	if err != nil {
 		return err

@@ -27,23 +27,23 @@ Get Alerts daily counts
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AlertAPI.DailyAlertCounts(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertAPI.DailyAlertCounts``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DailyAlertCounts`: ReportersDailySevCounts
-    fmt.Fprintf(os.Stdout, "Response from `AlertAPI.DailyAlertCounts`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AlertAPI.DailyAlertCounts(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AlertAPI.DailyAlertCounts``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DailyAlertCounts`: ReportersDailySevCounts
+	fmt.Fprintf(os.Stdout, "Response from `AlertAPI.DailyAlertCounts`: %v\n", resp)
 }
 ```
 
@@ -88,22 +88,22 @@ Delete Alerts
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelAlertsActionRequest := *openapiclient.NewModelAlertsActionRequest([]string{"NodeIds_example"}) // ModelAlertsActionRequest |  (optional)
+	modelAlertsActionRequest := *openapiclient.NewModelAlertsActionRequest([]string{"NodeIds_example"}) // ModelAlertsActionRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AlertAPI.DeleteAlert(context.Background()).ModelAlertsActionRequest(modelAlertsActionRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertAPI.DeleteAlert``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AlertAPI.DeleteAlert(context.Background()).ModelAlertsActionRequest(modelAlertsActionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AlertAPI.DeleteAlert``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -152,24 +152,24 @@ Get Mitre Attack Matrix
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelMitreAttackMatrixRequest := *openapiclient.NewModelMitreAttackMatrixRequest() // ModelMitreAttackMatrixRequest |  (optional)
+	modelMitreAttackMatrixRequest := *openapiclient.NewModelMitreAttackMatrixRequest() // ModelMitreAttackMatrixRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AlertAPI.GetMitreAttackMatrix(context.Background()).ModelMitreAttackMatrixRequest(modelMitreAttackMatrixRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertAPI.GetMitreAttackMatrix``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetMitreAttackMatrix`: []ModelMitreAttackMatrix
-    fmt.Fprintf(os.Stdout, "Response from `AlertAPI.GetMitreAttackMatrix`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AlertAPI.GetMitreAttackMatrix(context.Background()).ModelMitreAttackMatrixRequest(modelMitreAttackMatrixRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AlertAPI.GetMitreAttackMatrix``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetMitreAttackMatrix`: []ModelMitreAttackMatrix
+	fmt.Fprintf(os.Stdout, "Response from `AlertAPI.GetMitreAttackMatrix`: %v\n", resp)
 }
 ```
 
@@ -218,22 +218,22 @@ Mask Alerts
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelAlertsActionRequest := *openapiclient.NewModelAlertsActionRequest([]string{"NodeIds_example"}) // ModelAlertsActionRequest |  (optional)
+	modelAlertsActionRequest := *openapiclient.NewModelAlertsActionRequest([]string{"NodeIds_example"}) // ModelAlertsActionRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AlertAPI.MaskAlert(context.Background()).ModelAlertsActionRequest(modelAlertsActionRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertAPI.MaskAlert``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AlertAPI.MaskAlert(context.Background()).ModelAlertsActionRequest(modelAlertsActionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AlertAPI.MaskAlert``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -282,22 +282,22 @@ Notify Alerts
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelAlertsActionRequest := *openapiclient.NewModelAlertsActionRequest([]string{"NodeIds_example"}) // ModelAlertsActionRequest |  (optional)
+	modelAlertsActionRequest := *openapiclient.NewModelAlertsActionRequest([]string{"NodeIds_example"}) // ModelAlertsActionRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AlertAPI.NotifyAlert(context.Background()).ModelAlertsActionRequest(modelAlertsActionRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertAPI.NotifyAlert``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AlertAPI.NotifyAlert(context.Background()).ModelAlertsActionRequest(modelAlertsActionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AlertAPI.NotifyAlert``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -346,22 +346,22 @@ Unmask Alerts
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelAlertsActionRequest := *openapiclient.NewModelAlertsActionRequest([]string{"NodeIds_example"}) // ModelAlertsActionRequest |  (optional)
+	modelAlertsActionRequest := *openapiclient.NewModelAlertsActionRequest([]string{"NodeIds_example"}) // ModelAlertsActionRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AlertAPI.UnmaskAlert(context.Background()).ModelAlertsActionRequest(modelAlertsActionRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertAPI.UnmaskAlert``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AlertAPI.UnmaskAlert(context.Background()).ModelAlertsActionRequest(modelAlertsActionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AlertAPI.UnmaskAlert``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 

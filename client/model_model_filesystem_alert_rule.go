@@ -22,7 +22,6 @@ var _ MappedNullable = &ModelFilesystemAlertRule{}
 type ModelFilesystemAlertRule struct {
 	Anomaly *string `json:"anomaly,omitempty"`
 	Category *string `json:"category,omitempty"`
-	EventType *string `json:"event_type,omitempty"`
 	RuleId *string `json:"rule_id,omitempty"`
 	Severity *string `json:"severity,omitempty"`
 	Summary *string `json:"summary,omitempty"`
@@ -109,38 +108,6 @@ func (o *ModelFilesystemAlertRule) HasCategory() bool {
 // SetCategory gets a reference to the given string and assigns it to the Category field.
 func (o *ModelFilesystemAlertRule) SetCategory(v string) {
 	o.Category = &v
-}
-
-// GetEventType returns the EventType field value if set, zero value otherwise.
-func (o *ModelFilesystemAlertRule) GetEventType() string {
-	if o == nil || IsNil(o.EventType) {
-		var ret string
-		return ret
-	}
-	return *o.EventType
-}
-
-// GetEventTypeOk returns a tuple with the EventType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ModelFilesystemAlertRule) GetEventTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.EventType) {
-		return nil, false
-	}
-	return o.EventType, true
-}
-
-// HasEventType returns a boolean if a field has been set.
-func (o *ModelFilesystemAlertRule) HasEventType() bool {
-	if o != nil && !IsNil(o.EventType) {
-		return true
-	}
-
-	return false
-}
-
-// SetEventType gets a reference to the given string and assigns it to the EventType field.
-func (o *ModelFilesystemAlertRule) SetEventType(v string) {
-	o.EventType = &v
 }
 
 // GetRuleId returns the RuleId field value if set, zero value otherwise.
@@ -320,9 +287,6 @@ func (o ModelFilesystemAlertRule) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Category) {
 		toSerialize["category"] = o.Category
-	}
-	if !IsNil(o.EventType) {
-		toSerialize["event_type"] = o.EventType
 	}
 	if !IsNil(o.RuleId) {
 		toSerialize["rule_id"] = o.RuleId

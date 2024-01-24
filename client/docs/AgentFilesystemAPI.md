@@ -23,22 +23,22 @@ Disable filesystem tracer
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelDisableTracerReq := *openapiclient.NewModelDisableTracerReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}) // ModelDisableTracerReq |  (optional)
+	modelDisableTracerReq := *openapiclient.NewModelDisableTracerReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}) // ModelDisableTracerReq |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentFilesystemAPI.DisableFilesystemTracer(context.Background()).ModelDisableTracerReq(modelDisableTracerReq).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentFilesystemAPI.DisableFilesystemTracer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentFilesystemAPI.DisableFilesystemTracer(context.Background()).ModelDisableTracerReq(modelDisableTracerReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentFilesystemAPI.DisableFilesystemTracer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -87,22 +87,22 @@ Enable filesystem tracer
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelEnableTracerReq := *openapiclient.NewModelEnableTracerReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}) // ModelEnableTracerReq |  (optional)
+	modelEnableTracerReq := *openapiclient.NewModelEnableTracerReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}) // ModelEnableTracerReq |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentFilesystemAPI.EnableFilesystemTracer(context.Background()).ModelEnableTracerReq(modelEnableTracerReq).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentFilesystemAPI.EnableFilesystemTracer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentFilesystemAPI.EnableFilesystemTracer(context.Background()).ModelEnableTracerReq(modelEnableTracerReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentFilesystemAPI.EnableFilesystemTracer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 

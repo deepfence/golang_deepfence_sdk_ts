@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**DeployCloudResourceAgent**](CloudNodesAPI.md#DeployCloudResourceAgent) | **Post** /deepfence/cloud-resource/deploy-agent | Deploy Agent on Cloud Resource
 [**ListCloudNodeAccount**](CloudNodesAPI.md#ListCloudNodeAccount) | **Post** /deepfence/cloud-node/list/accounts | List Cloud Node Accounts
 [**ListCloudProviders**](CloudNodesAPI.md#ListCloudProviders) | **Get** /deepfence/cloud-node/list/providers | List Cloud Node Providers
+[**RefreshCloudNodeAccount**](CloudNodesAPI.md#RefreshCloudNodeAccount) | **Post** /deepfence/cloud-node/account/refresh | Refresh Cloud Account
 [**RegisterCloudNodeAccount**](CloudNodesAPI.md#RegisterCloudNodeAccount) | **Post** /deepfence/cloud-node/account | Register Cloud Node Account
 
 
@@ -25,24 +26,24 @@ Deploy Agent on Cloud Resource
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelCloudResourceDeployAgentReq := *openapiclient.NewModelCloudResourceDeployAgentReq([]string{"NodeIds_example"}) // ModelCloudResourceDeployAgentReq |  (optional)
+	modelCloudResourceDeployAgentReq := *openapiclient.NewModelCloudResourceDeployAgentReq([]string{"NodeIds_example"}) // ModelCloudResourceDeployAgentReq |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudNodesAPI.DeployCloudResourceAgent(context.Background()).ModelCloudResourceDeployAgentReq(modelCloudResourceDeployAgentReq).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudNodesAPI.DeployCloudResourceAgent``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeployCloudResourceAgent`: ModelMessageResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudNodesAPI.DeployCloudResourceAgent`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudNodesAPI.DeployCloudResourceAgent(context.Background()).ModelCloudResourceDeployAgentReq(modelCloudResourceDeployAgentReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudNodesAPI.DeployCloudResourceAgent``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeployCloudResourceAgent`: ModelMessageResponse
+	fmt.Fprintf(os.Stdout, "Response from `CloudNodesAPI.DeployCloudResourceAgent`: %v\n", resp)
 }
 ```
 
@@ -91,24 +92,24 @@ List Cloud Node Accounts
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelCloudNodeAccountsListReq := *openapiclient.NewModelCloudNodeAccountsListReq(*openapiclient.NewModelFetchWindow(int32(123), int32(123))) // ModelCloudNodeAccountsListReq |  (optional)
+	modelCloudNodeAccountsListReq := *openapiclient.NewModelCloudNodeAccountsListReq(*openapiclient.NewModelFetchWindow(int32(123), int32(123))) // ModelCloudNodeAccountsListReq |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudNodesAPI.ListCloudNodeAccount(context.Background()).ModelCloudNodeAccountsListReq(modelCloudNodeAccountsListReq).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudNodesAPI.ListCloudNodeAccount``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListCloudNodeAccount`: ModelCloudNodeAccountsListResp
-    fmt.Fprintf(os.Stdout, "Response from `CloudNodesAPI.ListCloudNodeAccount`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudNodesAPI.ListCloudNodeAccount(context.Background()).ModelCloudNodeAccountsListReq(modelCloudNodeAccountsListReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudNodesAPI.ListCloudNodeAccount``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListCloudNodeAccount`: ModelCloudNodeAccountsListResp
+	fmt.Fprintf(os.Stdout, "Response from `CloudNodesAPI.ListCloudNodeAccount`: %v\n", resp)
 }
 ```
 
@@ -157,23 +158,23 @@ List Cloud Node Providers
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudNodesAPI.ListCloudProviders(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudNodesAPI.ListCloudProviders``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListCloudProviders`: ModelCloudNodeProvidersListResp
-    fmt.Fprintf(os.Stdout, "Response from `CloudNodesAPI.ListCloudProviders`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudNodesAPI.ListCloudProviders(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudNodesAPI.ListCloudProviders``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListCloudProviders`: ModelCloudNodeProvidersListResp
+	fmt.Fprintf(os.Stdout, "Response from `CloudNodesAPI.ListCloudProviders`: %v\n", resp)
 }
 ```
 
@@ -204,6 +205,70 @@ Other parameters are passed through a pointer to a apiListCloudProvidersRequest 
 [[Back to README]](../README.md)
 
 
+## RefreshCloudNodeAccount
+
+> RefreshCloudNodeAccount(ctx).ModelCloudAccountRefreshReq(modelCloudAccountRefreshReq).Execute()
+
+Refresh Cloud Account
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+	modelCloudAccountRefreshReq := *openapiclient.NewModelCloudAccountRefreshReq([]string{"NodeIds_example"}) // ModelCloudAccountRefreshReq |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.CloudNodesAPI.RefreshCloudNodeAccount(context.Background()).ModelCloudAccountRefreshReq(modelCloudAccountRefreshReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudNodesAPI.RefreshCloudNodeAccount``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRefreshCloudNodeAccountRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **modelCloudAccountRefreshReq** | [**ModelCloudAccountRefreshReq**](ModelCloudAccountRefreshReq.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RegisterCloudNodeAccount
 
 > ModelCloudNodeAccountRegisterResp RegisterCloudNodeAccount(ctx).ModelCloudNodeAccountRegisterReq(modelCloudNodeAccountRegisterReq).Execute()
@@ -218,24 +283,24 @@ Register Cloud Node Account
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelCloudNodeAccountRegisterReq := *openapiclient.NewModelCloudNodeAccountRegisterReq("CloudAccount_example", "CloudProvider_example", "NodeId_example") // ModelCloudNodeAccountRegisterReq |  (optional)
+	modelCloudNodeAccountRegisterReq := *openapiclient.NewModelCloudNodeAccountRegisterReq("CloudAccount_example", "CloudProvider_example", "NodeId_example") // ModelCloudNodeAccountRegisterReq |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudNodesAPI.RegisterCloudNodeAccount(context.Background()).ModelCloudNodeAccountRegisterReq(modelCloudNodeAccountRegisterReq).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudNodesAPI.RegisterCloudNodeAccount``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RegisterCloudNodeAccount`: ModelCloudNodeAccountRegisterResp
-    fmt.Fprintf(os.Stdout, "Response from `CloudNodesAPI.RegisterCloudNodeAccount`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudNodesAPI.RegisterCloudNodeAccount(context.Background()).ModelCloudNodeAccountRegisterReq(modelCloudNodeAccountRegisterReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudNodesAPI.RegisterCloudNodeAccount``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RegisterCloudNodeAccount`: ModelCloudNodeAccountRegisterResp
+	fmt.Fprintf(os.Stdout, "Response from `CloudNodesAPI.RegisterCloudNodeAccount`: %v\n", resp)
 }
 ```
 

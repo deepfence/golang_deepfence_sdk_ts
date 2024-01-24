@@ -17,61 +17,61 @@ import (
 	"fmt"
 )
 
-// checks if the ModelMalwareScanResultClass type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ModelMalwareScanResultClass{}
+// checks if the ModelCloudAccountRefreshReq type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelCloudAccountRefreshReq{}
 
-// ModelMalwareScanResultClass struct for ModelMalwareScanResultClass
-type ModelMalwareScanResultClass struct {
-	Class []string `json:"class"`
+// ModelCloudAccountRefreshReq struct for ModelCloudAccountRefreshReq
+type ModelCloudAccountRefreshReq struct {
+	NodeIds []string `json:"node_ids"`
 }
 
-type _ModelMalwareScanResultClass ModelMalwareScanResultClass
+type _ModelCloudAccountRefreshReq ModelCloudAccountRefreshReq
 
-// NewModelMalwareScanResultClass instantiates a new ModelMalwareScanResultClass object
+// NewModelCloudAccountRefreshReq instantiates a new ModelCloudAccountRefreshReq object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelMalwareScanResultClass(class []string) *ModelMalwareScanResultClass {
-	this := ModelMalwareScanResultClass{}
-	this.Class = class
+func NewModelCloudAccountRefreshReq(nodeIds []string) *ModelCloudAccountRefreshReq {
+	this := ModelCloudAccountRefreshReq{}
+	this.NodeIds = nodeIds
 	return &this
 }
 
-// NewModelMalwareScanResultClassWithDefaults instantiates a new ModelMalwareScanResultClass object
+// NewModelCloudAccountRefreshReqWithDefaults instantiates a new ModelCloudAccountRefreshReq object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewModelMalwareScanResultClassWithDefaults() *ModelMalwareScanResultClass {
-	this := ModelMalwareScanResultClass{}
+func NewModelCloudAccountRefreshReqWithDefaults() *ModelCloudAccountRefreshReq {
+	this := ModelCloudAccountRefreshReq{}
 	return &this
 }
 
-// GetClass returns the Class field value
+// GetNodeIds returns the NodeIds field value
 // If the value is explicit nil, the zero value for []string will be returned
-func (o *ModelMalwareScanResultClass) GetClass() []string {
+func (o *ModelCloudAccountRefreshReq) GetNodeIds() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
 
-	return o.Class
+	return o.NodeIds
 }
 
-// GetClassOk returns a tuple with the Class field value
+// GetNodeIdsOk returns a tuple with the NodeIds field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelMalwareScanResultClass) GetClassOk() ([]string, bool) {
-	if o == nil || IsNil(o.Class) {
+func (o *ModelCloudAccountRefreshReq) GetNodeIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.NodeIds) {
 		return nil, false
 	}
-	return o.Class, true
+	return o.NodeIds, true
 }
 
-// SetClass sets field value
-func (o *ModelMalwareScanResultClass) SetClass(v []string) {
-	o.Class = v
+// SetNodeIds sets field value
+func (o *ModelCloudAccountRefreshReq) SetNodeIds(v []string) {
+	o.NodeIds = v
 }
 
-func (o ModelMalwareScanResultClass) MarshalJSON() ([]byte, error) {
+func (o ModelCloudAccountRefreshReq) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -79,20 +79,20 @@ func (o ModelMalwareScanResultClass) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ModelMalwareScanResultClass) ToMap() (map[string]interface{}, error) {
+func (o ModelCloudAccountRefreshReq) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Class != nil {
-		toSerialize["class"] = o.Class
+	if o.NodeIds != nil {
+		toSerialize["node_ids"] = o.NodeIds
 	}
 	return toSerialize, nil
 }
 
-func (o *ModelMalwareScanResultClass) UnmarshalJSON(data []byte) (err error) {
+func (o *ModelCloudAccountRefreshReq) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"class",
+		"node_ids",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -109,53 +109,53 @@ func (o *ModelMalwareScanResultClass) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varModelMalwareScanResultClass := _ModelMalwareScanResultClass{}
+	varModelCloudAccountRefreshReq := _ModelCloudAccountRefreshReq{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varModelMalwareScanResultClass)
+	err = decoder.Decode(&varModelCloudAccountRefreshReq)
 
 	if err != nil {
 		return err
 	}
 
-	*o = ModelMalwareScanResultClass(varModelMalwareScanResultClass)
+	*o = ModelCloudAccountRefreshReq(varModelCloudAccountRefreshReq)
 
 	return err
 }
 
-type NullableModelMalwareScanResultClass struct {
-	value *ModelMalwareScanResultClass
+type NullableModelCloudAccountRefreshReq struct {
+	value *ModelCloudAccountRefreshReq
 	isSet bool
 }
 
-func (v NullableModelMalwareScanResultClass) Get() *ModelMalwareScanResultClass {
+func (v NullableModelCloudAccountRefreshReq) Get() *ModelCloudAccountRefreshReq {
 	return v.value
 }
 
-func (v *NullableModelMalwareScanResultClass) Set(val *ModelMalwareScanResultClass) {
+func (v *NullableModelCloudAccountRefreshReq) Set(val *ModelCloudAccountRefreshReq) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableModelMalwareScanResultClass) IsSet() bool {
+func (v NullableModelCloudAccountRefreshReq) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableModelMalwareScanResultClass) Unset() {
+func (v *NullableModelCloudAccountRefreshReq) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableModelMalwareScanResultClass(val *ModelMalwareScanResultClass) *NullableModelMalwareScanResultClass {
-	return &NullableModelMalwareScanResultClass{value: val, isSet: true}
+func NewNullableModelCloudAccountRefreshReq(val *ModelCloudAccountRefreshReq) *NullableModelCloudAccountRefreshReq {
+	return &NullableModelCloudAccountRefreshReq{value: val, isSet: true}
 }
 
-func (v NullableModelMalwareScanResultClass) MarshalJSON() ([]byte, error) {
+func (v NullableModelCloudAccountRefreshReq) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableModelMalwareScanResultClass) UnmarshalJSON(src []byte) error {
+func (v *NullableModelCloudAccountRefreshReq) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

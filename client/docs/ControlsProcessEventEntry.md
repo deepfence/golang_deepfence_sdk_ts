@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **FailureSeverity** | **string** |  | 
 **SkipCommList** | Pointer to **[]string** |  | [optional] 
 **SkipPathList** | Pointer to **[]string** |  | [optional] 
+**SkipUserList** | Pointer to **[]string** |  | [optional] 
 **SuccessSeverity** | **string** |  | 
 
 ## Methods
@@ -139,6 +140,41 @@ HasSkipPathList returns a boolean if a field has been set.
 `func (o *ControlsProcessEventEntry) UnsetSkipPathList()`
 
 UnsetSkipPathList ensures that no value is present for SkipPathList, not even an explicit nil
+### GetSkipUserList
+
+`func (o *ControlsProcessEventEntry) GetSkipUserList() []string`
+
+GetSkipUserList returns the SkipUserList field if non-nil, zero value otherwise.
+
+### GetSkipUserListOk
+
+`func (o *ControlsProcessEventEntry) GetSkipUserListOk() (*[]string, bool)`
+
+GetSkipUserListOk returns a tuple with the SkipUserList field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipUserList
+
+`func (o *ControlsProcessEventEntry) SetSkipUserList(v []string)`
+
+SetSkipUserList sets SkipUserList field to given value.
+
+### HasSkipUserList
+
+`func (o *ControlsProcessEventEntry) HasSkipUserList() bool`
+
+HasSkipUserList returns a boolean if a field has been set.
+
+### SetSkipUserListNil
+
+`func (o *ControlsProcessEventEntry) SetSkipUserListNil(b bool)`
+
+ SetSkipUserListNil sets the value for SkipUserList to be an explicit nil
+
+### UnsetSkipUserList
+`func (o *ControlsProcessEventEntry) UnsetSkipUserList()`
+
+UnsetSkipUserList ensures that no value is present for SkipUserList, not even an explicit nil
 ### GetSuccessSeverity
 
 `func (o *ControlsProcessEventEntry) GetSuccessSeverity() string`

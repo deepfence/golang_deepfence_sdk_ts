@@ -15,20 +15,20 @@ For more information, please visit [https://deepfence.io](https://deepfence.io)
 
 Install the following dependencies:
 
-```shell
+```sh
 go get github.com/stretchr/testify/assert
 go get golang.org/x/net/context
 ```
 
 Put the package under your project folder and add the following in import:
 
-```golang
+```go
 import client "github.com/deepfence/golang_deepfence_sdk/client"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
 
-```golang
+```go
 os.Setenv("HTTP_PROXY", "http://proxy_name:proxy_port")
 ```
 
@@ -40,7 +40,7 @@ Default configuration comes with `Servers` field that contains server objects as
 
 For using other server than the one defined on index 0 set context value `client.ContextServerIndex` of type `int`.
 
-```golang
+```go
 ctx := context.WithValue(context.Background(), client.ContextServerIndex, 1)
 ```
 
@@ -48,7 +48,7 @@ ctx := context.WithValue(context.Background(), client.ContextServerIndex, 1)
 
 Templated server URL is formatted using default variables from configuration or from context value `client.ContextServerVariables` of type `map[string]string`.
 
-```golang
+```go
 ctx := context.WithValue(context.Background(), client.ContextServerVariables, map[string]string{
 	"basePath": "v2",
 })
@@ -62,7 +62,7 @@ Each operation can use different server URL defined using `OperationServers` map
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
 Similar rules for overriding default operation server index and variables applies by using `client.ContextOperationServerIndices` and `client.ContextOperationServerVariables` context maps.
 
-```golang
+```go
 ctx := context.WithValue(context.Background(), client.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
@@ -137,6 +137,7 @@ Class | Method | HTTP request | Description
 *CloudNodesAPI* | [**DeployCloudResourceAgent**](docs/CloudNodesAPI.md#deploycloudresourceagent) | **Post** /deepfence/cloud-resource/deploy-agent | Deploy Agent on Cloud Resource
 *CloudNodesAPI* | [**ListCloudNodeAccount**](docs/CloudNodesAPI.md#listcloudnodeaccount) | **Post** /deepfence/cloud-node/list/accounts | List Cloud Node Accounts
 *CloudNodesAPI* | [**ListCloudProviders**](docs/CloudNodesAPI.md#listcloudproviders) | **Get** /deepfence/cloud-node/list/providers | List Cloud Node Providers
+*CloudNodesAPI* | [**RefreshCloudNodeAccount**](docs/CloudNodesAPI.md#refreshcloudnodeaccount) | **Post** /deepfence/cloud-node/account/refresh | Refresh Cloud Account
 *CloudNodesAPI* | [**RegisterCloudNodeAccount**](docs/CloudNodesAPI.md#registercloudnodeaccount) | **Post** /deepfence/cloud-node/account | Register Cloud Node Account
 *CloudResourcesAPI* | [**IngestCloudResources**](docs/CloudResourcesAPI.md#ingestcloudresources) | **Post** /deepfence/ingest/cloud-resources | Ingest Cloud resources
 *CloudResourcesAPI* | [**IngestWAFRules**](docs/CloudResourcesAPI.md#ingestwafrules) | **Post** /deepfence/ingest/waf-rules | Ingest WAF Rules
@@ -182,6 +183,7 @@ Class | Method | HTTP request | Description
 *DiffAddAPI* | [**DiffAddVulnerability**](docs/DiffAddAPI.md#diffaddvulnerability) | **Post** /deepfence/diff-add/vulnerability | Get Vulnerability Diff
 *GenerativeAIAPI* | [**AddGenerativeAiIntegrationBedrock**](docs/GenerativeAIAPI.md#addgenerativeaiintegrationbedrock) | **Post** /deepfence/generative-ai-integration/bedrock | Add AWS Bedrock Generative AI Integration
 *GenerativeAIAPI* | [**AddGenerativeAiIntegrationOpenAI**](docs/GenerativeAIAPI.md#addgenerativeaiintegrationopenai) | **Post** /deepfence/generative-ai-integration/openai | Add OpenAI Generative AI Integration
+*GenerativeAIAPI* | [**AutoAddGenerativeAiIntegration**](docs/GenerativeAIAPI.md#autoaddgenerativeaiintegration) | **Post** /deepfence/generative-ai-integration/auto-add | Automatically add Generative AI Integration
 *GenerativeAIAPI* | [**DeleteGenerativeAiIntegration**](docs/GenerativeAIAPI.md#deletegenerativeaiintegration) | **Delete** /deepfence/generative-ai-integration/{integration_id} | Delete Generative AI Integration
 *GenerativeAIAPI* | [**GenerativeAiIntegrationCloudPostureQuery**](docs/GenerativeAIAPI.md#generativeaiintegrationcloudposturequery) | **Post** /deepfence/generative-ai-integration/query/cloud-posture | Send Cloud Posture query to Generative AI Integration
 *GenerativeAIAPI* | [**GenerativeAiIntegrationKubernetesPostureQuery**](docs/GenerativeAIAPI.md#generativeaiintegrationkubernetesposturequery) | **Post** /deepfence/generative-ai-integration/query/kubernetes-posture | Send Kubernetes Posture query to Generative AI Integration
@@ -195,6 +197,7 @@ Class | Method | HTTP request | Description
 *IntegrationAPI* | [**AddIntegration**](docs/IntegrationAPI.md#addintegration) | **Post** /deepfence/integration | Add Integration
 *IntegrationAPI* | [**DeleteIntegration**](docs/IntegrationAPI.md#deleteintegration) | **Delete** /deepfence/integration/{integration_id} | Delete Integration
 *IntegrationAPI* | [**ListIntegration**](docs/IntegrationAPI.md#listintegration) | **Get** /deepfence/integration | List Integrations
+*IntegrationAPI* | [**UpdateIntegration**](docs/IntegrationAPI.md#updateintegration) | **Put** /deepfence/integration/{integration_id} | Update Integration
 *InternalAPI* | [**GetConsoleApiToken**](docs/InternalAPI.md#getconsoleapitoken) | **Get** /deepfence/internal/console-api-token | Get api-token for console agent
 *LookupAPI* | [**GetCloudCompliances**](docs/LookupAPI.md#getcloudcompliances) | **Post** /deepfence/lookup/cloud-compliances | Retrieve Cloud Compliances data
 *LookupAPI* | [**GetCloudResources**](docs/LookupAPI.md#getcloudresources) | **Post** /deepfence/lookup/cloud-resources | Get Cloud Resources
@@ -280,6 +283,7 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**CountProcessAlertRules**](docs/SearchAPI.md#countprocessalertrules) | **Post** /deepfence/search/count/process-alert-rules | Count process alert rules
 *SearchAPI* | [**CountProcessAlerts**](docs/SearchAPI.md#countprocessalerts) | **Post** /deepfence/search/count/process-alerts | Count process alerts
 *SearchAPI* | [**CountQuarantineViolations**](docs/SearchAPI.md#countquarantineviolations) | **Post** /deepfence/search/count/quarantine-violations | Count quarantine violations
+*SearchAPI* | [**CountRegistryAccounts**](docs/SearchAPI.md#countregistryaccounts) | **Post** /deepfence/search/count/registry-accounts | Count Registry Accounts
 *SearchAPI* | [**CountSecretRules**](docs/SearchAPI.md#countsecretrules) | **Post** /deepfence/search/count/secret-rules | Count Secret Rules
 *SearchAPI* | [**CountSecrets**](docs/SearchAPI.md#countsecrets) | **Post** /deepfence/search/count/secrets | Count Secrets
 *SearchAPI* | [**CountSecretsScans**](docs/SearchAPI.md#countsecretsscans) | **Post** /deepfence/search/count/secret/scans | Count Secret Scan results
@@ -313,6 +317,7 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**SearchProcessAlertRules**](docs/SearchAPI.md#searchprocessalertrules) | **Post** /deepfence/search/process-alert-rules | Search process alert rules
 *SearchAPI* | [**SearchProcessAlerts**](docs/SearchAPI.md#searchprocessalerts) | **Post** /deepfence/search/process-alerts | Search process alerts
 *SearchAPI* | [**SearchQuarantineViolations**](docs/SearchAPI.md#searchquarantineviolations) | **Post** /deepfence/search/quarantine-violations | Search quarantine violations
+*SearchAPI* | [**SearchRegistryAccounts**](docs/SearchAPI.md#searchregistryaccounts) | **Post** /deepfence/search/registry-accounts | Search Registry Accounts
 *SearchAPI* | [**SearchSecretRules**](docs/SearchAPI.md#searchsecretrules) | **Post** /deepfence/search/secret-rules | Search Secret Rules
 *SearchAPI* | [**SearchSecrets**](docs/SearchAPI.md#searchsecrets) | **Post** /deepfence/search/secrets | Search Secrets
 *SearchAPI* | [**SearchSecretsScans**](docs/SearchAPI.md#searchsecretsscans) | **Post** /deepfence/search/secret/scans | Search Secrets Scan results
@@ -334,7 +339,7 @@ Class | Method | HTTP request | Description
 *SettingsAPI* | [**DeleteCloudWafConfiguration**](docs/SettingsAPI.md#deletecloudwafconfiguration) | **Delete** /deepfence/settings/cloud-waf | Delete Cloud WAF Configuration
 *SettingsAPI* | [**DeleteCustomScheduledTask**](docs/SettingsAPI.md#deletecustomscheduledtask) | **Delete** /deepfence/scheduled-task/{id} | Delete Custom Schedule task
 *SettingsAPI* | [**DeleteEmailConfiguration**](docs/SettingsAPI.md#deleteemailconfiguration) | **Delete** /deepfence/settings/email/{config_id} | Delete Email Configurations
-*SettingsAPI* | [**GetAgentVersions**](docs/SettingsAPI.md#getagentversions) | **Get** /deepfence/agent/versions | Get available agent versions
+*SettingsAPI* | [**GetAgentVersions**](docs/SettingsAPI.md#getagentversions) | **Get** /deepfence/settings/agent/versions | Get available agent versions
 *SettingsAPI* | [**GetCloudWafConfiguration**](docs/SettingsAPI.md#getcloudwafconfiguration) | **Get** /deepfence/settings/cloud-waf | Get Cloud WAF Configuration
 *SettingsAPI* | [**GetEmailConfiguration**](docs/SettingsAPI.md#getemailconfiguration) | **Get** /deepfence/settings/email | Get Email Configurations
 *SettingsAPI* | [**GetLicense**](docs/SettingsAPI.md#getlicense) | **Get** /deepfence/license | Get License Details
@@ -347,7 +352,7 @@ Class | Method | HTTP request | Description
 *SettingsAPI* | [**UpdateNotificationThreshold**](docs/SettingsAPI.md#updatenotificationthreshold) | **Post** /deepfence/license/notification-threshold | Update Notification Threshold
 *SettingsAPI* | [**UpdateScheduledTask**](docs/SettingsAPI.md#updatescheduledtask) | **Patch** /deepfence/scheduled-task/{id} | Update scheduled task
 *SettingsAPI* | [**UpdateSetting**](docs/SettingsAPI.md#updatesetting) | **Patch** /deepfence/settings/global-settings/{id} | Update setting
-*SettingsAPI* | [**UploadAgentVersion**](docs/SettingsAPI.md#uploadagentversion) | **Put** /deepfence/agent/version | Upload New agent version
+*SettingsAPI* | [**UploadAgentVersion**](docs/SettingsAPI.md#uploadagentversion) | **Put** /deepfence/settings/agent/version | Upload New agent version
 *SettingsAPI* | [**UploadVulnerabilityDatabase**](docs/SettingsAPI.md#uploadvulnerabilitydatabase) | **Put** /deepfence/database/vulnerability | Upload Vulnerability Database
 *ThreatAPI* | [**GetIndividualThreatGraph**](docs/ThreatAPI.md#getindividualthreatgraph) | **Post** /deepfence/graph/threat/individual | Get Vulnerability Threat Graph
 *ThreatAPI* | [**GetThreatGraph**](docs/ThreatAPI.md#getthreatgraph) | **Post** /deepfence/graph/threat | Get Threat Graph
@@ -466,6 +471,7 @@ Class | Method | HTTP request | Description
  - [ModelAttachAgentConfigReq](docs/ModelAttachAgentConfigReq.md)
  - [ModelBasicNode](docs/ModelBasicNode.md)
  - [ModelBulkDeleteScansRequest](docs/ModelBulkDeleteScansRequest.md)
+ - [ModelCloudAccountRefreshReq](docs/ModelCloudAccountRefreshReq.md)
  - [ModelCloudCompliance](docs/ModelCloudCompliance.md)
  - [ModelCloudComplianceBenchmark](docs/ModelCloudComplianceBenchmark.md)
  - [ModelCloudComplianceScanDetails](docs/ModelCloudComplianceScanDetails.md)
@@ -529,6 +535,7 @@ Class | Method | HTTP request | Description
  - [ModelIntegrationAddReq](docs/ModelIntegrationAddReq.md)
  - [ModelIntegrationFilters](docs/ModelIntegrationFilters.md)
  - [ModelIntegrationListResp](docs/ModelIntegrationListResp.md)
+ - [ModelIntegrationUpdateReq](docs/ModelIntegrationUpdateReq.md)
  - [ModelInviteUserRequest](docs/ModelInviteUserRequest.md)
  - [ModelInviteUserResponse](docs/ModelInviteUserResponse.md)
  - [ModelKubernetesCluster](docs/ModelKubernetesCluster.md)
@@ -658,7 +665,7 @@ Authentication schemes defined for the API:
 
 Example
 
-```golang
+```go
 auth := context.WithValue(context.Background(), client.ContextAccessToken, "BEARER_TOKEN_STRING")
 r, err := client.Service.Operation(auth, args)
 ```

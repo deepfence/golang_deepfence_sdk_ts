@@ -53,24 +53,24 @@ Get Agent Filesystem config attached nodes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    configId := "configId_example" // string | 
+	configId := "configId_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgentConfigAPI.AgentFilesystemConfigAttachedNodes(context.Background(), configId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AgentFilesystemConfigAttachedNodes``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AgentFilesystemConfigAttachedNodes`: ModelGetAttachedNodesResp
-    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.AgentFilesystemConfigAttachedNodes`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgentConfigAPI.AgentFilesystemConfigAttachedNodes(context.Background(), configId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AgentFilesystemConfigAttachedNodes``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AgentFilesystemConfigAttachedNodes`: ModelGetAttachedNodesResp
+	fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.AgentFilesystemConfigAttachedNodes`: %v\n", resp)
 }
 ```
 
@@ -123,24 +123,24 @@ Get Agent Network config attached nodes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    configId := "configId_example" // string | 
+	configId := "configId_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgentConfigAPI.AgentNetworkConfigAttachedNodes(context.Background(), configId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AgentNetworkConfigAttachedNodes``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AgentNetworkConfigAttachedNodes`: ModelGetAttachedNodesResp
-    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.AgentNetworkConfigAttachedNodes`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgentConfigAPI.AgentNetworkConfigAttachedNodes(context.Background(), configId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AgentNetworkConfigAttachedNodes``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AgentNetworkConfigAttachedNodes`: ModelGetAttachedNodesResp
+	fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.AgentNetworkConfigAttachedNodes`: %v\n", resp)
 }
 ```
 
@@ -193,24 +193,24 @@ Get Agent Policy config attached nodes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    configId := "configId_example" // string | 
+	configId := "configId_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgentConfigAPI.AgentPolicyConfigAttachedNodes(context.Background(), configId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AgentPolicyConfigAttachedNodes``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AgentPolicyConfigAttachedNodes`: ModelGetAttachedNodesResp
-    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.AgentPolicyConfigAttachedNodes`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgentConfigAPI.AgentPolicyConfigAttachedNodes(context.Background(), configId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AgentPolicyConfigAttachedNodes``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AgentPolicyConfigAttachedNodes`: ModelGetAttachedNodesResp
+	fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.AgentPolicyConfigAttachedNodes`: %v\n", resp)
 }
 ```
 
@@ -263,24 +263,24 @@ Get Agent Process config attached nodes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    configId := "configId_example" // string | 
+	configId := "configId_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgentConfigAPI.AgentProcessConfigAttachedNodes(context.Background(), configId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AgentProcessConfigAttachedNodes``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AgentProcessConfigAttachedNodes`: ModelGetAttachedNodesResp
-    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.AgentProcessConfigAttachedNodes`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgentConfigAPI.AgentProcessConfigAttachedNodes(context.Background(), configId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AgentProcessConfigAttachedNodes``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AgentProcessConfigAttachedNodes`: ModelGetAttachedNodesResp
+	fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.AgentProcessConfigAttachedNodes`: %v\n", resp)
 }
 ```
 
@@ -333,24 +333,24 @@ Get Agent Quarantine config attached nodes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    configId := "configId_example" // string | 
+	configId := "configId_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgentConfigAPI.AgentQuarantineConfigAttachedNodes(context.Background(), configId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AgentQuarantineConfigAttachedNodes``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AgentQuarantineConfigAttachedNodes`: ModelGetAttachedNodesResp
-    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.AgentQuarantineConfigAttachedNodes`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgentConfigAPI.AgentQuarantineConfigAttachedNodes(context.Background(), configId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AgentQuarantineConfigAttachedNodes``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AgentQuarantineConfigAttachedNodes`: ModelGetAttachedNodesResp
+	fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.AgentQuarantineConfigAttachedNodes`: %v\n", resp)
 }
 ```
 
@@ -403,22 +403,22 @@ Attach Agent Filesystem config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
+	modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentConfigAPI.AttachAgentFilesystemConfig(context.Background()).ModelAttachAgentConfigReq(modelAttachAgentConfigReq).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AttachAgentFilesystemConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentConfigAPI.AttachAgentFilesystemConfig(context.Background()).ModelAttachAgentConfigReq(modelAttachAgentConfigReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AttachAgentFilesystemConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -467,22 +467,22 @@ Attach Agent Network config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
+	modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentConfigAPI.AttachAgentNetworkConfig(context.Background()).ModelAttachAgentConfigReq(modelAttachAgentConfigReq).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AttachAgentNetworkConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentConfigAPI.AttachAgentNetworkConfig(context.Background()).ModelAttachAgentConfigReq(modelAttachAgentConfigReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AttachAgentNetworkConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -531,22 +531,22 @@ Attach Agent Policy config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
+	modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentConfigAPI.AttachAgentPolicyConfig(context.Background()).ModelAttachAgentConfigReq(modelAttachAgentConfigReq).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AttachAgentPolicyConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentConfigAPI.AttachAgentPolicyConfig(context.Background()).ModelAttachAgentConfigReq(modelAttachAgentConfigReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AttachAgentPolicyConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -595,22 +595,22 @@ Attach Agent Process config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
+	modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentConfigAPI.AttachAgentProcessConfig(context.Background()).ModelAttachAgentConfigReq(modelAttachAgentConfigReq).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AttachAgentProcessConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentConfigAPI.AttachAgentProcessConfig(context.Background()).ModelAttachAgentConfigReq(modelAttachAgentConfigReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AttachAgentProcessConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -659,22 +659,22 @@ Attach Agent Quarantine config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
+	modelAttachAgentConfigReq := *openapiclient.NewModelAttachAgentConfigReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}, "ConfigId_example") // ModelAttachAgentConfigReq |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentConfigAPI.AttachAgentQuarantineConfig(context.Background()).ModelAttachAgentConfigReq(modelAttachAgentConfigReq).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AttachAgentQuarantineConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentConfigAPI.AttachAgentQuarantineConfig(context.Background()).ModelAttachAgentConfigReq(modelAttachAgentConfigReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.AttachAgentQuarantineConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -723,22 +723,22 @@ Delete Agent Filesystem config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    configId := "configId_example" // string | 
+	configId := "configId_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentConfigAPI.DeleteAgentFilesystemConfig(context.Background(), configId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.DeleteAgentFilesystemConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentConfigAPI.DeleteAgentFilesystemConfig(context.Background(), configId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.DeleteAgentFilesystemConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -791,22 +791,22 @@ Delete Agent Network config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    configId := "configId_example" // string | 
+	configId := "configId_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentConfigAPI.DeleteAgentNetworkConfig(context.Background(), configId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.DeleteAgentNetworkConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentConfigAPI.DeleteAgentNetworkConfig(context.Background(), configId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.DeleteAgentNetworkConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -859,22 +859,22 @@ Delete Agent Policy config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    configId := "configId_example" // string | 
+	configId := "configId_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentConfigAPI.DeleteAgentPolicyConfig(context.Background(), configId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.DeleteAgentPolicyConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentConfigAPI.DeleteAgentPolicyConfig(context.Background(), configId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.DeleteAgentPolicyConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -927,22 +927,22 @@ Delete Agent Process config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    configId := "configId_example" // string | 
+	configId := "configId_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentConfigAPI.DeleteAgentProcessConfig(context.Background(), configId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.DeleteAgentProcessConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentConfigAPI.DeleteAgentProcessConfig(context.Background(), configId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.DeleteAgentProcessConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -995,22 +995,22 @@ Delete Agent Quarantine config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    configId := "configId_example" // string | 
+	configId := "configId_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentConfigAPI.DeleteAgentQuarantineConfig(context.Background(), configId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.DeleteAgentQuarantineConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentConfigAPI.DeleteAgentQuarantineConfig(context.Background(), configId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.DeleteAgentQuarantineConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -1063,24 +1063,24 @@ Export Agent Policy config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    configId := "configId_example" // string | 
+	configId := "configId_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgentConfigAPI.ExportAgentPolicyConfig(context.Background(), configId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.ExportAgentPolicyConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ExportAgentPolicyConfig`: ControlsPolicyFilterConfig
-    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.ExportAgentPolicyConfig`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgentConfigAPI.ExportAgentPolicyConfig(context.Background(), configId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.ExportAgentPolicyConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ExportAgentPolicyConfig`: ControlsPolicyFilterConfig
+	fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.ExportAgentPolicyConfig`: %v\n", resp)
 }
 ```
 
@@ -1133,24 +1133,24 @@ Export Agent Quarantine config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    configId := "configId_example" // string | 
+	configId := "configId_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgentConfigAPI.ExportAgentQuarantineConfig(context.Background(), configId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.ExportAgentQuarantineConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ExportAgentQuarantineConfig`: ControlsQuarantineConfig
-    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.ExportAgentQuarantineConfig`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgentConfigAPI.ExportAgentQuarantineConfig(context.Background(), configId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.ExportAgentQuarantineConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ExportAgentQuarantineConfig`: ControlsQuarantineConfig
+	fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.ExportAgentQuarantineConfig`: %v\n", resp)
 }
 ```
 
@@ -1203,24 +1203,24 @@ Get Agent Filesystem config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelGetAgentConfigReq := *openapiclient.NewModelGetAgentConfigReq([]string{"ConfigIds_example"}) // ModelGetAgentConfigReq |  (optional)
+	modelGetAgentConfigReq := *openapiclient.NewModelGetAgentConfigReq([]string{"ConfigIds_example"}) // ModelGetAgentConfigReq |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgentConfigAPI.GetAgentFilesystemConfig(context.Background()).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.GetAgentFilesystemConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAgentFilesystemConfig`: []ControlsFilesystemTracerConfig
-    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.GetAgentFilesystemConfig`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgentConfigAPI.GetAgentFilesystemConfig(context.Background()).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.GetAgentFilesystemConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAgentFilesystemConfig`: []ControlsFilesystemTracerConfig
+	fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.GetAgentFilesystemConfig`: %v\n", resp)
 }
 ```
 
@@ -1269,24 +1269,24 @@ Get Agent Network config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelGetAgentConfigReq := *openapiclient.NewModelGetAgentConfigReq([]string{"ConfigIds_example"}) // ModelGetAgentConfigReq |  (optional)
+	modelGetAgentConfigReq := *openapiclient.NewModelGetAgentConfigReq([]string{"ConfigIds_example"}) // ModelGetAgentConfigReq |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgentConfigAPI.GetAgentNetworkConfig(context.Background()).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.GetAgentNetworkConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAgentNetworkConfig`: []ControlsNetworkTracerConfig
-    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.GetAgentNetworkConfig`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgentConfigAPI.GetAgentNetworkConfig(context.Background()).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.GetAgentNetworkConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAgentNetworkConfig`: []ControlsNetworkTracerConfig
+	fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.GetAgentNetworkConfig`: %v\n", resp)
 }
 ```
 
@@ -1335,24 +1335,24 @@ Get Agent Policy config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelGetAgentConfigReq := *openapiclient.NewModelGetAgentConfigReq([]string{"ConfigIds_example"}) // ModelGetAgentConfigReq |  (optional)
+	modelGetAgentConfigReq := *openapiclient.NewModelGetAgentConfigReq([]string{"ConfigIds_example"}) // ModelGetAgentConfigReq |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgentConfigAPI.GetAgentPolicyConfig(context.Background()).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.GetAgentPolicyConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAgentPolicyConfig`: []ControlsPolicyFilterConfig
-    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.GetAgentPolicyConfig`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgentConfigAPI.GetAgentPolicyConfig(context.Background()).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.GetAgentPolicyConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAgentPolicyConfig`: []ControlsPolicyFilterConfig
+	fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.GetAgentPolicyConfig`: %v\n", resp)
 }
 ```
 
@@ -1401,24 +1401,24 @@ Get Agent Process config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelGetAgentConfigReq := *openapiclient.NewModelGetAgentConfigReq([]string{"ConfigIds_example"}) // ModelGetAgentConfigReq |  (optional)
+	modelGetAgentConfigReq := *openapiclient.NewModelGetAgentConfigReq([]string{"ConfigIds_example"}) // ModelGetAgentConfigReq |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgentConfigAPI.GetAgentProcessConfig(context.Background()).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.GetAgentProcessConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAgentProcessConfig`: []ControlsProcessTracerConfig
-    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.GetAgentProcessConfig`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgentConfigAPI.GetAgentProcessConfig(context.Background()).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.GetAgentProcessConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAgentProcessConfig`: []ControlsProcessTracerConfig
+	fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.GetAgentProcessConfig`: %v\n", resp)
 }
 ```
 
@@ -1467,24 +1467,24 @@ Get Agent Quarantine config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelGetAgentConfigReq := *openapiclient.NewModelGetAgentConfigReq([]string{"ConfigIds_example"}) // ModelGetAgentConfigReq |  (optional)
+	modelGetAgentConfigReq := *openapiclient.NewModelGetAgentConfigReq([]string{"ConfigIds_example"}) // ModelGetAgentConfigReq |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgentConfigAPI.GetAgentQuarantineConfig(context.Background()).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.GetAgentQuarantineConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAgentQuarantineConfig`: []ControlsQuarantineConfig
-    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.GetAgentQuarantineConfig`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgentConfigAPI.GetAgentQuarantineConfig(context.Background()).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.GetAgentQuarantineConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAgentQuarantineConfig`: []ControlsQuarantineConfig
+	fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.GetAgentQuarantineConfig`: %v\n", resp)
 }
 ```
 
@@ -1533,24 +1533,24 @@ Get Agent threat intel config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    modelGetAgentConfigReq := *openapiclient.NewModelGetAgentConfigReq([]string{"ConfigIds_example"}) // ModelGetAgentConfigReq |  (optional)
+	modelGetAgentConfigReq := *openapiclient.NewModelGetAgentConfigReq([]string{"ConfigIds_example"}) // ModelGetAgentConfigReq |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgentConfigAPI.GetAgentThreatIntelConfig(context.Background()).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.GetAgentThreatIntelConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAgentThreatIntelConfig`: []ControlsThreatIntelInfo
-    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.GetAgentThreatIntelConfig`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgentConfigAPI.GetAgentThreatIntelConfig(context.Background()).ModelGetAgentConfigReq(modelGetAgentConfigReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.GetAgentThreatIntelConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAgentThreatIntelConfig`: []ControlsThreatIntelInfo
+	fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.GetAgentThreatIntelConfig`: %v\n", resp)
 }
 ```
 
@@ -1599,23 +1599,23 @@ Get Network Rules
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgentConfigAPI.GetNetworkRules(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.GetNetworkRules``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetNetworkRules`: map[string]string
-    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.GetNetworkRules`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgentConfigAPI.GetNetworkRules(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.GetNetworkRules``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetNetworkRules`: map[string]string
+	fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.GetNetworkRules`: %v\n", resp)
 }
 ```
 
@@ -1660,25 +1660,25 @@ Import Agent Policy config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    configId := "configId_example" // string | 
-    networkPolicyJson := os.NewFile(1234, "some_file") // *os.File | 
+	configId := "configId_example" // string | 
+	networkPolicyJson := os.NewFile(1234, "some_file") // *os.File | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgentConfigAPI.ImportAgentPolicyConfig(context.Background()).ConfigId(configId).NetworkPolicyJson(networkPolicyJson).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.ImportAgentPolicyConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ImportAgentPolicyConfig`: ModelMessageResponse
-    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.ImportAgentPolicyConfig`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgentConfigAPI.ImportAgentPolicyConfig(context.Background()).ConfigId(configId).NetworkPolicyJson(networkPolicyJson).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.ImportAgentPolicyConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ImportAgentPolicyConfig`: ModelMessageResponse
+	fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.ImportAgentPolicyConfig`: %v\n", resp)
 }
 ```
 
@@ -1728,25 +1728,25 @@ Import Agent Quarantine config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    configId := "configId_example" // string | 
-    quarantinePolicyJson := os.NewFile(1234, "some_file") // *os.File | 
+	configId := "configId_example" // string | 
+	quarantinePolicyJson := os.NewFile(1234, "some_file") // *os.File | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgentConfigAPI.ImportAgentQuarantineConfig(context.Background()).ConfigId(configId).QuarantinePolicyJson(quarantinePolicyJson).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.ImportAgentQuarantineConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ImportAgentQuarantineConfig`: ModelMessageResponse
-    fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.ImportAgentQuarantineConfig`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgentConfigAPI.ImportAgentQuarantineConfig(context.Background()).ConfigId(configId).QuarantinePolicyJson(quarantinePolicyJson).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.ImportAgentQuarantineConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ImportAgentQuarantineConfig`: ModelMessageResponse
+	fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.ImportAgentQuarantineConfig`: %v\n", resp)
 }
 ```
 
@@ -1796,22 +1796,22 @@ Register Agent Filesystem config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    controlsFilesystemTracerConfig := *openapiclient.NewControlsFilesystemTracerConfig("NodeId_example", int32(123), []openapiclient.ControlsMonitoredFilesConfig{*openapiclient.NewControlsMonitoredFilesConfig([]string{"Accesstypes_example"}, false, "Root_example", "Severity_example")}) // ControlsFilesystemTracerConfig |  (optional)
+	controlsFilesystemTracerConfig := *openapiclient.NewControlsFilesystemTracerConfig("NodeId_example", int32(123), []openapiclient.ControlsMonitoredFilesConfig{*openapiclient.NewControlsMonitoredFilesConfig([]string{"Accesstypes_example"}, false, "Root_example", "Severity_example")}) // ControlsFilesystemTracerConfig |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentConfigAPI.RegisterAgentFilesystemConfig(context.Background()).ControlsFilesystemTracerConfig(controlsFilesystemTracerConfig).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.RegisterAgentFilesystemConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentConfigAPI.RegisterAgentFilesystemConfig(context.Background()).ControlsFilesystemTracerConfig(controlsFilesystemTracerConfig).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.RegisterAgentFilesystemConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -1860,22 +1860,22 @@ Register Agent Network config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    controlsNetworkTracerConfig := *openapiclient.NewControlsNetworkTracerConfig(*openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), "Mode_example", "NodeId_example", []string{"ProcessNames_example"}, *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), int32(123)) // ControlsNetworkTracerConfig |  (optional)
+	controlsNetworkTracerConfig := *openapiclient.NewControlsNetworkTracerConfig(*openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), "Mode_example", "NodeId_example", []string{"ProcessNames_example"}, *openapiclient.NewControlsNetworkRules([]string{"Inbound_example"}, []string{"Outbound_example"}), int32(123)) // ControlsNetworkTracerConfig |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentConfigAPI.RegisterAgentNetworkConfig(context.Background()).ControlsNetworkTracerConfig(controlsNetworkTracerConfig).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.RegisterAgentNetworkConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentConfigAPI.RegisterAgentNetworkConfig(context.Background()).ControlsNetworkTracerConfig(controlsNetworkTracerConfig).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.RegisterAgentNetworkConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -1924,22 +1924,22 @@ Register Agent Policy config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    controlsPolicyFilterConfig := *openapiclient.NewControlsPolicyFilterConfig([]string{"IgnoredRemoteIps_example"}, "NodeId_example", []openapiclient.ControlsNetworkPolicy{*openapiclient.NewControlsNetworkPolicy("Action_example", int32(123), int32(123), int32(123), *openapiclient.NewControlsPolicyAlertMatcher(map[string][]string{"key": []string{"Inner_example"}}), "PolicyId_example", int64(123))}, int64(123), false) // ControlsPolicyFilterConfig |  (optional)
+	controlsPolicyFilterConfig := *openapiclient.NewControlsPolicyFilterConfig([]string{"IgnoredRemoteIps_example"}, "NodeId_example", []openapiclient.ControlsNetworkPolicy{*openapiclient.NewControlsNetworkPolicy("Action_example", int32(123), int32(123), int32(123), *openapiclient.NewControlsPolicyAlertMatcher(map[string][]string{"key": []string{"Inner_example"}}), "PolicyId_example", int64(123))}, int64(123), false) // ControlsPolicyFilterConfig |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentConfigAPI.RegisterAgentPolicyConfig(context.Background()).ControlsPolicyFilterConfig(controlsPolicyFilterConfig).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.RegisterAgentPolicyConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentConfigAPI.RegisterAgentPolicyConfig(context.Background()).ControlsPolicyFilterConfig(controlsPolicyFilterConfig).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.RegisterAgentPolicyConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -1988,22 +1988,22 @@ Register Agent Process config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    controlsProcessTracerConfig := *openapiclient.NewControlsProcessTracerConfig("NodeId_example", int32(123)) // ControlsProcessTracerConfig |  (optional)
+	controlsProcessTracerConfig := *openapiclient.NewControlsProcessTracerConfig("NodeId_example", int32(123)) // ControlsProcessTracerConfig |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentConfigAPI.RegisterAgentProcessConfig(context.Background()).ControlsProcessTracerConfig(controlsProcessTracerConfig).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.RegisterAgentProcessConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentConfigAPI.RegisterAgentProcessConfig(context.Background()).ControlsProcessTracerConfig(controlsProcessTracerConfig).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.RegisterAgentProcessConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -2052,22 +2052,22 @@ Register Agent Quarantine config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    controlsQuarantineConfig := *openapiclient.NewControlsQuarantineConfig("NodeId_example", []openapiclient.ControlsRuncPolicy{*openapiclient.NewControlsRuncPolicy("Action_example", int32(123), int32(123), *openapiclient.NewControlsPolicyAlertMatcher(map[string][]string{"key": []string{"Inner_example"}}), "NodeType_example", "PolicyId_example", int32(123))}, int32(123)) // ControlsQuarantineConfig |  (optional)
+	controlsQuarantineConfig := *openapiclient.NewControlsQuarantineConfig("NodeId_example", []openapiclient.ControlsRuncPolicy{*openapiclient.NewControlsRuncPolicy("Action_example", int32(123), int32(123), *openapiclient.NewControlsPolicyAlertMatcher(map[string][]string{"key": []string{"Inner_example"}}), "NodeType_example", "PolicyId_example", int32(123))}, int32(123)) // ControlsQuarantineConfig |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentConfigAPI.RegisterAgentQuarantineConfig(context.Background()).ControlsQuarantineConfig(controlsQuarantineConfig).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.RegisterAgentQuarantineConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentConfigAPI.RegisterAgentQuarantineConfig(context.Background()).ControlsQuarantineConfig(controlsQuarantineConfig).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.RegisterAgentQuarantineConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -2116,22 +2116,22 @@ Register threat intel config
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
 )
 
 func main() {
-    controlsThreatIntelInfo := *openapiclient.NewControlsThreatIntelInfo([]string{"IgnoredAlertRuleIds_example"}, []string{"InternalIps_example"}, "NetworkAlertRulesUrl_example", "RulesHash_example", int32(123)) // ControlsThreatIntelInfo |  (optional)
+	controlsThreatIntelInfo := *openapiclient.NewControlsThreatIntelInfo([]string{"IgnoredAlertRuleIds_example"}, []string{"InternalIps_example"}, "NetworkAlertRulesUrl_example", "RulesHash_example", int32(123)) // ControlsThreatIntelInfo |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AgentConfigAPI.RegisterThreatIntelConfig(context.Background()).ControlsThreatIntelInfo(controlsThreatIntelInfo).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.RegisterThreatIntelConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgentConfigAPI.RegisterThreatIntelConfig(context.Background()).ControlsThreatIntelInfo(controlsThreatIntelInfo).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.RegisterThreatIntelConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 

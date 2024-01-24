@@ -13,6 +13,7 @@ package client
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -25,6 +26,7 @@ type ControlsProcessEventEntry struct {
 	FailureSeverity string `json:"failure_severity"`
 	SkipCommList []string `json:"skip_comm_list,omitempty"`
 	SkipPathList []string `json:"skip_path_list,omitempty"`
+	SkipUserList []string `json:"skip_user_list,omitempty"`
 	SuccessSeverity string `json:"success_severity"`
 }
 
@@ -164,6 +166,39 @@ func (o *ControlsProcessEventEntry) SetSkipPathList(v []string) {
 	o.SkipPathList = v
 }
 
+// GetSkipUserList returns the SkipUserList field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ControlsProcessEventEntry) GetSkipUserList() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.SkipUserList
+}
+
+// GetSkipUserListOk returns a tuple with the SkipUserList field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ControlsProcessEventEntry) GetSkipUserListOk() ([]string, bool) {
+	if o == nil || IsNil(o.SkipUserList) {
+		return nil, false
+	}
+	return o.SkipUserList, true
+}
+
+// HasSkipUserList returns a boolean if a field has been set.
+func (o *ControlsProcessEventEntry) HasSkipUserList() bool {
+	if o != nil && IsNil(o.SkipUserList) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipUserList gets a reference to the given []string and assigns it to the SkipUserList field.
+func (o *ControlsProcessEventEntry) SetSkipUserList(v []string) {
+	o.SkipUserList = v
+}
+
 // GetSuccessSeverity returns the SuccessSeverity field value
 func (o *ControlsProcessEventEntry) GetSuccessSeverity() string {
 	if o == nil {
@@ -206,12 +241,15 @@ func (o ControlsProcessEventEntry) ToMap() (map[string]interface{}, error) {
 	if o.SkipPathList != nil {
 		toSerialize["skip_path_list"] = o.SkipPathList
 	}
+	if o.SkipUserList != nil {
+		toSerialize["skip_user_list"] = o.SkipUserList
+	}
 	toSerialize["success_severity"] = o.SuccessSeverity
 	return toSerialize, nil
 }
 
-func (o *ControlsProcessEventEntry) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ControlsProcessEventEntry) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -222,7 +260,7 @@ func (o *ControlsProcessEventEntry) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -236,7 +274,9 @@ func (o *ControlsProcessEventEntry) UnmarshalJSON(bytes []byte) (err error) {
 
 	varControlsProcessEventEntry := _ControlsProcessEventEntry{}
 
-	err = json.Unmarshal(bytes, &varControlsProcessEventEntry)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varControlsProcessEventEntry)
 
 	if err != nil {
 		return err
