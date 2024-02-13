@@ -99,6 +99,7 @@ docs/IngestersComplianceStats.md
 docs/IngestersMalware.md
 docs/IngestersMalwareScanStatus.md
 docs/IngestersMetaRules.md
+docs/IngestersPolicyLog.md
 docs/IngestersReportIngestionData.md
 docs/IngestersSecret.md
 docs/IngestersSecretMatch.md
@@ -127,6 +128,7 @@ docs/ModelAgentUpgrade.md
 docs/ModelAlertsActionRequest.md
 docs/ModelAttachAgentConfigReq.md
 docs/ModelBasicNode.md
+docs/ModelBulkDeleteReportReq.md
 docs/ModelBulkDeleteScansRequest.md
 docs/ModelCloudAccountRefreshReq.md
 docs/ModelCloudCompliance.md
@@ -159,6 +161,7 @@ docs/ModelConnection.md
 docs/ModelContainer.md
 docs/ModelContainerImage.md
 docs/ModelDeleteFilter.md
+docs/ModelDeleteIntegrationReq.md
 docs/ModelDeleteRegistryBulkReq.md
 docs/ModelDisableTracerReq.md
 docs/ModelDownloadReportResponse.md
@@ -318,6 +321,7 @@ docs/TopologyAPI.md
 docs/UserAPI.md
 docs/UtilsAdvancedReportFilters.md
 docs/UtilsReportFilters.md
+docs/UtilsReportOptions.md
 docs/UtilsScanSbomRequest.md
 docs/ViolationsAPI.md
 docs/VulnerabilityAPI.md
@@ -372,6 +376,7 @@ model_ingesters_compliance_stats.go
 model_ingesters_malware.go
 model_ingesters_malware_scan_status.go
 model_ingesters_meta_rules.go
+model_ingesters_policy_log.go
 model_ingesters_report_ingestion_data.go
 model_ingesters_secret.go
 model_ingesters_secret_match.go
@@ -396,6 +401,7 @@ model_model_api_auth_request.go
 model_model_api_token_response.go
 model_model_attach_agent_config_req.go
 model_model_basic_node.go
+model_model_bulk_delete_report_req.go
 model_model_bulk_delete_scans_request.go
 model_model_cloud_account_refresh_req.go
 model_model_cloud_compliance.go
@@ -428,6 +434,7 @@ model_model_connection.go
 model_model_container.go
 model_model_container_image.go
 model_model_delete_filter.go
+model_model_delete_integration_req.go
 model_model_delete_registry_bulk_req.go
 model_model_disable_tracer_req.go
 model_model_download_report_response.go
@@ -578,6 +585,7 @@ model_singlesignon_update_sso_provider_config.go
 model_singlesignon_verify_sso_auth_request.go
 model_utils_advanced_report_filters.go
 model_utils_report_filters.go
+model_utils_report_options.go
 model_utils_scan_sbom_request.go
 response.go
 test/api_agent_config_test.go

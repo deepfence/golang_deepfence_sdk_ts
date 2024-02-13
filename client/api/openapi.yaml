@@ -599,6 +599,92 @@ paths:
       summary: Deploy Agent on Cloud Resource
       tags:
       - Cloud Nodes
+  /deepfence/complete/cloud-compliance:
+    post:
+      description: Complete cloud compliance info
+      operationId: completeCloudCompliance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompletionCompletionNodeFieldReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompletionCompletionNodeFieldRes'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Completion for cloud compliance fields
+      tags:
+      - Completion
+  /deepfence/complete/compliance:
+    post:
+      description: Complete compliance info
+      operationId: completeComplianceInfo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompletionCompletionNodeFieldReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompletionCompletionNodeFieldRes'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Completion for compliance fields
+      tags:
+      - Completion
   /deepfence/complete/host:
     post:
       description: Complete host info
@@ -4900,7 +4986,7 @@ paths:
       - Integration
   /deepfence/integration/{integration_id}:
     delete:
-      description: Delete integration
+      description: Delete single integration
       operationId: deleteIntegration
       parameters:
       - explode: false
@@ -4937,7 +5023,7 @@ paths:
           description: Internal Server Error
       security:
       - bearer_token: []
-      summary: Delete Integration
+      summary: Delete Single Integration
       tags:
       - Integration
     put:
@@ -4988,6 +5074,45 @@ paths:
       security:
       - bearer_token: []
       summary: Update Integration
+      tags:
+      - Integration
+  /deepfence/integration/delete:
+    patch:
+      description: Delete integrations
+      operationId: deleteIntegrations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelDeleteIntegrationReq'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Delete Integrations
       tags:
       - Integration
   /deepfence/internal/console-api-token:
@@ -7096,6 +7221,45 @@ paths:
       security:
       - bearer_token: []
       summary: Get Report
+      tags:
+      - Reports
+  /deepfence/reports/delete:
+    patch:
+      description: Bulk Delete reports
+      operationId: bulkDeleteReports
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelBulkDeleteReportReq'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Bulk Delete Reports
       tags:
       - Reports
   /deepfence/scan/{scan_type}/{scan_id}:
@@ -10522,6 +10686,49 @@ paths:
       summary: Count Pods
       tags:
       - Search
+  /deepfence/search/count/policy-logs:
+    post:
+      description: Count across all data associated with policy logs
+      operationId: countPolicyLogs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchSearchCountResp'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Count policy logs
+      tags:
+      - Search
   /deepfence/search/count/process-alert-rules:
     post:
       description: Count across all data associated with process alert rules
@@ -11537,6 +11744,51 @@ paths:
       summary: Search Pods
       tags:
       - Search
+  /deepfence/search/policy-logs:
+    post:
+      description: Search across all data associated with polic logs
+      operationId: searchPolicyLogs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IngestersPolicyLog'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Search policy logs
+      tags:
+      - Search
   /deepfence/search/process-alert-rules:
     post:
       description: Search across all data associated with Process alert rules
@@ -11991,6 +12243,11 @@ paths:
     put:
       description: Upload Agent version
       operationId: uploadAgentVersion
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FormDataModelBinUploadRequest'
       responses:
         "200":
           description: OK
@@ -14146,12 +14403,15 @@ components:
         created_at: created_at
         label: label
         message: message
+        type: type
       properties:
         created_at:
           type: string
         label:
           type: string
         message:
+          type: string
+        type:
           type: string
         url_link:
           type: string
@@ -14241,28 +14501,34 @@ components:
           created_at: created_at
           label: label
           message: message
+          type: type
         - url_link: url_link
           created_at: created_at
           label: label
           message: message
+          type: type
         agent_logs:
         - url_link: url_link
           created_at: created_at
           label: label
           message: message
+          type: type
         - url_link: url_link
           created_at: created_at
           label: label
           message: message
+          type: type
         cloud_scanner_logs:
         - url_link: url_link
           created_at: created_at
           label: label
           message: message
+          type: type
         - url_link: url_link
           created_at: created_at
           label: label
           message: message
+          type: type
       properties:
         agent_logs:
           items:
@@ -14296,6 +14562,13 @@ components:
       required:
       - node_id
       - node_type
+      type: object
+    FormDataModelBinUploadRequest:
+      properties:
+        tarball:
+          $ref: '#/components/schemas/MultipartFile'
+      required:
+      - tarball
       type: object
     FormDataModelImportAgentPolicyConfigReq:
       properties:
@@ -15263,6 +15536,59 @@ components:
         version:
           type: string
       type: object
+    IngestersPolicyLog:
+      example:
+        local_ip: local_ip
+        severity: severity
+        remote_ip: remote_ip
+        config_id: config_id
+        local_port: 6
+        alert_id: alert_id
+        policy_index: 1
+        remote_port: 5
+        created_at: 0
+        incident: incident
+        host_name: host_name
+        direction: direction
+      properties:
+        alert_id:
+          type: string
+        config_id:
+          type: string
+        created_at:
+          type: integer
+        direction:
+          type: string
+        host_name:
+          type: string
+        incident:
+          type: string
+        local_ip:
+          type: string
+        local_port:
+          type: integer
+        policy_index:
+          type: integer
+        remote_ip:
+          type: string
+        remote_port:
+          type: integer
+        severity:
+          type: string
+      required:
+      - alert_id
+      - config_id
+      - created_at
+      - direction
+      - host_name
+      - incident
+      - local_ip
+      - local_port
+      - policy_index
+      - remote_ip
+      - remote_port
+      - severity
+      type: object
     IngestersReportIngestionData:
       example:
         hosts:
@@ -15950,6 +16276,20 @@ components:
       - name
       - node_id
       - node_type
+      type: object
+    ModelBulkDeleteReportReq:
+      example:
+        report_ids:
+        - report_ids
+        - report_ids
+      properties:
+        report_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
+      required:
+      - report_ids
       type: object
     ModelBulkDeleteScansRequest:
       example:
@@ -17627,6 +17967,20 @@ components:
       required:
       - node_ids
       type: object
+    ModelDeleteIntegrationReq:
+      example:
+        integration_ids:
+        - 0
+        - 0
+      properties:
+        integration_ids:
+          items:
+            type: integer
+          nullable: true
+          type: array
+      required:
+      - integration_ids
+      type: object
     ModelDeleteRegistryBulkReq:
       example:
         registry_ids:
@@ -18015,6 +18369,8 @@ components:
     ModelGenerateReportReq:
       example:
         duration: 0
+        options:
+          sbom_format: syft-json@11.0.1
         filters:
           include_dead_nodes: true
           node_type: host
@@ -18063,10 +18419,13 @@ components:
           type: integer
         filters:
           $ref: '#/components/schemas/UtilsReportFilters'
+        options:
+          $ref: '#/components/schemas/UtilsReportOptions'
         report_type:
           enum:
           - pdf
           - xlsx
+          - sbom
           type: string
       required:
       - report_type
@@ -19571,6 +19930,9 @@ components:
                 key:
                 - ""
                 - ""
+          container_names:
+          - container_names
+          - container_names
           node_ids:
           - node_type: image
             node_id: node_id
@@ -19590,6 +19952,9 @@ components:
           type: string
         notification_type:
           type: string
+      required:
+      - integration_type
+      - notification_type
       type: object
     ModelIntegrationFilters:
       example:
@@ -19634,12 +19999,20 @@ components:
               key:
               - ""
               - ""
+        container_names:
+        - container_names
+        - container_names
         node_ids:
         - node_type: image
           node_id: node_id
         - node_type: image
           node_id: node_id
       properties:
+        container_names:
+          items:
+            type: string
+          nullable: true
+          type: array
         fields_filters:
           $ref: '#/components/schemas/ReportersFieldsFilters'
         node_ids:
@@ -19695,6 +20068,9 @@ components:
                 key:
                 - ""
                 - ""
+          container_names:
+          - container_names
+          - container_names
           node_ids:
           - node_type: image
             node_id: node_id
@@ -19766,6 +20142,9 @@ components:
                 key:
                 - ""
                 - ""
+          container_names:
+          - container_names
+          - container_names
           node_ids:
           - node_type: image
             node_id: node_id
@@ -23257,7 +23636,7 @@ components:
           - docker_image_tag_list
           node_id: node_id
         registry_type: registry_type
-        host_name: host_name
+        name: name
         node_id: node_id
       properties:
         container_images:
@@ -23265,7 +23644,7 @@ components:
             $ref: '#/components/schemas/ModelContainerImage'
           nullable: true
           type: array
-        host_name:
+        name:
           type: string
         node_id:
           type: string
@@ -23275,7 +23654,7 @@ components:
           type: boolean
       required:
       - container_images
-      - host_name
+      - name
       - node_id
       - registry_type
       - syncing
@@ -26422,12 +26801,65 @@ components:
           window:
             offset: 0
             size: 6
+        related_node_filter:
+          node_filter:
+            in_field_filter:
+            - in_field_filter
+            - in_field_filter
+            filters:
+              compare_filter:
+              - greater_than: true
+                field_value: ""
+                field_name: field_name
+              - greater_than: true
+                field_value: ""
+                field_name: field_name
+              not_contains_filter:
+                filter_in:
+                  key:
+                  - ""
+                  - ""
+              order_filter:
+                order_fields:
+                - size: 0
+                  descending: true
+                  field_name: field_name
+                - size: 0
+                  descending: true
+                  field_name: field_name
+              contains_filter:
+                filter_in:
+                  key:
+                  - ""
+                  - ""
+              contains_in_array_filter:
+                filter_in:
+                  key:
+                  - ""
+                  - ""
+              match_filter:
+                filter_in:
+                  key:
+                  - ""
+                  - ""
+              match_in_array_filter:
+                filter_in:
+                  key:
+                  - ""
+                  - ""
+            window:
+              offset: 0
+              size: 6
+          next_filter: null
+          relation_ship: relation_ship
         window:
           offset: 0
           size: 6
       properties:
         node_filters:
           $ref: '#/components/schemas/SearchSearchFilter'
+        related_node_filter:
+          $ref: '#/components/schemas/SearchChainedSearchFilter'
         scan_filters:
           $ref: '#/components/schemas/SearchSearchFilter'
         window:
@@ -26798,6 +27230,18 @@ components:
       required:
       - node_type
       - scan_type
+      type: object
+    UtilsReportOptions:
+      example:
+        sbom_format: syft-json@11.0.1
+      properties:
+        sbom_format:
+          enum:
+          - syft-json@11.0.1
+          - cyclonedx-json@1.5
+          - spdx-json@2.2
+          - spdx-json@2.3
+          type: string
       type: object
     UtilsScanSbomRequest:
       example:

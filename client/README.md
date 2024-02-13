@@ -149,6 +149,8 @@ Class | Method | HTTP request | Description
 *CloudScannerAPI* | [**StatusCloudComplianceScan**](docs/CloudScannerAPI.md#statuscloudcompliancescan) | **Post** /deepfence/scan/status/cloud-compliance | Get Cloud Compliance Scan Status
 *CommonAPI* | [**Eula**](docs/CommonAPI.md#eula) | **Get** /deepfence/end-user-license-agreement | Get End User License Agreement
 *CommonAPI* | [**GetScanReportFields**](docs/CommonAPI.md#getscanreportfields) | **Get** /deepfence/scan/results/fields | Get Scan Report Fields
+*CompletionAPI* | [**CompleteCloudCompliance**](docs/CompletionAPI.md#completecloudcompliance) | **Post** /deepfence/complete/cloud-compliance | Get Completion for cloud compliance fields
+*CompletionAPI* | [**CompleteComplianceInfo**](docs/CompletionAPI.md#completecomplianceinfo) | **Post** /deepfence/complete/compliance | Get Completion for compliance fields
 *CompletionAPI* | [**CompleteHostInfo**](docs/CompletionAPI.md#completehostinfo) | **Post** /deepfence/complete/host | Get Completion for host fields
 *CompletionAPI* | [**CompleteProcessInfo**](docs/CompletionAPI.md#completeprocessinfo) | **Post** /deepfence/complete/process | Get Completion for process fields
 *CompletionAPI* | [**CompleteVulnerabilityInfo**](docs/CompletionAPI.md#completevulnerabilityinfo) | **Post** /deepfence/complete/vulnerability | Get Completion for vulnerability fields
@@ -195,7 +197,8 @@ Class | Method | HTTP request | Description
 *GenerativeAIAPI* | [**ListGenerativeAiIntegration**](docs/GenerativeAIAPI.md#listgenerativeaiintegration) | **Get** /deepfence/generative-ai-integration | List Generative AI Integrations
 *GenerativeAIAPI* | [**SetDefaultGenerativeAiIntegration**](docs/GenerativeAIAPI.md#setdefaultgenerativeaiintegration) | **Put** /deepfence/generative-ai-integration/{integration_id}/default | Set Default Generative AI Integration
 *IntegrationAPI* | [**AddIntegration**](docs/IntegrationAPI.md#addintegration) | **Post** /deepfence/integration | Add Integration
-*IntegrationAPI* | [**DeleteIntegration**](docs/IntegrationAPI.md#deleteintegration) | **Delete** /deepfence/integration/{integration_id} | Delete Integration
+*IntegrationAPI* | [**DeleteIntegration**](docs/IntegrationAPI.md#deleteintegration) | **Delete** /deepfence/integration/{integration_id} | Delete Single Integration
+*IntegrationAPI* | [**DeleteIntegrations**](docs/IntegrationAPI.md#deleteintegrations) | **Patch** /deepfence/integration/delete | Delete Integrations
 *IntegrationAPI* | [**ListIntegration**](docs/IntegrationAPI.md#listintegration) | **Get** /deepfence/integration | List Integrations
 *IntegrationAPI* | [**UpdateIntegration**](docs/IntegrationAPI.md#updateintegration) | **Put** /deepfence/integration/{integration_id} | Update Integration
 *InternalAPI* | [**GetConsoleApiToken**](docs/InternalAPI.md#getconsoleapitoken) | **Get** /deepfence/internal/console-api-token | Get api-token for console agent
@@ -246,6 +249,7 @@ Class | Method | HTTP request | Description
 *RegistryAPI* | [**ListRegistry**](docs/RegistryAPI.md#listregistry) | **Get** /deepfence/registryaccount | List Registries
 *RegistryAPI* | [**SyncRegistry**](docs/RegistryAPI.md#syncregistry) | **Post** /deepfence/registryaccount/{registry_id}/sync | Sync Registry
 *RegistryAPI* | [**UpdateRegistry**](docs/RegistryAPI.md#updateregistry) | **Put** /deepfence/registryaccount/{registry_id} | Update Registry
+*ReportsAPI* | [**BulkDeleteReports**](docs/ReportsAPI.md#bulkdeletereports) | **Patch** /deepfence/reports/delete | Bulk Delete Reports
 *ReportsAPI* | [**DeleteReport**](docs/ReportsAPI.md#deletereport) | **Delete** /deepfence/reports/{report_id} | Delete Report
 *ReportsAPI* | [**GenerateReport**](docs/ReportsAPI.md#generatereport) | **Post** /deepfence/reports | Generate Report
 *ReportsAPI* | [**GetReport**](docs/ReportsAPI.md#getreport) | **Get** /deepfence/reports/{report_id} | Get Report
@@ -280,6 +284,7 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**CountNetworkViolations**](docs/SearchAPI.md#countnetworkviolations) | **Post** /deepfence/search/count/network-violations | Count network violations
 *SearchAPI* | [**CountNodes**](docs/SearchAPI.md#countnodes) | **Get** /deepfence/search/count/nodes | Count nodes
 *SearchAPI* | [**CountPods**](docs/SearchAPI.md#countpods) | **Post** /deepfence/search/count/pods | Count Pods
+*SearchAPI* | [**CountPolicyLogs**](docs/SearchAPI.md#countpolicylogs) | **Post** /deepfence/search/count/policy-logs | Count policy logs
 *SearchAPI* | [**CountProcessAlertRules**](docs/SearchAPI.md#countprocessalertrules) | **Post** /deepfence/search/count/process-alert-rules | Count process alert rules
 *SearchAPI* | [**CountProcessAlerts**](docs/SearchAPI.md#countprocessalerts) | **Post** /deepfence/search/count/process-alerts | Count process alerts
 *SearchAPI* | [**CountQuarantineViolations**](docs/SearchAPI.md#countquarantineviolations) | **Post** /deepfence/search/count/quarantine-violations | Count quarantine violations
@@ -314,6 +319,7 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**SearchNetworkViolationStubs**](docs/SearchAPI.md#searchnetworkviolationstubs) | **Post** /deepfence/search/network-violation-stubs | Search network violation stubs
 *SearchAPI* | [**SearchNetworkViolations**](docs/SearchAPI.md#searchnetworkviolations) | **Post** /deepfence/search/network-violations | Search network violations
 *SearchAPI* | [**SearchPods**](docs/SearchAPI.md#searchpods) | **Post** /deepfence/search/pods | Search Pods
+*SearchAPI* | [**SearchPolicyLogs**](docs/SearchAPI.md#searchpolicylogs) | **Post** /deepfence/search/policy-logs | Search policy logs
 *SearchAPI* | [**SearchProcessAlertRules**](docs/SearchAPI.md#searchprocessalertrules) | **Post** /deepfence/search/process-alert-rules | Search process alert rules
 *SearchAPI* | [**SearchProcessAlerts**](docs/SearchAPI.md#searchprocessalerts) | **Post** /deepfence/search/process-alerts | Search process alerts
 *SearchAPI* | [**SearchQuarantineViolations**](docs/SearchAPI.md#searchquarantineviolations) | **Post** /deepfence/search/quarantine-violations | Search quarantine violations
@@ -446,6 +452,7 @@ Class | Method | HTTP request | Description
  - [IngestersMalware](docs/IngestersMalware.md)
  - [IngestersMalwareScanStatus](docs/IngestersMalwareScanStatus.md)
  - [IngestersMetaRules](docs/IngestersMetaRules.md)
+ - [IngestersPolicyLog](docs/IngestersPolicyLog.md)
  - [IngestersReportIngestionData](docs/IngestersReportIngestionData.md)
  - [IngestersSecret](docs/IngestersSecret.md)
  - [IngestersSecretMatch](docs/IngestersSecretMatch.md)
@@ -470,6 +477,7 @@ Class | Method | HTTP request | Description
  - [ModelAlertsActionRequest](docs/ModelAlertsActionRequest.md)
  - [ModelAttachAgentConfigReq](docs/ModelAttachAgentConfigReq.md)
  - [ModelBasicNode](docs/ModelBasicNode.md)
+ - [ModelBulkDeleteReportReq](docs/ModelBulkDeleteReportReq.md)
  - [ModelBulkDeleteScansRequest](docs/ModelBulkDeleteScansRequest.md)
  - [ModelCloudAccountRefreshReq](docs/ModelCloudAccountRefreshReq.md)
  - [ModelCloudCompliance](docs/ModelCloudCompliance.md)
@@ -502,6 +510,7 @@ Class | Method | HTTP request | Description
  - [ModelContainer](docs/ModelContainer.md)
  - [ModelContainerImage](docs/ModelContainerImage.md)
  - [ModelDeleteFilter](docs/ModelDeleteFilter.md)
+ - [ModelDeleteIntegrationReq](docs/ModelDeleteIntegrationReq.md)
  - [ModelDeleteRegistryBulkReq](docs/ModelDeleteRegistryBulkReq.md)
  - [ModelDisableTracerReq](docs/ModelDisableTracerReq.md)
  - [ModelDownloadReportResponse](docs/ModelDownloadReportResponse.md)
@@ -652,6 +661,7 @@ Class | Method | HTTP request | Description
  - [SinglesignonVerifySSOAuthRequest](docs/SinglesignonVerifySSOAuthRequest.md)
  - [UtilsAdvancedReportFilters](docs/UtilsAdvancedReportFilters.md)
  - [UtilsReportFilters](docs/UtilsReportFilters.md)
+ - [UtilsReportOptions](docs/UtilsReportOptions.md)
  - [UtilsScanSbomRequest](docs/UtilsScanSbomRequest.md)
 
 
