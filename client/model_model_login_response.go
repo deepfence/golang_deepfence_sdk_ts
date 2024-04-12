@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.0.0
+API version: 2.2.0
 Contact: community@deepfence.io
 */
 
@@ -23,6 +23,8 @@ var _ MappedNullable = &ModelLoginResponse{}
 // ModelLoginResponse struct for ModelLoginResponse
 type ModelLoginResponse struct {
 	AccessToken string `json:"access_token"`
+	EmailDomain string `json:"email_domain"`
+	LicenseKey string `json:"license_key"`
 	LicenseRegistered bool `json:"license_registered"`
 	OnboardingRequired bool `json:"onboarding_required"`
 	PasswordInvalidated bool `json:"password_invalidated"`
@@ -35,9 +37,11 @@ type _ModelLoginResponse ModelLoginResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelLoginResponse(accessToken string, licenseRegistered bool, onboardingRequired bool, passwordInvalidated bool, refreshToken string) *ModelLoginResponse {
+func NewModelLoginResponse(accessToken string, emailDomain string, licenseKey string, licenseRegistered bool, onboardingRequired bool, passwordInvalidated bool, refreshToken string) *ModelLoginResponse {
 	this := ModelLoginResponse{}
 	this.AccessToken = accessToken
+	this.EmailDomain = emailDomain
+	this.LicenseKey = licenseKey
 	this.LicenseRegistered = licenseRegistered
 	this.OnboardingRequired = onboardingRequired
 	this.PasswordInvalidated = passwordInvalidated
@@ -75,6 +79,54 @@ func (o *ModelLoginResponse) GetAccessTokenOk() (*string, bool) {
 // SetAccessToken sets field value
 func (o *ModelLoginResponse) SetAccessToken(v string) {
 	o.AccessToken = v
+}
+
+// GetEmailDomain returns the EmailDomain field value
+func (o *ModelLoginResponse) GetEmailDomain() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.EmailDomain
+}
+
+// GetEmailDomainOk returns a tuple with the EmailDomain field value
+// and a boolean to check if the value has been set.
+func (o *ModelLoginResponse) GetEmailDomainOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EmailDomain, true
+}
+
+// SetEmailDomain sets field value
+func (o *ModelLoginResponse) SetEmailDomain(v string) {
+	o.EmailDomain = v
+}
+
+// GetLicenseKey returns the LicenseKey field value
+func (o *ModelLoginResponse) GetLicenseKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.LicenseKey
+}
+
+// GetLicenseKeyOk returns a tuple with the LicenseKey field value
+// and a boolean to check if the value has been set.
+func (o *ModelLoginResponse) GetLicenseKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LicenseKey, true
+}
+
+// SetLicenseKey sets field value
+func (o *ModelLoginResponse) SetLicenseKey(v string) {
+	o.LicenseKey = v
 }
 
 // GetLicenseRegistered returns the LicenseRegistered field value
@@ -184,6 +236,8 @@ func (o ModelLoginResponse) MarshalJSON() ([]byte, error) {
 func (o ModelLoginResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["access_token"] = o.AccessToken
+	toSerialize["email_domain"] = o.EmailDomain
+	toSerialize["license_key"] = o.LicenseKey
 	toSerialize["license_registered"] = o.LicenseRegistered
 	toSerialize["onboarding_required"] = o.OnboardingRequired
 	toSerialize["password_invalidated"] = o.PasswordInvalidated
@@ -197,6 +251,8 @@ func (o *ModelLoginResponse) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"access_token",
+		"email_domain",
+		"license_key",
 		"license_registered",
 		"onboarding_required",
 		"password_invalidated",

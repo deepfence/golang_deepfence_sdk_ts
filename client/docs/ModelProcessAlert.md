@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 **CreatedAt** | **int32** |  | 
 **EventType** | **string** |  | 
 **ExecPath** | **string** |  | 
-**Failure** | **string** |  | 
 **Group** | **string** |  | 
 **KubernetesClusterId** | **string** |  | 
 **KubernetesClusterName** | **string** |  | 
@@ -37,16 +36,18 @@ Name | Type | Description | Notes
 **Summary** | **string** |  | 
 **Tactics** | **[]string** |  | 
 **Techniques** | **[]string** |  | 
+**Top** | **string** |  | 
 **UpdatedAt** | **int32** |  | 
 **User** | **string** |  | 
 **UserName** | **string** |  | 
+**Users** | **string** |  | 
 **Vsize** | **int32** |  | 
 
 ## Methods
 
 ### NewModelProcessAlert
 
-`func NewModelProcessAlert(category string, command string, containerId string, containerImage string, containerIp string, containerName string, count int32, cpuTime float32, createdAt int32, eventType string, execPath string, failure string, group string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, numThreads int32, pid int32, podName string, priority int32, procStatus string, return_ int32, rss int32, ruleId string, session int32, severity string, state string, summary string, tactics []string, techniques []string, updatedAt int32, user string, userName string, vsize int32, ) *ModelProcessAlert`
+`func NewModelProcessAlert(category string, command string, containerId string, containerImage string, containerIp string, containerName string, count int32, cpuTime float32, createdAt int32, eventType string, execPath string, group string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, numThreads int32, pid int32, podName string, priority int32, procStatus string, return_ int32, rss int32, ruleId string, session int32, severity string, state string, summary string, tactics []string, techniques []string, top string, updatedAt int32, user string, userName string, users string, vsize int32, ) *ModelProcessAlert`
 
 NewModelProcessAlert instantiates a new ModelProcessAlert object
 This constructor will assign default values to properties that have it defined,
@@ -279,26 +280,6 @@ and a boolean to check if the value has been set.
 `func (o *ModelProcessAlert) SetExecPath(v string)`
 
 SetExecPath sets ExecPath field to given value.
-
-
-### GetFailure
-
-`func (o *ModelProcessAlert) GetFailure() string`
-
-GetFailure returns the Failure field if non-nil, zero value otherwise.
-
-### GetFailureOk
-
-`func (o *ModelProcessAlert) GetFailureOk() (*string, bool)`
-
-GetFailureOk returns a tuple with the Failure field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFailure
-
-`func (o *ModelProcessAlert) SetFailure(v string)`
-
-SetFailure sets Failure field to given value.
 
 
 ### GetGroup
@@ -741,6 +722,26 @@ SetTechniques sets Techniques field to given value.
 `func (o *ModelProcessAlert) UnsetTechniques()`
 
 UnsetTechniques ensures that no value is present for Techniques, not even an explicit nil
+### GetTop
+
+`func (o *ModelProcessAlert) GetTop() string`
+
+GetTop returns the Top field if non-nil, zero value otherwise.
+
+### GetTopOk
+
+`func (o *ModelProcessAlert) GetTopOk() (*string, bool)`
+
+GetTopOk returns a tuple with the Top field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTop
+
+`func (o *ModelProcessAlert) SetTop(v string)`
+
+SetTop sets Top field to given value.
+
+
 ### GetUpdatedAt
 
 `func (o *ModelProcessAlert) GetUpdatedAt() int32`
@@ -799,6 +800,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelProcessAlert) SetUserName(v string)`
 
 SetUserName sets UserName field to given value.
+
+
+### GetUsers
+
+`func (o *ModelProcessAlert) GetUsers() string`
+
+GetUsers returns the Users field if non-nil, zero value otherwise.
+
+### GetUsersOk
+
+`func (o *ModelProcessAlert) GetUsersOk() (*string, bool)`
+
+GetUsersOk returns a tuple with the Users field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsers
+
+`func (o *ModelProcessAlert) SetUsers(v string)`
+
+SetUsers sets Users field to given value.
 
 
 ### GetVsize

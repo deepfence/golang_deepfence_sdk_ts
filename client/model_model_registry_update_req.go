@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.0.0
+API version: 2.2.0
 Contact: community@deepfence.io
 */
 
@@ -71,7 +71,7 @@ func (o *ModelRegistryUpdateReq) GetExtrasOk() (map[string]interface{}, bool) {
 
 // HasExtras returns a boolean if a field has been set.
 func (o *ModelRegistryUpdateReq) HasExtras() bool {
-	if o != nil && IsNil(o.Extras) {
+	if o != nil && !IsNil(o.Extras) {
 		return true
 	}
 
@@ -128,7 +128,7 @@ func (o *ModelRegistryUpdateReq) GetNonSecretOk() (map[string]interface{}, bool)
 
 // HasNonSecret returns a boolean if a field has been set.
 func (o *ModelRegistryUpdateReq) HasNonSecret() bool {
-	if o != nil && IsNil(o.NonSecret) {
+	if o != nil && !IsNil(o.NonSecret) {
 		return true
 	}
 
@@ -185,7 +185,7 @@ func (o *ModelRegistryUpdateReq) GetSecretOk() (map[string]interface{}, bool) {
 
 // HasSecret returns a boolean if a field has been set.
 func (o *ModelRegistryUpdateReq) HasSecret() bool {
-	if o != nil && IsNil(o.Secret) {
+	if o != nil && !IsNil(o.Secret) {
 		return true
 	}
 

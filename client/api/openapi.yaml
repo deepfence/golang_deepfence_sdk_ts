@@ -16,7 +16,7 @@ info:
     url: https://www.apache.org/licenses/LICENSE-2.0
   termsOfService: /tos
   title: Deepfence ThreatStryker
-  version: 2.0.0
+  version: 2.2.0
 externalDocs:
   description: Deepfence Community
   url: https://community.deepfence.io
@@ -31,6 +31,44 @@ tags:
 - name: Malware Scan
 - name: Vulnerability
 paths:
+  /deepfence/agent-deployment/binary/download-url:
+    get:
+      description: Get agent binary download url
+      operationId: getAgentBinaryDownloadURL
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelGetAgentBinaryDownloadURLResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get agent binary download url
+      tags:
+      - Settings
   /deepfence/alerts/action/delete:
     patch:
       description: Delete selected alerts
@@ -434,6 +472,45 @@ paths:
       security:
       - bearer_token: []
       summary: Register Cloud Node Account
+      tags:
+      - Cloud Nodes
+  /deepfence/cloud-node/account/delete:
+    patch:
+      description: Delete Cloud Node Account and related resources
+      operationId: deleteCloudNodeAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelCloudAccountDeleteReq'
+      responses:
+        "202":
+          description: Accepted
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Delete Cloud Node Account
       tags:
       - Cloud Nodes
   /deepfence/cloud-node/account/refresh:
@@ -1245,9 +1322,7 @@ paths:
           content:
             application/json:
               schema:
-                additionalProperties:
-                  type: string
-                type: object
+                $ref: '#/components/schemas/ThreatintelRulesWithDirection'
           description: OK
         "400":
           content:
@@ -2538,6 +2613,211 @@ paths:
       summary: Fetch Kubernetes Cluster Actions
       tags:
       - Controls
+  /deepfence/database/malware:
+    put:
+      description: Upload malware rules for use in malware scans
+      operationId: uploadMalwareRules
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FormDataThreatintelDBUploadRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelMessageResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Upload Malware Rules
+      tags:
+      - Settings
+  /deepfence/database/posture:
+    put:
+      description: Upload posture controls for use in posture scans
+      operationId: uploadPostureControls
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FormDataThreatintelDBUploadRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelMessageResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Upload Posture Controls
+      tags:
+      - Settings
+  /deepfence/database/secret:
+    put:
+      description: Upload secrets rules for use in secrets scans
+      operationId: uploadSecretsRules
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FormDataThreatintelDBUploadRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelMessageResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Upload Secrets Rules
+      tags:
+      - Settings
+  /deepfence/database/threat-intel-rules:
+    get:
+      description: Get Threat Intel rules for use in Traffic Analysis
+      operationId: getThreatIntelRules
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ControlsThreatIntelInfo'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Threat Intel Rules
+      tags:
+      - Settings
+    put:
+      description: Upload Threat Intel rules for use in Traffic Analysis
+      operationId: uploadThreatIntelRules
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FormDataThreatintelDBUploadRequest'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Upload Threat Intel Rules
+      tags:
+      - Settings
   /deepfence/database/vulnerability:
     put:
       description: Upload Vulnerability Database for use in vulnerability scans
@@ -2546,7 +2826,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/FormDataVulnerabilityDbDBUploadRequest'
+              $ref: '#/components/schemas/FormDataThreatintelDBUploadRequest'
       responses:
         "200":
           content:
@@ -5152,6 +5432,39 @@ paths:
       tags:
       - Internal
   /deepfence/license:
+    delete:
+      description: Delete license from the console database
+      operationId: deleteLicense
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Delete License
+      tags:
+      - Settings
     get:
       description: Get license status and expiry
       operationId: getLicense
@@ -5198,8 +5511,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ModelRegisterLicenseRequest'
       responses:
-        "204":
-          description: No Content
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelRegisterLicenseResponse'
+          description: OK
         "400":
           content:
             application/json:
@@ -5225,6 +5542,49 @@ paths:
       security:
       - bearer_token: []
       summary: Register License
+      tags:
+      - Settings
+  /deepfence/license/generate:
+    post:
+      description: Generate a new ThreatMapper license key
+      operationId: generateLicense
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelGenerateLicenseRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelGenerateLicenseResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Generate License Key
       tags:
       - Settings
   /deepfence/license/notification-threshold:
@@ -12549,6 +12909,87 @@ paths:
       summary: Delete Email Configurations
       tags:
       - Settings
+  /deepfence/settings/email/test:
+    post:
+      description: Test Configured Email
+      operationId: testConfiguredEmail
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelMessageResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Test Configured Email
+      tags:
+      - Settings
+  /deepfence/settings/email/test-unconfigured:
+    post:
+      description: Test Unconfigured Email
+      operationId: testUnconfiguredEmail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelEmailConfigurationAdd'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelMessageResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Test Unconfigured Email
+      tags:
+      - Settings
   /deepfence/settings/global-settings:
     get:
       description: Get all settings
@@ -13984,6 +14425,9 @@ components:
       type: object
     ControlsPolicyFilterConfig:
       example:
+        ignored_remote_hosts:
+        - ignored_remote_hosts
+        - ignored_remote_hosts
         updated_at: 5
         use_waf: true
         policies:
@@ -14014,8 +14458,16 @@ components:
         ignored_remote_ips:
         - ignored_remote_ips
         - ignored_remote_ips
+        enable_policy_logs: true
         node_id: node_id
       properties:
+        enable_policy_logs:
+          type: boolean
+        ignored_remote_hosts:
+          items:
+            type: string
+          nullable: true
+          type: array
         ignored_remote_ips:
           items:
             type: string
@@ -14215,7 +14667,9 @@ components:
       type: object
     ControlsThreatIntelInfo:
       example:
+        cloud_controls_url: cloud_controls_url
         updated_at: 0
+        cloud_controls_hash: cloud_controls_hash
         network_alert_rules_url: network_alert_rules_url
         ignored_alert_rule_ids:
         - ignored_alert_rule_ids
@@ -14223,8 +14677,16 @@ components:
         internal_ips:
         - internal_ips
         - internal_ips
+        secret_scanner_rules_hash: secret_scanner_rules_hash
+        secret_scanner_rules_url: secret_scanner_rules_url
+        malware_scanner_rules_hash: malware_scanner_rules_hash
+        malware_scanner_rules_url: malware_scanner_rules_url
         rules_hash: rules_hash
       properties:
+        cloud_controls_hash:
+          type: string
+        cloud_controls_url:
+          type: string
         ignored_alert_rule_ids:
           items:
             type: string
@@ -14235,17 +14697,31 @@ components:
             type: string
           nullable: true
           type: array
+        malware_scanner_rules_hash:
+          type: string
+        malware_scanner_rules_url:
+          type: string
         network_alert_rules_url:
           type: string
         rules_hash:
           type: string
+        secret_scanner_rules_hash:
+          type: string
+        secret_scanner_rules_url:
+          type: string
         updated_at:
           type: integer
       required:
+      - cloud_controls_hash
+      - cloud_controls_url
       - ignored_alert_rule_ids
       - internal_ips
+      - malware_scanner_rules_hash
+      - malware_scanner_rules_url
       - network_alert_rules_url
       - rules_hash
+      - secret_scanner_rules_hash
+      - secret_scanner_rules_url
       - updated_at
       type: object
     DetailedConnectionSummary:
@@ -14603,7 +15079,7 @@ components:
       - registry_url
       - service_account_json
       type: object
-    FormDataVulnerabilityDbDBUploadRequest:
+    FormDataThreatintelDBUploadRequest:
       properties:
         database:
           $ref: '#/components/schemas/MultipartFile'
@@ -16354,6 +16830,20 @@ components:
       - filters
       - scan_type
       type: object
+    ModelCloudAccountDeleteReq:
+      example:
+        node_ids:
+        - node_ids
+        - node_ids
+      properties:
+        node_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
+      required:
+      - node_ids
+      type: object
     ModelCloudAccountRefreshReq:
       example:
         node_ids:
@@ -16679,6 +17169,7 @@ components:
         cloud_provider: cloud_provider
         scan_status_map:
           key: 6
+        host_node_id: host_node_id
         version: version
         node_id: node_id
       properties:
@@ -16688,6 +17179,8 @@ components:
           type: string
         compliance_percentage:
           type: number
+        host_node_id:
+          type: string
         last_scan_id:
           type: string
         last_scan_status:
@@ -16868,6 +17361,7 @@ components:
           cloud_provider: cloud_provider
           scan_status_map:
             key: 6
+          host_node_id: host_node_id
           version: version
           node_id: node_id
         - last_scan_status: last_scan_status
@@ -16878,6 +17372,7 @@ components:
           cloud_provider: cloud_provider
           scan_status_map:
             key: 6
+          host_node_id: host_node_id
           version: version
           node_id: node_id
       properties:
@@ -17578,10 +18073,17 @@ components:
       example:
         count: 2
         node_name: node_name
+        ips:
+        - ""
+        - ""
         node_id: node_id
       properties:
         count:
           type: integer
+        ips:
+          items: {}
+          nullable: true
+          type: array
         node_id:
           type: string
         node_name:
@@ -18048,6 +18550,7 @@ components:
         email_id: email_id
         password: password
         smtp: smtp
+        apikey: apikey
         port: port
         email_provider: email_provider
         amazon_secret_key: amazon_secret_key
@@ -18058,6 +18561,8 @@ components:
         amazon_access_key:
           type: string
         amazon_secret_key:
+          type: string
+        apikey:
           type: string
         created_by_user_id:
           type: integer
@@ -18117,11 +18622,12 @@ components:
       type: object
     ModelExportReport:
       example:
-        duration: 6
-        updated_at: 1
+        to_timestamp: 1
+        updated_at: 5
         storage_path: storage_path
         report_id: report_id
         created_at: 0
+        from_timestamp: 6
         filters: filters
         type: type
         url: url
@@ -18129,16 +18635,18 @@ components:
       properties:
         created_at:
           type: integer
-        duration:
-          type: integer
         filters:
           type: string
+        from_timestamp:
+          type: integer
         report_id:
           type: string
         status:
           type: string
         storage_path:
           type: string
+        to_timestamp:
+          type: integer
         type:
           type: string
         updated_at:
@@ -18366,11 +18874,53 @@ components:
       required:
       - filters
       type: object
+    ModelGenerateLicenseRequest:
+      example:
+        last_name: last_name
+        company: company
+        resend_email: true
+        first_name: first_name
+        email: email
+      properties:
+        company:
+          type: string
+        email:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        resend_email:
+          type: boolean
+      required:
+      - company
+      - email
+      - first_name
+      - last_name
+      - resend_email
+      type: object
+    ModelGenerateLicenseResponse:
+      example:
+        success: true
+        generate_license_link: generate_license_link
+        message: message
+      properties:
+        generate_license_link:
+          type: string
+        message:
+          type: string
+        success:
+          type: boolean
+      required:
+      - message
+      - success
+      type: object
     ModelGenerateReportReq:
       example:
-        duration: 0
+        to_timestamp: 6
         options:
           sbom_format: syft-json@11.0.1
+        from_timestamp: 0
         filters:
           include_dead_nodes: true
           node_type: host
@@ -18407,18 +18957,10 @@ components:
           - severity_or_check_type
         report_type: pdf
       properties:
-        duration:
-          enum:
-          - 0
-          - 1
-          - 7
-          - 30
-          - 60
-          - 90
-          - 180
-          type: integer
         filters:
           $ref: '#/components/schemas/UtilsReportFilters'
+        from_timestamp:
+          type: integer
         options:
           $ref: '#/components/schemas/UtilsReportOptions'
         report_type:
@@ -18427,6 +18969,8 @@ components:
           - xlsx
           - sbom
           type: string
+        to_timestamp:
+          type: integer
       required:
       - report_type
       type: object
@@ -18663,6 +19207,22 @@ components:
       - cve_type
       - query_type
       - remediation_format
+      type: object
+    ModelGetAgentBinaryDownloadURLResponse:
+      example:
+        agent_binary_arm64_download_url: agent_binary_arm64_download_url
+        agent_binary_amd64_download_url: agent_binary_amd64_download_url
+        start_agent_script_download_url: start_agent_script_download_url
+        uninstall_agent_script_download_url: uninstall_agent_script_download_url
+      properties:
+        agent_binary_amd64_download_url:
+          type: string
+        agent_binary_arm64_download_url:
+          type: string
+        start_agent_script_download_url:
+          type: string
+        uninstall_agent_script_download_url:
+          type: string
       type: object
     ModelGetAgentConfigReq:
       example:
@@ -19275,9 +19835,15 @@ components:
         inbound_connections:
         - count: 2
           node_name: node_name
+          ips:
+          - ""
+          - ""
           node_id: node_id
         - count: 2
           node_name: node_name
+          ips:
+          - ""
+          - ""
           node_id: node_id
         availability_zone: availability_zone
         is_console_vm: true
@@ -19311,9 +19877,15 @@ components:
         outbound_connections:
         - count: 2
           node_name: node_name
+          ips:
+          - ""
+          - ""
           node_id: node_id
         - count: 2
           node_name: node_name
+          ips:
+          - ""
+          - ""
           node_id: node_id
         os: os
         local_cidr:
@@ -19852,6 +20424,7 @@ components:
       type: object
     ModelImageStub:
       example:
+        images: 0
         name: name
         id: id
         tags:
@@ -19860,6 +20433,8 @@ components:
       properties:
         id:
           type: string
+        images:
+          type: integer
         name:
           type: string
         tags:
@@ -20650,9 +21225,15 @@ components:
           inbound_connections:
           - count: 2
             node_name: node_name
+            ips:
+            - ""
+            - ""
             node_id: node_id
           - count: 2
             node_name: node_name
+            ips:
+            - ""
+            - ""
             node_id: node_id
           availability_zone: availability_zone
           is_console_vm: true
@@ -20686,9 +21267,15 @@ components:
           outbound_connections:
           - count: 2
             node_name: node_name
+            ips:
+            - ""
+            - ""
             node_id: node_id
           - count: 2
             node_name: node_name
+            ips:
+            - ""
+            - ""
             node_id: node_id
           os: os
           local_cidr:
@@ -21461,9 +22048,15 @@ components:
           inbound_connections:
           - count: 2
             node_name: node_name
+            ips:
+            - ""
+            - ""
             node_id: node_id
           - count: 2
             node_name: node_name
+            ips:
+            - ""
+            - ""
             node_id: node_id
           availability_zone: availability_zone
           is_console_vm: true
@@ -21497,9 +22090,15 @@ components:
           outbound_connections:
           - count: 2
             node_name: node_name
+            ips:
+            - ""
+            - ""
             node_id: node_id
           - count: 2
             node_name: node_name
+            ips:
+            - ""
+            - ""
             node_id: node_id
           os: os
           local_cidr:
@@ -21854,19 +22453,24 @@ components:
     ModelLicense:
       example:
         end_date: end_date
-        notification_threshold_percentage: 1
+        no_of_registries: 5
+        notification_threshold_percentage: 2
         current_hosts: 0
         is_active: true
         license_type: license_type
-        notification_threshold_updated_at: 5
+        notification_threshold_updated_at: 7
         registry_credentials:
           registry_url: registry_url
           password: password
           username: username
         description: description
-        no_of_hosts: 6
+        no_of_hosts: 1
+        no_of_images_in_registry: 5
         message: message
         deepfence_support_email: deepfence_support_email
+        license_email: license_email
+        no_of_cloud_accounts: 6
+        license_email_domain: license_email_domain
         key: key
         start_date: start_date
       properties:
@@ -21882,11 +22486,21 @@ components:
           type: boolean
         key:
           type: string
+        license_email:
+          type: string
+        license_email_domain:
+          type: string
         license_type:
           type: string
         message:
           type: string
+        no_of_cloud_accounts:
+          type: integer
         no_of_hosts:
+          type: integer
+        no_of_images_in_registry:
+          type: integer
+        no_of_registries:
           type: integer
         notification_threshold_percentage:
           type: integer
@@ -21928,11 +22542,17 @@ components:
       example:
         access_token: access_token
         refresh_token: refresh_token
+        email_domain: email_domain
         license_registered: true
         onboarding_required: true
         password_invalidated: true
+        license_key: license_key
       properties:
         access_token:
+          type: string
+        email_domain:
+          type: string
+        license_key:
           type: string
         license_registered:
           type: boolean
@@ -21944,6 +22564,8 @@ components:
           type: string
       required:
       - access_token
+      - email_domain
+      - license_key
       - license_registered
       - onboarding_required
       - password_invalidated
@@ -22337,60 +22959,43 @@ components:
       type: object
     ModelNetworkAlert:
       example:
-        internal: internal
+        references: references
         destination_port: 1
         kubernetes_cluster_name: kubernetes_cluster_name
         masked: true
         created_at: 6
-        description: description
-        request_method: request_method
-        http_user_agent: http_user_agent
         source_ip: source_ip
-        protocol: 5
+        protocol: protocol
+        base_64_payload: base_64_payload
         destination_ip: destination_ip
         event_type: event_type
         node_type: node_type
-        http_content_type: ""
-        updated_at: 9
-        ip_reputation: ip_reputation
-        source_port: 7
+        updated_at: 5
+        source_port: 5
         direction: direction
-        request_printable_payload: request_printable_payload
         severity: severity
         summary: summary
         headers: headers
-        geoip: geoip
         kubernetes_cluster_id: kubernetes_cluster_id
-        local_port: 5
         count: 0
-        length: ""
-        resource_type: resource_type
         http_type: http_type
-        response_printable_payload: ""
-        app_proto: app_proto
         url: url
         pod_name: pod_name
         tags: tags
         rule_id: rule_id
         container_name: container_name
-        encrypted: encrypted
+        encrypted: true
         techniques:
         - techniques
         - techniques
-        request_path: request_path
         tactics:
         - tactics
         - tactics
-        matched: matched
         category: category
-        request_payload: request_payload
         host_name: host_name
-        response_payload: ""
         node_id: node_id
-        severity_score: 2.3021358869347655
-        status: ""
       properties:
-        app_proto:
+        base_64_payload:
           type: string
         category:
           type: string
@@ -22400,8 +23005,6 @@ components:
           type: integer
         created_at:
           type: integer
-        description:
-          type: string
         destination_ip:
           type: string
         destination_port:
@@ -22409,35 +23012,21 @@ components:
         direction:
           type: string
         encrypted:
-          type: string
+          type: boolean
         event_type:
-          type: string
-        geoip:
           type: string
         headers:
           type: string
         host_name:
           type: string
-        http_content_type: {}
         http_type:
-          type: string
-        http_user_agent:
-          type: string
-        internal:
-          type: string
-        ip_reputation:
           type: string
         kubernetes_cluster_id:
           type: string
         kubernetes_cluster_name:
           type: string
-        length: {}
-        local_port:
-          type: integer
         masked:
           type: boolean
-        matched:
-          type: string
         node_id:
           type: string
         node_type:
@@ -22445,30 +23034,17 @@ components:
         pod_name:
           type: string
         protocol:
-          type: integer
-        request_method:
           type: string
-        request_path:
+        references:
           type: string
-        request_payload:
-          type: string
-        request_printable_payload:
-          type: string
-        resource_type:
-          type: string
-        response_payload: {}
-        response_printable_payload: {}
         rule_id:
           type: string
         severity:
           type: string
-        severity_score:
-          type: number
         source_ip:
           type: string
         source_port:
           type: integer
-        status: {}
         summary:
           type: string
         tactics:
@@ -22488,48 +23064,31 @@ components:
         url:
           type: string
       required:
-      - app_proto
+      - base_64_payload
       - category
       - container_name
       - count
       - created_at
-      - description
       - destination_ip
       - destination_port
       - direction
       - encrypted
       - event_type
-      - geoip
       - headers
       - host_name
-      - http_content_type
       - http_type
-      - http_user_agent
-      - internal
-      - ip_reputation
       - kubernetes_cluster_id
       - kubernetes_cluster_name
-      - length
-      - local_port
       - masked
-      - matched
       - node_id
       - node_type
       - pod_name
       - protocol
-      - request_method
-      - request_path
-      - request_payload
-      - request_printable_payload
-      - resource_type
-      - response_payload
-      - response_printable_payload
+      - references
       - rule_id
       - severity
-      - severity_score
       - source_ip
       - source_port
-      - status
       - summary
       - tactics
       - tags
@@ -23080,6 +23639,7 @@ components:
         event_type: event_type
         node_type: node_type
         rss: 9
+        top: top
         updated_at: 2
         state: state
         group: group
@@ -23092,10 +23652,10 @@ components:
         command: command
         container_image: container_image
         netstat: netstat
+        users: users
         pod_name: pod_name
         rule_id: rule_id
         container_name: container_name
-        failure: failure
         techniques:
         - techniques
         - techniques
@@ -23131,8 +23691,6 @@ components:
         event_type:
           type: string
         exec_path:
-          type: string
-        failure:
           type: string
         group:
           type: string
@@ -23182,11 +23740,15 @@ components:
             type: string
           nullable: true
           type: array
+        top:
+          type: string
         updated_at:
           type: integer
         user:
           type: string
         user_name:
+          type: string
+        users:
           type: string
         vsize:
           minimum: 0
@@ -23203,7 +23765,6 @@ components:
       - created_at
       - event_type
       - exec_path
-      - failure
       - group
       - kubernetes_cluster_id
       - kubernetes_cluster_name
@@ -23225,9 +23786,11 @@ components:
       - summary
       - tactics
       - techniques
+      - top
       - updated_at
       - user
       - user_name
+      - users
       - vsize
       type: object
     ModelProcessAlertRule:
@@ -23352,11 +23915,27 @@ components:
       type: object
     ModelRegisterLicenseRequest:
       example:
+        email: email
         license_key: license_key
       properties:
+        email:
+          type: string
         license_key:
           type: string
       required:
+      - license_key
+      type: object
+    ModelRegisterLicenseResponse:
+      example:
+        email_domain: email_domain
+        license_key: license_key
+      properties:
+        email_domain:
+          type: string
+        license_key:
+          type: string
+      required:
+      - email_domain
       - license_key
       type: object
     ModelRegistryAccount:
@@ -23815,9 +24394,52 @@ components:
         window:
           offset: 0
           size: 6
+        image_stub_filter:
+          compare_filter:
+          - greater_than: true
+            field_value: ""
+            field_name: field_name
+          - greater_than: true
+            field_value: ""
+            field_name: field_name
+          not_contains_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          order_filter:
+            order_fields:
+            - size: 0
+              descending: true
+              field_name: field_name
+            - size: 0
+              descending: true
+              field_name: field_name
+          contains_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          contains_in_array_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          match_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          match_in_array_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
         registry_id: registry_id
       properties:
         image_filter:
+          $ref: '#/components/schemas/ReportersFieldsFilters'
+        image_stub_filter:
           $ref: '#/components/schemas/ReportersFieldsFilters'
         registry_id:
           type: string
@@ -23825,6 +24447,7 @@ components:
           $ref: '#/components/schemas/ModelFetchWindow'
       required:
       - image_filter
+      - image_stub_filter
       - registry_id
       - window
       type: object
@@ -24601,7 +25224,15 @@ components:
         - result_ids
         scan_type: SecretScan
         scan_id: scan_id
+        integration_ids:
+        - 0
+        - 0
       properties:
+        integration_ids:
+          items:
+            type: integer
+          nullable: true
+          type: array
         notify_individual:
           type: boolean
         result_ids:
@@ -25116,6 +25747,7 @@ components:
         key:
           enum:
           - console_url
+          - file_server_url
           - inactive_delete_scan_results
           - inactive_delete_alerts
           type: string
@@ -25176,23 +25808,23 @@ components:
     ModelSummary:
       example:
         images: 0
-        scans_total: 5
+        repositories: 1
+        scans_total: 2
         registries: 6
-        scans_complete: 1
+        scans_complete: 5
         scans_in_progress: 5
-        tags: 2
       properties:
         images:
           type: integer
         registries:
+          type: integer
+        repositories:
           type: integer
         scans_complete:
           type: integer
         scans_in_progress:
           type: integer
         scans_total:
-          type: integer
-        tags:
           type: integer
       type: object
     ModelTopologyDeltaReq:
@@ -27086,6 +27718,24 @@ components:
       - user_id
       type: object
     SqlNullTime:
+      type: object
+    ThreatintelRulesWithDirection:
+      example:
+        inbound:
+          key: inbound
+        outbound:
+          key: outbound
+      properties:
+        inbound:
+          additionalProperties:
+            type: string
+          nullable: true
+          type: object
+        outbound:
+          additionalProperties:
+            type: string
+          nullable: true
+          type: object
       type: object
     UtilsAdvancedReportFilters:
       example:

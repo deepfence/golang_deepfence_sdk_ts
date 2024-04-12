@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.0.0
+API version: 2.2.0
 Contact: community@deepfence.io
 */
 
@@ -227,7 +227,7 @@ func (o *ModelProcessAlertRule) GetTacticsOk() ([]string, bool) {
 
 // HasTactics returns a boolean if a field has been set.
 func (o *ModelProcessAlertRule) HasTactics() bool {
-	if o != nil && IsNil(o.Tactics) {
+	if o != nil && !IsNil(o.Tactics) {
 		return true
 	}
 
@@ -260,7 +260,7 @@ func (o *ModelProcessAlertRule) GetTechniquesOk() ([]string, bool) {
 
 // HasTechniques returns a boolean if a field has been set.
 func (o *ModelProcessAlertRule) HasTechniques() bool {
-	if o != nil && IsNil(o.Techniques) {
+	if o != nil && !IsNil(o.Techniques) {
 		return true
 	}
 

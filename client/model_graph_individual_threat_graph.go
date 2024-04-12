@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.0.0
+API version: 2.2.0
 Contact: community@deepfence.io
 */
 
@@ -64,7 +64,7 @@ func (o *GraphIndividualThreatGraph) GetAttackPathOk() ([][]string, bool) {
 
 // HasAttackPath returns a boolean if a field has been set.
 func (o *GraphIndividualThreatGraph) HasAttackPath() bool {
-	if o != nil && IsNil(o.AttackPath) {
+	if o != nil && !IsNil(o.AttackPath) {
 		return true
 	}
 
@@ -129,7 +129,7 @@ func (o *GraphIndividualThreatGraph) GetCveIdOk() ([]string, bool) {
 
 // HasCveId returns a boolean if a field has been set.
 func (o *GraphIndividualThreatGraph) HasCveId() bool {
-	if o != nil && IsNil(o.CveId) {
+	if o != nil && !IsNil(o.CveId) {
 		return true
 	}
 
@@ -162,7 +162,7 @@ func (o *GraphIndividualThreatGraph) GetPortsOk() ([]interface{}, bool) {
 
 // HasPorts returns a boolean if a field has been set.
 func (o *GraphIndividualThreatGraph) HasPorts() bool {
-	if o != nil && IsNil(o.Ports) {
+	if o != nil && !IsNil(o.Ports) {
 		return true
 	}
 

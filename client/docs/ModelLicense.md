@@ -10,9 +10,14 @@ Name | Type | Description | Notes
 **EndDate** | Pointer to **string** |  | [optional] 
 **IsActive** | Pointer to **bool** |  | [optional] 
 **Key** | Pointer to **string** |  | [optional] 
+**LicenseEmail** | Pointer to **string** |  | [optional] 
+**LicenseEmailDomain** | Pointer to **string** |  | [optional] 
 **LicenseType** | Pointer to **string** |  | [optional] 
 **Message** | Pointer to **string** |  | [optional] 
+**NoOfCloudAccounts** | Pointer to **int32** |  | [optional] 
 **NoOfHosts** | Pointer to **int32** |  | [optional] 
+**NoOfImagesInRegistry** | Pointer to **int32** |  | [optional] 
+**NoOfRegistries** | Pointer to **int32** |  | [optional] 
 **NotificationThresholdPercentage** | Pointer to **int32** |  | [optional] 
 **NotificationThresholdUpdatedAt** | Pointer to **int32** |  | [optional] 
 **RegistryCredentials** | Pointer to [**ModelRegistryCredentials**](ModelRegistryCredentials.md) |  | [optional] 
@@ -187,6 +192,56 @@ SetKey sets Key field to given value.
 
 HasKey returns a boolean if a field has been set.
 
+### GetLicenseEmail
+
+`func (o *ModelLicense) GetLicenseEmail() string`
+
+GetLicenseEmail returns the LicenseEmail field if non-nil, zero value otherwise.
+
+### GetLicenseEmailOk
+
+`func (o *ModelLicense) GetLicenseEmailOk() (*string, bool)`
+
+GetLicenseEmailOk returns a tuple with the LicenseEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLicenseEmail
+
+`func (o *ModelLicense) SetLicenseEmail(v string)`
+
+SetLicenseEmail sets LicenseEmail field to given value.
+
+### HasLicenseEmail
+
+`func (o *ModelLicense) HasLicenseEmail() bool`
+
+HasLicenseEmail returns a boolean if a field has been set.
+
+### GetLicenseEmailDomain
+
+`func (o *ModelLicense) GetLicenseEmailDomain() string`
+
+GetLicenseEmailDomain returns the LicenseEmailDomain field if non-nil, zero value otherwise.
+
+### GetLicenseEmailDomainOk
+
+`func (o *ModelLicense) GetLicenseEmailDomainOk() (*string, bool)`
+
+GetLicenseEmailDomainOk returns a tuple with the LicenseEmailDomain field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLicenseEmailDomain
+
+`func (o *ModelLicense) SetLicenseEmailDomain(v string)`
+
+SetLicenseEmailDomain sets LicenseEmailDomain field to given value.
+
+### HasLicenseEmailDomain
+
+`func (o *ModelLicense) HasLicenseEmailDomain() bool`
+
+HasLicenseEmailDomain returns a boolean if a field has been set.
+
 ### GetLicenseType
 
 `func (o *ModelLicense) GetLicenseType() string`
@@ -237,6 +292,31 @@ SetMessage sets Message field to given value.
 
 HasMessage returns a boolean if a field has been set.
 
+### GetNoOfCloudAccounts
+
+`func (o *ModelLicense) GetNoOfCloudAccounts() int32`
+
+GetNoOfCloudAccounts returns the NoOfCloudAccounts field if non-nil, zero value otherwise.
+
+### GetNoOfCloudAccountsOk
+
+`func (o *ModelLicense) GetNoOfCloudAccountsOk() (*int32, bool)`
+
+GetNoOfCloudAccountsOk returns a tuple with the NoOfCloudAccounts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNoOfCloudAccounts
+
+`func (o *ModelLicense) SetNoOfCloudAccounts(v int32)`
+
+SetNoOfCloudAccounts sets NoOfCloudAccounts field to given value.
+
+### HasNoOfCloudAccounts
+
+`func (o *ModelLicense) HasNoOfCloudAccounts() bool`
+
+HasNoOfCloudAccounts returns a boolean if a field has been set.
+
 ### GetNoOfHosts
 
 `func (o *ModelLicense) GetNoOfHosts() int32`
@@ -261,6 +341,56 @@ SetNoOfHosts sets NoOfHosts field to given value.
 `func (o *ModelLicense) HasNoOfHosts() bool`
 
 HasNoOfHosts returns a boolean if a field has been set.
+
+### GetNoOfImagesInRegistry
+
+`func (o *ModelLicense) GetNoOfImagesInRegistry() int32`
+
+GetNoOfImagesInRegistry returns the NoOfImagesInRegistry field if non-nil, zero value otherwise.
+
+### GetNoOfImagesInRegistryOk
+
+`func (o *ModelLicense) GetNoOfImagesInRegistryOk() (*int32, bool)`
+
+GetNoOfImagesInRegistryOk returns a tuple with the NoOfImagesInRegistry field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNoOfImagesInRegistry
+
+`func (o *ModelLicense) SetNoOfImagesInRegistry(v int32)`
+
+SetNoOfImagesInRegistry sets NoOfImagesInRegistry field to given value.
+
+### HasNoOfImagesInRegistry
+
+`func (o *ModelLicense) HasNoOfImagesInRegistry() bool`
+
+HasNoOfImagesInRegistry returns a boolean if a field has been set.
+
+### GetNoOfRegistries
+
+`func (o *ModelLicense) GetNoOfRegistries() int32`
+
+GetNoOfRegistries returns the NoOfRegistries field if non-nil, zero value otherwise.
+
+### GetNoOfRegistriesOk
+
+`func (o *ModelLicense) GetNoOfRegistriesOk() (*int32, bool)`
+
+GetNoOfRegistriesOk returns a tuple with the NoOfRegistries field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNoOfRegistries
+
+`func (o *ModelLicense) SetNoOfRegistries(v int32)`
+
+SetNoOfRegistries sets NoOfRegistries field to given value.
+
+### HasNoOfRegistries
+
+`func (o *ModelLicense) HasNoOfRegistries() bool`
+
+HasNoOfRegistries returns a boolean if a field has been set.
 
 ### GetNotificationThresholdPercentage
 

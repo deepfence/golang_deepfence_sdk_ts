@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Email** | Pointer to **string** |  | [optional] 
 **LicenseKey** | **string** |  | 
 
 ## Methods
@@ -24,6 +25,31 @@ will change when the set of required properties is changed
 NewModelRegisterLicenseRequestWithDefaults instantiates a new ModelRegisterLicenseRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetEmail
+
+`func (o *ModelRegisterLicenseRequest) GetEmail() string`
+
+GetEmail returns the Email field if non-nil, zero value otherwise.
+
+### GetEmailOk
+
+`func (o *ModelRegisterLicenseRequest) GetEmailOk() (*string, bool)`
+
+GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmail
+
+`func (o *ModelRegisterLicenseRequest) SetEmail(v string)`
+
+SetEmail sets Email field to given value.
+
+### HasEmail
+
+`func (o *ModelRegisterLicenseRequest) HasEmail() bool`
+
+HasEmail returns a boolean if a field has been set.
 
 ### GetLicenseKey
 

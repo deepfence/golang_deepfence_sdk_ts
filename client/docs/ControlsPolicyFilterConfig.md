@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**EnablePolicyLogs** | Pointer to **bool** |  | [optional] 
+**IgnoredRemoteHosts** | Pointer to **[]string** |  | [optional] 
 **IgnoredRemoteIps** | **[]string** |  | 
 **NodeId** | **string** |  | 
 **Policies** | [**[]ControlsNetworkPolicy**](ControlsNetworkPolicy.md) |  | 
@@ -29,6 +31,66 @@ NewControlsPolicyFilterConfigWithDefaults instantiates a new ControlsPolicyFilte
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetEnablePolicyLogs
+
+`func (o *ControlsPolicyFilterConfig) GetEnablePolicyLogs() bool`
+
+GetEnablePolicyLogs returns the EnablePolicyLogs field if non-nil, zero value otherwise.
+
+### GetEnablePolicyLogsOk
+
+`func (o *ControlsPolicyFilterConfig) GetEnablePolicyLogsOk() (*bool, bool)`
+
+GetEnablePolicyLogsOk returns a tuple with the EnablePolicyLogs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnablePolicyLogs
+
+`func (o *ControlsPolicyFilterConfig) SetEnablePolicyLogs(v bool)`
+
+SetEnablePolicyLogs sets EnablePolicyLogs field to given value.
+
+### HasEnablePolicyLogs
+
+`func (o *ControlsPolicyFilterConfig) HasEnablePolicyLogs() bool`
+
+HasEnablePolicyLogs returns a boolean if a field has been set.
+
+### GetIgnoredRemoteHosts
+
+`func (o *ControlsPolicyFilterConfig) GetIgnoredRemoteHosts() []string`
+
+GetIgnoredRemoteHosts returns the IgnoredRemoteHosts field if non-nil, zero value otherwise.
+
+### GetIgnoredRemoteHostsOk
+
+`func (o *ControlsPolicyFilterConfig) GetIgnoredRemoteHostsOk() (*[]string, bool)`
+
+GetIgnoredRemoteHostsOk returns a tuple with the IgnoredRemoteHosts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIgnoredRemoteHosts
+
+`func (o *ControlsPolicyFilterConfig) SetIgnoredRemoteHosts(v []string)`
+
+SetIgnoredRemoteHosts sets IgnoredRemoteHosts field to given value.
+
+### HasIgnoredRemoteHosts
+
+`func (o *ControlsPolicyFilterConfig) HasIgnoredRemoteHosts() bool`
+
+HasIgnoredRemoteHosts returns a boolean if a field has been set.
+
+### SetIgnoredRemoteHostsNil
+
+`func (o *ControlsPolicyFilterConfig) SetIgnoredRemoteHostsNil(b bool)`
+
+ SetIgnoredRemoteHostsNil sets the value for IgnoredRemoteHosts to be an explicit nil
+
+### UnsetIgnoredRemoteHosts
+`func (o *ControlsPolicyFilterConfig) UnsetIgnoredRemoteHosts()`
+
+UnsetIgnoredRemoteHosts ensures that no value is present for IgnoredRemoteHosts, not even an explicit nil
 ### GetIgnoredRemoteIps
 
 `func (o *ControlsPolicyFilterConfig) GetIgnoredRemoteIps() []string`

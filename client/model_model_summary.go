@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.0.0
+API version: 2.2.0
 Contact: community@deepfence.io
 */
 
@@ -22,10 +22,10 @@ var _ MappedNullable = &ModelSummary{}
 type ModelSummary struct {
 	Images *int32 `json:"images,omitempty"`
 	Registries *int32 `json:"registries,omitempty"`
+	Repositories *int32 `json:"repositories,omitempty"`
 	ScansComplete *int32 `json:"scans_complete,omitempty"`
 	ScansInProgress *int32 `json:"scans_in_progress,omitempty"`
 	ScansTotal *int32 `json:"scans_total,omitempty"`
-	Tags *int32 `json:"tags,omitempty"`
 }
 
 // NewModelSummary instantiates a new ModelSummary object
@@ -107,6 +107,38 @@ func (o *ModelSummary) HasRegistries() bool {
 // SetRegistries gets a reference to the given int32 and assigns it to the Registries field.
 func (o *ModelSummary) SetRegistries(v int32) {
 	o.Registries = &v
+}
+
+// GetRepositories returns the Repositories field value if set, zero value otherwise.
+func (o *ModelSummary) GetRepositories() int32 {
+	if o == nil || IsNil(o.Repositories) {
+		var ret int32
+		return ret
+	}
+	return *o.Repositories
+}
+
+// GetRepositoriesOk returns a tuple with the Repositories field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelSummary) GetRepositoriesOk() (*int32, bool) {
+	if o == nil || IsNil(o.Repositories) {
+		return nil, false
+	}
+	return o.Repositories, true
+}
+
+// HasRepositories returns a boolean if a field has been set.
+func (o *ModelSummary) HasRepositories() bool {
+	if o != nil && !IsNil(o.Repositories) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepositories gets a reference to the given int32 and assigns it to the Repositories field.
+func (o *ModelSummary) SetRepositories(v int32) {
+	o.Repositories = &v
 }
 
 // GetScansComplete returns the ScansComplete field value if set, zero value otherwise.
@@ -205,38 +237,6 @@ func (o *ModelSummary) SetScansTotal(v int32) {
 	o.ScansTotal = &v
 }
 
-// GetTags returns the Tags field value if set, zero value otherwise.
-func (o *ModelSummary) GetTags() int32 {
-	if o == nil || IsNil(o.Tags) {
-		var ret int32
-		return ret
-	}
-	return *o.Tags
-}
-
-// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ModelSummary) GetTagsOk() (*int32, bool) {
-	if o == nil || IsNil(o.Tags) {
-		return nil, false
-	}
-	return o.Tags, true
-}
-
-// HasTags returns a boolean if a field has been set.
-func (o *ModelSummary) HasTags() bool {
-	if o != nil && !IsNil(o.Tags) {
-		return true
-	}
-
-	return false
-}
-
-// SetTags gets a reference to the given int32 and assigns it to the Tags field.
-func (o *ModelSummary) SetTags(v int32) {
-	o.Tags = &v
-}
-
 func (o ModelSummary) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -253,6 +253,9 @@ func (o ModelSummary) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Registries) {
 		toSerialize["registries"] = o.Registries
 	}
+	if !IsNil(o.Repositories) {
+		toSerialize["repositories"] = o.Repositories
+	}
 	if !IsNil(o.ScansComplete) {
 		toSerialize["scans_complete"] = o.ScansComplete
 	}
@@ -261,9 +264,6 @@ func (o ModelSummary) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ScansTotal) {
 		toSerialize["scans_total"] = o.ScansTotal
-	}
-	if !IsNil(o.Tags) {
-		toSerialize["tags"] = o.Tags
 	}
 	return toSerialize, nil
 }

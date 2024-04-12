@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.0.0
+API version: 2.2.0
 Contact: community@deepfence.io
 */
 
@@ -3069,7 +3069,7 @@ type ApiGetNetworkRulesRequest struct {
 	ApiService *AgentConfigAPIService
 }
 
-func (r ApiGetNetworkRulesRequest) Execute() (map[string]string, *http.Response, error) {
+func (r ApiGetNetworkRulesRequest) Execute() (*ThreatintelRulesWithDirection, *http.Response, error) {
 	return r.ApiService.GetNetworkRulesExecute(r)
 }
 
@@ -3089,13 +3089,13 @@ func (a *AgentConfigAPIService) GetNetworkRules(ctx context.Context) ApiGetNetwo
 }
 
 // Execute executes the request
-//  @return map[string]string
-func (a *AgentConfigAPIService) GetNetworkRulesExecute(r ApiGetNetworkRulesRequest) (map[string]string, *http.Response, error) {
+//  @return ThreatintelRulesWithDirection
+func (a *AgentConfigAPIService) GetNetworkRulesExecute(r ApiGetNetworkRulesRequest) (*ThreatintelRulesWithDirection, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]string
+		localVarReturnValue  *ThreatintelRulesWithDirection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgentConfigAPIService.GetNetworkRules")

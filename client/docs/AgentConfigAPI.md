@@ -1587,7 +1587,7 @@ Name | Type | Description  | Notes
 
 ## GetNetworkRules
 
-> map[string]string GetNetworkRules(ctx).Execute()
+> ThreatintelRulesWithDirection GetNetworkRules(ctx).Execute()
 
 Get Network Rules
 
@@ -1614,7 +1614,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AgentConfigAPI.GetNetworkRules``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetNetworkRules`: map[string]string
+	// response from `GetNetworkRules`: ThreatintelRulesWithDirection
 	fmt.Fprintf(os.Stdout, "Response from `AgentConfigAPI.GetNetworkRules`: %v\n", resp)
 }
 ```
@@ -1630,7 +1630,7 @@ Other parameters are passed through a pointer to a apiGetNetworkRulesRequest str
 
 ### Return type
 
-**map[string]string**
+[**ThreatintelRulesWithDirection**](ThreatintelRulesWithDirection.md)
 
 ### Authorization
 
@@ -2123,7 +2123,7 @@ import (
 )
 
 func main() {
-	controlsThreatIntelInfo := *openapiclient.NewControlsThreatIntelInfo([]string{"IgnoredAlertRuleIds_example"}, []string{"InternalIps_example"}, "NetworkAlertRulesUrl_example", "RulesHash_example", int32(123)) // ControlsThreatIntelInfo |  (optional)
+	controlsThreatIntelInfo := *openapiclient.NewControlsThreatIntelInfo("CloudControlsHash_example", "CloudControlsUrl_example", []string{"IgnoredAlertRuleIds_example"}, []string{"InternalIps_example"}, "MalwareScannerRulesHash_example", "MalwareScannerRulesUrl_example", "NetworkAlertRulesUrl_example", "RulesHash_example", "SecretScannerRulesHash_example", "SecretScannerRulesUrl_example", int32(123)) // ControlsThreatIntelInfo |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

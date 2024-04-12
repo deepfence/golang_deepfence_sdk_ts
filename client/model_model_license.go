@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.0.0
+API version: 2.2.0
 Contact: community@deepfence.io
 */
 
@@ -26,9 +26,14 @@ type ModelLicense struct {
 	EndDate *string `json:"end_date,omitempty"`
 	IsActive *bool `json:"is_active,omitempty"`
 	Key *string `json:"key,omitempty"`
+	LicenseEmail *string `json:"license_email,omitempty"`
+	LicenseEmailDomain *string `json:"license_email_domain,omitempty"`
 	LicenseType *string `json:"license_type,omitempty"`
 	Message *string `json:"message,omitempty"`
+	NoOfCloudAccounts *int32 `json:"no_of_cloud_accounts,omitempty"`
 	NoOfHosts *int32 `json:"no_of_hosts,omitempty"`
+	NoOfImagesInRegistry *int32 `json:"no_of_images_in_registry,omitempty"`
+	NoOfRegistries *int32 `json:"no_of_registries,omitempty"`
 	NotificationThresholdPercentage *int32 `json:"notification_threshold_percentage,omitempty"`
 	NotificationThresholdUpdatedAt *int32 `json:"notification_threshold_updated_at,omitempty"`
 	RegistryCredentials *ModelRegistryCredentials `json:"registry_credentials,omitempty"`
@@ -244,6 +249,70 @@ func (o *ModelLicense) SetKey(v string) {
 	o.Key = &v
 }
 
+// GetLicenseEmail returns the LicenseEmail field value if set, zero value otherwise.
+func (o *ModelLicense) GetLicenseEmail() string {
+	if o == nil || IsNil(o.LicenseEmail) {
+		var ret string
+		return ret
+	}
+	return *o.LicenseEmail
+}
+
+// GetLicenseEmailOk returns a tuple with the LicenseEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelLicense) GetLicenseEmailOk() (*string, bool) {
+	if o == nil || IsNil(o.LicenseEmail) {
+		return nil, false
+	}
+	return o.LicenseEmail, true
+}
+
+// HasLicenseEmail returns a boolean if a field has been set.
+func (o *ModelLicense) HasLicenseEmail() bool {
+	if o != nil && !IsNil(o.LicenseEmail) {
+		return true
+	}
+
+	return false
+}
+
+// SetLicenseEmail gets a reference to the given string and assigns it to the LicenseEmail field.
+func (o *ModelLicense) SetLicenseEmail(v string) {
+	o.LicenseEmail = &v
+}
+
+// GetLicenseEmailDomain returns the LicenseEmailDomain field value if set, zero value otherwise.
+func (o *ModelLicense) GetLicenseEmailDomain() string {
+	if o == nil || IsNil(o.LicenseEmailDomain) {
+		var ret string
+		return ret
+	}
+	return *o.LicenseEmailDomain
+}
+
+// GetLicenseEmailDomainOk returns a tuple with the LicenseEmailDomain field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelLicense) GetLicenseEmailDomainOk() (*string, bool) {
+	if o == nil || IsNil(o.LicenseEmailDomain) {
+		return nil, false
+	}
+	return o.LicenseEmailDomain, true
+}
+
+// HasLicenseEmailDomain returns a boolean if a field has been set.
+func (o *ModelLicense) HasLicenseEmailDomain() bool {
+	if o != nil && !IsNil(o.LicenseEmailDomain) {
+		return true
+	}
+
+	return false
+}
+
+// SetLicenseEmailDomain gets a reference to the given string and assigns it to the LicenseEmailDomain field.
+func (o *ModelLicense) SetLicenseEmailDomain(v string) {
+	o.LicenseEmailDomain = &v
+}
+
 // GetLicenseType returns the LicenseType field value if set, zero value otherwise.
 func (o *ModelLicense) GetLicenseType() string {
 	if o == nil || IsNil(o.LicenseType) {
@@ -308,6 +377,38 @@ func (o *ModelLicense) SetMessage(v string) {
 	o.Message = &v
 }
 
+// GetNoOfCloudAccounts returns the NoOfCloudAccounts field value if set, zero value otherwise.
+func (o *ModelLicense) GetNoOfCloudAccounts() int32 {
+	if o == nil || IsNil(o.NoOfCloudAccounts) {
+		var ret int32
+		return ret
+	}
+	return *o.NoOfCloudAccounts
+}
+
+// GetNoOfCloudAccountsOk returns a tuple with the NoOfCloudAccounts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelLicense) GetNoOfCloudAccountsOk() (*int32, bool) {
+	if o == nil || IsNil(o.NoOfCloudAccounts) {
+		return nil, false
+	}
+	return o.NoOfCloudAccounts, true
+}
+
+// HasNoOfCloudAccounts returns a boolean if a field has been set.
+func (o *ModelLicense) HasNoOfCloudAccounts() bool {
+	if o != nil && !IsNil(o.NoOfCloudAccounts) {
+		return true
+	}
+
+	return false
+}
+
+// SetNoOfCloudAccounts gets a reference to the given int32 and assigns it to the NoOfCloudAccounts field.
+func (o *ModelLicense) SetNoOfCloudAccounts(v int32) {
+	o.NoOfCloudAccounts = &v
+}
+
 // GetNoOfHosts returns the NoOfHosts field value if set, zero value otherwise.
 func (o *ModelLicense) GetNoOfHosts() int32 {
 	if o == nil || IsNil(o.NoOfHosts) {
@@ -338,6 +439,70 @@ func (o *ModelLicense) HasNoOfHosts() bool {
 // SetNoOfHosts gets a reference to the given int32 and assigns it to the NoOfHosts field.
 func (o *ModelLicense) SetNoOfHosts(v int32) {
 	o.NoOfHosts = &v
+}
+
+// GetNoOfImagesInRegistry returns the NoOfImagesInRegistry field value if set, zero value otherwise.
+func (o *ModelLicense) GetNoOfImagesInRegistry() int32 {
+	if o == nil || IsNil(o.NoOfImagesInRegistry) {
+		var ret int32
+		return ret
+	}
+	return *o.NoOfImagesInRegistry
+}
+
+// GetNoOfImagesInRegistryOk returns a tuple with the NoOfImagesInRegistry field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelLicense) GetNoOfImagesInRegistryOk() (*int32, bool) {
+	if o == nil || IsNil(o.NoOfImagesInRegistry) {
+		return nil, false
+	}
+	return o.NoOfImagesInRegistry, true
+}
+
+// HasNoOfImagesInRegistry returns a boolean if a field has been set.
+func (o *ModelLicense) HasNoOfImagesInRegistry() bool {
+	if o != nil && !IsNil(o.NoOfImagesInRegistry) {
+		return true
+	}
+
+	return false
+}
+
+// SetNoOfImagesInRegistry gets a reference to the given int32 and assigns it to the NoOfImagesInRegistry field.
+func (o *ModelLicense) SetNoOfImagesInRegistry(v int32) {
+	o.NoOfImagesInRegistry = &v
+}
+
+// GetNoOfRegistries returns the NoOfRegistries field value if set, zero value otherwise.
+func (o *ModelLicense) GetNoOfRegistries() int32 {
+	if o == nil || IsNil(o.NoOfRegistries) {
+		var ret int32
+		return ret
+	}
+	return *o.NoOfRegistries
+}
+
+// GetNoOfRegistriesOk returns a tuple with the NoOfRegistries field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelLicense) GetNoOfRegistriesOk() (*int32, bool) {
+	if o == nil || IsNil(o.NoOfRegistries) {
+		return nil, false
+	}
+	return o.NoOfRegistries, true
+}
+
+// HasNoOfRegistries returns a boolean if a field has been set.
+func (o *ModelLicense) HasNoOfRegistries() bool {
+	if o != nil && !IsNil(o.NoOfRegistries) {
+		return true
+	}
+
+	return false
+}
+
+// SetNoOfRegistries gets a reference to the given int32 and assigns it to the NoOfRegistries field.
+func (o *ModelLicense) SetNoOfRegistries(v int32) {
+	o.NoOfRegistries = &v
 }
 
 // GetNotificationThresholdPercentage returns the NotificationThresholdPercentage field value if set, zero value otherwise.
@@ -496,14 +661,29 @@ func (o ModelLicense) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
+	if !IsNil(o.LicenseEmail) {
+		toSerialize["license_email"] = o.LicenseEmail
+	}
+	if !IsNil(o.LicenseEmailDomain) {
+		toSerialize["license_email_domain"] = o.LicenseEmailDomain
+	}
 	if !IsNil(o.LicenseType) {
 		toSerialize["license_type"] = o.LicenseType
 	}
 	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
+	if !IsNil(o.NoOfCloudAccounts) {
+		toSerialize["no_of_cloud_accounts"] = o.NoOfCloudAccounts
+	}
 	if !IsNil(o.NoOfHosts) {
 		toSerialize["no_of_hosts"] = o.NoOfHosts
+	}
+	if !IsNil(o.NoOfImagesInRegistry) {
+		toSerialize["no_of_images_in_registry"] = o.NoOfImagesInRegistry
+	}
+	if !IsNil(o.NoOfRegistries) {
+		toSerialize["no_of_registries"] = o.NoOfRegistries
 	}
 	if !IsNil(o.NotificationThresholdPercentage) {
 		toSerialize["notification_threshold_percentage"] = o.NotificationThresholdPercentage

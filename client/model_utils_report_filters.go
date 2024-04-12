@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.0.0
+API version: 2.2.0
 Contact: community@deepfence.io
 */
 
@@ -249,7 +249,7 @@ func (o *UtilsReportFilters) GetSeverityOrCheckTypeOk() ([]string, bool) {
 
 // HasSeverityOrCheckType returns a boolean if a field has been set.
 func (o *UtilsReportFilters) HasSeverityOrCheckType() bool {
-	if o != nil && IsNil(o.SeverityOrCheckType) {
+	if o != nil && !IsNil(o.SeverityOrCheckType) {
 		return true
 	}
 

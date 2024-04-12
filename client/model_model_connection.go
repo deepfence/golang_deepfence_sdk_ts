@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.0.0
+API version: 2.2.0
 Contact: community@deepfence.io
 */
 
@@ -21,6 +21,7 @@ var _ MappedNullable = &ModelConnection{}
 // ModelConnection struct for ModelConnection
 type ModelConnection struct {
 	Count *int32 `json:"count,omitempty"`
+	Ips []interface{} `json:"ips,omitempty"`
 	NodeId *string `json:"node_id,omitempty"`
 	NodeName *string `json:"node_name,omitempty"`
 }
@@ -72,6 +73,39 @@ func (o *ModelConnection) HasCount() bool {
 // SetCount gets a reference to the given int32 and assigns it to the Count field.
 func (o *ModelConnection) SetCount(v int32) {
 	o.Count = &v
+}
+
+// GetIps returns the Ips field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ModelConnection) GetIps() []interface{} {
+	if o == nil {
+		var ret []interface{}
+		return ret
+	}
+	return o.Ips
+}
+
+// GetIpsOk returns a tuple with the Ips field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelConnection) GetIpsOk() ([]interface{}, bool) {
+	if o == nil || IsNil(o.Ips) {
+		return nil, false
+	}
+	return o.Ips, true
+}
+
+// HasIps returns a boolean if a field has been set.
+func (o *ModelConnection) HasIps() bool {
+	if o != nil && !IsNil(o.Ips) {
+		return true
+	}
+
+	return false
+}
+
+// SetIps gets a reference to the given []interface{} and assigns it to the Ips field.
+func (o *ModelConnection) SetIps(v []interface{}) {
+	o.Ips = v
 }
 
 // GetNodeId returns the NodeId field value if set, zero value otherwise.
@@ -150,6 +184,9 @@ func (o ModelConnection) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Count) {
 		toSerialize["count"] = o.Count
+	}
+	if o.Ips != nil {
+		toSerialize["ips"] = o.Ips
 	}
 	if !IsNil(o.NodeId) {
 		toSerialize["node_id"] = o.NodeId

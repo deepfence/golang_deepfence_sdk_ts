@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.0.0
+API version: 2.2.0
 Contact: community@deepfence.io
 */
 
@@ -22,10 +22,16 @@ var _ MappedNullable = &ControlsThreatIntelInfo{}
 
 // ControlsThreatIntelInfo struct for ControlsThreatIntelInfo
 type ControlsThreatIntelInfo struct {
+	CloudControlsHash string `json:"cloud_controls_hash"`
+	CloudControlsUrl string `json:"cloud_controls_url"`
 	IgnoredAlertRuleIds []string `json:"ignored_alert_rule_ids"`
 	InternalIps []string `json:"internal_ips"`
+	MalwareScannerRulesHash string `json:"malware_scanner_rules_hash"`
+	MalwareScannerRulesUrl string `json:"malware_scanner_rules_url"`
 	NetworkAlertRulesUrl string `json:"network_alert_rules_url"`
 	RulesHash string `json:"rules_hash"`
+	SecretScannerRulesHash string `json:"secret_scanner_rules_hash"`
+	SecretScannerRulesUrl string `json:"secret_scanner_rules_url"`
 	UpdatedAt int32 `json:"updated_at"`
 }
 
@@ -35,12 +41,18 @@ type _ControlsThreatIntelInfo ControlsThreatIntelInfo
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsThreatIntelInfo(ignoredAlertRuleIds []string, internalIps []string, networkAlertRulesUrl string, rulesHash string, updatedAt int32) *ControlsThreatIntelInfo {
+func NewControlsThreatIntelInfo(cloudControlsHash string, cloudControlsUrl string, ignoredAlertRuleIds []string, internalIps []string, malwareScannerRulesHash string, malwareScannerRulesUrl string, networkAlertRulesUrl string, rulesHash string, secretScannerRulesHash string, secretScannerRulesUrl string, updatedAt int32) *ControlsThreatIntelInfo {
 	this := ControlsThreatIntelInfo{}
+	this.CloudControlsHash = cloudControlsHash
+	this.CloudControlsUrl = cloudControlsUrl
 	this.IgnoredAlertRuleIds = ignoredAlertRuleIds
 	this.InternalIps = internalIps
+	this.MalwareScannerRulesHash = malwareScannerRulesHash
+	this.MalwareScannerRulesUrl = malwareScannerRulesUrl
 	this.NetworkAlertRulesUrl = networkAlertRulesUrl
 	this.RulesHash = rulesHash
+	this.SecretScannerRulesHash = secretScannerRulesHash
+	this.SecretScannerRulesUrl = secretScannerRulesUrl
 	this.UpdatedAt = updatedAt
 	return &this
 }
@@ -51,6 +63,54 @@ func NewControlsThreatIntelInfo(ignoredAlertRuleIds []string, internalIps []stri
 func NewControlsThreatIntelInfoWithDefaults() *ControlsThreatIntelInfo {
 	this := ControlsThreatIntelInfo{}
 	return &this
+}
+
+// GetCloudControlsHash returns the CloudControlsHash field value
+func (o *ControlsThreatIntelInfo) GetCloudControlsHash() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CloudControlsHash
+}
+
+// GetCloudControlsHashOk returns a tuple with the CloudControlsHash field value
+// and a boolean to check if the value has been set.
+func (o *ControlsThreatIntelInfo) GetCloudControlsHashOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CloudControlsHash, true
+}
+
+// SetCloudControlsHash sets field value
+func (o *ControlsThreatIntelInfo) SetCloudControlsHash(v string) {
+	o.CloudControlsHash = v
+}
+
+// GetCloudControlsUrl returns the CloudControlsUrl field value
+func (o *ControlsThreatIntelInfo) GetCloudControlsUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CloudControlsUrl
+}
+
+// GetCloudControlsUrlOk returns a tuple with the CloudControlsUrl field value
+// and a boolean to check if the value has been set.
+func (o *ControlsThreatIntelInfo) GetCloudControlsUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CloudControlsUrl, true
+}
+
+// SetCloudControlsUrl sets field value
+func (o *ControlsThreatIntelInfo) SetCloudControlsUrl(v string) {
+	o.CloudControlsUrl = v
 }
 
 // GetIgnoredAlertRuleIds returns the IgnoredAlertRuleIds field value
@@ -105,6 +165,54 @@ func (o *ControlsThreatIntelInfo) SetInternalIps(v []string) {
 	o.InternalIps = v
 }
 
+// GetMalwareScannerRulesHash returns the MalwareScannerRulesHash field value
+func (o *ControlsThreatIntelInfo) GetMalwareScannerRulesHash() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MalwareScannerRulesHash
+}
+
+// GetMalwareScannerRulesHashOk returns a tuple with the MalwareScannerRulesHash field value
+// and a boolean to check if the value has been set.
+func (o *ControlsThreatIntelInfo) GetMalwareScannerRulesHashOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MalwareScannerRulesHash, true
+}
+
+// SetMalwareScannerRulesHash sets field value
+func (o *ControlsThreatIntelInfo) SetMalwareScannerRulesHash(v string) {
+	o.MalwareScannerRulesHash = v
+}
+
+// GetMalwareScannerRulesUrl returns the MalwareScannerRulesUrl field value
+func (o *ControlsThreatIntelInfo) GetMalwareScannerRulesUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MalwareScannerRulesUrl
+}
+
+// GetMalwareScannerRulesUrlOk returns a tuple with the MalwareScannerRulesUrl field value
+// and a boolean to check if the value has been set.
+func (o *ControlsThreatIntelInfo) GetMalwareScannerRulesUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MalwareScannerRulesUrl, true
+}
+
+// SetMalwareScannerRulesUrl sets field value
+func (o *ControlsThreatIntelInfo) SetMalwareScannerRulesUrl(v string) {
+	o.MalwareScannerRulesUrl = v
+}
+
 // GetNetworkAlertRulesUrl returns the NetworkAlertRulesUrl field value
 func (o *ControlsThreatIntelInfo) GetNetworkAlertRulesUrl() string {
 	if o == nil {
@@ -153,6 +261,54 @@ func (o *ControlsThreatIntelInfo) SetRulesHash(v string) {
 	o.RulesHash = v
 }
 
+// GetSecretScannerRulesHash returns the SecretScannerRulesHash field value
+func (o *ControlsThreatIntelInfo) GetSecretScannerRulesHash() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SecretScannerRulesHash
+}
+
+// GetSecretScannerRulesHashOk returns a tuple with the SecretScannerRulesHash field value
+// and a boolean to check if the value has been set.
+func (o *ControlsThreatIntelInfo) GetSecretScannerRulesHashOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SecretScannerRulesHash, true
+}
+
+// SetSecretScannerRulesHash sets field value
+func (o *ControlsThreatIntelInfo) SetSecretScannerRulesHash(v string) {
+	o.SecretScannerRulesHash = v
+}
+
+// GetSecretScannerRulesUrl returns the SecretScannerRulesUrl field value
+func (o *ControlsThreatIntelInfo) GetSecretScannerRulesUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SecretScannerRulesUrl
+}
+
+// GetSecretScannerRulesUrlOk returns a tuple with the SecretScannerRulesUrl field value
+// and a boolean to check if the value has been set.
+func (o *ControlsThreatIntelInfo) GetSecretScannerRulesUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SecretScannerRulesUrl, true
+}
+
+// SetSecretScannerRulesUrl sets field value
+func (o *ControlsThreatIntelInfo) SetSecretScannerRulesUrl(v string) {
+	o.SecretScannerRulesUrl = v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value
 func (o *ControlsThreatIntelInfo) GetUpdatedAt() int32 {
 	if o == nil {
@@ -187,14 +343,20 @@ func (o ControlsThreatIntelInfo) MarshalJSON() ([]byte, error) {
 
 func (o ControlsThreatIntelInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["cloud_controls_hash"] = o.CloudControlsHash
+	toSerialize["cloud_controls_url"] = o.CloudControlsUrl
 	if o.IgnoredAlertRuleIds != nil {
 		toSerialize["ignored_alert_rule_ids"] = o.IgnoredAlertRuleIds
 	}
 	if o.InternalIps != nil {
 		toSerialize["internal_ips"] = o.InternalIps
 	}
+	toSerialize["malware_scanner_rules_hash"] = o.MalwareScannerRulesHash
+	toSerialize["malware_scanner_rules_url"] = o.MalwareScannerRulesUrl
 	toSerialize["network_alert_rules_url"] = o.NetworkAlertRulesUrl
 	toSerialize["rules_hash"] = o.RulesHash
+	toSerialize["secret_scanner_rules_hash"] = o.SecretScannerRulesHash
+	toSerialize["secret_scanner_rules_url"] = o.SecretScannerRulesUrl
 	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil
 }
@@ -204,10 +366,16 @@ func (o *ControlsThreatIntelInfo) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"cloud_controls_hash",
+		"cloud_controls_url",
 		"ignored_alert_rule_ids",
 		"internal_ips",
+		"malware_scanner_rules_hash",
+		"malware_scanner_rules_url",
 		"network_alert_rules_url",
 		"rules_hash",
+		"secret_scanner_rules_hash",
+		"secret_scanner_rules_url",
 		"updated_at",
 	}
 

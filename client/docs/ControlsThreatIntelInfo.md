@@ -4,17 +4,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CloudControlsHash** | **string** |  | 
+**CloudControlsUrl** | **string** |  | 
 **IgnoredAlertRuleIds** | **[]string** |  | 
 **InternalIps** | **[]string** |  | 
+**MalwareScannerRulesHash** | **string** |  | 
+**MalwareScannerRulesUrl** | **string** |  | 
 **NetworkAlertRulesUrl** | **string** |  | 
 **RulesHash** | **string** |  | 
+**SecretScannerRulesHash** | **string** |  | 
+**SecretScannerRulesUrl** | **string** |  | 
 **UpdatedAt** | **int32** |  | 
 
 ## Methods
 
 ### NewControlsThreatIntelInfo
 
-`func NewControlsThreatIntelInfo(ignoredAlertRuleIds []string, internalIps []string, networkAlertRulesUrl string, rulesHash string, updatedAt int32, ) *ControlsThreatIntelInfo`
+`func NewControlsThreatIntelInfo(cloudControlsHash string, cloudControlsUrl string, ignoredAlertRuleIds []string, internalIps []string, malwareScannerRulesHash string, malwareScannerRulesUrl string, networkAlertRulesUrl string, rulesHash string, secretScannerRulesHash string, secretScannerRulesUrl string, updatedAt int32, ) *ControlsThreatIntelInfo`
 
 NewControlsThreatIntelInfo instantiates a new ControlsThreatIntelInfo object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +34,46 @@ will change when the set of required properties is changed
 NewControlsThreatIntelInfoWithDefaults instantiates a new ControlsThreatIntelInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCloudControlsHash
+
+`func (o *ControlsThreatIntelInfo) GetCloudControlsHash() string`
+
+GetCloudControlsHash returns the CloudControlsHash field if non-nil, zero value otherwise.
+
+### GetCloudControlsHashOk
+
+`func (o *ControlsThreatIntelInfo) GetCloudControlsHashOk() (*string, bool)`
+
+GetCloudControlsHashOk returns a tuple with the CloudControlsHash field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudControlsHash
+
+`func (o *ControlsThreatIntelInfo) SetCloudControlsHash(v string)`
+
+SetCloudControlsHash sets CloudControlsHash field to given value.
+
+
+### GetCloudControlsUrl
+
+`func (o *ControlsThreatIntelInfo) GetCloudControlsUrl() string`
+
+GetCloudControlsUrl returns the CloudControlsUrl field if non-nil, zero value otherwise.
+
+### GetCloudControlsUrlOk
+
+`func (o *ControlsThreatIntelInfo) GetCloudControlsUrlOk() (*string, bool)`
+
+GetCloudControlsUrlOk returns a tuple with the CloudControlsUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudControlsUrl
+
+`func (o *ControlsThreatIntelInfo) SetCloudControlsUrl(v string)`
+
+SetCloudControlsUrl sets CloudControlsUrl field to given value.
+
 
 ### GetIgnoredAlertRuleIds
 
@@ -89,6 +135,46 @@ SetInternalIps sets InternalIps field to given value.
 `func (o *ControlsThreatIntelInfo) UnsetInternalIps()`
 
 UnsetInternalIps ensures that no value is present for InternalIps, not even an explicit nil
+### GetMalwareScannerRulesHash
+
+`func (o *ControlsThreatIntelInfo) GetMalwareScannerRulesHash() string`
+
+GetMalwareScannerRulesHash returns the MalwareScannerRulesHash field if non-nil, zero value otherwise.
+
+### GetMalwareScannerRulesHashOk
+
+`func (o *ControlsThreatIntelInfo) GetMalwareScannerRulesHashOk() (*string, bool)`
+
+GetMalwareScannerRulesHashOk returns a tuple with the MalwareScannerRulesHash field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMalwareScannerRulesHash
+
+`func (o *ControlsThreatIntelInfo) SetMalwareScannerRulesHash(v string)`
+
+SetMalwareScannerRulesHash sets MalwareScannerRulesHash field to given value.
+
+
+### GetMalwareScannerRulesUrl
+
+`func (o *ControlsThreatIntelInfo) GetMalwareScannerRulesUrl() string`
+
+GetMalwareScannerRulesUrl returns the MalwareScannerRulesUrl field if non-nil, zero value otherwise.
+
+### GetMalwareScannerRulesUrlOk
+
+`func (o *ControlsThreatIntelInfo) GetMalwareScannerRulesUrlOk() (*string, bool)`
+
+GetMalwareScannerRulesUrlOk returns a tuple with the MalwareScannerRulesUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMalwareScannerRulesUrl
+
+`func (o *ControlsThreatIntelInfo) SetMalwareScannerRulesUrl(v string)`
+
+SetMalwareScannerRulesUrl sets MalwareScannerRulesUrl field to given value.
+
+
 ### GetNetworkAlertRulesUrl
 
 `func (o *ControlsThreatIntelInfo) GetNetworkAlertRulesUrl() string`
@@ -127,6 +213,46 @@ and a boolean to check if the value has been set.
 `func (o *ControlsThreatIntelInfo) SetRulesHash(v string)`
 
 SetRulesHash sets RulesHash field to given value.
+
+
+### GetSecretScannerRulesHash
+
+`func (o *ControlsThreatIntelInfo) GetSecretScannerRulesHash() string`
+
+GetSecretScannerRulesHash returns the SecretScannerRulesHash field if non-nil, zero value otherwise.
+
+### GetSecretScannerRulesHashOk
+
+`func (o *ControlsThreatIntelInfo) GetSecretScannerRulesHashOk() (*string, bool)`
+
+GetSecretScannerRulesHashOk returns a tuple with the SecretScannerRulesHash field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecretScannerRulesHash
+
+`func (o *ControlsThreatIntelInfo) SetSecretScannerRulesHash(v string)`
+
+SetSecretScannerRulesHash sets SecretScannerRulesHash field to given value.
+
+
+### GetSecretScannerRulesUrl
+
+`func (o *ControlsThreatIntelInfo) GetSecretScannerRulesUrl() string`
+
+GetSecretScannerRulesUrl returns the SecretScannerRulesUrl field if non-nil, zero value otherwise.
+
+### GetSecretScannerRulesUrlOk
+
+`func (o *ControlsThreatIntelInfo) GetSecretScannerRulesUrlOk() (*string, bool)`
+
+GetSecretScannerRulesUrlOk returns a tuple with the SecretScannerRulesUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecretScannerRulesUrl
+
+`func (o *ControlsThreatIntelInfo) SetSecretScannerRulesUrl(v string)`
+
+SetSecretScannerRulesUrl sets SecretScannerRulesUrl field to given value.
 
 
 ### GetUpdatedAt

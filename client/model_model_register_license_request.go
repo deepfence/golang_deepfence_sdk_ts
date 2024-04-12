@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.0.0
+API version: 2.2.0
 Contact: community@deepfence.io
 */
 
@@ -22,6 +22,7 @@ var _ MappedNullable = &ModelRegisterLicenseRequest{}
 
 // ModelRegisterLicenseRequest struct for ModelRegisterLicenseRequest
 type ModelRegisterLicenseRequest struct {
+	Email *string `json:"email,omitempty"`
 	LicenseKey string `json:"license_key"`
 }
 
@@ -43,6 +44,38 @@ func NewModelRegisterLicenseRequest(licenseKey string) *ModelRegisterLicenseRequ
 func NewModelRegisterLicenseRequestWithDefaults() *ModelRegisterLicenseRequest {
 	this := ModelRegisterLicenseRequest{}
 	return &this
+}
+
+// GetEmail returns the Email field value if set, zero value otherwise.
+func (o *ModelRegisterLicenseRequest) GetEmail() string {
+	if o == nil || IsNil(o.Email) {
+		var ret string
+		return ret
+	}
+	return *o.Email
+}
+
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelRegisterLicenseRequest) GetEmailOk() (*string, bool) {
+	if o == nil || IsNil(o.Email) {
+		return nil, false
+	}
+	return o.Email, true
+}
+
+// HasEmail returns a boolean if a field has been set.
+func (o *ModelRegisterLicenseRequest) HasEmail() bool {
+	if o != nil && !IsNil(o.Email) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
+func (o *ModelRegisterLicenseRequest) SetEmail(v string) {
+	o.Email = &v
 }
 
 // GetLicenseKey returns the LicenseKey field value
@@ -79,6 +112,9 @@ func (o ModelRegisterLicenseRequest) MarshalJSON() ([]byte, error) {
 
 func (o ModelRegisterLicenseRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
 	toSerialize["license_key"] = o.LicenseKey
 	return toSerialize, nil
 }

@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.0.0
+API version: 2.2.0
 Contact: community@deepfence.io
 */
 
@@ -63,7 +63,7 @@ func (o *DiagnosisGetDiagnosticLogsResponse) GetAgentLogsOk() ([]DiagnosisDiagno
 
 // HasAgentLogs returns a boolean if a field has been set.
 func (o *DiagnosisGetDiagnosticLogsResponse) HasAgentLogs() bool {
-	if o != nil && IsNil(o.AgentLogs) {
+	if o != nil && !IsNil(o.AgentLogs) {
 		return true
 	}
 
@@ -96,7 +96,7 @@ func (o *DiagnosisGetDiagnosticLogsResponse) GetCloudScannerLogsOk() ([]Diagnosi
 
 // HasCloudScannerLogs returns a boolean if a field has been set.
 func (o *DiagnosisGetDiagnosticLogsResponse) HasCloudScannerLogs() bool {
-	if o != nil && IsNil(o.CloudScannerLogs) {
+	if o != nil && !IsNil(o.CloudScannerLogs) {
 		return true
 	}
 
@@ -129,7 +129,7 @@ func (o *DiagnosisGetDiagnosticLogsResponse) GetConsoleLogsOk() ([]DiagnosisDiag
 
 // HasConsoleLogs returns a boolean if a field has been set.
 func (o *DiagnosisGetDiagnosticLogsResponse) HasConsoleLogs() bool {
-	if o != nil && IsNil(o.ConsoleLogs) {
+	if o != nil && !IsNil(o.ConsoleLogs) {
 		return true
 	}
 

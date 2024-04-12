@@ -4,48 +4,31 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AppProto** | **string** |  | 
+**Base64Payload** | **string** |  | 
 **Category** | **string** |  | 
 **ContainerName** | **string** |  | 
 **Count** | **int32** |  | 
 **CreatedAt** | **int32** |  | 
-**Description** | **string** |  | 
 **DestinationIp** | **string** |  | 
 **DestinationPort** | **int32** |  | 
 **Direction** | **string** |  | 
-**Encrypted** | **string** |  | 
+**Encrypted** | **bool** |  | 
 **EventType** | **string** |  | 
-**Geoip** | **string** |  | 
 **Headers** | **string** |  | 
 **HostName** | **string** |  | 
-**HttpContentType** | **interface{}** |  | 
 **HttpType** | **string** |  | 
-**HttpUserAgent** | **string** |  | 
-**Internal** | **string** |  | 
-**IpReputation** | **string** |  | 
 **KubernetesClusterId** | **string** |  | 
 **KubernetesClusterName** | **string** |  | 
-**Length** | **interface{}** |  | 
-**LocalPort** | **int32** |  | 
 **Masked** | **bool** |  | 
-**Matched** | **string** |  | 
 **NodeId** | **string** |  | 
 **NodeType** | **string** |  | 
 **PodName** | **string** |  | 
-**Protocol** | **int32** |  | 
-**RequestMethod** | **string** |  | 
-**RequestPath** | **string** |  | 
-**RequestPayload** | **string** |  | 
-**RequestPrintablePayload** | **string** |  | 
-**ResourceType** | **string** |  | 
-**ResponsePayload** | **interface{}** |  | 
-**ResponsePrintablePayload** | **interface{}** |  | 
+**Protocol** | **string** |  | 
+**References** | **string** |  | 
 **RuleId** | **string** |  | 
 **Severity** | **string** |  | 
-**SeverityScore** | **float32** |  | 
 **SourceIp** | **string** |  | 
 **SourcePort** | **int32** |  | 
-**Status** | **interface{}** |  | 
 **Summary** | **string** |  | 
 **Tactics** | **[]string** |  | 
 **Tags** | **string** |  | 
@@ -57,7 +40,7 @@ Name | Type | Description | Notes
 
 ### NewModelNetworkAlert
 
-`func NewModelNetworkAlert(appProto string, category string, containerName string, count int32, createdAt int32, description string, destinationIp string, destinationPort int32, direction string, encrypted string, eventType string, geoip string, headers string, hostName string, httpContentType interface{}, httpType string, httpUserAgent string, internal string, ipReputation string, kubernetesClusterId string, kubernetesClusterName string, length interface{}, localPort int32, masked bool, matched string, nodeId string, nodeType string, podName string, protocol int32, requestMethod string, requestPath string, requestPayload string, requestPrintablePayload string, resourceType string, responsePayload interface{}, responsePrintablePayload interface{}, ruleId string, severity string, severityScore float32, sourceIp string, sourcePort int32, status interface{}, summary string, tactics []string, tags string, techniques []string, updatedAt int32, url string, ) *ModelNetworkAlert`
+`func NewModelNetworkAlert(base64Payload string, category string, containerName string, count int32, createdAt int32, destinationIp string, destinationPort int32, direction string, encrypted bool, eventType string, headers string, hostName string, httpType string, kubernetesClusterId string, kubernetesClusterName string, masked bool, nodeId string, nodeType string, podName string, protocol string, references string, ruleId string, severity string, sourceIp string, sourcePort int32, summary string, tactics []string, tags string, techniques []string, updatedAt int32, url string, ) *ModelNetworkAlert`
 
 NewModelNetworkAlert instantiates a new ModelNetworkAlert object
 This constructor will assign default values to properties that have it defined,
@@ -72,24 +55,24 @@ NewModelNetworkAlertWithDefaults instantiates a new ModelNetworkAlert object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAppProto
+### GetBase64Payload
 
-`func (o *ModelNetworkAlert) GetAppProto() string`
+`func (o *ModelNetworkAlert) GetBase64Payload() string`
 
-GetAppProto returns the AppProto field if non-nil, zero value otherwise.
+GetBase64Payload returns the Base64Payload field if non-nil, zero value otherwise.
 
-### GetAppProtoOk
+### GetBase64PayloadOk
 
-`func (o *ModelNetworkAlert) GetAppProtoOk() (*string, bool)`
+`func (o *ModelNetworkAlert) GetBase64PayloadOk() (*string, bool)`
 
-GetAppProtoOk returns a tuple with the AppProto field if it's non-nil, zero value otherwise
+GetBase64PayloadOk returns a tuple with the Base64Payload field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAppProto
+### SetBase64Payload
 
-`func (o *ModelNetworkAlert) SetAppProto(v string)`
+`func (o *ModelNetworkAlert) SetBase64Payload(v string)`
 
-SetAppProto sets AppProto field to given value.
+SetBase64Payload sets Base64Payload field to given value.
 
 
 ### GetCategory
@@ -172,26 +155,6 @@ and a boolean to check if the value has been set.
 SetCreatedAt sets CreatedAt field to given value.
 
 
-### GetDescription
-
-`func (o *ModelNetworkAlert) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *ModelNetworkAlert) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *ModelNetworkAlert) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-
 ### GetDestinationIp
 
 `func (o *ModelNetworkAlert) GetDestinationIp() string`
@@ -254,20 +217,20 @@ SetDirection sets Direction field to given value.
 
 ### GetEncrypted
 
-`func (o *ModelNetworkAlert) GetEncrypted() string`
+`func (o *ModelNetworkAlert) GetEncrypted() bool`
 
 GetEncrypted returns the Encrypted field if non-nil, zero value otherwise.
 
 ### GetEncryptedOk
 
-`func (o *ModelNetworkAlert) GetEncryptedOk() (*string, bool)`
+`func (o *ModelNetworkAlert) GetEncryptedOk() (*bool, bool)`
 
 GetEncryptedOk returns a tuple with the Encrypted field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEncrypted
 
-`func (o *ModelNetworkAlert) SetEncrypted(v string)`
+`func (o *ModelNetworkAlert) SetEncrypted(v bool)`
 
 SetEncrypted sets Encrypted field to given value.
 
@@ -290,26 +253,6 @@ and a boolean to check if the value has been set.
 `func (o *ModelNetworkAlert) SetEventType(v string)`
 
 SetEventType sets EventType field to given value.
-
-
-### GetGeoip
-
-`func (o *ModelNetworkAlert) GetGeoip() string`
-
-GetGeoip returns the Geoip field if non-nil, zero value otherwise.
-
-### GetGeoipOk
-
-`func (o *ModelNetworkAlert) GetGeoipOk() (*string, bool)`
-
-GetGeoipOk returns a tuple with the Geoip field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGeoip
-
-`func (o *ModelNetworkAlert) SetGeoip(v string)`
-
-SetGeoip sets Geoip field to given value.
 
 
 ### GetHeaders
@@ -352,36 +295,6 @@ and a boolean to check if the value has been set.
 SetHostName sets HostName field to given value.
 
 
-### GetHttpContentType
-
-`func (o *ModelNetworkAlert) GetHttpContentType() interface{}`
-
-GetHttpContentType returns the HttpContentType field if non-nil, zero value otherwise.
-
-### GetHttpContentTypeOk
-
-`func (o *ModelNetworkAlert) GetHttpContentTypeOk() (*interface{}, bool)`
-
-GetHttpContentTypeOk returns a tuple with the HttpContentType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHttpContentType
-
-`func (o *ModelNetworkAlert) SetHttpContentType(v interface{})`
-
-SetHttpContentType sets HttpContentType field to given value.
-
-
-### SetHttpContentTypeNil
-
-`func (o *ModelNetworkAlert) SetHttpContentTypeNil(b bool)`
-
- SetHttpContentTypeNil sets the value for HttpContentType to be an explicit nil
-
-### UnsetHttpContentType
-`func (o *ModelNetworkAlert) UnsetHttpContentType()`
-
-UnsetHttpContentType ensures that no value is present for HttpContentType, not even an explicit nil
 ### GetHttpType
 
 `func (o *ModelNetworkAlert) GetHttpType() string`
@@ -400,66 +313,6 @@ and a boolean to check if the value has been set.
 `func (o *ModelNetworkAlert) SetHttpType(v string)`
 
 SetHttpType sets HttpType field to given value.
-
-
-### GetHttpUserAgent
-
-`func (o *ModelNetworkAlert) GetHttpUserAgent() string`
-
-GetHttpUserAgent returns the HttpUserAgent field if non-nil, zero value otherwise.
-
-### GetHttpUserAgentOk
-
-`func (o *ModelNetworkAlert) GetHttpUserAgentOk() (*string, bool)`
-
-GetHttpUserAgentOk returns a tuple with the HttpUserAgent field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHttpUserAgent
-
-`func (o *ModelNetworkAlert) SetHttpUserAgent(v string)`
-
-SetHttpUserAgent sets HttpUserAgent field to given value.
-
-
-### GetInternal
-
-`func (o *ModelNetworkAlert) GetInternal() string`
-
-GetInternal returns the Internal field if non-nil, zero value otherwise.
-
-### GetInternalOk
-
-`func (o *ModelNetworkAlert) GetInternalOk() (*string, bool)`
-
-GetInternalOk returns a tuple with the Internal field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInternal
-
-`func (o *ModelNetworkAlert) SetInternal(v string)`
-
-SetInternal sets Internal field to given value.
-
-
-### GetIpReputation
-
-`func (o *ModelNetworkAlert) GetIpReputation() string`
-
-GetIpReputation returns the IpReputation field if non-nil, zero value otherwise.
-
-### GetIpReputationOk
-
-`func (o *ModelNetworkAlert) GetIpReputationOk() (*string, bool)`
-
-GetIpReputationOk returns a tuple with the IpReputation field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIpReputation
-
-`func (o *ModelNetworkAlert) SetIpReputation(v string)`
-
-SetIpReputation sets IpReputation field to given value.
 
 
 ### GetKubernetesClusterId
@@ -502,56 +355,6 @@ and a boolean to check if the value has been set.
 SetKubernetesClusterName sets KubernetesClusterName field to given value.
 
 
-### GetLength
-
-`func (o *ModelNetworkAlert) GetLength() interface{}`
-
-GetLength returns the Length field if non-nil, zero value otherwise.
-
-### GetLengthOk
-
-`func (o *ModelNetworkAlert) GetLengthOk() (*interface{}, bool)`
-
-GetLengthOk returns a tuple with the Length field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLength
-
-`func (o *ModelNetworkAlert) SetLength(v interface{})`
-
-SetLength sets Length field to given value.
-
-
-### SetLengthNil
-
-`func (o *ModelNetworkAlert) SetLengthNil(b bool)`
-
- SetLengthNil sets the value for Length to be an explicit nil
-
-### UnsetLength
-`func (o *ModelNetworkAlert) UnsetLength()`
-
-UnsetLength ensures that no value is present for Length, not even an explicit nil
-### GetLocalPort
-
-`func (o *ModelNetworkAlert) GetLocalPort() int32`
-
-GetLocalPort returns the LocalPort field if non-nil, zero value otherwise.
-
-### GetLocalPortOk
-
-`func (o *ModelNetworkAlert) GetLocalPortOk() (*int32, bool)`
-
-GetLocalPortOk returns a tuple with the LocalPort field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLocalPort
-
-`func (o *ModelNetworkAlert) SetLocalPort(v int32)`
-
-SetLocalPort sets LocalPort field to given value.
-
-
 ### GetMasked
 
 `func (o *ModelNetworkAlert) GetMasked() bool`
@@ -570,26 +373,6 @@ and a boolean to check if the value has been set.
 `func (o *ModelNetworkAlert) SetMasked(v bool)`
 
 SetMasked sets Masked field to given value.
-
-
-### GetMatched
-
-`func (o *ModelNetworkAlert) GetMatched() string`
-
-GetMatched returns the Matched field if non-nil, zero value otherwise.
-
-### GetMatchedOk
-
-`func (o *ModelNetworkAlert) GetMatchedOk() (*string, bool)`
-
-GetMatchedOk returns a tuple with the Matched field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMatched
-
-`func (o *ModelNetworkAlert) SetMatched(v string)`
-
-SetMatched sets Matched field to given value.
 
 
 ### GetNodeId
@@ -654,184 +437,44 @@ SetPodName sets PodName field to given value.
 
 ### GetProtocol
 
-`func (o *ModelNetworkAlert) GetProtocol() int32`
+`func (o *ModelNetworkAlert) GetProtocol() string`
 
 GetProtocol returns the Protocol field if non-nil, zero value otherwise.
 
 ### GetProtocolOk
 
-`func (o *ModelNetworkAlert) GetProtocolOk() (*int32, bool)`
+`func (o *ModelNetworkAlert) GetProtocolOk() (*string, bool)`
 
 GetProtocolOk returns a tuple with the Protocol field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProtocol
 
-`func (o *ModelNetworkAlert) SetProtocol(v int32)`
+`func (o *ModelNetworkAlert) SetProtocol(v string)`
 
 SetProtocol sets Protocol field to given value.
 
 
-### GetRequestMethod
+### GetReferences
 
-`func (o *ModelNetworkAlert) GetRequestMethod() string`
+`func (o *ModelNetworkAlert) GetReferences() string`
 
-GetRequestMethod returns the RequestMethod field if non-nil, zero value otherwise.
+GetReferences returns the References field if non-nil, zero value otherwise.
 
-### GetRequestMethodOk
+### GetReferencesOk
 
-`func (o *ModelNetworkAlert) GetRequestMethodOk() (*string, bool)`
+`func (o *ModelNetworkAlert) GetReferencesOk() (*string, bool)`
 
-GetRequestMethodOk returns a tuple with the RequestMethod field if it's non-nil, zero value otherwise
+GetReferencesOk returns a tuple with the References field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRequestMethod
+### SetReferences
 
-`func (o *ModelNetworkAlert) SetRequestMethod(v string)`
+`func (o *ModelNetworkAlert) SetReferences(v string)`
 
-SetRequestMethod sets RequestMethod field to given value.
+SetReferences sets References field to given value.
 
 
-### GetRequestPath
-
-`func (o *ModelNetworkAlert) GetRequestPath() string`
-
-GetRequestPath returns the RequestPath field if non-nil, zero value otherwise.
-
-### GetRequestPathOk
-
-`func (o *ModelNetworkAlert) GetRequestPathOk() (*string, bool)`
-
-GetRequestPathOk returns a tuple with the RequestPath field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRequestPath
-
-`func (o *ModelNetworkAlert) SetRequestPath(v string)`
-
-SetRequestPath sets RequestPath field to given value.
-
-
-### GetRequestPayload
-
-`func (o *ModelNetworkAlert) GetRequestPayload() string`
-
-GetRequestPayload returns the RequestPayload field if non-nil, zero value otherwise.
-
-### GetRequestPayloadOk
-
-`func (o *ModelNetworkAlert) GetRequestPayloadOk() (*string, bool)`
-
-GetRequestPayloadOk returns a tuple with the RequestPayload field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRequestPayload
-
-`func (o *ModelNetworkAlert) SetRequestPayload(v string)`
-
-SetRequestPayload sets RequestPayload field to given value.
-
-
-### GetRequestPrintablePayload
-
-`func (o *ModelNetworkAlert) GetRequestPrintablePayload() string`
-
-GetRequestPrintablePayload returns the RequestPrintablePayload field if non-nil, zero value otherwise.
-
-### GetRequestPrintablePayloadOk
-
-`func (o *ModelNetworkAlert) GetRequestPrintablePayloadOk() (*string, bool)`
-
-GetRequestPrintablePayloadOk returns a tuple with the RequestPrintablePayload field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRequestPrintablePayload
-
-`func (o *ModelNetworkAlert) SetRequestPrintablePayload(v string)`
-
-SetRequestPrintablePayload sets RequestPrintablePayload field to given value.
-
-
-### GetResourceType
-
-`func (o *ModelNetworkAlert) GetResourceType() string`
-
-GetResourceType returns the ResourceType field if non-nil, zero value otherwise.
-
-### GetResourceTypeOk
-
-`func (o *ModelNetworkAlert) GetResourceTypeOk() (*string, bool)`
-
-GetResourceTypeOk returns a tuple with the ResourceType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetResourceType
-
-`func (o *ModelNetworkAlert) SetResourceType(v string)`
-
-SetResourceType sets ResourceType field to given value.
-
-
-### GetResponsePayload
-
-`func (o *ModelNetworkAlert) GetResponsePayload() interface{}`
-
-GetResponsePayload returns the ResponsePayload field if non-nil, zero value otherwise.
-
-### GetResponsePayloadOk
-
-`func (o *ModelNetworkAlert) GetResponsePayloadOk() (*interface{}, bool)`
-
-GetResponsePayloadOk returns a tuple with the ResponsePayload field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetResponsePayload
-
-`func (o *ModelNetworkAlert) SetResponsePayload(v interface{})`
-
-SetResponsePayload sets ResponsePayload field to given value.
-
-
-### SetResponsePayloadNil
-
-`func (o *ModelNetworkAlert) SetResponsePayloadNil(b bool)`
-
- SetResponsePayloadNil sets the value for ResponsePayload to be an explicit nil
-
-### UnsetResponsePayload
-`func (o *ModelNetworkAlert) UnsetResponsePayload()`
-
-UnsetResponsePayload ensures that no value is present for ResponsePayload, not even an explicit nil
-### GetResponsePrintablePayload
-
-`func (o *ModelNetworkAlert) GetResponsePrintablePayload() interface{}`
-
-GetResponsePrintablePayload returns the ResponsePrintablePayload field if non-nil, zero value otherwise.
-
-### GetResponsePrintablePayloadOk
-
-`func (o *ModelNetworkAlert) GetResponsePrintablePayloadOk() (*interface{}, bool)`
-
-GetResponsePrintablePayloadOk returns a tuple with the ResponsePrintablePayload field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetResponsePrintablePayload
-
-`func (o *ModelNetworkAlert) SetResponsePrintablePayload(v interface{})`
-
-SetResponsePrintablePayload sets ResponsePrintablePayload field to given value.
-
-
-### SetResponsePrintablePayloadNil
-
-`func (o *ModelNetworkAlert) SetResponsePrintablePayloadNil(b bool)`
-
- SetResponsePrintablePayloadNil sets the value for ResponsePrintablePayload to be an explicit nil
-
-### UnsetResponsePrintablePayload
-`func (o *ModelNetworkAlert) UnsetResponsePrintablePayload()`
-
-UnsetResponsePrintablePayload ensures that no value is present for ResponsePrintablePayload, not even an explicit nil
 ### GetRuleId
 
 `func (o *ModelNetworkAlert) GetRuleId() string`
@@ -870,26 +513,6 @@ and a boolean to check if the value has been set.
 `func (o *ModelNetworkAlert) SetSeverity(v string)`
 
 SetSeverity sets Severity field to given value.
-
-
-### GetSeverityScore
-
-`func (o *ModelNetworkAlert) GetSeverityScore() float32`
-
-GetSeverityScore returns the SeverityScore field if non-nil, zero value otherwise.
-
-### GetSeverityScoreOk
-
-`func (o *ModelNetworkAlert) GetSeverityScoreOk() (*float32, bool)`
-
-GetSeverityScoreOk returns a tuple with the SeverityScore field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSeverityScore
-
-`func (o *ModelNetworkAlert) SetSeverityScore(v float32)`
-
-SetSeverityScore sets SeverityScore field to given value.
 
 
 ### GetSourceIp
@@ -932,36 +555,6 @@ and a boolean to check if the value has been set.
 SetSourcePort sets SourcePort field to given value.
 
 
-### GetStatus
-
-`func (o *ModelNetworkAlert) GetStatus() interface{}`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *ModelNetworkAlert) GetStatusOk() (*interface{}, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *ModelNetworkAlert) SetStatus(v interface{})`
-
-SetStatus sets Status field to given value.
-
-
-### SetStatusNil
-
-`func (o *ModelNetworkAlert) SetStatusNil(b bool)`
-
- SetStatusNil sets the value for Status to be an explicit nil
-
-### UnsetStatus
-`func (o *ModelNetworkAlert) UnsetStatus()`
-
-UnsetStatus ensures that no value is present for Status, not even an explicit nil
 ### GetSummary
 
 `func (o *ModelNetworkAlert) GetSummary() string`

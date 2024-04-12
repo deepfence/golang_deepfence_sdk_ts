@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.0.0
+API version: 2.2.0
 Contact: community@deepfence.io
 */
 
@@ -64,7 +64,7 @@ func (o *ApiDocsBadRequestResponse) GetErrorFieldsOk() (*map[string]string, bool
 
 // HasErrorFields returns a boolean if a field has been set.
 func (o *ApiDocsBadRequestResponse) HasErrorFields() bool {
-	if o != nil && IsNil(o.ErrorFields) {
+	if o != nil && !IsNil(o.ErrorFields) {
 		return true
 	}
 
@@ -97,7 +97,7 @@ func (o *ApiDocsBadRequestResponse) GetErrorIndexOk() (*map[string][]int32, bool
 
 // HasErrorIndex returns a boolean if a field has been set.
 func (o *ApiDocsBadRequestResponse) HasErrorIndex() bool {
-	if o != nil && IsNil(o.ErrorIndex) {
+	if o != nil && !IsNil(o.ErrorIndex) {
 		return true
 	}
 

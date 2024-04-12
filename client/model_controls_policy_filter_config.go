@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.0.0
+API version: 2.2.0
 Contact: community@deepfence.io
 */
 
@@ -22,6 +22,8 @@ var _ MappedNullable = &ControlsPolicyFilterConfig{}
 
 // ControlsPolicyFilterConfig struct for ControlsPolicyFilterConfig
 type ControlsPolicyFilterConfig struct {
+	EnablePolicyLogs *bool `json:"enable_policy_logs,omitempty"`
+	IgnoredRemoteHosts []string `json:"ignored_remote_hosts,omitempty"`
 	IgnoredRemoteIps []string `json:"ignored_remote_ips"`
 	NodeId string `json:"node_id"`
 	Policies []ControlsNetworkPolicy `json:"policies"`
@@ -51,6 +53,71 @@ func NewControlsPolicyFilterConfig(ignoredRemoteIps []string, nodeId string, pol
 func NewControlsPolicyFilterConfigWithDefaults() *ControlsPolicyFilterConfig {
 	this := ControlsPolicyFilterConfig{}
 	return &this
+}
+
+// GetEnablePolicyLogs returns the EnablePolicyLogs field value if set, zero value otherwise.
+func (o *ControlsPolicyFilterConfig) GetEnablePolicyLogs() bool {
+	if o == nil || IsNil(o.EnablePolicyLogs) {
+		var ret bool
+		return ret
+	}
+	return *o.EnablePolicyLogs
+}
+
+// GetEnablePolicyLogsOk returns a tuple with the EnablePolicyLogs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControlsPolicyFilterConfig) GetEnablePolicyLogsOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnablePolicyLogs) {
+		return nil, false
+	}
+	return o.EnablePolicyLogs, true
+}
+
+// HasEnablePolicyLogs returns a boolean if a field has been set.
+func (o *ControlsPolicyFilterConfig) HasEnablePolicyLogs() bool {
+	if o != nil && !IsNil(o.EnablePolicyLogs) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnablePolicyLogs gets a reference to the given bool and assigns it to the EnablePolicyLogs field.
+func (o *ControlsPolicyFilterConfig) SetEnablePolicyLogs(v bool) {
+	o.EnablePolicyLogs = &v
+}
+
+// GetIgnoredRemoteHosts returns the IgnoredRemoteHosts field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ControlsPolicyFilterConfig) GetIgnoredRemoteHosts() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.IgnoredRemoteHosts
+}
+
+// GetIgnoredRemoteHostsOk returns a tuple with the IgnoredRemoteHosts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ControlsPolicyFilterConfig) GetIgnoredRemoteHostsOk() ([]string, bool) {
+	if o == nil || IsNil(o.IgnoredRemoteHosts) {
+		return nil, false
+	}
+	return o.IgnoredRemoteHosts, true
+}
+
+// HasIgnoredRemoteHosts returns a boolean if a field has been set.
+func (o *ControlsPolicyFilterConfig) HasIgnoredRemoteHosts() bool {
+	if o != nil && !IsNil(o.IgnoredRemoteHosts) {
+		return true
+	}
+
+	return false
+}
+
+// SetIgnoredRemoteHosts gets a reference to the given []string and assigns it to the IgnoredRemoteHosts field.
+func (o *ControlsPolicyFilterConfig) SetIgnoredRemoteHosts(v []string) {
+	o.IgnoredRemoteHosts = v
 }
 
 // GetIgnoredRemoteIps returns the IgnoredRemoteIps field value
@@ -187,6 +254,12 @@ func (o ControlsPolicyFilterConfig) MarshalJSON() ([]byte, error) {
 
 func (o ControlsPolicyFilterConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.EnablePolicyLogs) {
+		toSerialize["enable_policy_logs"] = o.EnablePolicyLogs
+	}
+	if o.IgnoredRemoteHosts != nil {
+		toSerialize["ignored_remote_hosts"] = o.IgnoredRemoteHosts
+	}
 	if o.IgnoredRemoteIps != nil {
 		toSerialize["ignored_remote_ips"] = o.IgnoredRemoteIps
 	}

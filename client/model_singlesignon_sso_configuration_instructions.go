@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.0.0
+API version: 2.2.0
 Contact: community@deepfence.io
 */
 
@@ -64,7 +64,7 @@ func (o *SinglesignonSSOConfigurationInstructions) GetGithubOk() ([]Singlesignon
 
 // HasGithub returns a boolean if a field has been set.
 func (o *SinglesignonSSOConfigurationInstructions) HasGithub() bool {
-	if o != nil && IsNil(o.Github) {
+	if o != nil && !IsNil(o.Github) {
 		return true
 	}
 
@@ -97,7 +97,7 @@ func (o *SinglesignonSSOConfigurationInstructions) GetGoogleOk() ([]Singlesignon
 
 // HasGoogle returns a boolean if a field has been set.
 func (o *SinglesignonSSOConfigurationInstructions) HasGoogle() bool {
-	if o != nil && IsNil(o.Google) {
+	if o != nil && !IsNil(o.Google) {
 		return true
 	}
 
@@ -130,7 +130,7 @@ func (o *SinglesignonSSOConfigurationInstructions) GetMicrosoftOk() ([]Singlesig
 
 // HasMicrosoft returns a boolean if a field has been set.
 func (o *SinglesignonSSOConfigurationInstructions) HasMicrosoft() bool {
-	if o != nil && IsNil(o.Microsoft) {
+	if o != nil && !IsNil(o.Microsoft) {
 		return true
 	}
 
@@ -163,7 +163,7 @@ func (o *SinglesignonSSOConfigurationInstructions) GetOidcOk() ([]SinglesignonSS
 
 // HasOidc returns a boolean if a field has been set.
 func (o *SinglesignonSSOConfigurationInstructions) HasOidc() bool {
-	if o != nil && IsNil(o.Oidc) {
+	if o != nil && !IsNil(o.Oidc) {
 		return true
 	}
 

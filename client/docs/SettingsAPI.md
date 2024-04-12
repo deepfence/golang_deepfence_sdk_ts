@@ -9,20 +9,30 @@ Method | HTTP request | Description
 [**DeleteCloudWafConfiguration**](SettingsAPI.md#DeleteCloudWafConfiguration) | **Delete** /deepfence/settings/cloud-waf | Delete Cloud WAF Configuration
 [**DeleteCustomScheduledTask**](SettingsAPI.md#DeleteCustomScheduledTask) | **Delete** /deepfence/scheduled-task/{id} | Delete Custom Schedule task
 [**DeleteEmailConfiguration**](SettingsAPI.md#DeleteEmailConfiguration) | **Delete** /deepfence/settings/email/{config_id} | Delete Email Configurations
+[**DeleteLicense**](SettingsAPI.md#DeleteLicense) | **Delete** /deepfence/license | Delete License
+[**GenerateLicense**](SettingsAPI.md#GenerateLicense) | **Post** /deepfence/license/generate | Generate License Key
+[**GetAgentBinaryDownloadURL**](SettingsAPI.md#GetAgentBinaryDownloadURL) | **Get** /deepfence/agent-deployment/binary/download-url | Get agent binary download url
 [**GetAgentVersions**](SettingsAPI.md#GetAgentVersions) | **Get** /deepfence/settings/agent/versions | Get available agent versions
 [**GetCloudWafConfiguration**](SettingsAPI.md#GetCloudWafConfiguration) | **Get** /deepfence/settings/cloud-waf | Get Cloud WAF Configuration
 [**GetEmailConfiguration**](SettingsAPI.md#GetEmailConfiguration) | **Get** /deepfence/settings/email | Get Email Configurations
 [**GetLicense**](SettingsAPI.md#GetLicense) | **Get** /deepfence/license | Get License Details
 [**GetScheduledTasks**](SettingsAPI.md#GetScheduledTasks) | **Get** /deepfence/scheduled-task | Get scheduled tasks
 [**GetSettings**](SettingsAPI.md#GetSettings) | **Get** /deepfence/settings/global-settings | Get settings
+[**GetThreatIntelRules**](SettingsAPI.md#GetThreatIntelRules) | **Get** /deepfence/database/threat-intel-rules | Get Threat Intel Rules
 [**GetUserAuditLogs**](SettingsAPI.md#GetUserAuditLogs) | **Post** /deepfence/settings/user-audit-log | Get user audit logs
 [**GetUserAuditLogsCount**](SettingsAPI.md#GetUserAuditLogsCount) | **Get** /deepfence/settings/user-audit-log/count | Get user audit logs count
 [**RegisterLicense**](SettingsAPI.md#RegisterLicense) | **Post** /deepfence/license | Register License
 [**SetCloudWafConfiguration**](SettingsAPI.md#SetCloudWafConfiguration) | **Post** /deepfence/settings/cloud-waf | Set Cloud WAF Configuration
+[**TestConfiguredEmail**](SettingsAPI.md#TestConfiguredEmail) | **Post** /deepfence/settings/email/test | Test Configured Email
+[**TestUnconfiguredEmail**](SettingsAPI.md#TestUnconfiguredEmail) | **Post** /deepfence/settings/email/test-unconfigured | Test Unconfigured Email
 [**UpdateNotificationThreshold**](SettingsAPI.md#UpdateNotificationThreshold) | **Post** /deepfence/license/notification-threshold | Update Notification Threshold
 [**UpdateScheduledTask**](SettingsAPI.md#UpdateScheduledTask) | **Patch** /deepfence/scheduled-task/{id} | Update scheduled task
 [**UpdateSetting**](SettingsAPI.md#UpdateSetting) | **Patch** /deepfence/settings/global-settings/{id} | Update setting
 [**UploadAgentVersion**](SettingsAPI.md#UploadAgentVersion) | **Put** /deepfence/settings/agent/version | Upload New agent version
+[**UploadMalwareRules**](SettingsAPI.md#UploadMalwareRules) | **Put** /deepfence/database/malware | Upload Malware Rules
+[**UploadPostureControls**](SettingsAPI.md#UploadPostureControls) | **Put** /deepfence/database/posture | Upload Posture Controls
+[**UploadSecretsRules**](SettingsAPI.md#UploadSecretsRules) | **Put** /deepfence/database/secret | Upload Secrets Rules
+[**UploadThreatIntelRules**](SettingsAPI.md#UploadThreatIntelRules) | **Put** /deepfence/database/threat-intel-rules | Upload Threat Intel Rules
 [**UploadVulnerabilityDatabase**](SettingsAPI.md#UploadVulnerabilityDatabase) | **Put** /deepfence/database/vulnerability | Upload Vulnerability Database
 
 
@@ -337,6 +347,192 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteLicense
+
+> DeleteLicense(ctx).Execute()
+
+Delete License
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.SettingsAPI.DeleteLicense(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.DeleteLicense``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteLicenseRequest struct via the builder pattern
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GenerateLicense
+
+> ModelGenerateLicenseResponse GenerateLicense(ctx).ModelGenerateLicenseRequest(modelGenerateLicenseRequest).Execute()
+
+Generate License Key
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+	modelGenerateLicenseRequest := *openapiclient.NewModelGenerateLicenseRequest("Company_example", "Email_example", "FirstName_example", "LastName_example", false) // ModelGenerateLicenseRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SettingsAPI.GenerateLicense(context.Background()).ModelGenerateLicenseRequest(modelGenerateLicenseRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.GenerateLicense``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GenerateLicense`: ModelGenerateLicenseResponse
+	fmt.Fprintf(os.Stdout, "Response from `SettingsAPI.GenerateLicense`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGenerateLicenseRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **modelGenerateLicenseRequest** | [**ModelGenerateLicenseRequest**](ModelGenerateLicenseRequest.md) |  | 
+
+### Return type
+
+[**ModelGenerateLicenseResponse**](ModelGenerateLicenseResponse.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAgentBinaryDownloadURL
+
+> ModelGetAgentBinaryDownloadURLResponse GetAgentBinaryDownloadURL(ctx).Execute()
+
+Get agent binary download url
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SettingsAPI.GetAgentBinaryDownloadURL(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.GetAgentBinaryDownloadURL``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAgentBinaryDownloadURL`: ModelGetAgentBinaryDownloadURLResponse
+	fmt.Fprintf(os.Stdout, "Response from `SettingsAPI.GetAgentBinaryDownloadURL`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAgentBinaryDownloadURLRequest struct via the builder pattern
+
+
+### Return type
+
+[**ModelGetAgentBinaryDownloadURLResponse**](ModelGetAgentBinaryDownloadURLResponse.md)
 
 ### Authorization
 
@@ -718,6 +914,67 @@ Other parameters are passed through a pointer to a apiGetSettingsRequest struct 
 [[Back to README]](../README.md)
 
 
+## GetThreatIntelRules
+
+> ControlsThreatIntelInfo GetThreatIntelRules(ctx).Execute()
+
+Get Threat Intel Rules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SettingsAPI.GetThreatIntelRules(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.GetThreatIntelRules``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetThreatIntelRules`: ControlsThreatIntelInfo
+	fmt.Fprintf(os.Stdout, "Response from `SettingsAPI.GetThreatIntelRules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetThreatIntelRulesRequest struct via the builder pattern
+
+
+### Return type
+
+[**ControlsThreatIntelInfo**](ControlsThreatIntelInfo.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetUserAuditLogs
 
 > []PostgresqlDbGetAuditLogsRow GetUserAuditLogs(ctx).ModelGetAuditLogsRequest(modelGetAuditLogsRequest).Execute()
@@ -847,7 +1104,7 @@ Other parameters are passed through a pointer to a apiGetUserAuditLogsCountReque
 
 ## RegisterLicense
 
-> RegisterLicense(ctx).ModelRegisterLicenseRequest(modelRegisterLicenseRequest).Execute()
+> ModelRegisterLicenseResponse RegisterLicense(ctx).ModelRegisterLicenseRequest(modelRegisterLicenseRequest).Execute()
 
 Register License
 
@@ -870,11 +1127,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SettingsAPI.RegisterLicense(context.Background()).ModelRegisterLicenseRequest(modelRegisterLicenseRequest).Execute()
+	resp, r, err := apiClient.SettingsAPI.RegisterLicense(context.Background()).ModelRegisterLicenseRequest(modelRegisterLicenseRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.RegisterLicense``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `RegisterLicense`: ModelRegisterLicenseResponse
+	fmt.Fprintf(os.Stdout, "Response from `SettingsAPI.RegisterLicense`: %v\n", resp)
 }
 ```
 
@@ -893,7 +1152,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**ModelRegisterLicenseResponse**](ModelRegisterLicenseResponse.md)
 
 ### Authorization
 
@@ -958,6 +1217,133 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TestConfiguredEmail
+
+> ModelMessageResponse TestConfiguredEmail(ctx).Execute()
+
+Test Configured Email
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SettingsAPI.TestConfiguredEmail(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.TestConfiguredEmail``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TestConfiguredEmail`: ModelMessageResponse
+	fmt.Fprintf(os.Stdout, "Response from `SettingsAPI.TestConfiguredEmail`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTestConfiguredEmailRequest struct via the builder pattern
+
+
+### Return type
+
+[**ModelMessageResponse**](ModelMessageResponse.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TestUnconfiguredEmail
+
+> ModelMessageResponse TestUnconfiguredEmail(ctx).ModelEmailConfigurationAdd(modelEmailConfigurationAdd).Execute()
+
+Test Unconfigured Email
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+	modelEmailConfigurationAdd := *openapiclient.NewModelEmailConfigurationAdd() // ModelEmailConfigurationAdd |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SettingsAPI.TestUnconfiguredEmail(context.Background()).ModelEmailConfigurationAdd(modelEmailConfigurationAdd).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.TestUnconfiguredEmail``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TestUnconfiguredEmail`: ModelMessageResponse
+	fmt.Fprintf(os.Stdout, "Response from `SettingsAPI.TestUnconfiguredEmail`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTestUnconfiguredEmailRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **modelEmailConfigurationAdd** | [**ModelEmailConfigurationAdd**](ModelEmailConfigurationAdd.md) |  | 
+
+### Return type
+
+[**ModelMessageResponse**](ModelMessageResponse.md)
 
 ### Authorization
 
@@ -1222,6 +1608,268 @@ Other parameters are passed through a pointer to a apiUploadAgentVersionRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tarball** | ***os.File** |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UploadMalwareRules
+
+> ModelMessageResponse UploadMalwareRules(ctx).Database(database).Execute()
+
+Upload Malware Rules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+	database := os.NewFile(1234, "some_file") // *os.File | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SettingsAPI.UploadMalwareRules(context.Background()).Database(database).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.UploadMalwareRules``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UploadMalwareRules`: ModelMessageResponse
+	fmt.Fprintf(os.Stdout, "Response from `SettingsAPI.UploadMalwareRules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUploadMalwareRulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **database** | ***os.File** |  | 
+
+### Return type
+
+[**ModelMessageResponse**](ModelMessageResponse.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UploadPostureControls
+
+> ModelMessageResponse UploadPostureControls(ctx).Database(database).Execute()
+
+Upload Posture Controls
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+	database := os.NewFile(1234, "some_file") // *os.File | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SettingsAPI.UploadPostureControls(context.Background()).Database(database).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.UploadPostureControls``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UploadPostureControls`: ModelMessageResponse
+	fmt.Fprintf(os.Stdout, "Response from `SettingsAPI.UploadPostureControls`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUploadPostureControlsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **database** | ***os.File** |  | 
+
+### Return type
+
+[**ModelMessageResponse**](ModelMessageResponse.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UploadSecretsRules
+
+> ModelMessageResponse UploadSecretsRules(ctx).Database(database).Execute()
+
+Upload Secrets Rules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+	database := os.NewFile(1234, "some_file") // *os.File | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SettingsAPI.UploadSecretsRules(context.Background()).Database(database).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.UploadSecretsRules``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UploadSecretsRules`: ModelMessageResponse
+	fmt.Fprintf(os.Stdout, "Response from `SettingsAPI.UploadSecretsRules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUploadSecretsRulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **database** | ***os.File** |  | 
+
+### Return type
+
+[**ModelMessageResponse**](ModelMessageResponse.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UploadThreatIntelRules
+
+> UploadThreatIntelRules(ctx).Database(database).Execute()
+
+Upload Threat Intel Rules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+	database := os.NewFile(1234, "some_file") // *os.File | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.SettingsAPI.UploadThreatIntelRules(context.Background()).Database(database).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.UploadThreatIntelRules``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUploadThreatIntelRulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **database** | ***os.File** |  | 
 
 ### Return type
 

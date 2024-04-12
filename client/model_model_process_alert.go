@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.0.0
+API version: 2.2.0
 Contact: community@deepfence.io
 */
 
@@ -33,7 +33,6 @@ type ModelProcessAlert struct {
 	CreatedAt int32 `json:"created_at"`
 	EventType string `json:"event_type"`
 	ExecPath string `json:"exec_path"`
-	Failure string `json:"failure"`
 	Group string `json:"group"`
 	KubernetesClusterId string `json:"kubernetes_cluster_id"`
 	KubernetesClusterName string `json:"kubernetes_cluster_name"`
@@ -55,9 +54,11 @@ type ModelProcessAlert struct {
 	Summary string `json:"summary"`
 	Tactics []string `json:"tactics"`
 	Techniques []string `json:"techniques"`
+	Top string `json:"top"`
 	UpdatedAt int32 `json:"updated_at"`
 	User string `json:"user"`
 	UserName string `json:"user_name"`
+	Users string `json:"users"`
 	Vsize int32 `json:"vsize"`
 }
 
@@ -67,7 +68,7 @@ type _ModelProcessAlert ModelProcessAlert
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelProcessAlert(category string, command string, containerId string, containerImage string, containerIp string, containerName string, count int32, cpuTime float32, createdAt int32, eventType string, execPath string, failure string, group string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, numThreads int32, pid int32, podName string, priority int32, procStatus string, return_ int32, rss int32, ruleId string, session int32, severity string, state string, summary string, tactics []string, techniques []string, updatedAt int32, user string, userName string, vsize int32) *ModelProcessAlert {
+func NewModelProcessAlert(category string, command string, containerId string, containerImage string, containerIp string, containerName string, count int32, cpuTime float32, createdAt int32, eventType string, execPath string, group string, kubernetesClusterId string, kubernetesClusterName string, masked bool, netstat string, nodeId string, nodeType string, numThreads int32, pid int32, podName string, priority int32, procStatus string, return_ int32, rss int32, ruleId string, session int32, severity string, state string, summary string, tactics []string, techniques []string, top string, updatedAt int32, user string, userName string, users string, vsize int32) *ModelProcessAlert {
 	this := ModelProcessAlert{}
 	this.Category = category
 	this.Command = command
@@ -80,7 +81,6 @@ func NewModelProcessAlert(category string, command string, containerId string, c
 	this.CreatedAt = createdAt
 	this.EventType = eventType
 	this.ExecPath = execPath
-	this.Failure = failure
 	this.Group = group
 	this.KubernetesClusterId = kubernetesClusterId
 	this.KubernetesClusterName = kubernetesClusterName
@@ -102,9 +102,11 @@ func NewModelProcessAlert(category string, command string, containerId string, c
 	this.Summary = summary
 	this.Tactics = tactics
 	this.Techniques = techniques
+	this.Top = top
 	this.UpdatedAt = updatedAt
 	this.User = user
 	this.UserName = userName
+	this.Users = users
 	this.Vsize = vsize
 	return &this
 }
@@ -379,30 +381,6 @@ func (o *ModelProcessAlert) GetExecPathOk() (*string, bool) {
 // SetExecPath sets field value
 func (o *ModelProcessAlert) SetExecPath(v string) {
 	o.ExecPath = v
-}
-
-// GetFailure returns the Failure field value
-func (o *ModelProcessAlert) GetFailure() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Failure
-}
-
-// GetFailureOk returns a tuple with the Failure field value
-// and a boolean to check if the value has been set.
-func (o *ModelProcessAlert) GetFailureOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Failure, true
-}
-
-// SetFailure sets field value
-func (o *ModelProcessAlert) SetFailure(v string) {
-	o.Failure = v
 }
 
 // GetGroup returns the Group field value
@@ -913,6 +891,30 @@ func (o *ModelProcessAlert) SetTechniques(v []string) {
 	o.Techniques = v
 }
 
+// GetTop returns the Top field value
+func (o *ModelProcessAlert) GetTop() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Top
+}
+
+// GetTopOk returns a tuple with the Top field value
+// and a boolean to check if the value has been set.
+func (o *ModelProcessAlert) GetTopOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Top, true
+}
+
+// SetTop sets field value
+func (o *ModelProcessAlert) SetTop(v string) {
+	o.Top = v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value
 func (o *ModelProcessAlert) GetUpdatedAt() int32 {
 	if o == nil {
@@ -985,6 +987,30 @@ func (o *ModelProcessAlert) SetUserName(v string) {
 	o.UserName = v
 }
 
+// GetUsers returns the Users field value
+func (o *ModelProcessAlert) GetUsers() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Users
+}
+
+// GetUsersOk returns a tuple with the Users field value
+// and a boolean to check if the value has been set.
+func (o *ModelProcessAlert) GetUsersOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Users, true
+}
+
+// SetUsers sets field value
+func (o *ModelProcessAlert) SetUsers(v string) {
+	o.Users = v
+}
+
 // GetVsize returns the Vsize field value
 func (o *ModelProcessAlert) GetVsize() int32 {
 	if o == nil {
@@ -1030,7 +1056,6 @@ func (o ModelProcessAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["event_type"] = o.EventType
 	toSerialize["exec_path"] = o.ExecPath
-	toSerialize["failure"] = o.Failure
 	toSerialize["group"] = o.Group
 	toSerialize["kubernetes_cluster_id"] = o.KubernetesClusterId
 	toSerialize["kubernetes_cluster_name"] = o.KubernetesClusterName
@@ -1056,9 +1081,11 @@ func (o ModelProcessAlert) ToMap() (map[string]interface{}, error) {
 	if o.Techniques != nil {
 		toSerialize["techniques"] = o.Techniques
 	}
+	toSerialize["top"] = o.Top
 	toSerialize["updated_at"] = o.UpdatedAt
 	toSerialize["user"] = o.User
 	toSerialize["user_name"] = o.UserName
+	toSerialize["users"] = o.Users
 	toSerialize["vsize"] = o.Vsize
 	return toSerialize, nil
 }
@@ -1079,7 +1106,6 @@ func (o *ModelProcessAlert) UnmarshalJSON(data []byte) (err error) {
 		"created_at",
 		"event_type",
 		"exec_path",
-		"failure",
 		"group",
 		"kubernetes_cluster_id",
 		"kubernetes_cluster_name",
@@ -1101,9 +1127,11 @@ func (o *ModelProcessAlert) UnmarshalJSON(data []byte) (err error) {
 		"summary",
 		"tactics",
 		"techniques",
+		"top",
 		"updated_at",
 		"user",
 		"user_name",
+		"users",
 		"vsize",
 	}
 
