@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ApiEndpointsBatch** | **[]map[string]interface{}** |  | 
+**ApiEndpointsEdgeBatch** | **[]map[string]interface{}** |  | 
 **ContainerBatch** | **[]map[string]interface{}** |  | 
 **ContainerEdgesBatch** | **[]map[string]interface{}** |  | 
 **ContainerImageBatch** | **[]map[string]interface{}** |  | 
@@ -25,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewIngestersReportIngestionData
 
-`func NewIngestersReportIngestionData(containerBatch []map[string]interface{}, containerEdgesBatch []map[string]interface{}, containerImageBatch []map[string]interface{}, containerImageEdgeBatch []map[string]interface{}, containerProcessEdgeBatch []map[string]interface{}, endpointEdgesBatch []map[string]interface{}, hostBatch []map[string]interface{}, hosts []map[string]interface{}, kubernetesClusterBatch []map[string]interface{}, kubernetesClusterEdgeBatch []map[string]interface{}, numMerged int32, podBatch []map[string]interface{}, podEdgesBatch []map[string]interface{}, podHostEdgesBatch []map[string]interface{}, processBatch []map[string]interface{}, processEdgesBatch []map[string]interface{}, ) *IngestersReportIngestionData`
+`func NewIngestersReportIngestionData(apiEndpointsBatch []map[string]interface{}, apiEndpointsEdgeBatch []map[string]interface{}, containerBatch []map[string]interface{}, containerEdgesBatch []map[string]interface{}, containerImageBatch []map[string]interface{}, containerImageEdgeBatch []map[string]interface{}, containerProcessEdgeBatch []map[string]interface{}, endpointEdgesBatch []map[string]interface{}, hostBatch []map[string]interface{}, hosts []map[string]interface{}, kubernetesClusterBatch []map[string]interface{}, kubernetesClusterEdgeBatch []map[string]interface{}, numMerged int32, podBatch []map[string]interface{}, podEdgesBatch []map[string]interface{}, podHostEdgesBatch []map[string]interface{}, processBatch []map[string]interface{}, processEdgesBatch []map[string]interface{}, ) *IngestersReportIngestionData`
 
 NewIngestersReportIngestionData instantiates a new IngestersReportIngestionData object
 This constructor will assign default values to properties that have it defined,
@@ -40,6 +42,66 @@ NewIngestersReportIngestionDataWithDefaults instantiates a new IngestersReportIn
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetApiEndpointsBatch
+
+`func (o *IngestersReportIngestionData) GetApiEndpointsBatch() []map[string]interface{}`
+
+GetApiEndpointsBatch returns the ApiEndpointsBatch field if non-nil, zero value otherwise.
+
+### GetApiEndpointsBatchOk
+
+`func (o *IngestersReportIngestionData) GetApiEndpointsBatchOk() (*[]map[string]interface{}, bool)`
+
+GetApiEndpointsBatchOk returns a tuple with the ApiEndpointsBatch field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApiEndpointsBatch
+
+`func (o *IngestersReportIngestionData) SetApiEndpointsBatch(v []map[string]interface{})`
+
+SetApiEndpointsBatch sets ApiEndpointsBatch field to given value.
+
+
+### SetApiEndpointsBatchNil
+
+`func (o *IngestersReportIngestionData) SetApiEndpointsBatchNil(b bool)`
+
+ SetApiEndpointsBatchNil sets the value for ApiEndpointsBatch to be an explicit nil
+
+### UnsetApiEndpointsBatch
+`func (o *IngestersReportIngestionData) UnsetApiEndpointsBatch()`
+
+UnsetApiEndpointsBatch ensures that no value is present for ApiEndpointsBatch, not even an explicit nil
+### GetApiEndpointsEdgeBatch
+
+`func (o *IngestersReportIngestionData) GetApiEndpointsEdgeBatch() []map[string]interface{}`
+
+GetApiEndpointsEdgeBatch returns the ApiEndpointsEdgeBatch field if non-nil, zero value otherwise.
+
+### GetApiEndpointsEdgeBatchOk
+
+`func (o *IngestersReportIngestionData) GetApiEndpointsEdgeBatchOk() (*[]map[string]interface{}, bool)`
+
+GetApiEndpointsEdgeBatchOk returns a tuple with the ApiEndpointsEdgeBatch field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApiEndpointsEdgeBatch
+
+`func (o *IngestersReportIngestionData) SetApiEndpointsEdgeBatch(v []map[string]interface{})`
+
+SetApiEndpointsEdgeBatch sets ApiEndpointsEdgeBatch field to given value.
+
+
+### SetApiEndpointsEdgeBatchNil
+
+`func (o *IngestersReportIngestionData) SetApiEndpointsEdgeBatchNil(b bool)`
+
+ SetApiEndpointsEdgeBatchNil sets the value for ApiEndpointsEdgeBatch to be an explicit nil
+
+### UnsetApiEndpointsEdgeBatch
+`func (o *IngestersReportIngestionData) UnsetApiEndpointsEdgeBatch()`
+
+UnsetApiEndpointsEdgeBatch ensures that no value is present for ApiEndpointsEdgeBatch, not even an explicit nil
 ### GetContainerBatch
 
 `func (o *IngestersReportIngestionData) GetContainerBatch() []map[string]interface{}`

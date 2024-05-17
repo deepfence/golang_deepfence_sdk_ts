@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AgentRunning** | **bool** |  | 
 **AlertsCounts** | **map[string]int32** |  | 
+**ApiEndpoints** | Pointer to [**[]ModelAPIEndpoint**](ModelAPIEndpoint.md) |  | [optional] 
 **AvailabilityZone** | **string** |  | 
 **CloudAccountId** | **string** |  | 
 **CloudProvider** | **string** |  | 
@@ -132,6 +133,41 @@ SetAlertsCounts sets AlertsCounts field to given value.
 `func (o *ModelHost) UnsetAlertsCounts()`
 
 UnsetAlertsCounts ensures that no value is present for AlertsCounts, not even an explicit nil
+### GetApiEndpoints
+
+`func (o *ModelHost) GetApiEndpoints() []ModelAPIEndpoint`
+
+GetApiEndpoints returns the ApiEndpoints field if non-nil, zero value otherwise.
+
+### GetApiEndpointsOk
+
+`func (o *ModelHost) GetApiEndpointsOk() (*[]ModelAPIEndpoint, bool)`
+
+GetApiEndpointsOk returns a tuple with the ApiEndpoints field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApiEndpoints
+
+`func (o *ModelHost) SetApiEndpoints(v []ModelAPIEndpoint)`
+
+SetApiEndpoints sets ApiEndpoints field to given value.
+
+### HasApiEndpoints
+
+`func (o *ModelHost) HasApiEndpoints() bool`
+
+HasApiEndpoints returns a boolean if a field has been set.
+
+### SetApiEndpointsNil
+
+`func (o *ModelHost) SetApiEndpointsNil(b bool)`
+
+ SetApiEndpointsNil sets the value for ApiEndpoints to be an explicit nil
+
+### UnsetApiEndpoints
+`func (o *ModelHost) UnsetApiEndpoints()`
+
+UnsetApiEndpoints ensures that no value is present for ApiEndpoints, not even an explicit nil
 ### GetAvailabilityZone
 
 `func (o *ModelHost) GetAvailabilityZone() string`

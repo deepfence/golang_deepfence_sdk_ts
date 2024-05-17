@@ -16,7 +16,7 @@ info:
     url: https://www.apache.org/licenses/LICENSE-2.0
   termsOfService: /tos
   title: Deepfence ThreatStryker
-  version: 2.2.0
+  version: v2.2.1
 externalDocs:
   description: Deepfence Community
   url: https://community.deepfence.io
@@ -676,6 +676,49 @@ paths:
       summary: Deploy Agent on Cloud Resource
       tags:
       - Cloud Nodes
+  /deepfence/complete/apiendpoint:
+    post:
+      description: Complete api-endpoints info
+      operationId: completeAPIEndpointsInfo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompletionCompletionNodeFieldReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompletionCompletionNodeFieldRes'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Completion for api-endpoints fields
+      tags:
+      - Completion
   /deepfence/complete/cloud-compliance:
     post:
       description: Complete cloud compliance info
@@ -762,6 +805,49 @@ paths:
       summary: Get Completion for compliance fields
       tags:
       - Completion
+  /deepfence/complete/container:
+    post:
+      description: Complete Container info
+      operationId: completeContainerInfo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompletionCompletionNodeFieldReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompletionCompletionNodeFieldRes'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Completion for Container fields
+      tags:
+      - Completion
   /deepfence/complete/host:
     post:
       description: Complete host info
@@ -803,6 +889,49 @@ paths:
       security:
       - bearer_token: []
       summary: Get Completion for host fields
+      tags:
+      - Completion
+  /deepfence/complete/pod:
+    post:
+      description: Complete Pod info
+      operationId: completePodInfo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompletionCompletionNodeFieldReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompletionCompletionNodeFieldRes'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Completion for Pod fields
       tags:
       - Completion
   /deepfence/complete/process:
@@ -9745,6 +9874,51 @@ paths:
       summary: Search Alerts
       tags:
       - Search
+  /deepfence/search/api-endpoints:
+    post:
+      description: Search across all the data associated with api endpoints
+      operationId: searchAPIEndpoints
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelAPIEndpoint'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Search API endpoints
+      tags:
+      - Search
   /deepfence/search/cloud-accounts:
     post:
       description: Search across all the data associated with cloud nodes
@@ -10146,6 +10320,49 @@ paths:
       security:
       - bearer_token: []
       summary: Count Alerts
+      tags:
+      - Search
+  /deepfence/search/count/api-endpoints:
+    post:
+      description: Count across all the data associated with api endpoints
+      operationId: countAPIEndpoints
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchSearchCountResp'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Count API Endpoints
       tags:
       - Search
   /deepfence/search/count/cloud-accounts:
@@ -14139,6 +14356,47 @@ components:
     CompletionCompletionNodeFieldReq:
       example:
         completion: completion
+        filters:
+          compare_filter:
+          - greater_than: true
+            field_value: ""
+            field_name: field_name
+          - greater_than: true
+            field_value: ""
+            field_name: field_name
+          not_contains_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          order_filter:
+            order_fields:
+            - size: 0
+              descending: true
+              field_name: field_name
+            - size: 0
+              descending: true
+              field_name: field_name
+          contains_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          contains_in_array_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          match_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          match_in_array_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
         scan_id: scan_id
         window:
           offset: 0
@@ -14149,6 +14407,8 @@ components:
           type: string
         field_name:
           type: string
+        filters:
+          $ref: '#/components/schemas/ReportersFieldsFilters'
         scan_id:
           type: string
         window:
@@ -14818,6 +15078,7 @@ components:
           interface_ips:
           - interface_ips
           - interface_ips
+          is_deepfence_system: true
           availability_zone: availability_zone
           is_console_vm: true
           os: os
@@ -16095,6 +16356,9 @@ components:
         container_edges_batch:
         - key: ""
         - key: ""
+        api_endpoints_edge_batch:
+        - key: ""
+        - key: ""
         container_batch:
         - key: ""
         - key: ""
@@ -16102,6 +16366,9 @@ components:
         - key: ""
         - key: ""
         kubernetes_cluster_batch:
+        - key: ""
+        - key: ""
+        api_endpoints_batch:
         - key: ""
         - key: ""
         pod_edges_batch:
@@ -16114,6 +16381,18 @@ components:
         - key: ""
         - key: ""
       properties:
+        api_endpoints_batch:
+          items:
+            additionalProperties: {}
+            type: object
+          nullable: true
+          type: array
+        api_endpoints_edge_batch:
+          items:
+            additionalProperties: {}
+            type: object
+          nullable: true
+          type: array
         container_batch:
           items:
             additionalProperties: {}
@@ -16207,6 +16486,8 @@ components:
           nullable: true
           type: array
       required:
+      - api_endpoints_batch
+      - api_endpoints_edge_batch
       - container_batch
       - container_edges_batch
       - container_image_batch
@@ -16409,6 +16690,41 @@ components:
       required:
       - api_token
       type: object
+    ModelAPIEndpoint:
+      example:
+        path: path
+        host_ip: host_ip
+        cloud_type: cloud_type
+        cloud_region: cloud_region
+        method: method
+        port: 0
+        host: host
+        cloud_provider: cloud_provider
+        direction: ingress
+      properties:
+        cloud_provider:
+          type: string
+        cloud_region:
+          type: string
+        cloud_type:
+          type: string
+        direction:
+          enum:
+          - ingress
+          - egress
+          type: string
+        host:
+          type: string
+        host_ip:
+          type: string
+        method:
+          type: string
+        path:
+          type: string
+        port:
+          minimum: 0
+          type: integer
+      type: object
     ModelAPITokenResponse:
       example:
         company_id: 0
@@ -16517,6 +16833,7 @@ components:
         cron_expr: cron_expr
         action: SecretScan
         description: description
+        deepfence_system_scan: true
         filters:
           container_scan_filter:
             filter_in:
@@ -16564,6 +16881,8 @@ components:
           type: array
         cron_expr:
           type: string
+        deepfence_system_scan:
+          type: boolean
         description:
           type: string
         filters:
@@ -16589,12 +16908,15 @@ components:
       type: object
     ModelAgentID:
       example:
+        node_type: node_type
         available_workload: 0
         node_id: node_id
       properties:
         available_workload:
           type: integer
         node_id:
+          type: string
+        node_type:
           type: string
       required:
       - available_workload
@@ -16716,9 +17038,11 @@ components:
       example:
         config_id: config_id
         agent_ids:
-        - available_workload: 0
+        - node_type: node_type
+          available_workload: 0
           node_id: node_id
-        - available_workload: 0
+        - node_type: node_type
+          available_workload: 0
           node_id: node_id
       properties:
         agent_ids:
@@ -16953,61 +17277,6 @@ components:
       - type
       - updated_at
       type: object
-    ModelCloudComplianceBenchmark:
-      example:
-        controls:
-        - controls
-        - controls
-        compliance_type: compliance_type
-        id: id
-      properties:
-        compliance_type:
-          type: string
-        controls:
-          items:
-            type: string
-          nullable: true
-          type: array
-        id:
-          type: string
-      type: object
-    ModelCloudComplianceScanDetails:
-      example:
-        account_id: account_id
-        stop_requested: true
-        benchmarks:
-        - controls:
-          - controls
-          - controls
-          compliance_type: compliance_type
-          id: id
-        - controls:
-          - controls
-          - controls
-          compliance_type: compliance_type
-          id: id
-        scan_id: scan_id
-        scan_types:
-        - scan_types
-        - scan_types
-      properties:
-        account_id:
-          type: string
-        benchmarks:
-          items:
-            $ref: '#/components/schemas/ModelCloudComplianceBenchmark'
-          nullable: true
-          type: array
-        scan_id:
-          type: string
-        scan_types:
-          items:
-            type: string
-          nullable: true
-          type: array
-        stop_requested:
-          type: boolean
-      type: object
     ModelCloudComplianceScanResult:
       example:
         benchmark_type:
@@ -17204,6 +17473,7 @@ components:
           key: monitored_account_ids
         org_acc_id: org_acc_id
         cloud_provider: aws
+        host_node_id: host_node_id
         version: version
         node_id: node_id
       properties:
@@ -17214,6 +17484,8 @@ components:
           - aws
           - gcp
           - azure
+          type: string
+        host_node_id:
           type: string
         monitored_account_ids:
           additionalProperties:
@@ -17251,25 +17523,6 @@ components:
           log_action:
             id: 0
             request_payload: request_payload
-          scans:
-            key:
-              account_id: account_id
-              stop_requested: true
-              benchmarks:
-              - controls:
-                - controls
-                - controls
-                compliance_type: compliance_type
-                id: id
-              - controls:
-                - controls
-                - controls
-                compliance_type: compliance_type
-                id: id
-              scan_id: scan_id
-              scan_types:
-              - scan_types
-              - scan_types
           refresh: refresh
       properties:
         data:
@@ -17294,25 +17547,6 @@ components:
         log_action:
           id: 0
           request_payload: request_payload
-        scans:
-          key:
-            account_id: account_id
-            stop_requested: true
-            benchmarks:
-            - controls:
-              - controls
-              - controls
-              compliance_type: compliance_type
-              id: id
-            - controls:
-              - controls
-              - controls
-              compliance_type: compliance_type
-              id: id
-            scan_id: scan_id
-            scan_types:
-            - scan_types
-            - scan_types
         refresh: refresh
       properties:
         cloudtrail_trails:
@@ -17329,11 +17563,6 @@ components:
           $ref: '#/components/schemas/ControlsAction'
         refresh:
           type: string
-        scans:
-          additionalProperties:
-            $ref: '#/components/schemas/ModelCloudComplianceScanDetails'
-          nullable: true
-          type: object
       type: object
     ModelCloudNodeAccountsListReq:
       example:
@@ -17799,6 +18028,7 @@ components:
         updated_at: 1
         node_name: node_name
         created_at: 0
+        cloud_provider: cloud_provider
         scan_id: scan_id
         node_id: node_id
         status: status
@@ -17808,6 +18038,8 @@ components:
             type: string
           nullable: true
           type: array
+        cloud_provider:
+          type: string
         created_at:
           format: int64
           type: integer
@@ -17833,6 +18065,7 @@ components:
           type: integer
       required:
       - benchmark_types
+      - cloud_provider
       - created_at
       - node_id
       - node_name
@@ -17987,6 +18220,7 @@ components:
           updated_at: 1
           node_name: node_name
           created_at: 0
+          cloud_provider: cloud_provider
           scan_id: scan_id
           node_id: node_id
           status: status
@@ -18000,6 +18234,7 @@ components:
           updated_at: 1
           node_name: node_name
           created_at: 0
+          cloud_provider: cloud_provider
           scan_id: scan_id
           node_id: node_id
           status: status
@@ -18018,6 +18253,7 @@ components:
         benchmark_types:
         - benchmark_types
         - benchmark_types
+        deepfence_system_scan: true
         filters:
           container_scan_filter:
             filter_in:
@@ -18055,6 +18291,8 @@ components:
             type: string
           nullable: true
           type: array
+        deepfence_system_scan:
+          type: boolean
         filters:
           $ref: '#/components/schemas/ModelScanFilter'
         is_priority:
@@ -18071,7 +18309,7 @@ components:
       type: object
     ModelConnection:
       example:
-        count: 2
+        count: 4
         node_name: node_name
         ips:
         - ""
@@ -18093,18 +18331,21 @@ components:
       example:
         vulnerabilities_count: 6
         secrets_count: 1
+        kubernetes_cluster_name: kubernetes_cluster_name
         docker_container_state: docker_container_state
         cpu_max: 0.8008281904610115
         memory_usage: 5
         secret_latest_scan_id: secret_latest_scan_id
         docker_container_network_mode: docker_container_network_mode
         vulnerability_latest_scan_id: vulnerability_latest_scan_id
+        kubernetes_namespace: kubernetes_namespace
         malware_scan_status: malware_scan_status
         docker_container_ips:
         - ""
         - ""
         docker_labels:
           key: ""
+        is_deepfence_system: true
         image: null
         processes:
         - memory_max: 9
@@ -18135,6 +18376,7 @@ components:
         docker_container_name: docker_container_name
         docker_container_created: docker_container_created
         malware_latest_scan_id: malware_latest_scan_id
+        kubernetes_cluster_id: kubernetes_cluster_id
         malwares_count: 1
         node_name: node_name
         docker_container_networks: docker_container_networks
@@ -18180,6 +18422,14 @@ components:
           type: string
         image:
           $ref: '#/components/schemas/ModelContainerImage'
+        is_deepfence_system:
+          type: boolean
+        kubernetes_cluster_id:
+          type: string
+        kubernetes_cluster_name:
+          type: string
+        kubernetes_namespace:
+          type: string
         malware_latest_scan_id:
           type: string
         malware_scan_status:
@@ -18228,6 +18478,10 @@ components:
       - docker_labels
       - host_name
       - image
+      - is_deepfence_system
+      - kubernetes_cluster_id
+      - kubernetes_cluster_name
+      - kubernetes_namespace
       - malware_latest_scan_id
       - malware_scan_status
       - malwares_count
@@ -18246,6 +18500,7 @@ components:
       type: object
     ModelContainerImage:
       example:
+        is_deepfence_system: true
         metadata:
           key: ""
         secret_scan_status: secret_scan_status
@@ -18265,18 +18520,21 @@ components:
         containers:
         - vulnerabilities_count: 6
           secrets_count: 1
+          kubernetes_cluster_name: kubernetes_cluster_name
           docker_container_state: docker_container_state
           cpu_max: 0.8008281904610115
           memory_usage: 5
           secret_latest_scan_id: secret_latest_scan_id
           docker_container_network_mode: docker_container_network_mode
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
+          kubernetes_namespace: kubernetes_namespace
           malware_scan_status: malware_scan_status
           docker_container_ips:
           - ""
           - ""
           docker_labels:
             key: ""
+          is_deepfence_system: true
           image: null
           processes:
           - memory_max: 9
@@ -18307,6 +18565,7 @@ components:
           docker_container_name: docker_container_name
           docker_container_created: docker_container_created
           malware_latest_scan_id: malware_latest_scan_id
+          kubernetes_cluster_id: kubernetes_cluster_id
           malwares_count: 1
           node_name: node_name
           docker_container_networks: docker_container_networks
@@ -18321,18 +18580,21 @@ components:
           node_id: node_id
         - vulnerabilities_count: 6
           secrets_count: 1
+          kubernetes_cluster_name: kubernetes_cluster_name
           docker_container_state: docker_container_state
           cpu_max: 0.8008281904610115
           memory_usage: 5
           secret_latest_scan_id: secret_latest_scan_id
           docker_container_network_mode: docker_container_network_mode
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
+          kubernetes_namespace: kubernetes_namespace
           malware_scan_status: malware_scan_status
           docker_container_ips:
           - ""
           - ""
           docker_labels:
             key: ""
+          is_deepfence_system: true
           image: null
           processes:
           - memory_max: 9
@@ -18363,6 +18625,7 @@ components:
           docker_container_name: docker_container_name
           docker_container_created: docker_container_created
           malware_latest_scan_id: malware_latest_scan_id
+          kubernetes_cluster_id: kubernetes_cluster_id
           malwares_count: 1
           node_name: node_name
           docker_container_networks: docker_container_networks
@@ -18407,6 +18670,8 @@ components:
           type: string
         image_node_id:
           type: string
+        is_deepfence_system:
+          type: boolean
         malware_latest_scan_id:
           type: string
         malware_scan_status:
@@ -18443,6 +18708,7 @@ components:
       - docker_image_tag_list
       - docker_image_virtual_size
       - image_node_id
+      - is_deepfence_system
       - malware_latest_scan_id
       - malware_scan_status
       - malwares_count
@@ -18500,9 +18766,11 @@ components:
     ModelDisableTracerReq:
       example:
         agent_ids:
-        - available_workload: 0
+        - node_type: node_type
+          available_workload: 0
           node_id: node_id
-        - available_workload: 0
+        - node_type: node_type
+          available_workload: 0
           node_id: node_id
       properties:
         agent_ids:
@@ -18607,9 +18875,11 @@ components:
     ModelEnableTracerReq:
       example:
         agent_ids:
-        - available_workload: 0
+        - node_type: node_type
+          available_workload: 0
           node_id: node_id
-        - available_workload: 0
+        - node_type: node_type
+          available_workload: 0
           node_id: node_id
       properties:
         agent_ids:
@@ -18622,6 +18892,7 @@ components:
       type: object
     ModelExportReport:
       example:
+        status_message: status_message
         to_timestamp: 1
         updated_at: 5
         storage_path: storage_path
@@ -18642,6 +18913,8 @@ components:
         report_id:
           type: string
         status:
+          type: string
+        status_message:
           type: string
         storage_path:
           type: string
@@ -18919,7 +19192,7 @@ components:
       example:
         to_timestamp: 6
         options:
-          sbom_format: syft-json@11.0.1
+          sbom_format: syft-json
         from_timestamp: 0
         filters:
           include_dead_nodes: true
@@ -19343,6 +19616,7 @@ components:
               interface_ips:
               - interface_ips
               - interface_ips
+              is_deepfence_system: true
               availability_zone: availability_zone
               is_console_vm: true
               os: os
@@ -19397,7 +19671,8 @@ components:
         - ""
         - ""
         container_images:
-        - metadata:
+        - is_deepfence_system: true
+          metadata:
             key: ""
           secret_scan_status: secret_scan_status
           vulnerabilities_count: 4
@@ -19416,18 +19691,21 @@ components:
           containers:
           - vulnerabilities_count: 6
             secrets_count: 1
+            kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
             cpu_max: 0.8008281904610115
             memory_usage: 5
             secret_latest_scan_id: secret_latest_scan_id
             docker_container_network_mode: docker_container_network_mode
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
+            kubernetes_namespace: kubernetes_namespace
             malware_scan_status: malware_scan_status
             docker_container_ips:
             - ""
             - ""
             docker_labels:
               key: ""
+            is_deepfence_system: true
             image: null
             processes:
             - memory_max: 9
@@ -19458,6 +19736,7 @@ components:
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
             malware_latest_scan_id: malware_latest_scan_id
+            kubernetes_cluster_id: kubernetes_cluster_id
             malwares_count: 1
             node_name: node_name
             docker_container_networks: docker_container_networks
@@ -19472,18 +19751,21 @@ components:
             node_id: node_id
           - vulnerabilities_count: 6
             secrets_count: 1
+            kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
             cpu_max: 0.8008281904610115
             memory_usage: 5
             secret_latest_scan_id: secret_latest_scan_id
             docker_container_network_mode: docker_container_network_mode
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
+            kubernetes_namespace: kubernetes_namespace
             malware_scan_status: malware_scan_status
             docker_container_ips:
             - ""
             - ""
             docker_labels:
               key: ""
+            is_deepfence_system: true
             image: null
             processes:
             - memory_max: 9
@@ -19514,6 +19796,7 @@ components:
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
             malware_latest_scan_id: malware_latest_scan_id
+            kubernetes_cluster_id: kubernetes_cluster_id
             malwares_count: 1
             node_name: node_name
             docker_container_networks: docker_container_networks
@@ -19533,7 +19816,8 @@ components:
           - docker_image_tag_list
           - docker_image_tag_list
           node_id: node_id
-        - metadata:
+        - is_deepfence_system: true
+          metadata:
             key: ""
           secret_scan_status: secret_scan_status
           vulnerabilities_count: 4
@@ -19552,18 +19836,21 @@ components:
           containers:
           - vulnerabilities_count: 6
             secrets_count: 1
+            kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
             cpu_max: 0.8008281904610115
             memory_usage: 5
             secret_latest_scan_id: secret_latest_scan_id
             docker_container_network_mode: docker_container_network_mode
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
+            kubernetes_namespace: kubernetes_namespace
             malware_scan_status: malware_scan_status
             docker_container_ips:
             - ""
             - ""
             docker_labels:
               key: ""
+            is_deepfence_system: true
             image: null
             processes:
             - memory_max: 9
@@ -19594,6 +19881,7 @@ components:
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
             malware_latest_scan_id: malware_latest_scan_id
+            kubernetes_cluster_id: kubernetes_cluster_id
             malwares_count: 1
             node_name: node_name
             docker_container_networks: docker_container_networks
@@ -19608,18 +19896,21 @@ components:
             node_id: node_id
           - vulnerabilities_count: 6
             secrets_count: 1
+            kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
             cpu_max: 0.8008281904610115
             memory_usage: 5
             secret_latest_scan_id: secret_latest_scan_id
             docker_container_network_mode: docker_container_network_mode
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
+            kubernetes_namespace: kubernetes_namespace
             malware_scan_status: malware_scan_status
             docker_container_ips:
             - ""
             - ""
             docker_labels:
               key: ""
+            is_deepfence_system: true
             image: null
             processes:
             - memory_max: 9
@@ -19650,6 +19941,7 @@ components:
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
             malware_latest_scan_id: malware_latest_scan_id
+            kubernetes_cluster_id: kubernetes_cluster_id
             malwares_count: 1
             node_name: node_name
             docker_container_networks: docker_container_networks
@@ -19669,7 +19961,7 @@ components:
           - docker_image_tag_list
           - docker_image_tag_list
           node_id: node_id
-        cpu_max: 5.962133916683182
+        cpu_max: 5.637376656633329
         alerts_counts:
           key: 0
         secret_latest_scan_id: secret_latest_scan_id
@@ -19680,6 +19972,25 @@ components:
           network_config_name: network_config_name
         network_tracer_status: network_tracer_status
         vulnerability_latest_scan_id: vulnerability_latest_scan_id
+        api_endpoints:
+        - path: path
+          host_ip: host_ip
+          cloud_type: cloud_type
+          cloud_region: cloud_region
+          method: method
+          port: 0
+          host: host
+          cloud_provider: cloud_provider
+          direction: ingress
+        - path: path
+          host_ip: host_ip
+          cloud_type: cloud_type
+          cloud_region: cloud_region
+          method: method
+          port: 0
+          host: host
+          cloud_provider: cloud_provider
+          direction: ingress
         plugin_status:
           network_tracer_status:
             description: description
@@ -19701,18 +20012,21 @@ components:
         containers:
         - vulnerabilities_count: 6
           secrets_count: 1
+          kubernetes_cluster_name: kubernetes_cluster_name
           docker_container_state: docker_container_state
           cpu_max: 0.8008281904610115
           memory_usage: 5
           secret_latest_scan_id: secret_latest_scan_id
           docker_container_network_mode: docker_container_network_mode
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
+          kubernetes_namespace: kubernetes_namespace
           malware_scan_status: malware_scan_status
           docker_container_ips:
           - ""
           - ""
           docker_labels:
             key: ""
+          is_deepfence_system: true
           image: null
           processes:
           - memory_max: 9
@@ -19743,6 +20057,7 @@ components:
           docker_container_name: docker_container_name
           docker_container_created: docker_container_created
           malware_latest_scan_id: malware_latest_scan_id
+          kubernetes_cluster_id: kubernetes_cluster_id
           malwares_count: 1
           node_name: node_name
           docker_container_networks: docker_container_networks
@@ -19757,18 +20072,21 @@ components:
           node_id: node_id
         - vulnerabilities_count: 6
           secrets_count: 1
+          kubernetes_cluster_name: kubernetes_cluster_name
           docker_container_state: docker_container_state
           cpu_max: 0.8008281904610115
           memory_usage: 5
           secret_latest_scan_id: secret_latest_scan_id
           docker_container_network_mode: docker_container_network_mode
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
+          kubernetes_namespace: kubernetes_namespace
           malware_scan_status: malware_scan_status
           docker_container_ips:
           - ""
           - ""
           docker_labels:
             key: ""
+          is_deepfence_system: true
           image: null
           processes:
           - memory_max: 9
@@ -19799,6 +20117,7 @@ components:
           docker_container_name: docker_container_name
           docker_container_created: docker_container_created
           malware_latest_scan_id: malware_latest_scan_id
+          kubernetes_cluster_id: kubernetes_cluster_id
           malwares_count: 1
           node_name: node_name
           docker_container_networks: docker_container_networks
@@ -19811,13 +20130,13 @@ components:
           vulnerability_scan_status: vulnerability_scan_status
           host_name: host_name
           node_id: node_id
-        cpu_usage: 5.637376656633329
+        cpu_usage: 2.3021358869347655
         instance_type: instance_type
         local_networks:
         - ""
         - ""
-        vulnerabilities_count: 1
-        secrets_count: 6
+        vulnerabilities_count: 4
+        secrets_count: 7
         cloud_region: cloud_region
         network_tracer_status_updated_at: 1
         network_filter_status: network_filter_status
@@ -19825,21 +20144,21 @@ components:
         private_ip:
         - ""
         - ""
-        exploitable_vulnerabilities_count: 9
+        exploitable_vulnerabilities_count: 3
         cloud_account_id: cloud_account_id
         resource_group: resource_group
         malware_scan_status: malware_scan_status
-        exploitable_malwares_count: 2
-        filesystem_tracer_status_updated_at: 3
+        exploitable_malwares_count: 7
+        filesystem_tracer_status_updated_at: 2
         filesystem_tracer_status: filesystem_tracer_status
         inbound_connections:
-        - count: 2
+        - count: 4
           node_name: node_name
           ips:
           - ""
           - ""
           node_id: node_id
-        - count: 2
+        - count: 4
           node_name: node_name
           ips:
           - ""
@@ -19875,13 +20194,13 @@ components:
         secret_scan_status: secret_scan_status
         compliance_scan_status: compliance_scan_status
         outbound_connections:
-        - count: 2
+        - count: 4
           node_name: node_name
           ips:
           - ""
           - ""
           node_id: node_id
-        - count: 2
+        - count: 4
           node_name: node_name
           ips:
           - ""
@@ -19891,21 +20210,22 @@ components:
         local_cidr:
         - ""
         - ""
-        malwares_count: 4
+        malwares_count: 7
         node_name: node_name
         cloud_provider: cloud_provider
         process_tracer_status: process_tracer_status
         agent_running: true
-        cloud_warn_alarm_count: 6
-        exploitable_secrets_count: 7
-        process_tracer_status_updated_at: 1
-        uptime: 7
-        memory_max: 7
-        compliances_count: 1
+        cloud_warn_alarm_count: 1
+        exploitable_secrets_count: 9
+        process_tracer_status_updated_at: 6
+        uptime: 1
+        memory_max: 1
+        compliances_count: 5
         kernel_version: kernel_version
-        warn_alarm_count: 4
+        warn_alarm_count: 5
         pods:
-        - kubernetes_ip: kubernetes_ip
+        - is_deepfence_system: true
+          kubernetes_ip: kubernetes_ip
           processes:
           - memory_max: 9
             cmdline: cmdline
@@ -19946,18 +20266,21 @@ components:
           containers:
           - vulnerabilities_count: 6
             secrets_count: 1
+            kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
             cpu_max: 0.8008281904610115
             memory_usage: 5
             secret_latest_scan_id: secret_latest_scan_id
             docker_container_network_mode: docker_container_network_mode
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
+            kubernetes_namespace: kubernetes_namespace
             malware_scan_status: malware_scan_status
             docker_container_ips:
             - ""
             - ""
             docker_labels:
               key: ""
+            is_deepfence_system: true
             image: null
             processes:
             - memory_max: 9
@@ -19988,6 +20311,7 @@ components:
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
             malware_latest_scan_id: malware_latest_scan_id
+            kubernetes_cluster_id: kubernetes_cluster_id
             malwares_count: 1
             node_name: node_name
             docker_container_networks: docker_container_networks
@@ -20002,18 +20326,21 @@ components:
             node_id: node_id
           - vulnerabilities_count: 6
             secrets_count: 1
+            kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
             cpu_max: 0.8008281904610115
             memory_usage: 5
             secret_latest_scan_id: secret_latest_scan_id
             docker_container_network_mode: docker_container_network_mode
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
+            kubernetes_namespace: kubernetes_namespace
             malware_scan_status: malware_scan_status
             docker_container_ips:
             - ""
             - ""
             docker_labels:
               key: ""
+            is_deepfence_system: true
             image: null
             processes:
             - memory_max: 9
@@ -20044,6 +20371,7 @@ components:
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
             malware_latest_scan_id: malware_latest_scan_id
+            kubernetes_cluster_id: kubernetes_cluster_id
             malwares_count: 1
             node_name: node_name
             docker_container_networks: docker_container_networks
@@ -20059,7 +20387,8 @@ components:
           vulnerability_scan_status: vulnerability_scan_status
           host_name: host_name
           node_id: node_id
-        - kubernetes_ip: kubernetes_ip
+        - is_deepfence_system: true
+          kubernetes_ip: kubernetes_ip
           processes:
           - memory_max: 9
             cmdline: cmdline
@@ -20100,18 +20429,21 @@ components:
           containers:
           - vulnerabilities_count: 6
             secrets_count: 1
+            kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
             cpu_max: 0.8008281904610115
             memory_usage: 5
             secret_latest_scan_id: secret_latest_scan_id
             docker_container_network_mode: docker_container_network_mode
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
+            kubernetes_namespace: kubernetes_namespace
             malware_scan_status: malware_scan_status
             docker_container_ips:
             - ""
             - ""
             docker_labels:
               key: ""
+            is_deepfence_system: true
             image: null
             processes:
             - memory_max: 9
@@ -20142,6 +20474,7 @@ components:
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
             malware_latest_scan_id: malware_latest_scan_id
+            kubernetes_cluster_id: kubernetes_cluster_id
             malwares_count: 1
             node_name: node_name
             docker_container_networks: docker_container_networks
@@ -20156,18 +20489,21 @@ components:
             node_id: node_id
           - vulnerabilities_count: 6
             secrets_count: 1
+            kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
             cpu_max: 0.8008281904610115
             memory_usage: 5
             secret_latest_scan_id: secret_latest_scan_id
             docker_container_network_mode: docker_container_network_mode
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
+            kubernetes_namespace: kubernetes_namespace
             malware_scan_status: malware_scan_status
             docker_container_ips:
             - ""
             - ""
             docker_labels:
               key: ""
+            is_deepfence_system: true
             image: null
             processes:
             - memory_max: 9
@@ -20198,6 +20534,7 @@ components:
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
             malware_latest_scan_id: malware_latest_scan_id
+            kubernetes_cluster_id: kubernetes_cluster_id
             malwares_count: 1
             node_name: node_name
             docker_container_networks: docker_container_networks
@@ -20224,6 +20561,11 @@ components:
             type: integer
           nullable: true
           type: object
+        api_endpoints:
+          items:
+            $ref: '#/components/schemas/ModelAPIEndpoint'
+          nullable: true
+          type: array
         availability_zone:
           type: string
         cloud_account_id:
@@ -20445,6 +20787,7 @@ components:
       type: object
     ModelInitAgentReq:
       example:
+        node_type: node_type
         available_workload: 0
         version: version
         node_id: node_id
@@ -20453,11 +20796,14 @@ components:
           type: integer
         node_id:
           type: string
+        node_type:
+          type: string
         version:
           type: string
       required:
       - available_workload
       - node_id
+      - node_type
       - version
       type: object
     ModelIntegrationAddReq:
@@ -20787,7 +21133,8 @@ components:
           - ""
           - ""
           container_images:
-          - metadata:
+          - is_deepfence_system: true
+            metadata:
               key: ""
             secret_scan_status: secret_scan_status
             vulnerabilities_count: 4
@@ -20806,18 +21153,21 @@ components:
             containers:
             - vulnerabilities_count: 6
               secrets_count: 1
+              kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
               cpu_max: 0.8008281904610115
               memory_usage: 5
               secret_latest_scan_id: secret_latest_scan_id
               docker_container_network_mode: docker_container_network_mode
               vulnerability_latest_scan_id: vulnerability_latest_scan_id
+              kubernetes_namespace: kubernetes_namespace
               malware_scan_status: malware_scan_status
               docker_container_ips:
               - ""
               - ""
               docker_labels:
                 key: ""
+              is_deepfence_system: true
               image: null
               processes:
               - memory_max: 9
@@ -20848,6 +21198,7 @@ components:
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
               malware_latest_scan_id: malware_latest_scan_id
+              kubernetes_cluster_id: kubernetes_cluster_id
               malwares_count: 1
               node_name: node_name
               docker_container_networks: docker_container_networks
@@ -20862,18 +21213,21 @@ components:
               node_id: node_id
             - vulnerabilities_count: 6
               secrets_count: 1
+              kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
               cpu_max: 0.8008281904610115
               memory_usage: 5
               secret_latest_scan_id: secret_latest_scan_id
               docker_container_network_mode: docker_container_network_mode
               vulnerability_latest_scan_id: vulnerability_latest_scan_id
+              kubernetes_namespace: kubernetes_namespace
               malware_scan_status: malware_scan_status
               docker_container_ips:
               - ""
               - ""
               docker_labels:
                 key: ""
+              is_deepfence_system: true
               image: null
               processes:
               - memory_max: 9
@@ -20904,6 +21258,7 @@ components:
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
               malware_latest_scan_id: malware_latest_scan_id
+              kubernetes_cluster_id: kubernetes_cluster_id
               malwares_count: 1
               node_name: node_name
               docker_container_networks: docker_container_networks
@@ -20923,7 +21278,8 @@ components:
             - docker_image_tag_list
             - docker_image_tag_list
             node_id: node_id
-          - metadata:
+          - is_deepfence_system: true
+            metadata:
               key: ""
             secret_scan_status: secret_scan_status
             vulnerabilities_count: 4
@@ -20942,18 +21298,21 @@ components:
             containers:
             - vulnerabilities_count: 6
               secrets_count: 1
+              kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
               cpu_max: 0.8008281904610115
               memory_usage: 5
               secret_latest_scan_id: secret_latest_scan_id
               docker_container_network_mode: docker_container_network_mode
               vulnerability_latest_scan_id: vulnerability_latest_scan_id
+              kubernetes_namespace: kubernetes_namespace
               malware_scan_status: malware_scan_status
               docker_container_ips:
               - ""
               - ""
               docker_labels:
                 key: ""
+              is_deepfence_system: true
               image: null
               processes:
               - memory_max: 9
@@ -20984,6 +21343,7 @@ components:
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
               malware_latest_scan_id: malware_latest_scan_id
+              kubernetes_cluster_id: kubernetes_cluster_id
               malwares_count: 1
               node_name: node_name
               docker_container_networks: docker_container_networks
@@ -20998,18 +21358,21 @@ components:
               node_id: node_id
             - vulnerabilities_count: 6
               secrets_count: 1
+              kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
               cpu_max: 0.8008281904610115
               memory_usage: 5
               secret_latest_scan_id: secret_latest_scan_id
               docker_container_network_mode: docker_container_network_mode
               vulnerability_latest_scan_id: vulnerability_latest_scan_id
+              kubernetes_namespace: kubernetes_namespace
               malware_scan_status: malware_scan_status
               docker_container_ips:
               - ""
               - ""
               docker_labels:
                 key: ""
+              is_deepfence_system: true
               image: null
               processes:
               - memory_max: 9
@@ -21040,6 +21403,7 @@ components:
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
               malware_latest_scan_id: malware_latest_scan_id
+              kubernetes_cluster_id: kubernetes_cluster_id
               malwares_count: 1
               node_name: node_name
               docker_container_networks: docker_container_networks
@@ -21059,7 +21423,7 @@ components:
             - docker_image_tag_list
             - docker_image_tag_list
             node_id: node_id
-          cpu_max: 5.962133916683182
+          cpu_max: 5.637376656633329
           alerts_counts:
             key: 0
           secret_latest_scan_id: secret_latest_scan_id
@@ -21070,6 +21434,25 @@ components:
             network_config_name: network_config_name
           network_tracer_status: network_tracer_status
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
+          api_endpoints:
+          - path: path
+            host_ip: host_ip
+            cloud_type: cloud_type
+            cloud_region: cloud_region
+            method: method
+            port: 0
+            host: host
+            cloud_provider: cloud_provider
+            direction: ingress
+          - path: path
+            host_ip: host_ip
+            cloud_type: cloud_type
+            cloud_region: cloud_region
+            method: method
+            port: 0
+            host: host
+            cloud_provider: cloud_provider
+            direction: ingress
           plugin_status:
             network_tracer_status:
               description: description
@@ -21091,18 +21474,21 @@ components:
           containers:
           - vulnerabilities_count: 6
             secrets_count: 1
+            kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
             cpu_max: 0.8008281904610115
             memory_usage: 5
             secret_latest_scan_id: secret_latest_scan_id
             docker_container_network_mode: docker_container_network_mode
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
+            kubernetes_namespace: kubernetes_namespace
             malware_scan_status: malware_scan_status
             docker_container_ips:
             - ""
             - ""
             docker_labels:
               key: ""
+            is_deepfence_system: true
             image: null
             processes:
             - memory_max: 9
@@ -21133,6 +21519,7 @@ components:
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
             malware_latest_scan_id: malware_latest_scan_id
+            kubernetes_cluster_id: kubernetes_cluster_id
             malwares_count: 1
             node_name: node_name
             docker_container_networks: docker_container_networks
@@ -21147,18 +21534,21 @@ components:
             node_id: node_id
           - vulnerabilities_count: 6
             secrets_count: 1
+            kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
             cpu_max: 0.8008281904610115
             memory_usage: 5
             secret_latest_scan_id: secret_latest_scan_id
             docker_container_network_mode: docker_container_network_mode
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
+            kubernetes_namespace: kubernetes_namespace
             malware_scan_status: malware_scan_status
             docker_container_ips:
             - ""
             - ""
             docker_labels:
               key: ""
+            is_deepfence_system: true
             image: null
             processes:
             - memory_max: 9
@@ -21189,6 +21579,7 @@ components:
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
             malware_latest_scan_id: malware_latest_scan_id
+            kubernetes_cluster_id: kubernetes_cluster_id
             malwares_count: 1
             node_name: node_name
             docker_container_networks: docker_container_networks
@@ -21201,13 +21592,13 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
-          cpu_usage: 5.637376656633329
+          cpu_usage: 2.3021358869347655
           instance_type: instance_type
           local_networks:
           - ""
           - ""
-          vulnerabilities_count: 1
-          secrets_count: 6
+          vulnerabilities_count: 4
+          secrets_count: 7
           cloud_region: cloud_region
           network_tracer_status_updated_at: 1
           network_filter_status: network_filter_status
@@ -21215,21 +21606,21 @@ components:
           private_ip:
           - ""
           - ""
-          exploitable_vulnerabilities_count: 9
+          exploitable_vulnerabilities_count: 3
           cloud_account_id: cloud_account_id
           resource_group: resource_group
           malware_scan_status: malware_scan_status
-          exploitable_malwares_count: 2
-          filesystem_tracer_status_updated_at: 3
+          exploitable_malwares_count: 7
+          filesystem_tracer_status_updated_at: 2
           filesystem_tracer_status: filesystem_tracer_status
           inbound_connections:
-          - count: 2
+          - count: 4
             node_name: node_name
             ips:
             - ""
             - ""
             node_id: node_id
-          - count: 2
+          - count: 4
             node_name: node_name
             ips:
             - ""
@@ -21265,13 +21656,13 @@ components:
           secret_scan_status: secret_scan_status
           compliance_scan_status: compliance_scan_status
           outbound_connections:
-          - count: 2
+          - count: 4
             node_name: node_name
             ips:
             - ""
             - ""
             node_id: node_id
-          - count: 2
+          - count: 4
             node_name: node_name
             ips:
             - ""
@@ -21281,21 +21672,22 @@ components:
           local_cidr:
           - ""
           - ""
-          malwares_count: 4
+          malwares_count: 7
           node_name: node_name
           cloud_provider: cloud_provider
           process_tracer_status: process_tracer_status
           agent_running: true
-          cloud_warn_alarm_count: 6
-          exploitable_secrets_count: 7
-          process_tracer_status_updated_at: 1
-          uptime: 7
-          memory_max: 7
-          compliances_count: 1
+          cloud_warn_alarm_count: 1
+          exploitable_secrets_count: 9
+          process_tracer_status_updated_at: 6
+          uptime: 1
+          memory_max: 1
+          compliances_count: 5
           kernel_version: kernel_version
-          warn_alarm_count: 4
+          warn_alarm_count: 5
           pods:
-          - kubernetes_ip: kubernetes_ip
+          - is_deepfence_system: true
+            kubernetes_ip: kubernetes_ip
             processes:
             - memory_max: 9
               cmdline: cmdline
@@ -21336,18 +21728,21 @@ components:
             containers:
             - vulnerabilities_count: 6
               secrets_count: 1
+              kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
               cpu_max: 0.8008281904610115
               memory_usage: 5
               secret_latest_scan_id: secret_latest_scan_id
               docker_container_network_mode: docker_container_network_mode
               vulnerability_latest_scan_id: vulnerability_latest_scan_id
+              kubernetes_namespace: kubernetes_namespace
               malware_scan_status: malware_scan_status
               docker_container_ips:
               - ""
               - ""
               docker_labels:
                 key: ""
+              is_deepfence_system: true
               image: null
               processes:
               - memory_max: 9
@@ -21378,6 +21773,7 @@ components:
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
               malware_latest_scan_id: malware_latest_scan_id
+              kubernetes_cluster_id: kubernetes_cluster_id
               malwares_count: 1
               node_name: node_name
               docker_container_networks: docker_container_networks
@@ -21392,18 +21788,21 @@ components:
               node_id: node_id
             - vulnerabilities_count: 6
               secrets_count: 1
+              kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
               cpu_max: 0.8008281904610115
               memory_usage: 5
               secret_latest_scan_id: secret_latest_scan_id
               docker_container_network_mode: docker_container_network_mode
               vulnerability_latest_scan_id: vulnerability_latest_scan_id
+              kubernetes_namespace: kubernetes_namespace
               malware_scan_status: malware_scan_status
               docker_container_ips:
               - ""
               - ""
               docker_labels:
                 key: ""
+              is_deepfence_system: true
               image: null
               processes:
               - memory_max: 9
@@ -21434,6 +21833,7 @@ components:
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
               malware_latest_scan_id: malware_latest_scan_id
+              kubernetes_cluster_id: kubernetes_cluster_id
               malwares_count: 1
               node_name: node_name
               docker_container_networks: docker_container_networks
@@ -21449,7 +21849,8 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
-          - kubernetes_ip: kubernetes_ip
+          - is_deepfence_system: true
+            kubernetes_ip: kubernetes_ip
             processes:
             - memory_max: 9
               cmdline: cmdline
@@ -21490,18 +21891,21 @@ components:
             containers:
             - vulnerabilities_count: 6
               secrets_count: 1
+              kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
               cpu_max: 0.8008281904610115
               memory_usage: 5
               secret_latest_scan_id: secret_latest_scan_id
               docker_container_network_mode: docker_container_network_mode
               vulnerability_latest_scan_id: vulnerability_latest_scan_id
+              kubernetes_namespace: kubernetes_namespace
               malware_scan_status: malware_scan_status
               docker_container_ips:
               - ""
               - ""
               docker_labels:
                 key: ""
+              is_deepfence_system: true
               image: null
               processes:
               - memory_max: 9
@@ -21532,6 +21936,7 @@ components:
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
               malware_latest_scan_id: malware_latest_scan_id
+              kubernetes_cluster_id: kubernetes_cluster_id
               malwares_count: 1
               node_name: node_name
               docker_container_networks: docker_container_networks
@@ -21546,18 +21951,21 @@ components:
               node_id: node_id
             - vulnerabilities_count: 6
               secrets_count: 1
+              kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
               cpu_max: 0.8008281904610115
               memory_usage: 5
               secret_latest_scan_id: secret_latest_scan_id
               docker_container_network_mode: docker_container_network_mode
               vulnerability_latest_scan_id: vulnerability_latest_scan_id
+              kubernetes_namespace: kubernetes_namespace
               malware_scan_status: malware_scan_status
               docker_container_ips:
               - ""
               - ""
               docker_labels:
                 key: ""
+              is_deepfence_system: true
               image: null
               processes:
               - memory_max: 9
@@ -21588,6 +21996,7 @@ components:
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
               malware_latest_scan_id: malware_latest_scan_id
+              kubernetes_cluster_id: kubernetes_cluster_id
               malwares_count: 1
               node_name: node_name
               docker_container_networks: docker_container_networks
@@ -21610,7 +22019,8 @@ components:
           - ""
           - ""
           container_images:
-          - metadata:
+          - is_deepfence_system: true
+            metadata:
               key: ""
             secret_scan_status: secret_scan_status
             vulnerabilities_count: 4
@@ -21629,18 +22039,21 @@ components:
             containers:
             - vulnerabilities_count: 6
               secrets_count: 1
+              kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
               cpu_max: 0.8008281904610115
               memory_usage: 5
               secret_latest_scan_id: secret_latest_scan_id
               docker_container_network_mode: docker_container_network_mode
               vulnerability_latest_scan_id: vulnerability_latest_scan_id
+              kubernetes_namespace: kubernetes_namespace
               malware_scan_status: malware_scan_status
               docker_container_ips:
               - ""
               - ""
               docker_labels:
                 key: ""
+              is_deepfence_system: true
               image: null
               processes:
               - memory_max: 9
@@ -21671,6 +22084,7 @@ components:
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
               malware_latest_scan_id: malware_latest_scan_id
+              kubernetes_cluster_id: kubernetes_cluster_id
               malwares_count: 1
               node_name: node_name
               docker_container_networks: docker_container_networks
@@ -21685,18 +22099,21 @@ components:
               node_id: node_id
             - vulnerabilities_count: 6
               secrets_count: 1
+              kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
               cpu_max: 0.8008281904610115
               memory_usage: 5
               secret_latest_scan_id: secret_latest_scan_id
               docker_container_network_mode: docker_container_network_mode
               vulnerability_latest_scan_id: vulnerability_latest_scan_id
+              kubernetes_namespace: kubernetes_namespace
               malware_scan_status: malware_scan_status
               docker_container_ips:
               - ""
               - ""
               docker_labels:
                 key: ""
+              is_deepfence_system: true
               image: null
               processes:
               - memory_max: 9
@@ -21727,6 +22144,7 @@ components:
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
               malware_latest_scan_id: malware_latest_scan_id
+              kubernetes_cluster_id: kubernetes_cluster_id
               malwares_count: 1
               node_name: node_name
               docker_container_networks: docker_container_networks
@@ -21746,7 +22164,8 @@ components:
             - docker_image_tag_list
             - docker_image_tag_list
             node_id: node_id
-          - metadata:
+          - is_deepfence_system: true
+            metadata:
               key: ""
             secret_scan_status: secret_scan_status
             vulnerabilities_count: 4
@@ -21765,18 +22184,21 @@ components:
             containers:
             - vulnerabilities_count: 6
               secrets_count: 1
+              kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
               cpu_max: 0.8008281904610115
               memory_usage: 5
               secret_latest_scan_id: secret_latest_scan_id
               docker_container_network_mode: docker_container_network_mode
               vulnerability_latest_scan_id: vulnerability_latest_scan_id
+              kubernetes_namespace: kubernetes_namespace
               malware_scan_status: malware_scan_status
               docker_container_ips:
               - ""
               - ""
               docker_labels:
                 key: ""
+              is_deepfence_system: true
               image: null
               processes:
               - memory_max: 9
@@ -21807,6 +22229,7 @@ components:
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
               malware_latest_scan_id: malware_latest_scan_id
+              kubernetes_cluster_id: kubernetes_cluster_id
               malwares_count: 1
               node_name: node_name
               docker_container_networks: docker_container_networks
@@ -21821,18 +22244,21 @@ components:
               node_id: node_id
             - vulnerabilities_count: 6
               secrets_count: 1
+              kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
               cpu_max: 0.8008281904610115
               memory_usage: 5
               secret_latest_scan_id: secret_latest_scan_id
               docker_container_network_mode: docker_container_network_mode
               vulnerability_latest_scan_id: vulnerability_latest_scan_id
+              kubernetes_namespace: kubernetes_namespace
               malware_scan_status: malware_scan_status
               docker_container_ips:
               - ""
               - ""
               docker_labels:
                 key: ""
+              is_deepfence_system: true
               image: null
               processes:
               - memory_max: 9
@@ -21863,6 +22289,7 @@ components:
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
               malware_latest_scan_id: malware_latest_scan_id
+              kubernetes_cluster_id: kubernetes_cluster_id
               malwares_count: 1
               node_name: node_name
               docker_container_networks: docker_container_networks
@@ -21882,7 +22309,7 @@ components:
             - docker_image_tag_list
             - docker_image_tag_list
             node_id: node_id
-          cpu_max: 5.962133916683182
+          cpu_max: 5.637376656633329
           alerts_counts:
             key: 0
           secret_latest_scan_id: secret_latest_scan_id
@@ -21893,6 +22320,25 @@ components:
             network_config_name: network_config_name
           network_tracer_status: network_tracer_status
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
+          api_endpoints:
+          - path: path
+            host_ip: host_ip
+            cloud_type: cloud_type
+            cloud_region: cloud_region
+            method: method
+            port: 0
+            host: host
+            cloud_provider: cloud_provider
+            direction: ingress
+          - path: path
+            host_ip: host_ip
+            cloud_type: cloud_type
+            cloud_region: cloud_region
+            method: method
+            port: 0
+            host: host
+            cloud_provider: cloud_provider
+            direction: ingress
           plugin_status:
             network_tracer_status:
               description: description
@@ -21914,18 +22360,21 @@ components:
           containers:
           - vulnerabilities_count: 6
             secrets_count: 1
+            kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
             cpu_max: 0.8008281904610115
             memory_usage: 5
             secret_latest_scan_id: secret_latest_scan_id
             docker_container_network_mode: docker_container_network_mode
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
+            kubernetes_namespace: kubernetes_namespace
             malware_scan_status: malware_scan_status
             docker_container_ips:
             - ""
             - ""
             docker_labels:
               key: ""
+            is_deepfence_system: true
             image: null
             processes:
             - memory_max: 9
@@ -21956,6 +22405,7 @@ components:
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
             malware_latest_scan_id: malware_latest_scan_id
+            kubernetes_cluster_id: kubernetes_cluster_id
             malwares_count: 1
             node_name: node_name
             docker_container_networks: docker_container_networks
@@ -21970,18 +22420,21 @@ components:
             node_id: node_id
           - vulnerabilities_count: 6
             secrets_count: 1
+            kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
             cpu_max: 0.8008281904610115
             memory_usage: 5
             secret_latest_scan_id: secret_latest_scan_id
             docker_container_network_mode: docker_container_network_mode
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
+            kubernetes_namespace: kubernetes_namespace
             malware_scan_status: malware_scan_status
             docker_container_ips:
             - ""
             - ""
             docker_labels:
               key: ""
+            is_deepfence_system: true
             image: null
             processes:
             - memory_max: 9
@@ -22012,6 +22465,7 @@ components:
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
             malware_latest_scan_id: malware_latest_scan_id
+            kubernetes_cluster_id: kubernetes_cluster_id
             malwares_count: 1
             node_name: node_name
             docker_container_networks: docker_container_networks
@@ -22024,13 +22478,13 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
-          cpu_usage: 5.637376656633329
+          cpu_usage: 2.3021358869347655
           instance_type: instance_type
           local_networks:
           - ""
           - ""
-          vulnerabilities_count: 1
-          secrets_count: 6
+          vulnerabilities_count: 4
+          secrets_count: 7
           cloud_region: cloud_region
           network_tracer_status_updated_at: 1
           network_filter_status: network_filter_status
@@ -22038,21 +22492,21 @@ components:
           private_ip:
           - ""
           - ""
-          exploitable_vulnerabilities_count: 9
+          exploitable_vulnerabilities_count: 3
           cloud_account_id: cloud_account_id
           resource_group: resource_group
           malware_scan_status: malware_scan_status
-          exploitable_malwares_count: 2
-          filesystem_tracer_status_updated_at: 3
+          exploitable_malwares_count: 7
+          filesystem_tracer_status_updated_at: 2
           filesystem_tracer_status: filesystem_tracer_status
           inbound_connections:
-          - count: 2
+          - count: 4
             node_name: node_name
             ips:
             - ""
             - ""
             node_id: node_id
-          - count: 2
+          - count: 4
             node_name: node_name
             ips:
             - ""
@@ -22088,13 +22542,13 @@ components:
           secret_scan_status: secret_scan_status
           compliance_scan_status: compliance_scan_status
           outbound_connections:
-          - count: 2
+          - count: 4
             node_name: node_name
             ips:
             - ""
             - ""
             node_id: node_id
-          - count: 2
+          - count: 4
             node_name: node_name
             ips:
             - ""
@@ -22104,21 +22558,22 @@ components:
           local_cidr:
           - ""
           - ""
-          malwares_count: 4
+          malwares_count: 7
           node_name: node_name
           cloud_provider: cloud_provider
           process_tracer_status: process_tracer_status
           agent_running: true
-          cloud_warn_alarm_count: 6
-          exploitable_secrets_count: 7
-          process_tracer_status_updated_at: 1
-          uptime: 7
-          memory_max: 7
-          compliances_count: 1
+          cloud_warn_alarm_count: 1
+          exploitable_secrets_count: 9
+          process_tracer_status_updated_at: 6
+          uptime: 1
+          memory_max: 1
+          compliances_count: 5
           kernel_version: kernel_version
-          warn_alarm_count: 4
+          warn_alarm_count: 5
           pods:
-          - kubernetes_ip: kubernetes_ip
+          - is_deepfence_system: true
+            kubernetes_ip: kubernetes_ip
             processes:
             - memory_max: 9
               cmdline: cmdline
@@ -22159,18 +22614,21 @@ components:
             containers:
             - vulnerabilities_count: 6
               secrets_count: 1
+              kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
               cpu_max: 0.8008281904610115
               memory_usage: 5
               secret_latest_scan_id: secret_latest_scan_id
               docker_container_network_mode: docker_container_network_mode
               vulnerability_latest_scan_id: vulnerability_latest_scan_id
+              kubernetes_namespace: kubernetes_namespace
               malware_scan_status: malware_scan_status
               docker_container_ips:
               - ""
               - ""
               docker_labels:
                 key: ""
+              is_deepfence_system: true
               image: null
               processes:
               - memory_max: 9
@@ -22201,6 +22659,7 @@ components:
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
               malware_latest_scan_id: malware_latest_scan_id
+              kubernetes_cluster_id: kubernetes_cluster_id
               malwares_count: 1
               node_name: node_name
               docker_container_networks: docker_container_networks
@@ -22215,18 +22674,21 @@ components:
               node_id: node_id
             - vulnerabilities_count: 6
               secrets_count: 1
+              kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
               cpu_max: 0.8008281904610115
               memory_usage: 5
               secret_latest_scan_id: secret_latest_scan_id
               docker_container_network_mode: docker_container_network_mode
               vulnerability_latest_scan_id: vulnerability_latest_scan_id
+              kubernetes_namespace: kubernetes_namespace
               malware_scan_status: malware_scan_status
               docker_container_ips:
               - ""
               - ""
               docker_labels:
                 key: ""
+              is_deepfence_system: true
               image: null
               processes:
               - memory_max: 9
@@ -22257,6 +22719,7 @@ components:
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
               malware_latest_scan_id: malware_latest_scan_id
+              kubernetes_cluster_id: kubernetes_cluster_id
               malwares_count: 1
               node_name: node_name
               docker_container_networks: docker_container_networks
@@ -22272,7 +22735,8 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
-          - kubernetes_ip: kubernetes_ip
+          - is_deepfence_system: true
+            kubernetes_ip: kubernetes_ip
             processes:
             - memory_max: 9
               cmdline: cmdline
@@ -22313,18 +22777,21 @@ components:
             containers:
             - vulnerabilities_count: 6
               secrets_count: 1
+              kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
               cpu_max: 0.8008281904610115
               memory_usage: 5
               secret_latest_scan_id: secret_latest_scan_id
               docker_container_network_mode: docker_container_network_mode
               vulnerability_latest_scan_id: vulnerability_latest_scan_id
+              kubernetes_namespace: kubernetes_namespace
               malware_scan_status: malware_scan_status
               docker_container_ips:
               - ""
               - ""
               docker_labels:
                 key: ""
+              is_deepfence_system: true
               image: null
               processes:
               - memory_max: 9
@@ -22355,6 +22822,7 @@ components:
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
               malware_latest_scan_id: malware_latest_scan_id
+              kubernetes_cluster_id: kubernetes_cluster_id
               malwares_count: 1
               node_name: node_name
               docker_container_networks: docker_container_networks
@@ -22369,18 +22837,21 @@ components:
               node_id: node_id
             - vulnerabilities_count: 6
               secrets_count: 1
+              kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
               cpu_max: 0.8008281904610115
               memory_usage: 5
               secret_latest_scan_id: secret_latest_scan_id
               docker_container_network_mode: docker_container_network_mode
               vulnerability_latest_scan_id: vulnerability_latest_scan_id
+              kubernetes_namespace: kubernetes_namespace
               malware_scan_status: malware_scan_status
               docker_container_ips:
               - ""
               - ""
               docker_labels:
                 key: ""
+              is_deepfence_system: true
               image: null
               processes:
               - memory_max: 9
@@ -22411,6 +22882,7 @@ components:
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
               malware_latest_scan_id: malware_latest_scan_id
+              kubernetes_cluster_id: kubernetes_cluster_id
               malwares_count: 1
               node_name: node_name
               docker_container_networks: docker_container_networks
@@ -22855,6 +23327,7 @@ components:
     ModelMalwareScanTriggerReq:
       example:
         is_priority: true
+        deepfence_system_scan: true
         filters:
           container_scan_filter:
             filter_in:
@@ -22887,6 +23360,8 @@ components:
         - node_type: image
           node_id: node_id
       properties:
+        deepfence_system_scan:
+          type: boolean
         filters:
           $ref: '#/components/schemas/ModelScanFilter'
         is_priority:
@@ -22959,6 +23434,7 @@ components:
       type: object
     ModelNetworkAlert:
       example:
+        request: request
         references: references
         destination_port: 1
         kubernetes_cluster_name: kubernetes_cluster_name
@@ -22985,6 +23461,7 @@ components:
         rule_id: rule_id
         container_name: container_name
         encrypted: true
+        response: response
         techniques:
         - techniques
         - techniques
@@ -23036,6 +23513,10 @@ components:
         protocol:
           type: string
         references:
+          type: string
+        request:
+          type: string
+        response:
           type: string
         rule_id:
           type: string
@@ -23331,6 +23812,7 @@ components:
       type: object
     ModelPod:
       example:
+        is_deepfence_system: true
         kubernetes_ip: kubernetes_ip
         processes:
         - memory_max: 9
@@ -23372,18 +23854,21 @@ components:
         containers:
         - vulnerabilities_count: 6
           secrets_count: 1
+          kubernetes_cluster_name: kubernetes_cluster_name
           docker_container_state: docker_container_state
           cpu_max: 0.8008281904610115
           memory_usage: 5
           secret_latest_scan_id: secret_latest_scan_id
           docker_container_network_mode: docker_container_network_mode
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
+          kubernetes_namespace: kubernetes_namespace
           malware_scan_status: malware_scan_status
           docker_container_ips:
           - ""
           - ""
           docker_labels:
             key: ""
+          is_deepfence_system: true
           image: null
           processes:
           - memory_max: 9
@@ -23414,6 +23899,7 @@ components:
           docker_container_name: docker_container_name
           docker_container_created: docker_container_created
           malware_latest_scan_id: malware_latest_scan_id
+          kubernetes_cluster_id: kubernetes_cluster_id
           malwares_count: 1
           node_name: node_name
           docker_container_networks: docker_container_networks
@@ -23428,18 +23914,21 @@ components:
           node_id: node_id
         - vulnerabilities_count: 6
           secrets_count: 1
+          kubernetes_cluster_name: kubernetes_cluster_name
           docker_container_state: docker_container_state
           cpu_max: 0.8008281904610115
           memory_usage: 5
           secret_latest_scan_id: secret_latest_scan_id
           docker_container_network_mode: docker_container_network_mode
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
+          kubernetes_namespace: kubernetes_namespace
           malware_scan_status: malware_scan_status
           docker_container_ips:
           - ""
           - ""
           docker_labels:
             key: ""
+          is_deepfence_system: true
           image: null
           processes:
           - memory_max: 9
@@ -23470,6 +23959,7 @@ components:
           docker_container_name: docker_container_name
           docker_container_created: docker_container_created
           malware_latest_scan_id: malware_latest_scan_id
+          kubernetes_cluster_id: kubernetes_cluster_id
           malwares_count: 1
           node_name: node_name
           docker_container_networks: docker_container_networks
@@ -23493,6 +23983,8 @@ components:
           type: array
         host_name:
           type: string
+        is_deepfence_system:
+          type: boolean
         kubernetes_cluster_id:
           type: string
         kubernetes_cluster_name:
@@ -23531,6 +24023,7 @@ components:
       required:
       - containers
       - host_name
+      - is_deepfence_system
       - kubernetes_cluster_id
       - kubernetes_cluster_name
       - kubernetes_created
@@ -23942,7 +24435,8 @@ components:
       example:
         syncing: true
         container_images:
-        - metadata:
+        - is_deepfence_system: true
+          metadata:
             key: ""
           secret_scan_status: secret_scan_status
           vulnerabilities_count: 4
@@ -23961,18 +24455,21 @@ components:
           containers:
           - vulnerabilities_count: 6
             secrets_count: 1
+            kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
             cpu_max: 0.8008281904610115
             memory_usage: 5
             secret_latest_scan_id: secret_latest_scan_id
             docker_container_network_mode: docker_container_network_mode
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
+            kubernetes_namespace: kubernetes_namespace
             malware_scan_status: malware_scan_status
             docker_container_ips:
             - ""
             - ""
             docker_labels:
               key: ""
+            is_deepfence_system: true
             image: null
             processes:
             - memory_max: 9
@@ -24003,6 +24500,7 @@ components:
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
             malware_latest_scan_id: malware_latest_scan_id
+            kubernetes_cluster_id: kubernetes_cluster_id
             malwares_count: 1
             node_name: node_name
             docker_container_networks: docker_container_networks
@@ -24017,18 +24515,21 @@ components:
             node_id: node_id
           - vulnerabilities_count: 6
             secrets_count: 1
+            kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
             cpu_max: 0.8008281904610115
             memory_usage: 5
             secret_latest_scan_id: secret_latest_scan_id
             docker_container_network_mode: docker_container_network_mode
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
+            kubernetes_namespace: kubernetes_namespace
             malware_scan_status: malware_scan_status
             docker_container_ips:
             - ""
             - ""
             docker_labels:
               key: ""
+            is_deepfence_system: true
             image: null
             processes:
             - memory_max: 9
@@ -24059,6 +24560,7 @@ components:
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
             malware_latest_scan_id: malware_latest_scan_id
+            kubernetes_cluster_id: kubernetes_cluster_id
             malwares_count: 1
             node_name: node_name
             docker_container_networks: docker_container_networks
@@ -24078,7 +24580,8 @@ components:
           - docker_image_tag_list
           - docker_image_tag_list
           node_id: node_id
-        - metadata:
+        - is_deepfence_system: true
+          metadata:
             key: ""
           secret_scan_status: secret_scan_status
           vulnerabilities_count: 4
@@ -24097,18 +24600,21 @@ components:
           containers:
           - vulnerabilities_count: 6
             secrets_count: 1
+            kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
             cpu_max: 0.8008281904610115
             memory_usage: 5
             secret_latest_scan_id: secret_latest_scan_id
             docker_container_network_mode: docker_container_network_mode
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
+            kubernetes_namespace: kubernetes_namespace
             malware_scan_status: malware_scan_status
             docker_container_ips:
             - ""
             - ""
             docker_labels:
               key: ""
+            is_deepfence_system: true
             image: null
             processes:
             - memory_max: 9
@@ -24139,6 +24645,7 @@ components:
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
             malware_latest_scan_id: malware_latest_scan_id
+            kubernetes_cluster_id: kubernetes_cluster_id
             malwares_count: 1
             node_name: node_name
             docker_container_networks: docker_container_networks
@@ -24153,18 +24660,21 @@ components:
             node_id: node_id
           - vulnerabilities_count: 6
             secrets_count: 1
+            kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
             cpu_max: 0.8008281904610115
             memory_usage: 5
             secret_latest_scan_id: secret_latest_scan_id
             docker_container_network_mode: docker_container_network_mode
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
+            kubernetes_namespace: kubernetes_namespace
             malware_scan_status: malware_scan_status
             docker_container_ips:
             - ""
             - ""
             docker_labels:
               key: ""
+            is_deepfence_system: true
             image: null
             processes:
             - memory_max: 9
@@ -24195,6 +24705,7 @@ components:
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
             malware_latest_scan_id: malware_latest_scan_id
+            kubernetes_cluster_id: kubernetes_cluster_id
             malwares_count: 1
             node_name: node_name
             docker_container_networks: docker_container_networks
@@ -25694,6 +26205,7 @@ components:
     ModelSecretScanTriggerReq:
       example:
         is_priority: true
+        deepfence_system_scan: true
         filters:
           container_scan_filter:
             filter_in:
@@ -25726,6 +26238,8 @@ components:
         - node_type: image
           node_id: node_id
       properties:
+        deepfence_system_scan:
+          type: boolean
         filters:
           $ref: '#/components/schemas/ModelScanFilter'
         is_priority:
@@ -26383,6 +26897,7 @@ components:
         scan_config:
         - language: base
         - language: base
+        deepfence_system_scan: true
         filters:
           container_scan_filter:
             filter_in:
@@ -26415,6 +26930,8 @@ components:
         - node_type: image
           node_id: node_id
       properties:
+        deepfence_system_scan:
+          type: boolean
         filters:
           $ref: '#/components/schemas/ModelScanFilter'
         is_priority:
@@ -26583,6 +27100,7 @@ components:
         interface_ips:
         - interface_ips
         - interface_ips
+        is_deepfence_system: true
         availability_zone: availability_zone
         is_console_vm: true
         os: os
@@ -26681,6 +27199,8 @@ components:
             type: string
           type: array
         is_console_vm:
+          type: boolean
+        is_deepfence_system:
           type: boolean
         kernel_id:
           type: string
@@ -27883,11 +28403,11 @@ components:
       type: object
     UtilsReportOptions:
       example:
-        sbom_format: syft-json@11.0.1
+        sbom_format: syft-json
       properties:
         sbom_format:
           enum:
-          - syft-json@11.0.1
+          - syft-json
           - cyclonedx-json@1.5
           - spdx-json@2.2
           - spdx-json@2.3

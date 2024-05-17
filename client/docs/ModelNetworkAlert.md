@@ -25,6 +25,8 @@ Name | Type | Description | Notes
 **PodName** | **string** |  | 
 **Protocol** | **string** |  | 
 **References** | **string** |  | 
+**Request** | Pointer to **string** |  | [optional] 
+**Response** | Pointer to **string** |  | [optional] 
 **RuleId** | **string** |  | 
 **Severity** | **string** |  | 
 **SourceIp** | **string** |  | 
@@ -474,6 +476,56 @@ and a boolean to check if the value has been set.
 
 SetReferences sets References field to given value.
 
+
+### GetRequest
+
+`func (o *ModelNetworkAlert) GetRequest() string`
+
+GetRequest returns the Request field if non-nil, zero value otherwise.
+
+### GetRequestOk
+
+`func (o *ModelNetworkAlert) GetRequestOk() (*string, bool)`
+
+GetRequestOk returns a tuple with the Request field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequest
+
+`func (o *ModelNetworkAlert) SetRequest(v string)`
+
+SetRequest sets Request field to given value.
+
+### HasRequest
+
+`func (o *ModelNetworkAlert) HasRequest() bool`
+
+HasRequest returns a boolean if a field has been set.
+
+### GetResponse
+
+`func (o *ModelNetworkAlert) GetResponse() string`
+
+GetResponse returns the Response field if non-nil, zero value otherwise.
+
+### GetResponseOk
+
+`func (o *ModelNetworkAlert) GetResponseOk() (*string, bool)`
+
+GetResponseOk returns a tuple with the Response field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResponse
+
+`func (o *ModelNetworkAlert) SetResponse(v string)`
+
+SetResponse sets Response field to given value.
+
+### HasResponse
+
+`func (o *ModelNetworkAlert) HasResponse() bool`
+
+HasResponse returns a boolean if a field has been set.
 
 ### GetRuleId
 

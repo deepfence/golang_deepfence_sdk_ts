@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.2.0
+API version: v2.2.1
 Contact: community@deepfence.io
 */
 
@@ -22,6 +22,8 @@ var _ MappedNullable = &IngestersReportIngestionData{}
 
 // IngestersReportIngestionData struct for IngestersReportIngestionData
 type IngestersReportIngestionData struct {
+	ApiEndpointsBatch []map[string]interface{} `json:"api_endpoints_batch"`
+	ApiEndpointsEdgeBatch []map[string]interface{} `json:"api_endpoints_edge_batch"`
 	ContainerBatch []map[string]interface{} `json:"container_batch"`
 	ContainerEdgesBatch []map[string]interface{} `json:"container_edges_batch"`
 	ContainerImageBatch []map[string]interface{} `json:"container_image_batch"`
@@ -46,8 +48,10 @@ type _IngestersReportIngestionData IngestersReportIngestionData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIngestersReportIngestionData(containerBatch []map[string]interface{}, containerEdgesBatch []map[string]interface{}, containerImageBatch []map[string]interface{}, containerImageEdgeBatch []map[string]interface{}, containerProcessEdgeBatch []map[string]interface{}, endpointEdgesBatch []map[string]interface{}, hostBatch []map[string]interface{}, hosts []map[string]interface{}, kubernetesClusterBatch []map[string]interface{}, kubernetesClusterEdgeBatch []map[string]interface{}, numMerged int32, podBatch []map[string]interface{}, podEdgesBatch []map[string]interface{}, podHostEdgesBatch []map[string]interface{}, processBatch []map[string]interface{}, processEdgesBatch []map[string]interface{}) *IngestersReportIngestionData {
+func NewIngestersReportIngestionData(apiEndpointsBatch []map[string]interface{}, apiEndpointsEdgeBatch []map[string]interface{}, containerBatch []map[string]interface{}, containerEdgesBatch []map[string]interface{}, containerImageBatch []map[string]interface{}, containerImageEdgeBatch []map[string]interface{}, containerProcessEdgeBatch []map[string]interface{}, endpointEdgesBatch []map[string]interface{}, hostBatch []map[string]interface{}, hosts []map[string]interface{}, kubernetesClusterBatch []map[string]interface{}, kubernetesClusterEdgeBatch []map[string]interface{}, numMerged int32, podBatch []map[string]interface{}, podEdgesBatch []map[string]interface{}, podHostEdgesBatch []map[string]interface{}, processBatch []map[string]interface{}, processEdgesBatch []map[string]interface{}) *IngestersReportIngestionData {
 	this := IngestersReportIngestionData{}
+	this.ApiEndpointsBatch = apiEndpointsBatch
+	this.ApiEndpointsEdgeBatch = apiEndpointsEdgeBatch
 	this.ContainerBatch = containerBatch
 	this.ContainerEdgesBatch = containerEdgesBatch
 	this.ContainerImageBatch = containerImageBatch
@@ -73,6 +77,58 @@ func NewIngestersReportIngestionData(containerBatch []map[string]interface{}, co
 func NewIngestersReportIngestionDataWithDefaults() *IngestersReportIngestionData {
 	this := IngestersReportIngestionData{}
 	return &this
+}
+
+// GetApiEndpointsBatch returns the ApiEndpointsBatch field value
+// If the value is explicit nil, the zero value for []map[string]interface{} will be returned
+func (o *IngestersReportIngestionData) GetApiEndpointsBatch() []map[string]interface{} {
+	if o == nil {
+		var ret []map[string]interface{}
+		return ret
+	}
+
+	return o.ApiEndpointsBatch
+}
+
+// GetApiEndpointsBatchOk returns a tuple with the ApiEndpointsBatch field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *IngestersReportIngestionData) GetApiEndpointsBatchOk() ([]map[string]interface{}, bool) {
+	if o == nil || IsNil(o.ApiEndpointsBatch) {
+		return nil, false
+	}
+	return o.ApiEndpointsBatch, true
+}
+
+// SetApiEndpointsBatch sets field value
+func (o *IngestersReportIngestionData) SetApiEndpointsBatch(v []map[string]interface{}) {
+	o.ApiEndpointsBatch = v
+}
+
+// GetApiEndpointsEdgeBatch returns the ApiEndpointsEdgeBatch field value
+// If the value is explicit nil, the zero value for []map[string]interface{} will be returned
+func (o *IngestersReportIngestionData) GetApiEndpointsEdgeBatch() []map[string]interface{} {
+	if o == nil {
+		var ret []map[string]interface{}
+		return ret
+	}
+
+	return o.ApiEndpointsEdgeBatch
+}
+
+// GetApiEndpointsEdgeBatchOk returns a tuple with the ApiEndpointsEdgeBatch field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *IngestersReportIngestionData) GetApiEndpointsEdgeBatchOk() ([]map[string]interface{}, bool) {
+	if o == nil || IsNil(o.ApiEndpointsEdgeBatch) {
+		return nil, false
+	}
+	return o.ApiEndpointsEdgeBatch, true
+}
+
+// SetApiEndpointsEdgeBatch sets field value
+func (o *IngestersReportIngestionData) SetApiEndpointsEdgeBatch(v []map[string]interface{}) {
+	o.ApiEndpointsEdgeBatch = v
 }
 
 // GetContainerBatch returns the ContainerBatch field value
@@ -499,6 +555,12 @@ func (o IngestersReportIngestionData) MarshalJSON() ([]byte, error) {
 
 func (o IngestersReportIngestionData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ApiEndpointsBatch != nil {
+		toSerialize["api_endpoints_batch"] = o.ApiEndpointsBatch
+	}
+	if o.ApiEndpointsEdgeBatch != nil {
+		toSerialize["api_endpoints_edge_batch"] = o.ApiEndpointsEdgeBatch
+	}
 	if o.ContainerBatch != nil {
 		toSerialize["container_batch"] = o.ContainerBatch
 	}
@@ -553,6 +615,8 @@ func (o *IngestersReportIngestionData) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"api_endpoints_batch",
+		"api_endpoints_edge_batch",
 		"container_batch",
 		"container_edges_batch",
 		"container_image_batch",

@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.2.0
+API version: v2.2.1
 Contact: community@deepfence.io
 */
 
@@ -24,6 +24,7 @@ var _ MappedNullable = &CompletionCompletionNodeFieldReq{}
 type CompletionCompletionNodeFieldReq struct {
 	Completion string `json:"completion"`
 	FieldName string `json:"field_name"`
+	Filters *ReportersFieldsFilters `json:"filters,omitempty"`
 	ScanId *string `json:"scan_id,omitempty"`
 	Window ModelFetchWindow `json:"window"`
 }
@@ -98,6 +99,38 @@ func (o *CompletionCompletionNodeFieldReq) SetFieldName(v string) {
 	o.FieldName = v
 }
 
+// GetFilters returns the Filters field value if set, zero value otherwise.
+func (o *CompletionCompletionNodeFieldReq) GetFilters() ReportersFieldsFilters {
+	if o == nil || IsNil(o.Filters) {
+		var ret ReportersFieldsFilters
+		return ret
+	}
+	return *o.Filters
+}
+
+// GetFiltersOk returns a tuple with the Filters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CompletionCompletionNodeFieldReq) GetFiltersOk() (*ReportersFieldsFilters, bool) {
+	if o == nil || IsNil(o.Filters) {
+		return nil, false
+	}
+	return o.Filters, true
+}
+
+// HasFilters returns a boolean if a field has been set.
+func (o *CompletionCompletionNodeFieldReq) HasFilters() bool {
+	if o != nil && !IsNil(o.Filters) {
+		return true
+	}
+
+	return false
+}
+
+// SetFilters gets a reference to the given ReportersFieldsFilters and assigns it to the Filters field.
+func (o *CompletionCompletionNodeFieldReq) SetFilters(v ReportersFieldsFilters) {
+	o.Filters = &v
+}
+
 // GetScanId returns the ScanId field value if set, zero value otherwise.
 func (o *CompletionCompletionNodeFieldReq) GetScanId() string {
 	if o == nil || IsNil(o.ScanId) {
@@ -166,6 +199,9 @@ func (o CompletionCompletionNodeFieldReq) ToMap() (map[string]interface{}, error
 	toSerialize := map[string]interface{}{}
 	toSerialize["completion"] = o.Completion
 	toSerialize["field_name"] = o.FieldName
+	if !IsNil(o.Filters) {
+		toSerialize["filters"] = o.Filters
+	}
 	if !IsNil(o.ScanId) {
 		toSerialize["scan_id"] = o.ScanId
 	}

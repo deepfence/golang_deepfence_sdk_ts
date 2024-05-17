@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: 2.2.0
+API version: v2.2.1
 Contact: community@deepfence.io
 */
 
@@ -43,6 +43,8 @@ type ModelNetworkAlert struct {
 	PodName string `json:"pod_name"`
 	Protocol string `json:"protocol"`
 	References string `json:"references"`
+	Request *string `json:"request,omitempty"`
+	Response *string `json:"response,omitempty"`
 	RuleId string `json:"rule_id"`
 	Severity string `json:"severity"`
 	SourceIp string `json:"source_ip"`
@@ -609,6 +611,70 @@ func (o *ModelNetworkAlert) SetReferences(v string) {
 	o.References = v
 }
 
+// GetRequest returns the Request field value if set, zero value otherwise.
+func (o *ModelNetworkAlert) GetRequest() string {
+	if o == nil || IsNil(o.Request) {
+		var ret string
+		return ret
+	}
+	return *o.Request
+}
+
+// GetRequestOk returns a tuple with the Request field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkAlert) GetRequestOk() (*string, bool) {
+	if o == nil || IsNil(o.Request) {
+		return nil, false
+	}
+	return o.Request, true
+}
+
+// HasRequest returns a boolean if a field has been set.
+func (o *ModelNetworkAlert) HasRequest() bool {
+	if o != nil && !IsNil(o.Request) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequest gets a reference to the given string and assigns it to the Request field.
+func (o *ModelNetworkAlert) SetRequest(v string) {
+	o.Request = &v
+}
+
+// GetResponse returns the Response field value if set, zero value otherwise.
+func (o *ModelNetworkAlert) GetResponse() string {
+	if o == nil || IsNil(o.Response) {
+		var ret string
+		return ret
+	}
+	return *o.Response
+}
+
+// GetResponseOk returns a tuple with the Response field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkAlert) GetResponseOk() (*string, bool) {
+	if o == nil || IsNil(o.Response) {
+		return nil, false
+	}
+	return o.Response, true
+}
+
+// HasResponse returns a boolean if a field has been set.
+func (o *ModelNetworkAlert) HasResponse() bool {
+	if o != nil && !IsNil(o.Response) {
+		return true
+	}
+
+	return false
+}
+
+// SetResponse gets a reference to the given string and assigns it to the Response field.
+func (o *ModelNetworkAlert) SetResponse(v string) {
+	o.Response = &v
+}
+
 // GetRuleId returns the RuleId field value
 func (o *ModelNetworkAlert) GetRuleId() string {
 	if o == nil {
@@ -884,6 +950,12 @@ func (o ModelNetworkAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["pod_name"] = o.PodName
 	toSerialize["protocol"] = o.Protocol
 	toSerialize["references"] = o.References
+	if !IsNil(o.Request) {
+		toSerialize["request"] = o.Request
+	}
+	if !IsNil(o.Response) {
+		toSerialize["response"] = o.Response
+	}
 	toSerialize["rule_id"] = o.RuleId
 	toSerialize["severity"] = o.Severity
 	toSerialize["source_ip"] = o.SourceIp

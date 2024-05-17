@@ -115,6 +115,7 @@ docs/LookupAPI.md
 docs/LookupLookupFilter.md
 docs/MalwareScanAPI.md
 docs/ModelAPIAuthRequest.md
+docs/ModelAPIEndpoint.md
 docs/ModelAPITokenResponse.md
 docs/ModelAddGenerativeAiBedrockIntegration.md
 docs/ModelAddGenerativeAiOpenAIIntegration.md
@@ -133,8 +134,6 @@ docs/ModelBulkDeleteScansRequest.md
 docs/ModelCloudAccountDeleteReq.md
 docs/ModelCloudAccountRefreshReq.md
 docs/ModelCloudCompliance.md
-docs/ModelCloudComplianceBenchmark.md
-docs/ModelCloudComplianceScanDetails.md
 docs/ModelCloudComplianceScanResult.md
 docs/ModelCloudInstanceDeployment.md
 docs/ModelCloudNodeAccountInfo.md
@@ -404,6 +403,7 @@ model_model_agent_plugins_status.go
 model_model_agent_upgrade.go
 model_model_alerts_action_request.go
 model_model_api_auth_request.go
+model_model_api_endpoint.go
 model_model_api_token_response.go
 model_model_attach_agent_config_req.go
 model_model_basic_node.go
@@ -412,8 +412,6 @@ model_model_bulk_delete_scans_request.go
 model_model_cloud_account_delete_req.go
 model_model_cloud_account_refresh_req.go
 model_model_cloud_compliance.go
-model_model_cloud_compliance_benchmark.go
-model_model_cloud_compliance_scan_details.go
 model_model_cloud_compliance_scan_result.go
 model_model_cloud_instance_deployment.go
 model_model_cloud_node_account_info.go
