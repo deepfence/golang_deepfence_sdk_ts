@@ -7,12 +7,15 @@ Name | Type | Description | Notes
 **CloudProvider** | Pointer to **string** |  | [optional] 
 **CloudRegion** | Pointer to **string** |  | [optional] 
 **CloudType** | Pointer to **string** |  | [optional] 
+**CreatedAt** | Pointer to **int32** |  | [optional] 
 **Direction** | Pointer to **string** |  | [optional] 
 **Host** | Pointer to **string** |  | [optional] 
 **HostIp** | Pointer to **string** |  | [optional] 
 **Method** | Pointer to **string** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **int32** |  | [optional] 
+**SchemaInfo** | Pointer to **string** |  | [optional] 
+**UpdatedAt** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -107,6 +110,31 @@ SetCloudType sets CloudType field to given value.
 `func (o *ModelAPIEndpoint) HasCloudType() bool`
 
 HasCloudType returns a boolean if a field has been set.
+
+### GetCreatedAt
+
+`func (o *ModelAPIEndpoint) GetCreatedAt() int32`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *ModelAPIEndpoint) GetCreatedAtOk() (*int32, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *ModelAPIEndpoint) SetCreatedAt(v int32)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
+### HasCreatedAt
+
+`func (o *ModelAPIEndpoint) HasCreatedAt() bool`
+
+HasCreatedAt returns a boolean if a field has been set.
 
 ### GetDirection
 
@@ -257,6 +285,56 @@ SetPort sets Port field to given value.
 `func (o *ModelAPIEndpoint) HasPort() bool`
 
 HasPort returns a boolean if a field has been set.
+
+### GetSchemaInfo
+
+`func (o *ModelAPIEndpoint) GetSchemaInfo() string`
+
+GetSchemaInfo returns the SchemaInfo field if non-nil, zero value otherwise.
+
+### GetSchemaInfoOk
+
+`func (o *ModelAPIEndpoint) GetSchemaInfoOk() (*string, bool)`
+
+GetSchemaInfoOk returns a tuple with the SchemaInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSchemaInfo
+
+`func (o *ModelAPIEndpoint) SetSchemaInfo(v string)`
+
+SetSchemaInfo sets SchemaInfo field to given value.
+
+### HasSchemaInfo
+
+`func (o *ModelAPIEndpoint) HasSchemaInfo() bool`
+
+HasSchemaInfo returns a boolean if a field has been set.
+
+### GetUpdatedAt
+
+`func (o *ModelAPIEndpoint) GetUpdatedAt() int32`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *ModelAPIEndpoint) GetUpdatedAtOk() (*int32, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *ModelAPIEndpoint) SetUpdatedAt(v int32)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+### HasUpdatedAt
+
+`func (o *ModelAPIEndpoint) HasUpdatedAt() bool`
+
+HasUpdatedAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

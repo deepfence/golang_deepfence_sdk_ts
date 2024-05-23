@@ -23,12 +23,15 @@ type ModelAPIEndpoint struct {
 	CloudProvider *string `json:"cloud_provider,omitempty"`
 	CloudRegion *string `json:"cloud_region,omitempty"`
 	CloudType *string `json:"cloud_type,omitempty"`
+	CreatedAt *int32 `json:"created_at,omitempty"`
 	Direction *string `json:"direction,omitempty"`
 	Host *string `json:"host,omitempty"`
 	HostIp *string `json:"host_ip,omitempty"`
 	Method *string `json:"method,omitempty"`
 	Path *string `json:"path,omitempty"`
 	Port *int32 `json:"port,omitempty"`
+	SchemaInfo *string `json:"schema_info,omitempty"`
+	UpdatedAt *int32 `json:"updated_at,omitempty"`
 }
 
 // NewModelAPIEndpoint instantiates a new ModelAPIEndpoint object
@@ -142,6 +145,38 @@ func (o *ModelAPIEndpoint) HasCloudType() bool {
 // SetCloudType gets a reference to the given string and assigns it to the CloudType field.
 func (o *ModelAPIEndpoint) SetCloudType(v string) {
 	o.CloudType = &v
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+func (o *ModelAPIEndpoint) GetCreatedAt() int32 {
+	if o == nil || IsNil(o.CreatedAt) {
+		var ret int32
+		return ret
+	}
+	return *o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelAPIEndpoint) GetCreatedAtOk() (*int32, bool) {
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
+	}
+	return o.CreatedAt, true
+}
+
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *ModelAPIEndpoint) HasCreatedAt() bool {
+	if o != nil && !IsNil(o.CreatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given int32 and assigns it to the CreatedAt field.
+func (o *ModelAPIEndpoint) SetCreatedAt(v int32) {
+	o.CreatedAt = &v
 }
 
 // GetDirection returns the Direction field value if set, zero value otherwise.
@@ -336,6 +371,70 @@ func (o *ModelAPIEndpoint) SetPort(v int32) {
 	o.Port = &v
 }
 
+// GetSchemaInfo returns the SchemaInfo field value if set, zero value otherwise.
+func (o *ModelAPIEndpoint) GetSchemaInfo() string {
+	if o == nil || IsNil(o.SchemaInfo) {
+		var ret string
+		return ret
+	}
+	return *o.SchemaInfo
+}
+
+// GetSchemaInfoOk returns a tuple with the SchemaInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelAPIEndpoint) GetSchemaInfoOk() (*string, bool) {
+	if o == nil || IsNil(o.SchemaInfo) {
+		return nil, false
+	}
+	return o.SchemaInfo, true
+}
+
+// HasSchemaInfo returns a boolean if a field has been set.
+func (o *ModelAPIEndpoint) HasSchemaInfo() bool {
+	if o != nil && !IsNil(o.SchemaInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetSchemaInfo gets a reference to the given string and assigns it to the SchemaInfo field.
+func (o *ModelAPIEndpoint) SetSchemaInfo(v string) {
+	o.SchemaInfo = &v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *ModelAPIEndpoint) GetUpdatedAt() int32 {
+	if o == nil || IsNil(o.UpdatedAt) {
+		var ret int32
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelAPIEndpoint) GetUpdatedAtOk() (*int32, bool) {
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *ModelAPIEndpoint) HasUpdatedAt() bool {
+	if o != nil && !IsNil(o.UpdatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given int32 and assigns it to the UpdatedAt field.
+func (o *ModelAPIEndpoint) SetUpdatedAt(v int32) {
+	o.UpdatedAt = &v
+}
+
 func (o ModelAPIEndpoint) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -355,6 +454,9 @@ func (o ModelAPIEndpoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CloudType) {
 		toSerialize["cloud_type"] = o.CloudType
 	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
 	if !IsNil(o.Direction) {
 		toSerialize["direction"] = o.Direction
 	}
@@ -372,6 +474,12 @@ func (o ModelAPIEndpoint) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
+	}
+	if !IsNil(o.SchemaInfo) {
+		toSerialize["schema_info"] = o.SchemaInfo
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	return toSerialize, nil
 }

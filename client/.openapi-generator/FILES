@@ -1,4 +1,5 @@
 .gitignore
+.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -163,11 +164,13 @@ docs/ModelContainerImage.md
 docs/ModelDeleteFilter.md
 docs/ModelDeleteIntegrationReq.md
 docs/ModelDeleteRegistryBulkReq.md
+docs/ModelDisableCloudTracerReq.md
 docs/ModelDisableTracerReq.md
 docs/ModelDownloadReportResponse.md
 docs/ModelDownloadScanResultsResponse.md
 docs/ModelEmailConfigurationAdd.md
 docs/ModelEmailConfigurationResp.md
+docs/ModelEnableCloudTracerReq.md
 docs/ModelEnableTracerReq.md
 docs/ModelExportReport.md
 docs/ModelFetchWindow.md
@@ -441,11 +444,13 @@ model_model_container_image.go
 model_model_delete_filter.go
 model_model_delete_integration_req.go
 model_model_delete_registry_bulk_req.go
+model_model_disable_cloud_tracer_req.go
 model_model_disable_tracer_req.go
 model_model_download_report_response.go
 model_model_download_scan_results_response.go
 model_model_email_configuration_add.go
 model_model_email_configuration_resp.go
+model_model_enable_cloud_tracer_req.go
 model_model_enable_tracer_req.go
 model_model_export_report.go
 model_model_fetch_window.go

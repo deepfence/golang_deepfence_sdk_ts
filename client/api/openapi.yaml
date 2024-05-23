@@ -4643,6 +4643,48 @@ paths:
       summary: Ingest Agent Alerts
       tags:
       - Topology
+  /deepfence/ingest/api-endpoints:
+    post:
+      description: Ingest API endpoints to console
+      operationId: ingestAPIEndpoints
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/ModelAPIEndpoint'
+              nullable: true
+              type: array
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Ingest API Endpoints
+      tags:
+      - Cloud Resources
   /deepfence/ingest/cloud-compliance:
     post:
       description: Ingest Cloud compliances found while scanning cloud provider
@@ -5755,6 +5797,51 @@ paths:
       summary: Update Notification Threshold
       tags:
       - Settings
+  /deepfence/lookup/api-endpoints:
+    post:
+      description: Retrieve all the data associated with API endpoints
+      operationId: getAPIEndpoints
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LookupLookupFilter'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelAPIEndpoint'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Retrieve API endpoint data
+      tags:
+      - Lookup
   /deepfence/lookup/cloud-compliances:
     post:
       description: Retrieve all the data associated with cloud-compliances
@@ -6700,6 +6787,84 @@ paths:
       summary: Retrieve Vulnerabilities data
       tags:
       - Lookup
+  /deepfence/network/cloud-tracer/disable:
+    post:
+      description: Disable cloud network tracer on given agents
+      operationId: disableCloudNetworkTracer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelDisableCloudTracerReq'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Disable cloud network tracer
+      tags:
+      - AgentNetwork
+  /deepfence/network/cloud-tracer/enable:
+    post:
+      description: Enable cloud network tracer on given agents
+      operationId: enableCloudNetworkTracer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelEnableCloudTracerReq'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Enable cloud network tracer
+      tags:
+      - AgentNetwork
   /deepfence/network/tracer/disable:
     post:
       description: Disable network tracer on given agents
@@ -16697,9 +16862,12 @@ components:
         cloud_type: cloud_type
         cloud_region: cloud_region
         method: method
+        updated_at: 1
         port: 0
         host: host
+        created_at: 0
         cloud_provider: cloud_provider
+        schema_info: schema_info
         direction: ingress
       properties:
         cloud_provider:
@@ -16708,6 +16876,8 @@ components:
           type: string
         cloud_type:
           type: string
+        created_at:
+          type: integer
         direction:
           enum:
           - ingress
@@ -16723,6 +16893,10 @@ components:
           type: string
         port:
           minimum: 0
+          type: integer
+        schema_info:
+          type: string
+        updated_at:
           type: integer
       type: object
     ModelAPITokenResponse:
@@ -18309,7 +18483,7 @@ components:
       type: object
     ModelConnection:
       example:
-        count: 4
+        count: 2
         node_name: node_name
         ips:
         - ""
@@ -18763,6 +18937,24 @@ components:
       required:
       - registry_ids
       type: object
+    ModelDisableCloudTracerReq:
+      example:
+        agent_ids:
+        - node_type: node_type
+          available_workload: 0
+          node_id: node_id
+        - node_type: node_type
+          available_workload: 0
+          node_id: node_id
+      properties:
+        agent_ids:
+          items:
+            $ref: '#/components/schemas/ModelAgentID'
+          nullable: true
+          type: array
+      required:
+      - agent_ids
+      type: object
     ModelDisableTracerReq:
       example:
         agent_ids:
@@ -18871,6 +19063,28 @@ components:
           type: string
         smtp:
           type: string
+      type: object
+    ModelEnableCloudTracerReq:
+      example:
+        aws_s3_bucket: aws_s3_bucket
+        agent_ids:
+        - node_type: node_type
+          available_workload: 0
+          node_id: node_id
+        - node_type: node_type
+          available_workload: 0
+          node_id: node_id
+      properties:
+        agent_ids:
+          items:
+            $ref: '#/components/schemas/ModelAgentID'
+          nullable: true
+          type: array
+        aws_s3_bucket:
+          type: string
+      required:
+      - agent_ids
+      - aws_s3_bucket
       type: object
     ModelEnableTracerReq:
       example:
@@ -19961,7 +20175,7 @@ components:
           - docker_image_tag_list
           - docker_image_tag_list
           node_id: node_id
-        cpu_max: 5.637376656633329
+        cpu_max: 5.962133916683182
         alerts_counts:
           key: 0
         secret_latest_scan_id: secret_latest_scan_id
@@ -19978,18 +20192,24 @@ components:
           cloud_type: cloud_type
           cloud_region: cloud_region
           method: method
+          updated_at: 1
           port: 0
           host: host
+          created_at: 0
           cloud_provider: cloud_provider
+          schema_info: schema_info
           direction: ingress
         - path: path
           host_ip: host_ip
           cloud_type: cloud_type
           cloud_region: cloud_region
           method: method
+          updated_at: 1
           port: 0
           host: host
+          created_at: 0
           cloud_provider: cloud_provider
+          schema_info: schema_info
           direction: ingress
         plugin_status:
           network_tracer_status:
@@ -20130,13 +20350,13 @@ components:
           vulnerability_scan_status: vulnerability_scan_status
           host_name: host_name
           node_id: node_id
-        cpu_usage: 2.3021358869347655
+        cpu_usage: 5.637376656633329
         instance_type: instance_type
         local_networks:
         - ""
         - ""
-        vulnerabilities_count: 4
-        secrets_count: 7
+        vulnerabilities_count: 1
+        secrets_count: 6
         cloud_region: cloud_region
         network_tracer_status_updated_at: 1
         network_filter_status: network_filter_status
@@ -20144,21 +20364,21 @@ components:
         private_ip:
         - ""
         - ""
-        exploitable_vulnerabilities_count: 3
+        exploitable_vulnerabilities_count: 9
         cloud_account_id: cloud_account_id
         resource_group: resource_group
         malware_scan_status: malware_scan_status
-        exploitable_malwares_count: 7
-        filesystem_tracer_status_updated_at: 2
+        exploitable_malwares_count: 2
+        filesystem_tracer_status_updated_at: 3
         filesystem_tracer_status: filesystem_tracer_status
         inbound_connections:
-        - count: 4
+        - count: 2
           node_name: node_name
           ips:
           - ""
           - ""
           node_id: node_id
-        - count: 4
+        - count: 2
           node_name: node_name
           ips:
           - ""
@@ -20194,13 +20414,13 @@ components:
         secret_scan_status: secret_scan_status
         compliance_scan_status: compliance_scan_status
         outbound_connections:
-        - count: 4
+        - count: 2
           node_name: node_name
           ips:
           - ""
           - ""
           node_id: node_id
-        - count: 4
+        - count: 2
           node_name: node_name
           ips:
           - ""
@@ -20210,19 +20430,19 @@ components:
         local_cidr:
         - ""
         - ""
-        malwares_count: 7
+        malwares_count: 4
         node_name: node_name
         cloud_provider: cloud_provider
         process_tracer_status: process_tracer_status
         agent_running: true
-        cloud_warn_alarm_count: 1
-        exploitable_secrets_count: 9
-        process_tracer_status_updated_at: 6
-        uptime: 1
-        memory_max: 1
-        compliances_count: 5
+        cloud_warn_alarm_count: 6
+        exploitable_secrets_count: 7
+        process_tracer_status_updated_at: 1
+        uptime: 7
+        memory_max: 7
+        compliances_count: 1
         kernel_version: kernel_version
-        warn_alarm_count: 5
+        warn_alarm_count: 4
         pods:
         - is_deepfence_system: true
           kubernetes_ip: kubernetes_ip
@@ -21423,7 +21643,7 @@ components:
             - docker_image_tag_list
             - docker_image_tag_list
             node_id: node_id
-          cpu_max: 5.637376656633329
+          cpu_max: 5.962133916683182
           alerts_counts:
             key: 0
           secret_latest_scan_id: secret_latest_scan_id
@@ -21440,18 +21660,24 @@ components:
             cloud_type: cloud_type
             cloud_region: cloud_region
             method: method
+            updated_at: 1
             port: 0
             host: host
+            created_at: 0
             cloud_provider: cloud_provider
+            schema_info: schema_info
             direction: ingress
           - path: path
             host_ip: host_ip
             cloud_type: cloud_type
             cloud_region: cloud_region
             method: method
+            updated_at: 1
             port: 0
             host: host
+            created_at: 0
             cloud_provider: cloud_provider
+            schema_info: schema_info
             direction: ingress
           plugin_status:
             network_tracer_status:
@@ -21592,13 +21818,13 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
-          cpu_usage: 2.3021358869347655
+          cpu_usage: 5.637376656633329
           instance_type: instance_type
           local_networks:
           - ""
           - ""
-          vulnerabilities_count: 4
-          secrets_count: 7
+          vulnerabilities_count: 1
+          secrets_count: 6
           cloud_region: cloud_region
           network_tracer_status_updated_at: 1
           network_filter_status: network_filter_status
@@ -21606,21 +21832,21 @@ components:
           private_ip:
           - ""
           - ""
-          exploitable_vulnerabilities_count: 3
+          exploitable_vulnerabilities_count: 9
           cloud_account_id: cloud_account_id
           resource_group: resource_group
           malware_scan_status: malware_scan_status
-          exploitable_malwares_count: 7
-          filesystem_tracer_status_updated_at: 2
+          exploitable_malwares_count: 2
+          filesystem_tracer_status_updated_at: 3
           filesystem_tracer_status: filesystem_tracer_status
           inbound_connections:
-          - count: 4
+          - count: 2
             node_name: node_name
             ips:
             - ""
             - ""
             node_id: node_id
-          - count: 4
+          - count: 2
             node_name: node_name
             ips:
             - ""
@@ -21656,13 +21882,13 @@ components:
           secret_scan_status: secret_scan_status
           compliance_scan_status: compliance_scan_status
           outbound_connections:
-          - count: 4
+          - count: 2
             node_name: node_name
             ips:
             - ""
             - ""
             node_id: node_id
-          - count: 4
+          - count: 2
             node_name: node_name
             ips:
             - ""
@@ -21672,19 +21898,19 @@ components:
           local_cidr:
           - ""
           - ""
-          malwares_count: 7
+          malwares_count: 4
           node_name: node_name
           cloud_provider: cloud_provider
           process_tracer_status: process_tracer_status
           agent_running: true
-          cloud_warn_alarm_count: 1
-          exploitable_secrets_count: 9
-          process_tracer_status_updated_at: 6
-          uptime: 1
-          memory_max: 1
-          compliances_count: 5
+          cloud_warn_alarm_count: 6
+          exploitable_secrets_count: 7
+          process_tracer_status_updated_at: 1
+          uptime: 7
+          memory_max: 7
+          compliances_count: 1
           kernel_version: kernel_version
-          warn_alarm_count: 5
+          warn_alarm_count: 4
           pods:
           - is_deepfence_system: true
             kubernetes_ip: kubernetes_ip
@@ -22309,7 +22535,7 @@ components:
             - docker_image_tag_list
             - docker_image_tag_list
             node_id: node_id
-          cpu_max: 5.637376656633329
+          cpu_max: 5.962133916683182
           alerts_counts:
             key: 0
           secret_latest_scan_id: secret_latest_scan_id
@@ -22326,18 +22552,24 @@ components:
             cloud_type: cloud_type
             cloud_region: cloud_region
             method: method
+            updated_at: 1
             port: 0
             host: host
+            created_at: 0
             cloud_provider: cloud_provider
+            schema_info: schema_info
             direction: ingress
           - path: path
             host_ip: host_ip
             cloud_type: cloud_type
             cloud_region: cloud_region
             method: method
+            updated_at: 1
             port: 0
             host: host
+            created_at: 0
             cloud_provider: cloud_provider
+            schema_info: schema_info
             direction: ingress
           plugin_status:
             network_tracer_status:
@@ -22478,13 +22710,13 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
-          cpu_usage: 2.3021358869347655
+          cpu_usage: 5.637376656633329
           instance_type: instance_type
           local_networks:
           - ""
           - ""
-          vulnerabilities_count: 4
-          secrets_count: 7
+          vulnerabilities_count: 1
+          secrets_count: 6
           cloud_region: cloud_region
           network_tracer_status_updated_at: 1
           network_filter_status: network_filter_status
@@ -22492,21 +22724,21 @@ components:
           private_ip:
           - ""
           - ""
-          exploitable_vulnerabilities_count: 3
+          exploitable_vulnerabilities_count: 9
           cloud_account_id: cloud_account_id
           resource_group: resource_group
           malware_scan_status: malware_scan_status
-          exploitable_malwares_count: 7
-          filesystem_tracer_status_updated_at: 2
+          exploitable_malwares_count: 2
+          filesystem_tracer_status_updated_at: 3
           filesystem_tracer_status: filesystem_tracer_status
           inbound_connections:
-          - count: 4
+          - count: 2
             node_name: node_name
             ips:
             - ""
             - ""
             node_id: node_id
-          - count: 4
+          - count: 2
             node_name: node_name
             ips:
             - ""
@@ -22542,13 +22774,13 @@ components:
           secret_scan_status: secret_scan_status
           compliance_scan_status: compliance_scan_status
           outbound_connections:
-          - count: 4
+          - count: 2
             node_name: node_name
             ips:
             - ""
             - ""
             node_id: node_id
-          - count: 4
+          - count: 2
             node_name: node_name
             ips:
             - ""
@@ -22558,19 +22790,19 @@ components:
           local_cidr:
           - ""
           - ""
-          malwares_count: 7
+          malwares_count: 4
           node_name: node_name
           cloud_provider: cloud_provider
           process_tracer_status: process_tracer_status
           agent_running: true
-          cloud_warn_alarm_count: 1
-          exploitable_secrets_count: 9
-          process_tracer_status_updated_at: 6
-          uptime: 1
-          memory_max: 1
-          compliances_count: 5
+          cloud_warn_alarm_count: 6
+          exploitable_secrets_count: 7
+          process_tracer_status_updated_at: 1
+          uptime: 7
+          memory_max: 7
+          compliances_count: 1
           kernel_version: kernel_version
-          warn_alarm_count: 5
+          warn_alarm_count: 4
           pods:
           - is_deepfence_system: true
             kubernetes_ip: kubernetes_ip
