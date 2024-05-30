@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CloudNetworkTracerStatus** | [**ModelPluginStatus**](ModelPluginStatus.md) |  | 
 **FilesystemTracerStatus** | [**ModelPluginStatus**](ModelPluginStatus.md) |  | 
 **NetworkFilterStatus** | [**ModelPluginStatus**](ModelPluginStatus.md) |  | 
 **NetworkTracerStatus** | [**ModelPluginStatus**](ModelPluginStatus.md) |  | 
@@ -13,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewModelAgentPluginsStatus
 
-`func NewModelAgentPluginsStatus(filesystemTracerStatus ModelPluginStatus, networkFilterStatus ModelPluginStatus, networkTracerStatus ModelPluginStatus, processTracerStatus ModelPluginStatus, ) *ModelAgentPluginsStatus`
+`func NewModelAgentPluginsStatus(cloudNetworkTracerStatus ModelPluginStatus, filesystemTracerStatus ModelPluginStatus, networkFilterStatus ModelPluginStatus, networkTracerStatus ModelPluginStatus, processTracerStatus ModelPluginStatus, ) *ModelAgentPluginsStatus`
 
 NewModelAgentPluginsStatus instantiates a new ModelAgentPluginsStatus object
 This constructor will assign default values to properties that have it defined,
@@ -27,6 +28,26 @@ will change when the set of required properties is changed
 NewModelAgentPluginsStatusWithDefaults instantiates a new ModelAgentPluginsStatus object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCloudNetworkTracerStatus
+
+`func (o *ModelAgentPluginsStatus) GetCloudNetworkTracerStatus() ModelPluginStatus`
+
+GetCloudNetworkTracerStatus returns the CloudNetworkTracerStatus field if non-nil, zero value otherwise.
+
+### GetCloudNetworkTracerStatusOk
+
+`func (o *ModelAgentPluginsStatus) GetCloudNetworkTracerStatusOk() (*ModelPluginStatus, bool)`
+
+GetCloudNetworkTracerStatusOk returns a tuple with the CloudNetworkTracerStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudNetworkTracerStatus
+
+`func (o *ModelAgentPluginsStatus) SetCloudNetworkTracerStatus(v ModelPluginStatus)`
+
+SetCloudNetworkTracerStatus sets CloudNetworkTracerStatus field to given value.
+
 
 ### GetFilesystemTracerStatus
 

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Active** | Pointer to **bool** |  | [optional] 
+**CloudNetworkTracerStatus** | Pointer to [**ModelPluginStatus**](ModelPluginStatus.md) |  | [optional] 
 **CloudProvider** | Pointer to **string** |  | [optional] 
 **CompliancePercentage** | Pointer to **float32** |  | [optional] 
 **HostNodeId** | Pointer to **string** |  | [optional] 
@@ -58,6 +59,31 @@ SetActive sets Active field to given value.
 `func (o *ModelCloudNodeAccountInfo) HasActive() bool`
 
 HasActive returns a boolean if a field has been set.
+
+### GetCloudNetworkTracerStatus
+
+`func (o *ModelCloudNodeAccountInfo) GetCloudNetworkTracerStatus() ModelPluginStatus`
+
+GetCloudNetworkTracerStatus returns the CloudNetworkTracerStatus field if non-nil, zero value otherwise.
+
+### GetCloudNetworkTracerStatusOk
+
+`func (o *ModelCloudNodeAccountInfo) GetCloudNetworkTracerStatusOk() (*ModelPluginStatus, bool)`
+
+GetCloudNetworkTracerStatusOk returns a tuple with the CloudNetworkTracerStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudNetworkTracerStatus
+
+`func (o *ModelCloudNodeAccountInfo) SetCloudNetworkTracerStatus(v ModelPluginStatus)`
+
+SetCloudNetworkTracerStatus sets CloudNetworkTracerStatus field to given value.
+
+### HasCloudNetworkTracerStatus
+
+`func (o *ModelCloudNodeAccountInfo) HasCloudNetworkTracerStatus() bool`
+
+HasCloudNetworkTracerStatus returns a boolean if a field has been set.
 
 ### GetCloudProvider
 

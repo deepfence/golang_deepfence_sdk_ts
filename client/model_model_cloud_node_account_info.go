@@ -21,6 +21,7 @@ var _ MappedNullable = &ModelCloudNodeAccountInfo{}
 // ModelCloudNodeAccountInfo struct for ModelCloudNodeAccountInfo
 type ModelCloudNodeAccountInfo struct {
 	Active *bool `json:"active,omitempty"`
+	CloudNetworkTracerStatus *ModelPluginStatus `json:"cloud_network_tracer_status,omitempty"`
 	CloudProvider *string `json:"cloud_provider,omitempty"`
 	CompliancePercentage *float32 `json:"compliance_percentage,omitempty"`
 	HostNodeId *string `json:"host_node_id,omitempty"`
@@ -79,6 +80,38 @@ func (o *ModelCloudNodeAccountInfo) HasActive() bool {
 // SetActive gets a reference to the given bool and assigns it to the Active field.
 func (o *ModelCloudNodeAccountInfo) SetActive(v bool) {
 	o.Active = &v
+}
+
+// GetCloudNetworkTracerStatus returns the CloudNetworkTracerStatus field value if set, zero value otherwise.
+func (o *ModelCloudNodeAccountInfo) GetCloudNetworkTracerStatus() ModelPluginStatus {
+	if o == nil || IsNil(o.CloudNetworkTracerStatus) {
+		var ret ModelPluginStatus
+		return ret
+	}
+	return *o.CloudNetworkTracerStatus
+}
+
+// GetCloudNetworkTracerStatusOk returns a tuple with the CloudNetworkTracerStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelCloudNodeAccountInfo) GetCloudNetworkTracerStatusOk() (*ModelPluginStatus, bool) {
+	if o == nil || IsNil(o.CloudNetworkTracerStatus) {
+		return nil, false
+	}
+	return o.CloudNetworkTracerStatus, true
+}
+
+// HasCloudNetworkTracerStatus returns a boolean if a field has been set.
+func (o *ModelCloudNodeAccountInfo) HasCloudNetworkTracerStatus() bool {
+	if o != nil && !IsNil(o.CloudNetworkTracerStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudNetworkTracerStatus gets a reference to the given ModelPluginStatus and assigns it to the CloudNetworkTracerStatus field.
+func (o *ModelCloudNodeAccountInfo) SetCloudNetworkTracerStatus(v ModelPluginStatus) {
+	o.CloudNetworkTracerStatus = &v
 }
 
 // GetCloudProvider returns the CloudProvider field value if set, zero value otherwise.
@@ -382,6 +415,9 @@ func (o ModelCloudNodeAccountInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Active) {
 		toSerialize["active"] = o.Active
+	}
+	if !IsNil(o.CloudNetworkTracerStatus) {
+		toSerialize["cloud_network_tracer_status"] = o.CloudNetworkTracerStatus
 	}
 	if !IsNil(o.CloudProvider) {
 		toSerialize["cloud_provider"] = o.CloudProvider

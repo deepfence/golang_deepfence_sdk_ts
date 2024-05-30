@@ -17155,6 +17155,9 @@ components:
         network_filter_status:
           description: description
           status: status
+        cloud_network_tracer_status:
+          description: description
+          status: status
         filesystem_tracer_status:
           description: description
           status: status
@@ -17162,6 +17165,8 @@ components:
           description: description
           status: status
       properties:
+        cloud_network_tracer_status:
+          $ref: '#/components/schemas/ModelPluginStatus'
         filesystem_tracer_status:
           $ref: '#/components/schemas/ModelPluginStatus'
         network_filter_status:
@@ -17171,6 +17176,7 @@ components:
         process_tracer_status:
           $ref: '#/components/schemas/ModelPluginStatus'
       required:
+      - cloud_network_tracer_status
       - filesystem_tracer_status
       - network_filter_status
       - network_tracer_status
@@ -17609,6 +17615,9 @@ components:
         last_scan_id: last_scan_id
         node_name: node_name
         active: true
+        cloud_network_tracer_status:
+          description: description
+          status: status
         cloud_provider: cloud_provider
         scan_status_map:
           key: 6
@@ -17618,6 +17627,8 @@ components:
       properties:
         active:
           type: boolean
+        cloud_network_tracer_status:
+          $ref: '#/components/schemas/ModelPluginStatus'
         cloud_provider:
           type: string
         compliance_percentage:
@@ -17761,6 +17772,9 @@ components:
           last_scan_id: last_scan_id
           node_name: node_name
           active: true
+          cloud_network_tracer_status:
+            description: description
+            status: status
           cloud_provider: cloud_provider
           scan_status_map:
             key: 6
@@ -17772,6 +17786,9 @@ components:
           last_scan_id: last_scan_id
           node_name: node_name
           active: true
+          cloud_network_tracer_status:
+            description: description
+            status: status
           cloud_provider: cloud_provider
           scan_status_map:
             key: 6
@@ -20218,6 +20235,9 @@ components:
           network_filter_status:
             description: description
             status: status
+          cloud_network_tracer_status:
+            description: description
+            status: status
           filesystem_tracer_status:
             description: description
             status: status
@@ -21686,6 +21706,9 @@ components:
             network_filter_status:
               description: description
               status: status
+            cloud_network_tracer_status:
+              description: description
+              status: status
             filesystem_tracer_status:
               description: description
               status: status
@@ -22576,6 +22599,9 @@ components:
               description: description
               status: status
             network_filter_status:
+              description: description
+              status: status
+            cloud_network_tracer_status:
               description: description
               status: status
             filesystem_tracer_status:
