@@ -23,6 +23,7 @@ var _ MappedNullable = &ModelCloudResource{}
 // ModelCloudResource struct for ModelCloudResource
 type ModelCloudResource struct {
 	AccountId string `json:"account_id"`
+	AgentInstallAvailability string `json:"agent_install_availability"`
 	CloudComplianceLatestScanId string `json:"cloud_compliance_latest_scan_id"`
 	CloudComplianceScanStatus string `json:"cloud_compliance_scan_status"`
 	CloudCompliancesCount int32 `json:"cloud_compliances_count"`
@@ -40,9 +41,10 @@ type _ModelCloudResource ModelCloudResource
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelCloudResource(accountId string, cloudComplianceLatestScanId string, cloudComplianceScanStatus string, cloudCompliancesCount int32, cloudProvider string, cloudRegion string, nodeId string, nodeName string, nodeType string, typeLabel string) *ModelCloudResource {
+func NewModelCloudResource(accountId string, agentInstallAvailability string, cloudComplianceLatestScanId string, cloudComplianceScanStatus string, cloudCompliancesCount int32, cloudProvider string, cloudRegion string, nodeId string, nodeName string, nodeType string, typeLabel string) *ModelCloudResource {
 	this := ModelCloudResource{}
 	this.AccountId = accountId
+	this.AgentInstallAvailability = agentInstallAvailability
 	this.CloudComplianceLatestScanId = cloudComplianceLatestScanId
 	this.CloudComplianceScanStatus = cloudComplianceScanStatus
 	this.CloudCompliancesCount = cloudCompliancesCount
@@ -85,6 +87,30 @@ func (o *ModelCloudResource) GetAccountIdOk() (*string, bool) {
 // SetAccountId sets field value
 func (o *ModelCloudResource) SetAccountId(v string) {
 	o.AccountId = v
+}
+
+// GetAgentInstallAvailability returns the AgentInstallAvailability field value
+func (o *ModelCloudResource) GetAgentInstallAvailability() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AgentInstallAvailability
+}
+
+// GetAgentInstallAvailabilityOk returns a tuple with the AgentInstallAvailability field value
+// and a boolean to check if the value has been set.
+func (o *ModelCloudResource) GetAgentInstallAvailabilityOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AgentInstallAvailability, true
+}
+
+// SetAgentInstallAvailability sets field value
+func (o *ModelCloudResource) SetAgentInstallAvailability(v string) {
+	o.AgentInstallAvailability = v
 }
 
 // GetCloudComplianceLatestScanId returns the CloudComplianceLatestScanId field value
@@ -314,6 +340,7 @@ func (o ModelCloudResource) MarshalJSON() ([]byte, error) {
 func (o ModelCloudResource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["account_id"] = o.AccountId
+	toSerialize["agent_install_availability"] = o.AgentInstallAvailability
 	toSerialize["cloud_compliance_latest_scan_id"] = o.CloudComplianceLatestScanId
 	toSerialize["cloud_compliance_scan_status"] = o.CloudComplianceScanStatus
 	toSerialize["cloud_compliances_count"] = o.CloudCompliancesCount
@@ -332,6 +359,7 @@ func (o *ModelCloudResource) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"account_id",
+		"agent_install_availability",
 		"cloud_compliance_latest_scan_id",
 		"cloud_compliance_scan_status",
 		"cloud_compliances_count",

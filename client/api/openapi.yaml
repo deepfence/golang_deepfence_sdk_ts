@@ -18013,12 +18013,18 @@ components:
         node_type: node_type
         cloud_compliance_scan_status: cloud_compliance_scan_status
         cloud_region: cloud_region
+        agent_install_availability: available
         node_name: node_name
         cloud_provider: cloud_provider
         type_label: type_label
         node_id: node_id
       properties:
         account_id:
+          type: string
+        agent_install_availability:
+          enum:
+          - available
+          - unavailable
           type: string
         cloud_compliance_latest_scan_id:
           type: string
@@ -18040,6 +18046,7 @@ components:
           type: string
       required:
       - account_id
+      - agent_install_availability
       - cloud_compliance_latest_scan_id
       - cloud_compliance_scan_status
       - cloud_compliances_count

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountId** | **string** |  | 
+**AgentInstallAvailability** | **string** |  | 
 **CloudComplianceLatestScanId** | **string** |  | 
 **CloudComplianceScanStatus** | **string** |  | 
 **CloudCompliancesCount** | **int32** |  | 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewModelCloudResource
 
-`func NewModelCloudResource(accountId string, cloudComplianceLatestScanId string, cloudComplianceScanStatus string, cloudCompliancesCount int32, cloudProvider string, cloudRegion string, nodeId string, nodeName string, nodeType string, typeLabel string, ) *ModelCloudResource`
+`func NewModelCloudResource(accountId string, agentInstallAvailability string, cloudComplianceLatestScanId string, cloudComplianceScanStatus string, cloudCompliancesCount int32, cloudProvider string, cloudRegion string, nodeId string, nodeName string, nodeType string, typeLabel string, ) *ModelCloudResource`
 
 NewModelCloudResource instantiates a new ModelCloudResource object
 This constructor will assign default values to properties that have it defined,
@@ -52,6 +53,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelCloudResource) SetAccountId(v string)`
 
 SetAccountId sets AccountId field to given value.
+
+
+### GetAgentInstallAvailability
+
+`func (o *ModelCloudResource) GetAgentInstallAvailability() string`
+
+GetAgentInstallAvailability returns the AgentInstallAvailability field if non-nil, zero value otherwise.
+
+### GetAgentInstallAvailabilityOk
+
+`func (o *ModelCloudResource) GetAgentInstallAvailabilityOk() (*string, bool)`
+
+GetAgentInstallAvailabilityOk returns a tuple with the AgentInstallAvailability field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAgentInstallAvailability
+
+`func (o *ModelCloudResource) SetAgentInstallAvailability(v string)`
+
+SetAgentInstallAvailability sets AgentInstallAvailability field to given value.
 
 
 ### GetCloudComplianceLatestScanId
