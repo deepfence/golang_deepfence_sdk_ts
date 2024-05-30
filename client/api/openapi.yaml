@@ -2461,6 +2461,45 @@ paths:
       summary: Fetch Agent Init Actions
       tags:
       - Controls
+  /deepfence/controls/agent-install:
+    post:
+      description: Control agent installation on cloud
+      operationId: installAgentOverCloud
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelAgentInstall'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Control Agent Install on cloud
+      tags:
+      - Controls
   /deepfence/controls/agent-plugins/disable:
     post:
       description: Schedule agent plugin disable
@@ -17096,6 +17135,39 @@ components:
       - available_workload
       - node_id
       type: object
+    ModelAgentInstall:
+      example:
+        cloud_scanner_id:
+          node_type: node_type
+          available_workload: 0
+          node_id: node_id
+        cloud_provider: aws
+        region_ids:
+        - i_ds:
+          - i_ds
+          - i_ds
+          region: region
+        - i_ds:
+          - i_ds
+          - i_ds
+          region: region
+      properties:
+        cloud_provider:
+          enum:
+          - aws
+          type: string
+        cloud_scanner_id:
+          $ref: '#/components/schemas/ModelAgentID'
+        region_ids:
+          items:
+            $ref: '#/components/schemas/ModelRegionIDs'
+          nullable: true
+          type: array
+      required:
+      - cloud_provider
+      - cloud_scanner_id
+      - region_ids
+      type: object
     ModelAgentPluginConfigNames:
       example:
         policy_config_name: policy_config_name
@@ -24635,6 +24707,24 @@ components:
       - severity
       - ttl
       - type
+      type: object
+    ModelRegionIDs:
+      example:
+        i_ds:
+        - i_ds
+        - i_ds
+        region: region
+      properties:
+        i_ds:
+          items:
+            type: string
+          nullable: true
+          type: array
+        region:
+          type: string
+      required:
+      - i_ds
+      - region
       type: object
     ModelRegisterInvitedUserRequest:
       example:

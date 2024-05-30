@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**GetAgentInitControls**](ControlsAPI.md#GetAgentInitControls) | **Post** /deepfence/controls/agent-init | Fetch Agent Init Actions
 [**GetCloudNodeControls**](ControlsAPI.md#GetCloudNodeControls) | **Post** /deepfence/controls/cloud-node | Fetch Cloud Node Controls
 [**GetKubernetesClusterControls**](ControlsAPI.md#GetKubernetesClusterControls) | **Post** /deepfence/controls/kubernetes-cluster | Fetch Kubernetes Cluster Actions
+[**InstallAgentOverCloud**](ControlsAPI.md#InstallAgentOverCloud) | **Post** /deepfence/controls/agent-install | Control Agent Install on cloud
 [**UpgradeAgentVersion**](ControlsAPI.md#UpgradeAgentVersion) | **Post** /deepfence/controls/agent-upgrade | Schedule new agent version upgrade
 
 
@@ -521,6 +522,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ControlsAgentControls**](ControlsAgentControls.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## InstallAgentOverCloud
+
+> InstallAgentOverCloud(ctx).ModelAgentInstall(modelAgentInstall).Execute()
+
+Control Agent Install on cloud
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+	modelAgentInstall := *openapiclient.NewModelAgentInstall("CloudProvider_example", *openapiclient.NewModelAgentID(int32(123), "NodeId_example"), []openapiclient.ModelRegionIDs{*openapiclient.NewModelRegionIDs([]string{"IDs_example"}, "Region_example")}) // ModelAgentInstall |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ControlsAPI.InstallAgentOverCloud(context.Background()).ModelAgentInstall(modelAgentInstall).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ControlsAPI.InstallAgentOverCloud``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiInstallAgentOverCloudRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **modelAgentInstall** | [**ModelAgentInstall**](ModelAgentInstall.md) |  | 
+
+### Return type
+
+ (empty response body)
 
 ### Authorization
 

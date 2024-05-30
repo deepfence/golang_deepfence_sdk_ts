@@ -121,6 +121,7 @@ docs/ModelAddGenerativeAiBedrockIntegration.md
 docs/ModelAddGenerativeAiOpenAIIntegration.md
 docs/ModelAddScheduledTaskRequest.md
 docs/ModelAgentID.md
+docs/ModelAgentInstall.md
 docs/ModelAgentPluginConfigNames.md
 docs/ModelAgentPluginDisable.md
 docs/ModelAgentPluginEnable.md
@@ -234,6 +235,7 @@ docs/ModelProcess.md
 docs/ModelProcessAlert.md
 docs/ModelProcessAlertRule.md
 docs/ModelQuarantineViolation.md
+docs/ModelRegionIDs.md
 docs/ModelRegisterInvitedUserRequest.md
 docs/ModelRegisterLicenseRequest.md
 docs/ModelRegisterLicenseResponse.md
@@ -398,6 +400,7 @@ model_model_add_generative_ai_bedrock_integration.go
 model_model_add_generative_ai_open_ai_integration.go
 model_model_add_scheduled_task_request.go
 model_model_agent_id.go
+model_model_agent_install.go
 model_model_agent_plugin_config_names.go
 model_model_agent_plugin_disable.go
 model_model_agent_plugin_enable.go
@@ -514,6 +517,7 @@ model_model_process.go
 model_model_process_alert.go
 model_model_process_alert_rule.go
 model_model_quarantine_violation.go
+model_model_region_ids.go
 model_model_register_invited_user_request.go
 model_model_register_license_request.go
 model_model_register_license_response.go

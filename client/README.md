@@ -178,6 +178,7 @@ Class | Method | HTTP request | Description
 *ControlsAPI* | [**GetAgentInitControls**](docs/ControlsAPI.md#getagentinitcontrols) | **Post** /deepfence/controls/agent-init | Fetch Agent Init Actions
 *ControlsAPI* | [**GetCloudNodeControls**](docs/ControlsAPI.md#getcloudnodecontrols) | **Post** /deepfence/controls/cloud-node | Fetch Cloud Node Controls
 *ControlsAPI* | [**GetKubernetesClusterControls**](docs/ControlsAPI.md#getkubernetesclustercontrols) | **Post** /deepfence/controls/kubernetes-cluster | Fetch Kubernetes Cluster Actions
+*ControlsAPI* | [**InstallAgentOverCloud**](docs/ControlsAPI.md#installagentovercloud) | **Post** /deepfence/controls/agent-install | Control Agent Install on cloud
 *ControlsAPI* | [**UpgradeAgentVersion**](docs/ControlsAPI.md#upgradeagentversion) | **Post** /deepfence/controls/agent-upgrade | Schedule new agent version upgrade
 *DiagnosisAPI* | [**DiagnosticNotification**](docs/DiagnosisAPI.md#diagnosticnotification) | **Get** /deepfence/diagnosis/notification | Get Diagnostic Notification
 *DiagnosisAPI* | [**GenerateAgentDiagnosticLogs**](docs/DiagnosisAPI.md#generateagentdiagnosticlogs) | **Post** /deepfence/diagnosis/agent-logs | Generate Agent Diagnostic Logs
@@ -491,6 +492,7 @@ Class | Method | HTTP request | Description
  - [ModelAddGenerativeAiOpenAIIntegration](docs/ModelAddGenerativeAiOpenAIIntegration.md)
  - [ModelAddScheduledTaskRequest](docs/ModelAddScheduledTaskRequest.md)
  - [ModelAgentID](docs/ModelAgentID.md)
+ - [ModelAgentInstall](docs/ModelAgentInstall.md)
  - [ModelAgentPluginConfigNames](docs/ModelAgentPluginConfigNames.md)
  - [ModelAgentPluginDisable](docs/ModelAgentPluginDisable.md)
  - [ModelAgentPluginEnable](docs/ModelAgentPluginEnable.md)
@@ -604,6 +606,7 @@ Class | Method | HTTP request | Description
  - [ModelProcessAlert](docs/ModelProcessAlert.md)
  - [ModelProcessAlertRule](docs/ModelProcessAlertRule.md)
  - [ModelQuarantineViolation](docs/ModelQuarantineViolation.md)
+ - [ModelRegionIDs](docs/ModelRegionIDs.md)
  - [ModelRegisterInvitedUserRequest](docs/ModelRegisterInvitedUserRequest.md)
  - [ModelRegisterLicenseRequest](docs/ModelRegisterLicenseRequest.md)
  - [ModelRegisterLicenseResponse](docs/ModelRegisterLicenseResponse.md)
