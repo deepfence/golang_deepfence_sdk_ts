@@ -36,7 +36,7 @@ type ModelLicense struct {
 	NoOfRegistries *int32 `json:"no_of_registries,omitempty"`
 	NotificationThresholdPercentage *int32 `json:"notification_threshold_percentage,omitempty"`
 	NotificationThresholdUpdatedAt *int32 `json:"notification_threshold_updated_at,omitempty"`
-	RegistryCredentials *ModelRegistryCredentials `json:"registry_credentials,omitempty"`
+	RegistryCredentials *UtilsRegistryCredentials `json:"registry_credentials,omitempty"`
 	StartDate *string `json:"start_date,omitempty"`
 }
 
@@ -570,9 +570,9 @@ func (o *ModelLicense) SetNotificationThresholdUpdatedAt(v int32) {
 }
 
 // GetRegistryCredentials returns the RegistryCredentials field value if set, zero value otherwise.
-func (o *ModelLicense) GetRegistryCredentials() ModelRegistryCredentials {
+func (o *ModelLicense) GetRegistryCredentials() UtilsRegistryCredentials {
 	if o == nil || IsNil(o.RegistryCredentials) {
-		var ret ModelRegistryCredentials
+		var ret UtilsRegistryCredentials
 		return ret
 	}
 	return *o.RegistryCredentials
@@ -580,7 +580,7 @@ func (o *ModelLicense) GetRegistryCredentials() ModelRegistryCredentials {
 
 // GetRegistryCredentialsOk returns a tuple with the RegistryCredentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelLicense) GetRegistryCredentialsOk() (*ModelRegistryCredentials, bool) {
+func (o *ModelLicense) GetRegistryCredentialsOk() (*UtilsRegistryCredentials, bool) {
 	if o == nil || IsNil(o.RegistryCredentials) {
 		return nil, false
 	}
@@ -596,8 +596,8 @@ func (o *ModelLicense) HasRegistryCredentials() bool {
 	return false
 }
 
-// SetRegistryCredentials gets a reference to the given ModelRegistryCredentials and assigns it to the RegistryCredentials field.
-func (o *ModelLicense) SetRegistryCredentials(v ModelRegistryCredentials) {
+// SetRegistryCredentials gets a reference to the given UtilsRegistryCredentials and assigns it to the RegistryCredentials field.
+func (o *ModelLicense) SetRegistryCredentials(v UtilsRegistryCredentials) {
 	o.RegistryCredentials = &v
 }
 

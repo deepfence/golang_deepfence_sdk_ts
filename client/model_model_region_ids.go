@@ -22,7 +22,7 @@ var _ MappedNullable = &ModelRegionIDs{}
 
 // ModelRegionIDs struct for ModelRegionIDs
 type ModelRegionIDs struct {
-	IDs []string `json:"i_ds"`
+	Ids []string `json:"ids"`
 	Region string `json:"region"`
 }
 
@@ -32,9 +32,9 @@ type _ModelRegionIDs ModelRegionIDs
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelRegionIDs(iDs []string, region string) *ModelRegionIDs {
+func NewModelRegionIDs(ids []string, region string) *ModelRegionIDs {
 	this := ModelRegionIDs{}
-	this.IDs = iDs
+	this.Ids = ids
 	this.Region = region
 	return &this
 }
@@ -47,30 +47,30 @@ func NewModelRegionIDsWithDefaults() *ModelRegionIDs {
 	return &this
 }
 
-// GetIDs returns the IDs field value
+// GetIds returns the Ids field value
 // If the value is explicit nil, the zero value for []string will be returned
-func (o *ModelRegionIDs) GetIDs() []string {
+func (o *ModelRegionIDs) GetIds() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
 
-	return o.IDs
+	return o.Ids
 }
 
-// GetIDsOk returns a tuple with the IDs field value
+// GetIdsOk returns a tuple with the Ids field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ModelRegionIDs) GetIDsOk() ([]string, bool) {
-	if o == nil || IsNil(o.IDs) {
+func (o *ModelRegionIDs) GetIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Ids) {
 		return nil, false
 	}
-	return o.IDs, true
+	return o.Ids, true
 }
 
-// SetIDs sets field value
-func (o *ModelRegionIDs) SetIDs(v []string) {
-	o.IDs = v
+// SetIds sets field value
+func (o *ModelRegionIDs) SetIds(v []string) {
+	o.Ids = v
 }
 
 // GetRegion returns the Region field value
@@ -107,8 +107,8 @@ func (o ModelRegionIDs) MarshalJSON() ([]byte, error) {
 
 func (o ModelRegionIDs) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.IDs != nil {
-		toSerialize["i_ds"] = o.IDs
+	if o.Ids != nil {
+		toSerialize["ids"] = o.Ids
 	}
 	toSerialize["region"] = o.Region
 	return toSerialize, nil
@@ -119,7 +119,7 @@ func (o *ModelRegionIDs) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"i_ds",
+		"ids",
 		"region",
 	}
 

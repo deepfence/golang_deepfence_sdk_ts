@@ -15,35 +15,35 @@ import (
 	"encoding/json"
 )
 
-// checks if the ModelRegistryCredentials type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ModelRegistryCredentials{}
+// checks if the UtilsRegistryCredentials type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UtilsRegistryCredentials{}
 
-// ModelRegistryCredentials struct for ModelRegistryCredentials
-type ModelRegistryCredentials struct {
+// UtilsRegistryCredentials struct for UtilsRegistryCredentials
+type UtilsRegistryCredentials struct {
 	Password *string `json:"password,omitempty"`
 	RegistryUrl *string `json:"registry_url,omitempty"`
 	Username *string `json:"username,omitempty"`
 }
 
-// NewModelRegistryCredentials instantiates a new ModelRegistryCredentials object
+// NewUtilsRegistryCredentials instantiates a new UtilsRegistryCredentials object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelRegistryCredentials() *ModelRegistryCredentials {
-	this := ModelRegistryCredentials{}
+func NewUtilsRegistryCredentials() *UtilsRegistryCredentials {
+	this := UtilsRegistryCredentials{}
 	return &this
 }
 
-// NewModelRegistryCredentialsWithDefaults instantiates a new ModelRegistryCredentials object
+// NewUtilsRegistryCredentialsWithDefaults instantiates a new UtilsRegistryCredentials object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewModelRegistryCredentialsWithDefaults() *ModelRegistryCredentials {
-	this := ModelRegistryCredentials{}
+func NewUtilsRegistryCredentialsWithDefaults() *UtilsRegistryCredentials {
+	this := UtilsRegistryCredentials{}
 	return &this
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise.
-func (o *ModelRegistryCredentials) GetPassword() string {
+func (o *UtilsRegistryCredentials) GetPassword() string {
 	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
@@ -53,7 +53,7 @@ func (o *ModelRegistryCredentials) GetPassword() string {
 
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelRegistryCredentials) GetPasswordOk() (*string, bool) {
+func (o *UtilsRegistryCredentials) GetPasswordOk() (*string, bool) {
 	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *ModelRegistryCredentials) GetPasswordOk() (*string, bool) {
 }
 
 // HasPassword returns a boolean if a field has been set.
-func (o *ModelRegistryCredentials) HasPassword() bool {
+func (o *UtilsRegistryCredentials) HasPassword() bool {
 	if o != nil && !IsNil(o.Password) {
 		return true
 	}
@@ -70,12 +70,12 @@ func (o *ModelRegistryCredentials) HasPassword() bool {
 }
 
 // SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *ModelRegistryCredentials) SetPassword(v string) {
+func (o *UtilsRegistryCredentials) SetPassword(v string) {
 	o.Password = &v
 }
 
 // GetRegistryUrl returns the RegistryUrl field value if set, zero value otherwise.
-func (o *ModelRegistryCredentials) GetRegistryUrl() string {
+func (o *UtilsRegistryCredentials) GetRegistryUrl() string {
 	if o == nil || IsNil(o.RegistryUrl) {
 		var ret string
 		return ret
@@ -85,7 +85,7 @@ func (o *ModelRegistryCredentials) GetRegistryUrl() string {
 
 // GetRegistryUrlOk returns a tuple with the RegistryUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelRegistryCredentials) GetRegistryUrlOk() (*string, bool) {
+func (o *UtilsRegistryCredentials) GetRegistryUrlOk() (*string, bool) {
 	if o == nil || IsNil(o.RegistryUrl) {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *ModelRegistryCredentials) GetRegistryUrlOk() (*string, bool) {
 }
 
 // HasRegistryUrl returns a boolean if a field has been set.
-func (o *ModelRegistryCredentials) HasRegistryUrl() bool {
+func (o *UtilsRegistryCredentials) HasRegistryUrl() bool {
 	if o != nil && !IsNil(o.RegistryUrl) {
 		return true
 	}
@@ -102,12 +102,12 @@ func (o *ModelRegistryCredentials) HasRegistryUrl() bool {
 }
 
 // SetRegistryUrl gets a reference to the given string and assigns it to the RegistryUrl field.
-func (o *ModelRegistryCredentials) SetRegistryUrl(v string) {
+func (o *UtilsRegistryCredentials) SetRegistryUrl(v string) {
 	o.RegistryUrl = &v
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise.
-func (o *ModelRegistryCredentials) GetUsername() string {
+func (o *UtilsRegistryCredentials) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
@@ -117,7 +117,7 @@ func (o *ModelRegistryCredentials) GetUsername() string {
 
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelRegistryCredentials) GetUsernameOk() (*string, bool) {
+func (o *UtilsRegistryCredentials) GetUsernameOk() (*string, bool) {
 	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
@@ -125,7 +125,7 @@ func (o *ModelRegistryCredentials) GetUsernameOk() (*string, bool) {
 }
 
 // HasUsername returns a boolean if a field has been set.
-func (o *ModelRegistryCredentials) HasUsername() bool {
+func (o *UtilsRegistryCredentials) HasUsername() bool {
 	if o != nil && !IsNil(o.Username) {
 		return true
 	}
@@ -134,11 +134,11 @@ func (o *ModelRegistryCredentials) HasUsername() bool {
 }
 
 // SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *ModelRegistryCredentials) SetUsername(v string) {
+func (o *UtilsRegistryCredentials) SetUsername(v string) {
 	o.Username = &v
 }
 
-func (o ModelRegistryCredentials) MarshalJSON() ([]byte, error) {
+func (o UtilsRegistryCredentials) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -146,7 +146,7 @@ func (o ModelRegistryCredentials) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ModelRegistryCredentials) ToMap() (map[string]interface{}, error) {
+func (o UtilsRegistryCredentials) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Password) {
 		toSerialize["password"] = o.Password
@@ -160,38 +160,38 @@ func (o ModelRegistryCredentials) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableModelRegistryCredentials struct {
-	value *ModelRegistryCredentials
+type NullableUtilsRegistryCredentials struct {
+	value *UtilsRegistryCredentials
 	isSet bool
 }
 
-func (v NullableModelRegistryCredentials) Get() *ModelRegistryCredentials {
+func (v NullableUtilsRegistryCredentials) Get() *UtilsRegistryCredentials {
 	return v.value
 }
 
-func (v *NullableModelRegistryCredentials) Set(val *ModelRegistryCredentials) {
+func (v *NullableUtilsRegistryCredentials) Set(val *UtilsRegistryCredentials) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableModelRegistryCredentials) IsSet() bool {
+func (v NullableUtilsRegistryCredentials) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableModelRegistryCredentials) Unset() {
+func (v *NullableUtilsRegistryCredentials) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableModelRegistryCredentials(val *ModelRegistryCredentials) *NullableModelRegistryCredentials {
-	return &NullableModelRegistryCredentials{value: val, isSet: true}
+func NewNullableUtilsRegistryCredentials(val *UtilsRegistryCredentials) *NullableUtilsRegistryCredentials {
+	return &NullableUtilsRegistryCredentials{value: val, isSet: true}
 }
 
-func (v NullableModelRegistryCredentials) MarshalJSON() ([]byte, error) {
+func (v NullableUtilsRegistryCredentials) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableModelRegistryCredentials) UnmarshalJSON(src []byte) error {
+func (v *NullableUtilsRegistryCredentials) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

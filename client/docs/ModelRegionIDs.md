@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IDs** | **[]string** |  | 
+**Ids** | **[]string** |  | 
 **Region** | **string** |  | 
 
 ## Methods
 
 ### NewModelRegionIDs
 
-`func NewModelRegionIDs(iDs []string, region string, ) *ModelRegionIDs`
+`func NewModelRegionIDs(ids []string, region string, ) *ModelRegionIDs`
 
 NewModelRegionIDs instantiates a new ModelRegionIDs object
 This constructor will assign default values to properties that have it defined,
@@ -26,36 +26,36 @@ NewModelRegionIDsWithDefaults instantiates a new ModelRegionIDs object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetIDs
+### GetIds
 
-`func (o *ModelRegionIDs) GetIDs() []string`
+`func (o *ModelRegionIDs) GetIds() []string`
 
-GetIDs returns the IDs field if non-nil, zero value otherwise.
+GetIds returns the Ids field if non-nil, zero value otherwise.
 
-### GetIDsOk
+### GetIdsOk
 
-`func (o *ModelRegionIDs) GetIDsOk() (*[]string, bool)`
+`func (o *ModelRegionIDs) GetIdsOk() (*[]string, bool)`
 
-GetIDsOk returns a tuple with the IDs field if it's non-nil, zero value otherwise
+GetIdsOk returns a tuple with the Ids field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIDs
+### SetIds
 
-`func (o *ModelRegionIDs) SetIDs(v []string)`
+`func (o *ModelRegionIDs) SetIds(v []string)`
 
-SetIDs sets IDs field to given value.
+SetIds sets Ids field to given value.
 
 
-### SetIDsNil
+### SetIdsNil
 
-`func (o *ModelRegionIDs) SetIDsNil(b bool)`
+`func (o *ModelRegionIDs) SetIdsNil(b bool)`
 
- SetIDsNil sets the value for IDs to be an explicit nil
+ SetIdsNil sets the value for Ids to be an explicit nil
 
-### UnsetIDs
-`func (o *ModelRegionIDs) UnsetIDs()`
+### UnsetIds
+`func (o *ModelRegionIDs) UnsetIds()`
 
-UnsetIDs ensures that no value is present for IDs, not even an explicit nil
+UnsetIds ensures that no value is present for Ids, not even an explicit nil
 ### GetRegion
 
 `func (o *ModelRegionIDs) GetRegion() string`

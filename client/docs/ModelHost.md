@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccountId** | Pointer to **string** |  | [optional] 
 **AgentRunning** | **bool** |  | 
 **AlertsCounts** | **map[string]int32** |  | 
 **ApiEndpoints** | Pointer to [**[]ModelAPIEndpoint**](ModelAPIEndpoint.md) |  | [optional] 
@@ -82,6 +83,31 @@ will change when the set of required properties is changed
 NewModelHostWithDefaults instantiates a new ModelHost object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccountId
+
+`func (o *ModelHost) GetAccountId() string`
+
+GetAccountId returns the AccountId field if non-nil, zero value otherwise.
+
+### GetAccountIdOk
+
+`func (o *ModelHost) GetAccountIdOk() (*string, bool)`
+
+GetAccountIdOk returns a tuple with the AccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountId
+
+`func (o *ModelHost) SetAccountId(v string)`
+
+SetAccountId sets AccountId field to given value.
+
+### HasAccountId
+
+`func (o *ModelHost) HasAccountId() bool`
+
+HasAccountId returns a boolean if a field has been set.
 
 ### GetAgentRunning
 

@@ -558,7 +558,7 @@ import (
 )
 
 func main() {
-	modelAgentInstall := *openapiclient.NewModelAgentInstall("CloudProvider_example", *openapiclient.NewModelAgentID(int32(123), "NodeId_example"), []openapiclient.ModelRegionIDs{*openapiclient.NewModelRegionIDs([]string{"IDs_example"}, "Region_example")}) // ModelAgentInstall |  (optional)
+	modelAgentInstall := *openapiclient.NewModelAgentInstall("CloudProvider_example", *openapiclient.NewModelAgentID(int32(123), "NodeId_example"), []openapiclient.ModelRegionIDs{*openapiclient.NewModelRegionIDs([]string{"Ids_example"}, "Region_example")}) // ModelAgentInstall |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

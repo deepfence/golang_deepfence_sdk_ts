@@ -22,6 +22,7 @@ var _ MappedNullable = &ModelHost{}
 
 // ModelHost struct for ModelHost
 type ModelHost struct {
+	AccountId *string `json:"account_id,omitempty"`
 	AgentRunning bool `json:"agent_running"`
 	AlertsCounts map[string]int32 `json:"alerts_counts"`
 	ApiEndpoints []ModelAPIEndpoint `json:"api_endpoints,omitempty"`
@@ -158,6 +159,38 @@ func NewModelHost(agentRunning bool, alertsCounts map[string]int32, availability
 func NewModelHostWithDefaults() *ModelHost {
 	this := ModelHost{}
 	return &this
+}
+
+// GetAccountId returns the AccountId field value if set, zero value otherwise.
+func (o *ModelHost) GetAccountId() string {
+	if o == nil || IsNil(o.AccountId) {
+		var ret string
+		return ret
+	}
+	return *o.AccountId
+}
+
+// GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelHost) GetAccountIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AccountId) {
+		return nil, false
+	}
+	return o.AccountId, true
+}
+
+// HasAccountId returns a boolean if a field has been set.
+func (o *ModelHost) HasAccountId() bool {
+	if o != nil && !IsNil(o.AccountId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountId gets a reference to the given string and assigns it to the AccountId field.
+func (o *ModelHost) SetAccountId(v string) {
+	o.AccountId = &v
 }
 
 // GetAgentRunning returns the AgentRunning field value
@@ -1617,6 +1650,9 @@ func (o ModelHost) MarshalJSON() ([]byte, error) {
 
 func (o ModelHost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccountId) {
+		toSerialize["account_id"] = o.AccountId
+	}
 	toSerialize["agent_running"] = o.AgentRunning
 	if o.AlertsCounts != nil {
 		toSerialize["alerts_counts"] = o.AlertsCounts

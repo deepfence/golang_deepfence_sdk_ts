@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **NoOfRegistries** | Pointer to **int32** |  | [optional] 
 **NotificationThresholdPercentage** | Pointer to **int32** |  | [optional] 
 **NotificationThresholdUpdatedAt** | Pointer to **int32** |  | [optional] 
-**RegistryCredentials** | Pointer to [**ModelRegistryCredentials**](ModelRegistryCredentials.md) |  | [optional] 
+**RegistryCredentials** | Pointer to [**UtilsRegistryCredentials**](UtilsRegistryCredentials.md) |  | [optional] 
 **StartDate** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -444,20 +444,20 @@ HasNotificationThresholdUpdatedAt returns a boolean if a field has been set.
 
 ### GetRegistryCredentials
 
-`func (o *ModelLicense) GetRegistryCredentials() ModelRegistryCredentials`
+`func (o *ModelLicense) GetRegistryCredentials() UtilsRegistryCredentials`
 
 GetRegistryCredentials returns the RegistryCredentials field if non-nil, zero value otherwise.
 
 ### GetRegistryCredentialsOk
 
-`func (o *ModelLicense) GetRegistryCredentialsOk() (*ModelRegistryCredentials, bool)`
+`func (o *ModelLicense) GetRegistryCredentialsOk() (*UtilsRegistryCredentials, bool)`
 
 GetRegistryCredentialsOk returns a tuple with the RegistryCredentials field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRegistryCredentials
 
-`func (o *ModelLicense) SetRegistryCredentials(v ModelRegistryCredentials)`
+`func (o *ModelLicense) SetRegistryCredentials(v UtilsRegistryCredentials)`
 
 SetRegistryCredentials sets RegistryCredentials field to given value.
 

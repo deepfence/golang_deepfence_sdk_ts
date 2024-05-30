@@ -17143,13 +17143,13 @@ components:
           node_id: node_id
         cloud_provider: aws
         region_ids:
-        - i_ds:
-          - i_ds
-          - i_ds
+        - ids:
+          - ids
+          - ids
           region: region
-        - i_ds:
-          - i_ds
-          - i_ds
+        - ids:
+          - ids
+          - ids
           region: region
       properties:
         cloud_provider:
@@ -20539,6 +20539,7 @@ components:
         process_tracer_status_updated_at: 1
         uptime: 7
         memory_max: 7
+        account_id: account_id
         compliances_count: 1
         kernel_version: kernel_version
         warn_alarm_count: 4
@@ -20873,6 +20874,8 @@ components:
         host_name: host_name
         node_id: node_id
       properties:
+        account_id:
+          type: string
         agent_running:
           type: boolean
         alerts_counts:
@@ -22010,6 +22013,7 @@ components:
           process_tracer_status_updated_at: 1
           uptime: 7
           memory_max: 7
+          account_id: account_id
           compliances_count: 1
           kernel_version: kernel_version
           warn_alarm_count: 4
@@ -22905,6 +22909,7 @@ components:
           process_tracer_status_updated_at: 1
           uptime: 7
           memory_max: 7
+          account_id: account_id
           compliances_count: 1
           kernel_version: kernel_version
           warn_alarm_count: 4
@@ -23316,7 +23321,7 @@ components:
         notification_threshold_updated_at:
           type: integer
         registry_credentials:
-          $ref: '#/components/schemas/ModelRegistryCredentials'
+          $ref: '#/components/schemas/UtilsRegistryCredentials'
         start_date:
           type: string
       type: object
@@ -24717,12 +24722,12 @@ components:
       type: object
     ModelRegionIDs:
       example:
-        i_ds:
-        - i_ds
-        - i_ds
+        ids:
+        - ids
+        - ids
         region: region
       properties:
-        i_ds:
+        ids:
           items:
             type: string
           nullable: true
@@ -24730,7 +24735,7 @@ components:
         region:
           type: string
       required:
-      - i_ds
+      - ids
       - region
       type: object
     ModelRegisterInvitedUserRequest:
@@ -25141,19 +25146,6 @@ components:
       properties:
         count:
           type: integer
-      type: object
-    ModelRegistryCredentials:
-      example:
-        registry_url: registry_url
-        password: password
-        username: username
-      properties:
-        password:
-          type: string
-        registry_url:
-          type: string
-        username:
-          type: string
       type: object
     ModelRegistryImageStubsReq:
       example:
@@ -28671,6 +28663,19 @@ components:
           items:
             type: string
           type: array
+      type: object
+    UtilsRegistryCredentials:
+      example:
+        registry_url: registry_url
+        password: password
+        username: username
+      properties:
+        password:
+          type: string
+        registry_url:
+          type: string
+        username:
+          type: string
       type: object
     UtilsReportFilters:
       example:

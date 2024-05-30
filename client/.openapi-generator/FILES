@@ -242,7 +242,6 @@ docs/ModelRegisterLicenseResponse.md
 docs/ModelRegistryAccount.md
 docs/ModelRegistryAddReq.md
 docs/ModelRegistryCountResp.md
-docs/ModelRegistryCredentials.md
 docs/ModelRegistryImageStubsReq.md
 docs/ModelRegistryImagesReq.md
 docs/ModelRegistryListResp.md
@@ -329,6 +328,7 @@ docs/ThreatintelRulesWithDirection.md
 docs/TopologyAPI.md
 docs/UserAPI.md
 docs/UtilsAdvancedReportFilters.md
+docs/UtilsRegistryCredentials.md
 docs/UtilsReportFilters.md
 docs/UtilsReportOptions.md
 docs/UtilsScanSbomRequest.md
@@ -524,7 +524,6 @@ model_model_register_license_response.go
 model_model_registry_account.go
 model_model_registry_add_req.go
 model_model_registry_count_resp.go
-model_model_registry_credentials.go
 model_model_registry_image_stubs_req.go
 model_model_registry_images_req.go
 model_model_registry_list_resp.go
@@ -602,6 +601,7 @@ model_singlesignon_update_sso_provider_config.go
 model_singlesignon_verify_sso_auth_request.go
 model_threatintel_rules_with_direction.go
 model_utils_advanced_report_filters.go
+model_utils_registry_credentials.go
 model_utils_report_filters.go
 model_utils_report_options.go
 model_utils_scan_sbom_request.go
