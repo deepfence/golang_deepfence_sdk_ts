@@ -138,7 +138,6 @@ Class | Method | HTTP request | Description
 *AuthenticationAPI* | [**UpdateSSOProvider**](docs/AuthenticationAPI.md#updatessoprovider) | **Put** /deepfence/single-sign-on/{id} | Update Single sign-on
 *AuthenticationAPI* | [**VerifySSOAuth**](docs/AuthenticationAPI.md#verifyssoauth) | **Post** /deepfence/sso/verify | Verify SSO auth code
 *CloudNodesAPI* | [**DeleteCloudNodeAccount**](docs/CloudNodesAPI.md#deletecloudnodeaccount) | **Patch** /deepfence/cloud-node/account/delete | Delete Cloud Node Account
-*CloudNodesAPI* | [**DeployCloudResourceAgent**](docs/CloudNodesAPI.md#deploycloudresourceagent) | **Post** /deepfence/cloud-resource/deploy-agent | Deploy Agent on Cloud Resource
 *CloudNodesAPI* | [**ListCloudNodeAccount**](docs/CloudNodesAPI.md#listcloudnodeaccount) | **Post** /deepfence/cloud-node/list/accounts | List Cloud Node Accounts
 *CloudNodesAPI* | [**ListCloudProviders**](docs/CloudNodesAPI.md#listcloudproviders) | **Get** /deepfence/cloud-node/list/providers | List Cloud Node Providers
 *CloudNodesAPI* | [**RefreshCloudNodeAccount**](docs/CloudNodesAPI.md#refreshcloudnodeaccount) | **Post** /deepfence/cloud-node/account/refresh | Refresh Cloud Account
@@ -179,6 +178,7 @@ Class | Method | HTTP request | Description
 *ControlsAPI* | [**GetCloudNodeControls**](docs/ControlsAPI.md#getcloudnodecontrols) | **Post** /deepfence/controls/cloud-node | Fetch Cloud Node Controls
 *ControlsAPI* | [**GetKubernetesClusterControls**](docs/ControlsAPI.md#getkubernetesclustercontrols) | **Post** /deepfence/controls/kubernetes-cluster | Fetch Kubernetes Cluster Actions
 *ControlsAPI* | [**InstallAgentOverCloud**](docs/ControlsAPI.md#installagentovercloud) | **Post** /deepfence/controls/agent-install | Control Agent Install on cloud
+*ControlsAPI* | [**UninstallAgentOverCloud**](docs/ControlsAPI.md#uninstallagentovercloud) | **Post** /deepfence/controls/agent-uninstall | Control Agent Uninstall on cloud
 *ControlsAPI* | [**UpgradeAgentVersion**](docs/ControlsAPI.md#upgradeagentversion) | **Post** /deepfence/controls/agent-upgrade | Schedule new agent version upgrade
 *DiagnosisAPI* | [**DiagnosticNotification**](docs/DiagnosisAPI.md#diagnosticnotification) | **Get** /deepfence/diagnosis/notification | Get Diagnostic Notification
 *DiagnosisAPI* | [**GenerateAgentDiagnosticLogs**](docs/DiagnosisAPI.md#generateagentdiagnosticlogs) | **Post** /deepfence/diagnosis/agent-logs | Generate Agent Diagnostic Logs
@@ -521,7 +521,6 @@ Class | Method | HTTP request | Description
  - [ModelCloudNodeEnableDisableReq](docs/ModelCloudNodeEnableDisableReq.md)
  - [ModelCloudNodeProvidersListResp](docs/ModelCloudNodeProvidersListResp.md)
  - [ModelCloudResource](docs/ModelCloudResource.md)
- - [ModelCloudResourceDeployAgentReq](docs/ModelCloudResourceDeployAgentReq.md)
  - [ModelCommonAlert](docs/ModelCommonAlert.md)
  - [ModelCompliance](docs/ModelCompliance.md)
  - [ModelComplianceRule](docs/ModelComplianceRule.md)

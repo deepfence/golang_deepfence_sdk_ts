@@ -5,7 +5,6 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeleteCloudNodeAccount**](CloudNodesAPI.md#DeleteCloudNodeAccount) | **Patch** /deepfence/cloud-node/account/delete | Delete Cloud Node Account
-[**DeployCloudResourceAgent**](CloudNodesAPI.md#DeployCloudResourceAgent) | **Post** /deepfence/cloud-resource/deploy-agent | Deploy Agent on Cloud Resource
 [**ListCloudNodeAccount**](CloudNodesAPI.md#ListCloudNodeAccount) | **Post** /deepfence/cloud-node/list/accounts | List Cloud Node Accounts
 [**ListCloudProviders**](CloudNodesAPI.md#ListCloudProviders) | **Get** /deepfence/cloud-node/list/providers | List Cloud Node Providers
 [**RefreshCloudNodeAccount**](CloudNodesAPI.md#RefreshCloudNodeAccount) | **Post** /deepfence/cloud-node/account/refresh | Refresh Cloud Account
@@ -62,72 +61,6 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
-
-### Authorization
-
-[bearer_token](../README.md#bearer_token)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## DeployCloudResourceAgent
-
-> ModelMessageResponse DeployCloudResourceAgent(ctx).ModelCloudResourceDeployAgentReq(modelCloudResourceDeployAgentReq).Execute()
-
-Deploy Agent on Cloud Resource
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
-)
-
-func main() {
-	modelCloudResourceDeployAgentReq := *openapiclient.NewModelCloudResourceDeployAgentReq([]string{"NodeIds_example"}) // ModelCloudResourceDeployAgentReq |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudNodesAPI.DeployCloudResourceAgent(context.Background()).ModelCloudResourceDeployAgentReq(modelCloudResourceDeployAgentReq).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudNodesAPI.DeployCloudResourceAgent``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeployCloudResourceAgent`: ModelMessageResponse
-	fmt.Fprintf(os.Stdout, "Response from `CloudNodesAPI.DeployCloudResourceAgent`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeployCloudResourceAgentRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **modelCloudResourceDeployAgentReq** | [**ModelCloudResourceDeployAgentReq**](ModelCloudResourceDeployAgentReq.md) |  | 
-
-### Return type
-
-[**ModelMessageResponse**](ModelMessageResponse.md)
 
 ### Authorization
 

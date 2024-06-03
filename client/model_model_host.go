@@ -23,6 +23,8 @@ var _ MappedNullable = &ModelHost{}
 // ModelHost struct for ModelHost
 type ModelHost struct {
 	AccountId *string `json:"account_id,omitempty"`
+	AgentInstallerTracerStatus string `json:"agent_installer_tracer_status"`
+	AgentInstallerTracerStatusUpdatedAt int32 `json:"agent_installer_tracer_status_updated_at"`
 	AgentRunning bool `json:"agent_running"`
 	AlertsCounts map[string]int32 `json:"alerts_counts"`
 	ApiEndpoints []ModelAPIEndpoint `json:"api_endpoints,omitempty"`
@@ -90,8 +92,10 @@ type _ModelHost ModelHost
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelHost(agentRunning bool, alertsCounts map[string]int32, availabilityZone string, cloudAccountId string, cloudProvider string, cloudRegion string, cloudWarnAlarmCount int32, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, exploitableMalwaresCount int32, exploitableSecretsCount int32, exploitableVulnerabilitiesCount int32, filesystemTracerStatus string, filesystemTracerStatusUpdatedAt int32, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, networkFilterStatus string, networkTracerStatus string, networkTracerStatusUpdatedAt int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processTracerStatus string, processTracerStatusUpdatedAt int32, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string, warnAlarmCount int32) *ModelHost {
+func NewModelHost(agentInstallerTracerStatus string, agentInstallerTracerStatusUpdatedAt int32, agentRunning bool, alertsCounts map[string]int32, availabilityZone string, cloudAccountId string, cloudProvider string, cloudRegion string, cloudWarnAlarmCount int32, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, exploitableMalwaresCount int32, exploitableSecretsCount int32, exploitableVulnerabilitiesCount int32, filesystemTracerStatus string, filesystemTracerStatusUpdatedAt int32, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, networkFilterStatus string, networkTracerStatus string, networkTracerStatusUpdatedAt int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processTracerStatus string, processTracerStatusUpdatedAt int32, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string, warnAlarmCount int32) *ModelHost {
 	this := ModelHost{}
+	this.AgentInstallerTracerStatus = agentInstallerTracerStatus
+	this.AgentInstallerTracerStatusUpdatedAt = agentInstallerTracerStatusUpdatedAt
 	this.AgentRunning = agentRunning
 	this.AlertsCounts = alertsCounts
 	this.AvailabilityZone = availabilityZone
@@ -191,6 +195,54 @@ func (o *ModelHost) HasAccountId() bool {
 // SetAccountId gets a reference to the given string and assigns it to the AccountId field.
 func (o *ModelHost) SetAccountId(v string) {
 	o.AccountId = &v
+}
+
+// GetAgentInstallerTracerStatus returns the AgentInstallerTracerStatus field value
+func (o *ModelHost) GetAgentInstallerTracerStatus() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AgentInstallerTracerStatus
+}
+
+// GetAgentInstallerTracerStatusOk returns a tuple with the AgentInstallerTracerStatus field value
+// and a boolean to check if the value has been set.
+func (o *ModelHost) GetAgentInstallerTracerStatusOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AgentInstallerTracerStatus, true
+}
+
+// SetAgentInstallerTracerStatus sets field value
+func (o *ModelHost) SetAgentInstallerTracerStatus(v string) {
+	o.AgentInstallerTracerStatus = v
+}
+
+// GetAgentInstallerTracerStatusUpdatedAt returns the AgentInstallerTracerStatusUpdatedAt field value
+func (o *ModelHost) GetAgentInstallerTracerStatusUpdatedAt() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.AgentInstallerTracerStatusUpdatedAt
+}
+
+// GetAgentInstallerTracerStatusUpdatedAtOk returns a tuple with the AgentInstallerTracerStatusUpdatedAt field value
+// and a boolean to check if the value has been set.
+func (o *ModelHost) GetAgentInstallerTracerStatusUpdatedAtOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AgentInstallerTracerStatusUpdatedAt, true
+}
+
+// SetAgentInstallerTracerStatusUpdatedAt sets field value
+func (o *ModelHost) SetAgentInstallerTracerStatusUpdatedAt(v int32) {
+	o.AgentInstallerTracerStatusUpdatedAt = v
 }
 
 // GetAgentRunning returns the AgentRunning field value
@@ -1653,6 +1705,8 @@ func (o ModelHost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccountId) {
 		toSerialize["account_id"] = o.AccountId
 	}
+	toSerialize["agent_installer_tracer_status"] = o.AgentInstallerTracerStatus
+	toSerialize["agent_installer_tracer_status_updated_at"] = o.AgentInstallerTracerStatusUpdatedAt
 	toSerialize["agent_running"] = o.AgentRunning
 	if o.AlertsCounts != nil {
 		toSerialize["alerts_counts"] = o.AlertsCounts
@@ -1744,6 +1798,8 @@ func (o *ModelHost) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"agent_installer_tracer_status",
+		"agent_installer_tracer_status_updated_at",
 		"agent_running",
 		"alerts_counts",
 		"availability_zone",

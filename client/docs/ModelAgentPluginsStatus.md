@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AgentInstallerTracerStatus** | [**ModelPluginStatus**](ModelPluginStatus.md) |  | 
 **CloudNetworkTracerStatus** | [**ModelPluginStatus**](ModelPluginStatus.md) |  | 
 **FilesystemTracerStatus** | [**ModelPluginStatus**](ModelPluginStatus.md) |  | 
 **NetworkFilterStatus** | [**ModelPluginStatus**](ModelPluginStatus.md) |  | 
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewModelAgentPluginsStatus
 
-`func NewModelAgentPluginsStatus(cloudNetworkTracerStatus ModelPluginStatus, filesystemTracerStatus ModelPluginStatus, networkFilterStatus ModelPluginStatus, networkTracerStatus ModelPluginStatus, processTracerStatus ModelPluginStatus, ) *ModelAgentPluginsStatus`
+`func NewModelAgentPluginsStatus(agentInstallerTracerStatus ModelPluginStatus, cloudNetworkTracerStatus ModelPluginStatus, filesystemTracerStatus ModelPluginStatus, networkFilterStatus ModelPluginStatus, networkTracerStatus ModelPluginStatus, processTracerStatus ModelPluginStatus, ) *ModelAgentPluginsStatus`
 
 NewModelAgentPluginsStatus instantiates a new ModelAgentPluginsStatus object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +29,26 @@ will change when the set of required properties is changed
 NewModelAgentPluginsStatusWithDefaults instantiates a new ModelAgentPluginsStatus object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAgentInstallerTracerStatus
+
+`func (o *ModelAgentPluginsStatus) GetAgentInstallerTracerStatus() ModelPluginStatus`
+
+GetAgentInstallerTracerStatus returns the AgentInstallerTracerStatus field if non-nil, zero value otherwise.
+
+### GetAgentInstallerTracerStatusOk
+
+`func (o *ModelAgentPluginsStatus) GetAgentInstallerTracerStatusOk() (*ModelPluginStatus, bool)`
+
+GetAgentInstallerTracerStatusOk returns a tuple with the AgentInstallerTracerStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAgentInstallerTracerStatus
+
+`func (o *ModelAgentPluginsStatus) SetAgentInstallerTracerStatus(v ModelPluginStatus)`
+
+SetAgentInstallerTracerStatus sets AgentInstallerTracerStatus field to given value.
+
 
 ### GetCloudNetworkTracerStatus
 

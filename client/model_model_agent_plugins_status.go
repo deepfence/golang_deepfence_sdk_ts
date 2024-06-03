@@ -22,6 +22,7 @@ var _ MappedNullable = &ModelAgentPluginsStatus{}
 
 // ModelAgentPluginsStatus struct for ModelAgentPluginsStatus
 type ModelAgentPluginsStatus struct {
+	AgentInstallerTracerStatus ModelPluginStatus `json:"agent_installer_tracer_status"`
 	CloudNetworkTracerStatus ModelPluginStatus `json:"cloud_network_tracer_status"`
 	FilesystemTracerStatus ModelPluginStatus `json:"filesystem_tracer_status"`
 	NetworkFilterStatus ModelPluginStatus `json:"network_filter_status"`
@@ -35,8 +36,9 @@ type _ModelAgentPluginsStatus ModelAgentPluginsStatus
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelAgentPluginsStatus(cloudNetworkTracerStatus ModelPluginStatus, filesystemTracerStatus ModelPluginStatus, networkFilterStatus ModelPluginStatus, networkTracerStatus ModelPluginStatus, processTracerStatus ModelPluginStatus) *ModelAgentPluginsStatus {
+func NewModelAgentPluginsStatus(agentInstallerTracerStatus ModelPluginStatus, cloudNetworkTracerStatus ModelPluginStatus, filesystemTracerStatus ModelPluginStatus, networkFilterStatus ModelPluginStatus, networkTracerStatus ModelPluginStatus, processTracerStatus ModelPluginStatus) *ModelAgentPluginsStatus {
 	this := ModelAgentPluginsStatus{}
+	this.AgentInstallerTracerStatus = agentInstallerTracerStatus
 	this.CloudNetworkTracerStatus = cloudNetworkTracerStatus
 	this.FilesystemTracerStatus = filesystemTracerStatus
 	this.NetworkFilterStatus = networkFilterStatus
@@ -51,6 +53,30 @@ func NewModelAgentPluginsStatus(cloudNetworkTracerStatus ModelPluginStatus, file
 func NewModelAgentPluginsStatusWithDefaults() *ModelAgentPluginsStatus {
 	this := ModelAgentPluginsStatus{}
 	return &this
+}
+
+// GetAgentInstallerTracerStatus returns the AgentInstallerTracerStatus field value
+func (o *ModelAgentPluginsStatus) GetAgentInstallerTracerStatus() ModelPluginStatus {
+	if o == nil {
+		var ret ModelPluginStatus
+		return ret
+	}
+
+	return o.AgentInstallerTracerStatus
+}
+
+// GetAgentInstallerTracerStatusOk returns a tuple with the AgentInstallerTracerStatus field value
+// and a boolean to check if the value has been set.
+func (o *ModelAgentPluginsStatus) GetAgentInstallerTracerStatusOk() (*ModelPluginStatus, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AgentInstallerTracerStatus, true
+}
+
+// SetAgentInstallerTracerStatus sets field value
+func (o *ModelAgentPluginsStatus) SetAgentInstallerTracerStatus(v ModelPluginStatus) {
+	o.AgentInstallerTracerStatus = v
 }
 
 // GetCloudNetworkTracerStatus returns the CloudNetworkTracerStatus field value
@@ -183,6 +209,7 @@ func (o ModelAgentPluginsStatus) MarshalJSON() ([]byte, error) {
 
 func (o ModelAgentPluginsStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["agent_installer_tracer_status"] = o.AgentInstallerTracerStatus
 	toSerialize["cloud_network_tracer_status"] = o.CloudNetworkTracerStatus
 	toSerialize["filesystem_tracer_status"] = o.FilesystemTracerStatus
 	toSerialize["network_filter_status"] = o.NetworkFilterStatus
@@ -196,6 +223,7 @@ func (o *ModelAgentPluginsStatus) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"agent_installer_tracer_status",
 		"cloud_network_tracer_status",
 		"filesystem_tracer_status",
 		"network_filter_status",
