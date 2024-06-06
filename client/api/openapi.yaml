@@ -20314,7 +20314,7 @@ components:
           agent_installer_tracer_status:
             description: description
             status: status
-        agent_installer_tracer_status: agent_installer_tracer_status
+        agent_installer_tracer_status: INSTALLED
         malware_latest_scan_id: malware_latest_scan_id
         version: version
         instance_id: instance_id
@@ -20870,6 +20870,11 @@ components:
         account_id:
           type: string
         agent_installer_tracer_status:
+          enum:
+          - INSTALLED
+          - UNINSTALLED
+          - IN_PROGRESS
+          - FAILED
           type: string
         agent_installer_tracer_status_updated_at:
           type: integer
@@ -21799,7 +21804,7 @@ components:
             agent_installer_tracer_status:
               description: description
               status: status
-          agent_installer_tracer_status: agent_installer_tracer_status
+          agent_installer_tracer_status: INSTALLED
           malware_latest_scan_id: malware_latest_scan_id
           version: version
           instance_id: instance_id
@@ -22700,7 +22705,7 @@ components:
             agent_installer_tracer_status:
               description: description
               status: status
-          agent_installer_tracer_status: agent_installer_tracer_status
+          agent_installer_tracer_status: INSTALLED
           malware_latest_scan_id: malware_latest_scan_id
           version: version
           instance_id: instance_id
