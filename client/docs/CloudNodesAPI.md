@@ -97,7 +97,7 @@ import (
 )
 
 func main() {
-	modelCloudNodeAccountsListReq := *openapiclient.NewModelCloudNodeAccountsListReq(*openapiclient.NewModelFetchWindow(int32(123), int32(123))) // ModelCloudNodeAccountsListReq |  (optional)
+	modelCloudNodeAccountsListReq := *openapiclient.NewModelCloudNodeAccountsListReq("CloudProvider_example", *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // ModelCloudNodeAccountsListReq |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

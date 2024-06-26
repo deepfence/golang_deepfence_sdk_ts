@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: v2.2.1
+API version: v2.3.0
 Contact: community@deepfence.io
 */
 
@@ -20,6 +20,7 @@ var _ MappedNullable = &ModelCloudNodeAccountInfo{}
 
 // ModelCloudNodeAccountInfo struct for ModelCloudNodeAccountInfo
 type ModelCloudNodeAccountInfo struct {
+	AccountName *string `json:"account_name,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	CloudNetworkTracerStatus *ModelPluginStatus `json:"cloud_network_tracer_status,omitempty"`
 	CloudProvider *string `json:"cloud_provider,omitempty"`
@@ -29,6 +30,8 @@ type ModelCloudNodeAccountInfo struct {
 	LastScanStatus *string `json:"last_scan_status,omitempty"`
 	NodeId *string `json:"node_id,omitempty"`
 	NodeName *string `json:"node_name,omitempty"`
+	RefreshMessage *string `json:"refresh_message,omitempty"`
+	RefreshStatus *string `json:"refresh_status,omitempty"`
 	ScanStatusMap map[string]int32 `json:"scan_status_map,omitempty"`
 	Version *string `json:"version,omitempty"`
 }
@@ -48,6 +51,38 @@ func NewModelCloudNodeAccountInfo() *ModelCloudNodeAccountInfo {
 func NewModelCloudNodeAccountInfoWithDefaults() *ModelCloudNodeAccountInfo {
 	this := ModelCloudNodeAccountInfo{}
 	return &this
+}
+
+// GetAccountName returns the AccountName field value if set, zero value otherwise.
+func (o *ModelCloudNodeAccountInfo) GetAccountName() string {
+	if o == nil || IsNil(o.AccountName) {
+		var ret string
+		return ret
+	}
+	return *o.AccountName
+}
+
+// GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelCloudNodeAccountInfo) GetAccountNameOk() (*string, bool) {
+	if o == nil || IsNil(o.AccountName) {
+		return nil, false
+	}
+	return o.AccountName, true
+}
+
+// HasAccountName returns a boolean if a field has been set.
+func (o *ModelCloudNodeAccountInfo) HasAccountName() bool {
+	if o != nil && !IsNil(o.AccountName) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountName gets a reference to the given string and assigns it to the AccountName field.
+func (o *ModelCloudNodeAccountInfo) SetAccountName(v string) {
+	o.AccountName = &v
 }
 
 // GetActive returns the Active field value if set, zero value otherwise.
@@ -338,6 +373,70 @@ func (o *ModelCloudNodeAccountInfo) SetNodeName(v string) {
 	o.NodeName = &v
 }
 
+// GetRefreshMessage returns the RefreshMessage field value if set, zero value otherwise.
+func (o *ModelCloudNodeAccountInfo) GetRefreshMessage() string {
+	if o == nil || IsNil(o.RefreshMessage) {
+		var ret string
+		return ret
+	}
+	return *o.RefreshMessage
+}
+
+// GetRefreshMessageOk returns a tuple with the RefreshMessage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelCloudNodeAccountInfo) GetRefreshMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.RefreshMessage) {
+		return nil, false
+	}
+	return o.RefreshMessage, true
+}
+
+// HasRefreshMessage returns a boolean if a field has been set.
+func (o *ModelCloudNodeAccountInfo) HasRefreshMessage() bool {
+	if o != nil && !IsNil(o.RefreshMessage) {
+		return true
+	}
+
+	return false
+}
+
+// SetRefreshMessage gets a reference to the given string and assigns it to the RefreshMessage field.
+func (o *ModelCloudNodeAccountInfo) SetRefreshMessage(v string) {
+	o.RefreshMessage = &v
+}
+
+// GetRefreshStatus returns the RefreshStatus field value if set, zero value otherwise.
+func (o *ModelCloudNodeAccountInfo) GetRefreshStatus() string {
+	if o == nil || IsNil(o.RefreshStatus) {
+		var ret string
+		return ret
+	}
+	return *o.RefreshStatus
+}
+
+// GetRefreshStatusOk returns a tuple with the RefreshStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelCloudNodeAccountInfo) GetRefreshStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.RefreshStatus) {
+		return nil, false
+	}
+	return o.RefreshStatus, true
+}
+
+// HasRefreshStatus returns a boolean if a field has been set.
+func (o *ModelCloudNodeAccountInfo) HasRefreshStatus() bool {
+	if o != nil && !IsNil(o.RefreshStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetRefreshStatus gets a reference to the given string and assigns it to the RefreshStatus field.
+func (o *ModelCloudNodeAccountInfo) SetRefreshStatus(v string) {
+	o.RefreshStatus = &v
+}
+
 // GetScanStatusMap returns the ScanStatusMap field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ModelCloudNodeAccountInfo) GetScanStatusMap() map[string]int32 {
 	if o == nil {
@@ -413,6 +512,9 @@ func (o ModelCloudNodeAccountInfo) MarshalJSON() ([]byte, error) {
 
 func (o ModelCloudNodeAccountInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccountName) {
+		toSerialize["account_name"] = o.AccountName
+	}
 	if !IsNil(o.Active) {
 		toSerialize["active"] = o.Active
 	}
@@ -439,6 +541,12 @@ func (o ModelCloudNodeAccountInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NodeName) {
 		toSerialize["node_name"] = o.NodeName
+	}
+	if !IsNil(o.RefreshMessage) {
+		toSerialize["refresh_message"] = o.RefreshMessage
+	}
+	if !IsNil(o.RefreshStatus) {
+		toSerialize["refresh_status"] = o.RefreshStatus
 	}
 	if o.ScanStatusMap != nil {
 		toSerialize["scan_status_map"] = o.ScanStatusMap

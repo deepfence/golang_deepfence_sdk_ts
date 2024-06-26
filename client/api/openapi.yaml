@@ -16,7 +16,7 @@ info:
     url: https://www.apache.org/licenses/LICENSE-2.0
   termsOfService: /tos
   title: Deepfence ThreatStryker
-  version: v2.2.1
+  version: v2.3.0
 externalDocs:
   description: Deepfence Community
   url: https://community.deepfence.io
@@ -712,6 +712,49 @@ paths:
       security:
       - bearer_token: []
       summary: Get Completion for cloud compliance fields
+      tags:
+      - Completion
+  /deepfence/complete/cloud-resources:
+    post:
+      description: Complete cloud resources info
+      operationId: completeCloudResources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompletionCompletionNodeFieldReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompletionCompletionNodeFieldRes'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Completion for cloud resources fields
       tags:
       - Completion
   /deepfence/complete/compliance:
@@ -8601,6 +8644,92 @@ paths:
       summary: Get Compliance Scans Results
       tags:
       - Compliance
+  /deepfence/scan/results/count/group/cloud-compliance:
+    post:
+      description: Count Cloud Compliance Results grouped by Control ID
+      operationId: groupResultsCloudCompliance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelComplinaceScanResultsGroupReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelComplinaceScanResultsGroupResp'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Count Cloud Compliance Results by Control ID
+      tags:
+      - Compliance
+  /deepfence/scan/results/count/group/compliance:
+    post:
+      description: Count Compliance Results grouped by Control ID
+      operationId: groupResultsCompliance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelComplinaceScanResultsGroupReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelComplinaceScanResultsGroupResp'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Count Compliance Results by Control ID
+      tags:
+      - Compliance
   /deepfence/scan/results/count/group/malware:
     get:
       description: Group Malware Scans results by severity/rule
@@ -13365,7 +13494,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/ModelSettingsResponse'
+                  $ref: '#/components/schemas/SettingSettingsResponse'
                 type: array
           description: OK
         "400":
@@ -13411,7 +13540,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ModelSettingUpdateRequest'
+              $ref: '#/components/schemas/SettingSettingUpdateRequest'
       responses:
         "204":
           description: No Content
@@ -16418,7 +16547,7 @@ components:
         created_at: 0
         incident: incident
         host_name: host_name
-        direction: direction
+        direction: inbound
       properties:
         alert_id:
           type: string
@@ -16427,6 +16556,9 @@ components:
         created_at:
           type: integer
         direction:
+          enum:
+          - inbound
+          - outbound
           type: string
         host_name:
           type: string
@@ -16966,8 +17098,8 @@ components:
       example:
         is_priority: true
         benchmark_types:
-        - benchmark_types
-        - benchmark_types
+        - hipaa
+        - hipaa
         scan_config:
         - language: base
         - language: base
@@ -17017,7 +17149,7 @@ components:
           type: string
         benchmark_types:
           items:
-            type: string
+            $ref: '#/components/schemas/ModelBenchmarkType'
           nullable: true
           type: array
         cron_expr:
@@ -17263,6 +17395,17 @@ components:
       - node_id
       - node_type
       type: object
+    ModelBenchmarkType:
+      enum:
+      - hipaa
+      - gdpr
+      - pci
+      - nist
+      - cis
+      - soc_2
+      - nsa-cisa
+      - aws_foundational_security
+      type: string
     ModelBulkDeleteReportReq:
       example:
         report_ids:
@@ -17390,20 +17533,29 @@ components:
         cloud_provider: cloud_provider
         title: title
         type: type
-        compliance_check_type: compliance_check_type
+        compliance_check_type: hipaa
         account_id: account_id
         updated_at: 6
         service: service
         region: region
         group: group
         node_id: node_id
-        status: status
+        status: alarm
       properties:
         account_id:
           type: string
         cloud_provider:
           type: string
         compliance_check_type:
+          enum:
+          - hipaa
+          - gdpr
+          - pci
+          - nist
+          - cis
+          - soc_2
+          - nsa-cisa
+          - aws_foundational_security
           type: string
         control_id:
           type: string
@@ -17435,6 +17587,12 @@ components:
         severity:
           type: string
         status:
+          enum:
+          - alarm
+          - info
+          - ok
+          - skip
+          - delete
           type: string
         title:
           type: string
@@ -17494,14 +17652,14 @@ components:
           cloud_provider: cloud_provider
           title: title
           type: type
-          compliance_check_type: compliance_check_type
+          compliance_check_type: hipaa
           account_id: account_id
           updated_at: 6
           service: service
           region: region
           group: group
           node_id: node_id
-          status: status
+          status: alarm
         - severity: severity
           reason: reason
           control_id: control_id
@@ -17522,14 +17680,14 @@ components:
           cloud_provider: cloud_provider
           title: title
           type: type
-          compliance_check_type: compliance_check_type
+          compliance_check_type: hipaa
           account_id: account_id
           updated_at: 6
           service: service
           region: region
           group: group
           node_id: node_id
-          status: status
+          status: alarm
         compliance_percentage: 0.8008281904610115
         node_type: node_type
         updated_at: 5
@@ -17601,20 +17759,25 @@ components:
     ModelCloudNodeAccountInfo:
       example:
         last_scan_status: last_scan_status
-        compliance_percentage: 0.8008281904610115
         last_scan_id: last_scan_id
+        refresh_message: refresh_message
         node_name: node_name
         active: true
-        cloud_network_tracer_status:
-          description: description
-          status: status
         cloud_provider: cloud_provider
         scan_status_map:
           key: 6
         host_node_id: host_node_id
         version: version
+        refresh_status: refresh_status
+        compliance_percentage: 0.8008281904610115
+        account_name: account_name
+        cloud_network_tracer_status:
+          description: description
+          status: status
         node_id: node_id
       properties:
+        account_name:
+          type: string
         active:
           type: boolean
         cloud_network_tracer_status:
@@ -17633,6 +17796,10 @@ components:
           type: string
         node_name:
           type: string
+        refresh_message:
+          type: string
+        refresh_status:
+          type: string
         scan_status_map:
           additionalProperties:
             type: integer
@@ -17644,8 +17811,14 @@ components:
     ModelCloudNodeAccountRegisterReq:
       example:
         account_id: account_id
-        monitored_account_ids:
-          key: monitored_account_ids
+        monitored_accounts:
+        - account_id: account_id
+          account_name: account_name
+          node_id: node_id
+        - account_id: account_id
+          account_name: account_name
+          node_id: node_id
+        account_name: account_name
         is_organization_deployment: true
         cloud_provider: aws
         organization_account_id: organization_account_id
@@ -17654,6 +17827,8 @@ components:
         node_id: node_id
       properties:
         account_id:
+          type: string
+        account_name:
           type: string
         cloud_provider:
           enum:
@@ -17665,11 +17840,11 @@ components:
           type: string
         is_organization_deployment:
           type: boolean
-        monitored_account_ids:
-          additionalProperties:
-            type: string
+        monitored_accounts:
+          items:
+            $ref: '#/components/schemas/ModelCloudNodeMonitoredAccount'
           nullable: true
-          type: object
+          type: array
         node_id:
           type: string
         organization_account_id:
@@ -17685,16 +17860,26 @@ components:
       type: object
     ModelCloudNodeAccountsListReq:
       example:
-        cloud_provider: cloud_provider
+        cloud_provider: aws
         window:
           offset: 0
           size: 6
       properties:
         cloud_provider:
+          enum:
+          - aws
+          - gcp
+          - azure
+          - linux
+          - kubernetes
+          - aws_org
+          - gcp_org
+          - azure_org
           type: string
         window:
           $ref: '#/components/schemas/ModelFetchWindow'
       required:
+      - cloud_provider
       - window
       type: object
     ModelCloudNodeAccountsListResp:
@@ -17702,32 +17887,38 @@ components:
         total: 1
         cloud_node_accounts_info:
         - last_scan_status: last_scan_status
-          compliance_percentage: 0.8008281904610115
           last_scan_id: last_scan_id
+          refresh_message: refresh_message
           node_name: node_name
           active: true
-          cloud_network_tracer_status:
-            description: description
-            status: status
           cloud_provider: cloud_provider
           scan_status_map:
             key: 6
           host_node_id: host_node_id
           version: version
+          refresh_status: refresh_status
+          compliance_percentage: 0.8008281904610115
+          account_name: account_name
+          cloud_network_tracer_status:
+            description: description
+            status: status
           node_id: node_id
         - last_scan_status: last_scan_status
-          compliance_percentage: 0.8008281904610115
           last_scan_id: last_scan_id
+          refresh_message: refresh_message
           node_name: node_name
           active: true
-          cloud_network_tracer_status:
-            description: description
-            status: status
           cloud_provider: cloud_provider
           scan_status_map:
             key: 6
           host_node_id: host_node_id
           version: version
+          refresh_status: refresh_status
+          compliance_percentage: 0.8008281904610115
+          account_name: account_name
+          cloud_network_tracer_status:
+            description: description
+            status: status
           node_id: node_id
       properties:
         cloud_node_accounts_info:
@@ -17749,20 +17940,29 @@ components:
         control_id: control_id
         service: service
         description: description
+        compliance_type: compliance_type
         title: title
+        category_hierarchy_short: category_hierarchy_short
         enabled: true
+        node_id: node_id
       properties:
         category_hierarchy:
           items:
             type: string
           nullable: true
           type: array
+        category_hierarchy_short:
+          type: string
+        compliance_type:
+          type: string
         control_id:
           type: string
         description:
           type: string
         enabled:
           type: boolean
+        node_id:
+          type: string
         service:
           type: string
         title:
@@ -17771,7 +17971,7 @@ components:
     ModelCloudNodeControlReq:
       example:
         cloud_provider: aws
-        compliance_type: compliance_type
+        compliance_type: hipaa
         node_id: node_id
       properties:
         cloud_provider:
@@ -17783,6 +17983,15 @@ components:
           - kubernetes
           type: string
         compliance_type:
+          enum:
+          - hipaa
+          - gdpr
+          - pci
+          - nist
+          - cis
+          - soc_2
+          - nsa-cisa
+          - aws_foundational_security
           type: string
         node_id:
           type: string
@@ -17799,16 +18008,22 @@ components:
           control_id: control_id
           service: service
           description: description
+          compliance_type: compliance_type
           title: title
+          category_hierarchy_short: category_hierarchy_short
           enabled: true
+          node_id: node_id
         - category_hierarchy:
           - category_hierarchy
           - category_hierarchy
           control_id: control_id
           service: service
           description: description
+          compliance_type: compliance_type
           title: title
+          category_hierarchy_short: category_hierarchy_short
           enabled: true
+          node_id: node_id
       properties:
         controls:
           items:
@@ -17830,6 +18045,22 @@ components:
           type: array
         node_id:
           type: string
+      type: object
+    ModelCloudNodeMonitoredAccount:
+      example:
+        account_id: account_id
+        account_name: account_name
+        node_id: node_id
+      properties:
+        account_id:
+          type: string
+        account_name:
+          type: string
+        node_id:
+          type: string
+      required:
+      - account_id
+      - node_id
       type: object
     ModelCloudNodeProvidersListResp:
       example:
@@ -17867,7 +18098,7 @@ components:
         cloud_region: cloud_region
         agent_install_availability: available
         node_name: node_name
-        cloud_provider: cloud_provider
+        cloud_provider: aws
         type_label: type_label
         node_id: node_id
       properties:
@@ -17885,6 +18116,10 @@ components:
         cloud_compliances_count:
           type: integer
         cloud_provider:
+          enum:
+          - aws
+          - gcp
+          - azure
           type: string
         cloud_region:
           type: string
@@ -17911,7 +18146,7 @@ components:
       type: object
     ModelCommonAlert:
       example:
-        severity: severity
+        severity: critical
         summary: summary
         geoip: geoip
         kubernetes_cluster_name: kubernetes_cluster_name
@@ -17920,7 +18155,7 @@ components:
         created_at: 6
         pod_name: pod_name
         rule_id: rule_id
-        event_type: event_type
+        event_type: network_anomaly
         node_type: node_type
         container_name: container_name
         updated_at: 1
@@ -17944,6 +18179,10 @@ components:
         created_at:
           type: integer
         event_type:
+          enum:
+          - network_anomaly
+          - process_anomaly
+          - file_anomaly
           type: string
         geoip:
           type: string
@@ -17964,6 +18203,12 @@ components:
         rule_id:
           type: string
         severity:
+          enum:
+          - critical
+          - high
+          - medium
+          - low
+          - info
           type: string
         summary:
           type: string
@@ -18016,7 +18261,7 @@ components:
           node_id: node_id
         test_category: test_category
         remediation_ansible: remediation_ansible
-        compliance_check_type: compliance_check_type
+        compliance_check_type: hipaa
         rule_id: rule_id
         test_rationale: test_rationale
         test_severity: test_severity
@@ -18025,11 +18270,16 @@ components:
         remediation_puppet: remediation_puppet
         remediation_script: remediation_script
         node_id: node_id
-        status: status
+        status: pass
         test_desc: test_desc
         test_number: test_number
       properties:
         compliance_check_type:
+          enum:
+          - hipaa
+          - gdpr
+          - pci
+          - nist
           type: string
         description:
           type: string
@@ -18055,6 +18305,11 @@ components:
         rule_id:
           type: string
         status:
+          enum:
+          - pass
+          - warn
+          - info
+          - note
           type: string
         test_category:
           type: string
@@ -18139,7 +18394,7 @@ components:
         cloud_provider: cloud_provider
         scan_id: scan_id
         node_id: node_id
-        status: status
+        status: COMPLETE
       properties:
         benchmark_types:
           items:
@@ -18165,6 +18420,15 @@ components:
           nullable: true
           type: object
         status:
+          enum:
+          - COMPLETE
+          - STARTING
+          - IN_PROGRESS
+          - ERROR
+          - CANCEL_PENDING
+          - CANCELLING
+          - CANCELLED
+          - DELETE_PENDING
           type: string
         status_message:
           type: string
@@ -18209,7 +18473,7 @@ components:
             node_id: node_id
           test_category: test_category
           remediation_ansible: remediation_ansible
-          compliance_check_type: compliance_check_type
+          compliance_check_type: hipaa
           rule_id: rule_id
           test_rationale: test_rationale
           test_severity: test_severity
@@ -18218,7 +18482,7 @@ components:
           remediation_puppet: remediation_puppet
           remediation_script: remediation_script
           node_id: node_id
-          status: status
+          status: pass
           test_desc: test_desc
           test_number: test_number
         - resource: resource
@@ -18235,7 +18499,7 @@ components:
             node_id: node_id
           test_category: test_category
           remediation_ansible: remediation_ansible
-          compliance_check_type: compliance_check_type
+          compliance_check_type: hipaa
           rule_id: rule_id
           test_rationale: test_rationale
           test_severity: test_severity
@@ -18244,7 +18508,7 @@ components:
           remediation_puppet: remediation_puppet
           remediation_script: remediation_script
           node_id: node_id
-          status: status
+          status: pass
           test_desc: test_desc
           test_number: test_number
         compliance_percentage: 0.8008281904610115
@@ -18331,7 +18595,7 @@ components:
           cloud_provider: cloud_provider
           scan_id: scan_id
           node_id: node_id
-          status: status
+          status: COMPLETE
         - severity_counts:
             key: 6
           status_message: status_message
@@ -18345,7 +18609,7 @@ components:
           cloud_provider: cloud_provider
           scan_id: scan_id
           node_id: node_id
-          status: status
+          status: COMPLETE
       properties:
         statuses:
           items:
@@ -18359,8 +18623,8 @@ components:
       example:
         is_priority: true
         benchmark_types:
-        - benchmark_types
-        - benchmark_types
+        - hipaa
+        - hipaa
         deepfence_system_scan: true
         filters:
           container_scan_filter:
@@ -18396,7 +18660,7 @@ components:
       properties:
         benchmark_types:
           items:
-            type: string
+            $ref: '#/components/schemas/ModelBenchmarkType'
           nullable: true
           type: array
         deepfence_system_scan:
@@ -18414,6 +18678,73 @@ components:
       - benchmark_types
       - filters
       - node_ids
+      type: object
+    ModelComplinaceScanResultsGroupReq:
+      example:
+        scan_id: scan_id
+        fields_filter:
+          compare_filter:
+          - greater_than: true
+            field_value: ""
+            field_name: field_name
+          - greater_than: true
+            field_value: ""
+            field_name: field_name
+          not_contains_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          order_filter:
+            order_fields:
+            - size: 0
+              descending: true
+              field_name: field_name
+            - size: 0
+              descending: true
+              field_name: field_name
+          contains_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          contains_in_array_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          match_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+          match_in_array_filter:
+            filter_in:
+              key:
+              - ""
+              - ""
+      properties:
+        fields_filter:
+          $ref: '#/components/schemas/ReportersFieldsFilters'
+        scan_id:
+          type: string
+      required:
+      - fields_filter
+      - scan_id
+      type: object
+    ModelComplinaceScanResultsGroupResp:
+      example:
+        groups:
+          key:
+            key: 0
+      properties:
+        groups:
+          additionalProperties:
+            additionalProperties:
+              type: integer
+            type: object
+          nullable: true
+          type: object
       type: object
     ModelConnection:
       example:
@@ -23259,7 +23590,7 @@ components:
         author: author
         masked: true
         file_sev_score: 0
-        file_severity: file_severity
+        file_severity: critical
         strings_to_match:
         - ""
         - ""
@@ -23294,6 +23625,12 @@ components:
         file_sev_score:
           type: integer
         file_severity:
+          enum:
+          - critical
+          - high
+          - medium
+          - low
+          - unknown
           type: string
         filetype:
           type: string
@@ -23399,7 +23736,7 @@ components:
           author: author
           masked: true
           file_sev_score: 0
-          file_severity: file_severity
+          file_severity: critical
           strings_to_match:
           - ""
           - ""
@@ -23428,7 +23765,7 @@ components:
           author: author
           masked: true
           file_sev_score: 0
-          file_severity: file_severity
+          file_severity: critical
           strings_to_match:
           - ""
           - ""
@@ -23861,7 +24198,7 @@ components:
         packet_direction: packet_direction
         container_id: container_id
         host_name: host_name
-        direction: direction
+        direction: inbound
         node_id: node_id
         status: status
       properties:
@@ -23882,6 +24219,9 @@ components:
         defenderd:
           type: string
         direction:
+          enum:
+          - inbound
+          - outbound
           type: string
         event_type:
           type: string
@@ -25377,14 +25717,14 @@ components:
           cloud_provider: cloud_provider
           title: title
           type: type
-          compliance_check_type: compliance_check_type
+          compliance_check_type: hipaa
           account_id: account_id
           updated_at: 6
           service: service
           region: region
           group: group
           node_id: node_id
-          status: status
+          status: alarm
         - severity: severity
           reason: reason
           control_id: control_id
@@ -25405,14 +25745,14 @@ components:
           cloud_provider: cloud_provider
           title: title
           type: type
-          compliance_check_type: compliance_check_type
+          compliance_check_type: hipaa
           account_id: account_id
           updated_at: 6
           service: service
           region: region
           group: group
           node_id: node_id
-          status: status
+          status: alarm
       properties:
         new:
           items:
@@ -25439,7 +25779,7 @@ components:
             node_id: node_id
           test_category: test_category
           remediation_ansible: remediation_ansible
-          compliance_check_type: compliance_check_type
+          compliance_check_type: hipaa
           rule_id: rule_id
           test_rationale: test_rationale
           test_severity: test_severity
@@ -25448,7 +25788,7 @@ components:
           remediation_puppet: remediation_puppet
           remediation_script: remediation_script
           node_id: node_id
-          status: status
+          status: pass
           test_desc: test_desc
           test_number: test_number
         - resource: resource
@@ -25465,7 +25805,7 @@ components:
             node_id: node_id
           test_category: test_category
           remediation_ansible: remediation_ansible
-          compliance_check_type: compliance_check_type
+          compliance_check_type: hipaa
           rule_id: rule_id
           test_rationale: test_rationale
           test_severity: test_severity
@@ -25474,7 +25814,7 @@ components:
           remediation_puppet: remediation_puppet
           remediation_script: remediation_script
           node_id: node_id
-          status: status
+          status: pass
           test_desc: test_desc
           test_number: test_number
       properties:
@@ -25497,7 +25837,7 @@ components:
           author: author
           masked: true
           file_sev_score: 0
-          file_severity: file_severity
+          file_severity: critical
           strings_to_match:
           - ""
           - ""
@@ -25526,7 +25866,7 @@ components:
           author: author
           masked: true
           file_sev_score: 0
-          file_severity: file_severity
+          file_severity: critical
           strings_to_match:
           - ""
           - ""
@@ -25560,7 +25900,7 @@ components:
       example:
         new:
         - full_filename: full_filename
-          level: level
+          level: critical
           masked: true
           part: part
           relative_ending_index: 0
@@ -25583,7 +25923,7 @@ components:
           relative_starting_index: 6
           node_id: node_id
         - full_filename: full_filename
-          level: level
+          level: critical
           masked: true
           part: part
           relative_ending_index: 0
@@ -25638,7 +25978,7 @@ components:
           urls:
           - ""
           - ""
-          cve_severity: cve_severity
+          cve_severity: critical
           cve_caused_by_package_path: cve_caused_by_package_path
           updated_at: 1
           cve_id: cve_id
@@ -25669,7 +26009,7 @@ components:
           urls:
           - ""
           - ""
-          cve_severity: cve_severity
+          cve_severity: critical
           cve_caused_by_package_path: cve_caused_by_package_path
           updated_at: 1
           cve_id: cve_id
@@ -25744,7 +26084,7 @@ components:
         created_at: 0
         scan_id: scan_id
         node_id: node_id
-        status: status
+        status: COMPLETE
       properties:
         created_at:
           format: int64
@@ -25763,6 +26103,15 @@ components:
           nullable: true
           type: object
         status:
+          enum:
+          - COMPLETE
+          - STARTING
+          - IN_PROGRESS
+          - ERROR
+          - CANCEL_PENDING
+          - CANCELLING
+          - CANCELLED
+          - DELETE_PENDING
           type: string
         status_message:
           type: string
@@ -25858,7 +26207,7 @@ components:
           created_at: 0
           scan_id: scan_id
           node_id: node_id
-          status: status
+          status: COMPLETE
         - severity_counts:
             key: 6
           status_message: status_message
@@ -25868,7 +26217,7 @@ components:
           created_at: 0
           scan_id: scan_id
           node_id: node_id
-          status: status
+          status: COMPLETE
       properties:
         scans_info:
           items:
@@ -26155,7 +26504,7 @@ components:
             created_at: 0
             scan_id: scan_id
             node_id: node_id
-            status: status
+            status: COMPLETE
       properties:
         statuses:
           additionalProperties:
@@ -26186,7 +26535,7 @@ components:
     ModelSecret:
       example:
         full_filename: full_filename
-        level: level
+        level: critical
         masked: true
         part: part
         relative_ending_index: 0
@@ -26212,6 +26561,12 @@ components:
         full_filename:
           type: string
         level:
+          enum:
+          - critical
+          - high
+          - medium
+          - low
+          - unknown
           type: string
         masked:
           type: boolean
@@ -26297,7 +26652,7 @@ components:
         created_at: 0
         secrets:
         - full_filename: full_filename
-          level: level
+          level: critical
           masked: true
           part: part
           relative_ending_index: 0
@@ -26320,7 +26675,7 @@ components:
           relative_starting_index: 6
           node_id: node_id
         - full_filename: full_filename
-          level: level
+          level: critical
           masked: true
           part: part
           relative_ending_index: 0
@@ -26463,48 +26818,6 @@ components:
       required:
       - filters
       - node_ids
-      type: object
-    ModelSettingUpdateRequest:
-      example:
-        value: value
-        key: console_url
-      properties:
-        key:
-          enum:
-          - console_url
-          - file_server_url
-          - inactive_delete_scan_results
-          - inactive_delete_alerts
-          type: string
-        value:
-          type: string
-      required:
-      - key
-      - value
-      type: object
-    ModelSettingsResponse:
-      example:
-        description: description
-        id: 0
-        label: label
-        value: ""
-        key: key
-      properties:
-        description:
-          type: string
-        id:
-          type: integer
-        key:
-          type: string
-        label:
-          type: string
-        value: {}
-      required:
-      - description
-      - id
-      - key
-      - label
-      - value
       type: object
     ModelStopScanRequest:
       example:
@@ -26790,7 +27103,7 @@ components:
         urls:
         - ""
         - ""
-        cve_severity: cve_severity
+        cve_severity: critical
         cve_caused_by_package_path: cve_caused_by_package_path
         updated_at: 1
         cve_id: cve_id
@@ -26822,6 +27135,12 @@ components:
         cve_overall_score:
           type: number
         cve_severity:
+          enum:
+          - critical
+          - high
+          - medium
+          - low
+          - unknown
           type: string
         cve_type:
           type: string
@@ -27007,7 +27326,7 @@ components:
           urls:
           - ""
           - ""
-          cve_severity: cve_severity
+          cve_severity: critical
           cve_caused_by_package_path: cve_caused_by_package_path
           updated_at: 1
           cve_id: cve_id
@@ -27038,7 +27357,7 @@ components:
           urls:
           - ""
           - ""
-          cve_severity: cve_severity
+          cve_severity: critical
           cve_caused_by_package_path: cve_caused_by_package_path
           updated_at: 1
           cve_id: cve_id
@@ -28232,6 +28551,47 @@ components:
       - scan_filters
       - window
       type: object
+    SettingSettingUpdateRequest:
+      example:
+        value: value
+        key: console_url
+      properties:
+        key:
+          enum:
+          - console_url
+          - file_server_url
+          - inactive_delete_scan_results
+          type: string
+        value:
+          type: string
+      required:
+      - key
+      - value
+      type: object
+    SettingSettingsResponse:
+      example:
+        description: description
+        id: 0
+        label: label
+        value: ""
+        key: key
+      properties:
+        description:
+          type: string
+        id:
+          type: integer
+        key:
+          type: string
+        label:
+          type: string
+        value: {}
+      required:
+      - description
+      - id
+      - key
+      - label
+      - value
+      type: object
     SinglesignonGetSingleSignOnResponse:
       example:
         instructions:
@@ -28617,6 +28977,7 @@ components:
           - hipaa
           - pci
           - soc_2
+          - aws_foundational_security
           items:
             type: string
           nullable: true

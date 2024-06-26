@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: v2.2.1
+API version: v2.3.0
 Contact: community@deepfence.io
 */
 
@@ -1710,7 +1710,7 @@ type ApiGetSettingsRequest struct {
 	ApiService *SettingsAPIService
 }
 
-func (r ApiGetSettingsRequest) Execute() ([]ModelSettingsResponse, *http.Response, error) {
+func (r ApiGetSettingsRequest) Execute() ([]SettingSettingsResponse, *http.Response, error) {
 	return r.ApiService.GetSettingsExecute(r)
 }
 
@@ -1730,13 +1730,13 @@ func (a *SettingsAPIService) GetSettings(ctx context.Context) ApiGetSettingsRequ
 }
 
 // Execute executes the request
-//  @return []ModelSettingsResponse
-func (a *SettingsAPIService) GetSettingsExecute(r ApiGetSettingsRequest) ([]ModelSettingsResponse, *http.Response, error) {
+//  @return []SettingSettingsResponse
+func (a *SettingsAPIService) GetSettingsExecute(r ApiGetSettingsRequest) ([]SettingSettingsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []ModelSettingsResponse
+		localVarReturnValue  []SettingSettingsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SettingsAPIService.GetSettings")
@@ -3038,11 +3038,11 @@ type ApiUpdateSettingRequest struct {
 	ctx context.Context
 	ApiService *SettingsAPIService
 	id int32
-	modelSettingUpdateRequest *ModelSettingUpdateRequest
+	settingSettingUpdateRequest *SettingSettingUpdateRequest
 }
 
-func (r ApiUpdateSettingRequest) ModelSettingUpdateRequest(modelSettingUpdateRequest ModelSettingUpdateRequest) ApiUpdateSettingRequest {
-	r.modelSettingUpdateRequest = &modelSettingUpdateRequest
+func (r ApiUpdateSettingRequest) SettingSettingUpdateRequest(settingSettingUpdateRequest SettingSettingUpdateRequest) ApiUpdateSettingRequest {
+	r.settingSettingUpdateRequest = &settingSettingUpdateRequest
 	return r
 }
 
@@ -3105,7 +3105,7 @@ func (a *SettingsAPIService) UpdateSettingExecute(r ApiUpdateSettingRequest) (*h
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.modelSettingUpdateRequest
+	localVarPostBody = r.settingSettingUpdateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

@@ -124,7 +124,7 @@ import (
 )
 
 func main() {
-	modelAddScheduledTaskRequest := *openapiclient.NewModelAddScheduledTaskRequest("Action_example", []string{"BenchmarkTypes_example"}, *openapiclient.NewModelScanFilter(*openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}})), []openapiclient.ModelNodeIdentifier{*openapiclient.NewModelNodeIdentifier("NodeId_example", "NodeType_example")}, []openapiclient.ModelVulnerabilityScanConfigLanguage{*openapiclient.NewModelVulnerabilityScanConfigLanguage("Language_example")}) // ModelAddScheduledTaskRequest |  (optional)
+	modelAddScheduledTaskRequest := *openapiclient.NewModelAddScheduledTaskRequest("Action_example", []openapiclient.ModelBenchmarkType{openapiclient.ModelBenchmarkType("hipaa")}, *openapiclient.NewModelScanFilter(*openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}})), []openapiclient.ModelNodeIdentifier{*openapiclient.NewModelNodeIdentifier("NodeId_example", "NodeType_example")}, []openapiclient.ModelVulnerabilityScanConfigLanguage{*openapiclient.NewModelVulnerabilityScanConfigLanguage("Language_example")}) // ModelAddScheduledTaskRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -855,7 +855,7 @@ Other parameters are passed through a pointer to a apiGetScheduledTasksRequest s
 
 ## GetSettings
 
-> []ModelSettingsResponse GetSettings(ctx).Execute()
+> []SettingSettingsResponse GetSettings(ctx).Execute()
 
 Get settings
 
@@ -882,7 +882,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.GetSettings``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetSettings`: []ModelSettingsResponse
+	// response from `GetSettings`: []SettingSettingsResponse
 	fmt.Fprintf(os.Stdout, "Response from `SettingsAPI.GetSettings`: %v\n", resp)
 }
 ```
@@ -898,7 +898,7 @@ Other parameters are passed through a pointer to a apiGetSettingsRequest struct 
 
 ### Return type
 
-[**[]ModelSettingsResponse**](ModelSettingsResponse.md)
+[**[]SettingSettingsResponse**](SettingSettingsResponse.md)
 
 ### Authorization
 
@@ -1495,7 +1495,7 @@ Name | Type | Description  | Notes
 
 ## UpdateSetting
 
-> UpdateSetting(ctx, id).ModelSettingUpdateRequest(modelSettingUpdateRequest).Execute()
+> UpdateSetting(ctx, id).SettingSettingUpdateRequest(settingSettingUpdateRequest).Execute()
 
 Update setting
 
@@ -1515,11 +1515,11 @@ import (
 
 func main() {
 	id := int32(56) // int32 | 
-	modelSettingUpdateRequest := *openapiclient.NewModelSettingUpdateRequest("Key_example", "Value_example") // ModelSettingUpdateRequest |  (optional)
+	settingSettingUpdateRequest := *openapiclient.NewSettingSettingUpdateRequest("Key_example", "Value_example") // SettingSettingUpdateRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SettingsAPI.UpdateSetting(context.Background(), id).ModelSettingUpdateRequest(modelSettingUpdateRequest).Execute()
+	r, err := apiClient.SettingsAPI.UpdateSetting(context.Background(), id).SettingSettingUpdateRequest(settingSettingUpdateRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SettingsAPI.UpdateSetting``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1543,7 +1543,7 @@ Other parameters are passed through a pointer to a apiUpdateSettingRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **modelSettingUpdateRequest** | [**ModelSettingUpdateRequest**](ModelSettingUpdateRequest.md) |  | 
+ **settingSettingUpdateRequest** | [**SettingSettingUpdateRequest**](SettingSettingUpdateRequest.md) |  | 
 
 ### Return type
 
