@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **AgentInstallerTracerStatusUpdatedAt** | **int32** |  | 
 **AgentRunning** | **bool** |  | 
 **AlertsCounts** | **map[string]int32** |  | 
-**ApiEndpoints** | Pointer to [**[]ModelAPIEndpoint**](ModelAPIEndpoint.md) |  | [optional] 
+**ApiEndpoints** | [**[]ModelAPIEndpoint**](ModelAPIEndpoint.md) |  | 
 **AvailabilityZone** | **string** |  | 
 **CloudAccountId** | **string** |  | 
 **CloudProvider** | **string** |  | 
@@ -71,7 +71,7 @@ Name | Type | Description | Notes
 
 ### NewModelHost
 
-`func NewModelHost(agentInstallerTracerStatus string, agentInstallerTracerStatusUpdatedAt int32, agentRunning bool, alertsCounts map[string]int32, availabilityZone string, cloudAccountId string, cloudProvider string, cloudRegion string, cloudWarnAlarmCount int32, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, exploitableMalwaresCount int32, exploitableSecretsCount int32, exploitableVulnerabilitiesCount int32, filesystemTracerStatus string, filesystemTracerStatusUpdatedAt int32, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, networkFilterStatus string, networkTracerStatus string, networkTracerStatusUpdatedAt int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processTracerStatus string, processTracerStatusUpdatedAt int32, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string, warnAlarmCount int32, ) *ModelHost`
+`func NewModelHost(agentInstallerTracerStatus string, agentInstallerTracerStatusUpdatedAt int32, agentRunning bool, alertsCounts map[string]int32, apiEndpoints []ModelAPIEndpoint, availabilityZone string, cloudAccountId string, cloudProvider string, cloudRegion string, cloudWarnAlarmCount int32, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, exploitableMalwaresCount int32, exploitableSecretsCount int32, exploitableVulnerabilitiesCount int32, filesystemTracerStatus string, filesystemTracerStatusUpdatedAt int32, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, networkFilterStatus string, networkTracerStatus string, networkTracerStatusUpdatedAt int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processTracerStatus string, processTracerStatusUpdatedAt int32, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string, warnAlarmCount int32, ) *ModelHost`
 
 NewModelHost instantiates a new ModelHost object
 This constructor will assign default values to properties that have it defined,
@@ -220,11 +220,6 @@ and a boolean to check if the value has been set.
 
 SetApiEndpoints sets ApiEndpoints field to given value.
 
-### HasApiEndpoints
-
-`func (o *ModelHost) HasApiEndpoints() bool`
-
-HasApiEndpoints returns a boolean if a field has been set.
 
 ### SetApiEndpointsNil
 

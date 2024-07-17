@@ -27,7 +27,7 @@ type ModelHost struct {
 	AgentInstallerTracerStatusUpdatedAt int32 `json:"agent_installer_tracer_status_updated_at"`
 	AgentRunning bool `json:"agent_running"`
 	AlertsCounts map[string]int32 `json:"alerts_counts"`
-	ApiEndpoints []ModelAPIEndpoint `json:"api_endpoints,omitempty"`
+	ApiEndpoints []ModelAPIEndpoint `json:"api_endpoints"`
 	AvailabilityZone string `json:"availability_zone"`
 	CloudAccountId string `json:"cloud_account_id"`
 	CloudProvider string `json:"cloud_provider"`
@@ -92,12 +92,13 @@ type _ModelHost ModelHost
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelHost(agentInstallerTracerStatus string, agentInstallerTracerStatusUpdatedAt int32, agentRunning bool, alertsCounts map[string]int32, availabilityZone string, cloudAccountId string, cloudProvider string, cloudRegion string, cloudWarnAlarmCount int32, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, exploitableMalwaresCount int32, exploitableSecretsCount int32, exploitableVulnerabilitiesCount int32, filesystemTracerStatus string, filesystemTracerStatusUpdatedAt int32, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, networkFilterStatus string, networkTracerStatus string, networkTracerStatusUpdatedAt int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processTracerStatus string, processTracerStatusUpdatedAt int32, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string, warnAlarmCount int32) *ModelHost {
+func NewModelHost(agentInstallerTracerStatus string, agentInstallerTracerStatusUpdatedAt int32, agentRunning bool, alertsCounts map[string]int32, apiEndpoints []ModelAPIEndpoint, availabilityZone string, cloudAccountId string, cloudProvider string, cloudRegion string, cloudWarnAlarmCount int32, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, exploitableMalwaresCount int32, exploitableSecretsCount int32, exploitableVulnerabilitiesCount int32, filesystemTracerStatus string, filesystemTracerStatusUpdatedAt int32, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, networkFilterStatus string, networkTracerStatus string, networkTracerStatusUpdatedAt int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processTracerStatus string, processTracerStatusUpdatedAt int32, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string, warnAlarmCount int32) *ModelHost {
 	this := ModelHost{}
 	this.AgentInstallerTracerStatus = agentInstallerTracerStatus
 	this.AgentInstallerTracerStatusUpdatedAt = agentInstallerTracerStatusUpdatedAt
 	this.AgentRunning = agentRunning
 	this.AlertsCounts = alertsCounts
+	this.ApiEndpoints = apiEndpoints
 	this.AvailabilityZone = availabilityZone
 	this.CloudAccountId = cloudAccountId
 	this.CloudProvider = cloudProvider
@@ -295,16 +296,18 @@ func (o *ModelHost) SetAlertsCounts(v map[string]int32) {
 	o.AlertsCounts = v
 }
 
-// GetApiEndpoints returns the ApiEndpoints field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetApiEndpoints returns the ApiEndpoints field value
+// If the value is explicit nil, the zero value for []ModelAPIEndpoint will be returned
 func (o *ModelHost) GetApiEndpoints() []ModelAPIEndpoint {
 	if o == nil {
 		var ret []ModelAPIEndpoint
 		return ret
 	}
+
 	return o.ApiEndpoints
 }
 
-// GetApiEndpointsOk returns a tuple with the ApiEndpoints field value if set, nil otherwise
+// GetApiEndpointsOk returns a tuple with the ApiEndpoints field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ModelHost) GetApiEndpointsOk() ([]ModelAPIEndpoint, bool) {
@@ -314,16 +317,7 @@ func (o *ModelHost) GetApiEndpointsOk() ([]ModelAPIEndpoint, bool) {
 	return o.ApiEndpoints, true
 }
 
-// HasApiEndpoints returns a boolean if a field has been set.
-func (o *ModelHost) HasApiEndpoints() bool {
-	if o != nil && !IsNil(o.ApiEndpoints) {
-		return true
-	}
-
-	return false
-}
-
-// SetApiEndpoints gets a reference to the given []ModelAPIEndpoint and assigns it to the ApiEndpoints field.
+// SetApiEndpoints sets field value
 func (o *ModelHost) SetApiEndpoints(v []ModelAPIEndpoint) {
 	o.ApiEndpoints = v
 }
@@ -1802,6 +1796,7 @@ func (o *ModelHost) UnmarshalJSON(data []byte) (err error) {
 		"agent_installer_tracer_status_updated_at",
 		"agent_running",
 		"alerts_counts",
+		"api_endpoints",
 		"availability_zone",
 		"cloud_account_id",
 		"cloud_provider",

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Path** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **int32** |  | [optional] 
 **SchemaInfo** | Pointer to **string** |  | [optional] 
+**SourceHosts** | Pointer to **[]string** |  | [optional] 
 **UpdatedAt** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -311,6 +312,41 @@ SetSchemaInfo sets SchemaInfo field to given value.
 
 HasSchemaInfo returns a boolean if a field has been set.
 
+### GetSourceHosts
+
+`func (o *ModelAPIEndpoint) GetSourceHosts() []string`
+
+GetSourceHosts returns the SourceHosts field if non-nil, zero value otherwise.
+
+### GetSourceHostsOk
+
+`func (o *ModelAPIEndpoint) GetSourceHostsOk() (*[]string, bool)`
+
+GetSourceHostsOk returns a tuple with the SourceHosts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceHosts
+
+`func (o *ModelAPIEndpoint) SetSourceHosts(v []string)`
+
+SetSourceHosts sets SourceHosts field to given value.
+
+### HasSourceHosts
+
+`func (o *ModelAPIEndpoint) HasSourceHosts() bool`
+
+HasSourceHosts returns a boolean if a field has been set.
+
+### SetSourceHostsNil
+
+`func (o *ModelAPIEndpoint) SetSourceHostsNil(b bool)`
+
+ SetSourceHostsNil sets the value for SourceHosts to be an explicit nil
+
+### UnsetSourceHosts
+`func (o *ModelAPIEndpoint) UnsetSourceHosts()`
+
+UnsetSourceHosts ensures that no value is present for SourceHosts, not even an explicit nil
 ### GetUpdatedAt
 
 `func (o *ModelAPIEndpoint) GetUpdatedAt() int32`

@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AgentIds** | [**[]ModelAgentID**](ModelAgentID.md) |  | 
-**AwsS3Bucket** | **string** |  | 
+**AwsS3Bucket** | **[]string** |  | 
 
 ## Methods
 
 ### NewModelEnableCloudTracerReq
 
-`func NewModelEnableCloudTracerReq(agentIds []ModelAgentID, awsS3Bucket string, ) *ModelEnableCloudTracerReq`
+`func NewModelEnableCloudTracerReq(agentIds []ModelAgentID, awsS3Bucket []string, ) *ModelEnableCloudTracerReq`
 
 NewModelEnableCloudTracerReq instantiates a new ModelEnableCloudTracerReq object
 This constructor will assign default values to properties that have it defined,
@@ -58,24 +58,34 @@ SetAgentIds sets AgentIds field to given value.
 UnsetAgentIds ensures that no value is present for AgentIds, not even an explicit nil
 ### GetAwsS3Bucket
 
-`func (o *ModelEnableCloudTracerReq) GetAwsS3Bucket() string`
+`func (o *ModelEnableCloudTracerReq) GetAwsS3Bucket() []string`
 
 GetAwsS3Bucket returns the AwsS3Bucket field if non-nil, zero value otherwise.
 
 ### GetAwsS3BucketOk
 
-`func (o *ModelEnableCloudTracerReq) GetAwsS3BucketOk() (*string, bool)`
+`func (o *ModelEnableCloudTracerReq) GetAwsS3BucketOk() (*[]string, bool)`
 
 GetAwsS3BucketOk returns a tuple with the AwsS3Bucket field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAwsS3Bucket
 
-`func (o *ModelEnableCloudTracerReq) SetAwsS3Bucket(v string)`
+`func (o *ModelEnableCloudTracerReq) SetAwsS3Bucket(v []string)`
 
 SetAwsS3Bucket sets AwsS3Bucket field to given value.
 
 
+### SetAwsS3BucketNil
+
+`func (o *ModelEnableCloudTracerReq) SetAwsS3BucketNil(b bool)`
+
+ SetAwsS3BucketNil sets the value for AwsS3Bucket to be an explicit nil
+
+### UnsetAwsS3Bucket
+`func (o *ModelEnableCloudTracerReq) UnsetAwsS3Bucket()`
+
+UnsetAwsS3Bucket ensures that no value is present for AwsS3Bucket, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

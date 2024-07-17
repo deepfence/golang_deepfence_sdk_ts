@@ -160,7 +160,7 @@ import (
 )
 
 func main() {
-	modelEnableCloudTracerReq := *openapiclient.NewModelEnableCloudTracerReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}, "AwsS3Bucket_example") // ModelEnableCloudTracerReq |  (optional)
+	modelEnableCloudTracerReq := *openapiclient.NewModelEnableCloudTracerReq([]openapiclient.ModelAgentID{*openapiclient.NewModelAgentID(int32(123), "NodeId_example")}, []string{"AwsS3Bucket_example"}) // ModelEnableCloudTracerReq |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

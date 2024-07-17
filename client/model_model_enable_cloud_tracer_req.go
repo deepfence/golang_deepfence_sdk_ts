@@ -23,7 +23,7 @@ var _ MappedNullable = &ModelEnableCloudTracerReq{}
 // ModelEnableCloudTracerReq struct for ModelEnableCloudTracerReq
 type ModelEnableCloudTracerReq struct {
 	AgentIds []ModelAgentID `json:"agent_ids"`
-	AwsS3Bucket string `json:"aws_s3_bucket"`
+	AwsS3Bucket []string `json:"aws_s3_bucket"`
 }
 
 type _ModelEnableCloudTracerReq ModelEnableCloudTracerReq
@@ -32,7 +32,7 @@ type _ModelEnableCloudTracerReq ModelEnableCloudTracerReq
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelEnableCloudTracerReq(agentIds []ModelAgentID, awsS3Bucket string) *ModelEnableCloudTracerReq {
+func NewModelEnableCloudTracerReq(agentIds []ModelAgentID, awsS3Bucket []string) *ModelEnableCloudTracerReq {
 	this := ModelEnableCloudTracerReq{}
 	this.AgentIds = agentIds
 	this.AwsS3Bucket = awsS3Bucket
@@ -74,9 +74,10 @@ func (o *ModelEnableCloudTracerReq) SetAgentIds(v []ModelAgentID) {
 }
 
 // GetAwsS3Bucket returns the AwsS3Bucket field value
-func (o *ModelEnableCloudTracerReq) GetAwsS3Bucket() string {
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ModelEnableCloudTracerReq) GetAwsS3Bucket() []string {
 	if o == nil {
-		var ret string
+		var ret []string
 		return ret
 	}
 
@@ -85,15 +86,16 @@ func (o *ModelEnableCloudTracerReq) GetAwsS3Bucket() string {
 
 // GetAwsS3BucketOk returns a tuple with the AwsS3Bucket field value
 // and a boolean to check if the value has been set.
-func (o *ModelEnableCloudTracerReq) GetAwsS3BucketOk() (*string, bool) {
-	if o == nil {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelEnableCloudTracerReq) GetAwsS3BucketOk() ([]string, bool) {
+	if o == nil || IsNil(o.AwsS3Bucket) {
 		return nil, false
 	}
-	return &o.AwsS3Bucket, true
+	return o.AwsS3Bucket, true
 }
 
 // SetAwsS3Bucket sets field value
-func (o *ModelEnableCloudTracerReq) SetAwsS3Bucket(v string) {
+func (o *ModelEnableCloudTracerReq) SetAwsS3Bucket(v []string) {
 	o.AwsS3Bucket = v
 }
 
@@ -110,7 +112,9 @@ func (o ModelEnableCloudTracerReq) ToMap() (map[string]interface{}, error) {
 	if o.AgentIds != nil {
 		toSerialize["agent_ids"] = o.AgentIds
 	}
-	toSerialize["aws_s3_bucket"] = o.AwsS3Bucket
+	if o.AwsS3Bucket != nil {
+		toSerialize["aws_s3_bucket"] = o.AwsS3Bucket
+	}
 	return toSerialize, nil
 }
 

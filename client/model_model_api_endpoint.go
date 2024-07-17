@@ -31,6 +31,7 @@ type ModelAPIEndpoint struct {
 	Path *string `json:"path,omitempty"`
 	Port *int32 `json:"port,omitempty"`
 	SchemaInfo *string `json:"schema_info,omitempty"`
+	SourceHosts []string `json:"source_hosts,omitempty"`
 	UpdatedAt *int32 `json:"updated_at,omitempty"`
 }
 
@@ -403,6 +404,39 @@ func (o *ModelAPIEndpoint) SetSchemaInfo(v string) {
 	o.SchemaInfo = &v
 }
 
+// GetSourceHosts returns the SourceHosts field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ModelAPIEndpoint) GetSourceHosts() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.SourceHosts
+}
+
+// GetSourceHostsOk returns a tuple with the SourceHosts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelAPIEndpoint) GetSourceHostsOk() ([]string, bool) {
+	if o == nil || IsNil(o.SourceHosts) {
+		return nil, false
+	}
+	return o.SourceHosts, true
+}
+
+// HasSourceHosts returns a boolean if a field has been set.
+func (o *ModelAPIEndpoint) HasSourceHosts() bool {
+	if o != nil && !IsNil(o.SourceHosts) {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceHosts gets a reference to the given []string and assigns it to the SourceHosts field.
+func (o *ModelAPIEndpoint) SetSourceHosts(v []string) {
+	o.SourceHosts = v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ModelAPIEndpoint) GetUpdatedAt() int32 {
 	if o == nil || IsNil(o.UpdatedAt) {
@@ -477,6 +511,9 @@ func (o ModelAPIEndpoint) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SchemaInfo) {
 		toSerialize["schema_info"] = o.SchemaInfo
+	}
+	if o.SourceHosts != nil {
+		toSerialize["source_hosts"] = o.SourceHosts
 	}
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
