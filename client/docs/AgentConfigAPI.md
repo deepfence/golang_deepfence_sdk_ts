@@ -2123,7 +2123,7 @@ import (
 )
 
 func main() {
-	controlsThreatIntelInfo := *openapiclient.NewControlsThreatIntelInfo("CloudControlsHash_example", "CloudControlsUrl_example", []string{"IgnoredAlertRuleIds_example"}, []string{"InternalIps_example"}, "MalwareScannerRulesHash_example", "MalwareScannerRulesUrl_example", "NetworkAlertRulesUrl_example", "RulesHash_example", "SecretScannerRulesHash_example", "SecretScannerRulesUrl_example", int32(123)) // ControlsThreatIntelInfo |  (optional)
+	controlsThreatIntelInfo := *openapiclient.NewControlsThreatIntelInfo("CloudPostureControlsHash_example", "CloudPostureControlsUrl_example", []string{"IgnoredAlertRuleIds_example"}, []string{"InternalIps_example"}, "MalwareScannerRulesHash_example", "MalwareScannerRulesUrl_example", "NetworkAlertRulesUrl_example", "RulesHash_example", "SecretScannerRulesHash_example", "SecretScannerRulesUrl_example", int32(123)) // ControlsThreatIntelInfo |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

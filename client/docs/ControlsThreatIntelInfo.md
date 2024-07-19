@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CloudControlsHash** | **string** |  | 
-**CloudControlsUrl** | **string** |  | 
+**CloudPostureControlsHash** | **string** |  | 
+**CloudPostureControlsUrl** | **string** |  | 
 **IgnoredAlertRuleIds** | **[]string** |  | 
 **InternalIps** | **[]string** |  | 
 **MalwareScannerRulesHash** | **string** |  | 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewControlsThreatIntelInfo
 
-`func NewControlsThreatIntelInfo(cloudControlsHash string, cloudControlsUrl string, ignoredAlertRuleIds []string, internalIps []string, malwareScannerRulesHash string, malwareScannerRulesUrl string, networkAlertRulesUrl string, rulesHash string, secretScannerRulesHash string, secretScannerRulesUrl string, updatedAt int32, ) *ControlsThreatIntelInfo`
+`func NewControlsThreatIntelInfo(cloudPostureControlsHash string, cloudPostureControlsUrl string, ignoredAlertRuleIds []string, internalIps []string, malwareScannerRulesHash string, malwareScannerRulesUrl string, networkAlertRulesUrl string, rulesHash string, secretScannerRulesHash string, secretScannerRulesUrl string, updatedAt int32, ) *ControlsThreatIntelInfo`
 
 NewControlsThreatIntelInfo instantiates a new ControlsThreatIntelInfo object
 This constructor will assign default values to properties that have it defined,
@@ -35,44 +35,44 @@ NewControlsThreatIntelInfoWithDefaults instantiates a new ControlsThreatIntelInf
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetCloudControlsHash
+### GetCloudPostureControlsHash
 
-`func (o *ControlsThreatIntelInfo) GetCloudControlsHash() string`
+`func (o *ControlsThreatIntelInfo) GetCloudPostureControlsHash() string`
 
-GetCloudControlsHash returns the CloudControlsHash field if non-nil, zero value otherwise.
+GetCloudPostureControlsHash returns the CloudPostureControlsHash field if non-nil, zero value otherwise.
 
-### GetCloudControlsHashOk
+### GetCloudPostureControlsHashOk
 
-`func (o *ControlsThreatIntelInfo) GetCloudControlsHashOk() (*string, bool)`
+`func (o *ControlsThreatIntelInfo) GetCloudPostureControlsHashOk() (*string, bool)`
 
-GetCloudControlsHashOk returns a tuple with the CloudControlsHash field if it's non-nil, zero value otherwise
+GetCloudPostureControlsHashOk returns a tuple with the CloudPostureControlsHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCloudControlsHash
+### SetCloudPostureControlsHash
 
-`func (o *ControlsThreatIntelInfo) SetCloudControlsHash(v string)`
+`func (o *ControlsThreatIntelInfo) SetCloudPostureControlsHash(v string)`
 
-SetCloudControlsHash sets CloudControlsHash field to given value.
+SetCloudPostureControlsHash sets CloudPostureControlsHash field to given value.
 
 
-### GetCloudControlsUrl
+### GetCloudPostureControlsUrl
 
-`func (o *ControlsThreatIntelInfo) GetCloudControlsUrl() string`
+`func (o *ControlsThreatIntelInfo) GetCloudPostureControlsUrl() string`
 
-GetCloudControlsUrl returns the CloudControlsUrl field if non-nil, zero value otherwise.
+GetCloudPostureControlsUrl returns the CloudPostureControlsUrl field if non-nil, zero value otherwise.
 
-### GetCloudControlsUrlOk
+### GetCloudPostureControlsUrlOk
 
-`func (o *ControlsThreatIntelInfo) GetCloudControlsUrlOk() (*string, bool)`
+`func (o *ControlsThreatIntelInfo) GetCloudPostureControlsUrlOk() (*string, bool)`
 
-GetCloudControlsUrlOk returns a tuple with the CloudControlsUrl field if it's non-nil, zero value otherwise
+GetCloudPostureControlsUrlOk returns a tuple with the CloudPostureControlsUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCloudControlsUrl
+### SetCloudPostureControlsUrl
 
-`func (o *ControlsThreatIntelInfo) SetCloudControlsUrl(v string)`
+`func (o *ControlsThreatIntelInfo) SetCloudPostureControlsUrl(v string)`
 
-SetCloudControlsUrl sets CloudControlsUrl field to given value.
+SetCloudPostureControlsUrl sets CloudPostureControlsUrl field to given value.
 
 
 ### GetIgnoredAlertRuleIds

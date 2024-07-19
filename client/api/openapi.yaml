@@ -12913,7 +12913,7 @@ paths:
       - Search
   /deepfence/search/secret-rules:
     post:
-      description: Search across all the data associated with secret ruless
+      description: Search across all the data associated with secret rules
       operationId: searchSecretRules
       requestBody:
         content:
@@ -15292,9 +15292,9 @@ components:
       type: object
     ControlsThreatIntelInfo:
       example:
-        cloud_controls_url: cloud_controls_url
+        cloud_posture_controls_hash: cloud_posture_controls_hash
+        cloud_posture_controls_url: cloud_posture_controls_url
         updated_at: 0
-        cloud_controls_hash: cloud_controls_hash
         network_alert_rules_url: network_alert_rules_url
         ignored_alert_rule_ids:
         - ignored_alert_rule_ids
@@ -15308,9 +15308,9 @@ components:
         malware_scanner_rules_url: malware_scanner_rules_url
         rules_hash: rules_hash
       properties:
-        cloud_controls_hash:
+        cloud_posture_controls_hash:
           type: string
-        cloud_controls_url:
+        cloud_posture_controls_url:
           type: string
         ignored_alert_rule_ids:
           items:
@@ -15337,8 +15337,8 @@ components:
         updated_at:
           type: integer
       required:
-      - cloud_controls_hash
-      - cloud_controls_url
+      - cloud_posture_controls_hash
+      - cloud_posture_controls_url
       - ignored_alert_rule_ids
       - internal_ips
       - malware_scanner_rules_hash

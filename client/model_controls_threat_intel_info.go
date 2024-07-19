@@ -22,8 +22,8 @@ var _ MappedNullable = &ControlsThreatIntelInfo{}
 
 // ControlsThreatIntelInfo struct for ControlsThreatIntelInfo
 type ControlsThreatIntelInfo struct {
-	CloudControlsHash string `json:"cloud_controls_hash"`
-	CloudControlsUrl string `json:"cloud_controls_url"`
+	CloudPostureControlsHash string `json:"cloud_posture_controls_hash"`
+	CloudPostureControlsUrl string `json:"cloud_posture_controls_url"`
 	IgnoredAlertRuleIds []string `json:"ignored_alert_rule_ids"`
 	InternalIps []string `json:"internal_ips"`
 	MalwareScannerRulesHash string `json:"malware_scanner_rules_hash"`
@@ -41,10 +41,10 @@ type _ControlsThreatIntelInfo ControlsThreatIntelInfo
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsThreatIntelInfo(cloudControlsHash string, cloudControlsUrl string, ignoredAlertRuleIds []string, internalIps []string, malwareScannerRulesHash string, malwareScannerRulesUrl string, networkAlertRulesUrl string, rulesHash string, secretScannerRulesHash string, secretScannerRulesUrl string, updatedAt int32) *ControlsThreatIntelInfo {
+func NewControlsThreatIntelInfo(cloudPostureControlsHash string, cloudPostureControlsUrl string, ignoredAlertRuleIds []string, internalIps []string, malwareScannerRulesHash string, malwareScannerRulesUrl string, networkAlertRulesUrl string, rulesHash string, secretScannerRulesHash string, secretScannerRulesUrl string, updatedAt int32) *ControlsThreatIntelInfo {
 	this := ControlsThreatIntelInfo{}
-	this.CloudControlsHash = cloudControlsHash
-	this.CloudControlsUrl = cloudControlsUrl
+	this.CloudPostureControlsHash = cloudPostureControlsHash
+	this.CloudPostureControlsUrl = cloudPostureControlsUrl
 	this.IgnoredAlertRuleIds = ignoredAlertRuleIds
 	this.InternalIps = internalIps
 	this.MalwareScannerRulesHash = malwareScannerRulesHash
@@ -65,52 +65,52 @@ func NewControlsThreatIntelInfoWithDefaults() *ControlsThreatIntelInfo {
 	return &this
 }
 
-// GetCloudControlsHash returns the CloudControlsHash field value
-func (o *ControlsThreatIntelInfo) GetCloudControlsHash() string {
+// GetCloudPostureControlsHash returns the CloudPostureControlsHash field value
+func (o *ControlsThreatIntelInfo) GetCloudPostureControlsHash() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.CloudControlsHash
+	return o.CloudPostureControlsHash
 }
 
-// GetCloudControlsHashOk returns a tuple with the CloudControlsHash field value
+// GetCloudPostureControlsHashOk returns a tuple with the CloudPostureControlsHash field value
 // and a boolean to check if the value has been set.
-func (o *ControlsThreatIntelInfo) GetCloudControlsHashOk() (*string, bool) {
+func (o *ControlsThreatIntelInfo) GetCloudPostureControlsHashOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CloudControlsHash, true
+	return &o.CloudPostureControlsHash, true
 }
 
-// SetCloudControlsHash sets field value
-func (o *ControlsThreatIntelInfo) SetCloudControlsHash(v string) {
-	o.CloudControlsHash = v
+// SetCloudPostureControlsHash sets field value
+func (o *ControlsThreatIntelInfo) SetCloudPostureControlsHash(v string) {
+	o.CloudPostureControlsHash = v
 }
 
-// GetCloudControlsUrl returns the CloudControlsUrl field value
-func (o *ControlsThreatIntelInfo) GetCloudControlsUrl() string {
+// GetCloudPostureControlsUrl returns the CloudPostureControlsUrl field value
+func (o *ControlsThreatIntelInfo) GetCloudPostureControlsUrl() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.CloudControlsUrl
+	return o.CloudPostureControlsUrl
 }
 
-// GetCloudControlsUrlOk returns a tuple with the CloudControlsUrl field value
+// GetCloudPostureControlsUrlOk returns a tuple with the CloudPostureControlsUrl field value
 // and a boolean to check if the value has been set.
-func (o *ControlsThreatIntelInfo) GetCloudControlsUrlOk() (*string, bool) {
+func (o *ControlsThreatIntelInfo) GetCloudPostureControlsUrlOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CloudControlsUrl, true
+	return &o.CloudPostureControlsUrl, true
 }
 
-// SetCloudControlsUrl sets field value
-func (o *ControlsThreatIntelInfo) SetCloudControlsUrl(v string) {
-	o.CloudControlsUrl = v
+// SetCloudPostureControlsUrl sets field value
+func (o *ControlsThreatIntelInfo) SetCloudPostureControlsUrl(v string) {
+	o.CloudPostureControlsUrl = v
 }
 
 // GetIgnoredAlertRuleIds returns the IgnoredAlertRuleIds field value
@@ -343,8 +343,8 @@ func (o ControlsThreatIntelInfo) MarshalJSON() ([]byte, error) {
 
 func (o ControlsThreatIntelInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["cloud_controls_hash"] = o.CloudControlsHash
-	toSerialize["cloud_controls_url"] = o.CloudControlsUrl
+	toSerialize["cloud_posture_controls_hash"] = o.CloudPostureControlsHash
+	toSerialize["cloud_posture_controls_url"] = o.CloudPostureControlsUrl
 	if o.IgnoredAlertRuleIds != nil {
 		toSerialize["ignored_alert_rule_ids"] = o.IgnoredAlertRuleIds
 	}
@@ -366,8 +366,8 @@ func (o *ControlsThreatIntelInfo) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"cloud_controls_hash",
-		"cloud_controls_url",
+		"cloud_posture_controls_hash",
+		"cloud_posture_controls_url",
 		"ignored_alert_rule_ids",
 		"internal_ips",
 		"malware_scanner_rules_hash",
