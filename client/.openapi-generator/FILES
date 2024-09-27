@@ -24,6 +24,7 @@ api_lookup.go
 api_malware_scan.go
 api_registry.go
 api_reports.go
+api_rules.go
 api_scan_results.go
 api_search.go
 api_secret_scan.go
@@ -248,6 +249,7 @@ docs/ModelRegistryImagesReq.md
 docs/ModelRegistryListResp.md
 docs/ModelRegistryUpdateReq.md
 docs/ModelResponseAccessToken.md
+docs/ModelRulesActionRequest.md
 docs/ModelSbomRequest.md
 docs/ModelSbomResponse.md
 docs/ModelScanCompareReq.md
@@ -303,6 +305,7 @@ docs/ReportersOrderFilter.md
 docs/ReportersOrderSpec.md
 docs/ReportersSevCounts.md
 docs/ReportsAPI.md
+docs/RulesAPI.md
 docs/ScanResultsAPI.md
 docs/SearchAPI.md
 docs/SearchChainedSearchFilter.md
@@ -531,6 +534,7 @@ model_model_registry_images_req.go
 model_model_registry_list_resp.go
 model_model_registry_update_req.go
 model_model_response_access_token.go
+model_model_rules_action_request.go
 model_model_sbom_request.go
 model_model_sbom_response.go
 model_model_scan_compare_req.go
@@ -630,6 +634,7 @@ test/api_lookup_test.go
 test/api_malware_scan_test.go
 test/api_registry_test.go
 test/api_reports_test.go
+test/api_rules_test.go
 test/api_scan_results_test.go
 test/api_search_test.go
 test/api_secret_scan_test.go

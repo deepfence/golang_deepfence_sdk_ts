@@ -40,6 +40,7 @@ type ModelNetworkAlert struct {
 	Masked bool `json:"masked"`
 	NodeId string `json:"node_id"`
 	NodeType string `json:"node_type"`
+	Payload string `json:"payload"`
 	PodName string `json:"pod_name"`
 	Protocol string `json:"protocol"`
 	References string `json:"references"`
@@ -63,7 +64,7 @@ type _ModelNetworkAlert ModelNetworkAlert
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelNetworkAlert(base64Payload string, category string, containerName string, count int32, createdAt int32, destinationIp string, destinationPort int32, direction string, encrypted bool, eventType string, headers string, hostName string, httpType string, kubernetesClusterId string, kubernetesClusterName string, masked bool, nodeId string, nodeType string, podName string, protocol string, references string, ruleId string, severity string, sourceIp string, sourcePort int32, summary string, tactics []string, tags string, techniques []string, updatedAt int32, url string) *ModelNetworkAlert {
+func NewModelNetworkAlert(base64Payload string, category string, containerName string, count int32, createdAt int32, destinationIp string, destinationPort int32, direction string, encrypted bool, eventType string, headers string, hostName string, httpType string, kubernetesClusterId string, kubernetesClusterName string, masked bool, nodeId string, nodeType string, payload string, podName string, protocol string, references string, ruleId string, severity string, sourceIp string, sourcePort int32, summary string, tactics []string, tags string, techniques []string, updatedAt int32, url string) *ModelNetworkAlert {
 	this := ModelNetworkAlert{}
 	this.Base64Payload = base64Payload
 	this.Category = category
@@ -83,6 +84,7 @@ func NewModelNetworkAlert(base64Payload string, category string, containerName s
 	this.Masked = masked
 	this.NodeId = nodeId
 	this.NodeType = nodeType
+	this.Payload = payload
 	this.PodName = podName
 	this.Protocol = protocol
 	this.References = references
@@ -539,6 +541,30 @@ func (o *ModelNetworkAlert) SetNodeType(v string) {
 	o.NodeType = v
 }
 
+// GetPayload returns the Payload field value
+func (o *ModelNetworkAlert) GetPayload() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Payload
+}
+
+// GetPayloadOk returns a tuple with the Payload field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkAlert) GetPayloadOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Payload, true
+}
+
+// SetPayload sets field value
+func (o *ModelNetworkAlert) SetPayload(v string) {
+	o.Payload = v
+}
+
 // GetPodName returns the PodName field value
 func (o *ModelNetworkAlert) GetPodName() string {
 	if o == nil {
@@ -947,6 +973,7 @@ func (o ModelNetworkAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize["masked"] = o.Masked
 	toSerialize["node_id"] = o.NodeId
 	toSerialize["node_type"] = o.NodeType
+	toSerialize["payload"] = o.Payload
 	toSerialize["pod_name"] = o.PodName
 	toSerialize["protocol"] = o.Protocol
 	toSerialize["references"] = o.References
@@ -996,6 +1023,7 @@ func (o *ModelNetworkAlert) UnmarshalJSON(data []byte) (err error) {
 		"masked",
 		"node_id",
 		"node_type",
+		"payload",
 		"pod_name",
 		"protocol",
 		"references",

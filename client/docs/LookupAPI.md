@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**GetFilesystemAlertRules**](LookupAPI.md#GetFilesystemAlertRules) | **Post** /deepfence/lookup/file-alert-rules | Get File Alert Rules
 [**GetHosts**](LookupAPI.md#GetHosts) | **Post** /deepfence/lookup/hosts | Retrieve Hosts data
 [**GetKubernetesClusters**](LookupAPI.md#GetKubernetesClusters) | **Post** /deepfence/lookup/kubernetesclusters | Retrieve K8s data
+[**GetMalwareRules**](LookupAPI.md#GetMalwareRules) | **Post** /deepfence/lookup/malware-rules | Get Malware Rules
 [**GetMalwares**](LookupAPI.md#GetMalwares) | **Post** /deepfence/lookup/malwares | Retrieve Malwares data
 [**GetNetworkAlertRules**](LookupAPI.md#GetNetworkAlertRules) | **Post** /deepfence/lookup/network-alert-rules | Get Network Alert Rules
 [**GetNetworkAlerts**](LookupAPI.md#GetNetworkAlerts) | **Post** /deepfence/lookup/network-alerts | Get Network Alerts
@@ -25,8 +26,10 @@ Method | HTTP request | Description
 [**GetProcesses**](LookupAPI.md#GetProcesses) | **Post** /deepfence/lookup/processes | Retrieve Processes data
 [**GetQuarantineViolations**](LookupAPI.md#GetQuarantineViolations) | **Post** /deepfence/lookup/quarantine-violations | Get Quarantine Violations
 [**GetRegistryAccount**](LookupAPI.md#GetRegistryAccount) | **Post** /deepfence/lookup/registryaccount | Get Images in Registry
+[**GetSecretRules**](LookupAPI.md#GetSecretRules) | **Post** /deepfence/lookup/secret-rules | Get Secret Rules
 [**GetSecrets**](LookupAPI.md#GetSecrets) | **Post** /deepfence/lookup/secrets | Retrieve Secrets data
 [**GetVulnerabilities**](LookupAPI.md#GetVulnerabilities) | **Post** /deepfence/lookup/vulnerabilities | Retrieve Vulnerabilities data
+[**GetVulnerabilityRules**](LookupAPI.md#GetVulnerabilityRules) | **Post** /deepfence/lookup/vulnerability-rules | Get Vulnerability Rules
 
 
 
@@ -756,6 +759,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetMalwareRules
+
+> []ModelMalwareRule GetMalwareRules(ctx).LookupLookupFilter(lookupLookupFilter).Execute()
+
+Get Malware Rules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+	lookupLookupFilter := *openapiclient.NewLookupLookupFilter([]string{"InFieldFilter_example"}, []string{"NodeIds_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // LookupLookupFilter |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LookupAPI.GetMalwareRules(context.Background()).LookupLookupFilter(lookupLookupFilter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LookupAPI.GetMalwareRules``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetMalwareRules`: []ModelMalwareRule
+	fmt.Fprintf(os.Stdout, "Response from `LookupAPI.GetMalwareRules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetMalwareRulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **lookupLookupFilter** | [**LookupLookupFilter**](LookupLookupFilter.md) |  | 
+
+### Return type
+
+[**[]ModelMalwareRule**](ModelMalwareRule.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetMalwares
 
 > []ModelMalware GetMalwares(ctx).LookupLookupFilter(lookupLookupFilter).Execute()
@@ -1416,6 +1485,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetSecretRules
+
+> []ModelSecretRule GetSecretRules(ctx).LookupLookupFilter(lookupLookupFilter).Execute()
+
+Get Secret Rules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+	lookupLookupFilter := *openapiclient.NewLookupLookupFilter([]string{"InFieldFilter_example"}, []string{"NodeIds_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // LookupLookupFilter |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LookupAPI.GetSecretRules(context.Background()).LookupLookupFilter(lookupLookupFilter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LookupAPI.GetSecretRules``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetSecretRules`: []ModelSecretRule
+	fmt.Fprintf(os.Stdout, "Response from `LookupAPI.GetSecretRules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSecretRulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **lookupLookupFilter** | [**LookupLookupFilter**](LookupLookupFilter.md) |  | 
+
+### Return type
+
+[**[]ModelSecretRule**](ModelSecretRule.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetSecrets
 
 > []ModelSecret GetSecrets(ctx).LookupLookupFilter(lookupLookupFilter).Execute()
@@ -1533,6 +1668,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]ModelVulnerability**](ModelVulnerability.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetVulnerabilityRules
+
+> []ModelVulnerabilityRule GetVulnerabilityRules(ctx).LookupLookupFilter(lookupLookupFilter).Execute()
+
+Get Vulnerability Rules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+	lookupLookupFilter := *openapiclient.NewLookupLookupFilter([]string{"InFieldFilter_example"}, []string{"NodeIds_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // LookupLookupFilter |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LookupAPI.GetVulnerabilityRules(context.Background()).LookupLookupFilter(lookupLookupFilter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LookupAPI.GetVulnerabilityRules``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetVulnerabilityRules`: []ModelVulnerabilityRule
+	fmt.Fprintf(os.Stdout, "Response from `LookupAPI.GetVulnerabilityRules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetVulnerabilityRulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **lookupLookupFilter** | [**LookupLookupFilter**](LookupLookupFilter.md) |  | 
+
+### Return type
+
+[**[]ModelVulnerabilityRule**](ModelVulnerabilityRule.md)
 
 ### Authorization
 

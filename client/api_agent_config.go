@@ -3275,7 +3275,7 @@ func (a *AgentConfigAPIService) ImportAgentPolicyConfigExecute(r ApiImportAgentP
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "config_id", r.configId, "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "config_id", r.configId, "", "")
 	var networkPolicyJsonLocalVarFormFileName string
 	var networkPolicyJsonLocalVarFileName     string
 	var networkPolicyJsonLocalVarFileBytes    []byte
@@ -3440,7 +3440,7 @@ func (a *AgentConfigAPIService) ImportAgentQuarantineConfigExecute(r ApiImportAg
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "config_id", r.configId, "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "config_id", r.configId, "", "")
 	var quarantinePolicyJsonLocalVarFormFileName string
 	var quarantinePolicyJsonLocalVarFileName     string
 	var quarantinePolicyJsonLocalVarFileBytes    []byte

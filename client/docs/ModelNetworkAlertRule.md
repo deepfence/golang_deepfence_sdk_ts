@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Description** | **string** |  | 
 **Masked** | **bool** |  | 
 **NodeId** | **string** |  | 
+**Payload** | **string** |  | 
 **RuleId** | **string** |  | 
 **Severity** | **string** |  | 
 **Summary** | **string** |  | 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewModelNetworkAlertRule
 
-`func NewModelNetworkAlertRule(category string, description string, masked bool, nodeId string, ruleId string, severity string, summary string, tactics []string, techniques []string, updatedAt int32, ) *ModelNetworkAlertRule`
+`func NewModelNetworkAlertRule(category string, description string, masked bool, nodeId string, payload string, ruleId string, severity string, summary string, tactics []string, techniques []string, updatedAt int32, ) *ModelNetworkAlertRule`
 
 NewModelNetworkAlertRule instantiates a new ModelNetworkAlertRule object
 This constructor will assign default values to properties that have it defined,
@@ -112,6 +113,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelNetworkAlertRule) SetNodeId(v string)`
 
 SetNodeId sets NodeId field to given value.
+
+
+### GetPayload
+
+`func (o *ModelNetworkAlertRule) GetPayload() string`
+
+GetPayload returns the Payload field if non-nil, zero value otherwise.
+
+### GetPayloadOk
+
+`func (o *ModelNetworkAlertRule) GetPayloadOk() (*string, bool)`
+
+GetPayloadOk returns a tuple with the Payload field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPayload
+
+`func (o *ModelNetworkAlertRule) SetPayload(v string)`
+
+SetPayload sets Payload field to given value.
 
 
 ### GetRuleId

@@ -26,6 +26,7 @@ type ModelNetworkAlertRule struct {
 	Description string `json:"description"`
 	Masked bool `json:"masked"`
 	NodeId string `json:"node_id"`
+	Payload string `json:"payload"`
 	RuleId string `json:"rule_id"`
 	Severity string `json:"severity"`
 	Summary string `json:"summary"`
@@ -40,12 +41,13 @@ type _ModelNetworkAlertRule ModelNetworkAlertRule
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelNetworkAlertRule(category string, description string, masked bool, nodeId string, ruleId string, severity string, summary string, tactics []string, techniques []string, updatedAt int32) *ModelNetworkAlertRule {
+func NewModelNetworkAlertRule(category string, description string, masked bool, nodeId string, payload string, ruleId string, severity string, summary string, tactics []string, techniques []string, updatedAt int32) *ModelNetworkAlertRule {
 	this := ModelNetworkAlertRule{}
 	this.Category = category
 	this.Description = description
 	this.Masked = masked
 	this.NodeId = nodeId
+	this.Payload = payload
 	this.RuleId = ruleId
 	this.Severity = severity
 	this.Summary = summary
@@ -157,6 +159,30 @@ func (o *ModelNetworkAlertRule) GetNodeIdOk() (*string, bool) {
 // SetNodeId sets field value
 func (o *ModelNetworkAlertRule) SetNodeId(v string) {
 	o.NodeId = v
+}
+
+// GetPayload returns the Payload field value
+func (o *ModelNetworkAlertRule) GetPayload() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Payload
+}
+
+// GetPayloadOk returns a tuple with the Payload field value
+// and a boolean to check if the value has been set.
+func (o *ModelNetworkAlertRule) GetPayloadOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Payload, true
+}
+
+// SetPayload sets field value
+func (o *ModelNetworkAlertRule) SetPayload(v string) {
+	o.Payload = v
 }
 
 // GetRuleId returns the RuleId field value
@@ -321,6 +347,7 @@ func (o ModelNetworkAlertRule) ToMap() (map[string]interface{}, error) {
 	toSerialize["description"] = o.Description
 	toSerialize["masked"] = o.Masked
 	toSerialize["node_id"] = o.NodeId
+	toSerialize["payload"] = o.Payload
 	toSerialize["rule_id"] = o.RuleId
 	toSerialize["severity"] = o.Severity
 	toSerialize["summary"] = o.Summary
@@ -343,6 +370,7 @@ func (o *ModelNetworkAlertRule) UnmarshalJSON(data []byte) (err error) {
 		"description",
 		"masked",
 		"node_id",
+		"payload",
 		"rule_id",
 		"severity",
 		"summary",

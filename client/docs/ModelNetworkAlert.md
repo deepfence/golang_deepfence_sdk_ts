@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **Masked** | **bool** |  | 
 **NodeId** | **string** |  | 
 **NodeType** | **string** |  | 
+**Payload** | **string** |  | 
 **PodName** | **string** |  | 
 **Protocol** | **string** |  | 
 **References** | **string** |  | 
@@ -42,7 +43,7 @@ Name | Type | Description | Notes
 
 ### NewModelNetworkAlert
 
-`func NewModelNetworkAlert(base64Payload string, category string, containerName string, count int32, createdAt int32, destinationIp string, destinationPort int32, direction string, encrypted bool, eventType string, headers string, hostName string, httpType string, kubernetesClusterId string, kubernetesClusterName string, masked bool, nodeId string, nodeType string, podName string, protocol string, references string, ruleId string, severity string, sourceIp string, sourcePort int32, summary string, tactics []string, tags string, techniques []string, updatedAt int32, url string, ) *ModelNetworkAlert`
+`func NewModelNetworkAlert(base64Payload string, category string, containerName string, count int32, createdAt int32, destinationIp string, destinationPort int32, direction string, encrypted bool, eventType string, headers string, hostName string, httpType string, kubernetesClusterId string, kubernetesClusterName string, masked bool, nodeId string, nodeType string, payload string, podName string, protocol string, references string, ruleId string, severity string, sourceIp string, sourcePort int32, summary string, tactics []string, tags string, techniques []string, updatedAt int32, url string, ) *ModelNetworkAlert`
 
 NewModelNetworkAlert instantiates a new ModelNetworkAlert object
 This constructor will assign default values to properties that have it defined,
@@ -415,6 +416,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelNetworkAlert) SetNodeType(v string)`
 
 SetNodeType sets NodeType field to given value.
+
+
+### GetPayload
+
+`func (o *ModelNetworkAlert) GetPayload() string`
+
+GetPayload returns the Payload field if non-nil, zero value otherwise.
+
+### GetPayloadOk
+
+`func (o *ModelNetworkAlert) GetPayloadOk() (*string, bool)`
+
+GetPayloadOk returns a tuple with the Payload field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPayload
+
+`func (o *ModelNetworkAlert) SetPayload(v string)`
+
+SetPayload sets Payload field to given value.
 
 
 ### GetPodName
