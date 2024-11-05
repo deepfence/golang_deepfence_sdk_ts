@@ -309,6 +309,7 @@ docs/RulesAPI.md
 docs/ScanResultsAPI.md
 docs/SearchAPI.md
 docs/SearchChainedSearchFilter.md
+docs/SearchMostExploitableCountResp.md
 docs/SearchNodeCountResp.md
 docs/SearchResultGroup.md
 docs/SearchResultGroupResp.md
@@ -589,6 +590,7 @@ model_reporters_order_filter.go
 model_reporters_order_spec.go
 model_reporters_sev_counts.go
 model_search_chained_search_filter.go
+model_search_most_exploitable_count_resp.go
 model_search_node_count_resp.go
 model_search_result_group.go
 model_search_result_group_resp.go

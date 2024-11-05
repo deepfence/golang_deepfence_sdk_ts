@@ -5,6 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **HostName** | **string** |  | 
+**LiveCves** | **[]string** |  | 
+**LiveMalwares** | **[]string** |  | 
+**LiveSecrets** | **[]string** |  | 
 **Name** | **string** |  | 
 **NodeId** | **string** |  | 
 **NodeType** | **string** |  | 
@@ -13,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewModelBasicNode
 
-`func NewModelBasicNode(hostName string, name string, nodeId string, nodeType string, ) *ModelBasicNode`
+`func NewModelBasicNode(hostName string, liveCves []string, liveMalwares []string, liveSecrets []string, name string, nodeId string, nodeType string, ) *ModelBasicNode`
 
 NewModelBasicNode instantiates a new ModelBasicNode object
 This constructor will assign default values to properties that have it defined,
@@ -48,6 +51,96 @@ and a boolean to check if the value has been set.
 SetHostName sets HostName field to given value.
 
 
+### GetLiveCves
+
+`func (o *ModelBasicNode) GetLiveCves() []string`
+
+GetLiveCves returns the LiveCves field if non-nil, zero value otherwise.
+
+### GetLiveCvesOk
+
+`func (o *ModelBasicNode) GetLiveCvesOk() (*[]string, bool)`
+
+GetLiveCvesOk returns a tuple with the LiveCves field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLiveCves
+
+`func (o *ModelBasicNode) SetLiveCves(v []string)`
+
+SetLiveCves sets LiveCves field to given value.
+
+
+### SetLiveCvesNil
+
+`func (o *ModelBasicNode) SetLiveCvesNil(b bool)`
+
+ SetLiveCvesNil sets the value for LiveCves to be an explicit nil
+
+### UnsetLiveCves
+`func (o *ModelBasicNode) UnsetLiveCves()`
+
+UnsetLiveCves ensures that no value is present for LiveCves, not even an explicit nil
+### GetLiveMalwares
+
+`func (o *ModelBasicNode) GetLiveMalwares() []string`
+
+GetLiveMalwares returns the LiveMalwares field if non-nil, zero value otherwise.
+
+### GetLiveMalwaresOk
+
+`func (o *ModelBasicNode) GetLiveMalwaresOk() (*[]string, bool)`
+
+GetLiveMalwaresOk returns a tuple with the LiveMalwares field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLiveMalwares
+
+`func (o *ModelBasicNode) SetLiveMalwares(v []string)`
+
+SetLiveMalwares sets LiveMalwares field to given value.
+
+
+### SetLiveMalwaresNil
+
+`func (o *ModelBasicNode) SetLiveMalwaresNil(b bool)`
+
+ SetLiveMalwaresNil sets the value for LiveMalwares to be an explicit nil
+
+### UnsetLiveMalwares
+`func (o *ModelBasicNode) UnsetLiveMalwares()`
+
+UnsetLiveMalwares ensures that no value is present for LiveMalwares, not even an explicit nil
+### GetLiveSecrets
+
+`func (o *ModelBasicNode) GetLiveSecrets() []string`
+
+GetLiveSecrets returns the LiveSecrets field if non-nil, zero value otherwise.
+
+### GetLiveSecretsOk
+
+`func (o *ModelBasicNode) GetLiveSecretsOk() (*[]string, bool)`
+
+GetLiveSecretsOk returns a tuple with the LiveSecrets field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLiveSecrets
+
+`func (o *ModelBasicNode) SetLiveSecrets(v []string)`
+
+SetLiveSecrets sets LiveSecrets field to given value.
+
+
+### SetLiveSecretsNil
+
+`func (o *ModelBasicNode) SetLiveSecretsNil(b bool)`
+
+ SetLiveSecretsNil sets the value for LiveSecrets to be an explicit nil
+
+### UnsetLiveSecrets
+`func (o *ModelBasicNode) UnsetLiveSecrets()`
+
+UnsetLiveSecrets ensures that no value is present for LiveSecrets, not even an explicit nil
 ### GetName
 
 `func (o *ModelBasicNode) GetName() string`

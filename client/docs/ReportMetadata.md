@@ -4,6 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ActiveCves** | Pointer to **[]string** |  | [optional] 
+**ActiveMalwares** | Pointer to **[]string** |  | [optional] 
+**ActiveSecrets** | Pointer to **[]string** |  | [optional] 
 **AgentRunning** | Pointer to **bool** |  | [optional] 
 **AvailabilityZone** | Pointer to **string** |  | [optional] 
 **CloudAccountId** | Pointer to **string** |  | [optional] 
@@ -98,6 +101,81 @@ will change when the set of required properties is changed
 NewReportMetadataWithDefaults instantiates a new ReportMetadata object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetActiveCves
+
+`func (o *ReportMetadata) GetActiveCves() []string`
+
+GetActiveCves returns the ActiveCves field if non-nil, zero value otherwise.
+
+### GetActiveCvesOk
+
+`func (o *ReportMetadata) GetActiveCvesOk() (*[]string, bool)`
+
+GetActiveCvesOk returns a tuple with the ActiveCves field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActiveCves
+
+`func (o *ReportMetadata) SetActiveCves(v []string)`
+
+SetActiveCves sets ActiveCves field to given value.
+
+### HasActiveCves
+
+`func (o *ReportMetadata) HasActiveCves() bool`
+
+HasActiveCves returns a boolean if a field has been set.
+
+### GetActiveMalwares
+
+`func (o *ReportMetadata) GetActiveMalwares() []string`
+
+GetActiveMalwares returns the ActiveMalwares field if non-nil, zero value otherwise.
+
+### GetActiveMalwaresOk
+
+`func (o *ReportMetadata) GetActiveMalwaresOk() (*[]string, bool)`
+
+GetActiveMalwaresOk returns a tuple with the ActiveMalwares field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActiveMalwares
+
+`func (o *ReportMetadata) SetActiveMalwares(v []string)`
+
+SetActiveMalwares sets ActiveMalwares field to given value.
+
+### HasActiveMalwares
+
+`func (o *ReportMetadata) HasActiveMalwares() bool`
+
+HasActiveMalwares returns a boolean if a field has been set.
+
+### GetActiveSecrets
+
+`func (o *ReportMetadata) GetActiveSecrets() []string`
+
+GetActiveSecrets returns the ActiveSecrets field if non-nil, zero value otherwise.
+
+### GetActiveSecretsOk
+
+`func (o *ReportMetadata) GetActiveSecretsOk() (*[]string, bool)`
+
+GetActiveSecretsOk returns a tuple with the ActiveSecrets field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActiveSecrets
+
+`func (o *ReportMetadata) SetActiveSecrets(v []string)`
+
+SetActiveSecrets sets ActiveSecrets field to given value.
+
+### HasActiveSecrets
+
+`func (o *ReportMetadata) HasActiveSecrets() bool`
+
+HasActiveSecrets returns a boolean if a field has been set.
 
 ### GetAgentRunning
 

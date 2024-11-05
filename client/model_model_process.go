@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: v3.0.0
+API version: v2.5.0
 Contact: community@deepfence.io
 */
 
@@ -22,6 +22,9 @@ var _ MappedNullable = &ModelProcess{}
 
 // ModelProcess struct for ModelProcess
 type ModelProcess struct {
+	ActiveCves []string `json:"active_cves"`
+	ActiveMalwares []string `json:"active_malwares"`
+	ActiveSecrets []string `json:"active_secrets"`
 	Cmdline string `json:"cmdline"`
 	CpuMax float32 `json:"cpu_max"`
 	CpuUsage float32 `json:"cpu_usage"`
@@ -42,8 +45,11 @@ type _ModelProcess ModelProcess
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelProcess(cmdline string, cpuMax float32, cpuUsage float32, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, openFilesCount int32, pid int32, ppid int32, shortName string, threads int32) *ModelProcess {
+func NewModelProcess(activeCves []string, activeMalwares []string, activeSecrets []string, cmdline string, cpuMax float32, cpuUsage float32, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, openFilesCount int32, pid int32, ppid int32, shortName string, threads int32) *ModelProcess {
 	this := ModelProcess{}
+	this.ActiveCves = activeCves
+	this.ActiveMalwares = activeMalwares
+	this.ActiveSecrets = activeSecrets
 	this.Cmdline = cmdline
 	this.CpuMax = cpuMax
 	this.CpuUsage = cpuUsage
@@ -65,6 +71,84 @@ func NewModelProcess(cmdline string, cpuMax float32, cpuUsage float32, memoryMax
 func NewModelProcessWithDefaults() *ModelProcess {
 	this := ModelProcess{}
 	return &this
+}
+
+// GetActiveCves returns the ActiveCves field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ModelProcess) GetActiveCves() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.ActiveCves
+}
+
+// GetActiveCvesOk returns a tuple with the ActiveCves field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelProcess) GetActiveCvesOk() ([]string, bool) {
+	if o == nil || IsNil(o.ActiveCves) {
+		return nil, false
+	}
+	return o.ActiveCves, true
+}
+
+// SetActiveCves sets field value
+func (o *ModelProcess) SetActiveCves(v []string) {
+	o.ActiveCves = v
+}
+
+// GetActiveMalwares returns the ActiveMalwares field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ModelProcess) GetActiveMalwares() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.ActiveMalwares
+}
+
+// GetActiveMalwaresOk returns a tuple with the ActiveMalwares field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelProcess) GetActiveMalwaresOk() ([]string, bool) {
+	if o == nil || IsNil(o.ActiveMalwares) {
+		return nil, false
+	}
+	return o.ActiveMalwares, true
+}
+
+// SetActiveMalwares sets field value
+func (o *ModelProcess) SetActiveMalwares(v []string) {
+	o.ActiveMalwares = v
+}
+
+// GetActiveSecrets returns the ActiveSecrets field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ModelProcess) GetActiveSecrets() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.ActiveSecrets
+}
+
+// GetActiveSecretsOk returns a tuple with the ActiveSecrets field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelProcess) GetActiveSecretsOk() ([]string, bool) {
+	if o == nil || IsNil(o.ActiveSecrets) {
+		return nil, false
+	}
+	return o.ActiveSecrets, true
+}
+
+// SetActiveSecrets sets field value
+func (o *ModelProcess) SetActiveSecrets(v []string) {
+	o.ActiveSecrets = v
 }
 
 // GetCmdline returns the Cmdline field value
@@ -365,6 +449,15 @@ func (o ModelProcess) MarshalJSON() ([]byte, error) {
 
 func (o ModelProcess) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ActiveCves != nil {
+		toSerialize["active_cves"] = o.ActiveCves
+	}
+	if o.ActiveMalwares != nil {
+		toSerialize["active_malwares"] = o.ActiveMalwares
+	}
+	if o.ActiveSecrets != nil {
+		toSerialize["active_secrets"] = o.ActiveSecrets
+	}
 	toSerialize["cmdline"] = o.Cmdline
 	toSerialize["cpu_max"] = o.CpuMax
 	toSerialize["cpu_usage"] = o.CpuUsage
@@ -385,6 +478,9 @@ func (o *ModelProcess) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"active_cves",
+		"active_malwares",
+		"active_secrets",
 		"cmdline",
 		"cpu_max",
 		"cpu_usage",

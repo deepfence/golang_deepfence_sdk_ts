@@ -16,7 +16,7 @@ info:
     url: https://www.apache.org/licenses/LICENSE-2.0
   termsOfService: /tos
   title: Deepfence ThreatStryker
-  version: v3.0.0
+  version: v2.5.0
 externalDocs:
   description: Deepfence Community
   url: https://community.deepfence.io
@@ -11631,6 +11631,126 @@ paths:
       summary: Count Malwares
       tags:
       - Search
+  /deepfence/search/count/most-exploitable/malwares:
+    get:
+      description: Count Most Exploitable Malwares
+      operationId: countMostExploitableMalwares
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchMostExploitableCountResp'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Count Most Exploitable Malwares
+      tags:
+      - Search
+  /deepfence/search/count/most-exploitable/secrets:
+    get:
+      description: Count Most Exploitable Secrets
+      operationId: countMostExploitableSecrets
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchMostExploitableCountResp'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Count Most Exploitable Secrets
+      tags:
+      - Search
+  /deepfence/search/count/most-exploitable/vulnerabilities:
+    get:
+      description: Count Most Exploitable vulnerabilities
+      operationId: countMostExploitableVulnerabilities
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchMostExploitableCountResp'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Count Most Exploitable Vulnerabilities
+      tags:
+      - Search
   /deepfence/search/count/network-alert-rules:
     post:
       description: Count across all data associated with network alert rules
@@ -15612,6 +15732,9 @@ components:
           kubernetes_is_in_host_network: true
           instance_id: instance_id
           kernel_id: kernel_id
+          active_cves:
+          - active_cves
+          - active_cves
           copy_of: copy_of
           open_files:
           - open_files
@@ -15645,8 +15768,14 @@ components:
           docker_container_network_mode: docker_container_network_mode
           cloud_account_id: cloud_account_id
           kubernetes_type: kubernetes_type
+          active_secrets:
+          - active_secrets
+          - active_secrets
           resource_group: resource_group
           docker_image_tag: docker_image_tag
+          active_malwares:
+          - active_malwares
+          - active_malwares
           kubernetes_labels: kubernetes_labels
           docker_container_ips:
           - docker_container_ips
@@ -17115,6 +17244,7 @@ components:
       type: object
     IngestersVulnerability:
       example:
+        epss_score: 1.4658129805029452
         parsed_attack_vector: parsed_attack_vector
         cve_container_layer: cve_container_layer
         cve_description: cve_description
@@ -17122,6 +17252,7 @@ components:
         cve_caused_by_package: cve_caused_by_package
         cve_attack_vector: cve_attack_vector
         cve_cvss_score: 0.8008281904610115
+        cisa_kev: true
         urls:
         - urls
         - urls
@@ -17136,8 +17267,10 @@ components:
         init_exploitability_score: 5
         scan_id: scan_id
         cve_link: cve_link
-        exploitability_score: 1
+        exploitability_score: 5
       properties:
+        cisa_kev:
+          type: boolean
         cve_attack_vector:
           type: string
         cve_caused_by_package:
@@ -17162,6 +17295,8 @@ components:
           type: string
         cve_type:
           type: string
+        epss_score:
+          type: number
         exploit_poc:
           type: string
         exploitability_score:
@@ -17689,12 +17824,36 @@ components:
     ModelBasicNode:
       example:
         node_type: node_type
+        live_secrets:
+        - live_secrets
+        - live_secrets
+        live_cves:
+        - live_cves
+        - live_cves
         name: name
         host_name: host_name
+        live_malwares:
+        - live_malwares
+        - live_malwares
         node_id: node_id
       properties:
         host_name:
           type: string
+        live_cves:
+          items:
+            type: string
+          nullable: true
+          type: array
+        live_malwares:
+          items:
+            type: string
+          nullable: true
+          type: array
+        live_secrets:
+          items:
+            type: string
+          nullable: true
+          type: array
         name:
           type: string
         node_id:
@@ -17703,6 +17862,9 @@ components:
           type: string
       required:
       - host_name
+      - live_cves
+      - live_malwares
+      - live_secrets
       - name
       - node_id
       - node_type
@@ -17835,12 +17997,30 @@ components:
         description: description
         resources:
         - node_type: node_type
+          live_secrets:
+          - live_secrets
+          - live_secrets
+          live_cves:
+          - live_cves
+          - live_cves
           name: name
           host_name: host_name
+          live_malwares:
+          - live_malwares
+          - live_malwares
           node_id: node_id
         - node_type: node_type
+          live_secrets:
+          - live_secrets
+          - live_secrets
+          live_cves:
+          - live_cves
+          - live_cves
           name: name
           host_name: host_name
+          live_malwares:
+          - live_malwares
+          - live_malwares
           node_id: node_id
         cloud_provider: cloud_provider
         title: title
@@ -18013,12 +18193,30 @@ components:
           description: description
           resources:
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           cloud_provider: cloud_provider
           title: title
@@ -18041,12 +18239,30 @@ components:
           description: description
           resources:
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           cloud_provider: cloud_provider
           title: title
@@ -18665,12 +18881,30 @@ components:
         description: description
         resources:
         - node_type: node_type
+          live_secrets:
+          - live_secrets
+          - live_secrets
+          live_cves:
+          - live_cves
+          - live_cves
           name: name
           host_name: host_name
+          live_malwares:
+          - live_malwares
+          - live_malwares
           node_id: node_id
         - node_type: node_type
+          live_secrets:
+          - live_secrets
+          - live_secrets
+          live_cves:
+          - live_cves
+          - live_cves
           name: name
           host_name: host_name
+          live_malwares:
+          - live_malwares
+          - live_malwares
           node_id: node_id
         test_category: test_category
         remediation_ansible: remediation_ansible
@@ -18877,12 +19111,30 @@ components:
           description: description
           resources:
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           test_category: test_category
           remediation_ansible: remediation_ansible
@@ -18903,12 +19155,30 @@ components:
           description: description
           resources:
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           test_category: test_category
           remediation_ansible: remediation_ansible
@@ -19223,30 +19493,48 @@ components:
         is_deepfence_system: true
         image: null
         processes:
-        - memory_max: 9
-          cmdline: cmdline
-          cpu_max: 2.3021358869347655
+        - cpu_max: 2.3021358869347655
           node_name: node_name
           memory_usage: 3
           open_files_count: 2
           threads: 1
           pid: 4
+          ppid: 7
+          memory_max: 9
+          active_secrets:
+          - active_secrets
+          - active_secrets
+          cmdline: cmdline
+          active_cves:
+          - active_cves
+          - active_cves
+          active_malwares:
+          - active_malwares
+          - active_malwares
           short_name: short_name
           cpu_usage: 7.061401241503109
           node_id: node_id
-          ppid: 7
-        - memory_max: 9
-          cmdline: cmdline
-          cpu_max: 2.3021358869347655
+        - cpu_max: 2.3021358869347655
           node_name: node_name
           memory_usage: 3
           open_files_count: 2
           threads: 1
           pid: 4
+          ppid: 7
+          memory_max: 9
+          active_secrets:
+          - active_secrets
+          - active_secrets
+          cmdline: cmdline
+          active_cves:
+          - active_cves
+          - active_cves
+          active_malwares:
+          - active_malwares
+          - active_malwares
           short_name: short_name
           cpu_usage: 7.061401241503109
           node_id: node_id
-          ppid: 7
         secret_scan_status: secret_scan_status
         docker_container_name: docker_container_name
         docker_container_created: docker_container_created
@@ -19412,30 +19700,48 @@ components:
           is_deepfence_system: true
           image: null
           processes:
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
           secret_scan_status: secret_scan_status
           docker_container_name: docker_container_name
           docker_container_created: docker_container_created
@@ -19472,30 +19778,48 @@ components:
           is_deepfence_system: true
           image: null
           processes:
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
           secret_scan_status: secret_scan_status
           docker_container_name: docker_container_name
           docker_container_created: docker_container_created
@@ -20110,10 +20434,10 @@ components:
       type: object
     ModelGenerateReportReq:
       example:
-        to_timestamp: 6
+        to_timestamp: 1
         options:
           sbom_format: syft-json
-        from_timestamp: 0
+        from_timestamp: 6
         filters:
           include_dead_nodes: true
           node_type: host
@@ -20122,6 +20446,9 @@ components:
             image_name:
             - image_name
             - image_name
+            most_exploitable_scores:
+            - 0
+            - 0
             container_name:
             - container_name
             - container_name
@@ -20492,6 +20819,9 @@ components:
               kubernetes_is_in_host_network: true
               instance_id: instance_id
               kernel_id: kernel_id
+              active_cves:
+              - active_cves
+              - active_cves
               copy_of: copy_of
               open_files:
               - open_files
@@ -20525,8 +20855,14 @@ components:
               docker_container_network_mode: docker_container_network_mode
               cloud_account_id: cloud_account_id
               kubernetes_type: kubernetes_type
+              active_secrets:
+              - active_secrets
+              - active_secrets
               resource_group: resource_group
               docker_image_tag: docker_image_tag
+              active_malwares:
+              - active_malwares
+              - active_malwares
               kubernetes_labels: kubernetes_labels
               docker_container_ips:
               - docker_container_ips
@@ -20628,30 +20964,48 @@ components:
             is_deepfence_system: true
             image: null
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
@@ -20688,30 +21042,48 @@ components:
             is_deepfence_system: true
             image: null
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
@@ -20773,30 +21145,48 @@ components:
             is_deepfence_system: true
             image: null
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
@@ -20833,30 +21223,48 @@ components:
             is_deepfence_system: true
             image: null
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
@@ -20968,30 +21376,48 @@ components:
           is_deepfence_system: true
           image: null
           processes:
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
           secret_scan_status: secret_scan_status
           docker_container_name: docker_container_name
           docker_container_created: docker_container_created
@@ -21028,30 +21454,48 @@ components:
           is_deepfence_system: true
           image: null
           processes:
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
           secret_scan_status: secret_scan_status
           docker_container_name: docker_container_name
           docker_container_created: docker_container_created
@@ -21107,30 +21551,48 @@ components:
         availability_zone: availability_zone
         is_console_vm: true
         processes:
-        - memory_max: 9
-          cmdline: cmdline
-          cpu_max: 2.3021358869347655
+        - cpu_max: 2.3021358869347655
           node_name: node_name
           memory_usage: 3
           open_files_count: 2
           threads: 1
           pid: 4
+          ppid: 7
+          memory_max: 9
+          active_secrets:
+          - active_secrets
+          - active_secrets
+          cmdline: cmdline
+          active_cves:
+          - active_cves
+          - active_cves
+          active_malwares:
+          - active_malwares
+          - active_malwares
           short_name: short_name
           cpu_usage: 7.061401241503109
           node_id: node_id
-          ppid: 7
-        - memory_max: 9
-          cmdline: cmdline
-          cpu_max: 2.3021358869347655
+        - cpu_max: 2.3021358869347655
           node_name: node_name
           memory_usage: 3
           open_files_count: 2
           threads: 1
           pid: 4
+          ppid: 7
+          memory_max: 9
+          active_secrets:
+          - active_secrets
+          - active_secrets
+          cmdline: cmdline
+          active_cves:
+          - active_cves
+          - active_cves
+          active_malwares:
+          - active_malwares
+          - active_malwares
           short_name: short_name
           cpu_usage: 7.061401241503109
           node_id: node_id
-          ppid: 7
         secret_scan_status: secret_scan_status
         compliance_scan_status: compliance_scan_status
         outbound_connections:
@@ -21168,30 +21630,48 @@ components:
         - is_deepfence_system: true
           kubernetes_ip: kubernetes_ip
           processes:
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
           secret_scan_status: secret_scan_status
           kubernetes_cluster_id: kubernetes_cluster_id
           kubernetes_cluster_name: kubernetes_cluster_name
@@ -21224,30 +21704,48 @@ components:
             is_deepfence_system: true
             image: null
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
@@ -21284,30 +21782,48 @@ components:
             is_deepfence_system: true
             image: null
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
@@ -21331,30 +21847,48 @@ components:
         - is_deepfence_system: true
           kubernetes_ip: kubernetes_ip
           processes:
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
           secret_scan_status: secret_scan_status
           kubernetes_cluster_id: kubernetes_cluster_id
           kubernetes_cluster_name: kubernetes_cluster_name
@@ -21387,30 +21921,48 @@ components:
             is_deepfence_system: true
             image: null
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
@@ -21447,30 +21999,48 @@ components:
             is_deepfence_system: true
             image: null
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
@@ -21802,6 +22372,7 @@ components:
                 key:
                 - ""
                 - ""
+          cloud_provider: cloud_provider
           container_names:
           - container_names
           - container_names
@@ -21873,6 +22444,7 @@ components:
               key:
               - ""
               - ""
+        cloud_provider: cloud_provider
         container_names:
         - container_names
         - container_names
@@ -21882,6 +22454,8 @@ components:
         - node_type: image
           node_id: node_id
       properties:
+        cloud_provider:
+          type: string
         container_names:
           items:
             type: string
@@ -21942,6 +22516,7 @@ components:
                 key:
                 - ""
                 - ""
+          cloud_provider: cloud_provider
           container_names:
           - container_names
           - container_names
@@ -22017,6 +22592,7 @@ components:
                 key:
                 - ""
                 - ""
+          cloud_provider: cloud_provider
           container_names:
           - container_names
           - container_names
@@ -22126,30 +22702,48 @@ components:
               is_deepfence_system: true
               image: null
               processes:
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
               secret_scan_status: secret_scan_status
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
@@ -22186,30 +22780,48 @@ components:
               is_deepfence_system: true
               image: null
               processes:
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
               secret_scan_status: secret_scan_status
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
@@ -22271,30 +22883,48 @@ components:
               is_deepfence_system: true
               image: null
               processes:
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
               secret_scan_status: secret_scan_status
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
@@ -22331,30 +22961,48 @@ components:
               is_deepfence_system: true
               image: null
               processes:
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
               secret_scan_status: secret_scan_status
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
@@ -22466,30 +23114,48 @@ components:
             is_deepfence_system: true
             image: null
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
@@ -22526,30 +23192,48 @@ components:
             is_deepfence_system: true
             image: null
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
@@ -22605,30 +23289,48 @@ components:
           availability_zone: availability_zone
           is_console_vm: true
           processes:
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
           secret_scan_status: secret_scan_status
           compliance_scan_status: compliance_scan_status
           outbound_connections:
@@ -22666,30 +23368,48 @@ components:
           - is_deepfence_system: true
             kubernetes_ip: kubernetes_ip
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             kubernetes_cluster_id: kubernetes_cluster_id
             kubernetes_cluster_name: kubernetes_cluster_name
@@ -22722,30 +23442,48 @@ components:
               is_deepfence_system: true
               image: null
               processes:
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
               secret_scan_status: secret_scan_status
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
@@ -22782,30 +23520,48 @@ components:
               is_deepfence_system: true
               image: null
               processes:
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
               secret_scan_status: secret_scan_status
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
@@ -22829,30 +23585,48 @@ components:
           - is_deepfence_system: true
             kubernetes_ip: kubernetes_ip
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             kubernetes_cluster_id: kubernetes_cluster_id
             kubernetes_cluster_name: kubernetes_cluster_name
@@ -22885,30 +23659,48 @@ components:
               is_deepfence_system: true
               image: null
               processes:
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
               secret_scan_status: secret_scan_status
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
@@ -22945,30 +23737,48 @@ components:
               is_deepfence_system: true
               image: null
               processes:
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
               secret_scan_status: secret_scan_status
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
@@ -23033,30 +23843,48 @@ components:
               is_deepfence_system: true
               image: null
               processes:
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
               secret_scan_status: secret_scan_status
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
@@ -23093,30 +23921,48 @@ components:
               is_deepfence_system: true
               image: null
               processes:
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
               secret_scan_status: secret_scan_status
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
@@ -23178,30 +24024,48 @@ components:
               is_deepfence_system: true
               image: null
               processes:
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
               secret_scan_status: secret_scan_status
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
@@ -23238,30 +24102,48 @@ components:
               is_deepfence_system: true
               image: null
               processes:
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
               secret_scan_status: secret_scan_status
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
@@ -23373,30 +24255,48 @@ components:
             is_deepfence_system: true
             image: null
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
@@ -23433,30 +24333,48 @@ components:
             is_deepfence_system: true
             image: null
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
@@ -23512,30 +24430,48 @@ components:
           availability_zone: availability_zone
           is_console_vm: true
           processes:
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
           secret_scan_status: secret_scan_status
           compliance_scan_status: compliance_scan_status
           outbound_connections:
@@ -23573,30 +24509,48 @@ components:
           - is_deepfence_system: true
             kubernetes_ip: kubernetes_ip
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             kubernetes_cluster_id: kubernetes_cluster_id
             kubernetes_cluster_name: kubernetes_cluster_name
@@ -23629,30 +24583,48 @@ components:
               is_deepfence_system: true
               image: null
               processes:
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
               secret_scan_status: secret_scan_status
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
@@ -23689,30 +24661,48 @@ components:
               is_deepfence_system: true
               image: null
               processes:
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
               secret_scan_status: secret_scan_status
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
@@ -23736,30 +24726,48 @@ components:
           - is_deepfence_system: true
             kubernetes_ip: kubernetes_ip
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             kubernetes_cluster_id: kubernetes_cluster_id
             kubernetes_cluster_name: kubernetes_cluster_name
@@ -23792,30 +24800,48 @@ components:
               is_deepfence_system: true
               image: null
               processes:
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
               secret_scan_status: secret_scan_status
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
@@ -23852,30 +24878,48 @@ components:
               is_deepfence_system: true
               image: null
               processes:
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
-              - memory_max: 9
-                cmdline: cmdline
-                cpu_max: 2.3021358869347655
+              - cpu_max: 2.3021358869347655
                 node_name: node_name
                 memory_usage: 3
                 open_files_count: 2
                 threads: 1
                 pid: 4
+                ppid: 7
+                memory_max: 9
+                active_secrets:
+                - active_secrets
+                - active_secrets
+                cmdline: cmdline
+                active_cves:
+                - active_cves
+                - active_cves
+                active_malwares:
+                - active_malwares
+                - active_malwares
                 short_name: short_name
                 cpu_usage: 7.061401241503109
                 node_id: node_id
-                ppid: 7
               secret_scan_status: secret_scan_status
               docker_container_name: docker_container_name
               docker_container_created: docker_container_created
@@ -24058,12 +25102,30 @@ components:
         description: description
         resources:
         - node_type: node_type
+          live_secrets:
+          - live_secrets
+          - live_secrets
+          live_cves:
+          - live_cves
+          - live_cves
           name: name
           host_name: host_name
+          live_malwares:
+          - live_malwares
+          - live_malwares
           node_id: node_id
         - node_type: node_type
+          live_secrets:
+          - live_secrets
+          - live_secrets
+          live_cves:
+          - live_cves
+          - live_cves
           name: name
           host_name: host_name
+          live_malwares:
+          - live_malwares
+          - live_malwares
           node_id: node_id
         version: version
         rule_id: rule_id
@@ -24216,12 +25278,30 @@ components:
           description: description
           resources:
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           version: version
           rule_id: rule_id
@@ -24245,12 +25325,30 @@ components:
           description: description
           resources:
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           version: version
           rule_id: rule_id
@@ -24842,30 +25940,48 @@ components:
         is_deepfence_system: true
         kubernetes_ip: kubernetes_ip
         processes:
-        - memory_max: 9
-          cmdline: cmdline
-          cpu_max: 2.3021358869347655
+        - cpu_max: 2.3021358869347655
           node_name: node_name
           memory_usage: 3
           open_files_count: 2
           threads: 1
           pid: 4
+          ppid: 7
+          memory_max: 9
+          active_secrets:
+          - active_secrets
+          - active_secrets
+          cmdline: cmdline
+          active_cves:
+          - active_cves
+          - active_cves
+          active_malwares:
+          - active_malwares
+          - active_malwares
           short_name: short_name
           cpu_usage: 7.061401241503109
           node_id: node_id
-          ppid: 7
-        - memory_max: 9
-          cmdline: cmdline
-          cpu_max: 2.3021358869347655
+        - cpu_max: 2.3021358869347655
           node_name: node_name
           memory_usage: 3
           open_files_count: 2
           threads: 1
           pid: 4
+          ppid: 7
+          memory_max: 9
+          active_secrets:
+          - active_secrets
+          - active_secrets
+          cmdline: cmdline
+          active_cves:
+          - active_cves
+          - active_cves
+          active_malwares:
+          - active_malwares
+          - active_malwares
           short_name: short_name
           cpu_usage: 7.061401241503109
           node_id: node_id
-          ppid: 7
         secret_scan_status: secret_scan_status
         kubernetes_cluster_id: kubernetes_cluster_id
         kubernetes_cluster_name: kubernetes_cluster_name
@@ -24898,30 +26014,48 @@ components:
           is_deepfence_system: true
           image: null
           processes:
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
           secret_scan_status: secret_scan_status
           docker_container_name: docker_container_name
           docker_container_created: docker_container_created
@@ -24958,30 +26092,48 @@ components:
           is_deepfence_system: true
           image: null
           processes:
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
-          - memory_max: 9
-            cmdline: cmdline
-            cpu_max: 2.3021358869347655
+          - cpu_max: 2.3021358869347655
             node_name: node_name
             memory_usage: 3
             open_files_count: 2
             threads: 1
             pid: 4
+            ppid: 7
+            memory_max: 9
+            active_secrets:
+            - active_secrets
+            - active_secrets
+            cmdline: cmdline
+            active_cves:
+            - active_cves
+            - active_cves
+            active_malwares:
+            - active_malwares
+            - active_malwares
             short_name: short_name
             cpu_usage: 7.061401241503109
             node_id: node_id
-            ppid: 7
           secret_scan_status: secret_scan_status
           docker_container_name: docker_container_name
           docker_container_created: docker_container_created
@@ -25094,19 +26246,43 @@ components:
       type: object
     ModelProcess:
       example:
-        memory_max: 9
-        cmdline: cmdline
         cpu_max: 2.3021358869347655
         node_name: node_name
         memory_usage: 3
         open_files_count: 2
         threads: 1
         pid: 4
+        ppid: 7
+        memory_max: 9
+        active_secrets:
+        - active_secrets
+        - active_secrets
+        cmdline: cmdline
+        active_cves:
+        - active_cves
+        - active_cves
+        active_malwares:
+        - active_malwares
+        - active_malwares
         short_name: short_name
         cpu_usage: 7.061401241503109
         node_id: node_id
-        ppid: 7
       properties:
+        active_cves:
+          items:
+            type: string
+          nullable: true
+          type: array
+        active_malwares:
+          items:
+            type: string
+          nullable: true
+          type: array
+        active_secrets:
+          items:
+            type: string
+          nullable: true
+          type: array
         cmdline:
           type: string
         cpu_max:
@@ -25132,6 +26308,9 @@ components:
         threads:
           type: integer
       required:
+      - active_cves
+      - active_malwares
+      - active_secrets
       - cmdline
       - cpu_max
       - cpu_usage
@@ -25517,30 +26696,48 @@ components:
             is_deepfence_system: true
             image: null
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
@@ -25577,30 +26774,48 @@ components:
             is_deepfence_system: true
             image: null
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
@@ -25662,30 +26877,48 @@ components:
             is_deepfence_system: true
             image: null
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
@@ -25722,30 +26955,48 @@ components:
             is_deepfence_system: true
             image: null
             processes:
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
-            - memory_max: 9
-              cmdline: cmdline
-              cpu_max: 2.3021358869347655
+            - cpu_max: 2.3021358869347655
               node_name: node_name
               memory_usage: 3
               open_files_count: 2
               threads: 1
               pid: 4
+              ppid: 7
+              memory_max: 9
+              active_secrets:
+              - active_secrets
+              - active_secrets
+              cmdline: cmdline
+              active_cves:
+              - active_cves
+              - active_cves
+              active_malwares:
+              - active_malwares
+              - active_malwares
               short_name: short_name
               cpu_usage: 7.061401241503109
               node_id: node_id
-              ppid: 7
             secret_scan_status: secret_scan_status
             docker_container_name: docker_container_name
             docker_container_created: docker_container_created
@@ -26202,12 +27453,30 @@ components:
           description: description
           resources:
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           cloud_provider: cloud_provider
           title: title
@@ -26230,12 +27499,30 @@ components:
           description: description
           resources:
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           cloud_provider: cloud_provider
           title: title
@@ -26265,12 +27552,30 @@ components:
           description: description
           resources:
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           test_category: test_category
           remediation_ansible: remediation_ansible
@@ -26291,12 +27596,30 @@ components:
           description: description
           resources:
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           test_category: test_category
           remediation_ansible: remediation_ansible
@@ -26339,12 +27662,30 @@ components:
           description: description
           resources:
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           version: version
           rule_id: rule_id
@@ -26368,12 +27709,30 @@ components:
           description: description
           resources:
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           version: version
           rule_id: rule_id
@@ -26404,12 +27763,30 @@ components:
           starting_index: 6
           resources:
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           node_id: node_id
         - score: 0.8008281904610115
@@ -26422,12 +27799,30 @@ components:
           starting_index: 6
           resources:
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           node_id: node_id
       properties:
@@ -26446,21 +27841,7 @@ components:
           parsed_attack_vector: parsed_attack_vector
           cve_container_layer: cve_container_layer
           masked: true
-          cve_description: cve_description
-          cve_overall_score: 6.027456183070403
-          resources:
-          - node_type: node_type
-            name: name
-            host_name: host_name
-            node_id: node_id
-          - node_type: node_type
-            name: name
-            host_name: host_name
-            node_id: node_id
           cve_caused_by_package: cve_caused_by_package
-          cve_attack_vector: cve_attack_vector
-          cve_cvss_score: 0.8008281904610115
-          rule_id: rule_id
           cisa_kev: true
           urls:
           - ""
@@ -26468,6 +27849,38 @@ components:
           cve_severity: critical
           cve_caused_by_package_path: cve_caused_by_package_path
           updated_at: 5
+          cve_description: cve_description
+          cve_overall_score: 6.027456183070403
+          resources:
+          - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
+            name: name
+            host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
+            node_id: node_id
+          - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
+            name: name
+            host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
+            node_id: node_id
+          cve_attack_vector: cve_attack_vector
+          cve_cvss_score: 0.8008281904610115
+          rule_id: rule_id
           cve_id: cve_id
           exploit_poc: exploit_poc
           namespace: namespace
@@ -26475,26 +27888,13 @@ components:
           has_live_connection: true
           cve_fixed_in: cve_fixed_in
           cve_link: cve_link
+          exploitability_score: 5
           node_id: node_id
         - epss_score: 1.4658129805029452
           parsed_attack_vector: parsed_attack_vector
           cve_container_layer: cve_container_layer
           masked: true
-          cve_description: cve_description
-          cve_overall_score: 6.027456183070403
-          resources:
-          - node_type: node_type
-            name: name
-            host_name: host_name
-            node_id: node_id
-          - node_type: node_type
-            name: name
-            host_name: host_name
-            node_id: node_id
           cve_caused_by_package: cve_caused_by_package
-          cve_attack_vector: cve_attack_vector
-          cve_cvss_score: 0.8008281904610115
-          rule_id: rule_id
           cisa_kev: true
           urls:
           - ""
@@ -26502,6 +27902,38 @@ components:
           cve_severity: critical
           cve_caused_by_package_path: cve_caused_by_package_path
           updated_at: 5
+          cve_description: cve_description
+          cve_overall_score: 6.027456183070403
+          resources:
+          - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
+            name: name
+            host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
+            node_id: node_id
+          - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
+            name: name
+            host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
+            node_id: node_id
+          cve_attack_vector: cve_attack_vector
+          cve_cvss_score: 0.8008281904610115
+          rule_id: rule_id
           cve_id: cve_id
           exploit_poc: exploit_poc
           namespace: namespace
@@ -26509,6 +27941,7 @@ components:
           has_live_connection: true
           cve_fixed_in: cve_fixed_in
           cve_link: cve_link
+          exploitability_score: 5
           node_id: node_id
       properties:
         new:
@@ -26758,12 +28191,30 @@ components:
       example:
         basic_nodes:
         - node_type: node_type
+          live_secrets:
+          - live_secrets
+          - live_secrets
+          live_cves:
+          - live_cves
+          - live_cves
           name: name
           host_name: host_name
+          live_malwares:
+          - live_malwares
+          - live_malwares
           node_id: node_id
         - node_type: node_type
+          live_secrets:
+          - live_secrets
+          - live_secrets
+          live_cves:
+          - live_cves
+          - live_cves
           name: name
           host_name: host_name
+          live_malwares:
+          - live_malwares
+          - live_malwares
           node_id: node_id
         result_id: result_id
       properties:
@@ -27035,12 +28486,30 @@ components:
         starting_index: 6
         resources:
         - node_type: node_type
+          live_secrets:
+          - live_secrets
+          - live_secrets
+          live_cves:
+          - live_cves
+          - live_cves
           name: name
           host_name: host_name
+          live_malwares:
+          - live_malwares
+          - live_malwares
           node_id: node_id
         - node_type: node_type
+          live_secrets:
+          - live_secrets
+          - live_secrets
+          live_cves:
+          - live_cves
+          - live_cves
           name: name
           host_name: host_name
+          live_malwares:
+          - live_malwares
+          - live_malwares
           node_id: node_id
         node_id: node_id
       properties:
@@ -27144,12 +28613,30 @@ components:
           starting_index: 6
           resources:
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           node_id: node_id
         - score: 0.8008281904610115
@@ -27162,12 +28649,30 @@ components:
           starting_index: 6
           resources:
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
             name: name
             host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
             node_id: node_id
           node_id: node_id
         cloud_account_id: cloud_account_id
@@ -27559,21 +29064,7 @@ components:
         parsed_attack_vector: parsed_attack_vector
         cve_container_layer: cve_container_layer
         masked: true
-        cve_description: cve_description
-        cve_overall_score: 6.027456183070403
-        resources:
-        - node_type: node_type
-          name: name
-          host_name: host_name
-          node_id: node_id
-        - node_type: node_type
-          name: name
-          host_name: host_name
-          node_id: node_id
         cve_caused_by_package: cve_caused_by_package
-        cve_attack_vector: cve_attack_vector
-        cve_cvss_score: 0.8008281904610115
-        rule_id: rule_id
         cisa_kev: true
         urls:
         - ""
@@ -27581,6 +29072,38 @@ components:
         cve_severity: critical
         cve_caused_by_package_path: cve_caused_by_package_path
         updated_at: 5
+        cve_description: cve_description
+        cve_overall_score: 6.027456183070403
+        resources:
+        - node_type: node_type
+          live_secrets:
+          - live_secrets
+          - live_secrets
+          live_cves:
+          - live_cves
+          - live_cves
+          name: name
+          host_name: host_name
+          live_malwares:
+          - live_malwares
+          - live_malwares
+          node_id: node_id
+        - node_type: node_type
+          live_secrets:
+          - live_secrets
+          - live_secrets
+          live_cves:
+          - live_cves
+          - live_cves
+          name: name
+          host_name: host_name
+          live_malwares:
+          - live_malwares
+          - live_malwares
+          node_id: node_id
+        cve_attack_vector: cve_attack_vector
+        cve_cvss_score: 0.8008281904610115
+        rule_id: rule_id
         cve_id: cve_id
         exploit_poc: exploit_poc
         namespace: namespace
@@ -27588,6 +29111,7 @@ components:
         has_live_connection: true
         cve_fixed_in: cve_fixed_in
         cve_link: cve_link
+        exploitability_score: 5
         node_id: node_id
       properties:
         cisa_kev:
@@ -27626,6 +29150,8 @@ components:
           type: number
         exploit_poc:
           type: string
+        exploitability_score:
+          type: integer
         has_live_connection:
           type: boolean
         masked:
@@ -27686,12 +29212,30 @@ components:
         masked: true
         resources:
         - node_type: node_type
+          live_secrets:
+          - live_secrets
+          - live_secrets
+          live_cves:
+          - live_cves
+          - live_cves
           name: name
           host_name: host_name
+          live_malwares:
+          - live_malwares
+          - live_malwares
           node_id: node_id
         - node_type: node_type
+          live_secrets:
+          - live_secrets
+          - live_secrets
+          live_cves:
+          - live_cves
+          - live_cves
           name: name
           host_name: host_name
+          live_malwares:
+          - live_malwares
+          - live_malwares
           node_id: node_id
         cve_fixed_ins:
         - cve_fixed_ins
@@ -27869,21 +29413,7 @@ components:
           parsed_attack_vector: parsed_attack_vector
           cve_container_layer: cve_container_layer
           masked: true
-          cve_description: cve_description
-          cve_overall_score: 6.027456183070403
-          resources:
-          - node_type: node_type
-            name: name
-            host_name: host_name
-            node_id: node_id
-          - node_type: node_type
-            name: name
-            host_name: host_name
-            node_id: node_id
           cve_caused_by_package: cve_caused_by_package
-          cve_attack_vector: cve_attack_vector
-          cve_cvss_score: 0.8008281904610115
-          rule_id: rule_id
           cisa_kev: true
           urls:
           - ""
@@ -27891,6 +29421,38 @@ components:
           cve_severity: critical
           cve_caused_by_package_path: cve_caused_by_package_path
           updated_at: 5
+          cve_description: cve_description
+          cve_overall_score: 6.027456183070403
+          resources:
+          - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
+            name: name
+            host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
+            node_id: node_id
+          - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
+            name: name
+            host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
+            node_id: node_id
+          cve_attack_vector: cve_attack_vector
+          cve_cvss_score: 0.8008281904610115
+          rule_id: rule_id
           cve_id: cve_id
           exploit_poc: exploit_poc
           namespace: namespace
@@ -27898,26 +29460,13 @@ components:
           has_live_connection: true
           cve_fixed_in: cve_fixed_in
           cve_link: cve_link
+          exploitability_score: 5
           node_id: node_id
         - epss_score: 1.4658129805029452
           parsed_attack_vector: parsed_attack_vector
           cve_container_layer: cve_container_layer
           masked: true
-          cve_description: cve_description
-          cve_overall_score: 6.027456183070403
-          resources:
-          - node_type: node_type
-            name: name
-            host_name: host_name
-            node_id: node_id
-          - node_type: node_type
-            name: name
-            host_name: host_name
-            node_id: node_id
           cve_caused_by_package: cve_caused_by_package
-          cve_attack_vector: cve_attack_vector
-          cve_cvss_score: 0.8008281904610115
-          rule_id: rule_id
           cisa_kev: true
           urls:
           - ""
@@ -27925,6 +29474,38 @@ components:
           cve_severity: critical
           cve_caused_by_package_path: cve_caused_by_package_path
           updated_at: 5
+          cve_description: cve_description
+          cve_overall_score: 6.027456183070403
+          resources:
+          - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
+            name: name
+            host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
+            node_id: node_id
+          - node_type: node_type
+            live_secrets:
+            - live_secrets
+            - live_secrets
+            live_cves:
+            - live_cves
+            - live_cves
+            name: name
+            host_name: host_name
+            live_malwares:
+            - live_malwares
+            - live_malwares
+            node_id: node_id
+          cve_attack_vector: cve_attack_vector
+          cve_cvss_score: 0.8008281904610115
+          rule_id: rule_id
           cve_id: cve_id
           exploit_poc: exploit_poc
           namespace: namespace
@@ -27932,6 +29513,7 @@ components:
           has_live_connection: true
           cve_fixed_in: cve_fixed_in
           cve_link: cve_link
+          exploitability_score: 5
           node_id: node_id
         scan_id: scan_id
         docker_image_name: docker_image_name
@@ -28152,6 +29734,9 @@ components:
         kubernetes_is_in_host_network: true
         instance_id: instance_id
         kernel_id: kernel_id
+        active_cves:
+        - active_cves
+        - active_cves
         copy_of: copy_of
         open_files:
         - open_files
@@ -28185,8 +29770,14 @@ components:
         docker_container_network_mode: docker_container_network_mode
         cloud_account_id: cloud_account_id
         kubernetes_type: kubernetes_type
+        active_secrets:
+        - active_secrets
+        - active_secrets
         resource_group: resource_group
         docker_image_tag: docker_image_tag
+        active_malwares:
+        - active_malwares
+        - active_malwares
         kubernetes_labels: kubernetes_labels
         docker_container_ips:
         - docker_container_ips
@@ -28220,6 +29811,18 @@ components:
         host_name: host_name
         node_id: node_id
       properties:
+        active_cves:
+          items:
+            type: string
+          type: array
+        active_malwares:
+          items:
+            type: string
+          type: array
+        active_secrets:
+          items:
+            type: string
+          type: array
         agent_running:
           type: boolean
         availability_zone:
@@ -28642,6 +30245,23 @@ components:
       required:
       - node_filter
       - relation_ship
+      type: object
+    SearchMostExploitableCountResp:
+      example:
+        count: 0
+        description: description
+        exploitability_score: 6
+      properties:
+        count:
+          type: integer
+        description:
+          type: string
+        exploitability_score:
+          type: integer
+      required:
+      - count
+      - description
+      - exploitability_score
       type: object
     SearchNodeCountResp:
       example:
@@ -29182,7 +30802,8 @@ components:
           - value: value
             key: key
         config:
-        - issuer_url: issuer_url
+        - issuer_alias_url: issuer_alias_url
+          issuer_url: issuer_url
           updated_at: 2000-01-23T04:56:07.000+00:00
           sso_provider_type: sso_provider_type
           created_at: 2000-01-23T04:56:07.000+00:00
@@ -29190,7 +30811,8 @@ components:
           id: 0
           label: label
           client_id: client_id
-        - issuer_url: issuer_url
+        - issuer_alias_url: issuer_alias_url
+          issuer_url: issuer_url
           updated_at: 2000-01-23T04:56:07.000+00:00
           sso_provider_type: sso_provider_type
           created_at: 2000-01-23T04:56:07.000+00:00
@@ -29269,6 +30891,7 @@ components:
       type: object
     SinglesignonSSOProviderConfig:
       example:
+        issuer_alias_url: issuer_alias_url
         issuer_url: issuer_url
         sso_provider_type: oidc
         disable_password_login: true
@@ -29283,6 +30906,8 @@ components:
         disable_password_login:
           type: boolean
         host_name:
+          type: string
+        issuer_alias_url:
           type: string
         issuer_url:
           type: string
@@ -29301,6 +30926,7 @@ components:
       type: object
     SinglesignonSSOResponse:
       example:
+        issuer_alias_url: issuer_alias_url
         issuer_url: issuer_url
         updated_at: 2000-01-23T04:56:07.000+00:00
         sso_provider_type: sso_provider_type
@@ -29319,6 +30945,8 @@ components:
           type: boolean
         id:
           type: integer
+        issuer_alias_url:
+          type: string
         issuer_url:
           type: string
         label:
@@ -29333,6 +30961,7 @@ components:
       - created_at
       - disable_password_login
       - id
+      - issuer_alias_url
       - issuer_url
       - label
       - sso_provider_type
@@ -29340,6 +30969,7 @@ components:
       type: object
     SinglesignonUpdateSSOProviderConfig:
       example:
+        issuer_alias_url: issuer_alias_url
         issuer_url: issuer_url
         disable_password_login: true
         client_secret: client_secret
@@ -29351,6 +30981,8 @@ components:
           type: string
         disable_password_login:
           type: boolean
+        issuer_alias_url:
+          type: string
         issuer_url:
           type: string
       required:
@@ -29399,6 +31031,9 @@ components:
         image_name:
         - image_name
         - image_name
+        most_exploitable_scores:
+        - 0
+        - 0
         container_name:
         - container_name
         - container_name
@@ -29441,6 +31076,10 @@ components:
           items:
             type: boolean
           type: array
+        most_exploitable_scores:
+          items:
+            type: integer
+          type: array
         node_id:
           items:
             type: string
@@ -29476,6 +31115,9 @@ components:
           image_name:
           - image_name
           - image_name
+          most_exploitable_scores:
+          - 0
+          - 0
           container_name:
           - container_name
           - container_name

@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: v3.0.0
+API version: v2.5.0
 Contact: community@deepfence.io
 */
 
@@ -27,6 +27,7 @@ type SinglesignonSSOResponse struct {
 	CreatedAt time.Time `json:"created_at"`
 	DisablePasswordLogin bool `json:"disable_password_login"`
 	Id int32 `json:"id"`
+	IssuerAliasUrl string `json:"issuer_alias_url"`
 	IssuerUrl string `json:"issuer_url"`
 	Label string `json:"label"`
 	SsoProviderType string `json:"sso_provider_type"`
@@ -39,12 +40,13 @@ type _SinglesignonSSOResponse SinglesignonSSOResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSinglesignonSSOResponse(clientId string, createdAt time.Time, disablePasswordLogin bool, id int32, issuerUrl string, label string, ssoProviderType string, updatedAt time.Time) *SinglesignonSSOResponse {
+func NewSinglesignonSSOResponse(clientId string, createdAt time.Time, disablePasswordLogin bool, id int32, issuerAliasUrl string, issuerUrl string, label string, ssoProviderType string, updatedAt time.Time) *SinglesignonSSOResponse {
 	this := SinglesignonSSOResponse{}
 	this.ClientId = clientId
 	this.CreatedAt = createdAt
 	this.DisablePasswordLogin = disablePasswordLogin
 	this.Id = id
+	this.IssuerAliasUrl = issuerAliasUrl
 	this.IssuerUrl = issuerUrl
 	this.Label = label
 	this.SsoProviderType = ssoProviderType
@@ -154,6 +156,30 @@ func (o *SinglesignonSSOResponse) GetIdOk() (*int32, bool) {
 // SetId sets field value
 func (o *SinglesignonSSOResponse) SetId(v int32) {
 	o.Id = v
+}
+
+// GetIssuerAliasUrl returns the IssuerAliasUrl field value
+func (o *SinglesignonSSOResponse) GetIssuerAliasUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.IssuerAliasUrl
+}
+
+// GetIssuerAliasUrlOk returns a tuple with the IssuerAliasUrl field value
+// and a boolean to check if the value has been set.
+func (o *SinglesignonSSOResponse) GetIssuerAliasUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IssuerAliasUrl, true
+}
+
+// SetIssuerAliasUrl sets field value
+func (o *SinglesignonSSOResponse) SetIssuerAliasUrl(v string) {
+	o.IssuerAliasUrl = v
 }
 
 // GetIssuerUrl returns the IssuerUrl field value
@@ -266,6 +292,7 @@ func (o SinglesignonSSOResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["disable_password_login"] = o.DisablePasswordLogin
 	toSerialize["id"] = o.Id
+	toSerialize["issuer_alias_url"] = o.IssuerAliasUrl
 	toSerialize["issuer_url"] = o.IssuerUrl
 	toSerialize["label"] = o.Label
 	toSerialize["sso_provider_type"] = o.SsoProviderType
@@ -282,6 +309,7 @@ func (o *SinglesignonSSOResponse) UnmarshalJSON(data []byte) (err error) {
 		"created_at",
 		"disable_password_login",
 		"id",
+		"issuer_alias_url",
 		"issuer_url",
 		"label",
 		"sso_provider_type",

@@ -4,6 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ActiveCves** | **[]string** |  | 
+**ActiveMalwares** | **[]string** |  | 
+**ActiveSecrets** | **[]string** |  | 
 **Cmdline** | **string** |  | 
 **CpuMax** | **float32** |  | 
 **CpuUsage** | **float32** |  | 
@@ -21,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewModelProcess
 
-`func NewModelProcess(cmdline string, cpuMax float32, cpuUsage float32, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, openFilesCount int32, pid int32, ppid int32, shortName string, threads int32, ) *ModelProcess`
+`func NewModelProcess(activeCves []string, activeMalwares []string, activeSecrets []string, cmdline string, cpuMax float32, cpuUsage float32, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, openFilesCount int32, pid int32, ppid int32, shortName string, threads int32, ) *ModelProcess`
 
 NewModelProcess instantiates a new ModelProcess object
 This constructor will assign default values to properties that have it defined,
@@ -36,6 +39,96 @@ NewModelProcessWithDefaults instantiates a new ModelProcess object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetActiveCves
+
+`func (o *ModelProcess) GetActiveCves() []string`
+
+GetActiveCves returns the ActiveCves field if non-nil, zero value otherwise.
+
+### GetActiveCvesOk
+
+`func (o *ModelProcess) GetActiveCvesOk() (*[]string, bool)`
+
+GetActiveCvesOk returns a tuple with the ActiveCves field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActiveCves
+
+`func (o *ModelProcess) SetActiveCves(v []string)`
+
+SetActiveCves sets ActiveCves field to given value.
+
+
+### SetActiveCvesNil
+
+`func (o *ModelProcess) SetActiveCvesNil(b bool)`
+
+ SetActiveCvesNil sets the value for ActiveCves to be an explicit nil
+
+### UnsetActiveCves
+`func (o *ModelProcess) UnsetActiveCves()`
+
+UnsetActiveCves ensures that no value is present for ActiveCves, not even an explicit nil
+### GetActiveMalwares
+
+`func (o *ModelProcess) GetActiveMalwares() []string`
+
+GetActiveMalwares returns the ActiveMalwares field if non-nil, zero value otherwise.
+
+### GetActiveMalwaresOk
+
+`func (o *ModelProcess) GetActiveMalwaresOk() (*[]string, bool)`
+
+GetActiveMalwaresOk returns a tuple with the ActiveMalwares field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActiveMalwares
+
+`func (o *ModelProcess) SetActiveMalwares(v []string)`
+
+SetActiveMalwares sets ActiveMalwares field to given value.
+
+
+### SetActiveMalwaresNil
+
+`func (o *ModelProcess) SetActiveMalwaresNil(b bool)`
+
+ SetActiveMalwaresNil sets the value for ActiveMalwares to be an explicit nil
+
+### UnsetActiveMalwares
+`func (o *ModelProcess) UnsetActiveMalwares()`
+
+UnsetActiveMalwares ensures that no value is present for ActiveMalwares, not even an explicit nil
+### GetActiveSecrets
+
+`func (o *ModelProcess) GetActiveSecrets() []string`
+
+GetActiveSecrets returns the ActiveSecrets field if non-nil, zero value otherwise.
+
+### GetActiveSecretsOk
+
+`func (o *ModelProcess) GetActiveSecretsOk() (*[]string, bool)`
+
+GetActiveSecretsOk returns a tuple with the ActiveSecrets field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActiveSecrets
+
+`func (o *ModelProcess) SetActiveSecrets(v []string)`
+
+SetActiveSecrets sets ActiveSecrets field to given value.
+
+
+### SetActiveSecretsNil
+
+`func (o *ModelProcess) SetActiveSecretsNil(b bool)`
+
+ SetActiveSecretsNil sets the value for ActiveSecrets to be an explicit nil
+
+### UnsetActiveSecrets
+`func (o *ModelProcess) UnsetActiveSecrets()`
+
+UnsetActiveSecrets ensures that no value is present for ActiveSecrets, not even an explicit nil
 ### GetCmdline
 
 `func (o *ModelProcess) GetCmdline() string`

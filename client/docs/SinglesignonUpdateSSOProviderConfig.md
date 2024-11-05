@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ClientId** | **string** |  | 
 **ClientSecret** | Pointer to **string** |  | [optional] 
 **DisablePasswordLogin** | **bool** |  | 
+**IssuerAliasUrl** | Pointer to **string** |  | [optional] 
 **IssuerUrl** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -92,6 +93,31 @@ and a boolean to check if the value has been set.
 
 SetDisablePasswordLogin sets DisablePasswordLogin field to given value.
 
+
+### GetIssuerAliasUrl
+
+`func (o *SinglesignonUpdateSSOProviderConfig) GetIssuerAliasUrl() string`
+
+GetIssuerAliasUrl returns the IssuerAliasUrl field if non-nil, zero value otherwise.
+
+### GetIssuerAliasUrlOk
+
+`func (o *SinglesignonUpdateSSOProviderConfig) GetIssuerAliasUrlOk() (*string, bool)`
+
+GetIssuerAliasUrlOk returns a tuple with the IssuerAliasUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIssuerAliasUrl
+
+`func (o *SinglesignonUpdateSSOProviderConfig) SetIssuerAliasUrl(v string)`
+
+SetIssuerAliasUrl sets IssuerAliasUrl field to given value.
+
+### HasIssuerAliasUrl
+
+`func (o *SinglesignonUpdateSSOProviderConfig) HasIssuerAliasUrl() bool`
+
+HasIssuerAliasUrl returns a boolean if a field has been set.
 
 ### GetIssuerUrl
 

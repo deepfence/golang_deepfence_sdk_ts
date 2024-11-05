@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ImageName** | Pointer to **[]string** |  | [optional] 
 **KubernetesClusterName** | Pointer to **[]string** |  | [optional] 
 **Masked** | Pointer to **[]bool** |  | [optional] 
+**MostExploitableScores** | Pointer to **[]int32** |  | [optional] 
 **NodeId** | Pointer to **[]string** |  | [optional] 
 **PodName** | Pointer to **[]string** |  | [optional] 
 **ScanStatus** | Pointer to **[]string** |  | [optional] 
@@ -156,6 +157,31 @@ SetMasked sets Masked field to given value.
 `func (o *UtilsAdvancedReportFilters) HasMasked() bool`
 
 HasMasked returns a boolean if a field has been set.
+
+### GetMostExploitableScores
+
+`func (o *UtilsAdvancedReportFilters) GetMostExploitableScores() []int32`
+
+GetMostExploitableScores returns the MostExploitableScores field if non-nil, zero value otherwise.
+
+### GetMostExploitableScoresOk
+
+`func (o *UtilsAdvancedReportFilters) GetMostExploitableScoresOk() (*[]int32, bool)`
+
+GetMostExploitableScoresOk returns a tuple with the MostExploitableScores field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMostExploitableScores
+
+`func (o *UtilsAdvancedReportFilters) SetMostExploitableScores(v []int32)`
+
+SetMostExploitableScores sets MostExploitableScores field to given value.
+
+### HasMostExploitableScores
+
+`func (o *UtilsAdvancedReportFilters) HasMostExploitableScores() bool`
+
+HasMostExploitableScores returns a boolean if a field has been set.
 
 ### GetNodeId
 

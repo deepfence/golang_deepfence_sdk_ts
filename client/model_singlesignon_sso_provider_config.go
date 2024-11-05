@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: v3.0.0
+API version: v2.5.0
 Contact: community@deepfence.io
 */
 
@@ -26,6 +26,7 @@ type SinglesignonSSOProviderConfig struct {
 	ClientSecret string `json:"client_secret"`
 	DisablePasswordLogin bool `json:"disable_password_login"`
 	HostName *string `json:"host_name,omitempty"`
+	IssuerAliasUrl *string `json:"issuer_alias_url,omitempty"`
 	IssuerUrl *string `json:"issuer_url,omitempty"`
 	SsoProviderType string `json:"sso_provider_type"`
 }
@@ -157,6 +158,38 @@ func (o *SinglesignonSSOProviderConfig) SetHostName(v string) {
 	o.HostName = &v
 }
 
+// GetIssuerAliasUrl returns the IssuerAliasUrl field value if set, zero value otherwise.
+func (o *SinglesignonSSOProviderConfig) GetIssuerAliasUrl() string {
+	if o == nil || IsNil(o.IssuerAliasUrl) {
+		var ret string
+		return ret
+	}
+	return *o.IssuerAliasUrl
+}
+
+// GetIssuerAliasUrlOk returns a tuple with the IssuerAliasUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SinglesignonSSOProviderConfig) GetIssuerAliasUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.IssuerAliasUrl) {
+		return nil, false
+	}
+	return o.IssuerAliasUrl, true
+}
+
+// HasIssuerAliasUrl returns a boolean if a field has been set.
+func (o *SinglesignonSSOProviderConfig) HasIssuerAliasUrl() bool {
+	if o != nil && !IsNil(o.IssuerAliasUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetIssuerAliasUrl gets a reference to the given string and assigns it to the IssuerAliasUrl field.
+func (o *SinglesignonSSOProviderConfig) SetIssuerAliasUrl(v string) {
+	o.IssuerAliasUrl = &v
+}
+
 // GetIssuerUrl returns the IssuerUrl field value if set, zero value otherwise.
 func (o *SinglesignonSSOProviderConfig) GetIssuerUrl() string {
 	if o == nil || IsNil(o.IssuerUrl) {
@@ -228,6 +261,9 @@ func (o SinglesignonSSOProviderConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize["disable_password_login"] = o.DisablePasswordLogin
 	if !IsNil(o.HostName) {
 		toSerialize["host_name"] = o.HostName
+	}
+	if !IsNil(o.IssuerAliasUrl) {
+		toSerialize["issuer_alias_url"] = o.IssuerAliasUrl
 	}
 	if !IsNil(o.IssuerUrl) {
 		toSerialize["issuer_url"] = o.IssuerUrl

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | 
 **DisablePasswordLogin** | **bool** |  | 
 **Id** | **int32** |  | 
+**IssuerAliasUrl** | **string** |  | 
 **IssuerUrl** | **string** |  | 
 **Label** | **string** |  | 
 **SsoProviderType** | **string** |  | 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewSinglesignonSSOResponse
 
-`func NewSinglesignonSSOResponse(clientId string, createdAt time.Time, disablePasswordLogin bool, id int32, issuerUrl string, label string, ssoProviderType string, updatedAt time.Time, ) *SinglesignonSSOResponse`
+`func NewSinglesignonSSOResponse(clientId string, createdAt time.Time, disablePasswordLogin bool, id int32, issuerAliasUrl string, issuerUrl string, label string, ssoProviderType string, updatedAt time.Time, ) *SinglesignonSSOResponse`
 
 NewSinglesignonSSOResponse instantiates a new SinglesignonSSOResponse object
 This constructor will assign default values to properties that have it defined,
@@ -110,6 +111,26 @@ and a boolean to check if the value has been set.
 `func (o *SinglesignonSSOResponse) SetId(v int32)`
 
 SetId sets Id field to given value.
+
+
+### GetIssuerAliasUrl
+
+`func (o *SinglesignonSSOResponse) GetIssuerAliasUrl() string`
+
+GetIssuerAliasUrl returns the IssuerAliasUrl field if non-nil, zero value otherwise.
+
+### GetIssuerAliasUrlOk
+
+`func (o *SinglesignonSSOResponse) GetIssuerAliasUrlOk() (*string, bool)`
+
+GetIssuerAliasUrlOk returns a tuple with the IssuerAliasUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIssuerAliasUrl
+
+`func (o *SinglesignonSSOResponse) SetIssuerAliasUrl(v string)`
+
+SetIssuerAliasUrl sets IssuerAliasUrl field to given value.
 
 
 ### GetIssuerUrl

@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: v3.0.0
+API version: v2.5.0
 Contact: community@deepfence.io
 */
 
@@ -20,6 +20,9 @@ var _ MappedNullable = &ReportMetadata{}
 
 // ReportMetadata struct for ReportMetadata
 type ReportMetadata struct {
+	ActiveCves []string `json:"active_cves,omitempty"`
+	ActiveMalwares []string `json:"active_malwares,omitempty"`
+	ActiveSecrets []string `json:"active_secrets,omitempty"`
 	AgentRunning *bool `json:"agent_running,omitempty"`
 	AvailabilityZone *string `json:"availability_zone,omitempty"`
 	CloudAccountId *string `json:"cloud_account_id,omitempty"`
@@ -112,6 +115,102 @@ func NewReportMetadata() *ReportMetadata {
 func NewReportMetadataWithDefaults() *ReportMetadata {
 	this := ReportMetadata{}
 	return &this
+}
+
+// GetActiveCves returns the ActiveCves field value if set, zero value otherwise.
+func (o *ReportMetadata) GetActiveCves() []string {
+	if o == nil || IsNil(o.ActiveCves) {
+		var ret []string
+		return ret
+	}
+	return o.ActiveCves
+}
+
+// GetActiveCvesOk returns a tuple with the ActiveCves field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ReportMetadata) GetActiveCvesOk() ([]string, bool) {
+	if o == nil || IsNil(o.ActiveCves) {
+		return nil, false
+	}
+	return o.ActiveCves, true
+}
+
+// HasActiveCves returns a boolean if a field has been set.
+func (o *ReportMetadata) HasActiveCves() bool {
+	if o != nil && !IsNil(o.ActiveCves) {
+		return true
+	}
+
+	return false
+}
+
+// SetActiveCves gets a reference to the given []string and assigns it to the ActiveCves field.
+func (o *ReportMetadata) SetActiveCves(v []string) {
+	o.ActiveCves = v
+}
+
+// GetActiveMalwares returns the ActiveMalwares field value if set, zero value otherwise.
+func (o *ReportMetadata) GetActiveMalwares() []string {
+	if o == nil || IsNil(o.ActiveMalwares) {
+		var ret []string
+		return ret
+	}
+	return o.ActiveMalwares
+}
+
+// GetActiveMalwaresOk returns a tuple with the ActiveMalwares field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ReportMetadata) GetActiveMalwaresOk() ([]string, bool) {
+	if o == nil || IsNil(o.ActiveMalwares) {
+		return nil, false
+	}
+	return o.ActiveMalwares, true
+}
+
+// HasActiveMalwares returns a boolean if a field has been set.
+func (o *ReportMetadata) HasActiveMalwares() bool {
+	if o != nil && !IsNil(o.ActiveMalwares) {
+		return true
+	}
+
+	return false
+}
+
+// SetActiveMalwares gets a reference to the given []string and assigns it to the ActiveMalwares field.
+func (o *ReportMetadata) SetActiveMalwares(v []string) {
+	o.ActiveMalwares = v
+}
+
+// GetActiveSecrets returns the ActiveSecrets field value if set, zero value otherwise.
+func (o *ReportMetadata) GetActiveSecrets() []string {
+	if o == nil || IsNil(o.ActiveSecrets) {
+		var ret []string
+		return ret
+	}
+	return o.ActiveSecrets
+}
+
+// GetActiveSecretsOk returns a tuple with the ActiveSecrets field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ReportMetadata) GetActiveSecretsOk() ([]string, bool) {
+	if o == nil || IsNil(o.ActiveSecrets) {
+		return nil, false
+	}
+	return o.ActiveSecrets, true
+}
+
+// HasActiveSecrets returns a boolean if a field has been set.
+func (o *ReportMetadata) HasActiveSecrets() bool {
+	if o != nil && !IsNil(o.ActiveSecrets) {
+		return true
+	}
+
+	return false
+}
+
+// SetActiveSecrets gets a reference to the given []string and assigns it to the ActiveSecrets field.
+func (o *ReportMetadata) SetActiveSecrets(v []string) {
+	o.ActiveSecrets = v
 }
 
 // GetAgentRunning returns the AgentRunning field value if set, zero value otherwise.
@@ -2524,6 +2623,15 @@ func (o ReportMetadata) MarshalJSON() ([]byte, error) {
 
 func (o ReportMetadata) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ActiveCves) {
+		toSerialize["active_cves"] = o.ActiveCves
+	}
+	if !IsNil(o.ActiveMalwares) {
+		toSerialize["active_malwares"] = o.ActiveMalwares
+	}
+	if !IsNil(o.ActiveSecrets) {
+		toSerialize["active_secrets"] = o.ActiveSecrets
+	}
 	if !IsNil(o.AgentRunning) {
 		toSerialize["agent_running"] = o.AgentRunning
 	}

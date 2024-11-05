@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ClientSecret** | **string** |  | 
 **DisablePasswordLogin** | **bool** |  | 
 **HostName** | Pointer to **string** |  | [optional] 
+**IssuerAliasUrl** | Pointer to **string** |  | [optional] 
 **IssuerUrl** | Pointer to **string** |  | [optional] 
 **SsoProviderType** | **string** |  | 
 
@@ -114,6 +115,31 @@ SetHostName sets HostName field to given value.
 `func (o *SinglesignonSSOProviderConfig) HasHostName() bool`
 
 HasHostName returns a boolean if a field has been set.
+
+### GetIssuerAliasUrl
+
+`func (o *SinglesignonSSOProviderConfig) GetIssuerAliasUrl() string`
+
+GetIssuerAliasUrl returns the IssuerAliasUrl field if non-nil, zero value otherwise.
+
+### GetIssuerAliasUrlOk
+
+`func (o *SinglesignonSSOProviderConfig) GetIssuerAliasUrlOk() (*string, bool)`
+
+GetIssuerAliasUrlOk returns a tuple with the IssuerAliasUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIssuerAliasUrl
+
+`func (o *SinglesignonSSOProviderConfig) SetIssuerAliasUrl(v string)`
+
+SetIssuerAliasUrl sets IssuerAliasUrl field to given value.
+
+### HasIssuerAliasUrl
+
+`func (o *SinglesignonSSOProviderConfig) HasIssuerAliasUrl() bool`
+
+HasIssuerAliasUrl returns a boolean if a field has been set.
 
 ### GetIssuerUrl
 

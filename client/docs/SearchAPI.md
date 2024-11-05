@@ -22,6 +22,9 @@ Method | HTTP request | Description
 [**CountMalwareRules**](SearchAPI.md#CountMalwareRules) | **Post** /deepfence/search/count/malware-rules | Count Malware Rules
 [**CountMalwareScans**](SearchAPI.md#CountMalwareScans) | **Post** /deepfence/search/count/malware/scans | Count Malware Scan results
 [**CountMalwares**](SearchAPI.md#CountMalwares) | **Post** /deepfence/search/count/malwares | Count Malwares
+[**CountMostExploitableMalwares**](SearchAPI.md#CountMostExploitableMalwares) | **Get** /deepfence/search/count/most-exploitable/malwares | Count Most Exploitable Malwares
+[**CountMostExploitableSecrets**](SearchAPI.md#CountMostExploitableSecrets) | **Get** /deepfence/search/count/most-exploitable/secrets | Count Most Exploitable Secrets
+[**CountMostExploitableVulnerabilities**](SearchAPI.md#CountMostExploitableVulnerabilities) | **Get** /deepfence/search/count/most-exploitable/vulnerabilities | Count Most Exploitable Vulnerabilities
 [**CountNetworkAlertRules**](SearchAPI.md#CountNetworkAlertRules) | **Post** /deepfence/search/count/network-alert-rules | Count network alert rules
 [**CountNetworkAlerts**](SearchAPI.md#CountNetworkAlerts) | **Post** /deepfence/search/count/network-alerts | Count network alerts
 [**CountNetworkViolations**](SearchAPI.md#CountNetworkViolations) | **Post** /deepfence/search/count/network-violations | Count network violations
@@ -1258,6 +1261,189 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CountMostExploitableMalwares
+
+> []SearchMostExploitableCountResp CountMostExploitableMalwares(ctx).Execute()
+
+Count Most Exploitable Malwares
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SearchAPI.CountMostExploitableMalwares(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.CountMostExploitableMalwares``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CountMostExploitableMalwares`: []SearchMostExploitableCountResp
+	fmt.Fprintf(os.Stdout, "Response from `SearchAPI.CountMostExploitableMalwares`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCountMostExploitableMalwaresRequest struct via the builder pattern
+
+
+### Return type
+
+[**[]SearchMostExploitableCountResp**](SearchMostExploitableCountResp.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CountMostExploitableSecrets
+
+> []SearchMostExploitableCountResp CountMostExploitableSecrets(ctx).Execute()
+
+Count Most Exploitable Secrets
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SearchAPI.CountMostExploitableSecrets(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.CountMostExploitableSecrets``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CountMostExploitableSecrets`: []SearchMostExploitableCountResp
+	fmt.Fprintf(os.Stdout, "Response from `SearchAPI.CountMostExploitableSecrets`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCountMostExploitableSecretsRequest struct via the builder pattern
+
+
+### Return type
+
+[**[]SearchMostExploitableCountResp**](SearchMostExploitableCountResp.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CountMostExploitableVulnerabilities
+
+> []SearchMostExploitableCountResp CountMostExploitableVulnerabilities(ctx).Execute()
+
+Count Most Exploitable Vulnerabilities
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SearchAPI.CountMostExploitableVulnerabilities(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.CountMostExploitableVulnerabilities``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CountMostExploitableVulnerabilities`: []SearchMostExploitableCountResp
+	fmt.Fprintf(os.Stdout, "Response from `SearchAPI.CountMostExploitableVulnerabilities`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCountMostExploitableVulnerabilitiesRequest struct via the builder pattern
+
+
+### Return type
+
+[**[]SearchMostExploitableCountResp**](SearchMostExploitableCountResp.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: v3.0.0
+API version: v2.5.0
 Contact: community@deepfence.io
 */
 
@@ -25,6 +25,7 @@ type UtilsAdvancedReportFilters struct {
 	ImageName []string `json:"image_name,omitempty"`
 	KubernetesClusterName []string `json:"kubernetes_cluster_name,omitempty"`
 	Masked []bool `json:"masked,omitempty"`
+	MostExploitableScores []int32 `json:"most_exploitable_scores,omitempty"`
 	NodeId []string `json:"node_id,omitempty"`
 	PodName []string `json:"pod_name,omitempty"`
 	ScanStatus []string `json:"scan_status,omitempty"`
@@ -207,6 +208,38 @@ func (o *UtilsAdvancedReportFilters) SetMasked(v []bool) {
 	o.Masked = v
 }
 
+// GetMostExploitableScores returns the MostExploitableScores field value if set, zero value otherwise.
+func (o *UtilsAdvancedReportFilters) GetMostExploitableScores() []int32 {
+	if o == nil || IsNil(o.MostExploitableScores) {
+		var ret []int32
+		return ret
+	}
+	return o.MostExploitableScores
+}
+
+// GetMostExploitableScoresOk returns a tuple with the MostExploitableScores field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UtilsAdvancedReportFilters) GetMostExploitableScoresOk() ([]int32, bool) {
+	if o == nil || IsNil(o.MostExploitableScores) {
+		return nil, false
+	}
+	return o.MostExploitableScores, true
+}
+
+// HasMostExploitableScores returns a boolean if a field has been set.
+func (o *UtilsAdvancedReportFilters) HasMostExploitableScores() bool {
+	if o != nil && !IsNil(o.MostExploitableScores) {
+		return true
+	}
+
+	return false
+}
+
+// SetMostExploitableScores gets a reference to the given []int32 and assigns it to the MostExploitableScores field.
+func (o *UtilsAdvancedReportFilters) SetMostExploitableScores(v []int32) {
+	o.MostExploitableScores = v
+}
+
 // GetNodeId returns the NodeId field value if set, zero value otherwise.
 func (o *UtilsAdvancedReportFilters) GetNodeId() []string {
 	if o == nil || IsNil(o.NodeId) {
@@ -327,6 +360,9 @@ func (o UtilsAdvancedReportFilters) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Masked) {
 		toSerialize["masked"] = o.Masked
+	}
+	if !IsNil(o.MostExploitableScores) {
+		toSerialize["most_exploitable_scores"] = o.MostExploitableScores
 	}
 	if !IsNil(o.NodeId) {
 		toSerialize["node_id"] = o.NodeId

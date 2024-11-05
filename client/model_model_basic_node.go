@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: v3.0.0
+API version: v2.5.0
 Contact: community@deepfence.io
 */
 
@@ -23,6 +23,9 @@ var _ MappedNullable = &ModelBasicNode{}
 // ModelBasicNode struct for ModelBasicNode
 type ModelBasicNode struct {
 	HostName string `json:"host_name"`
+	LiveCves []string `json:"live_cves"`
+	LiveMalwares []string `json:"live_malwares"`
+	LiveSecrets []string `json:"live_secrets"`
 	Name string `json:"name"`
 	NodeId string `json:"node_id"`
 	NodeType string `json:"node_type"`
@@ -34,9 +37,12 @@ type _ModelBasicNode ModelBasicNode
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelBasicNode(hostName string, name string, nodeId string, nodeType string) *ModelBasicNode {
+func NewModelBasicNode(hostName string, liveCves []string, liveMalwares []string, liveSecrets []string, name string, nodeId string, nodeType string) *ModelBasicNode {
 	this := ModelBasicNode{}
 	this.HostName = hostName
+	this.LiveCves = liveCves
+	this.LiveMalwares = liveMalwares
+	this.LiveSecrets = liveSecrets
 	this.Name = name
 	this.NodeId = nodeId
 	this.NodeType = nodeType
@@ -73,6 +79,84 @@ func (o *ModelBasicNode) GetHostNameOk() (*string, bool) {
 // SetHostName sets field value
 func (o *ModelBasicNode) SetHostName(v string) {
 	o.HostName = v
+}
+
+// GetLiveCves returns the LiveCves field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ModelBasicNode) GetLiveCves() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.LiveCves
+}
+
+// GetLiveCvesOk returns a tuple with the LiveCves field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelBasicNode) GetLiveCvesOk() ([]string, bool) {
+	if o == nil || IsNil(o.LiveCves) {
+		return nil, false
+	}
+	return o.LiveCves, true
+}
+
+// SetLiveCves sets field value
+func (o *ModelBasicNode) SetLiveCves(v []string) {
+	o.LiveCves = v
+}
+
+// GetLiveMalwares returns the LiveMalwares field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ModelBasicNode) GetLiveMalwares() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.LiveMalwares
+}
+
+// GetLiveMalwaresOk returns a tuple with the LiveMalwares field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelBasicNode) GetLiveMalwaresOk() ([]string, bool) {
+	if o == nil || IsNil(o.LiveMalwares) {
+		return nil, false
+	}
+	return o.LiveMalwares, true
+}
+
+// SetLiveMalwares sets field value
+func (o *ModelBasicNode) SetLiveMalwares(v []string) {
+	o.LiveMalwares = v
+}
+
+// GetLiveSecrets returns the LiveSecrets field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ModelBasicNode) GetLiveSecrets() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.LiveSecrets
+}
+
+// GetLiveSecretsOk returns a tuple with the LiveSecrets field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelBasicNode) GetLiveSecretsOk() ([]string, bool) {
+	if o == nil || IsNil(o.LiveSecrets) {
+		return nil, false
+	}
+	return o.LiveSecrets, true
+}
+
+// SetLiveSecrets sets field value
+func (o *ModelBasicNode) SetLiveSecrets(v []string) {
+	o.LiveSecrets = v
 }
 
 // GetName returns the Name field value
@@ -158,6 +242,15 @@ func (o ModelBasicNode) MarshalJSON() ([]byte, error) {
 func (o ModelBasicNode) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["host_name"] = o.HostName
+	if o.LiveCves != nil {
+		toSerialize["live_cves"] = o.LiveCves
+	}
+	if o.LiveMalwares != nil {
+		toSerialize["live_malwares"] = o.LiveMalwares
+	}
+	if o.LiveSecrets != nil {
+		toSerialize["live_secrets"] = o.LiveSecrets
+	}
 	toSerialize["name"] = o.Name
 	toSerialize["node_id"] = o.NodeId
 	toSerialize["node_type"] = o.NodeType
@@ -170,6 +263,9 @@ func (o *ModelBasicNode) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"host_name",
+		"live_cves",
+		"live_malwares",
+		"live_secrets",
 		"name",
 		"node_id",
 		"node_type",
