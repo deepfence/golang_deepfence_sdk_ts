@@ -30,6 +30,7 @@ func GetConsoleApiToken(console, port string) (string, error) {
 		InsecureSkipVerify: true,
 	}
 	tr.DisableKeepAlives = false
+	tr.Proxy = http.ProxyFromEnvironment
 
 	rhc.HTTPClient = &http.Client{Transport: tr}
 
