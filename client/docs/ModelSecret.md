@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ExploitabilityScore** | Pointer to **int32** |  | [optional] 
 **FullFilename** | **string** |  | 
 **Level** | **string** |  | 
 **Masked** | **bool** |  | 
 **MatchedContent** | **string** |  | 
+**MaxExploitabilityScore** | Pointer to **int32** |  | [optional] 
 **NodeId** | **string** |  | 
 **Resources** | Pointer to [**[]ModelBasicNode**](ModelBasicNode.md) |  | [optional] 
 **RuleId** | **string** |  | 
@@ -33,6 +35,31 @@ will change when the set of required properties is changed
 NewModelSecretWithDefaults instantiates a new ModelSecret object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetExploitabilityScore
+
+`func (o *ModelSecret) GetExploitabilityScore() int32`
+
+GetExploitabilityScore returns the ExploitabilityScore field if non-nil, zero value otherwise.
+
+### GetExploitabilityScoreOk
+
+`func (o *ModelSecret) GetExploitabilityScoreOk() (*int32, bool)`
+
+GetExploitabilityScoreOk returns a tuple with the ExploitabilityScore field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExploitabilityScore
+
+`func (o *ModelSecret) SetExploitabilityScore(v int32)`
+
+SetExploitabilityScore sets ExploitabilityScore field to given value.
+
+### HasExploitabilityScore
+
+`func (o *ModelSecret) HasExploitabilityScore() bool`
+
+HasExploitabilityScore returns a boolean if a field has been set.
 
 ### GetFullFilename
 
@@ -113,6 +140,31 @@ and a boolean to check if the value has been set.
 
 SetMatchedContent sets MatchedContent field to given value.
 
+
+### GetMaxExploitabilityScore
+
+`func (o *ModelSecret) GetMaxExploitabilityScore() int32`
+
+GetMaxExploitabilityScore returns the MaxExploitabilityScore field if non-nil, zero value otherwise.
+
+### GetMaxExploitabilityScoreOk
+
+`func (o *ModelSecret) GetMaxExploitabilityScoreOk() (*int32, bool)`
+
+GetMaxExploitabilityScoreOk returns a tuple with the MaxExploitabilityScore field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxExploitabilityScore
+
+`func (o *ModelSecret) SetMaxExploitabilityScore(v int32)`
+
+SetMaxExploitabilityScore sets MaxExploitabilityScore field to given value.
+
+### HasMaxExploitabilityScore
+
+`func (o *ModelSecret) HasMaxExploitabilityScore() bool`
+
+HasMaxExploitabilityScore returns a boolean if a field has been set.
 
 ### GetNodeId
 

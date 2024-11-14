@@ -174,6 +174,7 @@ docs/ModelEmailConfigurationAdd.md
 docs/ModelEmailConfigurationResp.md
 docs/ModelEnableCloudTracerReq.md
 docs/ModelEnableTracerReq.md
+docs/ModelExploitableAlert.md
 docs/ModelExportReport.md
 docs/ModelFetchWindow.md
 docs/ModelFileAlert.md
@@ -460,6 +461,7 @@ model_model_email_configuration_add.go
 model_model_email_configuration_resp.go
 model_model_enable_cloud_tracer_req.go
 model_model_enable_tracer_req.go
+model_model_exploitable_alert.go
 model_model_export_report.go
 model_model_fetch_window.go
 model_model_file_alert.go

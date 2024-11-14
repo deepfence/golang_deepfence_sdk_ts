@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**CountCompliances**](SearchAPI.md#CountCompliances) | **Post** /deepfence/search/count/compliances | Count Compliances
 [**CountContainerImages**](SearchAPI.md#CountContainerImages) | **Post** /deepfence/search/count/images | Count Container images
 [**CountContainers**](SearchAPI.md#CountContainers) | **Post** /deepfence/search/count/containers | Count Containers data
+[**CountExploitableAlerts**](SearchAPI.md#CountExploitableAlerts) | **Post** /deepfence/search/count/exploitable-alerts | Count exploitable alerts
 [**CountFileAlerts**](SearchAPI.md#CountFileAlerts) | **Post** /deepfence/search/count/file-alerts | Count file alerts
 [**CountFilesystemAlertRules**](SearchAPI.md#CountFilesystemAlertRules) | **Post** /deepfence/search/count/file-alert-rules | Count file system alert rules
 [**CountHosts**](SearchAPI.md#CountHosts) | **Post** /deepfence/search/count/hosts | Count hosts
@@ -54,6 +55,7 @@ Method | HTTP request | Description
 [**SearchCompliances**](SearchAPI.md#SearchCompliances) | **Post** /deepfence/search/compliances | Search Compliances
 [**SearchContainerImages**](SearchAPI.md#SearchContainerImages) | **Post** /deepfence/search/images | Search Container images
 [**SearchContainers**](SearchAPI.md#SearchContainers) | **Post** /deepfence/search/containers | Search Containers data
+[**SearchExploitableAlerts**](SearchAPI.md#SearchExploitableAlerts) | **Post** /deepfence/search/exploitable-alerts | Search exploitable alerts
 [**SearchFileAlerts**](SearchAPI.md#SearchFileAlerts) | **Post** /deepfence/search/file-alerts | Search file alerts
 [**SearchFilesystemAlertRules**](SearchAPI.md#SearchFilesystemAlertRules) | **Post** /deepfence/search/file-alert-rules | Search file system alert rules
 [**SearchHosts**](SearchAPI.md#SearchHosts) | **Post** /deepfence/search/hosts | Search hosts
@@ -782,6 +784,72 @@ func main() {
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCountContainersRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchSearchNodeReq** | [**SearchSearchNodeReq**](SearchSearchNodeReq.md) |  | 
+
+### Return type
+
+[**SearchSearchCountResp**](SearchSearchCountResp.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CountExploitableAlerts
+
+> SearchSearchCountResp CountExploitableAlerts(ctx).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+
+Count exploitable alerts
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+	searchSearchNodeReq := *openapiclient.NewSearchSearchNodeReq(*openapiclient.NewSearchSearchFilter(*openapiclient.NewReportersFieldsFilters([]openapiclient.ReportersCompareFilter{*openapiclient.NewReportersCompareFilter("FieldName_example", interface{}(123), false)}, *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersMatchFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersOrderFilter([]openapiclient.ReportersOrderSpec{*openapiclient.NewReportersOrderSpec(false, "FieldName_example")})), []string{"InFieldFilter_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))), *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // SearchSearchNodeReq |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SearchAPI.CountExploitableAlerts(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.CountExploitableAlerts``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CountExploitableAlerts`: SearchSearchCountResp
+	fmt.Fprintf(os.Stdout, "Response from `SearchAPI.CountExploitableAlerts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCountExploitableAlertsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3345,6 +3413,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]ModelContainer**](ModelContainer.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchExploitableAlerts
+
+> []ModelExploitableAlert SearchExploitableAlerts(ctx).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+
+Search exploitable alerts
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+	searchSearchNodeReq := *openapiclient.NewSearchSearchNodeReq(*openapiclient.NewSearchSearchFilter(*openapiclient.NewReportersFieldsFilters([]openapiclient.ReportersCompareFilter{*openapiclient.NewReportersCompareFilter("FieldName_example", interface{}(123), false)}, *openapiclient.NewReportersContainsFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersMatchFilter(map[string][]interface{}{"key": []interface{}{nil}}), *openapiclient.NewReportersOrderFilter([]openapiclient.ReportersOrderSpec{*openapiclient.NewReportersOrderSpec(false, "FieldName_example")})), []string{"InFieldFilter_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))), *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // SearchSearchNodeReq |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SearchAPI.SearchExploitableAlerts(context.Background()).SearchSearchNodeReq(searchSearchNodeReq).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchExploitableAlerts``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchExploitableAlerts`: []ModelExploitableAlert
+	fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchExploitableAlerts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchExploitableAlertsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchSearchNodeReq** | [**SearchSearchNodeReq**](SearchSearchNodeReq.md) |  | 
+
+### Return type
+
+[**[]ModelExploitableAlert**](ModelExploitableAlert.md)
 
 ### Authorization
 

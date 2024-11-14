@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**GetCompliances**](LookupAPI.md#GetCompliances) | **Post** /deepfence/lookup/compliances | Retrieve Compliances data
 [**GetContainerImages**](LookupAPI.md#GetContainerImages) | **Post** /deepfence/lookup/containerimages | Retrieve Container Images data
 [**GetContainers**](LookupAPI.md#GetContainers) | **Post** /deepfence/lookup/containers | Retrieve Containers data
+[**GetExploitableAlerts**](LookupAPI.md#GetExploitableAlerts) | **Post** /deepfence/lookup/exploitable-alerts | Get Exploitable Alerts
 [**GetFileAlerts**](LookupAPI.md#GetFileAlerts) | **Post** /deepfence/lookup/file-alerts | Get File Alerts
 [**GetFilesystemAlertRules**](LookupAPI.md#GetFilesystemAlertRules) | **Post** /deepfence/lookup/file-alert-rules | Get File Alert Rules
 [**GetHosts**](LookupAPI.md#GetHosts) | **Post** /deepfence/lookup/hosts | Retrieve Hosts data
@@ -480,6 +481,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]ModelContainer**](ModelContainer.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetExploitableAlerts
+
+> []ModelExploitableAlert GetExploitableAlerts(ctx).LookupLookupFilter(lookupLookupFilter).Execute()
+
+Get Exploitable Alerts
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+	lookupLookupFilter := *openapiclient.NewLookupLookupFilter([]string{"InFieldFilter_example"}, []string{"NodeIds_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // LookupLookupFilter |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LookupAPI.GetExploitableAlerts(context.Background()).LookupLookupFilter(lookupLookupFilter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LookupAPI.GetExploitableAlerts``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetExploitableAlerts`: []ModelExploitableAlert
+	fmt.Fprintf(os.Stdout, "Response from `LookupAPI.GetExploitableAlerts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetExploitableAlertsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **lookupLookupFilter** | [**LookupLookupFilter**](LookupLookupFilter.md) |  | 
+
+### Return type
+
+[**[]ModelExploitableAlert**](ModelExploitableAlert.md)
 
 ### Authorization
 

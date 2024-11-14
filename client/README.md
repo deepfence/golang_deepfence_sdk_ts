@@ -221,6 +221,7 @@ Class | Method | HTTP request | Description
 *LookupAPI* | [**GetCompliances**](docs/LookupAPI.md#getcompliances) | **Post** /deepfence/lookup/compliances | Retrieve Compliances data
 *LookupAPI* | [**GetContainerImages**](docs/LookupAPI.md#getcontainerimages) | **Post** /deepfence/lookup/containerimages | Retrieve Container Images data
 *LookupAPI* | [**GetContainers**](docs/LookupAPI.md#getcontainers) | **Post** /deepfence/lookup/containers | Retrieve Containers data
+*LookupAPI* | [**GetExploitableAlerts**](docs/LookupAPI.md#getexploitablealerts) | **Post** /deepfence/lookup/exploitable-alerts | Get Exploitable Alerts
 *LookupAPI* | [**GetFileAlerts**](docs/LookupAPI.md#getfilealerts) | **Post** /deepfence/lookup/file-alerts | Get File Alerts
 *LookupAPI* | [**GetFilesystemAlertRules**](docs/LookupAPI.md#getfilesystemalertrules) | **Post** /deepfence/lookup/file-alert-rules | Get File Alert Rules
 *LookupAPI* | [**GetHosts**](docs/LookupAPI.md#gethosts) | **Post** /deepfence/lookup/hosts | Retrieve Hosts data
@@ -292,6 +293,7 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**CountCompliances**](docs/SearchAPI.md#countcompliances) | **Post** /deepfence/search/count/compliances | Count Compliances
 *SearchAPI* | [**CountContainerImages**](docs/SearchAPI.md#countcontainerimages) | **Post** /deepfence/search/count/images | Count Container images
 *SearchAPI* | [**CountContainers**](docs/SearchAPI.md#countcontainers) | **Post** /deepfence/search/count/containers | Count Containers data
+*SearchAPI* | [**CountExploitableAlerts**](docs/SearchAPI.md#countexploitablealerts) | **Post** /deepfence/search/count/exploitable-alerts | Count exploitable alerts
 *SearchAPI* | [**CountFileAlerts**](docs/SearchAPI.md#countfilealerts) | **Post** /deepfence/search/count/file-alerts | Count file alerts
 *SearchAPI* | [**CountFilesystemAlertRules**](docs/SearchAPI.md#countfilesystemalertrules) | **Post** /deepfence/search/count/file-alert-rules | Count file system alert rules
 *SearchAPI* | [**CountHosts**](docs/SearchAPI.md#counthosts) | **Post** /deepfence/search/count/hosts | Count hosts
@@ -331,6 +333,7 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**SearchCompliances**](docs/SearchAPI.md#searchcompliances) | **Post** /deepfence/search/compliances | Search Compliances
 *SearchAPI* | [**SearchContainerImages**](docs/SearchAPI.md#searchcontainerimages) | **Post** /deepfence/search/images | Search Container images
 *SearchAPI* | [**SearchContainers**](docs/SearchAPI.md#searchcontainers) | **Post** /deepfence/search/containers | Search Containers data
+*SearchAPI* | [**SearchExploitableAlerts**](docs/SearchAPI.md#searchexploitablealerts) | **Post** /deepfence/search/exploitable-alerts | Search exploitable alerts
 *SearchAPI* | [**SearchFileAlerts**](docs/SearchAPI.md#searchfilealerts) | **Post** /deepfence/search/file-alerts | Search file alerts
 *SearchAPI* | [**SearchFilesystemAlertRules**](docs/SearchAPI.md#searchfilesystemalertrules) | **Post** /deepfence/search/file-alert-rules | Search file system alert rules
 *SearchAPI* | [**SearchHosts**](docs/SearchAPI.md#searchhosts) | **Post** /deepfence/search/hosts | Search hosts
@@ -556,6 +559,7 @@ Class | Method | HTTP request | Description
  - [ModelEmailConfigurationResp](docs/ModelEmailConfigurationResp.md)
  - [ModelEnableCloudTracerReq](docs/ModelEnableCloudTracerReq.md)
  - [ModelEnableTracerReq](docs/ModelEnableTracerReq.md)
+ - [ModelExploitableAlert](docs/ModelExploitableAlert.md)
  - [ModelExportReport](docs/ModelExportReport.md)
  - [ModelFetchWindow](docs/ModelFetchWindow.md)
  - [ModelFileAlert](docs/ModelFileAlert.md)

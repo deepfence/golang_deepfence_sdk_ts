@@ -6181,6 +6181,51 @@ paths:
       summary: Retrieve Containers data
       tags:
       - Lookup
+  /deepfence/lookup/exploitable-alerts:
+    post:
+      description: Retrieve exploitable alerts resources
+      operationId: getExploitableAlerts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LookupLookupFilter'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelExploitableAlert'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Exploitable Alerts
+      tags:
+      - Lookup
   /deepfence/lookup/file-alert-rules:
     post:
       description: Retrieve file alert rule resources
@@ -11287,6 +11332,49 @@ paths:
       summary: Count Containers data
       tags:
       - Search
+  /deepfence/search/count/exploitable-alerts:
+    post:
+      description: Count across all data associated with exploitable alerts
+      operationId: countExploitableAlerts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchSearchCountResp'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Count exploitable alerts
+      tags:
+      - Search
   /deepfence/search/count/file-alert-rules:
     post:
       description: Count across all data associated with file system alert rules
@@ -12432,6 +12520,51 @@ paths:
       security:
       - bearer_token: []
       summary: Count Vulnerability Scan results
+      tags:
+      - Search
+  /deepfence/search/exploitable-alerts:
+    post:
+      description: Search across all data associated with exploitable alerts
+      operationId: searchExploitableAlerts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSearchNodeReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelExploitableAlert'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Search exploitable alerts
       tags:
       - Search
   /deepfence/search/file-alert-rules:
@@ -16588,6 +16721,7 @@ components:
         network_configuration: ""
         public_network_access: public_network_access
         vpc_options: ""
+        resource_group: resource_group
         vpc_security_group_ids: ""
         arn: arn
         private_dns_name: private_dns_name
@@ -16707,6 +16841,8 @@ components:
         public_network_access:
           type: string
         region:
+          type: string
+        resource_group:
           type: string
         resource_id:
           type: string
@@ -20134,6 +20270,31 @@ components:
       required:
       - agent_ids
       type: object
+    ModelExploitableAlert:
+      example:
+        node: node
+        process: process
+        node_type: node_type
+        updated_at: 0
+        node_id: node_id
+      properties:
+        node:
+          type: string
+        node_id:
+          type: string
+        node_type:
+          type: string
+        process:
+          type: string
+        updated_at:
+          type: integer
+      required:
+      - node
+      - node_id
+      - node_type
+      - process
+      - updated_at
+      type: object
     ModelExportReport:
       example:
         status_message: status_message
@@ -20438,9 +20599,12 @@ components:
         options:
           sbom_format: syft-json
         from_timestamp: 6
+        zipped_report: true
         filters:
           include_dead_nodes: true
-          node_type: host
+          node_type:
+          - node_type
+          - node_type
           most_exploitable_report: true
           advanced_report_filters:
             image_name:
@@ -20470,6 +20634,7 @@ components:
             pod_name:
             - pod_name
             - pod_name
+          include_dormant_exploitable: true
           scan_type: vulnerability
           scan_id: scan_id
           severity_or_check_type:
@@ -20491,6 +20656,8 @@ components:
           type: string
         to_timestamp:
           type: integer
+        zipped_report:
+          type: boolean
       required:
       - report_type
       type: object
@@ -25094,7 +25261,7 @@ components:
         rule_name: rule_name
         author: author
         masked: true
-        file_sev_score: 0
+        file_sev_score: 6
         file_severity: critical
         strings_to_match:
         - ""
@@ -25131,9 +25298,11 @@ components:
         rule_id: rule_id
         complete_filename: complete_filename
         class: class
+        exploitability_score: 0
+        max_exploitability_score: 1
         info: info
         node_id: node_id
-        severity_score: 6
+        severity_score: 5
       properties:
         author:
           type: string
@@ -25145,6 +25314,8 @@ components:
           type: string
         description:
           type: string
+        exploitability_score:
+          type: integer
         file_sev_score:
           type: integer
         file_severity:
@@ -25163,6 +25334,8 @@ components:
           type: string
         masked:
           type: boolean
+        max_exploitability_score:
+          type: integer
         node_id:
           type: string
         resources:
@@ -25270,7 +25443,7 @@ components:
           rule_name: rule_name
           author: author
           masked: true
-          file_sev_score: 0
+          file_sev_score: 6
           file_severity: critical
           strings_to_match:
           - ""
@@ -25307,9 +25480,11 @@ components:
           rule_id: rule_id
           complete_filename: complete_filename
           class: class
+          exploitability_score: 0
+          max_exploitability_score: 1
           info: info
           node_id: node_id
-          severity_score: 6
+          severity_score: 5
         - date: date
           summary: summary
           filetype: filetype
@@ -25317,7 +25492,7 @@ components:
           rule_name: rule_name
           author: author
           masked: true
-          file_sev_score: 0
+          file_sev_score: 6
           file_severity: critical
           strings_to_match:
           - ""
@@ -25354,9 +25529,11 @@ components:
           rule_id: rule_id
           complete_filename: complete_filename
           class: class
+          exploitability_score: 0
+          max_exploitability_score: 1
           info: info
           node_id: node_id
-          severity_score: 6
+          severity_score: 5
         docker_image_name: docker_image_name
         host_name: host_name
         node_id: node_id
@@ -27654,7 +27831,7 @@ components:
           rule_name: rule_name
           author: author
           masked: true
-          file_sev_score: 0
+          file_sev_score: 6
           file_severity: critical
           strings_to_match:
           - ""
@@ -27691,9 +27868,11 @@ components:
           rule_id: rule_id
           complete_filename: complete_filename
           class: class
+          exploitability_score: 0
+          max_exploitability_score: 1
           info: info
           node_id: node_id
-          severity_score: 6
+          severity_score: 5
         - date: date
           summary: summary
           filetype: filetype
@@ -27701,7 +27880,7 @@ components:
           rule_name: rule_name
           author: author
           masked: true
-          file_sev_score: 0
+          file_sev_score: 6
           file_severity: critical
           strings_to_match:
           - ""
@@ -27738,9 +27917,11 @@ components:
           rule_id: rule_id
           complete_filename: complete_filename
           class: class
+          exploitability_score: 0
+          max_exploitability_score: 1
           info: info
           node_id: node_id
-          severity_score: 6
+          severity_score: 5
       properties:
         new:
           items:
@@ -27754,13 +27935,13 @@ components:
       example:
         new:
         - rule_id: rule_id
-          score: 0.8008281904610115
+          score: 1.4658129805029452
           full_filename: full_filename
           matched_content: matched_content
-          updated_at: 1
+          updated_at: 5
           level: critical
           masked: true
-          starting_index: 6
+          starting_index: 5
           resources:
           - node_type: node_type
             live_secrets:
@@ -27788,15 +27969,17 @@ components:
             - live_malwares
             - live_malwares
             node_id: node_id
+          exploitability_score: 0
+          max_exploitability_score: 6
           node_id: node_id
         - rule_id: rule_id
-          score: 0.8008281904610115
+          score: 1.4658129805029452
           full_filename: full_filename
           matched_content: matched_content
-          updated_at: 1
+          updated_at: 5
           level: critical
           masked: true
-          starting_index: 6
+          starting_index: 5
           resources:
           - node_type: node_type
             live_secrets:
@@ -27824,6 +28007,8 @@ components:
             - live_malwares
             - live_malwares
             node_id: node_id
+          exploitability_score: 0
+          max_exploitability_score: 6
           node_id: node_id
       properties:
         new:
@@ -27848,7 +28033,8 @@ components:
           - ""
           cve_severity: critical
           cve_caused_by_package_path: cve_caused_by_package_path
-          updated_at: 5
+          updated_at: 2
+          max_exploitability_score: 5
           cve_description: cve_description
           cve_overall_score: 6.027456183070403
           resources:
@@ -27901,7 +28087,8 @@ components:
           - ""
           cve_severity: critical
           cve_caused_by_package_path: cve_caused_by_package_path
-          updated_at: 5
+          updated_at: 2
+          max_exploitability_score: 5
           cve_description: cve_description
           cve_overall_score: 6.027456183070403
           resources:
@@ -28477,13 +28664,13 @@ components:
     ModelSecret:
       example:
         rule_id: rule_id
-        score: 0.8008281904610115
+        score: 1.4658129805029452
         full_filename: full_filename
         matched_content: matched_content
-        updated_at: 1
+        updated_at: 5
         level: critical
         masked: true
-        starting_index: 6
+        starting_index: 5
         resources:
         - node_type: node_type
           live_secrets:
@@ -28511,8 +28698,12 @@ components:
           - live_malwares
           - live_malwares
           node_id: node_id
+        exploitability_score: 0
+        max_exploitability_score: 6
         node_id: node_id
       properties:
+        exploitability_score:
+          type: integer
         full_filename:
           type: string
         level:
@@ -28527,6 +28718,8 @@ components:
           type: boolean
         matched_content:
           type: string
+        max_exploitability_score:
+          type: integer
         node_id:
           type: string
         resources:
@@ -28601,13 +28794,13 @@ components:
         created_at: 0
         secrets:
         - rule_id: rule_id
-          score: 0.8008281904610115
+          score: 1.4658129805029452
           full_filename: full_filename
           matched_content: matched_content
-          updated_at: 1
+          updated_at: 5
           level: critical
           masked: true
-          starting_index: 6
+          starting_index: 5
           resources:
           - node_type: node_type
             live_secrets:
@@ -28635,15 +28828,17 @@ components:
             - live_malwares
             - live_malwares
             node_id: node_id
+          exploitability_score: 0
+          max_exploitability_score: 6
           node_id: node_id
         - rule_id: rule_id
-          score: 0.8008281904610115
+          score: 1.4658129805029452
           full_filename: full_filename
           matched_content: matched_content
-          updated_at: 1
+          updated_at: 5
           level: critical
           masked: true
-          starting_index: 6
+          starting_index: 5
           resources:
           - node_type: node_type
             live_secrets:
@@ -28671,6 +28866,8 @@ components:
             - live_malwares
             - live_malwares
             node_id: node_id
+          exploitability_score: 0
+          max_exploitability_score: 6
           node_id: node_id
         cloud_account_id: cloud_account_id
         node_type: node_type
@@ -29068,7 +29265,8 @@ components:
         - ""
         cve_severity: critical
         cve_caused_by_package_path: cve_caused_by_package_path
-        updated_at: 5
+        updated_at: 2
+        max_exploitability_score: 5
         cve_description: cve_description
         cve_overall_score: 6.027456183070403
         resources:
@@ -29153,6 +29351,8 @@ components:
           type: boolean
         masked:
           type: boolean
+        max_exploitability_score:
+          type: integer
         namespace:
           type: string
         node_id:
@@ -29417,7 +29617,8 @@ components:
           - ""
           cve_severity: critical
           cve_caused_by_package_path: cve_caused_by_package_path
-          updated_at: 5
+          updated_at: 2
+          max_exploitability_score: 5
           cve_description: cve_description
           cve_overall_score: 6.027456183070403
           resources:
@@ -29470,7 +29671,8 @@ components:
           - ""
           cve_severity: critical
           cve_caused_by_package_path: cve_caused_by_package_path
-          updated_at: 5
+          updated_at: 2
+          max_exploitability_score: 5
           cve_description: cve_description
           cve_overall_score: 6.027456183070403
           resources:
@@ -31106,7 +31308,9 @@ components:
     UtilsReportFilters:
       example:
         include_dead_nodes: true
-        node_type: host
+        node_type:
+        - node_type
+        - node_type
         most_exploitable_report: true
         advanced_report_filters:
           image_name:
@@ -31136,6 +31340,7 @@ components:
           pod_name:
           - pod_name
           - pod_name
+        include_dormant_exploitable: true
         scan_type: vulnerability
         scan_id: scan_id
         severity_or_check_type:
@@ -31145,6 +31350,8 @@ components:
         advanced_report_filters:
           $ref: '#/components/schemas/UtilsAdvancedReportFilters'
         include_dead_nodes:
+          type: boolean
+        include_dormant_exploitable:
           type: boolean
         most_exploitable_report:
           type: boolean
@@ -31158,7 +31365,10 @@ components:
           - aws
           - gcp
           - azure
-          type: string
+          items:
+            type: string
+          nullable: true
+          type: array
         scan_id:
           type: string
         scan_type:

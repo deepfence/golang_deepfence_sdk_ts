@@ -22,10 +22,12 @@ var _ MappedNullable = &ModelSecret{}
 
 // ModelSecret struct for ModelSecret
 type ModelSecret struct {
+	ExploitabilityScore *int32 `json:"exploitability_score,omitempty"`
 	FullFilename string `json:"full_filename"`
 	Level string `json:"level"`
 	Masked bool `json:"masked"`
 	MatchedContent string `json:"matched_content"`
+	MaxExploitabilityScore *int32 `json:"max_exploitability_score,omitempty"`
 	NodeId string `json:"node_id"`
 	Resources []ModelBasicNode `json:"resources,omitempty"`
 	RuleId string `json:"rule_id"`
@@ -60,6 +62,38 @@ func NewModelSecret(fullFilename string, level string, masked bool, matchedConte
 func NewModelSecretWithDefaults() *ModelSecret {
 	this := ModelSecret{}
 	return &this
+}
+
+// GetExploitabilityScore returns the ExploitabilityScore field value if set, zero value otherwise.
+func (o *ModelSecret) GetExploitabilityScore() int32 {
+	if o == nil || IsNil(o.ExploitabilityScore) {
+		var ret int32
+		return ret
+	}
+	return *o.ExploitabilityScore
+}
+
+// GetExploitabilityScoreOk returns a tuple with the ExploitabilityScore field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelSecret) GetExploitabilityScoreOk() (*int32, bool) {
+	if o == nil || IsNil(o.ExploitabilityScore) {
+		return nil, false
+	}
+	return o.ExploitabilityScore, true
+}
+
+// HasExploitabilityScore returns a boolean if a field has been set.
+func (o *ModelSecret) HasExploitabilityScore() bool {
+	if o != nil && !IsNil(o.ExploitabilityScore) {
+		return true
+	}
+
+	return false
+}
+
+// SetExploitabilityScore gets a reference to the given int32 and assigns it to the ExploitabilityScore field.
+func (o *ModelSecret) SetExploitabilityScore(v int32) {
+	o.ExploitabilityScore = &v
 }
 
 // GetFullFilename returns the FullFilename field value
@@ -156,6 +190,38 @@ func (o *ModelSecret) GetMatchedContentOk() (*string, bool) {
 // SetMatchedContent sets field value
 func (o *ModelSecret) SetMatchedContent(v string) {
 	o.MatchedContent = v
+}
+
+// GetMaxExploitabilityScore returns the MaxExploitabilityScore field value if set, zero value otherwise.
+func (o *ModelSecret) GetMaxExploitabilityScore() int32 {
+	if o == nil || IsNil(o.MaxExploitabilityScore) {
+		var ret int32
+		return ret
+	}
+	return *o.MaxExploitabilityScore
+}
+
+// GetMaxExploitabilityScoreOk returns a tuple with the MaxExploitabilityScore field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelSecret) GetMaxExploitabilityScoreOk() (*int32, bool) {
+	if o == nil || IsNil(o.MaxExploitabilityScore) {
+		return nil, false
+	}
+	return o.MaxExploitabilityScore, true
+}
+
+// HasMaxExploitabilityScore returns a boolean if a field has been set.
+func (o *ModelSecret) HasMaxExploitabilityScore() bool {
+	if o != nil && !IsNil(o.MaxExploitabilityScore) {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxExploitabilityScore gets a reference to the given int32 and assigns it to the MaxExploitabilityScore field.
+func (o *ModelSecret) SetMaxExploitabilityScore(v int32) {
+	o.MaxExploitabilityScore = &v
 }
 
 // GetNodeId returns the NodeId field value
@@ -321,10 +387,16 @@ func (o ModelSecret) MarshalJSON() ([]byte, error) {
 
 func (o ModelSecret) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ExploitabilityScore) {
+		toSerialize["exploitability_score"] = o.ExploitabilityScore
+	}
 	toSerialize["full_filename"] = o.FullFilename
 	toSerialize["level"] = o.Level
 	toSerialize["masked"] = o.Masked
 	toSerialize["matched_content"] = o.MatchedContent
+	if !IsNil(o.MaxExploitabilityScore) {
+		toSerialize["max_exploitability_score"] = o.MaxExploitabilityScore
+	}
 	toSerialize["node_id"] = o.NodeId
 	if o.Resources != nil {
 		toSerialize["resources"] = o.Resources
