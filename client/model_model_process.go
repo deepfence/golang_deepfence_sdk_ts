@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: v2.5.0
+API version: v2.5.1
 Contact: community@deepfence.io
 */
 
@@ -28,11 +28,14 @@ type ModelProcess struct {
 	Cmdline string `json:"cmdline"`
 	CpuMax float32 `json:"cpu_max"`
 	CpuUsage float32 `json:"cpu_usage"`
+	HostName string `json:"host_name"`
+	InboundConnections []ModelConnection `json:"inbound_connections"`
 	MemoryMax int32 `json:"memory_max"`
 	MemoryUsage int32 `json:"memory_usage"`
 	NodeId string `json:"node_id"`
 	NodeName string `json:"node_name"`
 	OpenFilesCount int32 `json:"open_files_count"`
+	OutboundConnections []ModelConnection `json:"outbound_connections"`
 	Pid int32 `json:"pid"`
 	Ppid int32 `json:"ppid"`
 	ShortName string `json:"short_name"`
@@ -45,7 +48,7 @@ type _ModelProcess ModelProcess
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelProcess(activeCves []string, activeMalwares []string, activeSecrets []string, cmdline string, cpuMax float32, cpuUsage float32, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, openFilesCount int32, pid int32, ppid int32, shortName string, threads int32) *ModelProcess {
+func NewModelProcess(activeCves []string, activeMalwares []string, activeSecrets []string, cmdline string, cpuMax float32, cpuUsage float32, hostName string, inboundConnections []ModelConnection, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, openFilesCount int32, outboundConnections []ModelConnection, pid int32, ppid int32, shortName string, threads int32) *ModelProcess {
 	this := ModelProcess{}
 	this.ActiveCves = activeCves
 	this.ActiveMalwares = activeMalwares
@@ -53,11 +56,14 @@ func NewModelProcess(activeCves []string, activeMalwares []string, activeSecrets
 	this.Cmdline = cmdline
 	this.CpuMax = cpuMax
 	this.CpuUsage = cpuUsage
+	this.HostName = hostName
+	this.InboundConnections = inboundConnections
 	this.MemoryMax = memoryMax
 	this.MemoryUsage = memoryUsage
 	this.NodeId = nodeId
 	this.NodeName = nodeName
 	this.OpenFilesCount = openFilesCount
+	this.OutboundConnections = outboundConnections
 	this.Pid = pid
 	this.Ppid = ppid
 	this.ShortName = shortName
@@ -223,6 +229,56 @@ func (o *ModelProcess) SetCpuUsage(v float32) {
 	o.CpuUsage = v
 }
 
+// GetHostName returns the HostName field value
+func (o *ModelProcess) GetHostName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.HostName
+}
+
+// GetHostNameOk returns a tuple with the HostName field value
+// and a boolean to check if the value has been set.
+func (o *ModelProcess) GetHostNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.HostName, true
+}
+
+// SetHostName sets field value
+func (o *ModelProcess) SetHostName(v string) {
+	o.HostName = v
+}
+
+// GetInboundConnections returns the InboundConnections field value
+// If the value is explicit nil, the zero value for []ModelConnection will be returned
+func (o *ModelProcess) GetInboundConnections() []ModelConnection {
+	if o == nil {
+		var ret []ModelConnection
+		return ret
+	}
+
+	return o.InboundConnections
+}
+
+// GetInboundConnectionsOk returns a tuple with the InboundConnections field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelProcess) GetInboundConnectionsOk() ([]ModelConnection, bool) {
+	if o == nil || IsNil(o.InboundConnections) {
+		return nil, false
+	}
+	return o.InboundConnections, true
+}
+
+// SetInboundConnections sets field value
+func (o *ModelProcess) SetInboundConnections(v []ModelConnection) {
+	o.InboundConnections = v
+}
+
 // GetMemoryMax returns the MemoryMax field value
 func (o *ModelProcess) GetMemoryMax() int32 {
 	if o == nil {
@@ -343,6 +399,32 @@ func (o *ModelProcess) SetOpenFilesCount(v int32) {
 	o.OpenFilesCount = v
 }
 
+// GetOutboundConnections returns the OutboundConnections field value
+// If the value is explicit nil, the zero value for []ModelConnection will be returned
+func (o *ModelProcess) GetOutboundConnections() []ModelConnection {
+	if o == nil {
+		var ret []ModelConnection
+		return ret
+	}
+
+	return o.OutboundConnections
+}
+
+// GetOutboundConnectionsOk returns a tuple with the OutboundConnections field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelProcess) GetOutboundConnectionsOk() ([]ModelConnection, bool) {
+	if o == nil || IsNil(o.OutboundConnections) {
+		return nil, false
+	}
+	return o.OutboundConnections, true
+}
+
+// SetOutboundConnections sets field value
+func (o *ModelProcess) SetOutboundConnections(v []ModelConnection) {
+	o.OutboundConnections = v
+}
+
 // GetPid returns the Pid field value
 func (o *ModelProcess) GetPid() int32 {
 	if o == nil {
@@ -461,11 +543,18 @@ func (o ModelProcess) ToMap() (map[string]interface{}, error) {
 	toSerialize["cmdline"] = o.Cmdline
 	toSerialize["cpu_max"] = o.CpuMax
 	toSerialize["cpu_usage"] = o.CpuUsage
+	toSerialize["host_name"] = o.HostName
+	if o.InboundConnections != nil {
+		toSerialize["inbound_connections"] = o.InboundConnections
+	}
 	toSerialize["memory_max"] = o.MemoryMax
 	toSerialize["memory_usage"] = o.MemoryUsage
 	toSerialize["node_id"] = o.NodeId
 	toSerialize["node_name"] = o.NodeName
 	toSerialize["open_files_count"] = o.OpenFilesCount
+	if o.OutboundConnections != nil {
+		toSerialize["outbound_connections"] = o.OutboundConnections
+	}
 	toSerialize["pid"] = o.Pid
 	toSerialize["ppid"] = o.Ppid
 	toSerialize["short_name"] = o.ShortName
@@ -484,11 +573,14 @@ func (o *ModelProcess) UnmarshalJSON(data []byte) (err error) {
 		"cmdline",
 		"cpu_max",
 		"cpu_usage",
+		"host_name",
+		"inbound_connections",
 		"memory_max",
 		"memory_usage",
 		"node_id",
 		"node_name",
 		"open_files_count",
+		"outbound_connections",
 		"pid",
 		"ppid",
 		"short_name",

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Count** | Pointer to **int32** |  | [optional] 
 **Ips** | Pointer to **[]interface{}** |  | [optional] 
+**MaliciousIp** | Pointer to **[]bool** |  | [optional] 
 **NodeId** | Pointer to **string** |  | [optional] 
 **NodeName** | Pointer to **string** |  | [optional] 
 
@@ -88,6 +89,41 @@ HasIps returns a boolean if a field has been set.
 `func (o *ModelConnection) UnsetIps()`
 
 UnsetIps ensures that no value is present for Ips, not even an explicit nil
+### GetMaliciousIp
+
+`func (o *ModelConnection) GetMaliciousIp() []bool`
+
+GetMaliciousIp returns the MaliciousIp field if non-nil, zero value otherwise.
+
+### GetMaliciousIpOk
+
+`func (o *ModelConnection) GetMaliciousIpOk() (*[]bool, bool)`
+
+GetMaliciousIpOk returns a tuple with the MaliciousIp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaliciousIp
+
+`func (o *ModelConnection) SetMaliciousIp(v []bool)`
+
+SetMaliciousIp sets MaliciousIp field to given value.
+
+### HasMaliciousIp
+
+`func (o *ModelConnection) HasMaliciousIp() bool`
+
+HasMaliciousIp returns a boolean if a field has been set.
+
+### SetMaliciousIpNil
+
+`func (o *ModelConnection) SetMaliciousIpNil(b bool)`
+
+ SetMaliciousIpNil sets the value for MaliciousIp to be an explicit nil
+
+### UnsetMaliciousIp
+`func (o *ModelConnection) UnsetMaliciousIp()`
+
+UnsetMaliciousIp ensures that no value is present for MaliciousIp, not even an explicit nil
 ### GetNodeId
 
 `func (o *ModelConnection) GetNodeId() string`

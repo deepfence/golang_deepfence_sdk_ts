@@ -10,11 +10,14 @@ Name | Type | Description | Notes
 **Cmdline** | **string** |  | 
 **CpuMax** | **float32** |  | 
 **CpuUsage** | **float32** |  | 
+**HostName** | **string** |  | 
+**InboundConnections** | [**[]ModelConnection**](ModelConnection.md) |  | 
 **MemoryMax** | **int32** |  | 
 **MemoryUsage** | **int32** |  | 
 **NodeId** | **string** |  | 
 **NodeName** | **string** |  | 
 **OpenFilesCount** | **int32** |  | 
+**OutboundConnections** | [**[]ModelConnection**](ModelConnection.md) |  | 
 **Pid** | **int32** |  | 
 **Ppid** | **int32** |  | 
 **ShortName** | **string** |  | 
@@ -24,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewModelProcess
 
-`func NewModelProcess(activeCves []string, activeMalwares []string, activeSecrets []string, cmdline string, cpuMax float32, cpuUsage float32, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, openFilesCount int32, pid int32, ppid int32, shortName string, threads int32, ) *ModelProcess`
+`func NewModelProcess(activeCves []string, activeMalwares []string, activeSecrets []string, cmdline string, cpuMax float32, cpuUsage float32, hostName string, inboundConnections []ModelConnection, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, openFilesCount int32, outboundConnections []ModelConnection, pid int32, ppid int32, shortName string, threads int32, ) *ModelProcess`
 
 NewModelProcess instantiates a new ModelProcess object
 This constructor will assign default values to properties that have it defined,
@@ -189,6 +192,56 @@ and a boolean to check if the value has been set.
 SetCpuUsage sets CpuUsage field to given value.
 
 
+### GetHostName
+
+`func (o *ModelProcess) GetHostName() string`
+
+GetHostName returns the HostName field if non-nil, zero value otherwise.
+
+### GetHostNameOk
+
+`func (o *ModelProcess) GetHostNameOk() (*string, bool)`
+
+GetHostNameOk returns a tuple with the HostName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostName
+
+`func (o *ModelProcess) SetHostName(v string)`
+
+SetHostName sets HostName field to given value.
+
+
+### GetInboundConnections
+
+`func (o *ModelProcess) GetInboundConnections() []ModelConnection`
+
+GetInboundConnections returns the InboundConnections field if non-nil, zero value otherwise.
+
+### GetInboundConnectionsOk
+
+`func (o *ModelProcess) GetInboundConnectionsOk() (*[]ModelConnection, bool)`
+
+GetInboundConnectionsOk returns a tuple with the InboundConnections field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInboundConnections
+
+`func (o *ModelProcess) SetInboundConnections(v []ModelConnection)`
+
+SetInboundConnections sets InboundConnections field to given value.
+
+
+### SetInboundConnectionsNil
+
+`func (o *ModelProcess) SetInboundConnectionsNil(b bool)`
+
+ SetInboundConnectionsNil sets the value for InboundConnections to be an explicit nil
+
+### UnsetInboundConnections
+`func (o *ModelProcess) UnsetInboundConnections()`
+
+UnsetInboundConnections ensures that no value is present for InboundConnections, not even an explicit nil
 ### GetMemoryMax
 
 `func (o *ModelProcess) GetMemoryMax() int32`
@@ -289,6 +342,36 @@ and a boolean to check if the value has been set.
 SetOpenFilesCount sets OpenFilesCount field to given value.
 
 
+### GetOutboundConnections
+
+`func (o *ModelProcess) GetOutboundConnections() []ModelConnection`
+
+GetOutboundConnections returns the OutboundConnections field if non-nil, zero value otherwise.
+
+### GetOutboundConnectionsOk
+
+`func (o *ModelProcess) GetOutboundConnectionsOk() (*[]ModelConnection, bool)`
+
+GetOutboundConnectionsOk returns a tuple with the OutboundConnections field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutboundConnections
+
+`func (o *ModelProcess) SetOutboundConnections(v []ModelConnection)`
+
+SetOutboundConnections sets OutboundConnections field to given value.
+
+
+### SetOutboundConnectionsNil
+
+`func (o *ModelProcess) SetOutboundConnectionsNil(b bool)`
+
+ SetOutboundConnectionsNil sets the value for OutboundConnections to be an explicit nil
+
+### UnsetOutboundConnections
+`func (o *ModelProcess) UnsetOutboundConnections()`
+
+UnsetOutboundConnections ensures that no value is present for OutboundConnections, not even an explicit nil
 ### GetPid
 
 `func (o *ModelProcess) GetPid() int32`
