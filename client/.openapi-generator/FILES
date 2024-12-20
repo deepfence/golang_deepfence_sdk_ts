@@ -212,6 +212,7 @@ docs/ModelLicense.md
 docs/ModelListAgentVersionResp.md
 docs/ModelLoginRequest.md
 docs/ModelLoginResponse.md
+docs/ModelMaliciousConnectionAlert.md
 docs/ModelMalware.md
 docs/ModelMalwareRule.md
 docs/ModelMalwareScanResult.md
@@ -229,6 +230,7 @@ docs/ModelNetworkViolationStub.md
 docs/ModelNodeIdentifier.md
 docs/ModelNodesInScanResultRequest.md
 docs/ModelNotificationThresholdUpdateRequest.md
+docs/ModelPackageVulnerabilityScanResult.md
 docs/ModelPasswordResetRequest.md
 docs/ModelPasswordResetVerifyRequest.md
 docs/ModelPluginStatus.md
@@ -499,6 +501,7 @@ model_model_license.go
 model_model_list_agent_version_resp.go
 model_model_login_request.go
 model_model_login_response.go
+model_model_malicious_connection_alert.go
 model_model_malware.go
 model_model_malware_rule.go
 model_model_malware_scan_result.go
@@ -516,6 +519,7 @@ model_model_network_violation_stub.go
 model_model_node_identifier.go
 model_model_nodes_in_scan_result_request.go
 model_model_notification_threshold_update_request.go
+model_model_package_vulnerability_scan_result.go
 model_model_password_reset_request.go
 model_model_password_reset_verify_request.go
 model_model_plugin_status.go

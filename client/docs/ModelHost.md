@@ -12,6 +12,9 @@ Name | Type | Description | Notes
 **ApiEndpoints** | [**[]ModelAPIEndpoint**](ModelAPIEndpoint.md) |  | 
 **AvailabilityZone** | **string** |  | 
 **CloudAccountId** | **string** |  | 
+**CloudComplianceLatestScanId** | **string** |  | 
+**CloudComplianceScanStatus** | **string** |  | 
+**CloudCompliancesCount** | **int32** |  | 
 **CloudProvider** | **string** |  | 
 **CloudRegion** | **string** |  | 
 **CloudWarnAlarmCount** | **int32** |  | 
@@ -23,6 +26,7 @@ Name | Type | Description | Notes
 **Containers** | [**[]ModelContainer**](ModelContainer.md) |  | 
 **CpuMax** | **float32** |  | 
 **CpuUsage** | **float32** |  | 
+**CrId** | **string** |  | 
 **ExploitableMalwaresCount** | **int32** |  | 
 **ExploitableSecretsCount** | **int32** |  | 
 **ExploitableVulnerabilitiesCount** | **int32** |  | 
@@ -60,6 +64,7 @@ Name | Type | Description | Notes
 **SecretLatestScanId** | **string** |  | 
 **SecretScanStatus** | **string** |  | 
 **SecretsCount** | **int32** |  | 
+**Tags** | **[]string** |  | 
 **Uptime** | **int32** |  | 
 **Version** | **string** |  | 
 **VulnerabilitiesCount** | **int32** |  | 
@@ -71,7 +76,7 @@ Name | Type | Description | Notes
 
 ### NewModelHost
 
-`func NewModelHost(agentInstallerTracerStatus string, agentInstallerTracerStatusUpdatedAt int32, agentRunning bool, alertsCounts map[string]int32, apiEndpoints []ModelAPIEndpoint, availabilityZone string, cloudAccountId string, cloudProvider string, cloudRegion string, cloudWarnAlarmCount int32, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, exploitableMalwaresCount int32, exploitableSecretsCount int32, exploitableVulnerabilitiesCount int32, filesystemTracerStatus string, filesystemTracerStatusUpdatedAt int32, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, networkFilterStatus string, networkTracerStatus string, networkTracerStatusUpdatedAt int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processTracerStatus string, processTracerStatusUpdatedAt int32, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string, warnAlarmCount int32, ) *ModelHost`
+`func NewModelHost(agentInstallerTracerStatus string, agentInstallerTracerStatusUpdatedAt int32, agentRunning bool, alertsCounts map[string]int32, apiEndpoints []ModelAPIEndpoint, availabilityZone string, cloudAccountId string, cloudComplianceLatestScanId string, cloudComplianceScanStatus string, cloudCompliancesCount int32, cloudProvider string, cloudRegion string, cloudWarnAlarmCount int32, complianceLatestScanId string, complianceScanStatus string, compliancesCount int32, configNames ModelAgentPluginConfigNames, containerImages []ModelContainerImage, containers []ModelContainer, cpuMax float32, cpuUsage float32, crId string, exploitableMalwaresCount int32, exploitableSecretsCount int32, exploitableVulnerabilitiesCount int32, filesystemTracerStatus string, filesystemTracerStatusUpdatedAt int32, hostName string, inboundConnections []ModelConnection, instanceId string, instanceType string, isConsoleVm bool, kernelId string, kernelVersion string, localCidr []interface{}, localNetworks []interface{}, malwareLatestScanId string, malwareScanStatus string, malwaresCount int32, memoryMax int32, memoryUsage int32, networkFilterStatus string, networkTracerStatus string, networkTracerStatusUpdatedAt int32, nodeId string, nodeName string, os string, outboundConnections []ModelConnection, pluginStatus ModelAgentPluginsStatus, pods []ModelPod, privateIp []interface{}, processTracerStatus string, processTracerStatusUpdatedAt int32, processes []ModelProcess, publicIp []interface{}, resourceGroup string, secretLatestScanId string, secretScanStatus string, secretsCount int32, tags []string, uptime int32, version string, vulnerabilitiesCount int32, vulnerabilityLatestScanId string, vulnerabilityScanStatus string, warnAlarmCount int32, ) *ModelHost`
 
 NewModelHost instantiates a new ModelHost object
 This constructor will assign default values to properties that have it defined,
@@ -269,6 +274,66 @@ and a boolean to check if the value has been set.
 `func (o *ModelHost) SetCloudAccountId(v string)`
 
 SetCloudAccountId sets CloudAccountId field to given value.
+
+
+### GetCloudComplianceLatestScanId
+
+`func (o *ModelHost) GetCloudComplianceLatestScanId() string`
+
+GetCloudComplianceLatestScanId returns the CloudComplianceLatestScanId field if non-nil, zero value otherwise.
+
+### GetCloudComplianceLatestScanIdOk
+
+`func (o *ModelHost) GetCloudComplianceLatestScanIdOk() (*string, bool)`
+
+GetCloudComplianceLatestScanIdOk returns a tuple with the CloudComplianceLatestScanId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudComplianceLatestScanId
+
+`func (o *ModelHost) SetCloudComplianceLatestScanId(v string)`
+
+SetCloudComplianceLatestScanId sets CloudComplianceLatestScanId field to given value.
+
+
+### GetCloudComplianceScanStatus
+
+`func (o *ModelHost) GetCloudComplianceScanStatus() string`
+
+GetCloudComplianceScanStatus returns the CloudComplianceScanStatus field if non-nil, zero value otherwise.
+
+### GetCloudComplianceScanStatusOk
+
+`func (o *ModelHost) GetCloudComplianceScanStatusOk() (*string, bool)`
+
+GetCloudComplianceScanStatusOk returns a tuple with the CloudComplianceScanStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudComplianceScanStatus
+
+`func (o *ModelHost) SetCloudComplianceScanStatus(v string)`
+
+SetCloudComplianceScanStatus sets CloudComplianceScanStatus field to given value.
+
+
+### GetCloudCompliancesCount
+
+`func (o *ModelHost) GetCloudCompliancesCount() int32`
+
+GetCloudCompliancesCount returns the CloudCompliancesCount field if non-nil, zero value otherwise.
+
+### GetCloudCompliancesCountOk
+
+`func (o *ModelHost) GetCloudCompliancesCountOk() (*int32, bool)`
+
+GetCloudCompliancesCountOk returns a tuple with the CloudCompliancesCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudCompliancesCount
+
+`func (o *ModelHost) SetCloudCompliancesCount(v int32)`
+
+SetCloudCompliancesCount sets CloudCompliancesCount field to given value.
 
 
 ### GetCloudProvider
@@ -509,6 +574,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelHost) SetCpuUsage(v float32)`
 
 SetCpuUsage sets CpuUsage field to given value.
+
+
+### GetCrId
+
+`func (o *ModelHost) GetCrId() string`
+
+GetCrId returns the CrId field if non-nil, zero value otherwise.
+
+### GetCrIdOk
+
+`func (o *ModelHost) GetCrIdOk() (*string, bool)`
+
+GetCrIdOk returns a tuple with the CrId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCrId
+
+`func (o *ModelHost) SetCrId(v string)`
+
+SetCrId sets CrId field to given value.
 
 
 ### GetExploitableMalwaresCount
@@ -1331,6 +1416,36 @@ and a boolean to check if the value has been set.
 SetSecretsCount sets SecretsCount field to given value.
 
 
+### GetTags
+
+`func (o *ModelHost) GetTags() []string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *ModelHost) GetTagsOk() (*[]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *ModelHost) SetTags(v []string)`
+
+SetTags sets Tags field to given value.
+
+
+### SetTagsNil
+
+`func (o *ModelHost) SetTagsNil(b bool)`
+
+ SetTagsNil sets the value for Tags to be an explicit nil
+
+### UnsetTags
+`func (o *ModelHost) UnsetTags()`
+
+UnsetTags ensures that no value is present for Tags, not even an explicit nil
 ### GetUptime
 
 `func (o *ModelHost) GetUptime() int32`

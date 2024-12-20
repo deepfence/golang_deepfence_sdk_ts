@@ -16,7 +16,7 @@ info:
     url: https://www.apache.org/licenses/LICENSE-2.0
   termsOfService: /tos
   title: Deepfence ThreatStryker
-  version: v2.5.1
+  version: v2.5.2
 externalDocs:
   description: Deepfence Community
   url: https://community.deepfence.io
@@ -886,6 +886,49 @@ paths:
       summary: Get Completion for Container fields
       tags:
       - Completion
+  /deepfence/complete/containerimage:
+    post:
+      description: Complete Container Image info
+      operationId: completeContainerImageInfo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompletionCompletionNodeFieldReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompletionCompletionNodeFieldRes'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Completion for Container Image fields
+      tags:
+      - Completion
   /deepfence/complete/host:
     post:
       description: Complete host info
@@ -927,6 +970,49 @@ paths:
       security:
       - bearer_token: []
       summary: Get Completion for host fields
+      tags:
+      - Completion
+  /deepfence/complete/kubernetes-cluster:
+    post:
+      description: Complete kubernetes cluster info
+      operationId: completeKubernetesClusterInfo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompletionCompletionNodeFieldReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompletionCompletionNodeFieldRes'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Completion for kubernetes cluster fields
       tags:
       - Completion
   /deepfence/complete/pod:
@@ -6406,6 +6492,51 @@ paths:
       summary: Retrieve K8s data
       tags:
       - Lookup
+  /deepfence/lookup/malicious-connection-alerts:
+    post:
+      description: Retrieve malicious connection alerts resources
+      operationId: getMaliciousConnectionAlerts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LookupLookupFilter'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelMaliciousConnectionAlert'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Malicious Connection Alerts
+      tags:
+      - Lookup
   /deepfence/lookup/malware-rules:
     post:
       description: Retrieve malware rule resources
@@ -9486,6 +9617,49 @@ paths:
       summary: Get Malware Scans Result Rules
       tags:
       - Malware Scan
+  /deepfence/scan/results/packages:
+    post:
+      description: Get Vulnerability Pacakge Scan results on agent or registry
+      operationId: resultsVulnerablePackagesScans
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelScanResultsReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelPackageVulnerabilityScanResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsBadRequestResponse'
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDocsFailureResponse'
+          description: Internal Server Error
+      security:
+      - bearer_token: []
+      summary: Get Vulnerability Package Scans Results
+      tags:
+      - Vulnerability
   /deepfence/scan/results/secret:
     post:
       description: Get Secret Scans results on agent or registry
@@ -15228,6 +15402,7 @@ components:
               key:
               - ""
               - ""
+        is_array_field: true
         scan_id: scan_id
         window:
           offset: 0
@@ -15240,6 +15415,8 @@ components:
           type: string
         filters:
           $ref: '#/components/schemas/ReportersFieldsFilters'
+        is_array_field:
+          type: boolean
         scan_id:
           type: string
         window:
@@ -15881,9 +16058,6 @@ components:
           docker_label: docker_label
           instance_type: instance_type
           docker_image_name: docker_image_name
-          user_defined_tags:
-          - user_defined_tags
-          - user_defined_tags
           local_networks:
           - local_networks
           - local_networks
@@ -17967,12 +18141,15 @@ components:
         - live_cves
         - live_cves
         name: name
+        active: true
         host_name: host_name
         live_malwares:
         - live_malwares
         - live_malwares
         node_id: node_id
       properties:
+        active:
+          type: boolean
         host_name:
           type: string
         live_cves:
@@ -17997,6 +18174,7 @@ components:
         node_type:
           type: string
       required:
+      - active
       - host_name
       - live_cves
       - live_malwares
@@ -18140,6 +18318,7 @@ components:
           - live_cves
           - live_cves
           name: name
+          active: true
           host_name: host_name
           live_malwares:
           - live_malwares
@@ -18153,6 +18332,7 @@ components:
           - live_cves
           - live_cves
           name: name
+          active: true
           host_name: host_name
           live_malwares:
           - live_malwares
@@ -18336,6 +18516,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -18349,6 +18530,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -18382,6 +18564,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -18395,6 +18578,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -18948,6 +19132,7 @@ components:
           - network_anomaly
           - process_anomaly
           - file_anomaly
+          - malicious_ip
           type: string
         geoip:
           type: string
@@ -19024,6 +19209,7 @@ components:
           - live_cves
           - live_cves
           name: name
+          active: true
           host_name: host_name
           live_malwares:
           - live_malwares
@@ -19037,6 +19223,7 @@ components:
           - live_cves
           - live_cves
           name: name
+          active: true
           host_name: host_name
           live_malwares:
           - live_malwares
@@ -19254,6 +19441,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -19267,6 +19455,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -19298,6 +19487,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -19311,6 +19501,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -19618,6 +19809,7 @@ components:
       type: object
     ModelContainer:
       example:
+        docker_image_name_with_tag: docker_image_name_with_tag
         vulnerabilities_count: 7
         secrets_count: 1
         kubernetes_cluster_name: kubernetes_cluster_name
@@ -19766,6 +19958,9 @@ components:
         node_name: node_name
         docker_container_networks: docker_container_networks
         docker_container_command: docker_container_command
+        tags:
+        - tags
+        - tags
         uptime: 6
         memory_max: 5
         docker_container_ports: docker_container_ports
@@ -19798,6 +19993,8 @@ components:
         docker_container_state:
           type: string
         docker_container_state_human:
+          type: string
+        docker_image_name_with_tag:
           type: string
         docker_labels:
           additionalProperties: {}
@@ -19840,6 +20037,11 @@ components:
           type: string
         secrets_count:
           type: integer
+        tags:
+          items:
+            type: string
+          nullable: true
+          type: array
         uptime:
           type: integer
         vulnerabilities_count:
@@ -19860,6 +20062,7 @@ components:
       - docker_container_ports
       - docker_container_state
       - docker_container_state_human
+      - docker_image_name_with_tag
       - docker_labels
       - host_name
       - image
@@ -19878,6 +20081,7 @@ components:
       - secret_latest_scan_id
       - secret_scan_status
       - secrets_count
+      - tags
       - uptime
       - vulnerabilities_count
       - vulnerability_latest_scan_id
@@ -19895,6 +20099,9 @@ components:
         malwares_count: 1
         node_name: node_name
         secret_latest_scan_id: secret_latest_scan_id
+        tags:
+        - tags
+        - tags
         vulnerability_latest_scan_id: vulnerability_latest_scan_id
         docker_image_created_at: docker_image_created_at
         docker_image_tag: docker_image_tag
@@ -19903,7 +20110,8 @@ components:
         image_node_id: image_node_id
         docker_image_virtual_size: docker_image_virtual_size
         containers:
-        - vulnerabilities_count: 7
+        - docker_image_name_with_tag: docker_image_name_with_tag
+          vulnerabilities_count: 7
           secrets_count: 1
           kubernetes_cluster_name: kubernetes_cluster_name
           docker_container_state: docker_container_state
@@ -20051,6 +20259,9 @@ components:
           node_name: node_name
           docker_container_networks: docker_container_networks
           docker_container_command: docker_container_command
+          tags:
+          - tags
+          - tags
           uptime: 6
           memory_max: 5
           docker_container_ports: docker_container_ports
@@ -20059,7 +20270,8 @@ components:
           vulnerability_scan_status: vulnerability_scan_status
           host_name: host_name
           node_id: node_id
-        - vulnerabilities_count: 7
+        - docker_image_name_with_tag: docker_image_name_with_tag
+          vulnerabilities_count: 7
           secrets_count: 1
           kubernetes_cluster_name: kubernetes_cluster_name
           docker_container_state: docker_container_state
@@ -20207,6 +20419,9 @@ components:
           node_name: node_name
           docker_container_networks: docker_container_networks
           docker_container_command: docker_container_command
+          tags:
+          - tags
+          - tags
           uptime: 6
           memory_max: 5
           docker_container_ports: docker_container_ports
@@ -20269,6 +20484,11 @@ components:
           type: string
         secrets_count:
           type: integer
+        tags:
+          items:
+            type: string
+          nullable: true
+          type: array
         vulnerabilities_count:
           type: integer
         vulnerability_latest_scan_id:
@@ -20294,6 +20514,7 @@ components:
       - secret_latest_scan_id
       - secret_scan_status
       - secrets_count
+      - tags
       - vulnerabilities_count
       - vulnerability_latest_scan_id
       - vulnerability_scan_status
@@ -21244,9 +21465,6 @@ components:
               docker_label: docker_label
               instance_type: instance_type
               docker_image_name: docker_image_name
-              user_defined_tags:
-              - user_defined_tags
-              - user_defined_tags
               local_networks:
               - local_networks
               - local_networks
@@ -21346,6 +21564,9 @@ components:
           malwares_count: 1
           node_name: node_name
           secret_latest_scan_id: secret_latest_scan_id
+          tags:
+          - tags
+          - tags
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
           docker_image_created_at: docker_image_created_at
           docker_image_tag: docker_image_tag
@@ -21354,7 +21575,8 @@ components:
           image_node_id: image_node_id
           docker_image_virtual_size: docker_image_virtual_size
           containers:
-          - vulnerabilities_count: 7
+          - docker_image_name_with_tag: docker_image_name_with_tag
+            vulnerabilities_count: 7
             secrets_count: 1
             kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
@@ -21502,6 +21724,9 @@ components:
             node_name: node_name
             docker_container_networks: docker_container_networks
             docker_container_command: docker_container_command
+            tags:
+            - tags
+            - tags
             uptime: 6
             memory_max: 5
             docker_container_ports: docker_container_ports
@@ -21510,7 +21735,8 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
-          - vulnerabilities_count: 7
+          - docker_image_name_with_tag: docker_image_name_with_tag
+            vulnerabilities_count: 7
             secrets_count: 1
             kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
@@ -21658,6 +21884,9 @@ components:
             node_name: node_name
             docker_container_networks: docker_container_networks
             docker_container_command: docker_container_command
+            tags:
+            - tags
+            - tags
             uptime: 6
             memory_max: 5
             docker_container_ports: docker_container_ports
@@ -21683,6 +21912,9 @@ components:
           malwares_count: 1
           node_name: node_name
           secret_latest_scan_id: secret_latest_scan_id
+          tags:
+          - tags
+          - tags
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
           docker_image_created_at: docker_image_created_at
           docker_image_tag: docker_image_tag
@@ -21691,7 +21923,8 @@ components:
           image_node_id: image_node_id
           docker_image_virtual_size: docker_image_virtual_size
           containers:
-          - vulnerabilities_count: 7
+          - docker_image_name_with_tag: docker_image_name_with_tag
+            vulnerabilities_count: 7
             secrets_count: 1
             kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
@@ -21839,6 +22072,9 @@ components:
             node_name: node_name
             docker_container_networks: docker_container_networks
             docker_container_command: docker_container_command
+            tags:
+            - tags
+            - tags
             uptime: 6
             memory_max: 5
             docker_container_ports: docker_container_ports
@@ -21847,7 +22083,8 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
-          - vulnerabilities_count: 7
+          - docker_image_name_with_tag: docker_image_name_with_tag
+            vulnerabilities_count: 7
             secrets_count: 1
             kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
@@ -21995,6 +22232,9 @@ components:
             node_name: node_name
             docker_container_networks: docker_container_networks
             docker_container_command: docker_container_command
+            tags:
+            - tags
+            - tags
             uptime: 6
             memory_max: 5
             docker_container_ports: docker_container_ports
@@ -22010,7 +22250,7 @@ components:
           - docker_image_tag_list
           - docker_image_tag_list
           node_id: node_id
-        cpu_max: 5.637376656633329
+        cpu_max: 2.3021358869347655
         alerts_counts:
           key: 6
         secret_latest_scan_id: secret_latest_scan_id
@@ -22052,6 +22292,7 @@ components:
           port: 0
           host: host
           direction: ingress
+        cloud_compliance_scan_status: cloud_compliance_scan_status
         plugin_status:
           network_tracer_status:
             description: description
@@ -22074,11 +22315,15 @@ components:
         agent_installer_tracer_status: agent_installer_tracer_status
         malware_latest_scan_id: malware_latest_scan_id
         version: version
+        tags:
+        - tags
+        - tags
         instance_id: instance_id
         kernel_id: kernel_id
         compliance_latest_scan_id: compliance_latest_scan_id
         containers:
-        - vulnerabilities_count: 7
+        - docker_image_name_with_tag: docker_image_name_with_tag
+          vulnerabilities_count: 7
           secrets_count: 1
           kubernetes_cluster_name: kubernetes_cluster_name
           docker_container_state: docker_container_state
@@ -22226,6 +22471,9 @@ components:
           node_name: node_name
           docker_container_networks: docker_container_networks
           docker_container_command: docker_container_command
+          tags:
+          - tags
+          - tags
           uptime: 6
           memory_max: 5
           docker_container_ports: docker_container_ports
@@ -22234,7 +22482,8 @@ components:
           vulnerability_scan_status: vulnerability_scan_status
           host_name: host_name
           node_id: node_id
-        - vulnerabilities_count: 7
+        - docker_image_name_with_tag: docker_image_name_with_tag
+          vulnerabilities_count: 7
           secrets_count: 1
           kubernetes_cluster_name: kubernetes_cluster_name
           docker_container_state: docker_container_state
@@ -22382,6 +22631,9 @@ components:
           node_name: node_name
           docker_container_networks: docker_container_networks
           docker_container_command: docker_container_command
+          tags:
+          - tags
+          - tags
           uptime: 6
           memory_max: 5
           docker_container_ports: docker_container_ports
@@ -22390,13 +22642,14 @@ components:
           vulnerability_scan_status: vulnerability_scan_status
           host_name: host_name
           node_id: node_id
-        cpu_usage: 2.3021358869347655
+        cpu_usage: 7.061401241503109
         instance_type: instance_type
         local_networks:
         - ""
         - ""
-        vulnerabilities_count: 1
-        secrets_count: 6
+        vulnerabilities_count: 4
+        cr_id: cr_id
+        secrets_count: 7
         cloud_region: cloud_region
         network_tracer_status_updated_at: 1
         network_filter_status: network_filter_status
@@ -22404,13 +22657,13 @@ components:
         private_ip:
         - ""
         - ""
-        exploitable_vulnerabilities_count: 3
+        exploitable_vulnerabilities_count: 2
         cloud_account_id: cloud_account_id
         resource_group: resource_group
         malware_scan_status: malware_scan_status
-        exploitable_malwares_count: 7
+        exploitable_malwares_count: 9
         agent_installer_tracer_status_updated_at: 0
-        filesystem_tracer_status_updated_at: 2
+        filesystem_tracer_status_updated_at: 4
         filesystem_tracer_status: filesystem_tracer_status
         inbound_connections:
         - count: 9
@@ -22579,20 +22832,22 @@ components:
         local_cidr:
         - ""
         - ""
-        malwares_count: 4
+        malwares_count: 7
         node_name: node_name
         cloud_provider: cloud_provider
         process_tracer_status: process_tracer_status
         agent_running: true
-        cloud_warn_alarm_count: 1
-        exploitable_secrets_count: 9
-        process_tracer_status_updated_at: 1
-        uptime: 7
-        memory_max: 7
+        cloud_warn_alarm_count: 5
+        exploitable_secrets_count: 3
+        process_tracer_status_updated_at: 6
+        uptime: 1
+        cloud_compliances_count: 1
+        memory_max: 1
         account_id: account_id
+        cloud_compliance_latest_scan_id: cloud_compliance_latest_scan_id
         compliances_count: 5
         kernel_version: kernel_version
-        warn_alarm_count: 4
+        warn_alarm_count: 5
         pods:
         - is_deepfence_system: true
           kubernetes_ip: kubernetes_ip
@@ -22724,13 +22979,17 @@ components:
           node_name: node_name
           kubernetes_created: kubernetes_created
           pod_name: pod_name
+          tags:
+          - tags
+          - tags
           kubernetes_namespace: kubernetes_namespace
           kubernetes_is_in_host_network: true
           malware_scan_status: malware_scan_status
           kubernetes_labels:
             key: ""
           containers:
-          - vulnerabilities_count: 7
+          - docker_image_name_with_tag: docker_image_name_with_tag
+            vulnerabilities_count: 7
             secrets_count: 1
             kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
@@ -22878,6 +23137,9 @@ components:
             node_name: node_name
             docker_container_networks: docker_container_networks
             docker_container_command: docker_container_command
+            tags:
+            - tags
+            - tags
             uptime: 6
             memory_max: 5
             docker_container_ports: docker_container_ports
@@ -22886,7 +23148,8 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
-          - vulnerabilities_count: 7
+          - docker_image_name_with_tag: docker_image_name_with_tag
+            vulnerabilities_count: 7
             secrets_count: 1
             kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
@@ -23034,6 +23297,9 @@ components:
             node_name: node_name
             docker_container_networks: docker_container_networks
             docker_container_command: docker_container_command
+            tags:
+            - tags
+            - tags
             uptime: 6
             memory_max: 5
             docker_container_ports: docker_container_ports
@@ -23175,13 +23441,17 @@ components:
           node_name: node_name
           kubernetes_created: kubernetes_created
           pod_name: pod_name
+          tags:
+          - tags
+          - tags
           kubernetes_namespace: kubernetes_namespace
           kubernetes_is_in_host_network: true
           malware_scan_status: malware_scan_status
           kubernetes_labels:
             key: ""
           containers:
-          - vulnerabilities_count: 7
+          - docker_image_name_with_tag: docker_image_name_with_tag
+            vulnerabilities_count: 7
             secrets_count: 1
             kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
@@ -23329,6 +23599,9 @@ components:
             node_name: node_name
             docker_container_networks: docker_container_networks
             docker_container_command: docker_container_command
+            tags:
+            - tags
+            - tags
             uptime: 6
             memory_max: 5
             docker_container_ports: docker_container_ports
@@ -23337,7 +23610,8 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
-          - vulnerabilities_count: 7
+          - docker_image_name_with_tag: docker_image_name_with_tag
+            vulnerabilities_count: 7
             secrets_count: 1
             kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
@@ -23485,6 +23759,9 @@ components:
             node_name: node_name
             docker_container_networks: docker_container_networks
             docker_container_command: docker_container_command
+            tags:
+            - tags
+            - tags
             uptime: 6
             memory_max: 5
             docker_container_ports: docker_container_ports
@@ -23522,6 +23799,12 @@ components:
           type: string
         cloud_account_id:
           type: string
+        cloud_compliance_latest_scan_id:
+          type: string
+        cloud_compliance_scan_status:
+          type: string
+        cloud_compliances_count:
+          type: integer
         cloud_provider:
           type: string
         cloud_region:
@@ -23550,6 +23833,8 @@ components:
           type: number
         cpu_usage:
           type: number
+        cr_id:
+          type: string
         exploitable_malwares_count:
           type: integer
         exploitable_secrets_count:
@@ -23644,6 +23929,11 @@ components:
           type: string
         secrets_count:
           type: integer
+        tags:
+          items:
+            type: string
+          nullable: true
+          type: array
         uptime:
           type: integer
         version:
@@ -23664,6 +23954,9 @@ components:
       - api_endpoints
       - availability_zone
       - cloud_account_id
+      - cloud_compliance_latest_scan_id
+      - cloud_compliance_scan_status
+      - cloud_compliances_count
       - cloud_provider
       - cloud_region
       - cloud_warn_alarm_count
@@ -23675,6 +23968,7 @@ components:
       - containers
       - cpu_max
       - cpu_usage
+      - cr_id
       - exploitable_malwares_count
       - exploitable_secrets_count
       - exploitable_vulnerabilities_count
@@ -23712,6 +24006,7 @@ components:
       - secret_latest_scan_id
       - secret_scan_status
       - secrets_count
+      - tags
       - uptime
       - version
       - vulnerabilities_count
@@ -24110,6 +24405,9 @@ components:
             malwares_count: 1
             node_name: node_name
             secret_latest_scan_id: secret_latest_scan_id
+            tags:
+            - tags
+            - tags
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
             docker_image_created_at: docker_image_created_at
             docker_image_tag: docker_image_tag
@@ -24118,7 +24416,8 @@ components:
             image_node_id: image_node_id
             docker_image_virtual_size: docker_image_virtual_size
             containers:
-            - vulnerabilities_count: 7
+            - docker_image_name_with_tag: docker_image_name_with_tag
+              vulnerabilities_count: 7
               secrets_count: 1
               kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
@@ -24266,6 +24565,9 @@ components:
               node_name: node_name
               docker_container_networks: docker_container_networks
               docker_container_command: docker_container_command
+              tags:
+              - tags
+              - tags
               uptime: 6
               memory_max: 5
               docker_container_ports: docker_container_ports
@@ -24274,7 +24576,8 @@ components:
               vulnerability_scan_status: vulnerability_scan_status
               host_name: host_name
               node_id: node_id
-            - vulnerabilities_count: 7
+            - docker_image_name_with_tag: docker_image_name_with_tag
+              vulnerabilities_count: 7
               secrets_count: 1
               kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
@@ -24422,6 +24725,9 @@ components:
               node_name: node_name
               docker_container_networks: docker_container_networks
               docker_container_command: docker_container_command
+              tags:
+              - tags
+              - tags
               uptime: 6
               memory_max: 5
               docker_container_ports: docker_container_ports
@@ -24447,6 +24753,9 @@ components:
             malwares_count: 1
             node_name: node_name
             secret_latest_scan_id: secret_latest_scan_id
+            tags:
+            - tags
+            - tags
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
             docker_image_created_at: docker_image_created_at
             docker_image_tag: docker_image_tag
@@ -24455,7 +24764,8 @@ components:
             image_node_id: image_node_id
             docker_image_virtual_size: docker_image_virtual_size
             containers:
-            - vulnerabilities_count: 7
+            - docker_image_name_with_tag: docker_image_name_with_tag
+              vulnerabilities_count: 7
               secrets_count: 1
               kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
@@ -24603,6 +24913,9 @@ components:
               node_name: node_name
               docker_container_networks: docker_container_networks
               docker_container_command: docker_container_command
+              tags:
+              - tags
+              - tags
               uptime: 6
               memory_max: 5
               docker_container_ports: docker_container_ports
@@ -24611,7 +24924,8 @@ components:
               vulnerability_scan_status: vulnerability_scan_status
               host_name: host_name
               node_id: node_id
-            - vulnerabilities_count: 7
+            - docker_image_name_with_tag: docker_image_name_with_tag
+              vulnerabilities_count: 7
               secrets_count: 1
               kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
@@ -24759,6 +25073,9 @@ components:
               node_name: node_name
               docker_container_networks: docker_container_networks
               docker_container_command: docker_container_command
+              tags:
+              - tags
+              - tags
               uptime: 6
               memory_max: 5
               docker_container_ports: docker_container_ports
@@ -24774,7 +25091,7 @@ components:
             - docker_image_tag_list
             - docker_image_tag_list
             node_id: node_id
-          cpu_max: 5.637376656633329
+          cpu_max: 2.3021358869347655
           alerts_counts:
             key: 6
           secret_latest_scan_id: secret_latest_scan_id
@@ -24816,6 +25133,7 @@ components:
             port: 0
             host: host
             direction: ingress
+          cloud_compliance_scan_status: cloud_compliance_scan_status
           plugin_status:
             network_tracer_status:
               description: description
@@ -24838,11 +25156,15 @@ components:
           agent_installer_tracer_status: agent_installer_tracer_status
           malware_latest_scan_id: malware_latest_scan_id
           version: version
+          tags:
+          - tags
+          - tags
           instance_id: instance_id
           kernel_id: kernel_id
           compliance_latest_scan_id: compliance_latest_scan_id
           containers:
-          - vulnerabilities_count: 7
+          - docker_image_name_with_tag: docker_image_name_with_tag
+            vulnerabilities_count: 7
             secrets_count: 1
             kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
@@ -24990,6 +25312,9 @@ components:
             node_name: node_name
             docker_container_networks: docker_container_networks
             docker_container_command: docker_container_command
+            tags:
+            - tags
+            - tags
             uptime: 6
             memory_max: 5
             docker_container_ports: docker_container_ports
@@ -24998,7 +25323,8 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
-          - vulnerabilities_count: 7
+          - docker_image_name_with_tag: docker_image_name_with_tag
+            vulnerabilities_count: 7
             secrets_count: 1
             kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
@@ -25146,6 +25472,9 @@ components:
             node_name: node_name
             docker_container_networks: docker_container_networks
             docker_container_command: docker_container_command
+            tags:
+            - tags
+            - tags
             uptime: 6
             memory_max: 5
             docker_container_ports: docker_container_ports
@@ -25154,13 +25483,14 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
-          cpu_usage: 2.3021358869347655
+          cpu_usage: 7.061401241503109
           instance_type: instance_type
           local_networks:
           - ""
           - ""
-          vulnerabilities_count: 1
-          secrets_count: 6
+          vulnerabilities_count: 4
+          cr_id: cr_id
+          secrets_count: 7
           cloud_region: cloud_region
           network_tracer_status_updated_at: 1
           network_filter_status: network_filter_status
@@ -25168,13 +25498,13 @@ components:
           private_ip:
           - ""
           - ""
-          exploitable_vulnerabilities_count: 3
+          exploitable_vulnerabilities_count: 2
           cloud_account_id: cloud_account_id
           resource_group: resource_group
           malware_scan_status: malware_scan_status
-          exploitable_malwares_count: 7
+          exploitable_malwares_count: 9
           agent_installer_tracer_status_updated_at: 0
-          filesystem_tracer_status_updated_at: 2
+          filesystem_tracer_status_updated_at: 4
           filesystem_tracer_status: filesystem_tracer_status
           inbound_connections:
           - count: 9
@@ -25343,20 +25673,22 @@ components:
           local_cidr:
           - ""
           - ""
-          malwares_count: 4
+          malwares_count: 7
           node_name: node_name
           cloud_provider: cloud_provider
           process_tracer_status: process_tracer_status
           agent_running: true
-          cloud_warn_alarm_count: 1
-          exploitable_secrets_count: 9
-          process_tracer_status_updated_at: 1
-          uptime: 7
-          memory_max: 7
+          cloud_warn_alarm_count: 5
+          exploitable_secrets_count: 3
+          process_tracer_status_updated_at: 6
+          uptime: 1
+          cloud_compliances_count: 1
+          memory_max: 1
           account_id: account_id
+          cloud_compliance_latest_scan_id: cloud_compliance_latest_scan_id
           compliances_count: 5
           kernel_version: kernel_version
-          warn_alarm_count: 4
+          warn_alarm_count: 5
           pods:
           - is_deepfence_system: true
             kubernetes_ip: kubernetes_ip
@@ -25488,13 +25820,17 @@ components:
             node_name: node_name
             kubernetes_created: kubernetes_created
             pod_name: pod_name
+            tags:
+            - tags
+            - tags
             kubernetes_namespace: kubernetes_namespace
             kubernetes_is_in_host_network: true
             malware_scan_status: malware_scan_status
             kubernetes_labels:
               key: ""
             containers:
-            - vulnerabilities_count: 7
+            - docker_image_name_with_tag: docker_image_name_with_tag
+              vulnerabilities_count: 7
               secrets_count: 1
               kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
@@ -25642,6 +25978,9 @@ components:
               node_name: node_name
               docker_container_networks: docker_container_networks
               docker_container_command: docker_container_command
+              tags:
+              - tags
+              - tags
               uptime: 6
               memory_max: 5
               docker_container_ports: docker_container_ports
@@ -25650,7 +25989,8 @@ components:
               vulnerability_scan_status: vulnerability_scan_status
               host_name: host_name
               node_id: node_id
-            - vulnerabilities_count: 7
+            - docker_image_name_with_tag: docker_image_name_with_tag
+              vulnerabilities_count: 7
               secrets_count: 1
               kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
@@ -25798,6 +26138,9 @@ components:
               node_name: node_name
               docker_container_networks: docker_container_networks
               docker_container_command: docker_container_command
+              tags:
+              - tags
+              - tags
               uptime: 6
               memory_max: 5
               docker_container_ports: docker_container_ports
@@ -25939,13 +26282,17 @@ components:
             node_name: node_name
             kubernetes_created: kubernetes_created
             pod_name: pod_name
+            tags:
+            - tags
+            - tags
             kubernetes_namespace: kubernetes_namespace
             kubernetes_is_in_host_network: true
             malware_scan_status: malware_scan_status
             kubernetes_labels:
               key: ""
             containers:
-            - vulnerabilities_count: 7
+            - docker_image_name_with_tag: docker_image_name_with_tag
+              vulnerabilities_count: 7
               secrets_count: 1
               kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
@@ -26093,6 +26440,9 @@ components:
               node_name: node_name
               docker_container_networks: docker_container_networks
               docker_container_command: docker_container_command
+              tags:
+              - tags
+              - tags
               uptime: 6
               memory_max: 5
               docker_container_ports: docker_container_ports
@@ -26101,7 +26451,8 @@ components:
               vulnerability_scan_status: vulnerability_scan_status
               host_name: host_name
               node_id: node_id
-            - vulnerabilities_count: 7
+            - docker_image_name_with_tag: docker_image_name_with_tag
+              vulnerabilities_count: 7
               secrets_count: 1
               kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
@@ -26249,6 +26600,9 @@ components:
               node_name: node_name
               docker_container_networks: docker_container_networks
               docker_container_command: docker_container_command
+              tags:
+              - tags
+              - tags
               uptime: 6
               memory_max: 5
               docker_container_ports: docker_container_ports
@@ -26277,6 +26631,9 @@ components:
             malwares_count: 1
             node_name: node_name
             secret_latest_scan_id: secret_latest_scan_id
+            tags:
+            - tags
+            - tags
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
             docker_image_created_at: docker_image_created_at
             docker_image_tag: docker_image_tag
@@ -26285,7 +26642,8 @@ components:
             image_node_id: image_node_id
             docker_image_virtual_size: docker_image_virtual_size
             containers:
-            - vulnerabilities_count: 7
+            - docker_image_name_with_tag: docker_image_name_with_tag
+              vulnerabilities_count: 7
               secrets_count: 1
               kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
@@ -26433,6 +26791,9 @@ components:
               node_name: node_name
               docker_container_networks: docker_container_networks
               docker_container_command: docker_container_command
+              tags:
+              - tags
+              - tags
               uptime: 6
               memory_max: 5
               docker_container_ports: docker_container_ports
@@ -26441,7 +26802,8 @@ components:
               vulnerability_scan_status: vulnerability_scan_status
               host_name: host_name
               node_id: node_id
-            - vulnerabilities_count: 7
+            - docker_image_name_with_tag: docker_image_name_with_tag
+              vulnerabilities_count: 7
               secrets_count: 1
               kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
@@ -26589,6 +26951,9 @@ components:
               node_name: node_name
               docker_container_networks: docker_container_networks
               docker_container_command: docker_container_command
+              tags:
+              - tags
+              - tags
               uptime: 6
               memory_max: 5
               docker_container_ports: docker_container_ports
@@ -26614,6 +26979,9 @@ components:
             malwares_count: 1
             node_name: node_name
             secret_latest_scan_id: secret_latest_scan_id
+            tags:
+            - tags
+            - tags
             vulnerability_latest_scan_id: vulnerability_latest_scan_id
             docker_image_created_at: docker_image_created_at
             docker_image_tag: docker_image_tag
@@ -26622,7 +26990,8 @@ components:
             image_node_id: image_node_id
             docker_image_virtual_size: docker_image_virtual_size
             containers:
-            - vulnerabilities_count: 7
+            - docker_image_name_with_tag: docker_image_name_with_tag
+              vulnerabilities_count: 7
               secrets_count: 1
               kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
@@ -26770,6 +27139,9 @@ components:
               node_name: node_name
               docker_container_networks: docker_container_networks
               docker_container_command: docker_container_command
+              tags:
+              - tags
+              - tags
               uptime: 6
               memory_max: 5
               docker_container_ports: docker_container_ports
@@ -26778,7 +27150,8 @@ components:
               vulnerability_scan_status: vulnerability_scan_status
               host_name: host_name
               node_id: node_id
-            - vulnerabilities_count: 7
+            - docker_image_name_with_tag: docker_image_name_with_tag
+              vulnerabilities_count: 7
               secrets_count: 1
               kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
@@ -26926,6 +27299,9 @@ components:
               node_name: node_name
               docker_container_networks: docker_container_networks
               docker_container_command: docker_container_command
+              tags:
+              - tags
+              - tags
               uptime: 6
               memory_max: 5
               docker_container_ports: docker_container_ports
@@ -26941,7 +27317,7 @@ components:
             - docker_image_tag_list
             - docker_image_tag_list
             node_id: node_id
-          cpu_max: 5.637376656633329
+          cpu_max: 2.3021358869347655
           alerts_counts:
             key: 6
           secret_latest_scan_id: secret_latest_scan_id
@@ -26983,6 +27359,7 @@ components:
             port: 0
             host: host
             direction: ingress
+          cloud_compliance_scan_status: cloud_compliance_scan_status
           plugin_status:
             network_tracer_status:
               description: description
@@ -27005,11 +27382,15 @@ components:
           agent_installer_tracer_status: agent_installer_tracer_status
           malware_latest_scan_id: malware_latest_scan_id
           version: version
+          tags:
+          - tags
+          - tags
           instance_id: instance_id
           kernel_id: kernel_id
           compliance_latest_scan_id: compliance_latest_scan_id
           containers:
-          - vulnerabilities_count: 7
+          - docker_image_name_with_tag: docker_image_name_with_tag
+            vulnerabilities_count: 7
             secrets_count: 1
             kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
@@ -27157,6 +27538,9 @@ components:
             node_name: node_name
             docker_container_networks: docker_container_networks
             docker_container_command: docker_container_command
+            tags:
+            - tags
+            - tags
             uptime: 6
             memory_max: 5
             docker_container_ports: docker_container_ports
@@ -27165,7 +27549,8 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
-          - vulnerabilities_count: 7
+          - docker_image_name_with_tag: docker_image_name_with_tag
+            vulnerabilities_count: 7
             secrets_count: 1
             kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
@@ -27313,6 +27698,9 @@ components:
             node_name: node_name
             docker_container_networks: docker_container_networks
             docker_container_command: docker_container_command
+            tags:
+            - tags
+            - tags
             uptime: 6
             memory_max: 5
             docker_container_ports: docker_container_ports
@@ -27321,13 +27709,14 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
-          cpu_usage: 2.3021358869347655
+          cpu_usage: 7.061401241503109
           instance_type: instance_type
           local_networks:
           - ""
           - ""
-          vulnerabilities_count: 1
-          secrets_count: 6
+          vulnerabilities_count: 4
+          cr_id: cr_id
+          secrets_count: 7
           cloud_region: cloud_region
           network_tracer_status_updated_at: 1
           network_filter_status: network_filter_status
@@ -27335,13 +27724,13 @@ components:
           private_ip:
           - ""
           - ""
-          exploitable_vulnerabilities_count: 3
+          exploitable_vulnerabilities_count: 2
           cloud_account_id: cloud_account_id
           resource_group: resource_group
           malware_scan_status: malware_scan_status
-          exploitable_malwares_count: 7
+          exploitable_malwares_count: 9
           agent_installer_tracer_status_updated_at: 0
-          filesystem_tracer_status_updated_at: 2
+          filesystem_tracer_status_updated_at: 4
           filesystem_tracer_status: filesystem_tracer_status
           inbound_connections:
           - count: 9
@@ -27510,20 +27899,22 @@ components:
           local_cidr:
           - ""
           - ""
-          malwares_count: 4
+          malwares_count: 7
           node_name: node_name
           cloud_provider: cloud_provider
           process_tracer_status: process_tracer_status
           agent_running: true
-          cloud_warn_alarm_count: 1
-          exploitable_secrets_count: 9
-          process_tracer_status_updated_at: 1
-          uptime: 7
-          memory_max: 7
+          cloud_warn_alarm_count: 5
+          exploitable_secrets_count: 3
+          process_tracer_status_updated_at: 6
+          uptime: 1
+          cloud_compliances_count: 1
+          memory_max: 1
           account_id: account_id
+          cloud_compliance_latest_scan_id: cloud_compliance_latest_scan_id
           compliances_count: 5
           kernel_version: kernel_version
-          warn_alarm_count: 4
+          warn_alarm_count: 5
           pods:
           - is_deepfence_system: true
             kubernetes_ip: kubernetes_ip
@@ -27655,13 +28046,17 @@ components:
             node_name: node_name
             kubernetes_created: kubernetes_created
             pod_name: pod_name
+            tags:
+            - tags
+            - tags
             kubernetes_namespace: kubernetes_namespace
             kubernetes_is_in_host_network: true
             malware_scan_status: malware_scan_status
             kubernetes_labels:
               key: ""
             containers:
-            - vulnerabilities_count: 7
+            - docker_image_name_with_tag: docker_image_name_with_tag
+              vulnerabilities_count: 7
               secrets_count: 1
               kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
@@ -27809,6 +28204,9 @@ components:
               node_name: node_name
               docker_container_networks: docker_container_networks
               docker_container_command: docker_container_command
+              tags:
+              - tags
+              - tags
               uptime: 6
               memory_max: 5
               docker_container_ports: docker_container_ports
@@ -27817,7 +28215,8 @@ components:
               vulnerability_scan_status: vulnerability_scan_status
               host_name: host_name
               node_id: node_id
-            - vulnerabilities_count: 7
+            - docker_image_name_with_tag: docker_image_name_with_tag
+              vulnerabilities_count: 7
               secrets_count: 1
               kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
@@ -27965,6 +28364,9 @@ components:
               node_name: node_name
               docker_container_networks: docker_container_networks
               docker_container_command: docker_container_command
+              tags:
+              - tags
+              - tags
               uptime: 6
               memory_max: 5
               docker_container_ports: docker_container_ports
@@ -28106,13 +28508,17 @@ components:
             node_name: node_name
             kubernetes_created: kubernetes_created
             pod_name: pod_name
+            tags:
+            - tags
+            - tags
             kubernetes_namespace: kubernetes_namespace
             kubernetes_is_in_host_network: true
             malware_scan_status: malware_scan_status
             kubernetes_labels:
               key: ""
             containers:
-            - vulnerabilities_count: 7
+            - docker_image_name_with_tag: docker_image_name_with_tag
+              vulnerabilities_count: 7
               secrets_count: 1
               kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
@@ -28260,6 +28666,9 @@ components:
               node_name: node_name
               docker_container_networks: docker_container_networks
               docker_container_command: docker_container_command
+              tags:
+              - tags
+              - tags
               uptime: 6
               memory_max: 5
               docker_container_ports: docker_container_ports
@@ -28268,7 +28677,8 @@ components:
               vulnerability_scan_status: vulnerability_scan_status
               host_name: host_name
               node_id: node_id
-            - vulnerabilities_count: 7
+            - docker_image_name_with_tag: docker_image_name_with_tag
+              vulnerabilities_count: 7
               secrets_count: 1
               kubernetes_cluster_name: kubernetes_cluster_name
               docker_container_state: docker_container_state
@@ -28416,6 +28826,9 @@ components:
               node_name: node_name
               docker_container_networks: docker_container_networks
               docker_container_command: docker_container_command
+              tags:
+              - tags
+              - tags
               uptime: 6
               memory_max: 5
               docker_container_ports: docker_container_ports
@@ -28433,6 +28846,9 @@ components:
         node_name: node_name
         agent_running: true
         node_id: node_id
+        tags:
+        - tags
+        - tags
       properties:
         agent_running:
           type: boolean
@@ -28445,11 +28861,17 @@ components:
           type: string
         node_name:
           type: string
+        tags:
+          items:
+            type: string
+          nullable: true
+          type: array
       required:
       - agent_running
       - hosts
       - node_id
       - node_name
+      - tags
       type: object
     ModelLicense:
       example:
@@ -28572,6 +28994,65 @@ components:
       - password_invalidated
       - refresh_token
       type: object
+    ModelMaliciousConnectionAlert:
+      example:
+        severity: severity
+        summary: summary
+        destination_ip: destination_ip
+        event_type: event_type
+        updated_at: 0
+        techniques:
+        - techniques
+        - techniques
+        tactics:
+        - tactics
+        - tactics
+        host_name: host_name
+        direction: direction
+        node_id: node_id
+        source_ip: source_ip
+      properties:
+        destination_ip:
+          type: string
+        direction:
+          type: string
+        event_type:
+          type: string
+        host_name:
+          type: string
+        node_id:
+          type: string
+        severity:
+          type: string
+        source_ip:
+          type: string
+        summary:
+          type: string
+        tactics:
+          items:
+            type: string
+          nullable: true
+          type: array
+        techniques:
+          items:
+            type: string
+          nullable: true
+          type: array
+        updated_at:
+          type: integer
+      required:
+      - destination_ip
+      - direction
+      - event_type
+      - host_name
+      - node_id
+      - severity
+      - source_ip
+      - summary
+      - tactics
+      - techniques
+      - updated_at
+      type: object
     ModelMalware:
       example:
         date: date
@@ -28596,6 +29077,7 @@ components:
           - live_cves
           - live_cves
           name: name
+          active: true
           host_name: host_name
           live_malwares:
           - live_malwares
@@ -28609,12 +29091,14 @@ components:
           - live_cves
           - live_cves
           name: name
+          active: true
           host_name: host_name
           live_malwares:
           - live_malwares
           - live_malwares
           node_id: node_id
         version: version
+        reference: reference
         rule_id: rule_id
         complete_filename: complete_filename
         class: class
@@ -28658,6 +29142,8 @@ components:
           type: integer
         node_id:
           type: string
+        reference:
+          type: string
         resources:
           items:
             $ref: '#/components/schemas/ModelBasicNode'
@@ -28700,7 +29186,6 @@ components:
         file_severity: file_severity
         description: description
         version: version
-        reference: reference
         rule_id: rule_id
         updated_at: 0
         payload: payload
@@ -28721,8 +29206,6 @@ components:
         masked:
           type: boolean
         payload:
-          type: string
-        reference:
           type: string
         rule_id:
           type: string
@@ -28778,6 +29261,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -28791,12 +29275,14 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
             - live_malwares
             node_id: node_id
           version: version
+          reference: reference
           rule_id: rule_id
           complete_filename: complete_filename
           class: class
@@ -28827,6 +29313,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -28840,12 +29327,14 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
             - live_malwares
             node_id: node_id
           version: version
+          reference: reference
           rule_id: rule_id
           complete_filename: complete_filename
           class: class
@@ -29393,6 +29882,179 @@ components:
       required:
       - notification_threshold_percentage
       type: object
+    ModelPackageVulnerabilityScanResult:
+      example:
+        cloud_account_id: cloud_account_id
+        node_type: node_type
+        docker_container_name: docker_container_name
+        updated_at: 6
+        kubernetes_cluster_name: kubernetes_cluster_name
+        node_name: node_name
+        created_at: 0
+        scan_id: scan_id
+        docker_image_name: docker_image_name
+        host_name: host_name
+        packages_vulnerability:
+          key:
+          - epss_score: 1.4658129805029452
+            parsed_attack_vector: parsed_attack_vector
+            cve_container_layer: cve_container_layer
+            masked: true
+            cve_caused_by_package: cve_caused_by_package
+            cisa_kev: true
+            urls:
+            - ""
+            - ""
+            cve_severity: critical
+            cve_caused_by_package_path: cve_caused_by_package_path
+            updated_at: 2
+            max_exploitability_score: 5
+            cve_description: cve_description
+            cve_overall_score: 6.027456183070403
+            resources:
+            - node_type: node_type
+              live_secrets:
+              - live_secrets
+              - live_secrets
+              live_cves:
+              - live_cves
+              - live_cves
+              name: name
+              active: true
+              host_name: host_name
+              live_malwares:
+              - live_malwares
+              - live_malwares
+              node_id: node_id
+            - node_type: node_type
+              live_secrets:
+              - live_secrets
+              - live_secrets
+              live_cves:
+              - live_cves
+              - live_cves
+              name: name
+              active: true
+              host_name: host_name
+              live_malwares:
+              - live_malwares
+              - live_malwares
+              node_id: node_id
+            cve_attack_vector: cve_attack_vector
+            cve_cvss_score: 0.8008281904610115
+            rule_id: rule_id
+            cve_id: cve_id
+            exploit_poc: exploit_poc
+            namespace: namespace
+            cve_type: cve_type
+            has_live_connection: true
+            cve_fixed_in: cve_fixed_in
+            cve_link: cve_link
+            exploitability_score: 5
+            node_id: node_id
+          - epss_score: 1.4658129805029452
+            parsed_attack_vector: parsed_attack_vector
+            cve_container_layer: cve_container_layer
+            masked: true
+            cve_caused_by_package: cve_caused_by_package
+            cisa_kev: true
+            urls:
+            - ""
+            - ""
+            cve_severity: critical
+            cve_caused_by_package_path: cve_caused_by_package_path
+            updated_at: 2
+            max_exploitability_score: 5
+            cve_description: cve_description
+            cve_overall_score: 6.027456183070403
+            resources:
+            - node_type: node_type
+              live_secrets:
+              - live_secrets
+              - live_secrets
+              live_cves:
+              - live_cves
+              - live_cves
+              name: name
+              active: true
+              host_name: host_name
+              live_malwares:
+              - live_malwares
+              - live_malwares
+              node_id: node_id
+            - node_type: node_type
+              live_secrets:
+              - live_secrets
+              - live_secrets
+              live_cves:
+              - live_cves
+              - live_cves
+              name: name
+              active: true
+              host_name: host_name
+              live_malwares:
+              - live_malwares
+              - live_malwares
+              node_id: node_id
+            cve_attack_vector: cve_attack_vector
+            cve_cvss_score: 0.8008281904610115
+            rule_id: rule_id
+            cve_id: cve_id
+            exploit_poc: exploit_poc
+            namespace: namespace
+            cve_type: cve_type
+            has_live_connection: true
+            cve_fixed_in: cve_fixed_in
+            cve_link: cve_link
+            exploitability_score: 5
+            node_id: node_id
+        node_id: node_id
+      properties:
+        cloud_account_id:
+          type: string
+        created_at:
+          format: int64
+          type: integer
+        docker_container_name:
+          type: string
+        docker_image_name:
+          type: string
+        host_name:
+          type: string
+        kubernetes_cluster_name:
+          type: string
+        node_id:
+          type: string
+        node_name:
+          type: string
+        node_type:
+          type: string
+        packages_vulnerability:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/ModelVulnerability'
+            type: array
+          nullable: true
+          type: object
+        scan_id:
+          type: string
+        updated_at:
+          format: int64
+          type: integer
+      required:
+      - cloud_account_id
+      - created_at
+      - docker_container_name
+      - docker_image_name
+      - host_name
+      - kubernetes_cluster_name
+      - node_id
+      - node_name
+      - node_type
+      - packages_vulnerability
+      - scan_id
+      - updated_at
+      type: object
     ModelPasswordResetRequest:
       example:
         email: email
@@ -29564,13 +30226,17 @@ components:
         node_name: node_name
         kubernetes_created: kubernetes_created
         pod_name: pod_name
+        tags:
+        - tags
+        - tags
         kubernetes_namespace: kubernetes_namespace
         kubernetes_is_in_host_network: true
         malware_scan_status: malware_scan_status
         kubernetes_labels:
           key: ""
         containers:
-        - vulnerabilities_count: 7
+        - docker_image_name_with_tag: docker_image_name_with_tag
+          vulnerabilities_count: 7
           secrets_count: 1
           kubernetes_cluster_name: kubernetes_cluster_name
           docker_container_state: docker_container_state
@@ -29718,6 +30384,9 @@ components:
           node_name: node_name
           docker_container_networks: docker_container_networks
           docker_container_command: docker_container_command
+          tags:
+          - tags
+          - tags
           uptime: 6
           memory_max: 5
           docker_container_ports: docker_container_ports
@@ -29726,7 +30395,8 @@ components:
           vulnerability_scan_status: vulnerability_scan_status
           host_name: host_name
           node_id: node_id
-        - vulnerabilities_count: 7
+        - docker_image_name_with_tag: docker_image_name_with_tag
+          vulnerabilities_count: 7
           secrets_count: 1
           kubernetes_cluster_name: kubernetes_cluster_name
           docker_container_state: docker_container_state
@@ -29874,6 +30544,9 @@ components:
           node_name: node_name
           docker_container_networks: docker_container_networks
           docker_container_command: docker_container_command
+          tags:
+          - tags
+          - tags
           uptime: 6
           memory_max: 5
           docker_container_ports: docker_container_ports
@@ -29928,6 +30601,11 @@ components:
           type: array
         secret_scan_status:
           type: string
+        tags:
+          items:
+            type: string
+          nullable: true
+          type: array
         vulnerability_scan_status:
           type: string
       required:
@@ -29948,6 +30626,7 @@ components:
       - pod_name
       - processes
       - secret_scan_status
+      - tags
       - vulnerability_scan_status
       type: object
     ModelPostureProvider:
@@ -30454,6 +31133,9 @@ components:
           malwares_count: 1
           node_name: node_name
           secret_latest_scan_id: secret_latest_scan_id
+          tags:
+          - tags
+          - tags
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
           docker_image_created_at: docker_image_created_at
           docker_image_tag: docker_image_tag
@@ -30462,7 +31144,8 @@ components:
           image_node_id: image_node_id
           docker_image_virtual_size: docker_image_virtual_size
           containers:
-          - vulnerabilities_count: 7
+          - docker_image_name_with_tag: docker_image_name_with_tag
+            vulnerabilities_count: 7
             secrets_count: 1
             kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
@@ -30610,6 +31293,9 @@ components:
             node_name: node_name
             docker_container_networks: docker_container_networks
             docker_container_command: docker_container_command
+            tags:
+            - tags
+            - tags
             uptime: 6
             memory_max: 5
             docker_container_ports: docker_container_ports
@@ -30618,7 +31304,8 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
-          - vulnerabilities_count: 7
+          - docker_image_name_with_tag: docker_image_name_with_tag
+            vulnerabilities_count: 7
             secrets_count: 1
             kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
@@ -30766,6 +31453,9 @@ components:
             node_name: node_name
             docker_container_networks: docker_container_networks
             docker_container_command: docker_container_command
+            tags:
+            - tags
+            - tags
             uptime: 6
             memory_max: 5
             docker_container_ports: docker_container_ports
@@ -30791,6 +31481,9 @@ components:
           malwares_count: 1
           node_name: node_name
           secret_latest_scan_id: secret_latest_scan_id
+          tags:
+          - tags
+          - tags
           vulnerability_latest_scan_id: vulnerability_latest_scan_id
           docker_image_created_at: docker_image_created_at
           docker_image_tag: docker_image_tag
@@ -30799,7 +31492,8 @@ components:
           image_node_id: image_node_id
           docker_image_virtual_size: docker_image_virtual_size
           containers:
-          - vulnerabilities_count: 7
+          - docker_image_name_with_tag: docker_image_name_with_tag
+            vulnerabilities_count: 7
             secrets_count: 1
             kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
@@ -30947,6 +31641,9 @@ components:
             node_name: node_name
             docker_container_networks: docker_container_networks
             docker_container_command: docker_container_command
+            tags:
+            - tags
+            - tags
             uptime: 6
             memory_max: 5
             docker_container_ports: docker_container_ports
@@ -30955,7 +31652,8 @@ components:
             vulnerability_scan_status: vulnerability_scan_status
             host_name: host_name
             node_id: node_id
-          - vulnerabilities_count: 7
+          - docker_image_name_with_tag: docker_image_name_with_tag
+            vulnerabilities_count: 7
             secrets_count: 1
             kubernetes_cluster_name: kubernetes_cluster_name
             docker_container_state: docker_container_state
@@ -31103,6 +31801,9 @@ components:
             node_name: node_name
             docker_container_networks: docker_container_networks
             docker_container_command: docker_container_command
+            tags:
+            - tags
+            - tags
             uptime: 6
             memory_max: 5
             docker_container_ports: docker_container_ports
@@ -31557,6 +32258,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -31570,6 +32272,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -31603,6 +32306,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -31616,6 +32320,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -31656,6 +32361,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -31669,6 +32375,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -31700,6 +32407,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -31713,6 +32421,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -31766,6 +32475,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -31779,12 +32489,14 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
             - live_malwares
             node_id: node_id
           version: version
+          reference: reference
           rule_id: rule_id
           complete_filename: complete_filename
           class: class
@@ -31815,6 +32527,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -31828,12 +32541,14 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
             - live_malwares
             node_id: node_id
           version: version
+          reference: reference
           rule_id: rule_id
           complete_filename: complete_filename
           class: class
@@ -31871,6 +32586,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -31884,6 +32600,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -31909,6 +32626,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -31922,6 +32640,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -31966,6 +32685,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -31979,6 +32699,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -32020,6 +32741,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -32033,6 +32755,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -32305,6 +33028,7 @@ components:
           - live_cves
           - live_cves
           name: name
+          active: true
           host_name: host_name
           live_malwares:
           - live_malwares
@@ -32318,6 +33042,7 @@ components:
           - live_cves
           - live_cves
           name: name
+          active: true
           host_name: host_name
           live_malwares:
           - live_malwares
@@ -32600,6 +33325,7 @@ components:
           - live_cves
           - live_cves
           name: name
+          active: true
           host_name: host_name
           live_malwares:
           - live_malwares
@@ -32613,6 +33339,7 @@ components:
           - live_cves
           - live_cves
           name: name
+          active: true
           host_name: host_name
           live_malwares:
           - live_malwares
@@ -32730,6 +33457,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -32743,6 +33471,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -32768,6 +33497,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -32781,6 +33511,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -33198,6 +33929,7 @@ components:
           - live_cves
           - live_cves
           name: name
+          active: true
           host_name: host_name
           live_malwares:
           - live_malwares
@@ -33211,6 +33943,7 @@ components:
           - live_cves
           - live_cves
           name: name
+          active: true
           host_name: host_name
           live_malwares:
           - live_malwares
@@ -33336,6 +34069,7 @@ components:
           - live_cves
           - live_cves
           name: name
+          active: true
           host_name: host_name
           live_malwares:
           - live_malwares
@@ -33349,6 +34083,7 @@ components:
           - live_cves
           - live_cves
           name: name
+          active: true
           host_name: host_name
           live_malwares:
           - live_malwares
@@ -33550,6 +34285,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -33563,6 +34299,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -33604,6 +34341,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -33617,6 +34355,7 @@ components:
             - live_cves
             - live_cves
             name: name
+            active: true
             host_name: host_name
             live_malwares:
             - live_malwares
@@ -33869,9 +34608,6 @@ components:
         docker_label: docker_label
         instance_type: instance_type
         docker_image_name: docker_image_name
-        user_defined_tags:
-        - user_defined_tags
-        - user_defined_tags
         local_networks:
         - local_networks
         - local_networks
@@ -34110,10 +34846,6 @@ components:
           type: string
         uptime:
           type: integer
-        user_defined_tags:
-          items:
-            type: string
-          type: array
         version:
           type: string
       type: object

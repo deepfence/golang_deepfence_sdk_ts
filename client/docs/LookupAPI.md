@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**GetFilesystemAlertRules**](LookupAPI.md#GetFilesystemAlertRules) | **Post** /deepfence/lookup/file-alert-rules | Get File Alert Rules
 [**GetHosts**](LookupAPI.md#GetHosts) | **Post** /deepfence/lookup/hosts | Retrieve Hosts data
 [**GetKubernetesClusters**](LookupAPI.md#GetKubernetesClusters) | **Post** /deepfence/lookup/kubernetesclusters | Retrieve K8s data
+[**GetMaliciousConnectionAlerts**](LookupAPI.md#GetMaliciousConnectionAlerts) | **Post** /deepfence/lookup/malicious-connection-alerts | Get Malicious Connection Alerts
 [**GetMalwareRules**](LookupAPI.md#GetMalwareRules) | **Post** /deepfence/lookup/malware-rules | Get Malware Rules
 [**GetMalwares**](LookupAPI.md#GetMalwares) | **Post** /deepfence/lookup/malwares | Retrieve Malwares data
 [**GetNetworkAlertRules**](LookupAPI.md#GetNetworkAlertRules) | **Post** /deepfence/lookup/network-alert-rules | Get Network Alert Rules
@@ -811,6 +812,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]ModelKubernetesCluster**](ModelKubernetesCluster.md)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetMaliciousConnectionAlerts
+
+> []ModelMaliciousConnectionAlert GetMaliciousConnectionAlerts(ctx).LookupLookupFilter(lookupLookupFilter).Execute()
+
+Get Malicious Connection Alerts
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/deepfence/golang_deepfence_sdk/client"
+)
+
+func main() {
+	lookupLookupFilter := *openapiclient.NewLookupLookupFilter([]string{"InFieldFilter_example"}, []string{"NodeIds_example"}, *openapiclient.NewModelFetchWindow(int32(123), int32(123))) // LookupLookupFilter |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LookupAPI.GetMaliciousConnectionAlerts(context.Background()).LookupLookupFilter(lookupLookupFilter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LookupAPI.GetMaliciousConnectionAlerts``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetMaliciousConnectionAlerts`: []ModelMaliciousConnectionAlert
+	fmt.Fprintf(os.Stdout, "Response from `LookupAPI.GetMaliciousConnectionAlerts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetMaliciousConnectionAlertsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **lookupLookupFilter** | [**LookupLookupFilter**](LookupLookupFilter.md) |  | 
+
+### Return type
+
+[**[]ModelMaliciousConnectionAlert**](ModelMaliciousConnectionAlert.md)
 
 ### Authorization
 
