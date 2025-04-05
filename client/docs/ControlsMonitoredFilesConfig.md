@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accesstypes** | **[]string** |  | 
+**Exclude** | **[]string** |  | 
 **Recursive** | **bool** |  | 
 **Root** | **string** |  | 
 **Severity** | **string** |  | 
@@ -13,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewControlsMonitoredFilesConfig
 
-`func NewControlsMonitoredFilesConfig(accesstypes []string, recursive bool, root string, severity string, ) *ControlsMonitoredFilesConfig`
+`func NewControlsMonitoredFilesConfig(accesstypes []string, exclude []string, recursive bool, root string, severity string, ) *ControlsMonitoredFilesConfig`
 
 NewControlsMonitoredFilesConfig instantiates a new ControlsMonitoredFilesConfig object
 This constructor will assign default values to properties that have it defined,
@@ -58,6 +59,36 @@ SetAccesstypes sets Accesstypes field to given value.
 `func (o *ControlsMonitoredFilesConfig) UnsetAccesstypes()`
 
 UnsetAccesstypes ensures that no value is present for Accesstypes, not even an explicit nil
+### GetExclude
+
+`func (o *ControlsMonitoredFilesConfig) GetExclude() []string`
+
+GetExclude returns the Exclude field if non-nil, zero value otherwise.
+
+### GetExcludeOk
+
+`func (o *ControlsMonitoredFilesConfig) GetExcludeOk() (*[]string, bool)`
+
+GetExcludeOk returns a tuple with the Exclude field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExclude
+
+`func (o *ControlsMonitoredFilesConfig) SetExclude(v []string)`
+
+SetExclude sets Exclude field to given value.
+
+
+### SetExcludeNil
+
+`func (o *ControlsMonitoredFilesConfig) SetExcludeNil(b bool)`
+
+ SetExcludeNil sets the value for Exclude to be an explicit nil
+
+### UnsetExclude
+`func (o *ControlsMonitoredFilesConfig) UnsetExclude()`
+
+UnsetExclude ensures that no value is present for Exclude, not even an explicit nil
 ### GetRecursive
 
 `func (o *ControlsMonitoredFilesConfig) GetRecursive() bool`

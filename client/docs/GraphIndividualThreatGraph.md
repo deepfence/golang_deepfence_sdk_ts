@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **AttackPath** | Pointer to **[][]string** |  | [optional] 
 **CveAttackVector** | Pointer to **string** |  | [optional] 
 **CveId** | Pointer to **[]string** |  | [optional] 
-**Ports** | Pointer to **[]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -123,41 +122,6 @@ HasCveId returns a boolean if a field has been set.
 `func (o *GraphIndividualThreatGraph) UnsetCveId()`
 
 UnsetCveId ensures that no value is present for CveId, not even an explicit nil
-### GetPorts
-
-`func (o *GraphIndividualThreatGraph) GetPorts() []interface{}`
-
-GetPorts returns the Ports field if non-nil, zero value otherwise.
-
-### GetPortsOk
-
-`func (o *GraphIndividualThreatGraph) GetPortsOk() (*[]interface{}, bool)`
-
-GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPorts
-
-`func (o *GraphIndividualThreatGraph) SetPorts(v []interface{})`
-
-SetPorts sets Ports field to given value.
-
-### HasPorts
-
-`func (o *GraphIndividualThreatGraph) HasPorts() bool`
-
-HasPorts returns a boolean if a field has been set.
-
-### SetPortsNil
-
-`func (o *GraphIndividualThreatGraph) SetPortsNil(b bool)`
-
- SetPortsNil sets the value for Ports to be an explicit nil
-
-### UnsetPorts
-`func (o *GraphIndividualThreatGraph) UnsetPorts()`
-
-UnsetPorts ensures that no value is present for Ports, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

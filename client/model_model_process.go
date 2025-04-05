@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: v2.5.3
+API version: v2.5.6
 Contact: community@deepfence.io
 */
 
@@ -34,6 +34,7 @@ type ModelProcess struct {
 	MemoryUsage int32 `json:"memory_usage"`
 	NodeId string `json:"node_id"`
 	NodeName string `json:"node_name"`
+	OpenFiles []string `json:"open_files"`
 	OpenFilesCount int32 `json:"open_files_count"`
 	OutboundConnections []ModelConnection `json:"outbound_connections"`
 	Pid int32 `json:"pid"`
@@ -48,7 +49,7 @@ type _ModelProcess ModelProcess
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelProcess(activeCves []string, activeMalwares []string, activeSecrets []string, cmdline string, cpuMax float32, cpuUsage float32, hostName string, inboundConnections []ModelConnection, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, openFilesCount int32, outboundConnections []ModelConnection, pid int32, ppid int32, shortName string, threads int32) *ModelProcess {
+func NewModelProcess(activeCves []string, activeMalwares []string, activeSecrets []string, cmdline string, cpuMax float32, cpuUsage float32, hostName string, inboundConnections []ModelConnection, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, openFiles []string, openFilesCount int32, outboundConnections []ModelConnection, pid int32, ppid int32, shortName string, threads int32) *ModelProcess {
 	this := ModelProcess{}
 	this.ActiveCves = activeCves
 	this.ActiveMalwares = activeMalwares
@@ -62,6 +63,7 @@ func NewModelProcess(activeCves []string, activeMalwares []string, activeSecrets
 	this.MemoryUsage = memoryUsage
 	this.NodeId = nodeId
 	this.NodeName = nodeName
+	this.OpenFiles = openFiles
 	this.OpenFilesCount = openFilesCount
 	this.OutboundConnections = outboundConnections
 	this.Pid = pid
@@ -375,6 +377,32 @@ func (o *ModelProcess) SetNodeName(v string) {
 	o.NodeName = v
 }
 
+// GetOpenFiles returns the OpenFiles field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ModelProcess) GetOpenFiles() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.OpenFiles
+}
+
+// GetOpenFilesOk returns a tuple with the OpenFiles field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ModelProcess) GetOpenFilesOk() ([]string, bool) {
+	if o == nil || IsNil(o.OpenFiles) {
+		return nil, false
+	}
+	return o.OpenFiles, true
+}
+
+// SetOpenFiles sets field value
+func (o *ModelProcess) SetOpenFiles(v []string) {
+	o.OpenFiles = v
+}
+
 // GetOpenFilesCount returns the OpenFilesCount field value
 func (o *ModelProcess) GetOpenFilesCount() int32 {
 	if o == nil {
@@ -551,6 +579,9 @@ func (o ModelProcess) ToMap() (map[string]interface{}, error) {
 	toSerialize["memory_usage"] = o.MemoryUsage
 	toSerialize["node_id"] = o.NodeId
 	toSerialize["node_name"] = o.NodeName
+	if o.OpenFiles != nil {
+		toSerialize["open_files"] = o.OpenFiles
+	}
 	toSerialize["open_files_count"] = o.OpenFilesCount
 	if o.OutboundConnections != nil {
 		toSerialize["outbound_connections"] = o.OutboundConnections
@@ -579,6 +610,7 @@ func (o *ModelProcess) UnmarshalJSON(data []byte) (err error) {
 		"memory_usage",
 		"node_id",
 		"node_name",
+		"open_files",
 		"open_files_count",
 		"outbound_connections",
 		"pid",

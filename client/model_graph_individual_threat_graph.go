@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: v2.5.3
+API version: v2.5.6
 Contact: community@deepfence.io
 */
 
@@ -23,7 +23,6 @@ type GraphIndividualThreatGraph struct {
 	AttackPath [][]string `json:"attack_path,omitempty"`
 	CveAttackVector *string `json:"cve_attack_vector,omitempty"`
 	CveId []string `json:"cve_id,omitempty"`
-	Ports []interface{} `json:"ports,omitempty"`
 }
 
 // NewGraphIndividualThreatGraph instantiates a new GraphIndividualThreatGraph object
@@ -141,39 +140,6 @@ func (o *GraphIndividualThreatGraph) SetCveId(v []string) {
 	o.CveId = v
 }
 
-// GetPorts returns the Ports field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GraphIndividualThreatGraph) GetPorts() []interface{} {
-	if o == nil {
-		var ret []interface{}
-		return ret
-	}
-	return o.Ports
-}
-
-// GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GraphIndividualThreatGraph) GetPortsOk() ([]interface{}, bool) {
-	if o == nil || IsNil(o.Ports) {
-		return nil, false
-	}
-	return o.Ports, true
-}
-
-// HasPorts returns a boolean if a field has been set.
-func (o *GraphIndividualThreatGraph) HasPorts() bool {
-	if o != nil && !IsNil(o.Ports) {
-		return true
-	}
-
-	return false
-}
-
-// SetPorts gets a reference to the given []interface{} and assigns it to the Ports field.
-func (o *GraphIndividualThreatGraph) SetPorts(v []interface{}) {
-	o.Ports = v
-}
-
 func (o GraphIndividualThreatGraph) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -192,9 +158,6 @@ func (o GraphIndividualThreatGraph) ToMap() (map[string]interface{}, error) {
 	}
 	if o.CveId != nil {
 		toSerialize["cve_id"] = o.CveId
-	}
-	if o.Ports != nil {
-		toSerialize["ports"] = o.Ports
 	}
 	return toSerialize, nil
 }

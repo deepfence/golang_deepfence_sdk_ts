@@ -3,7 +3,7 @@ Deepfence ThreatStryker
 
 Deepfence Runtime API provides programmatic control over Deepfence microservice securing your container, kubernetes and cloud deployments. The API abstracts away underlying infrastructure details like cloud provider,  container distros, container orchestrator and type of deployment. This is one uniform API to manage and control security alerts, policies and response to alerts for microservices running anywhere i.e. managed pure greenfield container deployments or a mix of containers, VMs and serverless paradigms like AWS Fargate.
 
-API version: v2.5.3
+API version: v2.5.6
 Contact: community@deepfence.io
 */
 
@@ -23,6 +23,7 @@ var _ MappedNullable = &ControlsMonitoredFilesConfig{}
 // ControlsMonitoredFilesConfig struct for ControlsMonitoredFilesConfig
 type ControlsMonitoredFilesConfig struct {
 	Accesstypes []string `json:"accesstypes"`
+	Exclude []string `json:"exclude"`
 	Recursive bool `json:"recursive"`
 	Root string `json:"root"`
 	Severity string `json:"severity"`
@@ -34,9 +35,10 @@ type _ControlsMonitoredFilesConfig ControlsMonitoredFilesConfig
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControlsMonitoredFilesConfig(accesstypes []string, recursive bool, root string, severity string) *ControlsMonitoredFilesConfig {
+func NewControlsMonitoredFilesConfig(accesstypes []string, exclude []string, recursive bool, root string, severity string) *ControlsMonitoredFilesConfig {
 	this := ControlsMonitoredFilesConfig{}
 	this.Accesstypes = accesstypes
+	this.Exclude = exclude
 	this.Recursive = recursive
 	this.Root = root
 	this.Severity = severity
@@ -75,6 +77,32 @@ func (o *ControlsMonitoredFilesConfig) GetAccesstypesOk() ([]string, bool) {
 // SetAccesstypes sets field value
 func (o *ControlsMonitoredFilesConfig) SetAccesstypes(v []string) {
 	o.Accesstypes = v
+}
+
+// GetExclude returns the Exclude field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ControlsMonitoredFilesConfig) GetExclude() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.Exclude
+}
+
+// GetExcludeOk returns a tuple with the Exclude field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ControlsMonitoredFilesConfig) GetExcludeOk() ([]string, bool) {
+	if o == nil || IsNil(o.Exclude) {
+		return nil, false
+	}
+	return o.Exclude, true
+}
+
+// SetExclude sets field value
+func (o *ControlsMonitoredFilesConfig) SetExclude(v []string) {
+	o.Exclude = v
 }
 
 // GetRecursive returns the Recursive field value
@@ -162,6 +190,9 @@ func (o ControlsMonitoredFilesConfig) ToMap() (map[string]interface{}, error) {
 	if o.Accesstypes != nil {
 		toSerialize["accesstypes"] = o.Accesstypes
 	}
+	if o.Exclude != nil {
+		toSerialize["exclude"] = o.Exclude
+	}
 	toSerialize["recursive"] = o.Recursive
 	toSerialize["root"] = o.Root
 	toSerialize["severity"] = o.Severity
@@ -174,6 +205,7 @@ func (o *ControlsMonitoredFilesConfig) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"accesstypes",
+		"exclude",
 		"recursive",
 		"root",
 		"severity",

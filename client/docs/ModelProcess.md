@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **MemoryUsage** | **int32** |  | 
 **NodeId** | **string** |  | 
 **NodeName** | **string** |  | 
+**OpenFiles** | **[]string** |  | 
 **OpenFilesCount** | **int32** |  | 
 **OutboundConnections** | [**[]ModelConnection**](ModelConnection.md) |  | 
 **Pid** | **int32** |  | 
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewModelProcess
 
-`func NewModelProcess(activeCves []string, activeMalwares []string, activeSecrets []string, cmdline string, cpuMax float32, cpuUsage float32, hostName string, inboundConnections []ModelConnection, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, openFilesCount int32, outboundConnections []ModelConnection, pid int32, ppid int32, shortName string, threads int32, ) *ModelProcess`
+`func NewModelProcess(activeCves []string, activeMalwares []string, activeSecrets []string, cmdline string, cpuMax float32, cpuUsage float32, hostName string, inboundConnections []ModelConnection, memoryMax int32, memoryUsage int32, nodeId string, nodeName string, openFiles []string, openFilesCount int32, outboundConnections []ModelConnection, pid int32, ppid int32, shortName string, threads int32, ) *ModelProcess`
 
 NewModelProcess instantiates a new ModelProcess object
 This constructor will assign default values to properties that have it defined,
@@ -322,6 +323,36 @@ and a boolean to check if the value has been set.
 SetNodeName sets NodeName field to given value.
 
 
+### GetOpenFiles
+
+`func (o *ModelProcess) GetOpenFiles() []string`
+
+GetOpenFiles returns the OpenFiles field if non-nil, zero value otherwise.
+
+### GetOpenFilesOk
+
+`func (o *ModelProcess) GetOpenFilesOk() (*[]string, bool)`
+
+GetOpenFilesOk returns a tuple with the OpenFiles field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpenFiles
+
+`func (o *ModelProcess) SetOpenFiles(v []string)`
+
+SetOpenFiles sets OpenFiles field to given value.
+
+
+### SetOpenFilesNil
+
+`func (o *ModelProcess) SetOpenFilesNil(b bool)`
+
+ SetOpenFilesNil sets the value for OpenFiles to be an explicit nil
+
+### UnsetOpenFiles
+`func (o *ModelProcess) UnsetOpenFiles()`
+
+UnsetOpenFiles ensures that no value is present for OpenFiles, not even an explicit nil
 ### GetOpenFilesCount
 
 `func (o *ModelProcess) GetOpenFilesCount() int32`

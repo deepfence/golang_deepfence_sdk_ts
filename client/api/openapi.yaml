@@ -16,7 +16,7 @@ info:
     url: https://www.apache.org/licenses/LICENSE-2.0
   termsOfService: /tos
   title: Deepfence ThreatStryker
-  version: v2.5.3
+  version: v2.5.6
 externalDocs:
   description: Deepfence Community
   url: https://community.deepfence.io
@@ -15611,12 +15611,18 @@ components:
           - accesstypes
           - accesstypes
           root: root
+          exclude:
+          - exclude
+          - exclude
           recursive: true
         - severity: severity
           accesstypes:
           - accesstypes
           - accesstypes
           root: root
+          exclude:
+          - exclude
+          - exclude
           recursive: true
         node_id: node_id
       properties:
@@ -15641,9 +15647,17 @@ components:
         - accesstypes
         - accesstypes
         root: root
+        exclude:
+        - exclude
+        - exclude
         recursive: true
       properties:
         accesstypes:
+          items:
+            type: string
+          nullable: true
+          type: array
+        exclude:
           items:
             type: string
           nullable: true
@@ -15656,6 +15670,7 @@ components:
           type: string
       required:
       - accesstypes
+      - exclude
       - recursive
       - root
       - severity
@@ -16484,9 +16499,6 @@ components:
         cve_id:
         - cve_id
         - cve_id
-        ports:
-        - ""
-        - ""
         attack_path:
         - - attack_path
           - attack_path
@@ -16506,10 +16518,6 @@ components:
         cve_id:
           items:
             type: string
-          nullable: true
-          type: array
-        ports:
-          items: {}
           nullable: true
           type: array
       type: object
@@ -19983,6 +19991,9 @@ components:
           active_cves:
           - active_cves
           - active_cves
+          open_files:
+          - open_files
+          - open_files
           active_malwares:
           - active_malwares
           - active_malwares
@@ -20043,6 +20054,9 @@ components:
           active_cves:
           - active_cves
           - active_cves
+          open_files:
+          - open_files
+          - open_files
           active_malwares:
           - active_malwares
           - active_malwares
@@ -20284,6 +20298,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -20344,6 +20361,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -20444,6 +20464,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -20504,6 +20527,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -21806,6 +21832,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -21866,6 +21895,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -21966,6 +21998,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -22026,6 +22061,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -22154,6 +22192,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -22214,6 +22255,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -22314,6 +22358,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -22374,6 +22421,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -22553,6 +22603,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -22613,6 +22666,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -22713,6 +22769,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -22773,6 +22832,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -22898,6 +22960,9 @@ components:
           active_cves:
           - active_cves
           - active_cves
+          open_files:
+          - open_files
+          - open_files
           active_malwares:
           - active_malwares
           - active_malwares
@@ -22958,6 +23023,9 @@ components:
           active_cves:
           - active_cves
           - active_cves
+          open_files:
+          - open_files
+          - open_files
           active_malwares:
           - active_malwares
           - active_malwares
@@ -23063,6 +23131,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -23123,6 +23194,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -23219,6 +23293,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -23279,6 +23356,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -23379,6 +23459,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -23439,6 +23522,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -23525,6 +23611,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -23585,6 +23674,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -23681,6 +23773,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -23741,6 +23836,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -23841,6 +23939,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -23901,6 +24002,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -24647,6 +24751,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -24707,6 +24814,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -24807,6 +24917,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -24867,6 +24980,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -24995,6 +25111,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -25055,6 +25174,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -25155,6 +25277,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -25215,6 +25340,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -25394,6 +25522,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -25454,6 +25585,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -25554,6 +25688,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -25614,6 +25751,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -25739,6 +25879,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -25799,6 +25942,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -25904,6 +26050,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -25964,6 +26113,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -26060,6 +26212,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -26120,6 +26275,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -26220,6 +26378,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -26280,6 +26441,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -26366,6 +26530,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -26426,6 +26593,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -26522,6 +26692,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -26582,6 +26755,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -26682,6 +26858,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -26742,6 +26921,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -26873,6 +27055,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -26933,6 +27118,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -27033,6 +27221,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -27093,6 +27284,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -27221,6 +27415,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -27281,6 +27478,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -27381,6 +27581,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -27441,6 +27644,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -27620,6 +27826,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -27680,6 +27889,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -27780,6 +27992,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -27840,6 +28055,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -27965,6 +28183,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -28025,6 +28246,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -28130,6 +28354,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -28190,6 +28417,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -28286,6 +28516,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -28346,6 +28579,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -28446,6 +28682,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -28506,6 +28745,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -28592,6 +28834,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -28652,6 +28897,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -28748,6 +28996,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -28808,6 +29059,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -28908,6 +29162,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -28968,6 +29225,9 @@ components:
                 active_cves:
                 - active_cves
                 - active_cves
+                open_files:
+                - open_files
+                - open_files
                 active_malwares:
                 - active_malwares
                 - active_malwares
@@ -30310,6 +30570,9 @@ components:
           active_cves:
           - active_cves
           - active_cves
+          open_files:
+          - open_files
+          - open_files
           active_malwares:
           - active_malwares
           - active_malwares
@@ -30370,6 +30633,9 @@ components:
           active_cves:
           - active_cves
           - active_cves
+          open_files:
+          - open_files
+          - open_files
           active_malwares:
           - active_malwares
           - active_malwares
@@ -30466,6 +30732,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -30526,6 +30795,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -30626,6 +30898,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -30686,6 +30961,9 @@ components:
             active_cves:
             - active_cves
             - active_cves
+            open_files:
+            - open_files
+            - open_files
             active_malwares:
             - active_malwares
             - active_malwares
@@ -30867,6 +31145,9 @@ components:
         active_cves:
         - active_cves
         - active_cves
+        open_files:
+        - open_files
+        - open_files
         active_malwares:
         - active_malwares
         - active_malwares
@@ -30930,6 +31211,11 @@ components:
           type: string
         node_name:
           type: string
+        open_files:
+          items:
+            type: string
+          nullable: true
+          type: array
         open_files_count:
           type: integer
         outbound_connections:
@@ -30958,6 +31244,7 @@ components:
       - memory_usage
       - node_id
       - node_name
+      - open_files
       - open_files_count
       - outbound_connections
       - pid
@@ -31375,6 +31662,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -31435,6 +31725,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -31535,6 +31828,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -31595,6 +31891,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -31723,6 +32022,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -31783,6 +32085,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -31883,6 +32188,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
@@ -31943,6 +32251,9 @@ components:
               active_cves:
               - active_cves
               - active_cves
+              open_files:
+              - open_files
+              - open_files
               active_malwares:
               - active_malwares
               - active_malwares
